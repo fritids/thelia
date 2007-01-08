@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="alternate" type="application/rss+xml" title="Produits" href="rss.php?id_rubrique=#RUBRIQUE_ID" />
+
+<title>THELIA</title>
+
+<link href="styles.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+	<!-- global wrapper -->
+	
+	<div id="wrapper">
+	  <div id="subwrapper">
+        <!-- entête -->
+		
+	    #INCLURE "modules/entete.html"
+		
+  <h2><a href="index.php">Accueil</a> /
+  
+   Panier
+  
+  </h2>
+  
+  <!-- nav2, verticale -->
+  <div id="content"> 
+  
+  #INCLURE "modules/menugauche.html"
+  
+   </div>
+  <!-- contenu -->
+  
+<div class="fondContenu" style="overflow: hidden;zoom: 1">
+
+ <div class="Tabcentre">  		
+
+Modifier mon mot de passe<br />
+
+	 <form action="compte.php" method="post" name="modifier1" id="modifier1">
+     <input type="hidden" name="action" value="modifiercompte" />
+
+<div class="col">Nouveau mot de passe :</div>
+<div class="col"><input name="motdepasse1" type="password" size="30"  /></div>
+
+<div class="col">Confirmation :</div>
+<div class="col"><input name="motdepasse2" type="password" size="30"  /></div>
+
+<div class="col"><a href="#" onclick="document.getElementById('modifier1').submit()">Valider</a></div>
+<div class="col">&nbsp;</div>
+	 </form>
+
+
+    <div class="col"> Modifier mes coordonnées </div>
+	<div class="col">&nbsp;</div>
+     
+          <form action="compte_modifier.php" method="post" name="modifier2" id="modifier2">
+          <input type="hidden" name="action" value="modifiercompte" />  
+     
+     
+    <div class="col"> Civilit&eacute; *:</div>
+    <div class="col"> 	
+				 <select name="raison" size="1">
+                                <option value="">Choisissez ...</option>
+                                <option value="1" #CLIENT_RAISON1F>Madame</option>
+                                <option value="2" #CLIENT_RAISON2F>Mademoiselle</option>
+                                <option value="3" #CLIENT_RAISON3F>Monsieur</option>
+                 </select>
+	</div>	
+	
+	   
+		    
+	<div class="col">Pr&eacute;nom *:</div>
+	<div class="col">	    <input name="prenom"  value="#CLIENT_PRENOM" type="text" size="30" /></div>
+		    
+		<div class="col">    Nom :*</div>
+        <div class="col"><input name="nom"  value="#CLIENT_NOM" type="text"  size="30" /></div>
+     
+     
+        <div class="col">Adresse : *</div>
+       <div class="col"> <input name="adresse1" value="#CLIENT_ADRESSE1" type="text" size="30" /></div>
+     
+     
+        <div class="col">Adresse (suite) : </div>
+        <div class="col"><input name="adresse2" value="#CLIENT_ADRESSE2" type="text" size="30" /></div>
+     
+	  
+        <div class="col">Compl&eacute;ment d'adresse: </div>
+        <div class="col"><input name="adresse3"  value="#CLIENT_ADRESSE3" type="text" size="30" /></div>
+     
+     
+       <div class="col"> Code postal : *</div>
+       <div class="col"> <input name="cpostal"  value="#CLIENT_CPOSTAL" type="text" size="30" /></div>
+     
+     
+        <div class="col">Ville : *</div>
+        <div class="col"><input name="ville" type="text" size="30"  value="#CLIENT_VILLE"/></div>
+     
+     
+        <div class="col">Pays : *</div>
+        <div class="col">
+			<select name="pays" size="1">
+                    <option value="#ID">Choisir un pays</option>
+                    <THELIA_pays type="PAYS"  zdefinie="1">
+                      <option value="#ID" #SELECTED>#TITRE</option>
+                    </THELIA_pays>
+                  </select>
+     	</div>
+     
+        <div class="col">T&eacute;l&eacute;phone fixe : *</div>
+        <div class="col"><input name="telfixe" type="text"  value="#CLIENT_TELFIXE" size="30"/></div>
+     
+     
+        <div class="col">T&eacute;l&eacute;phone portable : </div>
+        <div class="col"><input name="telport"  value="#CLIENT_TELPORT" type="text" size="30"/></div>
+     
+     
+       <div class="col"> E-mail : *</div>
+        <div class="col"><input name="email1" value="#CLIENT_EMAIL" type="text" size="30"/></div>
+     
+     
+        <div class="col">Confirmation e-mail : *</div>
+        <div class="col"><input name="email2" type="text" value="#CLIENT_EMAIL" size="30"/></div>
+     
+    
+     
+      
+        <div class="col"><a href="#" onclick="document.getElementById('modifier2').submit()" >Valider</a>&nbsp;<a href="index.php">Retour</a></div>
+
+	  </form>
+
+ </div>	 
+	  <div class="CadreGrand" style="overflow: hidden;zoom: 1">
+			
+			
+			<THELIA_prod type="PRODUIT" num="1" aleatoire="1">  
+			
+			<div class="Grand" style="overflow: hidden;zoom: 1">
+			
+			<THELIA_imgprod type="IMAGE" produit="#ID" largeur="240">
+					<img src="#GRANDE" alt="THELIA" width="240" height="240" class="contourVignettes" />
+			</THELIA_imgprod>
+				
+				<div class="legendegrand" style="overflow: hidden;zoom: 1">
+					  
+				  #TITRE
+				  <p class="prix">#PRIX &euro;</p>
+				  <span class="Description">#DESCRIPTION</span>
+		  	  </div>
+			  
+	 		 </THELIA_prod>		
+			 
+			   
+	    </div>
+
+      </div>
+	
+	  </div>
+</div>
+		  </div>
+			<!-- pied de page -->
+      #INCLURE "modules/footer.html"
+		</div>
+</div>
+</body>
+</html>

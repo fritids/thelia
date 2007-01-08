@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="alternate" type="application/rss+xml" title="Produits" href="rss.php?id_rubrique=#RUBRIQUE_ID" />
+
+<title>THELIA</title>
+
+<link href="styles.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+	<!-- global wrapper -->
+	
+	<div id="wrapper">
+	  <div id="subwrapper">
+        <!-- entête -->
+		
+	    #INCLURE "modules/entete.html"
+		
+  <h2><a href="index.php">Accueil</a> /
+  
+	 Adresse 
+  </h2>
+  
+  <!-- nav2, verticale -->
+  <div id="content"> 
+  
+  #INCLURE "modules/menugauche.html"
+  
+   </div>
+  <!-- contenu -->
+  
+<div class="fondContenu" style="overflow: hidden;zoom: 1">
+
+ <div class="Tabcentre">  		
+
+  
+  
+MES ADRESSES DE LIVRAISON <br />
+
+                      <THELIA_adr type="ADRESSE" client="#CLIENT_ID">
+                        <div class="col"> #LIBELLE :</div>
+                         <div class="col"><a href="livraison_modifier.php?adresse=#ID">Modifier</a> <a href="#SUPPRURL">Supprimer</a></div>
+                      </THELIA_adr>
+                      
+                                        
+                    <form action="adresse.php" method="post" id="nouveau">
+                    <input type="hidden" name="action" value="creerlivraison" />
+                   
+                   <div  style="clear: both; padding-top: 20px;">AJOUTER UNE ADRESSE DE LIVRAISON </div>
+                                      
+                    <div class="col">Lib&eacute;ll&eacute; de l'adresse :</div>
+                    <div class="col"><input name="libelle" type="text" class="texteFormNormal" value="" /></div>
+                       
+                     <div class="col">Civilit&eacute; :</div> 
+                      
+                       <div class="col">
+                           <select name="raison" size="1" class="texteFormNormal">
+                            <option value="" selected="selected">Choisissez ...</option>
+                            <option value="1" #RAISON1>Madame</option>
+                            <option value="2" #RAISON2>Mademoiselle</option>
+                            <option value="3" #RAISON3>Monsieur</option>
+                            </select>
+                       </div>
+                            
+                     <div class="col">  Pr&eacute;nom:</div> 
+                      <div class="col">  <input name="prenom" type="text" class="texteFormNormal" /></div>
+                   
+                    <div class="col">Nom:</div>
+                    <div class="col"><input name="nom" type="text" class="texteFormNormal" /></div>
+                   
+                   <div class="col"> Adresse:</div>
+                   <div class="col"> <input name="adresse1" type="text" class="texteFormNormal"/></div>
+                     
+               
+                   <div class="col">Adresse ( suite ) :</div>
+                   <div class="col"><input name="adresse2" type="text" class="texteFormNormal"/></div>
+                  
+                   <div class="col">Compl&eacute;ment d'adresse: </div>
+                   <div class="col"><input type="text" name="adresse3" class="texteFormNormal"/></div>
+                  
+                  <div class="col"> Code postal:</div>
+                   <div class="col"><input type="text" name="cpostal" class="texteFormNormal"/></div>
+                  
+                  <div class="col"> Ville:</div> 
+                   <div class="col"><input type="text" name="ville" class="texteFormNormal"/></div>
+
+                  <div class="col"> Pays:</div> 
+                   <div class="col">            		 
+                   <select name="pays" size="1">
+						<THELIA_pays type="PAYS"  zdefinie="1" >           
+                    	<option value="#ID">#TITRE</option>
+              	  </THELIA_pays>
+                      </select></div>
+                                     
+                   <div class="col"><a href="#" onclick="document.getElementById('nouveau').submit()" class="lien02">Valider</a></div>
+  
+   </div>	 
+	  <div class="CadreGrand" style="overflow: hidden;zoom: 1">
+			
+			
+			<THELIA_prod type="PRODUIT" num="1" aleatoire="1">  
+			
+			<div class="Grand" style="overflow: hidden;zoom: 1">
+			
+			<THELIA_imgprod type="IMAGE" produit="#ID" largeur="240">
+					<img src="#GRANDE" alt="THELIA" width="240" height="240" class="contourVignettes" />
+			</THELIA_imgprod>
+				
+				<div class="legendegrand" style="overflow: hidden;zoom: 1">
+					  
+				  #TITRE
+				  <p class="prix">#PRIX &euro;</p>
+				  <span class="Description">#DESCRIPTION</span>
+		  	  </div>
+			  
+	 		 </THELIA_prod>		
+			 
+			   
+	    </div>
+
+      </div>
+	
+	  </div>
+</div>
+		  </div>
+			<!-- pied de page -->
+      #INCLURE "modules/footer.html"
+		</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+1.0.8
+
+1.0.7
+	Ajout d'un squelette d'exemple ajax dans le répertoire Example
+	Remplacement de spaw par tinymce. Seuls les styles et les tableaux sont activés afin de ne pas dénaturer la nature d'une page
+	Veuillez simplement executer cette requete : INSERT INTO `variable` VALUES ('', 'style_chem', '/styles_spaw.css');
+	en remplaçant le chemin par celui menant à votre feuille de style.
+	ajout de la substitution #CLIENT_IDPAYS
+	correction de la gestion des stocks
+	
+1.0.6
+	Définition des variables non définies pour éviter les notices dans le cas où le php.ini les affiche.
+	Remplacement de mb_strtoupper par strtoupper
+	Diverses corrections dans l'interface d'administration
+	Correction du soucis de référence sous IE 6
+	Ajout support PNG
+	
+1.0.5
+	Modification du code afin de faire fonctionner Thelia avec un short tag à Off.
+	Si vous avez des squelettes déjà réalisés, n'oubliez pas de modifier vos fichiers php en remplaçant <? par <?php
+	
+1.0.4
+	Modification du code afin de faire fonctionner Thelia avec un register global à Off.
+	Modification du fichier sql pour la compatibilité entre les versions de MySQL.
+	Désactivation de l'éditeur spaw par défaut
+	
+1.0.3
+	Ajout du répertoire modules dans les exemples omis dans la version précédente.
+	
+1.0.2
+	ajout du paramètre courant à la boucle CONTENU
+	changement modèles pdf ( facture, bl ) pour permettre la sauvegarde avec un nom de fichier "logique"
+	ajout de l'attribut aléatoire pour les boucles RUBRIQUE, DOSSIER, IMAGE
+	upload multiple de photos
+	correction du bug des chemins pour la création des factures et des bons de livraison
+	ajout d'un répertoire exemple avec des exemples de squelettes.
+	
+1.0.1
+	ajout du paramètre courant à la boucle DOSSIER
+	correction de #URL dans la boucle CONTENU
+	correction de la configuration de l'éditeur HTML dans l'admin ( gestion des images )
+	modification de la table variable ( pour les images dans l'éditeur )
+	ajout du mode miroir pour la boucle IMAGE
+	ajout de l'attribut panier au chargement du squelette permettant d'interdir l'accés à une page si le panier est vide
+	le changement de l'ordre des caractéristiques et des déclinaisons est maintenant possible
+	correction des chemins dans l'interface d'administration concernant les caractéristiques et les déclinaisons
+	
+
+1.0
+	1ère version GPL de THELIA

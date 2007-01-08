@@ -1,0 +1,65 @@
+<html>
+
+<head>
+	<script language="text/javascript" src="fonctions/dyna.js"></script>
+
+</head>
+
+<body onLoad="cacher('arf'); cacher('produit'); cacher('image'); do_analyse('panier','');montrer('panier');">
+
+
+<script>
+	#SAJAX
+</script>
+
+
+<div id="rub">
+
+<THELIA_rub type="RUBRIQUE">
+	<a href="#" onClick="do_analyse('arf','rubrique=#ID'); montrer('arf');">#TITRE</a><br />
+</THELIA_rub>
+
+<br /><br />
+
+</div>
+
+<div id="arf">
+
+	<STHELIA_arf type="PRODUIT" rubrique="#REMPLACER">
+		<a href="#" onMouseover="do_analyse('produit','id=#ID'); montrer('produit');do_analyse('image','produit=#ID'); montrer('image');">#TITRE</a> &nbsp;
+		
+	</STHELIA_arf>
+
+
+<br /><br />
+
+</div>
+
+<div id="produit">
+	<STHELIA_produit type="PRODUIT" id="#REMPLACER">
+		#TITRE <br />#DESCRIPTION<br />
+		<br />
+		<a href="#" onClick="do_ajout('#REF'); do_analyse('panier','');montrer('panier');">Ajouter au panier</a>
+		<br />
+	</STHELIA_produit>
+</div>
+
+<div id="image">
+
+	  <STHELIA_image type="IMAGE" largeur="115" produit="#REMPLACER">
+			<img src="#GRANDE" />
+	   </STHELIA_image>
+
+<br /><br /><br />
+
+</div>
+
+	Votre panier : <br />
+	
+	  <STHELIA_panier type="PANIER">
+			- #TITRE <br />
+	   </STHELIA_panier>
+
+</body>
+
+</html>
