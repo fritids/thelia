@@ -1,6 +1,0 @@
-AuthUserFile /var/www/thelia/commande/.htpasswd
-AuthName Admin
-AuthType Basic
-<Limit GET>
-require valid-user
-</Limit>
