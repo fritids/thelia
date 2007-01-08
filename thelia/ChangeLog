@@ -1,5 +1,6 @@
 1.0.8
-
+	Diverses modifications dans l'interface d'administration
+	
 1.0.7
 	Ajout d'un squelette d'exemple ajax dans le répertoire Example
 	Remplacement de spaw par tinymce. Seuls les styles et les tableaux sont activés afin de ne pas dénaturer la nature d'une page
