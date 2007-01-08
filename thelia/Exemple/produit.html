@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="alternate" type="application/rss+xml" title="Produits" href="rss.php?ref=#PRODUIT_REF" />
+
+<title>THELIA</title>
+
+<link href="styles.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body">
+
+	<!-- global wrapper -->
+	
+	<div id="wrapper">
+		<div id="subwrapper">
+		
+	<!-- entête -->
+	
+       #INCLURE "modules/entete.html"
+      <h2><a href="index.php">Accueil</a> / 
+	  <THELIA_CHEM2 type="CHEMIN" id="#RUBRIQUE_ID">
+	  	#TITRE |
+		</THELIA_CHEM2>
+
+	  <THELIA_CHEM2 type="RUBRIQUE" id="#RUBRIQUE_ID">
+	  	#TITRE 
+		</THELIA_CHEM2>
+		</h2>
+			
+  	<!-- nav2, verticale -->
+	
+	    	<div id="content">
+				#INCLURE "modules/menugauche.html"
+				</div>
+	<!-- contenu -->
+	
+<div class="fondContenu" style="overflow: hidden;zoom: 1">
+
+				<div class = "ListingPetit" style="overflow: hidden;zoom: 1">
+									
+					<THELIA_RUB1 type="PRODUIT" num="6" rubrique="#RUBRIQUE_ID">  
+  							
+					<div class="Petit" style="overflow: hidden;padding: 10px;zoom: 1; height: 200px">
+					<a href="#URL">
+					<THELIA_img type="IMAGE"  produit="#ID" largeur="115">
+					
+								<img src="#PETITE" alt="#PRODTITRE" title="#PRODTITRE" class="contourVignettes" />
+					  
+					  </THELIA_img>
+					  </a>
+					<div class="legende" style="overflow: hidden;zoom: 1">
+						<a href="#URL">#TITRE </a><br /><span class="prix">#PRIX &euro;</span><br />
+					  </div>
+					  
+						<a href="#PANIER" class="lienpanier">AJOUTER AU PANIER </a>
+					  
+					</div>
+					</THELIA_RUB1>	             
+					
+								
+	#INCLURE "modules/pages.html"
+
+				
+			</div>
+			<div class="CadreGrand" style="overflow: hidden;;zoom: 1">
+
+
+	<THELIA_prod type="PRODUIT" ref="#PRODUIT_REF">
+
+	<div class="Grand" style="overflow: hidden;zoom: 1">
+	
+			<THELIA_imgprod type="IMAGE" produit="#ID" largeur="240">
+				<img src="#GRANDE" alt="THELIA" width="240" height="240" class="contourVignettes" />
+			</THELIA_imgprod>
+	
+		<div class="legendegrand" style="overflow: hidden;zoom: 1">
+				  
+				  #TITRE
+				  <p class="prix">#PRIX &euro;</p>
+				  <span class="Description">#DESCRIPTION</span>
+		  	  </div>
+
+</THELIA_prod>
+			 
+			   
+	    </div>
+
+	  </div>
+</div>
+		  </div>
+			<!-- pied de page -->
+      #INCLURE "modules/footer.html"
+		</div>
+</div>
+</body>
+</html>

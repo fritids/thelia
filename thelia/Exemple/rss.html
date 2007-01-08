@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<rss version="0.91" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<channel>
+	<title>#VARIABLE(nomsite)</title>
+	<link>#VARIABLE(urlsite)</link>
+	<description></description>
+	<language>fr</language>
+
+
+	
+	<THELIA_rssprod type="PRODUIT" boutique="1" ref="#PRODUIT_REF" rubrique="#RUBRIQUE_ID">
+
+		<THELIA_promo type="PRODUIT" ref="#REF" promo="1">
+			<item>
+			<title>#TITRE</title>
+			<link>#VARIABLE(urlsite)#URLBOUTIQUE/#URL</link>
+			<date>#DATE #HEURE</date>
+			<description>#STRIPCHAPO #PRIX2 euro</description>
+			<dc:date>#DATET#HEUREZ</dc:date>
+			<dc:format>text/html</dc:format>
+			<dc:language>fr</dc:language>
+			</item>
+
+		</THELIA_promo>
+
+                <THELIA_promo type="PRODUIT" ref="#REF" promo="0">
+                        <item>
+                        <title>#TITRE</title>
+                        <link>#VARIABLE(urlsite)#URLBOUTIQUE/#URL</link>
+                        <date>#DATE #HEURE</date>
+                        <description>#STRIPCHAPO #PRIX euro</description>
+                        <dc:date>#DATET#HEUREZ</dc:date>
+                        <dc:format>text/html</dc:format>
+                        <dc:language>fr</dc:language>
+                        </item>
+
+                </THELIA_promo> 	
+		
+	</THELIA_rssprod>
+
+		
+
+</channel>
+
+</rss>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<rss version="0.91" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<channel>
+	<title>#VARIABLE(nomsite)</title>
+	<link>#VARIABLE(urlsite)</link>
+	<description></description>
+	<language>fr</language>
+
+
+	
+	<THELIA_rssprod type="CONTENU" boutique="1" id="#CONTENU_ID" dossier="#DOSSIER_ID">
+
+		
+			<item>
+			<title>#TITRE</title>
+			<link>#VARIABLE(urlsite)#URLBOUTIQUE/#URL</link>
+			<date>#DATE #HEURE</date>
+			<description>#STRIPCHAPO</description>
+			<dc:date>#DATET#HEUREZ</dc:date>
+			<dc:format>text/html</dc:format>
+			<dc:language>fr</dc:language>
+			</item>
+          
+		
+	</THELIA_rssprod>
+
+		
+
+</channel>
+
+</rss>
