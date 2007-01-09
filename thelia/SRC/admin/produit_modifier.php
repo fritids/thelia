@@ -40,14 +40,11 @@
 	if(!isset($appro)) $appro="";
 	if(!isset($ref)) $ref="";
 	if(!isset($ligne)) $ligne="";
-
+	if(!isset($_SESSION["bout"])) $_SESSION["bout"]="";
 	
 ?>
 <?php
 	 include_once("../classes/Variable.class.php");  
-	 $temp = new Variable();
-	 $temp->charger('spaw_active');
-	 $spaw_active = $temp->valeur;
 ?>
 <?php
 	include_once("../classes/Rubrique.class.php");
@@ -66,8 +63,6 @@
     include_once("../classes/Caracval.class.php"); 
     include_once("../classes/Caracdisp.class.php"); 
     include_once("../classes/Declidisp.class.php");
-    
-    if($spaw_active == "1") include_once("spaw/spaw_control.class.php");  
     
     include_once("../classes/Rubdeclinaison.class.php");  
     include_once("../classes/Declinaison.class.php");  
@@ -487,10 +482,9 @@
 	
 	$produit->charger($ref);
 	$produitdesc->charger($produit->id, $lang);
-	$produit->destroy();
-	$produitdesc->destroy();
-	
-	
+
+	if($ref !="") $_SESSION["bout"] = $produit->boutique;
+		
 	$produitdesc->chapo = ereg_replace("<br/>", "\n", $produitdesc->chapo);
 	$produitdesc->description = ereg_replace("<br/>", "\n", $produitdesc->description);
 	
@@ -643,17 +637,9 @@
     <tr>
       <td height="30" class="titre_cellule">DESCRIPTION DU PRODUIT</td>
       <td class="cellule_claire">
-        <?php
-        	if($spaw_active == "10") {
-      			$sw = new SPAW_Wysiwyg('description',stripslashes($produitdesc->description));
-				$sw->show();
-			} else {
-		?>
+
 			<textarea name="description" rows="18" cols="50" style="width: 100%"><?php echo($produitdesc->description); ?></textarea>
-		
-		<?php
-			}
-		?>
+
         </span></td>
     </tr>
 	 <tr>

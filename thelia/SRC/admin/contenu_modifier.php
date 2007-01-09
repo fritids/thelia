@@ -30,12 +30,10 @@
 	if(!isset($action)) $action="";
 	if(!isset($lang)) $lang="1";
 	if(!isset($ligne)) $ligne="";
+	if(!isset($_SESSION["bout"])) $_SESSION["bout"]="";	
 ?>
 <?php
 	 include_once("../classes/Variable.class.php");  
-	 $temp = new Variable();
-	 $temp->charger('spaw_active');
-	 $spaw_active = $temp->valeur;
 ?>
 <?php
 	include("../classes/Dossier.class.php");
@@ -245,6 +243,8 @@
     <?php
     				$cont = new Contenu();
     				$cont->charger($id);
+    				
+    				if($id) $_SESSION["bout"] = $cont->boutique;
     				
     				$contdesc = new Contenudesc();
     				$contdesc->charger($cont->id);

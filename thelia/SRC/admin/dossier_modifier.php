@@ -31,7 +31,7 @@
 	if(!isset($parent)) $parent="0";
 	if(!isset($lang)) $lang="1";
 	if(!isset($id)) $id="";
-	
+	if(!isset($_SESSION["bout"])) $_SESSION["bout"]="";	
 ?>
 <?php
 
@@ -207,6 +207,8 @@
 		
 		$dossier->charger($id);
 		$dossierdesc->charger($id, $lang);
+		
+		$_SESSION["bout"] = $dossier->boutique;
 	}
 
 	$query = "select * from $dossier->table where parent=\"$parent\"";

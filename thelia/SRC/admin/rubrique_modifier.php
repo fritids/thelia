@@ -32,7 +32,7 @@
 	if(!isset($parent)) $parent="";
 	if(!isset($page)) $page="";
 	if(!isset($id)) $id="";
-	
+	if(!isset($_SESSION["bout"])) $_SESSION["bout"]="";	
 ?>
 <?php
 	include_once("../classes/Rubrique.class.php");
@@ -234,6 +234,8 @@
 		
 		$rubrique->charger($id);
 		$rubriquedesc->charger($id, $lang);
+		
+		$_SESSION["bout"] = $rubrique->boutique;
 	}
 	
 	$query = "select * from $rubrique->table where parent=\"$parent\"";
