@@ -1,7 +1,7 @@
 1.0.8
 	Diverses modifications dans l'interface d'administration
 	Ajout de #COMPT dans la boucle Image
-	Correction de soucis de $_SESSION["bout"] lorsque l'on passe par le moteur de recherche (admin)
+	Correction du soucis de $_SESSION["bout"] lorsque l'on passe par le moteur de recherche (admin)
 	
 1.0.7
 	Ajout d'un squelette d'exemple ajax dans le répertoire Example
