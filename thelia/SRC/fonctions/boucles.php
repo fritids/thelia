@@ -289,6 +289,8 @@
 		$prdesc = new Produitdesc();
 		$rudesc = new Rubriquedesc();
 		
+		$compt=1;
+		
 		while( $row = mysql_fetch_object($resul)){
 			$image->charger($row->id);
 			$imagedesc->charger($image->id);
@@ -301,6 +303,7 @@
 					$temp = ereg_replace("#PRODUIT", $image->produit, $temp);
 					$temp = ereg_replace("#PRODREF", $pr->ref, $temp);
 					$temp = ereg_replace("#RUBRIQUE", $pr->rubrique, $temp);
+					$temp = ereg_replace("#COMPT", "$compt", $temp);
 					
 					if(!$largeur && !$hauteur) 
 						$temp = ereg_replace("#GRANDE", "client/gfx/photos/produit/grande/" . $image->fichier, $temp);
@@ -375,6 +378,7 @@
 				$temp = ereg_replace("#ID",  $image->id, $temp);	
 				$temp = ereg_replace("#FPETITE",  "client/gfx/photos/rubrique/" . $image->fichier, $temp);	
 
+			$compt++;
 				
 			$res .= $temp. "\n";;
 		}
