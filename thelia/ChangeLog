@@ -1,5 +1,6 @@
 1.0.9
 	Correction de quelques notices qui subsistaient
+	ajout de l'attribut transaction dans la classe commande
 	
 1.0.8
 	Diverses modifications dans l'interface d'administration

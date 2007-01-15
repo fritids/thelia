@@ -34,6 +34,7 @@
 		var $date;
 		var $datefact;
 		var $ref;
+		var $transaction;
 		var $livraison;
 		var $facture;
 		var $transport;
