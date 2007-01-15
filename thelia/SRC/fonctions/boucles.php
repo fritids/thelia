@@ -1202,7 +1202,9 @@
 			$dectexte = "";
 			$decval = "";
 			
-			for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$compt]->perso); $compt++){
+			if(isset($compt) && isset($_SESSION['navig']->panier->tabarticle[$compt]))
+			
+			  for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$compt]->perso); $compt++){
 				$tperso = $_SESSION['navig']->panier->tabarticle[$i]->perso[$compt];
 				$declinaison->charger($tperso->declinaison);
 				// recup valeur declidisp ou string

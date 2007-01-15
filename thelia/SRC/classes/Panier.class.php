@@ -61,7 +61,7 @@
 			if(!$existe) 				
 				$this->tabarticle[$this->nbart] = new Article($ref, $quantite, $tdeclidisp);
 			
-				if($this->tabarticle[$this->nbart]->produit->ref) $this->nbart++; 
+				if(isset($this->tabarticle[$this->nbart]) && $this->tabarticle[$this->nbart]->produit->ref) $this->nbart++; 
 			
 		}	
 		
