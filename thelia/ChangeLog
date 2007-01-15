@@ -2,6 +2,7 @@
 	Diverses modifications dans l'interface d'administration
 	Ajout de #COMPT dans la boucle Image
 	Correction du soucis de $_SESSION["bout"] lorsque l'on passe par le moteur de recherche (admin)
+	Correction de Cnx.class.php.orig ( tag long )
 	
 1.0.7
 	Ajout d'un squelette d'exemple ajax dans le répertoire Example
