@@ -1468,7 +1468,7 @@
 
 		while( $row = mysql_fetch_object($resul)){
 
-			$caracteristique->charger($row->caracteristique);
+			$caracteristique->charger($row->id);
 			if($caracteristique->affiche == "0" && $affiche == "1") continue;
 			
 			if($id != "") $caracteristiquedesc->charger($row->id, $_SESSION['navig']->lang);
@@ -1500,6 +1500,7 @@
 		$id = lireTag($args, "caracdisp");
 	
 		$idsave = $id;
+		$res="";
 		
 		$caracteristiquesave = $caracteristique;
 		

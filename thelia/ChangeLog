@@ -1,6 +1,8 @@
 1.0.9
-	Correction de quelques notices qui subsistaient
+	correction de quelques notices qui subsistaient
 	ajout de l'attribut transaction dans la classe commande
+	correction boucle caractéristique
+	suppression de quelques notices 
 	
 1.0.8
 	Diverses modifications dans l'interface d'administration
