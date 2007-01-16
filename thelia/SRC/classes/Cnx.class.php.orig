@@ -26,10 +26,11 @@
 <?php
 	// Classe Cnx
 
-	// host --> host mysql
-	// login --> login de connexion
-	// password --> mot de passe de connexion
-
+	// host --> votre serveur mysql
+	// login_mysql --> login de connexion
+	// password_mysql --> mot de passe de connexion
+	// db --> nom de la base de donnée
+	
 	class Cnx{
 
 		var $host= "localhost";
