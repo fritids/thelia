@@ -1913,11 +1913,12 @@
 		// r�up�ation des arguments
                 $url = lireTag($args, "url");
                 $nb = lireTag($args, "nb");
-
+				$deb = lireTag($args, "deb");
+				
 		if($url == "") return;
 
 		$i=0;
-
+		$compt=0;
                 $rss = @fetch_rss( $url );
 		if(!$rss) return "";
 
@@ -1925,13 +1926,15 @@
 		$chanlink = $rss->channel['link'];
 		
                 $items = array_slice($rss->items, 0);
-
+				
                 foreach ($items as $item) {
-                        $title = strip_tags($item['title']);
+                   if($compt<$deb) {$compt++; continue;}
+                  
+                    $title = strip_tags($item['title']);
                  	$description = strip_tags($item['description']);
-                        $author = $item['dc']['creator'];
-                        $link = $item['link']; 
-			$dateh = $item['dc']['date'];
+                    $author = $item['dc']['creator'];
+                    $link = $item['link']; 
+					$dateh = $item['dc']['date'];
 			$jour = substr($dateh, 8,2);
 			$mois = substr($dateh, 5, 2);
 			$annee = substr($dateh, 0, 4);
@@ -1945,7 +1948,7 @@
 			$temp = ereg_replace("#TITRE", "$title", $temp);
 			$temp = ereg_replace("#LIEN", "$link", $temp);
 			$temp = ereg_replace("#DESCRIPTION", "$description", $temp);
-                	$temp = ereg_replace("#AUTEUR", "$author", $temp);
+            $temp = ereg_replace("#AUTEUR", "$author", $temp);
 			$temp = ereg_replace("#DATE", "$jour/$mois/$annee", $temp);
 			$temp = ereg_replace("#HEURE", "$heure:$minute:$seconde", $temp);
 			
