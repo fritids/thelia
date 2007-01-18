@@ -6,6 +6,9 @@
 	ajout du param deb pour la boucle RSS
 	changement du nom de la page index.html dans les exemples pour éviter
 	le .html par défaut sur certaines configs de serveur.
+	ajout dans la table variable du flux RSS affichée à l'entrée de l'interdace d'admin
+	pour l'ajouter manuellement :
+	INSERT INTO `variable` VALUES ('', 'rssadmin', 'http://www.octolys.fr/rss.php');
 	
 1.0.8
 	Diverses modifications dans l'interface d'administration

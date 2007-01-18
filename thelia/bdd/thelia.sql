@@ -2133,7 +2133,7 @@ INSERT INTO `variable` VALUES (7, 'style_chem', '/style_editeur.css');
 INSERT INTO `variable` VALUES (8, 'urlroot', '');
 INSERT INTO `variable` VALUES (9, 'rsspass', 'KEJORFJOZJOREZJFIOHJEIUZFHIUEHZFIHEIZHFIEUZHFIEZHFIEZHFI');
 INSERT INTO `variable` VALUES (10, 'urlbase', 'http://www.monsite.com');
-INSERT INTO `variable` VALUES (11, 'spaw_active', '0');
+INSERT INTO `variable` VALUES (11, 'rssadmin', 'http://www.octolys.fr/rss.php');
 -- --------------------------------------------------------
 
 -- 

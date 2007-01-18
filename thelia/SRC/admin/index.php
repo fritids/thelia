@@ -33,6 +33,7 @@
 		if($action == "deconnexion") unset($_SESSION["util"]);
 	
 	include_once("../lib/magpierss/rss_fetch.inc");
+	include_once("../classes/Variable.class.php");
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -83,7 +84,10 @@
   
 
 <?php
-$rss = @fetch_rss( "http://www.octolys.fr/rss.php");
+$rssadmin = new Variable();
+$rssadmin->charger("rssadmin");
+
+$rss = @fetch_rss($rssadmin->valeur);
 if(!$rss) return "";
 
 $chantitle = $rss->channel['title'];
