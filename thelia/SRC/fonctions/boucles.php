@@ -529,6 +529,7 @@
 		$search="";
 		$order="";
 		$limit="";
+		$res="";
 			
 		if($produit) $search .= " and produit=\"$produit\"";
 		if($rubrique != "") $search .= " and rubrique=\"$rubrique\"";
