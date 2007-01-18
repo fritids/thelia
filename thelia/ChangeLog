@@ -4,6 +4,8 @@
 	correction boucle caractéristique
 	suppression de quelques notices 
 	ajout du param deb pour la boucle RSS
+	changement du nom de la page index.html dans les exemples pour éviter
+	le .html par défaut sur certaines configs de serveur.
 	
 1.0.8
 	Diverses modifications dans l'interface d'administration
