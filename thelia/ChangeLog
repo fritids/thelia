@@ -20,7 +20,7 @@
 	Ajout d'un squelette d'exemple ajax dans le répertoire Example
 	Remplacement de spaw par tinymce. Seuls les styles et les tableaux sont activés afin de ne pas dénaturer la nature d'une page
 	Veuillez simplement executer cette requete : INSERT INTO `variable` VALUES ('', 'style_chem', '/styles_spaw.css');
-	en remplaÁant le chemin par celui menant ‡ votre feuille de style.
+	en remplaçant le chemin par celui menant ‡ votre feuille de style.
 	ajout de la substitution #CLIENT_IDPAYS
 	correction de la gestion des stocks
 	
@@ -33,7 +33,7 @@
 	
 1.0.5
 	Modification du code afin de faire fonctionner Thelia avec un short tag ‡ Off.
-	Si vous avez des squelettes déj‡ réalisés, n'oubliez pas de modifier vos fichiers php en remplaÁant <? par <?php
+	Si vous avez des squelettes déj‡ réalisés, n'oubliez pas de modifier vos fichiers php en remplaçant <? par <?php
 	
 1.0.4
 	Modification du code afin de faire fonctionner Thelia avec un register global ‡ Off.
@@ -44,15 +44,15 @@
 	Ajout du répertoire modules dans les exemples omis dans la version précédente.
 	
 1.0.2
-	ajout du paramËtre courant ‡ la boucle CONTENU
-	changement modËles pdf ( facture, bl ) pour permettre la sauvegarde avec un nom de fichier "logique"
+	ajout du paramètre courant à la boucle CONTENU
+	changement modèles pdf ( facture, bl ) pour permettre la sauvegarde avec un nom de fichier "logique"
 	ajout de l'attribut aléatoire pour les boucles RUBRIQUE, DOSSIER, IMAGE
 	upload multiple de photos
 	correction du bug des chemins pour la création des factures et des bons de livraison
 	ajout d'un répertoire exemple avec des exemples de squelettes.
 	
 1.0.1
-	ajout du paramètre courant ‡ la boucle DOSSIER
+	ajout du paramètre courant à la boucle DOSSIER
 	correction de #URL dans la boucle CONTENU
 	correction de la configuration de l'éditeur HTML dans l'admin ( gestion des images )
 	modification de la table variable ( pour les images dans l'éditeur )

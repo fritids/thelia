@@ -1,17 +1,19 @@
-THELIA est écrit en PHP.
+THELIA est crit en PHP.
 
-L'ensemble du code se situe dans le répertoire SRC.
+L'ensemble du code se situe dans le rpertoire SRC.
 
-Il vous suffit de placer tous les fichiers dans un répertoire de votre serveur WEB.
+Il vous suffit de placer tous les fichiers dans un rpertoire de votre serveur WEB.
 
-La base de données utilisée est MySQL. Il vous faut créer une base de données MySQL et y intégrer le fichier thelia.sql disponible dans le répertoire bdd.
+La base de donnes utilise est MySQL. Il vous faut crer une base de donnes MySQL et y intgrer le fichier thelia.sql disponible dans le rpertoire bdd.
 
-Pour terminer, vous devrez editer le fichier Cnx.class.php.orig qui si situe dans le répertoire classes ( dans les sources ). Il vous suffira de remplacer les informations concernant la connexion à la base de données. Renommez le ensuite en supprimant le .orig  ( dans le cas d'une 1ère installation )
+Pour terminer, vous devrez editer le fichier Cnx.class.php.orig qui si situe dans le rpertoire classes ( dans les sources ). Il vous suffira de remplacer 
+les informations concernant la connexion ˆ la base de donnes. 
+Renommez le ensuite en supprimant le .orig  ( dans le cas d'une 1re installation )
 
-De même renommez le répertoire client.orig en client ( dans le cas d'une 1ère installation )
+De mme renommez le rpertoire client.orig en client ( dans le cas d'une 1ère installation )
 
-L'interface d'admin sera accessible de la façon suivante : http://votreserveur/votrerepertoire/admin/
-Login et Mot de passe par défaut : admin/admin
+L'interface d'admin sera accessible de la faon suivante : http://votreserveur/votrerepertoire/admin/
+Login et Mot de passe par dfaut : admin/admin
 
-Un installateur automatique sera disponible très prochainement.
+Un installateur automatique sera disponible trs prochainement.
 
