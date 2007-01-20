@@ -1807,7 +1807,7 @@
 		$search ="";
 		$res="";
 		
-		// prï¿½aration de la requï¿½e
+		// prparation de la requte
 		if($commande_id!="")  $search.=" and commande=\"$commande_id\"";		
 	
 		$venteprod = new Venteprod();
@@ -1841,7 +1841,7 @@
 
 	function boucleTransport($texte, $args){	
 
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
 
 		$id = lireTag($args, "id");		
 		
@@ -1911,7 +1911,7 @@
 
         function boucleRSS($texte, $args){
                 
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
                 $url = lireTag($args, "url");
                 $nb = lireTag($args, "nb");
 				$deb = lireTag($args, "deb");
@@ -1974,7 +1974,7 @@
 		$search ="";
 		$res="";
 		
-		// prï¿½aration de la requï¿½e
+		// prparation de la requte
 		if($rubrique!="")  $search.=" and rubrique=\"$rubrique\"";
 		if($id!="")  $search.=" and id=\"$id\"";
 			
@@ -2023,7 +2023,7 @@
 		$tabliste[0]="";
 		$res="";
 		
-		// prï¿½aration de la requï¿½e
+		// prparation de la requte
 		if($declinaison!="")  $search.=" and declinaison=\"$declinaison\"";
 		if($id !="") $search.=" and id=\"$id\"";
 		$tdeclidisp = new Declidisp();
