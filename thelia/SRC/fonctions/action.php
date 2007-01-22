@@ -126,8 +126,7 @@
 	}
 	
 	function paiement($type_paiement){
-		//if($_SESSION['navig']->client->paiement ) return;
-
+	
 		$total = 0;
 		$nbart = 0;
 		$poids = 0;
@@ -191,6 +190,7 @@
 		
 			$dectexte = "";
 
+			$produit = new Produit();
 									
 			for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
 		   		$tperso = $_SESSION['navig']->panier->tabarticle[$i]->perso[$compt];
@@ -207,7 +207,11 @@
 				
 			}			
 
-		
+			$produit = new Produit();
+			$produit->charger($_SESSION['navig']->panier->tabarticle[$i]->produit->ref);
+			$produit->stock--;
+			$produit->maj();
+			
 			$prodtradesc = new Produitdesc();
 			$prodtradesc->charger($_SESSION['navig']->panier->tabarticle[$i]->produit->id, $_SESSION['navig']->lang);
 		

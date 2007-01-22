@@ -1,6 +1,7 @@
 1.1
 	ajout de la gestion de l'argument produit dans la boucle caractéristique
-
+	modification des stocks à la commande
+	
 1.0.9
 	correction de quelques notices qui subsistaient
 	ajout de l'attribut transaction dans la classe commande
