@@ -91,6 +91,8 @@
                 $i=0;
                 $zone = new Zone();
 				$transzone = new Transzone();
+				$liste="";
+				$tab="";
 				
                if($type=="d"){
 					$query = "select * from $transzone->table where transport='$transport'";               	
@@ -98,29 +100,29 @@
 				
 					while($row = mysql_fetch_object($resul))
 						$liste .= "'$row->zone', ";
-			
+				
 					$liste = substr($liste, 0, strlen($liste) - 2);
-
+					
+					if(!$liste) $liste="''";
 					$query = "select * from $zone->table where id in ($liste)";
-
-               	
-               
+              
                }
                
                else if($type=="h")  {
                
-				$query = "select * from $transzone->table where transport='$transport'";               	
+				$query = "select * from $transzone->table where transport='$transport'";               			
 				$resul = mysql_query($query, $transzone->link);				
 				
 				while($row = mysql_fetch_object($resul))
 					$liste .= "'$row->zone', ";
 			
 				$liste = substr($liste, 0, strlen($liste) - 2);
-
+				if(!$liste) $liste="''";
 				$query = "select * from $zone->table where id not in ($liste)";
 
-               	
+              
                }	
+              
                else  $query = "select * from $zone->table";
                
                 $resul = mysql_query($query, $zone->link);	
@@ -136,8 +138,9 @@
                 }
 
                 $zone->destroy();
-
-                if(!$tab) { return "";}
+ 
+               if(!$tab) { return "";}
+         
                 return tabSerialise($tab);
                 
 
@@ -339,8 +342,8 @@
       	document.getElementById('ntransportm').value=restdesc[index]['titre'];
       	document.getElementById('nclassem').value=rest[index]['classe'];
 
-     	var reszd = eval(sx_chargerz(restdesc[index]['transport'], 'd'));      	
-   		var reszh = eval(sx_chargerz(restdesc[index]['transport'], 'h'));
+     	var reszd = eval(sx_chargerz(restdesc[index]['transport'], 'd'));    
+  		var reszh = eval(sx_chargerz(restdesc[index]['transport'], 'h'));
 
 		document.getElementById('selectszonedm').options.length = 0;
        	document.getElementById('selectszonehm').options.length = 0;

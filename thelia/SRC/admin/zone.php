@@ -45,6 +45,7 @@
 	function chargerz(){
 	
                 $i=0;
+                $tab="";
                 $zone = new Zone();
                 $query = "select * from $zone->table";
                 $resul = mysql_query($query, $zone->link);
@@ -63,6 +64,8 @@
 	function chargerp($zone, $type){
 	
                 $i=0;
+                $tab="";
+                
                 $pays = new Pays();
                 $paysdesc = new paysdesc();
                if($type=="d") $query = "select * from $pays->table where zone='$zone'";
@@ -282,6 +285,7 @@
 
       	document.getElementById('nzonem').value=resz[index]['nom'];
       	document.getElementById('nunitem').value=resz[index]['unite'];
+    
      	var respd = eval(sx_chargerp(resz[index]['id'], 'd'));
    		var resph = eval(sx_chargerp(resz[index]['id'], 'h'));
 
