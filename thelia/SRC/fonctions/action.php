@@ -201,7 +201,7 @@
 				
 				// diminution des stocks de dŽclinaison
 				$stock->charger($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur, $_SESSION['navig']->panier->tabarticle[$i]->produit->id);
-                $stock->valeur--;
+                $stock->valeur-=$_SESSION['navig']->panier->tabarticle[$i]->quantite;
                 $stock->maj();
 
 				
@@ -223,7 +223,7 @@
 			// diminution des stocks classiques
 			$produit = new Produit();
 			$produit->charger($_SESSION['navig']->panier->tabarticle[$i]->produit->ref);
-			$produit->stock--;
+			$produit->stock-=$_SESSION['navig']->panier->tabarticle[$i]->quantite;
 			$produit->maj();
 			
 						
