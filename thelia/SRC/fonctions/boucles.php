@@ -1446,7 +1446,8 @@
 		$id = lireTag($args, "id");		
 		$rubrique = lireTag($args, "rubrique");		
 		$affiche = lireTag($args, "affiche");		
-		
+		$produit = lireTag($args, "produit");	
+				
 		$search ="";
 		$res="";
 		
@@ -1480,6 +1481,8 @@
 			$temp = ereg_replace("#TITRE", "$caracteristiquedesc->titre", $temp);
 			$temp = ereg_replace("#CHAPO", "$caracteristiquedesc->chapo", $temp);
 			$temp = ereg_replace("#DESCRIPTION", "$caracteristiquedesc->description", $temp);		
+			$temp = ereg_replace("#PRODUIT", "$produit", $temp);	
+			
 			$res .= $temp. "\n";
 		}
 	

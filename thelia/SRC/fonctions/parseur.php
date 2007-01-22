@@ -274,7 +274,7 @@
 
 					//boucle 
 			  		$type_boucle = lireTag($args, "type"); 
-					$rec = boucle_exec($type_boucle, $args, $boucle);
+					$rec = boucle_exec($type_boucle, $args, $boucle, "T_$nomboucle");
 			
 					if( $rec == "") 
 						$texte .= $sinon;
@@ -357,7 +357,7 @@
 	  			if( strstr($lect[$i], "/THELIA_$nomboucle") ) $deb=0;
 	  			else { echo "La boucle $nomboucle n'est pas ferm&eacute;e correctement !"; exit; }
 	  			
-	  			$res .= boucle_exec($type_boucle, $args, $texte);
+	  			$res .= boucle_exec($type_boucle, $args, $texte, "T_$nomboucle");
 		  	
 
 
