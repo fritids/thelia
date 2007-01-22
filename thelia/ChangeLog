@@ -2,6 +2,7 @@
 	ajout de la gestion de l'argument produit dans la boucle caractéristique
 	modification des stocks à la commande
 	quelques notices cachées par l'Ajax
+	Gestion des stocks activée au niveau du paiement
 	
 1.0.9
 	correction de quelques notices qui subsistaient

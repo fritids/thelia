@@ -191,8 +191,20 @@
 			$dectexte = "";
 
 			$produit = new Produit();
-									
+
+
+			$stock = new Stock();
+				
+			
+												
 			for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
+				
+				// diminution des stocks de dŽclinaison
+				$stock->charger($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur, $_SESSION['navig']->panier->tabarticle[$i]->produit->id);
+                $stock->valeur--;
+                $stock->maj();
+
+				
 		   		$tperso = $_SESSION['navig']->panier->tabarticle[$i]->perso[$compt];
 				$declinaison->charger($tperso->declinaison);
 				$declinaisondesc->charger($declinaison->id);
@@ -207,11 +219,14 @@
 				
 			}			
 
+			
+			// diminution des stocks classiques
 			$produit = new Produit();
 			$produit->charger($_SESSION['navig']->panier->tabarticle[$i]->produit->ref);
 			$produit->stock--;
 			$produit->maj();
 			
+						
 			$prodtradesc = new Produitdesc();
 			$prodtradesc->charger($_SESSION['navig']->panier->tabarticle[$i]->produit->id, $_SESSION['navig']->lang);
 		
