@@ -240,21 +240,7 @@ function eregurl($url){
 		$url = substr($url, 0, $html);
 		
 		
-		$url = ereg_replace("/", "-", $url);
-		$url = ereg_replace(" ", "-", $url);
-		$url = ereg_replace("'", "-", $url);
-		$url = ereg_replace("é", "e", $url);
-		$url = ereg_replace("è", "e", $url);
-		$url = ereg_replace("ê", "e", $url);
-		$url = ereg_replace("a", "a", $url);
-		$url = ereg_replace("à", "a", $url);
-		$url = ereg_replace("ç", "c", $url);	
-		$url = ereg_replace("ï", "i", $url);	
-		$url = ereg_replace("\&", "-", $url);
-		$url = ereg_replace("\?", "", $url);	
-		$url = ereg_replace("\.", "", $url);	
-		$url = ereg_replace("!", "", $url);			
-		$url = preg_replace('/-+/', '-', $url);
+		$url = ereg_caracspec($url);
 
 		return $url . ".html";
 }
@@ -262,23 +248,30 @@ function eregurl($url){
 
 function eregfic($fichier){
 
-		$fichier = ereg_replace("/", "-", $fichier);
-		$fichier = ereg_replace(" ", "-", $fichier);
-		$fichier = ereg_replace("'", "-", $fichier);
-		$fichier = ereg_replace("é", "e", $fichier);
-		$fichier = ereg_replace("è", "e", $fichier);
-		$fichier = ereg_replace("ê", "e", $fichier);
-		$fichier = ereg_replace("a", "a", $fichier);
-		$fichier = ereg_replace("à", "a", $fichier);
-		$fichier = ereg_replace("ç", "c", $fichier);	
-		$fichier = ereg_replace("ï", "i", $fichier);	
-		$fichier = ereg_replace("\&", "-", $fichier);
-		$fichier = ereg_replace("\?", "", $fichier);	
-		$fichier = ereg_replace("\.", "", $fichier);	
-		$fichier = ereg_replace("!", "", $fichier);			
-		$fichier = preg_replace('/-+/', '-', $fichier);
+		$fichier = ereg_caracspec($fichier);
+
 		
 		return $fichier;
+}
+
+function ereg_caracspec($chaine){
+		
+		$avant = "ˆ‡‰‹ŠŒ˜—™›š¿‘“’”•œŸØ–çåËÌ€‚ƒæéèîïñ¯Í…òóô†";  
+  		$apres = "aaaaaaooooooeeeeciiiiuuuuynaaaaaaceeeeoooooouuuu"; 
+		
+		$chaine = strtolower($chaine);
+ 		$chaine = strtr($chaine, $avant, $apres);
+  
+  		$chaine = ereg_replace("/", "-", $chaine);
+		$chaine = ereg_replace(" ", "-", $chaine);
+		$chaine = ereg_replace("'", "-", $chaine);
+		$chaine = ereg_replace("\&", "-", $chaine);
+		$chaine = ereg_replace("\?", "", $chaine);	
+		$chaine = ereg_replace("\.", "", $chaine);	
+		$chaine = ereg_replace("!", "", $chaine);			
+		$chaine = preg_replace('/-+/', '-', $chaine);	
+		
+		return $chaine;
 }
 	
 function arbreBoucle($depart, $profondeur=0, $i=0){

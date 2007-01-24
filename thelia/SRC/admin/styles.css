@@ -8,6 +8,12 @@ padding: 0;
 background: #FFFFFF url(gfx/fondPage.gif) repeat-x;
 }
 
+.bodyssfond {
+margin: 0;
+padding: 0;
+background: #FFFFFF;
+}
+
 #entete{
 	width: 100%;
 	margin-top: 8px;

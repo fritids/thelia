@@ -282,7 +282,7 @@ body {
 <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 
-<body onLoad="do_load(<?php echo($produit->id); ?>)">
+<body class="bodyssfond" onLoad="do_load(<?php echo($produit->id); ?>)">
  
  <div id="conteneur" name="conteneur">
  
