@@ -5,6 +5,7 @@
 	ajout classement inverse dans la boucle produit
 	ajout d'attributs à la boucle Panier
 	classement possible dans la boucle Caracdisp
+	modification boucle Panier #PRODUIT
 	
 1.1
 	ajout de la gestion de l'argument produit dans la boucle caractéristique

@@ -1241,7 +1241,7 @@
 			$temp = ereg_replace("#REF", $_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $texte);
 			$temp = ereg_replace("#TITRE", $produitdesc->titre, $temp);
 			$temp = ereg_replace("#QUANTITE", "$quantite", $temp);
-			$temp = ereg_replace("#PRODUIT", "$i", $temp);
+			$temp = ereg_replace("#PRODUIT", $produitdesc->produit, $temp);
 			$temp = ereg_replace("#PRIXU", "$prix", $temp);
 			$temp = ereg_replace("#TOTAL", "$total", $temp);			
 			$temp = ereg_replace("#ID", $_SESSION['navig']->panier->tabarticle[$i]->produit->id, $temp);
