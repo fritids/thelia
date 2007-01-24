@@ -74,7 +74,7 @@
 	/* Gestion des boucles de type Rubrique*/
 	function boucleRubrique($texte, $args){
 		global $id_rubrique;
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
 		$boutique = lireTag($args, "boutique");
@@ -162,7 +162,7 @@
 	
 		global $id_dossier;
 		
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
 		$boutique = lireTag($args, "boutique");
@@ -235,7 +235,7 @@
 	
 	function boucleImage($texte, $args){
 
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
 		$produit = lireTag($args, "produit");
 		$id = lireTag($args, "id");
 		$num = lireTag($args, "num");
@@ -395,7 +395,7 @@
 
 	/* Gestion des boucles de type Client*/
 	function boucleClient($texte, $args){
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
 		$id = lireTag($args, "id");
 		$ref = lireTag($args, "ref");
 		$raison = lireTag($args, "raison");
@@ -464,7 +464,7 @@
 	
 	function boucleDevise($texte, $args){
 
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
 		$produit = lireTag($args, "produit");
 		$id = lireTag($args, "id");
 		$somme = lireTag($args, "somme");
@@ -517,7 +517,7 @@
 
 	function boucleDocument($texte, $args){
 
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
 		$produit = lireTag($args, "produit");
 		$rubrique = lireTag($args, "rubrique");
 		$nb = lireTag($args, "nb");
@@ -574,7 +574,7 @@
 
 	function boucleAccessoire($texte, $args){
 
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
 		$produit = lireTag($args, "produit");
 		$search="";
 			
@@ -603,7 +603,7 @@
 	function boucleProduit($texte, $args, $type=0){
 			global $page, $totbloc, $ref, $pagesess;
 			
-			// rï¿½upï¿½ation des arguments
+			// rcupration des arguments
 			$rubrique = lireTag($args, "rubrique");
 			$boutique = lireTag($args, "boutique");
 			$deb = lireTag($args, "deb");
@@ -687,6 +687,7 @@
 			else if($classement == "rubrique") $order = "order by "  . " rubrique";
 			else if($aleatoire) $order = "order by "  . " RAND()";
 			else if($classement == "manuel") $order = "order by classement";
+			else if($classement == "inverse") $order = "order by classement desc";
 			else $order = "order by classement";
 			
 		
@@ -907,7 +908,7 @@
 	function boucleContenu($texte, $args, $type=0){
 			global $page, $totbloc, $id_contenu;
 			
-			// rï¿½upï¿½ation des arguments
+			// rcupration des arguments
 			$dossier = lireTag($args, "dossier");
 			$boutique = lireTag($args, "boutique");
 			$deb = lireTag($args, "deb");
@@ -1066,7 +1067,7 @@
 	function bouclePage($texte, $args){
 			global $page, $id_rubrique;
 			
-			// rï¿½upï¿½ation des arguments
+			// rcupration des arguments
 			
 			$num = lireTag($args, "num");
 			$courante = lireTag($args, "courante");
@@ -1155,11 +1156,20 @@
 	
 
 	function bouclePanier($texte, $args){
+
+		$deb = lireTag($args, "deb");
+		$fin = lireTag($args, "fin");
+		$dernier = lireTag($args, "dernier");
 		
+		if(!$deb) $deb=0;
+		if(!$fin) $fin=$_SESSION['navig']->panier->nbart;
+		if($dernier == 1) 
+			$deb = $_SESSION['navig']->panier->nbart - 1;
+				
 		$total = 0;
 		$res="";
 		
-		for($i=0; $i<$_SESSION['navig']->panier->nbart; $i++){
+		for($i=$deb; $i<$fin; $i++){
 			$plus = $_SESSION['navig']->panier->tabarticle[$i]->quantite+1;
 			$moins = $_SESSION['navig']->panier->tabarticle[$i]->quantite-1;
 			
@@ -1255,7 +1265,7 @@
 	
 		
 	function boucleQuantite($texte, $args){
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
 
 		$res="";
 		
@@ -1286,7 +1296,7 @@
 	function boucleChemin($texte, $args){
 		global $id_rubrique;
 
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
 
 		$rubrique = lireTag($args, "rubrique");		
 		$profondeur = lireTag($args, "profondeur");		
@@ -1502,8 +1512,11 @@
 		$etcaracteristique = lireTag($args, "etcaracteristique");		
 		$etcaracdisp = lireTag($args, "etcaracdisp");	
 		$id = lireTag($args, "caracdisp");
-	
+		$classement = lireTag($args, "classement");
+		
 		$idsave = $id;
+		$liste="";
+		$tabliste[0]="";		
 		$res="";
 		
 		$caracteristiquesave = $caracteristique;
@@ -1517,6 +1530,8 @@
 		// prï¿½aration de la requï¿½e
 		if($caracteristique!="")  $search.=" and caracteristique=\"$caracteristique\"";
 		if($id !="") $search.=" and id=\"$id\"";
+		if($classement == "alpha") $order="order by titre";
+		
 		$tcaracdisp = new Caracdisp();
 		$tcaracdispdesc = new Caracdispdesc();
 		
@@ -1524,15 +1539,45 @@
 		$query = "select * from $tcaracdisp->table where 1 $search";
 		$resul = mysql_query($query, $tcaracdisp->link);
 
-		$nbres = mysql_numrows($resul);
-		if(!$nbres) return "";
-		
-		while( $row = mysql_fetch_object($resul)){
-			$tcaracdispdesc->charger_caracdisp($row->id, $_SESSION['navig']->lang);
-			if(!$deja) $id=$row->id."-"; else $id="";
-			if(!$deja) $caracteristique=$row->caracteristique."-"; else $caracteristique ="";
+		$i=0;
+				
+		while($row = mysql_fetch_object($resul)){
+				$liste .= "'" . $row->id . "',";
+				$tabliste[$i++] = $row->id;
+		}
 			
-			if($caracteristique == "$row->caracteristique" . "-" && $caracdisp == $row->id . "-") 
+		$liste = substr($liste, 0, strlen($liste) - 1);	
+
+						
+							
+		if($classement != ""){
+			$liste2="";
+			$query = "select * from $tcaracdispdesc->table where caracdisp in ($liste) and lang='" . $_SESSION['navig']->lang . "' $order";
+			$resul = mysql_query($query, $tcaracdispdesc->link);
+					
+		
+		
+			$i=0;
+			
+			while($row = mysql_fetch_object($resul)){
+				$liste2 .= "'" . $row->caracdisp . "',";
+				$tabliste2[$i++] = $row->caracdisp;
+			}
+			$liste2 = substr($liste2, 0, strlen($liste2) - 1);
+
+		}
+		
+	
+		if($classement != "" && isset($tabliste2)) $tabliste = $tabliste2;
+		
+		for($i=0; $i<count($tabliste); $i++){
+			$tcaracdispdesc->charger_caracdisp($tabliste[$i], $_SESSION['navig']->lang);
+			$tcaracdisp->charger($tabliste[$i]);
+			
+			if(!$deja) $id=$tabliste[$i]."-"; else $id="";
+			if(!$deja) $caracteristique=$tcaracdisp->caracteristique."-"; else $caracteristique ="";
+			
+			if($caracteristique == "$tcaracdispdesc->caracteristique" . "-" && $caracdisp == $tabliste[$i] . "-") 
 				$selected = "selected=\"selected\""; else $selected = "";
 				
 			$temp = ereg_replace("#ID", $id . $etcaracdisp, $texte);
@@ -1622,7 +1667,7 @@
 		$adresse = new Adresse();
 	
 
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
 
 		$adresse_id = lireTag($args, "adresse");		
 		$client_id = lireTag($args, "client");
@@ -1730,7 +1775,7 @@
 		$commande = new Commande();
 	
 	
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
 
 		$commande_ref = lireTag($args, "ref");		
 		$client_id = lireTag($args, "client");
@@ -1804,7 +1849,7 @@
 	
 	function boucleVenteprod($texte, $args){	
 	
-		// rï¿½upï¿½ation des arguments
+		// rcupration des arguments
 		$commande_id = lireTag($args, "commande");		
 		
 		$search ="";

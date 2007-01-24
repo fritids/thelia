@@ -2,6 +2,9 @@
 	correction de la gestion des stocks
 	diverses modifications graphiques dans l'interface d'administration
 	modification rewriting et soucis d'accents
+	ajout classement inverse dans la boucle produit
+	ajout d'attributs à la boucle Panier
+	classement possible dans la boucle Caracdisp
 	
 1.1
 	ajout de la gestion de l'argument produit dans la boucle caractéristique
