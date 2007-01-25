@@ -1,3 +1,6 @@
+1.1.2
+	modification de l'initialisation de tinymce ( pour le flash )
+	
 1.1.1
 	correction de la gestion des stocks
 	diverses modifications graphiques dans l'interface d'administration
@@ -6,6 +9,7 @@
 	ajout d'attributs à la boucle Panier
 	classement possible dans la boucle Caracdisp
 	modification boucle Panier #PRODUIT
+	utilisation de mail au lieu de la classe Smtp par défaut
 	
 1.1
 	ajout de la gestion de l'argument produit dans la boucle caractéristique

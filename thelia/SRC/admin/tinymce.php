@@ -53,7 +53,8 @@
 		paste_convert_headers_to_strong : false,
 		paste_strip_class_attributes : "all",
 		paste_remove_spans : false,
-		paste_remove_styles : false		
+		paste_remove_styles : false,
+		extended_valid_elements : "object[classid|codebase|width|height|align],param[name|value],embed[quality|type|pluginspage|width|height|src|align]"		
 	});
 	
 	function fileBrowserCallBack(field_name, url, type, win) {

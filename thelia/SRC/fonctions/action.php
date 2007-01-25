@@ -296,9 +296,9 @@
 		$emailcontact = new Variable();
 		$emailcontact->charger("emailcontact");	
 
-//		mail($_SESSION['navig']->client->email , "$sujet", "$corps", "From: $emailcontact->valeur");	
-//		mail($emailcontact->valeur , "$sujet", "$corps2", "From: $emailcontact->valeur");
-
+		mail($_SESSION['navig']->client->email , "$sujet", "$corps", "From: $emailcontact->valeur");	
+		mail($emailcontact->valeur , "$sujet", "$corps2", "From: $emailcontact->valeur");
+/*
 		$smtp = new Smtp();
 		$smtp->server = "127.0.0.1";
 
@@ -313,7 +313,7 @@
 		$smtp->subject = "$sujet";
 		$smtp->texte = "$corps2";
 		$smtp->envoyer();
-
+*/
 			 		
 		redirige($paiement->url . "?total=$total");
 	}
