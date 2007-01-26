@@ -64,24 +64,27 @@
 	function chargerp($zone, $type){
 	
                 $i=0;
-                $tab="";
+              
                 
                 $pays = new Pays();
                 $paysdesc = new paysdesc();
                if($type=="d") $query = "select * from $pays->table where zone='$zone'";
                else if($type=="h")  $query = "select * from $pays->table where zone='-1'";
                else  $query = "select * from $pays->table where zone='-1'";
-                $resul = mysql_query($query, $pays->link);
+                $resul = mysql_query($query, $pays->link);        
                 while($row = mysql_fetch_object($resul)){
+                		$paysdesc = new paysdesc();
                         $paysdesc->charger($row->id);
                         $paysdesc->titre = supprAccent($paysdesc->titre);
                         
                         $tab[$i] = new Paysdesc();
-                        $tab[$i++] = $paysdesc;
+                        $tab[$i] = $paysdesc;
+                
+                        $i++;
                 }
 
-         
-                if(!$tab) { return "";}
+
+                if(!$tab || !isset($tab)) { return "";}
                 return tabSerialise($tab);
                 
 

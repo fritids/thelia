@@ -3,6 +3,7 @@
 	diverses corrections de boucles
 	utilisation de mysql_connect au lieu de mysql_pconnect bien pratique
 	mais posant problème sur les serveurs mutualisés (max_user_connections)
+	modification de zone.php dans admin/ posant problème sur certains serveurs
 	
 1.1.1
 	correction de la gestion des stocks
