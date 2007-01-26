@@ -124,9 +124,6 @@
 		$dossier->maj();
 		$dossierdesc->maj();
 
-		$dossier->destroy();
-		$dossierdesc->destroy();
-
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $dossier->id);
 
 
@@ -169,10 +166,6 @@
 		
 		$dossierdesc->add();
 	
-
-		$dossier->destroy();
-		$dossierdesc->destroy();
-		 
 	 		
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
 
@@ -183,7 +176,7 @@
 		$dossier = new Dossier();		
 		$dossier->charger($id);
 		$dossier->supprimer();
-		$dossier->destroy();
+
 	    header("Location: listdos.php?parent=" . $parent);
 
 	}
@@ -194,8 +187,7 @@
 		$dossier->image=0;
 		if(file_exists("../client/gfx/photos/dossier/" . $dossier->id . ".jpg")) unlink("../client/gfx/photos/dossier/" . $dossier->id . ".jpg");
 		$dossier->maj();
-		$dossier->destroy();
-		
+	
 	}	
 ?>
 
@@ -240,7 +232,6 @@
                     $parentdesc = new Dossierdesc();
 					$parentdesc->charger($id, $lang);
 					$parentnom = $parentdesc->titre;	
-					$parentdesc->destroy();
 					
 					$res = chemin_dos($id);
 					$tot = count($res)-1;
@@ -267,7 +258,7 @@
 					if($parent) $parentdesc->charger($parent);
 					else $parentdesc->charger($id);
 					$parentnom = $parentdesc->titre;	
-					$parentdesc->destroy();
+				
 			?>
 			 <a href="listdos.php?parent=<?php echo($parentdesc->dossier); ?>" class="lien04"><?php echo($parentdesc->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> 
             <?php if( !$id) { ?>Ajouter<?php } else { ?> Modifier <?php } ?> </p>	                         

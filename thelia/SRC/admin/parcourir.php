@@ -69,8 +69,7 @@
 
 					$parentdesc->charger($parent, $lang);
 					$parentnom = $parentdesc->titre;	
-					$parentdesc->destroy();
-					
+										
 					$res = chemin($parent);
 					$tot = count($res)-1;
 	
@@ -96,7 +95,7 @@
 					if($parent) $parentdesc->charger($parent);
 					else $parentdesc->charger($id);
 					$parentnom = $parentdesc->titre;	
-					$parentdesc->destroy();
+					
 			?>
 			 <a href="parcourir.php?parent=<?php echo($parentdesc->rubrique); ?>" class="lien02"> <?php echo($parentdesc->titre); ?></a>                             
      <table width="710" border="0" cellpadding="5" cellspacing="0">

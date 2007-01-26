@@ -40,9 +40,6 @@
 
 
 		$tproduitdesc->charger($tproduit->id, $_SESSION['navig']->lang);
-		$tproduit->destroy();
-		$tproduitdesc->destroy();
-
 		        
         $texte = ereg_replace("#PRODUIT_REFORIG", "$reforig", $texte);
 		$texte = ereg_replace("#PRODUIT_REF", "$ref", $texte);

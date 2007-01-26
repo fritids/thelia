@@ -128,8 +128,7 @@
 			
 			$document->supprimer();
 			
-			$document->destroy();
-		
+					
 	}	
 	
 ?>
@@ -140,8 +139,6 @@
 	
 	$contenu->charger($contid);
 	$contenudesc->charger($contenu->id);
-	$contenu->destroy();
-	$contenudesc->destroy();
 	
 	
 	$contenudesc->chapo = ereg_replace("<br/>", "\n", $contenudesc->chapo);

@@ -71,8 +71,7 @@
                     $parentdesc = new Dossierdesc();
 					$parentdesc->charger($parent, $lang);
 					$parentnom = $parentdesc->titre;	
-					$parentdesc->destroy();
-					
+										
 					$res = chemin_dos($parent);
 					$tot = count($res)-1;
 	
@@ -94,7 +93,7 @@
                     $parentdesc = new Dossierdesc();
 					$parentdesc->charger($parent);
 					$parentnom = $parentdesc->titre;	
-					$parentdesc->destroy();
+					
 			?>
 			<img src="gfx/suivant.gif" width="12" height="9" border="0" />
 			<a href="listdos.php?parent=<?php echo($parentdesc->dossier); ?>" class="lien04"><?php echo($parentdesc->titre); ?></a>

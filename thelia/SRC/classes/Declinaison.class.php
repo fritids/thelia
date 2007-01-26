@@ -69,8 +69,7 @@
 			
 			$this->delete("delete from $this->table where id=\"$this->id\"");	
 			$this->delete("delete from $declinaisondesc->table where declinaison=\"$this->id\"");	
-	
-			$declinaisondesc->destroy();
+
 			
 			return 1;
 		

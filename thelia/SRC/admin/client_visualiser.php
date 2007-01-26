@@ -78,8 +78,7 @@
 				
 		$client->maj();
 
-		
-		$client->destroy();
+	
 		header("Location: client_visualiser.php?ref=" . $ref);
 
 	}
@@ -90,7 +89,7 @@
 		$client = new Client();		
 		$client->charger_ref($ref);
 		$client->delete();
-		$client->destroy();
+
 		header("Location: client.php");
 
 	}
@@ -104,7 +103,7 @@
 		$tempcmd->charger($id);
 		
 		$tempcmd->supprimer();
-		$tempcmd->destroy;
+
 	}
 	
 ?>
@@ -116,9 +115,7 @@
 	if($client->raison == "1") $civilite = "Madame";
 	else if($client->raison == "2") $civilite = "Mademoiselle";
 	else if($client->raison == "3") $civilite = "Monsieur";
-	
-	
-	$client->destroy();
+
 	
 	$paysdesc = new Paysdesc();
 	$paysdesc->charger($client->pays);

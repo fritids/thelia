@@ -69,10 +69,6 @@
 			$this->delete("delete from $caracval->table where caracdisp=\"$this->id\"");
 			$this->delete("delete from $this->table where id=\"$this->id\"");
 
-
-			$caracdisp->destroy();
-			$caracdispdesc->destroy();
-			$caracval->destroy();
 			
 			return 1;
 		

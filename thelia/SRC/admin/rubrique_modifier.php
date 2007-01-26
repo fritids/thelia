@@ -128,9 +128,6 @@
 		$rubrique->maj();
 		$rubriquedesc->maj();
 
-		$rubrique->destroy();
-		$rubriquedesc->destroy();
-
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $rubrique->id);
 
 
@@ -175,11 +172,7 @@
 		$rubriquedesc->description = $description;
 		
 		$rubriquedesc->add();
-	
 
-		$rubrique->destroy();
-		$rubriquedesc->destroy();
-	
 		$caracteristique = new Caracteristique();
 		$query = "select * from $caracteristique->table";
 		$resul = mysql_query($query, $caracteristique->link);
@@ -192,9 +185,7 @@
 	 		$rubcaracteristique->caracteristique = $row->id;
 	 		$rubcaracteristique->add();
 	 	}
-	 
-	 	$rubcaracteristique->destroy();
-	 	$caracteristique->destroy();
+
 	 
 	 		
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
@@ -205,12 +196,11 @@
 		$rubcaracteristique = new Rubcaracteristique();
 		$query = "delete from $rubcaracteristique->table where rubrique=\"$id\"";
 		$resul = mysql_query($query, $rubcaracteristique->link);
-		$rubcaracteristique->destroy();
 		
 		$rubrique = new Rubrique();		
 		$rubrique->charger($id);
 		$rubrique->supprimer();
-		$rubrique->destroy();
+
 	    header("Location: parcourir.php?parent=" . $parent);
 
 	}
@@ -221,7 +211,7 @@
 		$rubrique->image=0;
 		if(file_exists("../client/gfx/photos/rubrique/" . $rubrique->id . ".jpg")) unlink("../client/gfx/photos/rubrique/" . $rubrique->id . ".jpg");
 		$rubrique->maj();
-		$rubrique->destroy();
+
 		
 	}	
 ?>
@@ -298,7 +288,6 @@
 					$parentdesc->charger($id, $lang);
 					
 					$parentnom = $parentdesc->titre;	
-					$parentdesc->destroy();
 					
 					$res = chemin($id);
 					$tot = count($res)-1;
@@ -325,7 +314,7 @@
 					if($parent) $parentdesc->charger($parent);
 					else $parentdesc->charger($id);
 					$parentnom = $parentdesc->titre;	
-					$parentdesc->destroy();
+
 			?>
 			 <a href="parcourir.php?parent=<?php echo($parentdesc->rubrique); ?>" class="lien02"> <?php echo($parentdesc->titre); ?></a>                             
             

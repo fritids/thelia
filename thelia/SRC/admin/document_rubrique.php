@@ -126,8 +126,7 @@
 			
 			$document->supprimer();
 			
-			$document->destroy();
-		
+					
 	}	
 	
 ?>
@@ -138,9 +137,7 @@
 	
 	$rubrique->charger($rubid);
 	$rubriquedesc->charger($rubrique->id);
-	$rubrique->destroy();
-	$rubriquedesc->destroy();
-	
+
 	
 	$rubriquedesc->chapo = ereg_replace("<br/>", "\n", $rubriquedesc->chapo);
 	$rubriquedesc->description = ereg_replace("<br/>", "\n", $rubriquedesc->description);

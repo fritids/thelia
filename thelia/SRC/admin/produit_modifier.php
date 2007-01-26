@@ -267,9 +267,7 @@
 
 
 
-		$produit->destroy();
-		$produitdesc->destroy();
-	   
+		
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
 	}
 
@@ -433,10 +431,7 @@
 
 
 
-	 $transport->destroy();
-	 $produit->destroy();
-	 $produitdesc->destroy();
-		
+	
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
 
 	}
@@ -465,8 +460,7 @@
 		$produit = new Produit();		
 		$produit->charger($ref);
 		$produit->supprimer();
-		$produit->destroy();
-		
+	
 		$stock = new Stock();
 		$query = "delete from $stock->table where produit='" . $produit->id . "'"; 
 		$resul = mysql_query($query, $stock->link);
@@ -556,7 +550,6 @@
 					$parentdesc->charger($rubrique);
 					
 					$parentnom = $parentdesc->titre;	
-					$parentdesc->destroy();
 					
 					$res = chemin($rubrique);
 					$tot = count($res)-1;
@@ -581,7 +574,7 @@
                     $parentdesc = new Rubriquedesc();
 					$parentdesc->charger($rubrique);
 					$parentnom = $parentdesc->titre;	
-					$parentdesc->destroy();
+					
 			?>
 			<a href="parcourir.php?parent=<?php echo($parentdesc->rubrique); ?>" class="lien04"><?php echo($parentdesc->titre); ?></a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /> 
 

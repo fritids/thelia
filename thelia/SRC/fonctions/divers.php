@@ -57,9 +57,6 @@
 		} while($trubrique->parent != 0); 
 	
 		$i--;
-		
-		$trubrique->destroy();
-		$trubriquedesc->destroy();
 	
 		return $tab;
 		
@@ -85,9 +82,6 @@
 		} while($tdossier->parent != 0); 
 	
 		$i--;
-		
-		$tdossier->destroy();
-		$tdossierdesc->destroy();
 	
 		return $tab;
 		
@@ -290,7 +284,6 @@ function arbreBoucle($depart, $profondeur=0, $i=0){
 		}
 		
 		if(substr($rec, strlen($rec)-1) == ",") $rec = substr($rec, 0, strlen($rec)-1);
-		$trubrique->destroy();
 		
 		return $rec;
 }
@@ -318,8 +311,6 @@ function arbreOption($depart, $niveau, $prubrique){
 			
 		}
 		
-		$trubrique->destroy();
-		$trubriquedesc->destroy();
 		
 		return $rec;
 }
@@ -342,7 +333,6 @@ function arbreBoucle_dos($depart, $profondeur=0, $i=0){
 		}
 		
 		if(substr($rec, strlen($rec)-1) == ",") $rec = substr($rec, 0, strlen($rec)-1);
-		$tdossier->destroy();
 		
 		return $rec;
 }
@@ -366,9 +356,7 @@ function arbreOption_dos($depart, $niveau, $pdossier){
 			$rec .= arbreOption_dos($row->id, $niveau, $pdossier);
 			
 		}
-		
-		$tdossier->destroy();
-		$tdossierdesc->destroy();
+
 		
 		return $rec;
 }

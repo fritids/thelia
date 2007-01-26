@@ -169,9 +169,6 @@
      $caracteristiquedesc->description = ereg_replace("\n", "<br/>", $caracteristiquedesc->description);		
 	 
 	 $caracteristiquedesc->add();
-	 $caracteristique->destroy();
-	 $caracteristiquedesc->destroy();
-
 
 	   header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
 
@@ -196,8 +193,8 @@
 		$caracteristique = new Caracteristique();		
 		$caracteristique->charger($id);
 		$caracteristique->supprimer();
-		$caracteristique->destroy();
-		$rubcaracteristique->destroy();
+
+
 	    header("Location: caracteristique.php");
 
 	}
@@ -223,8 +220,6 @@
 		
 		$tcaracdispdesc->add();
 
-		$tcaracdisp->destroy();
-		$tcaracdispdesc->destroy();
 	}
 	
 	
@@ -266,9 +261,7 @@
 	
 	$caracteristique->charger($id);
 	$caracteristiquedesc->charger($caracteristique->id, $lang);
-	$caracteristique->destroy();
-	$caracteristiquedesc->destroy();
-	
+
 	
 	$caracteristiquedesc->chapo = ereg_replace("<br/>", "\n", $caracteristiquedesc->chapo);
 	$caracteristiquedesc->description = ereg_replace("<br/>", "\n", $caracteristiquedesc->description);

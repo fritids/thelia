@@ -75,11 +75,10 @@
 			
 			else {
 				return 0;
-				$rubriquedesc->destroy();
+		
 			}
 			
-			$rubriquedesc->destroy();
-			
+		
 			return 1;
 		
 		}

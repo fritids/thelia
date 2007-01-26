@@ -122,7 +122,7 @@
 	 				$rubcaracteristique->add();
 	 			}
 
-				$rubcaracteristique->destroy();
+
 
 	}
 
@@ -256,8 +256,7 @@
 
                                         $parentdesc->charger($id, $lang);
                                         $parentnom = $parentdesc->titre;
-                                        $parentdesc->destroy();
-
+                                       
                                         $res = chemin($id);
                                         $tot = count($res)-1;
 
@@ -279,7 +278,7 @@
                                         if($parent) $parentdesc->charger($parent);
                                         else $parentdesc->charger($id);
                                         $parentnom = $parentdesc->titre;
-                                        $parentdesc->destroy();
+                                   
                         ?>
                         <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="rubrique_modifier.php?id=<?php echo($parentdesc->rubrique); ?>" class="lien02"> <?php echo($parentdesc->titre); ?></a>
 

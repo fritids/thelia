@@ -14,9 +14,7 @@
 	}
 	
 	$commande->maj();
-	
-	$commande->destroy();
-	
+
 
 @require_once("CMCIC_HMAC.inc.php");
 if (!function_exists('CMCIC_hmac')) 

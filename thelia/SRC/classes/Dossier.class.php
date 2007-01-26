@@ -75,10 +75,8 @@
 			
 			else {
 				return 0;
-				$dossierdesc->destroy();
-			}
 			
-			$dossierdesc->destroy();
+			}
 			
 			return 1;
 		

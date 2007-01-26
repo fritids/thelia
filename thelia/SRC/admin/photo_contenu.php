@@ -141,8 +141,7 @@
 			
 			$image->supprimer();
 			
-			$image->destroy();
-		
+			
 	}	
 	
 ?>
@@ -153,9 +152,7 @@
 	
 	$contenu->charger($contid);
 	$contenudesc->charger($contenu->id);
-	$contenu->destroy();
-	$contenudesc->destroy();
-	
+
 	$contenudesc->chapo = ereg_replace("<br/>", "\n", $contenudesc->chapo);
 	$contenudesc->description = ereg_replace("<br/>", "\n", $contenudesc->description);
 

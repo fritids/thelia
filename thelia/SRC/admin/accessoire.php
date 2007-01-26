@@ -52,9 +52,7 @@
 		while($row = mysql_fetch_object($resul)){
 			$res .= "<a href=\"#\" onClick=\"do_ajouter($row->produit, $courant)\">" . $row->titre . "</a>" . "<br />";
 		}
-		
-		$produit->destroy();
-		$produitdesc->destroy();
+
 		
 		return $res;
 	

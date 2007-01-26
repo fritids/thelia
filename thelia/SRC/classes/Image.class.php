@@ -63,8 +63,7 @@
 			
 			$this->delete("delete from $this->table where id=\"$this->id\"");	
 			$this->delete("delete from $imagedesc->table where image=\"$this->id\"");	
-	
-			$imagedesc->destroy();
+
 			
 			return 1;
 		

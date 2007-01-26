@@ -65,14 +65,11 @@
 	$query = "select count(*) as nb from $client->table";
 	$resul = mysql_query($query, $client->link);
 	$nbclient = mysql_result($resul, 0, "nb");
-	$client->destroy();
 	
 	$produit = new Produit();
 	$query = "select count(*) as nb from $produit->table";
 	$resul = mysql_query($query, $produit->link);
 	$nbproduit = mysql_result($resul, 0, "nb");
-	$produit->destroy();
-	
 	
 	$commande = new Commande();
 	$query = "select count(*) as nb from $commande->table where statut<'3'";
@@ -113,8 +110,6 @@
 	
 	$ca -= mysql_result($resul, 0, "ca");
 	
-	$commande->destroy();
-		
 	$urlsite = new Variable();
 	$urlsite->charger("urlsite");	
 	

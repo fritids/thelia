@@ -143,9 +143,7 @@
 			}
 			
 			$image->supprimer();
-			
-			$image->destroy();
-		
+					
 	}	
 	
 ?>

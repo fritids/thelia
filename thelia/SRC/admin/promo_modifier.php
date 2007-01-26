@@ -58,9 +58,7 @@
 
 	if($promo->type == "1") $types = "checked=\"checked\"";
 	else $typep = "checked=\"checked\""; 
-	
-	
-	$promo->destroy();
+
 	
 
 ?>

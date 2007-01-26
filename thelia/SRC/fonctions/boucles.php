@@ -148,9 +148,7 @@
 			if(trim($temp) !="") $res .= $temp . "\n";
 			
 		}
-	
-		$rubrique->destroy();
-		$rubriquedesc->destroy();
+
 	
 		return $res;
 		
@@ -225,8 +223,7 @@
 			
 		}
 	
-		$dossier->destroy();
-		$dossierdesc->destroy();
+
 	
 		return $res;
 		
@@ -384,10 +381,7 @@
 		}
 
 
-	
-		$image->destroy();
-		$prdesc->destroy();
-		$rudesc->destroy();
+
 		
 		return $res;
 	
@@ -455,7 +449,7 @@
 			
 		}
 	
-		$client->destroy();
+
 	
 		return $res;
 		
@@ -508,9 +502,6 @@
 			$res .= $temp. "\n";;
 		}
 
-		$prod->destroy();
-		$devise->destroy();
-		
 		return $res;
 	
 	}
@@ -566,7 +557,7 @@
 			$res .= $temp. "\n";;
 		}
 	
-		$document->destroy();
+
 		
 		return $res;
 	
@@ -594,8 +585,7 @@
 
 			$res .= $temp. "\n";;
 		}
-	
-		$accessoire->destroy();
+
 		return $res;
 	
 	}
@@ -727,7 +717,7 @@
 				
 			}
 
-			$tcaracval->destroy();
+			
 			if($liste!="") $search .= " and id in($liste)";	
 			else return "";
 		}	
@@ -754,7 +744,7 @@
 				
 				$i++;
 			
-			$tcaracval->destroy();
+			
 			if($liste!="") $search .= " and id in($liste)";	
 			else return "";
 		}	
@@ -896,10 +886,7 @@
 			
 		}
 	
-		$produit->destroy();
-		$produitdesc->destroy();
-		$boutiqueprod->destroy();
-		
+
 		return $res;
 	
 	}
@@ -1055,10 +1042,7 @@
 			
 		}
 	
-		$contenu->destroy();
-		$contenudesc->destroy();
-		$boutiqueprod->destroy();
-		
+	
 		return $res;
 	
 	}
@@ -1147,8 +1131,7 @@
 					$res .= $temp;
 				}						
 			
-				$produit->destroy();
-				
+		
 				return $res;
 			
 			
@@ -1286,9 +1269,7 @@
 			$res.="$temp"; 
 		}
 		
-		
-		$prodtemp->destroy();						
-					
+	
 		return $res;
 	
 	}
@@ -1340,7 +1321,7 @@
 			if($i >= $profondeur && $profondeur != "") break;
 		} while($i--);
 	
-		$trubrique->destroy();
+
 	
 		return $res;
 		
@@ -1381,8 +1362,6 @@
 			$res .= $temp. "\n";
 		}
 	
-		$paiement->destroy();
-		$paiementdesc->destroy();
 
 		return $res;
 	
@@ -1445,8 +1424,6 @@
 			$res .= $temp. "\n";
 		}
 	
-		$pays->destroy();
-		$paysdesc->destroy();
 
 		return $res;
 	
@@ -1496,11 +1473,7 @@
 			
 			$res .= $temp. "\n";
 		}
-	
-		$rubcaracteristique->destroy();
-		$caracteristique->destroy();
-		$caracteristiquedesc->destroy();
-		
+
 		return $res;
 	
 	}	
@@ -1589,8 +1562,6 @@
 			$res .= $temp. "\n";
 		}
 	
-		$tcaracdisp->destroy();
-		$tcaracdispdesc->destroy();
 		
 		return $res;
 	
@@ -1657,8 +1628,7 @@
 			$res .= $temp. "\n";
 		}
 	
-		$caracval->destroy();
-		
+	
 		return $res;
 	
 	}		
@@ -1725,7 +1695,7 @@
 				$res .= $temp. "\n";
 			}
 	
-			$adresse->destroy();
+		
 		}
 		
 		else {
@@ -1842,7 +1812,7 @@
 			$res .= $temp. "\n";
 		}
 	
-		$commande->destroy();
+
 
 		return $res;
 	
@@ -1882,7 +1852,7 @@
 			$res .= $temp. "\n";
 		}
 	
-		$venteprod->destroy();
+
 
 		return $res;
 	
@@ -1948,11 +1918,8 @@
 			
 		}
 	
-		$transport->destroy();
-		$transportdesc->destroy();
-		$pays->destroy();
-		$transproduit->destroy(); 
-		$transzone->destroy();
+	
+
 		return $res;
 	
 	}	
@@ -2052,11 +2019,7 @@
 	
 			$res .= $temp. "\n";
 		}
-	
-		$rubdeclinaison->destroy();
-		$declinaison->destroy();
-		$declinaisondesc->destroy();
-		
+
 		return $res;
 	
 	}	
@@ -2133,9 +2096,7 @@
 			$res .= $temp. "\n";
 		}
 	
-		$tdeclidisp->destroy();
-		$tdeclidispdesc->destroy();
-		
+	
 		return $res;
 	
 	
@@ -2161,8 +2122,6 @@
 		$compt ++;
 			
 		if(trim($temp) !="") $res .= $temp . "\n";
-			
-		$stock->destroy();
 	
 		return $res;
 		

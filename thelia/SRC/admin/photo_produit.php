@@ -146,8 +146,7 @@
 			
 			$image->supprimer();
 			
-			$image->destroy();
-		
+			
 	}	
 	
 ?>
@@ -158,9 +157,7 @@
 	
 	$produit->charger($ref);
 	$produitdesc->charger($produit->id);
-	$produit->destroy();
-	$produitdesc->destroy();
-	
+
 	
 	$produitdesc->chapo = ereg_replace("<br/>", "\n", $produitdesc->chapo);
 	$produitdesc->description = ereg_replace("<br/>", "\n", $produitdesc->description);

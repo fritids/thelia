@@ -137,8 +137,6 @@
 		$contenu->maj();
 		$contenudesc->maj();
 
-		$contenu->destroy();
-		$contenudesc->destroy();
 	   
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $contenu->id . "&dossier=" . $contenu->dossier);
 	}
@@ -184,9 +182,6 @@
      $contenudesc->description = ereg_replace("\n", "<br/>", $contenudesc->description);		
 	 
 	 $contenudesc->add();
-	 
-	 $contenu->destroy();
-	 $contenudesc->destroy();
 		
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid . "&dossier=" . $contenu->dossier);
 
@@ -197,7 +192,7 @@
 		$contenu = new Contenu();		
 		$contenu->charger($id);
 		$contenu->supprimer();
-		$contenu->destroy();
+
 	    header("Location: listdos.php?parent=" . $parent);
 
 	}
@@ -212,9 +207,6 @@
 	
 	$contenu->charger($id);
 	$contenudesc->charger($contenu->id, $lang);
-	$contenu->destroy();
-	$contenudesc->destroy();
-	
 	
 	$contenudesc->chapo = ereg_replace("<br/>", "\n", $contenudesc->chapo);
 	$contenudesc->description = ereg_replace("<br/>", "\n", $contenudesc->description);
@@ -250,8 +242,7 @@
     				$contdesc->charger($cont->id);
     														
 					$parentnom = $contdesc->titre;	
-					$contdesc->destroy();
-					
+
 					if($cont->dossier) $res = chemin_dos($cont->dossier);
 					else $res = chemin_dos($dossier);
 
@@ -283,7 +274,7 @@
 					else $parentdesc->charger($dossier);
 					
 					$parentnom = $parentdesc->titre;	
-					$parentdesc->destroy();
+		
 			
 			?>
 			<a href="listdos.php?parent=<?php echo($parentdesc->dossier); ?>" class="lien04"><?php echo($parentdesc->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />&nbsp;

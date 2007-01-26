@@ -128,7 +128,6 @@
 			
 			$document->supprimer();
 			
-			$document->destroy();
 		
 	}	
 	
@@ -140,9 +139,6 @@
 	
 	$dossier->charger($dosid);
 	$dossierdesc->charger($dossier->id);
-	$dossier->destroy();
-	$dossierdesc->destroy();
-	
 	
 	$dossierdesc->chapo = ereg_replace("<br/>", "\n", $dossierdesc->chapo);
 	$dossierdesc->description = ereg_replace("<br/>", "\n", $dossierdesc->description);

@@ -57,8 +57,7 @@
 			
 				if(count($tab)) return tabSerialise($tab);
                 else return "";
-                
-                $zone->destroy;
+
 	}
 
 	function chargerp($zone, $type){
@@ -130,8 +129,7 @@
 	 			$list = substr($list, 0, strlen($list)-1);	
 	 			$query = "update pays set zone='" . $zcours->id . "' where id in ($list)";
 				if($list) $resul = mysql_query($query, $pays->link);
-	 			$pays->destroy();
-	 			$zone->destroy();
+
 	}
 
 
@@ -180,9 +178,7 @@
 	 			$query = "update pays set zone='" . $zone->id . "' where id in ($list)";
 				if($list) $resul = mysql_query($query, $pays->link);
 					
-	 			$pays->destroy();
-	 			$zone->destroy();
-	 			$transport->destroy();
+
 	}
 
 	function supprz($zcours){
@@ -197,8 +193,6 @@
 				$zone->charger($zcours);
 				$zone->delete();
 
-				$pays->destroy();
-	 			$zone->destroy();
 	}	
 ?>
 <?php

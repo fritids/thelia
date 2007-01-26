@@ -61,7 +61,6 @@
 			$this->delete("delete from $this->table where id=\"$this->id\"");	
 			$this->delete("delete from $caracteristiquedesc->table where caracteristique=\"$this->id\"");	
 	
-			$caracteristiquedesc->destroy();
 			
 			return 1;
 		

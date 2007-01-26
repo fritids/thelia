@@ -55,10 +55,6 @@
 	if($client->raison == "3") $raison3 = "checked=\"checked\""; else $raison3="";
 	
 	
-	$client->destroy();
-	
-	
-	
 
 
 ?>

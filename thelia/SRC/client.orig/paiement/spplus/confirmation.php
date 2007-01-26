@@ -10,7 +10,6 @@
 	}
 	
 	$commande->maj();
-	
-	$commande->destroy();
+
 	
 ?>

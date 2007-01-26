@@ -74,8 +74,7 @@
 			}
 	*/
 		$_SESSION['navig']->commande->transport = $id;	
-		$transproduit->destroy();
-		$transzone->destroy();
+
 	}
 
 
@@ -83,7 +82,7 @@
 		$promo = new Promo();
 		$promo->charger($code);
 		$_SESSION['navig']->promo = $promo;	
-		$promo->destroy();
+
 	}
 		
 	function supprimer($id){
@@ -114,7 +113,7 @@
 	
 
 	function deconnexion(){
-		$_SESSION['navig']->client->destroy();
+
 		$_SESSION['navig']->client= new Client();
 		$_SESSION['navig']->connecte = 0;		
 		redirige($_SESSION['navig']->urlpageret);		
@@ -276,7 +275,7 @@
 			$temppromo->charger_id($_SESSION['navig']->promo->id);
 			$temppromo->utilise="1";
 			$temppromo->maj();
-			$temppromo->destroy();
+
 			
 			$_SESSION['navig']->promo = new Promo();
 		} 
@@ -289,9 +288,8 @@
 		$_SESSION['navig']->commande = $commande;
 		
 		$commande->maj();		
-		$commande->destroy();
-		$venteprod->destroy();
-		$adr->destroy();
+
+
 		
 		$emailcontact = new Variable();
 		$emailcontact->charger("emailcontact");	

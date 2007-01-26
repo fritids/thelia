@@ -62,8 +62,7 @@
 			
 			$this->delete("delete from $this->table where id=\"$this->id\"");	
 			$this->delete("delete from $contenudesc->table where contenu=\"$this->id\"");	
-	
-			$contenudesc->destroy();
+
 			
 			return 1;
 		

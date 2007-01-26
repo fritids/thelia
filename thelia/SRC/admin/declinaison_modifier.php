@@ -133,9 +133,6 @@
 
 	}
 		
-		$declidisp->destroy();
-
-		
 		$declinaison = new Declinaison();
 		$declinaisondesc = new Declinaisondesc();
 		$declinaison->charger($id);
@@ -161,9 +158,6 @@
 										
 		$declinaison->maj();
 		$declinaisondesc->maj();
-
-		$declinaison->destroy();
-		$declinaisondesc->destroy();
 	   
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $declinaison->id);
 	}
@@ -207,8 +201,6 @@
      $declinaisondesc->description = ereg_replace("\n", "<br/>", $declinaisondesc->description);		
 	 
 	 $declinaisondesc->add();
-	 $declinaison->destroy();
-	 $declinaisondesc->destroy();
 	
      $declidisp = new Declidisp();
 	 $declidispdesc = new Declidispdesc();
@@ -224,10 +216,6 @@
 		$declidispdesc->add();
 
 	}
-			
-		
-		$declidisp->destroy();
-		$declidispdesc->destroy();
 	
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
 
@@ -252,8 +240,7 @@
 		$declinaison = new Declinaison();		
 		$declinaison->charger($id);
 		$declinaison->supprimer();
-		$declinaison->destroy();
-		$rubdeclinaison->destroy();
+
 	    header("Location: declinaison.php");
 
 	}
@@ -279,8 +266,6 @@
 		
 		$tdeclidispdesc->add();
 
-		$tdeclidisp->destroy();
-		$tdeclidispdesc->destroy();
 	}
 	
 	function majdeclidisp($id, $lang){
@@ -318,9 +303,6 @@
 	
 	$declinaison->charger($id);
 	$declinaisondesc->charger($declinaison->id, $lang);
-	$declinaison->destroy();
-	$declinaisondesc->destroy();
-	
 	
 	$declinaisondesc->chapo = ereg_replace("<br/>", "\n", $declinaisondesc->chapo);
 	$declinaisondesc->description = ereg_replace("<br/>", "\n", $declinaisondesc->description);

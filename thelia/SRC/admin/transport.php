@@ -58,7 +58,6 @@
                         $tab[$i++] = $transport;
                 }
 			   
-                $transport->destroy();
                 return tabSerialise($tab);
 	}	
 	
@@ -79,9 +78,7 @@
                         $tab[$i] = new Transportdesc();
                         $tab[$i++] = $transportdesc;
                 }
-		
-                $transport->destroy();
-				$transportdesc->destroy();
+
 
                 return tabSerialise($tab);
                 
@@ -137,7 +134,6 @@
                         $tab[$i++] = $zone;
                 }
 
-                $zone->destroy();
  
                if(!$tab) { return "";}
          
@@ -180,8 +176,6 @@
 	 			}
 	 			
 
-
-	 			$transport->destroy();
 	}
 
 
@@ -223,9 +217,7 @@
 	 				$transzone->actif = "1";
 					$transzone->add();	 	
 				}
-				
-	 			$zone->destroy();
-	 			$transport->destroy();
+
 	}
 
 	function supprt($tcours){
@@ -242,8 +234,7 @@
 				
 				$transport->charger($tcours);
 				$transport->delete();
-						
-	 			$transport->destroy();
+
 	}	
 ?>
 <?php

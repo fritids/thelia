@@ -68,10 +68,6 @@
 		//	$this->delete("delete from $declival->table where declidisp=\"$this->id\"");
 			$this->delete("delete from $this->table where id=\"$this->id\"");
 
-
-			$declidisp->destroy();
-			$declidispdesc->destroy();
-		//	$declival->destroy();
 			
 			return 1;
 		

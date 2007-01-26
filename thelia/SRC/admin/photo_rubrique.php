@@ -144,8 +144,7 @@
 			
 			$image->supprimer();
 			
-			$image->destroy();
-		
+			
 	}	
 	
 ?>

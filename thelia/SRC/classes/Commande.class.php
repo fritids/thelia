@@ -75,7 +75,6 @@
 			$query = "delete from $venteprod->table where commande='" . $this->id . "'";
 			$resul = mysql_query($query, $this->link);
 			$this->delete();
-			$venteprod->destroy();
 		
 		}
 		

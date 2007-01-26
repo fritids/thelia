@@ -82,9 +82,7 @@
 			
 			$this->delete("delete from $this->table where id=\"$this->id\"");	
 			$this->delete("delete from $produitdesc->table where produit=\"$this->id\"");	
-	
-			$produitdesc->destroy();
-			
+				
 			return 1;
 		
 		}
