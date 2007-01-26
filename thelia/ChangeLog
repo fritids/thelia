@@ -1,5 +1,8 @@
 1.1.2
 	modification de l'initialisation de tinymce ( pour le flash )
+	diverses corrections de boucles
+	utilisation de mysql_connect au lieu de mysql_pconnect bien pratique
+	mais posant problème sur les serveurs mutualisés (max_user_connections)
 	
 1.1.1
 	correction de la gestion des stocks

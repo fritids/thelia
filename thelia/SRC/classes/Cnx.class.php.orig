@@ -41,7 +41,7 @@
 		var $link="";
 
 		function Cnx(){
-			$this->link = mysql_pconnect($this->host, $this->login_mysql, $this->password_mysql);
+			$this->link = mysql_connect($this->host, $this->login_mysql, $this->password_mysql);
 			mysql_select_db($this->db, $this->link);
 
 		}

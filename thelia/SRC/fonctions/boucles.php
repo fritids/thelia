@@ -1421,7 +1421,8 @@
 			
 		$liste = substr($liste, 0, strlen($liste) - 2);
 	
-
+		if(!$liste) $liste="''";
+		
         $query = "select * from $paysdesc->table where pays in ($liste) and lang='$lang' order by titre";
 
 		$resul = mysql_query($query, $paysdesc->link);
