@@ -55,7 +55,7 @@
 		
   <THELIA_PANIER type="PANIER">	
     <form action="#URLPANIER" method="post" name="formpanier#PRODUIT" id="formpanier#PRODUIT">
- 	<input type="hidden" name="id" value="#PRODUIT" />
+ 	<input type="hidden" name="article" value="#ARTICLE" />
     <input type="hidden" name="action" value="modifier" />
   	
 		<tr>
@@ -64,7 +64,7 @@
 			<td>#PRIXU</td>
 			<td>
 			    <select name="quantite" onchange="document.formpanier#PRODUIT.submit()">
-                        <THELIA_quantite type="QUANTITE" produit="#PRODUIT">
+                        <THELIA_quantite type="QUANTITE" article="#ARTICLE">
                            <option value="#NUM" #SELECTED>#NUM</option>
                         </THELIA_quantite>
                 </select>

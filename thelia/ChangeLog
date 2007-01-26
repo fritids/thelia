@@ -5,6 +5,11 @@
 	mais posant problème sur les serveurs mutualisés (max_user_connections)
 	modification de zone.php dans admin/ posant problème sur certains serveurs
 	modification des déconnexions à MySQL
+	modification du squelette panier.html #PRODUIT != #ARTICLE
+	modification de la boucle Quantite
+	modification de action.php
+	modification de moteur.php
+	maj de la doc
 	
 1.1.1
 	correction de la gestion des stocks

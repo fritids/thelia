@@ -77,8 +77,8 @@
 			
 		}
 		
-		function modifier($id, $quantite){
-			$this->tabarticle[$id]->quantite = $quantite;
+		function modifier($article, $quantite){
+			$this->tabarticle[$article]->quantite = $quantite;
 		
 		}
 		

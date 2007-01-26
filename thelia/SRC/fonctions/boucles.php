@@ -1251,16 +1251,16 @@
 		// rŽcupŽration des arguments
 
 		$res="";
-		
-		$produit = lireTag($args, "produit");
+	
+		$article = lireTag($args, "article");
 		
 		$prodtemp = new Produit();
-		$prodtemp->charger($_SESSION['navig']->panier->tabarticle[$produit]->produit->ref);
+		$prodtemp->charger($_SESSION['navig']->panier->tabarticle[$article]->produit->ref);
 
 		$j = 0;
 		
 		for($i=1; $i<$prodtemp->quantite; $i++){
-			if($i==$_SESSION['navig']->panier->tabarticle[$produit]->quantite) $selected=" selected";
+			if($i==$_SESSION['navig']->panier->tabarticle[$article]->quantite) $selected=" selected";
 			else $selected="";
 		
 			$temp = ereg_replace("#NUM", "$i", $texte);

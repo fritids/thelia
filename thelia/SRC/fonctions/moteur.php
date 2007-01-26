@@ -163,7 +163,7 @@ function analyse($res){
 	switch($action){
 		case 'ajouter' : ajouter($ref); break;
 		case 'supprimer' : supprimer($id); break;
-		case 'modifier' : modifier($id, $quantite); break;
+		case 'modifier' : modifier($article, $quantite); break;
 		case 'connexion' : connexion($email,$motdepasse); break;	
 		case 'deconnexion' : deconnexion(); break;	
 		case 'paiement' : paiement($type_paiement); break;	

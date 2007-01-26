@@ -89,8 +89,8 @@
 			$_SESSION['navig']->panier->supprimer($id);
 	}
 	
-	function modifier($id, $quantite){
-		$_SESSION['navig']->panier->modifier($id, $quantite);		
+	function modifier($article, $quantite){
+		$_SESSION['navig']->panier->modifier($article, $quantite);		
 	}
 	
 
