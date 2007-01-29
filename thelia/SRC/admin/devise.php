@@ -77,12 +77,12 @@
      <form action="devise_modifier.php" id="formdevise<?php echo($row->id); ?>" method="post">
 
      <tr>
-       <td height="30" class="cellule_sombre"><input name="textfield" type="text" class="form" value="<?php echo($row->nom); ?>" size="10" /></td>
+       <td height="30" class="cellule_sombre"><input name="nom" type="text" class="form" value="<?php echo($row->nom); ?>" size="10" /></td>
        <td class="cellule_sombre">
          <input name="taux" type="text" class="form" value="<?php echo($row->taux); ?>" size="10" />
        </td>
        <td class="cellule_sombre"><a href="#" class="txt_vert_11" onClick="document.getElementById('formdevise<?php echo($row->id); ?>').submit();">Modifier</a> <a href="#"><img src="gfx/suivant.gif" onClick="document.getElementById('formdevise<?php echo($row->id); ?>').submit();" width="12" height="9" border="0" /></a></span></span></td>
-       <td align="center" valign="middle" class="cellule_sombre"><a href="#"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></td>
+       <td align="center" valign="middle" class="cellule_sombre"><a href="devise_modifier.php?action=supprimer&id=<?php echo $row->id ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></td>
      </tr>
    
    <input type="hidden" name="action" value="modifier" />
@@ -93,16 +93,44 @@
 	}
  ?>
 	 </table> 
-  
+	</form>     
    <br />
+   
+     
+
+      
    <table width="710" border="0" cellpadding="5" cellspacing="0">
+
+      <form action="devise_modifier.php" id="formajouter" method="post">
+      
     <tr>
       <td height="5"></td>
     </tr>
-<!--    <tr>
-      <td width="600" height="30" class="titre_cellule_tres_sombre2"><a href="devise_modifier.php" class="lien_titre_cellule">AJOUTER UNE DEVISE </a></td>
-    </tr>
--->    
+
+     <tr>
+       <td height="30" width="400" class="cellule_sombre"><input name="nnom" type="text" class="form"  size="10" /></td>
+       <td class="cellule_sombre">
+         <input name="ntaux" type="text" class="form"" size="10" />
+       </td>
+   
+     </tr>
+
+</table>
+
+
+
+   <table width="710" border="0" cellpadding="5" cellspacing="0">
+
+  <tr>
+      <td width="710" height="30" class="titre_cellule_tres_sombre2">
+      <input type="hidden" name="action" value="ajouter" />
+      <a href="#" onClick="document.getElementById('formajouter').submit()" class="lien_titre_cellule">AJOUTER UNE DEVISE </a></td>
+    </tr>  
+   
+  
+</table>
+
+</form>
 
 </div>
 </body>

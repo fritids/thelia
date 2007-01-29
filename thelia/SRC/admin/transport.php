@@ -44,15 +44,15 @@
 	function chargert(){
 
                 $i=0;
-                $transport = new Transport();
-    
+                   
                 $tab = array();
-                
+                $transport = new Transport();
                 $query = "select * from $transport->table";
                 $resul = mysql_query($query, $transport->link);
                 if(! mysql_numrows($resul)) return "";
                 
                 while($row = mysql_fetch_object($resul)){
+                		$transport = new Transport();
                 		$transport->charger($row->id);	
                         $tab[$i] = new Transport();
                         $tab[$i++] = $transport;
@@ -64,15 +64,18 @@
 	function chargertdesc(){
 
                 $i=0;
+                
+                $tab = array();
                 $transport = new Transport();
                 $transportdesc = new Transportdesc();
-                $tab = array();
                 	
                 $query = "select * from $transport->table";
                 $resul = mysql_query($query, $transport->link);
                 if(! mysql_numrows($resul)) return "";
                 
                 while($row = mysql_fetch_object($resul)){
+                		$transport = new Transport();
+                		$transportdesc = new Transportdesc();
                 		$transportdesc->charger($row->id);	
                         $transport->charger($row->id);
                         $tab[$i] = new Transportdesc();
@@ -125,6 +128,7 @@
                 $resul = mysql_query($query, $zone->link);	
                
                 while($row = mysql_fetch_object($resul)){
+                        $zone = new Zone();
                         $zone->charger($row->id);
 
                         

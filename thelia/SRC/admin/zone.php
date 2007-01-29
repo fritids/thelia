@@ -50,6 +50,7 @@
                 $query = "select * from $zone->table";
                 $resul = mysql_query($query, $zone->link);
                 while($row = mysql_fetch_object($resul)){
+                        $zone = new Zone();
                         $zone->charger($row->id);
                         $tab[$i] = new Zone();
                         $tab[$i++] = $zone;
