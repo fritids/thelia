@@ -14,6 +14,7 @@
 		fclose($fp);
 		
 		rename("../classes/Cnx.class.php.orig", "../classes/Cnx.class.php");
+		rename("../client.orig", "../client");
 		
 	}
 
