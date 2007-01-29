@@ -52,7 +52,9 @@
 				Bienvenue au sein du programme d'installation de Thelia.<br />
 				Nous allons vous guider tout au long de ce processus afin d'installer l'application sur votre système.<br /><br />
 				
-				<a href="bdd.php"><input type="button" value="Continuer" /></a>
+				<form action="bdd.php" method="post">
+					<input type="submit" value="Continuer" />
+				</form>
 				
 				
 

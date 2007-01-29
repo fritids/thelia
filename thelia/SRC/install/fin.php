@@ -113,9 +113,10 @@
 				
 				<br /><br />
 				
-								
-				<a href="../admin/index.php"><input type="button" value="Continuer" />
-	
+				<form action="../admin/index.php" method="post">				
+					<input type="submit" value="Continuer" />
+				</form>
+				
 			 </form>
 
 			</div>

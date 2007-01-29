@@ -2,6 +2,7 @@
 	Correction admin/zone.php
 	Correction admin/transport.php
 	Modification des pages devises dans l'admin
+	Correction du programme d'installation
 	
 1.1.3
 	interface d'installation renomme client.orig
