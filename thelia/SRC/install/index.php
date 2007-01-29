@@ -80,9 +80,7 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-    initMenu();
-</script>
+
 </body>
 
 </html>
