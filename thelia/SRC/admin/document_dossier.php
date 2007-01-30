@@ -204,7 +204,7 @@ body {
 	 <tr>
       <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php echo($row->fichier); ?></a></td>
       <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><div align="center"><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&action=modclassement&type=M&dosid=".$dossier->id; ?>"><img src="gfx/bt_flecheh.gif" border="0"></a><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&action=modclassement&type=D&dosid=".$dossier->id; ?>"><img src="gfx/bt_flecheb.gif" border="0"></a></div></td>      
-      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?id=<?php echo($row->id); ?>&dosid=<?php echo($dossier->id;); ?>&action=supprimer">Supprimer</a></td>
+      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?id=<?php echo($row->id); ?>&dosid=<?php echo($dossier->id); ?>&action=supprimer">Supprimer</a></td>
 
       <td width="60%">&nbsp;</td>
 	 </tr>
