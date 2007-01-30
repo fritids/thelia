@@ -1152,6 +1152,8 @@
 		$total = 0;
 		$res="";
 		
+		if(! $_SESSION['navig']->panier->nbart) return;
+		
 		for($i=$deb; $i<$fin; $i++){
 			$plus = $_SESSION['navig']->panier->tabarticle[$i]->quantite+1;
 			$moins = $_SESSION['navig']->panier->tabarticle[$i]->quantite-1;
@@ -1551,7 +1553,7 @@
 			if(!$deja) $id=$tabliste[$i]."-"; else $id="";
 			if(!$deja) $caracteristique=$tcaracdisp->caracteristique."-"; else $caracteristique ="";
 			
-			if($caracteristique == "$tcaracdispdesc->caracteristique" . "-" && $caracdisp == $tabliste[$i] . "-") 
+			if($caracteristique == "$tcaracdisp->caracteristique" . "-" && $caracdisp == $tabliste[$i] . "-") 
 				$selected = "selected=\"selected\""; else $selected = "";
 				
 			$temp = ereg_replace("#ID", $id . $etcaracdisp, $texte);

@@ -66,6 +66,9 @@
 		}	
 		
 		function supprimer($id){
+			
+			if(! $this->tabarticle[$id]) return;
+			
 			$this->tabarticle[$id]="";
 			
 			for($i=$id+1; $i<$this->nbart+1; $i++)
