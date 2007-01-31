@@ -32,6 +32,8 @@
 	function substitrubriques($texte){
 		global $id_rubrique;
 
+		if(! $id_rubrique) return "";
+		
 		$trubrique = new Rubrique();
 	
 		$query = "select * from $trubrique->table where id='$id_rubrique'";

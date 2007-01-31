@@ -32,6 +32,8 @@
 	function substitdossier($texte){
 		global $id_dossier;
 		
+		if( ! $id_dossier) return "";
+		
 		$tdossier = new Dossier();
 	
 		$query = "select * from $tdossier->table where id='$id_dossier'";

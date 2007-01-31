@@ -33,6 +33,8 @@
 	function substitproduits($texte){
 		global $ref, $reforig, $motcle, $id_produit, $classement;
 
+		if(! $ref && ! $id_produit) return "";
+		
 		$tproduit = new Produit();
 		$tproduitdesc = new Produitdesc();
 		

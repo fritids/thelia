@@ -25,7 +25,7 @@
 ?>
 <?php
 
-	/* Subsitutions de type produits */
+	/* Subsitutions de type page */
 		
 	function substitpage($texte){
 		global $page;
