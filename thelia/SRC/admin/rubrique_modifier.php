@@ -202,7 +202,7 @@
 		$rubrique->supprimer();
 
 	    header("Location: parcourir.php?parent=" . $parent);
-
+		exit;
 	}
 
 	function supprimg($id){
