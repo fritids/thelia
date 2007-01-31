@@ -567,13 +567,21 @@
 
 		// rŽcupŽration des arguments
 		$produit = lireTag($args, "produit");
+		$num = lireTag($args, "num");
+		$aleatoire = lireTag($args, "aleatoire");
+		
 		$search="";
 			
 		if($produit) $search .= " and produit=\"$produit\"";
 		
+		if($num!="") $limit .= " limit 0,$num";
+
+		if($aleatoire) $order = "order by "  . " RAND()";		
+		
+		
 		$accessoire = new Accessoire();
 
-		$query = "select * from $accessoire->table where 1 $search";
+		$query = "select * from $accessoire->table where 1 $search $order $limit";
 		$resul = mysql_query($query, $accessoire->link);
 	
 		$nbres = mysql_numrows($resul);
