@@ -25,6 +25,7 @@
 ?>
 <?php
 
+	// lecture des arguments
 	function lireTag($ligne, $tag){
 	
 		if( ! strstr($ligne, $tag)) return "";
@@ -33,12 +34,14 @@
 	
 	}
 	
+	// redirection d'url'
 	function redirige($url){
 	
 		header("Location: " . $url);
 		exit;
 	}
 	
+	// renvoie le chemin pour aller ˆ une rubrique donnŽe
 	function chemin($id){
 
 		$tab ="";
@@ -64,6 +67,7 @@
 	
 	}	
 
+	// renvoie le chemin vers un dossier
 	function chemin_dos($id){
 
 		$tab ="";
@@ -89,6 +93,7 @@
 	
 	}	
 
+	// rewriting produit
 	function rewrite_prod($ref, $lang=0){
 
 		if(! $lang) $lang=$_SESSION['navig']->lang;
@@ -124,6 +129,7 @@
 
 	}
 	
+	// rewriting rubrique
 	function rewrite_rub($id, $lang=0){
 
 		if(! $lang) $lang=$_SESSION['navig']->lang;
@@ -156,7 +162,7 @@
 
 	}
 	
-
+	// rewriting contenu
 	function rewrite_cont($id, $lang=0){
 
 		if(! $lang) $lang=$_SESSION['navig']->lang;
@@ -194,6 +200,7 @@
 
 	}
 
+	// rewriting dossier
 	function rewrite_dos($id, $lang=0){
 
 		if(! $lang) $lang=$_SESSION['navig']->lang;
@@ -227,28 +234,30 @@
 	}
 
 
-function eregurl($url){
+	// nettoyage d'url
+	function eregurl($url){
 
-		$html = strpos($url, ".html");
+			$html = strpos($url, ".html");
 		
-		$url = substr($url, 0, $html);
+			$url = substr($url, 0, $html);
 		
 		
-		$url = ereg_caracspec($url);
+			$url = ereg_caracspec($url);
 
-		return $url . ".html";
-}
+			return $url . ".html";
+	}	
 
-
-function eregfic($fichier){
+	// nettoyage fichier
+	function eregfic($fichier){
 
 		$fichier = ereg_caracspec($fichier);
 
 		
 		return $fichier;
-}
+	}
 
-function ereg_caracspec($chaine){
+	// remplacement des caractres spŽciaux + accents
+	function ereg_caracspec($chaine){
 		
 		$avant = "ˆ‡‰‹ŠŒ˜—™›š¿Ž‘“’”•œžŸØ–çåËÌ€‚ƒæéèîïñ¯Í…òóô†";  
   		$apres = "aaaaaaooooooeeeeciiiiuuuuynaaaaaaceeeeoooooouuuu"; 
@@ -266,9 +275,10 @@ function ereg_caracspec($chaine){
 		$chaine = preg_replace('/-+/', '-', $chaine);	
 		
 		return $chaine;
-}
+	}
 	
-function arbreBoucle($depart, $profondeur=0, $i=0){
+	// hiŽrarchie des rubriques
+	function arbreBoucle($depart, $profondeur=0, $i=0){
 		$rec="";
 		$i++;
 		if($i == $profondeur && $profondeur != 0) return;
@@ -286,9 +296,10 @@ function arbreBoucle($depart, $profondeur=0, $i=0){
 		if(substr($rec, strlen($rec)-1) == ",") $rec = substr($rec, 0, strlen($rec)-1);
 		
 		return $rec;
-}
+	}
 
-function arbreOption($depart, $niveau, $prubrique){
+	// changement de rubrique
+	function arbreOption($depart, $niveau, $prubrique){
 
 		$rec="";
 		
@@ -313,9 +324,10 @@ function arbreOption($depart, $niveau, $prubrique){
 		
 		
 		return $rec;
-}
+	}
 
-function arbreBoucle_dos($depart, $profondeur=0, $i=0){
+	// hiŽrarchie des dossiers
+	function arbreBoucle_dos($depart, $profondeur=0, $i=0){
 
 		$rec="";
 		
@@ -335,9 +347,10 @@ function arbreBoucle_dos($depart, $profondeur=0, $i=0){
 		if(substr($rec, strlen($rec)-1) == ",") $rec = substr($rec, 0, strlen($rec)-1);
 		
 		return $rec;
-}
+	}
 
-function arbreOption_dos($depart, $niveau, $pdossier){
+	// changement de dossier
+	function arbreOption_dos($depart, $niveau, $pdossier){
 		$niveau++;
 		$tdossier = new Dossier();
 		$tdossierdesc = new Dossierdesc();
@@ -359,23 +372,24 @@ function arbreOption_dos($depart, $niveau, $pdossier){
 
 		
 		return $rec;
-}
+	}
 
- function resize($nomorig, $width){
+// retaille image
+ 	function resize($nomorig, $width){
 
 
- if (file_exists($nomorig))
- {
-        $extension = substr($nomorig, strlen($nomorig)-3);
+	 	if (file_exists($nomorig))
+ 		{
+       	 $extension = substr($nomorig, strlen($nomorig)-3);
 
-   // chargement img origine
-   if(strtolower($extension) == "gif"){
-        $image_orig = imagecreatefromgif($nomorig);
-    // Cacul des nouvelles dimensions
-         list($width_orig, $height_orig) = getimagesize($nomorig);
+  		 // chargement img origine
+  		 if(strtolower($extension) == "gif"){
+   		     $image_orig = imagecreatefromgif($nomorig);
+  			  // Cacul des nouvelles dimensions
+    	     list($width_orig, $height_orig) = getimagesize($nomorig);
 
-          if($width_orig>$width)
-              $height = ($width * $height_orig) / $width_orig;
+      	    if($width_orig>$width)
+       	       $height = ($width * $height_orig) / $width_orig;
           else {
                    $height = ceil($height_orig);
                    $width = ceil($width_orig);
@@ -383,7 +397,7 @@ function arbreOption_dos($depart, $niveau, $pdossier){
 
 
         $image_new = imagecreatetruecolor($width, $height);
-    //    $src_tc_idx = imagecolortransparent($image_orig);
+   
         $src_tc = imagecolorsforindex($image_orig, $src_tc_idx);
         $tgt_tc_idx = imagecolorallocate($image_new, $src_tc['red'], $src_tc['green'], $src_tc['blue']);
         imagefill($image_new, 0, 0, $tgt_tc_idx);
@@ -431,11 +445,11 @@ function arbreOption_dos($depart, $niveau, $pdossier){
         else if(strtolower($extension) == "png")
                  imagepng($image_new, "$nomorig", 100);
 
-  }
+  		}
 
- }
+ 	}
 
-	
+	// gŽnŽration mot de passe
 	function genpass($size){ 
 		 $key_g = ""; 
  		 $letter = "abcdefghijklmnopqrstuvwxyz"; 
@@ -452,6 +466,7 @@ function arbreOption_dos($depart, $niveau, $pdossier){
   		return $key_g; 
 }
  
+ 	// gŽnŽration de code
 	function gencode($size){ 
 		 $key_g = ""; 
 		 $letter="";
@@ -468,7 +483,7 @@ function arbreOption_dos($depart, $niveau, $pdossier){
   		return $key_g; 
 }
   
- 
+ 	// envoie de fichier en pice jointe
 	function mail_fichier($to , $sujet , $message , $fichier , $typemime , $nom , $reply , $from){ 
   $limite = "_parties_".md5(uniqid (rand())); 
   
@@ -503,7 +518,8 @@ function arbreOption_dos($depart, $niveau, $pdossier){
   return mail($to, $sujet, $texte.$attachement, "Reply-to:
 $reply\nFrom:$from\n".$mail_mime); 
 }
-
+	
+	// sŽrialisation de tableau
    function tabSerialise($tab){
  	  	$res = "[";
    	
@@ -516,6 +532,7 @@ $reply\nFrom:$from\n".$mail_mime);
    	return $res;
   } 
   
+  // suppression d'accent
   function supprAccent($texte) {
   
   	return strtr( $texte,"ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ",
@@ -523,61 +540,62 @@ $reply\nFrom:$from\n".$mail_mime);
   
   }
   
-  
-function port($type=0){
+ // calcul du port 
+	function port($type=0){
 	
-	if($_SESSION['navig']->commande->transport == "" && !$type) return -1;
+		if($_SESSION['navig']->commande->transport == "" && !$type) return -1;
 	
-	if( $_SESSION['navig']->adresse != 0) $chadr=1;
-	else $chadr=0;
+		if( $_SESSION['navig']->adresse != 0) $chadr=1;
+		else $chadr=0;
 	
-	$transport = new Transport();
+		$transport = new Transport();
 	
-	if(!$type) $transport->charger($_SESSION['navig']->commande->transport);
-	else $transport->charger($type);
+		if(!$type) $transport->charger($_SESSION['navig']->commande->transport);
+		else $transport->charger($type);
 		
-	$p = new Pays();
-	if($chadr){
-		 $adr = new adresse();
-		 $adr->charger($_SESSION['navig']->adresse);
-		 $p->charger($adr->pays);
-		 $cpostal = $adr->cpostal;
-	}
-	else {
-		$p->charger($_SESSION['navig']->client->pays);
-		$cpostal = $_SESSION['navig']->client->cpostal;
-	}
+		$p = new Pays();
+		if($chadr){
+			 $adr = new adresse();
+			 $adr->charger($_SESSION['navig']->adresse);
+			 $p->charger($adr->pays);
+			 $cpostal = $adr->cpostal;
+		}
+		else {
+			$p->charger($_SESSION['navig']->client->pays);
+			$cpostal = $_SESSION['navig']->client->cpostal;
+		}
 	
 
-	$zone = new Zone();
-	$zone->charger($p->zone);
-	$classe = $transport->classe;
+		$zone = new Zone();
+		$zone->charger($p->zone);
+		$classe = $transport->classe;
 
-	if(! file_exists("client/transports/$classe" . ".class.php")){
-		return -1;
-	}	
+		if(! file_exists("client/transports/$classe" . ".class.php")){
+			return -1;
+		}	
 
-	include_once("client/transports/$classe" . ".class.php");
-	$port = new $classe();
+		include_once("client/transports/$classe" . ".class.php");
+		$port = new $classe();
 		
-	$port->nbart = $_SESSION['navig']->panier->nbart();
-	$port->poids = $_SESSION['navig']->panier->poids();
-	$port->total = $_SESSION['navig']->panier->total();
-	$port->zone = $p->zone; 
-	$port->pays = $p->id;
-	$port->unitetr = $zone->unite;
-	$port->cpostal = $cpostal;
+		$port->nbart = $_SESSION['navig']->panier->nbart();
+		$port->poids = $_SESSION['navig']->panier->poids();
+		$port->total = $_SESSION['navig']->panier->total();
+		$port->zone = $p->zone; 
+		$port->pays = $p->id;
+		$port->unitetr = $zone->unite;
+		$port->cpostal = $cpostal;
 	 
-	return $port->calcule();
-} 
+		return $port->calcule();
+	} 
 
-function url_exists($url)
-{
- $handle = @fopen($url, "r");
- if ($handle === false)
-  return false;
- fclose($handle);
- return true;
-}
+	// vŽrification de l'existance d'une url
+	function url_exists($url)
+	{
+ 	$handle = @fopen($url, "r");
+ 	if ($handle === false)
+ 	 return false;
+	 fclose($handle);
+ 	return true;
+	}
  
 ?>

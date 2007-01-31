@@ -50,12 +50,14 @@ function gosaj($boucle, $param){
 
 }
 
+// ajout panier
 function ajoutsaj($ref){
 
 	ajouter($ref);
 
 }
 
+// changemment mot de pass
 function modifpasssaj($pass){
 		$client = New Client();
 		$client->charger_id($_SESSION['navig']->client->id);
@@ -64,6 +66,7 @@ function modifpasssaj($pass){
 		$client->maj();
 }
 
+// modif coordonnes
 function modifcoordsaj($raison, $nom, $prenom, $telfixe, $telport, $email, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays){
 			$client = New Client();
 			$client->charger_id($_SESSION['navig']->client->id);

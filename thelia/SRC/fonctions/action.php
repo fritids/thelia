@@ -25,14 +25,15 @@
 ?>
 <?php
 
-	
+	// ajout panier
 	function ajouter($ref){
 		if(!isset($quantite)) $quantite=1;
 
 		$perso = array();
 		
 		$i = 0;
-	
+		
+		// vŽrification si un produit avec la mme dŽclinaison est dŽjˆ prŽsent
 		foreach ($_POST as $key => $valeur) {
 			
 			if(strstr($key, "declinaison")){
@@ -46,11 +47,9 @@
 
 		$_SESSION['navig']->panier->ajouter($ref, $quantite, $perso);	
 		
-		
-		
-		
 	}
 	
+	// changement de transport
 	function transport($id){
 		$transproduit = new Transproduit();
 		$transzone = new Transzone();
@@ -77,7 +76,7 @@
 
 	}
 
-
+	// on fixe le code promo
 	function codepromo($code){
 		$promo = new Promo();
 		$promo->charger($code);
@@ -85,16 +84,17 @@
 
 	}
 		
+	// suppression d'un article du panier	
 	function supprimer($id){
 			$_SESSION['navig']->panier->supprimer($id);
 	}
 	
+	// modification de la quantitŽ d'un article
 	function modifier($article, $quantite){
 		$_SESSION['navig']->panier->modifier($article, $quantite);		
 	}
 	
-
-	
+	// connexion du client	
 	function connexion($email,$motdepasse){
 		
 		$client = New Client();
@@ -111,7 +111,7 @@
 		
 	}
 	
-
+	// dŽconnexion du client
 	function deconnexion(){
 
 		$_SESSION['navig']->client= new Client();
@@ -119,11 +119,12 @@
 		redirige($_SESSION['navig']->urlpageret);		
 	}
 
-		
+	// modification de l'adresse en cours	
 	function modadresse($adresse){
 		$_SESSION['navig']->adresse=$adresse;
 	}
 	
+	// procŽdure de paiement
 	function paiement($type_paiement){
 	
 		$total = 0;
@@ -316,6 +317,7 @@
 		redirige($paiement->url . "?total=$total");
 	}
 	
+	// crŽation d'un compte
 	function creercompte($raison, $entreprise, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2, $parrain){
 
 		global $obligetelfixe, $obligetelport;
@@ -378,6 +380,7 @@
 		else redirige("formulerr.php");
 	}
 	
+	// modification de compte	
 	function modifiercompte($raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2){
 
 		global $obligetelfixe, $obligetelport;
@@ -445,6 +448,7 @@
 
 	}
 		
+	// crŽation d'une adresse de livraison	
 	function creerlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays){
 		
 		if($libelle != "" && $raison != "" && $prenom != "" && $nom != "" && $adresse1 != ""
@@ -471,13 +475,15 @@
 		}
 	}
 	
+	
+	// suppression d'une adresse de livraison
+    function supprimerlivraison($id){
+         $adresse = new Adresse();
+         $adresse->charger($id);
+         $adresse->delete();
+    }
 
-        function supprimerlivraison($id){
-                $adresse = new Adresse();
-                $adresse->charger($id);
-                $adresse->delete();
-        }
-
+	// modification d'une adresse de livraison
 	function modifierlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays){
 	
 		$adresse = new Adresse();
@@ -503,6 +509,7 @@
 		}
 	}
 
+	// changement du mot de passe
 	function chmdp($email){
 		$msg = new Message();
 		$msgdesc = new Messagedesc();

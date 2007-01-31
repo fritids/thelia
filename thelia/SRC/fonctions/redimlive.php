@@ -29,6 +29,8 @@ foreach ($_GET as $key => $value) $$key = $value;
 ?>
 <?php
 
+// redimensionnement des images + effets
+
 include_once("divers.php");
 
 function imageflip(&$dest, &$src) {

@@ -34,7 +34,7 @@ foreach ($_GET as $key => $value) $$key = $value;
 
 	/* Moteur */
 	
-	/* Le fichier html associé au php ( fond ) est parsé afin de subsituer les informations au bon endroit */
+	/* Le fichier html associŽ au php ( fond ) est parsŽ afin de subsituer les informations au bon endroit */
 
 	include_once("fonctions/boucles.php");
 	include_once("fonctions/substitutions.php");
@@ -63,14 +63,14 @@ function analyse($res){
 	// substition simples
 	$res = substit(explode("\n", $res));	
 	
-	// laisser les infos pour les connectés ou non connectés
+	// laisser les infos pour les connectŽs ou non connectés
 	$res = filtre_connecte(explode("\n", $res));	
 	
 
 	// traitement dans le cas d'un formulaire
 	if($formulaire) $res = traitement_formulaire($res);
 	
-	// effectue le nombre de passe nécessaire afin de traiter toutes les boucles et sous boucles
+	// effectue le nombre de passe nŽcessaire afin de traiter toutes les boucles et sous boucles
 	
 	while(strstr($res, "<THELIA")) {
 		$res = pre($res);
@@ -78,31 +78,38 @@ function analyse($res){
 		$res = post($res);
 	}
 
+	// si on a un squelette comportant de l'Ajax il faut charger les div
 	if($sajax == 1) $res = chargerDiv(explode("\n", $res));
 
 	// boucles avec sinon
 	$res = ereg_replace("BTHELIA", "THELIA", $res);
 	$res = boucle_sinon(explode("\n", $res));
 
+	// boucles
+	
 	while(strstr($res, "<THELIA")) {
 		$res = pre($res);
 		$res = boucle_simple(explode("\n", $res));
 		$res = post($res);
 	}
 	
+	// execution du code php
+	
 	$res = execute_php(explode("\n", $res));
 
+	// on envoie le rŽsultat
+	
 	return $res;
 
 }
 		
-	   //$sajax_debug_mode = 1;
-		sajax_init(); 
-		sajax_export("gosaj");
-		sajax_export("ajoutsaj");
-		sajax_export("modifpasssaj");
-		sajax_export("modifcoordsaj");
-		sajax_handle_client_request();
+	  //$sajax_debug_mode = 1;
+	sajax_init(); 
+	sajax_export("gosaj");
+	sajax_export("ajoutsaj");
+	sajax_export("modifpasssaj");
+	sajax_export("modifcoordsaj");
+	sajax_handle_client_request();
 
 	// initialisation des variables
 	if(!isset($lang)) $lang="";
@@ -133,14 +140,14 @@ function analyse($res){
 	if(!isset($email2)) $email2="";	
 	if(!isset($id)) $id="";	
 
-	// création de la session si non existante
+	// crŽation de la session si non existante
 	
 	if(! isset($_SESSION["navig"])){
 	 	$_SESSION["navig"] = new Navigation();
 	 	$_SESSION["navig"]->lang="1";	
 	 }	
 	
-	// URL précédente
+	// URL prŽcŽdente
 	if(isset($_SERVER['HTTP_REFERER'])) $_SESSION["navig"]->urlprec = $_SERVER['HTTP_REFERER']; 
 	
 	// Page retour
@@ -179,37 +186,42 @@ function analyse($res){
 	}
 
 
-	// Sécurisation
+	// SŽcurisation
 	if($securise && ! $_SESSION["navig"]->connecte) { header("Location: connexion.php"); exit; }
 
-	// Vérif transport 
+	// VŽrif transport 
 	if($transport && ! $_SESSION["navig"]->commande->transport) { header("Location: transport.php"); exit; }
 	
-	// Vérif panier
+	// VŽrif panier
 	if($panier && ! $_SESSION["navig"]->panier->nbart) { header("Location: index.php"); exit; } 
 	
     // Paiement
 	if($vpaiement && ! strstr( $_SESSION["navig"]->urlprec, "paiement.php")) header("Location: index.php");
 
+	// chargement du squelette	
 	$lect = file($fond);
 	if(!file_exists($fond)) { echo "Impossible d'ouvrir $fond"; exit; }
 	$res = file_get_contents($fond);
 
-	$sajaxjs = sajax_get_javascript();
-	if(!file_exists($fond)) { echo "Impossible d'ouvrir fonctions/fonctsajax.js"; exit; }
-	$sajaxjs .= file_get_contents("fonctions/fonctsajax.js");
-	$jsf = fopen("fonctsajaxgen.js", "w");
-	fputs($jsf, $sajaxjs);
-	fclose($jsf);
-	$res = ereg_replace("#SAJAX", $sajaxjs, $res);
+	// initialisation de l'ajax
+	if($sajax == 1){
+		$sajaxjs = sajax_get_javascript();
+		if(!file_exists($fond)) { echo "Impossible d'ouvrir fonctions/fonctsajax.js"; exit; }
+		$sajaxjs .= file_get_contents("fonctions/fonctsajax.js");
+		$jsf = fopen("fonctsajaxgen.js", "w");
+		fputs($jsf, $sajaxjs);
+		fclose($jsf);
+		$res = ereg_replace("#SAJAX", $sajaxjs, $res);
+	}
+	
 	// inclusion
 	$res = inclusion(explode("\n", $res));
 		
-	// Résultat
-	echo perso(analyse($res/*, &$navig */));
+	// RŽsultat envoyŽ au navigateur
+	echo perso(analyse($res));
 
 	
-	// Reset
+	// Reset de la commande
 	if($reset){
             $_SESSION["navig"]->commande = new Commande();
             $_SESSION["navig"]->panier = new Panier();	
