@@ -53,7 +53,7 @@
 	function charger($type, $rubrique){
 
                 $i=0;
-				$tab[$i]="";
+				$tab = Array();
                 $rubdeclinaison = new Rubdeclinaison();
                 $declinaison = new Declinaison();
                 $declinaisondesc = new Declinaisondesc();

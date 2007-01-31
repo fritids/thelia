@@ -52,7 +52,7 @@
 	function charger($type, $rubrique){
 
                 $i=0;
-                $tab[$i]="";
+                $tab = Array();
                 $liste="";
                 
                 $rubcaracteristique = new Rubcaracteristique();
