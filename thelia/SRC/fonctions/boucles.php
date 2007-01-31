@@ -1091,6 +1091,7 @@
 
 
 				if($nbpage<$affmin) return;
+				if($nbpage == 1) return;
 				
 				if($typeaff == 1){
 					if(!$max) $max=$nbpage+1;
