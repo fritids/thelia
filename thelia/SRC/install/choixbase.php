@@ -1,9 +1,23 @@
 <?php
+	session_start();
 	
-	if(isset($_POST['serveur']) && isset( $_POST['utilisateur']) && isset($_POST['motdepasse']))
-		if(! $cnx = mysql_connect($_POST['serveur'], $_POST['utilisateur'], $_POST['motdepasse'])){
+	
+	if( ! $_SESSION['serveur'] ) $_SESSION['serveur'] = $_POST['serveur'];
+	if( ! $_SESSION['utilisateur'] ) $_SESSION['utilisateur'] = $_POST['utilisateur'];
+	if( ! $_SESSION['motdepasse'] ) $_SESSION['motdepasse'] = $_POST['motdepasse'];	
+				
+	if($_SESSION['serveur'] && $_SESSION['utilisateur'] && $_SESSION['motdepasse']){
+		if(! $cnx = @mysql_connect($_SESSION['serveur'], $_SESSION['utilisateur'], $_SESSION['motdepasse'])){
 			header("Location: bdd.php?err=1");	
+			exit;
 		}
+
+	}		
+	
+	else {
+		header("Location: bdd.php?err=1");	
+		exit;
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -58,9 +72,9 @@
 				<br />
 				
 				<form action="verifdroits.php" method="post">
-				<input type="hidden" name="serveur" value="<?php echo $_POST['serveur']; ?>" />
-				<input type="hidden" name="utilisateur" value="<?php echo $_POST['utilisateur']; ?>" />
-				<input type="hidden" name="motdepasse" value="<?php echo $_POST['motdepasse']; ?>" />
+				<input type="hidden" name="serveur" value="<?php echo $_SESSION['serveur']; ?>" />
+				<input type="hidden" name="utilisateur" value="<?php echo $_SESSION['utilisateur']; ?>" />
+				<input type="hidden" name="motdepasse" value="<?php echo $_SESSION['motdepasse']; ?>" />
 								
 				Veuillez choisir votre base de données. <br /><br />
 				
@@ -68,8 +82,9 @@
 				<?php 
 					$i=0;
 					
-					$listbdd = mysql_list_dbs();
-					while($row = mysql_fetch_object($listbdd)){
+					$listbdd = @mysql_list_dbs();
+					if($listbdd)
+					 while($row = mysql_fetch_object($listbdd)){
 				?>
 	
 					<input type="radio" name="choixbase" value="<?php echo $row->Database; ?>"  <?php if($i == 0) echo "checked=\"checked\""; ?>  /><?php echo $row->Database; ?> <br />
@@ -77,6 +92,24 @@
 				<?php
 				
 					$i++;
+						} else {
+				?>
+				
+					<input type="text" name="choixbase" /> 
+					
+					<?php 
+						if(isset($_GET['err']) && $_GET['err']) {					
+					?>
+					
+						<span class="erreur">(vous n'avez pas accés à cette base)</span>
+						
+					<?php
+						}
+					?>
+					
+					<br />
+				
+				<?php 
 						}
 				?>
 				 

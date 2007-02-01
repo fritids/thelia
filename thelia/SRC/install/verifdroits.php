@@ -1,13 +1,18 @@
 <?php
 
-	mysql_connect($_POST['serveur'], $_POST['utilisateur'], $_POST['motdepasse']);
-	mysql_select_db($_POST['choixbase']);
+	session_start();
+	
+	if($_POST['choixbase']) $_SESSION['choixbase'] = $_POST['choixbase'];
+	
+	mysql_connect($_SESSION['serveur'], $_SESSION['utilisateur'], $_SESSION['motdepasse']);
+	if( ! mysql_select_db($_SESSION['choixbase']))
+		{ header("Location: choixbase.php?err=1"); exit; }
 	
 	$sql = file_get_contents("../../bdd/thelia.sql");
 	
 	$tab = explode(";", $sql);
 	
-	if(! mysql_numrows(mysql_list_tables($_POST['choixbase']))) 
+	if(! mysql_numrows(mysql_list_tables($_SESSION['choixbase']))) 
 		for($i=0; $i<count($tab); $i++)
 		mysql_query($tab[$i]);
 ?>
@@ -62,10 +67,10 @@
 			<h2>Vérification des droits</h2>
 		
 				<form action="configuration.php" method="post">
-				<input type="hidden" name="serveur" value="<?php echo $_POST['serveur']; ?>" />
-				<input type="hidden" name="utilisateur" value="<?php echo $_POST['utilisateur']; ?>" />
-				<input type="hidden" name="motdepasse" value="<?php echo $_POST['motdepasse']; ?>" />
-				<input type="hidden" name="choixbase" value="<?php echo $_POST['choixbase']; ?>" />				
+				<input type="hidden" name="serveur" value="<?php echo $_SESSION['serveur']; ?>" />
+				<input type="hidden" name="utilisateur" value="<?php echo $_SESSION['utilisateur']; ?>" />
+				<input type="hidden" name="motdepasse" value="<?php echo $_SESSION['motdepasse']; ?>" />
+				<input type="hidden" name="choixbase" value="<?php echo $_SESSION['choixbase']; ?>" />				
 				<br />
 								
 				Nous allons vérifier certains droits sur les fichiers et les répertoires <br /><br />
@@ -112,23 +117,31 @@
 					
 				?>
 				
-				
+				<br /><br />
 				
 				<?php
 					if(!$err){
 				?>
 				
 					<span class="valide">Les droits sont corrects</span>
-				
+					<br /><br />
+					<input type="submit" value="Continuer" />
+					
 				<?php
 				
+					} else {
+				?>
+					
+					<input type="button" value="Rafraichir" onClick="location='<?php echo $_SERVER['php_self']; ?>'" />
+				
+				<?php
 					}
 				?>
 				
-				<br /><br />
 				
 				
-				<input type="submit" value="Continuer" />
+				
+				
 	
 			 </form>
 

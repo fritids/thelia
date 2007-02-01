@@ -1,5 +1,9 @@
+1.1.7
+
 1.1.6
 	modification de la boucle accessoire
+	ajout de système d'exclusion
+	modification de l'install pour mysql_list_dbs désactivée
 	
 1.1.5
 	Divers bugs mineurs

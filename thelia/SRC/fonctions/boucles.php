@@ -82,6 +82,8 @@
 		$pasvide = lireTag($args, "pasvide");
 		$ligne = lireTag($args, "ligne");
 		$aleatoire = lireTag($args, "aleatoire");
+		$exclusion = lireTag($args, "exclusion");
+		
 		$res="";
 		$search="";
 
@@ -92,7 +94,8 @@
 		if($courante == "1") $search .=" and id='$id_rubrique'";
 		else if($courante == "0") $search .=" and id!='$id_rubrique'";
 		if($ligne!="") $search.=" and ligne=\"$ligne\"";
-
+		if($exclusion!="") $search .= " and id not in($exclusion)";
+		
 		$rubrique = new Rubrique();
 		
 		if($aleatoire) $order = "order by "  . " RAND()";
@@ -167,6 +170,7 @@
 		$courant = lireTag($args, "courant");
 		$ligne = lireTag($args, "ligne");
 		$aleatoire = lireTag($args, "aleatoire");
+		$exclusion = lireTag($args, "exclusion");	
 		
 		$search="";
 		$res="";
@@ -178,6 +182,7 @@
 		if($courant == "1") $search .=" and id='$id_dossier'";
 		else if($courant == "0") $search .=" and id!='$id_dossier'";
 		if($ligne != "") $search .=" and ligne='$ligne'";
+		if($exclusion!="") $search .= " and id not in($exclusion)";
 		
 		$dossier = new Dossier();
 		
@@ -247,6 +252,7 @@
 		$noiretblanc = lireTag($args, "noiretblanc");
 		$miroir = lireTag($args, "miroir");
 		$aleatoire = lireTag($args, "aleatoire");
+		$exclusion = lireTag($args, "exclusion");	
 		
 		$search="";
 		$res="";
@@ -260,6 +266,7 @@
 		if($rubrique != "") $search .= " and rubrique=\"$rubrique\"";
 		if($dossier != "") $search .= " and dossier=\"$dossier\"";
 		if($contenu != "") $search .= " and contenu=\"$contenu\"";
+		if($exclusion!="") $search .= " and id not in($exclusion)";
 		
 		$image = new Image();
 		$imagedesc = new Imagedesc();
@@ -516,6 +523,7 @@
 		$num = lireTag($args, "num");
 		$dossier = lireTag($args, "dossier");
 		$contenu = lireTag($args, "contenu");
+		$exclusion = lireTag($args, "exclusion");	
 		
 		$search="";
 		$order="";
@@ -526,6 +534,7 @@
 		if($rubrique != "") $search .= " and rubrique=\"$rubrique\"";
 		if($dossier != "") $search .= " and dossier=\"$dossier\"";
 		if($contenu != "") $search .= " and contenu=\"$contenu\"";
+		if($exclusion!="") $search .= " and id not in($exclusion)";
 						
 		$document = new Document();
 		$documentdesc = new Documentdesc();
@@ -625,6 +634,7 @@
 			$caracval = lireTag($args, "caracval");
 			$courant = lireTag($args, "courant");
 			$profondeur = lireTag($args, "profondeur");		
+			$exclusion = lireTag($args, "exclusion");	
 						
 			if($bloc) $totbloc=$bloc;
 			if(!$deb) $deb=0;
@@ -653,6 +663,8 @@
 			
 			if($courant == "1") $search .= " and ref=\"$ref\"";
 			else if($courant == "0") $search .= " and ref!=\"$ref\"";
+			
+			if($exclusion!="") $search .= " and id not in($exclusion)";
 			
 			if($rubrique!=""){
 				if($profondeur == "") $profondeur=0;
@@ -917,6 +929,7 @@
 			$rubrique = lireTag($args, "rubrique");
 			$profondeur = lireTag($args, "profondeur");		
 			$courant = lireTag($args, "courant");			
+			$exclusion = lireTag($args, "exclusion");	
 				
 			if(!$deb) $deb=0;
 		
@@ -943,6 +956,7 @@
 			if($boutique != "") $search .=" and boutique='$boutique'";
 			if($courant == "1") $search .=" and id='$id_contenu'";
 			else if($courant == "0") $search .=" and id!='$id_contenu'";
+			if($exclusion!="") $search .= " and id not in($exclusion)";
 			
 			$liste= "";
 			

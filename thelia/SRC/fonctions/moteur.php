@@ -139,7 +139,8 @@ function analyse($res){
 	if(!isset($email1)) $email1="";	
 	if(!isset($email2)) $email2="";	
 	if(!isset($id)) $id="";	
-
+	if(!isset($sajax)) $sajax="";	
+	
 	// création de la session si non existante
 	
 	if(! isset($_SESSION["navig"])){

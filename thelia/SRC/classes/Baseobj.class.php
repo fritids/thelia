@@ -88,9 +88,7 @@
 			} 
 			
 			else return 0;
-			
-			
-			
+				
 			return mysql_numrows($resul);
 		}
 	
