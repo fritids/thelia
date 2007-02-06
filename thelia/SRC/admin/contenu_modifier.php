@@ -164,6 +164,7 @@
      $maxClassement = mysql_result($resul, 0, "maxClassement");
 
 	 $contenu->boutique = $_SESSION["bout"];
+	 $contenu->datemodif = date("Y-m-d H:i:s");	
 	 $contenu->dossier = $dossier; 
 	 if($ligne == "on") $contenu->ligne = 1; else $contenu->ligne = 0;
 	 $contenu->classement = $maxClassement + 1;

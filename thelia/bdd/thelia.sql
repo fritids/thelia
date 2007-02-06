@@ -2141,7 +2141,7 @@ INSERT INTO `variable` VALUES (9, 'rssadmin', 'http://www.octolys.fr/rss.php');
 CREATE TABLE `venteprod` (
   `id` int(11) NOT NULL auto_increment,
   `ref` text NOT NULL,
-  `titre` varchar(100) NOT NULL default '0',
+  `titre` text NOT NULL,
   `chapo` text NOT NULL,
   `description` text NOT NULL,
   `quantite` int(11) NOT NULL default '0',
