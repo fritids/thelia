@@ -61,16 +61,12 @@
                 $commande->statut = $statutch;
 
 
-                if($statutch == 2 && $commande->facture == 0) {
-                        $query = "select max(facture) as mfact from $commande->table";
-                        $resul = mysql_query($query, $commande->link);
-                        if(mysql_result($resul, 0, "mfact")>0) $commande->facture = mysql_result($resul, 0, "mfact") + 1;
-                        else $commande->facture = 1000;
-
-                }
+                if($statutch == 2 && $commande->facture == 0) 
+                	$commande->genfact();
 
                 $commande->maj();
         }
+        
 	if($fichier) copy("$fichier", "../client/commande/" . $ref . ".pdf");
 
 	if($action == "supprfic") unlink("../client/commande/" . $ref . ".pdf");
