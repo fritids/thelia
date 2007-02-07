@@ -30,8 +30,6 @@
 		
 	function substitcommande($texte){
 		global $commande;
-
-		if(! $commande) return "";
 		
 		if($commande) $refs = $commande;
 		else $refs = $_SESSION['navig']->commande->ref;
