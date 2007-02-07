@@ -33,7 +33,7 @@
 	function substitcontenu($texte){
 		global $motcle, $id_contenu;
 
-		if(! $id_contenu) return "";
+		if(! $id_contenu) return $texte;
 		
 		$tcontenu = new Contenu();
 		$tcontenudesc = new Contenudesc();

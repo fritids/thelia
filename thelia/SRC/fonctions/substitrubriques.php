@@ -32,7 +32,7 @@
 	function substitrubriques($texte){
 		global $id_rubrique;
 
-		if(! $id_rubrique) return "";
+		if(! $id_rubrique) return $texte;
 		
 		$trubrique = new Rubrique();
 	

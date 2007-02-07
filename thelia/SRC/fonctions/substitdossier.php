@@ -32,7 +32,7 @@
 	function substitdossier($texte){
 		global $id_dossier;
 		
-		if( ! $id_dossier) return "";
+		if( ! $id_dossier) return $texte;
 		
 		$tdossier = new Dossier();
 	
