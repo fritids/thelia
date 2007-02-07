@@ -4,7 +4,6 @@
 	diverses corrections de bugs
 	correction de substitcommande.php
 	ajout des substitutions #PRODUIT_PRIXMIN, #PRODUIT_PRIXMAX
-	Déplacement des exemples dans le répertoire source
 	
 1.1.6
 	modification de la boucle accessoire
