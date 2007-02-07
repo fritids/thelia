@@ -33,7 +33,6 @@
 	function substitproduits($texte){
 		global $ref, $reforig, $motcle, $id_produit, $classement, $prixmin, $prixmax;
 
-		if(! $ref && ! $id_produit) return "";
 		
 		$tproduit = new Produit();
 		$tproduitdesc = new Produitdesc();
@@ -42,13 +41,16 @@
 
 
 		$tproduitdesc->charger($tproduit->id, $_SESSION['navig']->lang);
-		        
-        $texte = ereg_replace("#PRODUIT_REFORIG", "$reforig", $texte);
-		$texte = ereg_replace("#PRODUIT_REF", "$ref", $texte);
-		$texte = ereg_replace("#PRODUIT_ID", $tproduitdesc->produit, $texte);
-		$texte = ereg_replace("#PRODUIT_MOTCLE", "$motcle", $texte);
-		$texte = ereg_replace("#PRODUIT_NOM", $tproduitdesc->titre, $texte);
-		$texte = ereg_replace("#PRODUIT_RUBRIQUE", $tproduit->rubrique, $texte);
+		
+		if( $ref || $id_produit){        
+       	 	$texte = ereg_replace("#PRODUIT_REFORIG", "$reforig", $texte);
+			$texte = ereg_replace("#PRODUIT_REF", "$ref", $texte);
+			$texte = ereg_replace("#PRODUIT_ID", $tproduitdesc->produit, $texte);
+			$texte = ereg_replace("#PRODUIT_MOTCLE", "$motcle", $texte);
+			$texte = ereg_replace("#PRODUIT_NOM", $tproduitdesc->titre, $texte);
+			$texte = ereg_replace("#PRODUIT_RUBRIQUE", $tproduit->rubrique, $texte);
+		}
+		
 		$texte = ereg_replace("#PRODUIT_CLASSEMENT", "$classement", $texte);
 		$texte = ereg_replace("#PRODUIT_PRIXMIN", "$prixmin", $texte);
 		$texte = ereg_replace("#PRODUIT_PRIXMAX", "$prixmax", $texte);
