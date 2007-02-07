@@ -31,7 +31,7 @@
 	/* Subsitutions de type produits */
 		
 	function substitproduits($texte){
-		global $ref, $reforig, $motcle, $id_produit, $classement;
+		global $ref, $reforig, $motcle, $id_produit, $classement, $prixmin, $prixmax;
 
 		if(! $ref && ! $id_produit) return "";
 		
@@ -50,7 +50,9 @@
 		$texte = ereg_replace("#PRODUIT_NOM", $tproduitdesc->titre, $texte);
 		$texte = ereg_replace("#PRODUIT_RUBRIQUE", $tproduit->rubrique, $texte);
 		$texte = ereg_replace("#PRODUIT_CLASSEMENT", "$classement", $texte);
-
+		$texte = ereg_replace("#PRODUIT_PRIXMIN", "$prixmin", $texte);
+		$texte = ereg_replace("#PRODUIT_PRIXMAX", "$prixmax", $texte);
+				
 		return $texte;
 	
 	}
