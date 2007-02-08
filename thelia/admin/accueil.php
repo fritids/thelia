@@ -35,7 +35,7 @@
 
         if($action == "identifier") {
                 $admin = new Administrateur();
-                if(! $admin->charger($identifiant, $motdepasse)) header("Location: index.php");
+                if(! $admin->charger($_POST['identifiant'], $_POST['motdepasse'])) header("Location: index.php");
                 else{
                         $_SESSION["util"] = new Administrateur();
                         $_SESSION["util"] = $admin;

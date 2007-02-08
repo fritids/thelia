@@ -6,6 +6,7 @@
 	ajout des substitutions #PRODUIT_PRIXMIN, #PRODUIT_PRIXMAX
 	correction importe de toutes les substitutions
 	réorganisation des répertoires
+	modification de l'installation
 	
 1.1.6
 	modification de la boucle accessoire
