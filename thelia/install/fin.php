@@ -55,7 +55,7 @@
     $liste = dir("../Template");
 
     while (false !== ($entry = $liste->read())) {
-            if(! strstr($entry, ".") && ! strstr($entry, "modules")) copy("../Template/$entry", "../$entry");
+            if(substr($entry, 0, 1) != "." && ! strstr($entry, "modules")) copy("../Template/$entry", "../$entry");
     }
     
     $liste->close();
@@ -66,7 +66,7 @@
     $liste = dir("../Template/modules");
 
     while (false !== ($entry = $liste->read())) {
-             if(! strstr($entry, ".") && ! is_dir($entry)) copy("../Template/modules/$entry", "../modules/$entry");
+             if(substr($entry, 0, 1) != "." && ! is_dir($entry)) copy("../Template/modules/$entry", "../modules/$entry");
     }
     
     $liste->close();
