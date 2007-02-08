@@ -71,6 +71,11 @@
     
     $liste->close();
 
+	
+	$_SESSION['serveur']="";
+	$_SESSION['utilisateur']="";
+	$_SESSION['motdepasse']="";
+	$_SESSION['choixbase']="";
 				
 ?>
 
