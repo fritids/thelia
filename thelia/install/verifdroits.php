@@ -8,7 +8,7 @@
 	if( ! mysql_select_db($_SESSION['choixbase']))
 		{ header("Location: choixbase.php?err=1"); exit; }
 	
-	$sql = file_get_contents("../../bdd/thelia.sql");
+	$sql = file_get_contents("thelia.sql");
 	
 	$tab = explode(";", $sql);
 	

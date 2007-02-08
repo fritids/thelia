@@ -50,7 +50,28 @@
 			
 	$var->charger("rssadmin");
 	$var->valeur=$_POST['rssadmin'];
-	$var->maj();					
+	$var->maj();	
+	
+    $liste = dir("../Template");
+
+    while (false !== ($entry = $liste->read())) {
+            if(! strstr($entry, ".") && ! strstr($entry, "modules")) copy("../Template/$entry", "../$entry");
+    }
+    
+    $liste->close();
+
+
+    mkdir("../modules");
+
+    $liste = dir("../Template/modules");
+
+    while (false !== ($entry = $liste->read())) {
+             if(! strstr($entry, ".") && ! is_dir($entry)) copy("../Template/modules/$entry", "../modules/$entry");
+    }
+    
+    $liste->close();
+
+				
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
