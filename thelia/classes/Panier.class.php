@@ -45,7 +45,7 @@
 			
             for($i=0; $i<$this->nbart+1; $i++)
                 if(isset($this->tabarticle[$i]))
-                	if($this->tabarticle[$i]->produit->ref == $ref){
+                	if(isset($this->tabarticle[$i]->produit->ref) && $this->tabarticle[$i]->produit->ref == $ref){
                 	      if(! count($tdeclidisp)) $existe = 1;
               			  for($j=0; $j<count($this->tabarticle[$i]->perso); $j++){
 

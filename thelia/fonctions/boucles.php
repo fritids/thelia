@@ -688,7 +688,7 @@
 			
 			if($refp!="") $search .= " and ref=\"$refp\"";
 
-			if($bloc == "-1") $bloc = "1844674407370955161";
+			if($bloc == "-1") $bloc = "999999999";
 			if($bloc!="" && $num!="") $limit .= " limit $deb,$bloc";
 			else if($num!="") $limit .= " limit $deb,$num";
 			
@@ -930,9 +930,11 @@
 			$profondeur = lireTag($args, "profondeur");		
 			$courant = lireTag($args, "courant");			
 			$exclusion = lireTag($args, "exclusion");	
-				
+			
+			if($bloc) $totbloc=$bloc;	
 			if(!$deb) $deb=0;
 		
+			if(!$totbloc) $totbloc=1;
 			// initialisation de variables
 			$search = "";
 			$order = "";
@@ -957,6 +959,10 @@
 			if($courant == "1") $search .=" and id='$id_contenu'";
 			else if($courant == "0") $search .=" and id!='$id_contenu'";
 			if($exclusion!="") $search .= " and id not in($exclusion)";
+
+			if($bloc == "-1") $bloc = "999999999";
+			if($bloc!="" && $num!="") $limit .= " limit $deb,$bloc";
+			else if($num!="") $limit .= " limit $deb,$num";
 			
 			$liste= "";
 			
@@ -986,9 +992,6 @@
 			}
 
 			
-			
-			if($num!="") $limit .= " limit $deb,$num";
-			
 			 if($aleatoire) $order = "order by "  . " RAND()";
 			else if($classement == "manuel") $order = "order by classement";
 			
@@ -1017,21 +1020,30 @@
 			
 				$liste = substr($liste, 0, strlen($liste) - 2);
 				$query = "select * from $contenu->table where id in ($liste) and ligne=1 $limit";
+				$saveReq = "select * from $contenu->table where id in ($liste) and ligne=1";
 			}
 			
 		else $query = "select * from $contenu->table where 1 $search $order $limit";
+		$saveReq = "select * from $contenu->table where 1 $search";
+		
 		$resul = mysql_query($query, $contenu->link);
 		$nbres = mysql_numrows($resul);
 		if(!$nbres) return "";
 		// substitutions
 		if($type) return $query;
 
+		$saveReq = ereg_replace("\*", "count(*) as totcount", $saveReq);
+		$saveRes = mysql_query($saveReq);
+		$countRes = mysql_result($saveRes, 0, "totcount") . " ";
+		
 		while( $row = mysql_fetch_object($resul) ){
 		
 			
 			$boutiqueprod->charger($row->boutique);
 	
-
+			if($num>0) 
+				if($comptbloc>=ceil($countRes/$num) && $bloc!="") continue;
+				
 			if($comptbloc == 0) $debcourant=0;
 			else $debcourant = $num * ($comptbloc);
 			$comptbloc++;

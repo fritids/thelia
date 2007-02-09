@@ -132,7 +132,7 @@
 					} else {
 				?>
 					
-					<input type="button" value="Rafraichir" onClick="location='<?php echo $_SERVER['php_self']; ?>'" />
+					<input type="button" value="Rafraichir" onClick="location='verifdroits.php'" />
 				
 				<?php
 					}
