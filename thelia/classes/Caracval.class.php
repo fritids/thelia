@@ -53,7 +53,13 @@
 
 
 		}
-			
+
+		function charger_valeur($valeur){
+			return $this->getVars("select * from $this->table where valeur=\"$valeur\"");
+
+
+		}
+					
 	}
 
 

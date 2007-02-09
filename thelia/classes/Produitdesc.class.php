@@ -49,6 +49,11 @@
 		
 		}
 
+		function charger_titre($titre){
+			return $this->getVars("select * from $this->table where titre=\"$titre\"");
+		
+		}
+		
 	}
 
 

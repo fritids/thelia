@@ -59,6 +59,12 @@
 			return $this->getVars("select * from $this->table where declidisp=\"$declidisp\" and lang=\"$lang\"");
 
 		}
+
+		function charger_valeur($titre){
+		
+			return $this->getVars("select * from $this->table where titre=\"$titre\"");
+
+		}
 		
 	}
 
