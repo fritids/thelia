@@ -2067,6 +2067,7 @@
 		$id = lireTag($args, "id");
 		$produit = lireTag($args, "produit");
 		$classement = lireTag($args, "classement");
+		$stockmini = lireTag($args, "stockmini");
 		$search ="";
 		$liste="";
 		$tabliste[0]="";
@@ -2090,6 +2091,14 @@
 		$i=0;
 				
 		while($row = mysql_fetch_object($resul)){
+			
+				if($stockmini && $produit){
+					$stock = new Stock();
+					$stock->charger($row->id, $produit);
+					if($stock->valeur<$stockmini) continue;
+					
+				}
+			
 				$liste .= "'" . $row->id . "',";
 				$tabliste[$i++] = $row->id;
 		}
