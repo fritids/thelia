@@ -2,6 +2,7 @@
 	mise en place des blocs pour la boucle Contenu
 	correction des limites infinies
 	diverses corrections
+	maj de classes
 	
 1.1.7
 	correction de la documentation
