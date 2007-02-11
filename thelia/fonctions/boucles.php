@@ -88,7 +88,7 @@
 		$search="";
 
 		// pr�aration de la requ�e
-		if($id!="")  $search.=" and id=\"$id\"";
+		if($id!="")  $search.=" and id in ($id)";
 		if($parent!="") $search.=" and parent=\"$parent\"";
 		if($boutique != "") $search .=" and boutique='$boutique'";
 		if($courante == "1") $search .=" and id='$id_rubrique'";

@@ -6,9 +6,9 @@
 
 	if(! file_exists("../classes/Cnx.class.php")){
 	
-		$fic = ereg_replace("localhost", $_SESSION['serveur'], $fic);
-		$fic = ereg_replace("login_mysql", $_SESSION['utilisateur'], $fic);
-		$fic = ereg_replace("motdepasse_mysql",  $_SESSION['motdepasse'], $fic);
+		$fic = ereg_replace("votre_serveur", $_SESSION['serveur'], $fic);
+		$fic = ereg_replace("votre_login_mysql", $_SESSION['utilisateur'], $fic);
+		$fic = ereg_replace("votre_motdepasse_mysql",  $_SESSION['motdepasse'], $fic);
 		$fic = ereg_replace("bdd_sql", $_SESSION['choixbase'], $fic);	
 		
 		$fp = fopen("../classes/Cnx.class.php.orig", "w");

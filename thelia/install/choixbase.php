@@ -2,9 +2,9 @@
 	session_start();
 	
 	
-	if( ! $_SESSION['serveur'] || $_POST['serveur']) $_SESSION['serveur'] = $_POST['serveur'];
-	if( ! $_SESSION['utilisateur'] || $_POST['utilisateur']) $_SESSION['utilisateur'] = $_POST['utilisateur'];
-	if( ! $_SESSION['motdepasse'] || $_POST['motdepasse']) $_SESSION['motdepasse'] = $_POST['motdepasse'];	
+	if( ! $_SESSION['serveur'] || isset($_POST['serveur'])) $_SESSION['serveur'] = $_POST['serveur'];
+	if( ! $_SESSION['utilisateur'] || isset($_POST['utilisateur'])) $_SESSION['utilisateur'] = $_POST['utilisateur'];
+	if( ! $_SESSION['motdepasse'] || isset($_POST['motdepasse'])) $_SESSION['motdepasse'] = $_POST['motdepasse'];	
 				
 	if($_SESSION['serveur'] && $_SESSION['utilisateur'] && $_SESSION['motdepasse']){
 		if(! $cnx = @mysql_connect($_SESSION['serveur'], $_SESSION['utilisateur'], $_SESSION['motdepasse'])){
