@@ -3,6 +3,7 @@
 	correction des limites infinies
 	diverses corrections
 	maj de classes
+	maj et correction de l'installation
 	
 1.1.7
 	correction de la documentation

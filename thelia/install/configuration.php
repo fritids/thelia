@@ -2,7 +2,8 @@
 	
 	session_start();
 	
-	$fic = file_get_contents("../classes/Cnx.class.php.orig");
+	if(file_exists("../classes/Cnx.class.php.orig")) 
+		$fic = file_get_contents("../classes/Cnx.class.php.orig");
 
 	if(! file_exists("../classes/Cnx.class.php")){
 	
