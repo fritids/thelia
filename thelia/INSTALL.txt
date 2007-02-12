@@ -1,7 +1,5 @@
 THELIA est écrit en PHP.
 
-L'ensemble du code se situe dans le rèpertoire SRC.
-
 Pour installer Thelia, il suffit de pointer votre navigateur WEB à l'adresse suivante :
 http://votreserveurweb/thelia/install/
 
