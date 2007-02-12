@@ -131,7 +131,7 @@
 					$var->charger("photorubw");
 				?>
 							
-				<div class="col">Taille de la petite vignette produit (en pixel) :</div>
+				<div class="col">Taille de la petite vignette produit :</div>
 				<div class="col"><input type="text" name="photorubw" value="<?php echo $var->valeur ?>" size="30" /></div> 				
 				
 				
@@ -163,7 +163,7 @@
 					$var->charger("rsspass");
 				?>
 				
-				<div class="col">Token RSS (sécurisation du flux RSS de commandes) :</div>
+				<div class="col">Token RSS :</div>
 				<div class="col"><input type="text" name="rsspass" value="<?php echo $var->valeur ?>" size="30" /></div> 				
 
 				<?php										

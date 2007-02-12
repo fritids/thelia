@@ -2047,6 +2047,7 @@ CREATE TABLE `transport` (
 -- Contenu de la table `transport`
 -- 
 
+INSERT INTO `transport` VALUES (1, 1, 'Colissimo');
 
 -- --------------------------------------------------------
 
@@ -2068,6 +2069,7 @@ CREATE TABLE `transportdesc` (
 -- Contenu de la table `transportdesc`
 -- 
 
+INSERT INTO `transportdesc` VALUES (1, 1, 1, 'Colissimo', '', '');
 
 -- --------------------------------------------------------
 
@@ -2105,6 +2107,7 @@ CREATE TABLE `transzone` (
 -- Contenu de la table `transzone`
 -- 
 
+INSERT INTO `transzone` VALUES (1, 1, 1);
 
 -- --------------------------------------------------------
 

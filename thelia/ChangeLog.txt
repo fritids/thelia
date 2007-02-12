@@ -2,6 +2,7 @@
 	classement inverse pour la boucle contenu
 	ajout du plugin pour Macromédia Dreamweaver
 	modification de l'installation
+	ajout d'un transport par défaut à l'installation
 	
 1.1.8
 	mise en place des blocs pour la boucle Contenu
