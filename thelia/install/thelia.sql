@@ -2130,7 +2130,7 @@ INSERT INTO `variable` VALUES (4, 'photorubw', '200');
 INSERT INTO `variable` VALUES (5, 'photoprodw', '200');
 INSERT INTO `variable` VALUES (6, 'tva', '19.6');
 INSERT INTO `variable` VALUES (7, 'style_chem', '/style_editeur.css');
-INSERT INTO `variable` VALUES (8, 'rsspass', 'KEJORFJOZJOREZJFIOHJEIUZFHIUEHZFIHEIZHFIEUZHFIEZHFIEZHFI');
+INSERT INTO `variable` VALUES (8, 'rsspass', '');
 INSERT INTO `variable` VALUES (9, 'rssadmin', 'http://www.octolys.fr/rss.php');
 -- --------------------------------------------------------
 

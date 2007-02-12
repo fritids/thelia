@@ -64,8 +64,7 @@
 	<div id="contenu"style="overflow:hidden;zoom: 1">
 	
 		<div id="colonneDeGauche"style="overflow:hidden;zoom: 1">
-	<THELIA_rss type="RSS" url="http://blog.thelia.fr/rss.php" deb="0" nb="1">
-		
+
 			<div id="chapeau"style="overflow:hidden;zoom: 1">
 			<h2>Choix de la base</h2>
 		
@@ -121,10 +120,6 @@
 
 			</div>
 
-	</THELIA_rss>
-	
-
-			
 		</div>
 		
 

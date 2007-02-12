@@ -70,7 +70,6 @@
 	<div id="contenu"style="overflow:hidden;zoom: 1">
 	
 		<div id="colonneDeGauche"style="overflow:hidden;zoom: 1">
-	<THELIA_rss type="RSS" url="http://blog.thelia.fr/rss.php" deb="0" nb="1">
 		
 			<div id="chapeau"style="overflow:hidden;zoom: 1">
 			<h2>Configuration</h2>
@@ -103,7 +102,7 @@
 				<div class="col">Mot de passe :</div>
 				<div class="col"><input type="password" name="motdepasse1" size="30" /></div> 
 				
-				<div class="col">Vérification du mot de passe :</div>
+				<div class="col">Re-saisis du mot de passe :</div>
 				<div class="col"><input type="password" name="motdepasse2" size="30" /></div> 
 				
 												
@@ -125,14 +124,14 @@
 				?>
 															
 				<div class="col">Adresse du site :</div>
-				<div class="col"><input type="text" name="urlsite" value="<?php echo $var->valeur ?>" size="30" /></div> 
+				<div class="col"><input type="text" name="urlsite" value="<?php echo $_SERVER['SERVER_NAME'] ?>" size="30" /></div> 
 			
 				<?php										
 					$var = new Variable();
 					$var->charger("photorubw");
 				?>
 							
-				<div class="col">Taille de la petite vignette produit :</div>
+				<div class="col">Taille de la petite vignette produit (en pixel) :</div>
 				<div class="col"><input type="text" name="photorubw" value="<?php echo $var->valeur ?>" size="30" /></div> 				
 				
 				
@@ -141,7 +140,7 @@
 					$var->charger("photoprodw");
 				?>				
 				
-				<div class="col">Taille de la petite vignette rubrique :</div>
+				<div class="col">Taille de la petite vignette rubrique (en pixel) :</div>
 				<div class="col"><input type="text" name="photoprodw" value="<?php echo $var->valeur ?>" size="30" /></div> 		
 				
 				<?php										
@@ -164,7 +163,7 @@
 					$var->charger("rsspass");
 				?>
 				
-				<div class="col">Token RSS ( sécurisation du flux ) :</div>
+				<div class="col">Token RSS (sécurisation du flux RSS de commandes) :</div>
 				<div class="col"><input type="text" name="rsspass" value="<?php echo $var->valeur ?>" size="30" /></div> 				
 
 				<?php										
@@ -184,10 +183,6 @@
 			 </form>
 
 			</div>
-
-	</THELIA_rss>
-	
-
 			
 		</div>
 		

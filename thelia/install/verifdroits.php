@@ -61,7 +61,6 @@
 	<div id="contenu"style="overflow:hidden;zoom: 1">
 	
 		<div id="colonneDeGauche"style="overflow:hidden;zoom: 1">
-	<THELIA_rss type="RSS" url="http://blog.thelia.fr/rss.php" deb="0" nb="1">
 		
 			<div id="chapeau"style="overflow:hidden;zoom: 1">
 			<h2>Vérification des droits</h2>
@@ -97,7 +96,7 @@
 
 				<?php 
 
-					$liste = array("../client.orig", "../client.orig/cache", "../client.orig/commande", "../client.orig/document",  "../client.orig/gfx", "../client.orig/gfx/photos", "../client.orig/gfx/photos/produit", "../client.orig/gfx/photos/produit/petite", "../client.orig/gfx/photos/produit/grande", "../client.orig/gfx/photos/rubrique", "../client.orig/gfx/photos/rubrique/petite", "../client.orig/gfx/photos/rubrique/grande", "../client.orig/gfx/photos/contenu", "../client.orig/gfx/photos/contenu/petite", "../client.orig/gfx/photos/contenu/grande", "../client.orig/gfx/photos/dossier", "../client.orig/gfx/photos/dossier/petite", "../client.orig/gfx/photos/dossier/grande"
+					$liste = array("../classes", "../client.orig", "../client.orig/cache", "../client.orig/commande", "../client.orig/document",  "../client.orig/gfx", "../client.orig/gfx/photos", "../client.orig/gfx/photos/produit", "../client.orig/gfx/photos/produit/petite", "../client.orig/gfx/photos/produit/grande", "../client.orig/gfx/photos/rubrique", "../client.orig/gfx/photos/rubrique/petite", "../client.orig/gfx/photos/rubrique/grande", "../client.orig/gfx/photos/contenu", "../client.orig/gfx/photos/contenu/petite", "../client.orig/gfx/photos/contenu/grande", "../client.orig/gfx/photos/dossier", "../client.orig/gfx/photos/dossier/petite", "../client.orig/gfx/photos/dossier/grande"
 					);
 				?>
 				
@@ -146,10 +145,6 @@
 			 </form>
 
 			</div>
-
-	</THELIA_rss>
-	
-
 			
 		</div>
 		
