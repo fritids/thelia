@@ -1,8 +1,8 @@
 THELIA
 Copyright (C) 2005-2006 par:
 
-Si vous avez contribu" à THELIA et que vous n'êtes pas sur la liste,
-Contactez nous (voir: AUTHORS) et nous vous ajouterons.
+Si vous avez contribué à THELIA et que vous n'êtes pas sur la liste,
+Contactez-nous (voir: AUTHORS) et nous vous ajouterons.
 
 Yoan De Macedo
 Frédéric Melon
