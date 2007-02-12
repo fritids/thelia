@@ -667,12 +667,18 @@
 			if($exclusion!="") $search .= " and id not in($exclusion)";
 			
 			if($rubrique!=""){
+				$srub = "";
+				
 				if($profondeur == "") $profondeur=0;
-				
-				$rec = arbreBoucle($rubrique, $profondeur);
-				if($rec) $virg=",";
-				
-				 $search .= " and rubrique in('$rubrique'$virg$rec)";
+				$tabrub = explode(",", $rubrique);
+				for($compt = 0; $compt<count($tabrub); $compt++){
+					$rec = arbreBoucle($tabrub[$compt], $profondeur);
+					if($rec) $virg=",";
+					$srub .= $tabrub[$compt] . $virg . $rec . $virg;
+				}
+				if(substr($srub, strlen($srub)-1) == ",")
+					$srub = substr($srub, 0, strlen($srub)-1);
+				 $search .= " and rubrique in($srub)";
 			}
 			
 			$search .= " and ligne=\"1\"";
@@ -852,6 +858,8 @@
 			$prix = $row->prix - ($row->prix * $_SESSION['navig']->client->pourcentage / 100);
 			$prix2 = $row->prix2 - ($row->prix2 * $_SESSION['navig']->client->pourcentage / 100);
 			
+			$prix = number_format($prix, 2); 
+			
 			$pays = new Pays();
 			$pays->charger($_SESSION['navig']->client->pays);
 			
@@ -866,6 +874,9 @@
 			$prix = round($prix, 2);
 			$prix2 = round($prix2, 2);
 		
+			$prix = number_format($prix, 2); 
+			$prix2 = number_format($prix2, 2); 
+			
 			if($deb != "" && !$page) $debcourant+=$deb-1;
 
 			$temp = ereg_replace("#REF", "$row->ref", $temp);
@@ -1258,6 +1269,10 @@
 				
 			}	
 		
+			$prix = number_format($prix, 2); 
+			$total = number_format($total, 2); 
+			$totcmdport = number_format($totcmdport, 2); 
+			$port = number_format($port, 2); 
 
 			$temp = ereg_replace("#REF", $_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $texte);
 			$temp = ereg_replace("#TITRE", $produitdesc->titre, $temp);
@@ -1874,7 +1889,9 @@
 
 		$nbres = mysql_numrows($resul);
 		if(!$nbres) return "";
-					
+		
+		$row->prixu = number_format($row->prixu, 2);
+		$totalprod = number_format($totalprod, 2);
 		
 		while( $row = mysql_fetch_object($resul)){
 		  	$totalprod = $row->prixu * $row->quantite;

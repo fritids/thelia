@@ -288,7 +288,7 @@
 		$resul = mysql_query($query, $trubrique->link);
 		
 		while($row=mysql_fetch_object($resul)){
-			$rec .= "'" . $row->id . "',";
+			$rec .=  $row->id . ",";
 			$rec .= arbreBoucle($row->id, $profondeur,$i);
 			
 		}
@@ -339,7 +339,7 @@
 		$resul = mysql_query($query, $tdossier->link);
 		
 		while($row=mysql_fetch_object($resul)){
-			$rec .= "'" . $row->id . "',";
+			$rec .= $row->id . ",";
 			$rec .= arbreBoucle_dos($row->id, $profondeur,$i);
 			
 		}

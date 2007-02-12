@@ -17,12 +17,11 @@
 		fclose($fp);
 		
 		rename("../classes/Cnx.class.php.orig", "../classes/Cnx.class.php");
-		rename("../client.orig", "../client");
-		
+				
 	}
 
-
-
+	if( file_exists("../client.orig"))
+		rename("../client.orig", "../client");
 
 ?>
 
@@ -124,7 +123,7 @@
 				?>
 															
 				<div class="col">Adresse du site :</div>
-				<div class="col"><input type="text" name="urlsite" value="<?php echo $_SERVER['SERVER_NAME'] ?>" size="30" /></div> 
+				<div class="col"><input type="text" name="urlsite" value="http://<?php echo $_SERVER['SERVER_NAME'] ?>" size="30" /></div> 
 			
 				<?php										
 					$var = new Variable();
@@ -140,7 +139,7 @@
 					$var->charger("photoprodw");
 				?>				
 				
-				<div class="col">Taille de la petite vignette rubrique (en pixel) :</div>
+				<div class="col">Taille de la petite vignette rubrique :</div>
 				<div class="col"><input type="text" name="photoprodw" value="<?php echo $var->valeur ?>" size="30" /></div> 		
 				
 				<?php										
