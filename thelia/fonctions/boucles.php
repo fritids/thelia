@@ -994,6 +994,7 @@
 			
 			 if($aleatoire) $order = "order by "  . " RAND()";
 			else if($classement == "manuel") $order = "order by classement";
+			else if($classement == "inverse") $order = "order by classement desc";
 			
 			
 			$contenu = new Contenu();
