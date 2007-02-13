@@ -1,5 +1,4 @@
 <?php
-
 	include_once("../../../classes/Commande.class.php");	
 	$commande = new Commande();
 

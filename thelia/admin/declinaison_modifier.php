@@ -24,8 +24,8 @@
 /*************************************************************************************/
 ?>
 <?php
-	include("auth.php");
 	include_once("pre.php");
+	include("auth.php");
 	
 	if(!isset($action)) $action="";
 	if(!isset($parent)) $parent=0;
@@ -35,8 +35,8 @@
 <?php
 	include_once("../classes/Declinaison.class.php");
 	include_once("../fonctions/divers.php");
-	if(file_exists("../lib/JSON.php")) include_once("../lib/JSON.php");
-	else include_once("lib/JSON.php");
+	include_once("../lib/JSON.php");
+
     include_once("../classes/Lang.class.php");  
 	include_once("../classes/Declidisp.class.php");
 	include_once("../classes/Rubdeclinaison.class.php");

@@ -24,16 +24,15 @@
 /*************************************************************************************/
 ?>
 <?php
-	include("auth.php");
 	include_once("pre.php");
-	
+	include("auth.php");
 ?>
 <?php
 	include("../classes/Caracteristique.class.php");
 	include("../fonctions/divers.php");
-	if(file_exists("../lib/JSON.php")) include_once("../lib/JSON.php");
-	else include_once("lib/JSON.php");
-    include("../classes/Lang.class.php");  
+	include_once("../lib/JSON.php");
+	
+	include("../classes/Lang.class.php");  
 	include("../classes/Caracdisp.class.php");
 	include("../classes/Rubcaracteristique.class.php");
 

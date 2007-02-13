@@ -24,8 +24,8 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("auth.php");
 	include_once("pre.php");
+	include_once("auth.php");
 	
 	if(!isset($action)) $action="";
 	if(!isset($lang)) $lang="1";

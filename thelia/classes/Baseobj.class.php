@@ -26,14 +26,6 @@
 <?php
 	include_once("Requete.class.php");
 	
-	$rep = "";
-	
-	while(! file_exists($rep . "lib/JSON.php"))
-		$rep .= "../";
-	
-	include_once($rep . "lib/JSON.php");
-
-	
 	// Classe Baseobj
 	
 	class Baseobj extends Requete{

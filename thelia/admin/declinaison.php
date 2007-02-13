@@ -24,8 +24,8 @@
 /*************************************************************************************/
 ?>
 <?php
-	include("auth.php");
 	include_once("pre.php");
+	include("auth.php");
 	
 	if(!isset($i)) $i=0;
 	if(!isset($id)) $id="";

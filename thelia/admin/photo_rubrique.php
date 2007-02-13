@@ -24,8 +24,8 @@
 /*************************************************************************************/
 ?>
 <?php
-	include("auth.php");
 	include_once("pre.php");
+	include("auth.php");
 	include("../fonctions/divers.php");
 	include("../classes/Image.class.php");
 	include("../classes/Rubrique.class.php");

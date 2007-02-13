@@ -24,8 +24,8 @@
 /*************************************************************************************/
 ?>
 <?php
-	include("auth.php");
 	include_once("pre.php");
+	include("auth.php");
 ?>
 <?php
         include("../lib/Sajax.php");
@@ -35,8 +35,8 @@
         include("../classes/Paysdesc.class.php");
         include("../classes/Transport.class.php");
       
-	if(file_exists("../lib/JSON.php")) include_once("../lib/JSON.php");
-	else include_once("lib/JSON.php");
+		include_once("../lib/JSON.php");
+
 ?>
 <?php
 

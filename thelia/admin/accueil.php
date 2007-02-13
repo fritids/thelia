@@ -24,7 +24,8 @@
 /*************************************************************************************/
 ?>
 <?php
-        include_once("../classes/Administrateur.class.php");
+		include_once("pre.php");
+	    include_once("../classes/Administrateur.class.php");
         include_once("../classes/Variable.class.php");
 		include_once("pre.php");
 		        

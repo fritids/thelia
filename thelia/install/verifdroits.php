@@ -37,7 +37,7 @@
 
 <div id="wrapper"style="overflow:hidden;zoom: 1">
 		
-		<!-- Entête -->
+		<!-- EntÃªte -->
 		
 	<div id="entete"style="overflow:hidden;zoom: 1">
 		<h1><span>Thelia</span></h1>
@@ -63,7 +63,7 @@
 		<div id="colonneDeGauche"style="overflow:hidden;zoom: 1">
 		
 			<div id="chapeau"style="overflow:hidden;zoom: 1">
-			<h2>Vérification des droits</h2>
+			<h2>VÃ©rification des droits</h2>
 		
 				<form action="configuration.php" method="post">
 				<input type="hidden" name="serveur" value="<?php echo $_SESSION['serveur']; ?>" />
@@ -72,31 +72,13 @@
 				<input type="hidden" name="choixbase" value="<?php echo $_SESSION['choixbase']; ?>" />				
 				<br />
 								
-				Nous allons vérifier certains droits sur les fichiers et les répertoires <br /><br />
+				Nous allons vÃ©rifier certains droits sur les fichiers et les rÃ©pertoires <br /><br />
 				
+			
+			
 				<?php 
 					$err=0;
-					$liste = array("../classes/Cnx.class.php.orig");
-				?>
-				
-				<?php 
-				
-				for($i=0; $i<count($liste); $i++)
-				
-					if( ! is_writable($liste[$i])) {
-				
-				?>
-					<span class="erreur">Le fichier <?php echo $liste[$i] ?> n'est pas accessible en écriture</span><br />
-				<?php	
-					$err=1;	
-					}
-				?>
-				
-
-
-				<?php 
-
-					$liste = array("../classes", "../client.orig", "../client.orig/cache", "../client.orig/commande", "../client.orig/document",  "../client.orig/gfx", "../client.orig/gfx/photos", "../client.orig/gfx/photos/produit", "../client.orig/gfx/photos/produit/petite", "../client.orig/gfx/photos/produit/grande", "../client.orig/gfx/photos/rubrique", "../client.orig/gfx/photos/rubrique/petite", "../client.orig/gfx/photos/rubrique/grande", "../client.orig/gfx/photos/contenu", "../client.orig/gfx/photos/contenu/petite", "../client.orig/gfx/photos/contenu/grande", "../client.orig/gfx/photos/dossier", "../client.orig/gfx/photos/dossier/petite", "../client.orig/gfx/photos/dossier/grande"
+					$liste = array("../", "../classes", "../client.orig", "../client.orig/cache", "../client.orig/commande", "../client.orig/document",  "../client.orig/gfx", "../client.orig/gfx/photos", "../client.orig/gfx/photos/produit", "../client.orig/gfx/photos/produit/petite", "../client.orig/gfx/photos/produit/grande", "../client.orig/gfx/photos/rubrique", "../client.orig/gfx/photos/rubrique/petite", "../client.orig/gfx/photos/rubrique/grande", "../client.orig/gfx/photos/contenu", "../client.orig/gfx/photos/contenu/petite", "../client.orig/gfx/photos/contenu/grande", "../client.orig/gfx/photos/dossier", "../client.orig/gfx/photos/dossier/petite", "../client.orig/gfx/photos/dossier/grande"
 					);
 				?>
 				
@@ -108,7 +90,7 @@
 						if( ! is_writable($liste[$i])) {
 				
 				?>
-						<span class="erreur">Le répertoire <?php echo $liste[$i] ?> n'est pas accessible en écriture</span><br />
+						<span class="erreur">Le rÃ©pertoire <?php echo $liste[$i] ?> n'est pas accessible en Ã©criture</span><br />
 				<?php	
 							$err=1;	
 						}
@@ -118,6 +100,25 @@
 				
 				<br />
 				
+					<?php 
+						$liste = array("../classes/Cnx.class.php.orig");
+					?>
+
+					<?php 
+
+					for($i=0; $i<count($liste); $i++)
+
+						if( ! is_writable($liste[$i])) {
+
+					?>
+						<span class="erreur">Le fichier <?php echo $liste[$i] ?> n'est pas accessible en Ã©criture</span><br />
+					<?php	
+						$err=1;	
+						}
+					?>
+					
+					<br />
+									
 				<?php
 					if(!$err){
 				?>

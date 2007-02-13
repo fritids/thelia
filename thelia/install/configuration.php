@@ -20,9 +20,20 @@
 				
 	}
 
-	if( file_exists("../client.orig"))
+	if( file_exists("../client.orig")){
 		rename("../client.orig", "../client");
+		$contenu="";
+		
+		$fp = fopen("../client/config/config.inc.php", "w");
+		$contenu .=" \$votre_serveur=\"" . $_SESSION['serveur'] . "\";" . "\n";
+		$contenu .=" \$votre_login_mysql=\"" . $_SESSION['utilisateur'] . "\";" . "\n";
+		$contenu .=" \$votre_motdepasse_mysql=\"" . $_SESSION['motdepasse'] . "\";" . "\n";	
+		$contenu .= "\n";
+		$contenu .=" \$chemin=\"" . realpath("../") . "\";" . "\n";	
+		fputs($fp, $contenu);
+		fclose($fp);
 
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

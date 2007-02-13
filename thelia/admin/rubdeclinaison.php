@@ -24,8 +24,8 @@
 /*************************************************************************************/
 ?>
 <?php
-	include("auth.php");
 	include_once("pre.php");
+	include("auth.php");
 ?>
 <?php
 
@@ -37,8 +37,7 @@
         include("../classes/Lang.class.php");
 
       
-	if(file_exists("../lib/JSON.php")) include_once("../lib/JSON.php");
-	else include_once("lib/JSON.php");
+		include_once("../lib/JSON.php");
 	
 	if(!isset($lang)) $lang="";
 	if(!isset($parent)) $parent="";

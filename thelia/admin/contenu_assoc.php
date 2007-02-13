@@ -24,13 +24,13 @@
 /*************************************************************************************/
 ?>
 <?php
+	include_once("pre.php");
 	include("auth.php");
 	include("../fonctions/divers.php");
 	include("../classes/Rubrique.class.php");
 	include("../classes/Contenu.class.php");
 	include("../classes/Contenuassoc.class.php");
 	include("../classes/Dossier.class.php");
-	include_once("pre.php");
 	
 	if(!isset($action)) $action="";
 

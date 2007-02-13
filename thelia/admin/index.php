@@ -24,8 +24,8 @@
 /*************************************************************************************/
 ?>
 <?php
-	include("../classes/Administrateur.class.php");
 	include_once("pre.php");
+	include("../classes/Administrateur.class.php");
 	
 	session_start();
 	
