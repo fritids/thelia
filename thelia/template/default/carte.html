@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="alternate" type="application/rss+xml" title="Produits" href="rss.php" />
+
+<title>THELIA</title>
+
+<link href="template/default/styles.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+	<!-- global wrapper -->
+	
+	<div id="wrapper">
+	  <div id="subwrapper">
+        <!-- entête -->
+		
+	    #INCLURE "template/default/modules/entete.html"
+		
+  <h2><a href="index.php">Accueil</a> /
+  
+   Panier
+  
+  </h2>
+  
+  <!-- nav2, verticale -->
+  <div id="content"> 
+  
+  #INCLURE "template/default/modules/menugauche.html"
+  
+   </div>
+  <!-- contenu -->
+  
+<div class="fondContenu" style="overflow: hidden;zoom: 1">
+
+ <div class="Tabcentre">  		
+
+	CONFIRMATION DE COMMANDE <br/><br/>
+	
+	Nous vous remercions de la confiance que vous accordez &agrave; notre strcuture, un email recapitulatif de votre commande vous a &eacute;t&eacute; envoy&eacute; &agrave; l'adresse: #CLIENT_EMAIL.<br />
+  Votre commande sera valid&eacute;e par nos services &agrave; reception de votre paiement.</p>
+                             Cordialement, <br />
+                                La direction <br/>
+       
+       
+                <THELIA_cmd type="COMMANDE" ref="#COMMANDE_REF">
+               
+               <div class="col">N&deg; DE COMMANDE</div> <div class="col">#REF</div>
+               
+               <div class="col">DATE</div>  <div class="col">#DATE</div>
+              
+               
+               <div class="col">N&deg; FACTURE</div> <div class="col">#FACTURE</div>
+                              
+               <div class="col">TOTAL</div> <div class="col">#TOTCMDPORT &euro;</div>
+               
+               
+               <div class="col">ADRESSE DE LIVRAISON</div>
+                <div class="col">&nbsp;</div>
+               
+                              <T_adr>
+                                
+                                <THELIA_adr type="ADRESSE" adresse="#ADRESSE">	
+											
+                                   <div class="col">
+                                     #RAISON. #PRENOM #NOM <br />
+                                    #ADRESSE1
+                                    #ADRESSE2
+                                    #ADRESSE3 <br />
+                                    #CPOSTAL #VILLE            
+									</div>
+									</THELIA_adr>
+                              
+                                </T_adr>
+                               <div class="col">
+                              #CLIENT_RAISON. #CLIENT_PRENOM #CLIENT_NOM <br />
+                                #CLIENT_ADRESSE1
+                                #CLIENT_ADRESSE2
+                                #CLIENT_ADRESSE3 <br />
+                                #CLIENT_CPOSTAL #CLIENT_VILLE
+                               </div> 
+                                <br />
+                              
+                              <//T_adr>
+                                                    
+                      </THELIA_cmd>
+
+	 <div class="col">&nbsp;</div>
+	 <div class="col">&nbsp;</div>
+	 
+<div class="col">VOTRE REGLEMENT</div>
+<div class="col">&nbsp;</div> 
+
+<div style="clear: both;">Il faudra configurer votre plugin de connexion banquaire ... <br />
+Merci de rappeler votre numero de commande dans toute correspondance. 
+
+</div>
+	 
+	 <div class="col"> 
+   <a href="index.php">Retour</a>
+
+	</div>
+	
+ </div>	 
+	  <div class="CadreGrand" style="overflow: hidden;zoom: 1">
+			
+			
+			<THELIA_prod type="PRODUIT" num="1" aleatoire="1">  
+			
+			<div class="Grand" style="overflow: hidden;zoom: 1">
+			
+			<THELIA_imgprod type="IMAGE" produit="#ID" largeur="240">
+					<img src="#GRANDE" alt="THELIA" width="240" height="240" class="contourVignettes" />
+			</THELIA_imgprod>
+				
+				<div class="legendegrand" style="overflow: hidden;zoom: 1">
+					  
+				  #TITRE
+				  <p class="prix">#PRIX &euro;</p>
+				  <span class="Description">#DESCRIPTION</span>
+		  	  </div>
+			  
+	 		 </THELIA_prod>		
+			 
+			   
+	    </div>
+
+      </div>
+	
+	  </div>
+</div>
+		  </div>
+			<!-- pied de page -->
+      #INCLURE "template/default/modules/footer.html"
+		</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="alternate" type="application/rss+xml" title="Produits" href="rss.php" />
+
+<title>THELIA</title>
+
+<link href="template/default/styles.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+	<!-- global wrapper -->
+	
+	<div id="wrapper">
+	  <div id="subwrapper">
+        <!-- entête -->
+		
+	    #INCLURE "template/default/modules/entete.html"
+		
+  <h2><a href="index.php">Accueil</a> /
+ 
+	Transport
+	  
+  </h2>
+  
+  <!-- nav2, verticale -->
+  <div id="content"> 
+  
+  #INCLURE "template/default/modules/menugauche.html"
+  
+   </div>
+  <!-- contenu -->
+  
+<div class="fondContenu" style="overflow: hidden;zoom: 1">
+
+ <div class="Tabcentre">  		
+
+  
+
+		
+  <THELIA_PANIER type="TRANSPORT">	
+	 <div class="col">#TITRE - #PORT &euro;</div>  <div class="col"><a href="#URLCMD">Choisir</a></div><br />
+  </THELIA_PANIER>		
+
+	
+	<br /><br />	  
+	
+   <a href="panier.php">Retour</a>
+
+
+ </div>	 
+	  <div class="CadreGrand" style="overflow: hidden;zoom: 1">
+			
+			
+			<THELIA_prod type="PRODUIT" num="1" aleatoire="1">  
+			
+			<div class="Grand" style="overflow: hidden;zoom: 1">
+			
+			<THELIA_imgprod type="IMAGE" produit="#ID" largeur="240">
+					<img src="#GRANDE" alt="THELIA" width="240" height="240" class="contourVignettes" />
+			</THELIA_imgprod>
+				
+				<div class="legendegrand" style="overflow: hidden;zoom: 1">
+					  
+				  #TITRE
+				  <p class="prix">#PRIX &euro;</p>
+				  <span class="Description">#DESCRIPTION</span>
+		  	  </div>
+			  
+	 		 </THELIA_prod>		
+			 
+			   
+	    </div>
+
+      </div>
+	
+	  </div>
+</div>
+		  </div>
+			<!-- pied de page -->
+      #INCLURE "template/default/modules/footer.html"
+		</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="alternate" type="application/rss+xml" title="Produits" href="rss.php" />
+
+<title>THELIA</title>
+
+<link href="template/default/styles.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+	<!-- global wrapper -->
+	
+	<div id="wrapper">
+	  <div id="subwrapper">
+        <!-- entête -->
+		
+	    #INCLURE "template/default/modules/entete.html"
+		
+		
+  <h2><a href="index.php">Accueil</a> / Connexion</h2>
+  
+  <!-- nav2, verticale -->
+  <div id="content"> 
+  
+  #INCLURE "template/default/modules/menugauche.html"
+  
+   </div>
+  <!-- contenu -->
+  
+<div class="fondContenu" style="overflow: hidden;zoom: 1">
+
+
+            <form action="#URLCOURANTE" method="post" name="nouveau" id="nouveau">
+              <input type="hidden" name="action" value="creercompte" />
+            
+              
+              <div style="width: 350px"> 
+                         
+               <div class="col">Civilit&eacute; :<span class="formErreur">#RAISON[(obligatoire)]</span></div>   
+               
+               <div class="col">
+                      <select name="raison" size="1">
+                      <option value="" selected="selected">Choisissez ...</option>
+                      <option value="1" #RAISON1>Madame</option>
+                      <option value="2" #RAISON2>Mademoiselle</option>
+                      <option value="3" #RAISON3>Monsieur</option>
+                      </select>
+                </div>        
+                  <div class="col">    Pr&eacute;nom: <span class="formErreur">#PRENOM[(obligatoire)] </span></div>  
+                   <div class="col">   <input name="prenom" type="text" value="" /></div>  
+                  <div class="col">    Nom: <span class="formErreur">#NOM[(obligatoire)]</span></div>    
+                  <div class="col">    <input name="nom" type="text" value="" /></div>  
+             
+            <div class="col"> Adresse: <span class="formErreur">#ADRESSE1[(obligatoire)]</span></div>                       
+             <div class="col"><input name="adresse1" type="text" value=""  /></div>  
+            <div class="col"> Adresse (suite):   </div>          
+            <div class="col"> <input name="adresse2" type="text" value=""  /></div>  
+            <div class="col"> Compl&eacute;ment d'adresse:  </div>  
+            <div class="col"><input name="adresse3" type="text" value=""  /></div>  
+            <div class="col"> Code postal:  <span class="formErreur">#CPOSTAL[(obligatoire)] </span></div>  
+            <div class="col"><input name="cpostal" type="text" value=""  /></div>  
+            <div class="col"> Ville: <span class="formErreur">#VILLE[(obligatoire)]</span> </div>  
+            <div class="col"><input name="ville" type="text" value=""  /></div>  
+            <div class="col"> Pays: </div>  
+             <div class="col">        
+             
+             	<select name="pays" size="1">
+                  <THELIA_pays type="PAYS"  zdefinie="1"  classement="alpha">
+                  <option value="#ID" #SELECTED>#TITRE</option>
+                  </THELIA_pays>
+                </select> 
+             </div>  
+                       
+             <div class="col"> T&eacute;l. fixe: </div>                  
+              <div class="col"><input name="telfixe" type="text" value=""  /></div>  
+             <div class="col"> T&eacute;l. portable: </div>  
+             <div class="col"> <input name="telport" type="text" value=""  /></div>  
+             <div class="col"> E-Mail:  <span class="formErreur">#EMAIL[(V&eacute;rifiez votre E-Mail)]</span></div>  
+             <div class="col"> <input name="email1" type="text" value=""  /></div>  
+             <div class="col"> Confirmation E-Mail:  </div>  
+             <div class="col"> <input name="email2" type="text" /></div>  
+            <div class="col">  Mot de passe : <span class="formErreur">#MOTDEPASSE[(Mot de passe 6 caractères mini)]</span></div>  
+            <div class="col">  <input name="motdepasse1" type="password" /></div>  
+            <div class="col">  Confirmation :</div>  
+            <div class="col">  <input name="motdepasse2" type="password" /></div> 
+                
+               <div style="clear: both; padding-top: 10px;">
+                  <a href="#" onclick="document.getElementById('nouveau').submit()" class="lien02">Valider</a>
+               </div>
+				</div>
+
+</div>
+		
+			<!-- pied de page -->
+      #INCLURE "template/default/modules/footer.html"
+		</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="alternate" type="application/rss+xml" title="THELIA" href="rss.php" />
+
+<title>THELIA</title>
+
+<link href="template/default/styles.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+	<!-- global wrapper -->
+	
+	<div id="wrapper">
+		<div id="subwrapper">
+		
+	<!-- entête -->
+	#INCLURE "template/default/modules/entete.html"
+	    
+	    	
+      <h1>THELIA</h1>
+      <h2>Accueil</h2>
+	  
+<!-- contenu -->
+
+	  <div id="content">
+
+			
+  	<!-- nav2, verticale -->
+					<ul id="navVerticaleHome">
+					
+						<THELIA_RUB1 type="RUBRIQUE" parent="0" boutique="1" classement="manuel">  
+  						<li class="bold"><a href="#URL"> #TITRE</a></li>
+						 <li><ul>
+							<THELIA_RUB2SELECT type="RUBRIQUE" parent="#ID">
+							<THELIA_testcur type="RUBRIQUE" id="#ID" courante="1">
+							<li><a href="#URL" class="selected">&bull;&nbsp;#TITRE </a></li>
+							</THELIA_testcur>
+							<THELIA_testpascu type="RUBRIQUE" id="#ID" courante="0">
+							<li><a href="#URL">&bull;&nbsp;#TITRE </a></li>
+							</THELIA_testpascur>
+							</THELIA_RUB2SELECT>
+						</ul></li>
+ 				    	</THELIA_RUB1>	 
+					
+				  <li></li>
+				  
+				  		  <THELIA_art type="DOSSIER" parent="17" ligne="1">
+
+           <li class="bold"><a href="#URL">#TITRE</a></li>
+       
+          </THELIA_art>
+				  
+						  
+					</ul>
+
+				
+	</div> 
+			<!-- pied de page -->
+ #INCLURE "template/default/modules/footer.html"
+		</div>
+</div>
+</body>
+</html>

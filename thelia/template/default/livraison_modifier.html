@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="alternate" type="application/rss+xml" title="Produits" href="rss.php" />
+
+<title>THELIA</title>
+
+<link href="template/default/styles.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+	<!-- global wrapper -->
+	
+	<div id="wrapper">
+	  <div id="subwrapper">
+        <!-- entête -->
+		
+	    #INCLURE "template/default/modules/entete.html"
+		
+  <h2><a href="index.php">Accueil</a> /
+  
+	 Adresse 
+  </h2>
+  
+  <!-- nav2, verticale -->
+  <div id="content"> 
+  
+  #INCLURE "template/default/modules/menugauche.html"
+  
+   </div>
+  <!-- contenu -->
+  
+<div class="fondContenu" style="overflow: hidden;zoom: 1">
+
+ <div class="Tabcentre">  		
+
+          <tr>
+            MODIFIER MON ADRESSE DE LIVRAISON <br />
+            
+            
+                  <form action="#URLCOURANTE" method="post" name="modifier" id="modifier">
+                    <input type="hidden" name="action" value="modifierlivraison" />
+                                   
+                    
+                    <THELIA_adr type="ADRESSE" adresse="#ADRESSE_ID" client="#CLIENT_ID">
+                      <input name="id" type="hidden" value="#ID" />
+                      <input name="adresse" type="hidden" value="#ID" />
+                    
+                    <div class="col"> Lib&eacute;ll&eacute; de l'adresse :</div>
+                     <div class="col"><input name="libelle" type="text" class="texteFormNormal" value="#LIBELLE" /></div>
+                      
+                      <div class="col"> Civilit&eacute; : </div>
+                      
+                        <div class="col">   
+                        <select name="raison" size="1" class="texteFormNormal">
+                            <option value="" selected="selected">Choisissez ...</option>
+                            <option value="1" #RAISON1F>Madame</option>
+                            <option value="2" #RAISON2F>Mademoiselle</option>
+                            <option value="3" #RAISON3F>Monsieur</option>
+                            </select>
+                         </div>   
+                            
+                           <div class="col">  Pr&eacute;nom: </div>
+                           <div class="col">  <input name="prenom" type="text" value="#PRENOM"  class="texteFormNormal"/></div>
+                            
+                          <div class="col">   Nom: </div>
+                          <div class="col">   <input name="nom" type="text" value="#NOM"  class="texteFormNormal"/></div>
+                            
+                          <div class="col">   Adresse:</div>
+                           <div class="col">  <input name="adresse1" type="text" value="#ADRESSE1"  class="texteFormNormal"/></div>
+                            
+                           <div class="col">  Adresse ( suite ) :</div>
+                           <div class="col">  <input name="adresse2" type="text" value="#ADRESSE2"  class="texteFormNormal"/></div>
+                            
+                            <div class="col"> Compl&eacute;ment d'adresse:</div>
+                            <div class="col"> <input type="text" name="adresse3" value="#ADRESSE3" class="texteFormNormal"/></div>
+                            
+                            <div class="col"> Code postal: </div>
+                            <div class="col"> <input type="text" name="cpostal" value="#CPOSTAL" class="texteFormNormal"/></div>
+                            
+                            <div class="col"> Ville:</div>
+                            <div class="col"> <input type="text" name="ville" value="#VILLE" class="texteFormNormal"/></div>
+ 
+                             <div class="col"> Pays:</div>
+                            <div class="col"> 
+                           
+								<select name="pays" size="1" class="arial12reg_gris">
+                    				<option value="" selected="selected">Choisissez ...</option>
+                   					 <THELIA_pays type="PAYS" zdefinie="1" >
+                      						<option value="#ID" #SELECTED>#TITRE</option>
+                    				</THELIA_pays>
+         				        </select>
+                           </div>
+                        
+                                               
+                        </THELIA_adr>
+                    
+                 
+                 
+                <div class="col"><a href="#" onclick="document.getElementById('modifier').submit()">Modifier</a></div>
+                
+               </form>      
+   </div>	 
+	  <div class="CadreGrand" style="overflow: hidden;zoom: 1">
+			
+			
+			<THELIA_prod type="PRODUIT" num="1" aleatoire="1">  
+			
+			<div class="Grand" style="overflow: hidden;zoom: 1">
+			
+			<THELIA_imgprod type="IMAGE" produit="#ID" largeur="240">
+					<img src="#GRANDE" alt="THELIA" width="240" height="240" class="contourVignettes" />
+			</THELIA_imgprod>
+				
+				<div class="legendegrand" style="overflow: hidden;zoom: 1">
+					  
+				  #TITRE
+				  <p class="prix">#PRIX &euro;</p>
+				  <span class="Description">#DESCRIPTION</span>
+		  	  </div>
+			  
+	 		 </THELIA_prod>		
+			 
+			   
+	    </div>
+
+      </div>
+	
+	  </div>
+</div>
+		  </div>
+			<!-- pied de page -->
+      #INCLURE "template/default/modules/footer.html"
+		</div>
+</div>
+</body>
+</html>
