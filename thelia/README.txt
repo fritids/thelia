@@ -1,10 +1,8 @@
 Vous venez de télécharger THELIA.
 
-THELIA est une application de gestion de site de E-Commerce. Il vous permettra de développer rapidement un site de commerce électronique gr‚ce ‡ un langage de boucles et ‡ une interface d'administration simples.
+THELIA est une application de gestion de site de E-Commerce. Il vous permettra de développer rapidement un site de commerce électronique grâce à un langage de boucles et à une interface d'administration simples.
 
-Nous venons juste de libÉrer le projet, ce qui explique le manque de documentation. Elle sera bientôt disponible.
-
-En attendant, n'hésitez pas à nous contacter et à consulter le répertoire doc.
+N'hésitez pas à nous contacter et à consulter le répertoire doc.
 
 http://www.octolys.fr
 thelia@octolys.fr
