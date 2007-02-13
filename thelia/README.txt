@@ -10,6 +10,6 @@ http://www.octolys.fr
 thelia@octolys.fr
 
 OCTOLYS DEVELOPMENT
-17, RUE DU PRE LA REINE
+15-17, RUE DU PRE LA REINE
 63100 CLERMONT-FD
 FRANCE
