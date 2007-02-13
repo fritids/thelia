@@ -24,9 +24,9 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("Baseobj.class.php");
-	include_once("Rubriquedesc.class.php");
-	include_once("Produit.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Rubriquedesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Produit.class.php");
 	
 	class Rubrique extends Baseobj{
 

@@ -24,7 +24,7 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 		
 	class Message extends Baseobj{
 

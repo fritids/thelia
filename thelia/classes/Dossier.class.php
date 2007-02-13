@@ -24,9 +24,9 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("Baseobj.class.php");
-	include_once("Dossierdesc.class.php");
-	include_once("Contenu.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Dossierdesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Contenu.class.php");
 	
 	class Dossier extends Baseobj{
 

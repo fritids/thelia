@@ -24,8 +24,8 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("Baseobj.class.php");
-	include_once("Caracteristiquedesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Caracteristiquedesc.class.php");
 		
 	class Caracteristique extends Baseobj{
 

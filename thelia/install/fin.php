@@ -55,18 +55,25 @@
     $liste = dir("../Template");
 
     while (false !== ($entry = $liste->read())) {
-            if(substr($entry, 0, 1) != "." && ! strstr($entry, "modules")) copy("../Template/$entry", "../$entry");
+            if(substr($entry, 0, 1) != "." && ! strstr($entry, "modules")) {
+				copy("../Template/$entry", "../$entry");
+				@chmod ("../$entry", 0777);  
+			}
     }
     
     $liste->close();
 
 
     mkdir("../modules");
-
+	@chmod ("../modules", 0777);  
+	
     $liste = dir("../Template/modules");
 
     while (false !== ($entry = $liste->read())) {
-             if(substr($entry, 0, 1) != "." && ! is_dir($entry)) copy("../Template/modules/$entry", "../modules/$entry");
+             if(substr($entry, 0, 1) != "." && ! is_dir($entry)) {
+				copy("../Template/modules/$entry", "../modules/$entry");
+				@chmod ("../modules/$entry", 0777);  
+			}
     }
     
     $liste->close();

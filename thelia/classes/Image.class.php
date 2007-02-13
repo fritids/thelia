@@ -24,8 +24,8 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("Baseobj.class.php");
-	include_once("Imagedesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Imagedesc.class.php");
 		
 	class Image extends Baseobj{
 

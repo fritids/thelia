@@ -63,7 +63,7 @@
 		<div id="colonneDeGauche"style="overflow:hidden;zoom: 1">
 		
 			<div id="chapeau"style="overflow:hidden;zoom: 1">
-			<h2>Vérification des droits</h2>
+			<h2>V&eacute;rification des droits</h2>
 		
 				<form action="configuration.php" method="post">
 				<input type="hidden" name="serveur" value="<?php echo $_SESSION['serveur']; ?>" />
@@ -72,7 +72,7 @@
 				<input type="hidden" name="choixbase" value="<?php echo $_SESSION['choixbase']; ?>" />				
 				<br />
 								
-				Nous allons vérifier certains droits sur les fichiers et les répertoires <br /><br />
+				Nous allons v&eacute;rifier certains droits sur les fichiers et les répertoires <br /><br />
 				
 			
 			

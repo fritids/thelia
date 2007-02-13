@@ -1,9 +1,11 @@
 1.1.9
 	classement inverse pour la boucle contenu
 	ajout du plugin pour Macromédia Dreamweaver
-	modification de l'installation
+	modification de l'installation --> compatibilité
 	ajout d'un transport par défaut à l'installation
 	modification de la gestion des décimales
+	changement des inclusions au niveau des classes
+	correction admin/accessoire.php
 	
 1.1.8
 	mise en place des blocs pour la boucle Contenu

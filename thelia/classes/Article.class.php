@@ -25,9 +25,9 @@
 ?>
 <?php
 
-	include_once("Produit.class.php");
-	include_once("Produitdesc.class.php");
-	include_once("Perso.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Produit.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Produitdesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Perso.class.php");
 
 	// Déniniftion de l'article
 

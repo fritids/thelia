@@ -24,8 +24,8 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("Baseobj.class.php");
-	include_once("Statutdesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Statutdesc.class.php");
 
 	class Statut extends Baseobj{
 

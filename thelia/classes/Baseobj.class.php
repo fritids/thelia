@@ -24,7 +24,7 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("Requete.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Requete.class.php");
 	
 	// Classe Baseobj
 	

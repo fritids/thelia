@@ -25,10 +25,10 @@
 ?>
 <?php
 
-	include_once("Panier.class.php");
-	include_once("Client.class.php");
-	include_once("Commande.class.php");
-	include_once("Promo.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Panier.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Client.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Commande.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Promo.class.php");
 	
 	// Définition de la navigation
 	

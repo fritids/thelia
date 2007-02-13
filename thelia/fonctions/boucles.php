@@ -1981,6 +1981,8 @@
 
 
         function boucleRSS($texte, $args){
+
+		@ini_set('default_socket_timeout', 5);
                 
 		// récupération des arguments
                 $url = lireTag($args, "url");

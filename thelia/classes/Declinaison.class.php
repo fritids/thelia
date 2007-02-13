@@ -24,9 +24,9 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("Baseobj.class.php");
-	include_once("Declinaisondesc.class.php");
-	include_once("Declidisp.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Declinaisondesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Declidisp.class.php");
 		
 	class Declinaison extends Baseobj{
 

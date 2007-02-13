@@ -24,9 +24,9 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("Baseobj.class.php");
-	include_once("Caracdispdesc.class.php");
-	include_once("Caracval.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Caracdispdesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Caracval.class.php");
 
 	// Classe Activite
 
