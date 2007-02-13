@@ -678,13 +678,11 @@ CREATE TABLE `paiement` (
 -- Contenu de la table `paiement`
 -- 
 
-INSERT INTO `paiement` VALUES (1, 'credit.php', 2, 0, 'sofinco.jpg', 0);
-INSERT INTO `paiement` VALUES (2, 'client/paiement/banquepop/call_request.php', 0, 0, 'logos_cartes.gif', 1);
-INSERT INTO `paiement` VALUES (3, 'cheque.php', 1, 0, 'cheque.gif', 0);
-INSERT INTO `paiement` VALUES (4, 'six_fois_ss_frais.php', 4, 0, 'sofinco.jpg', 0);
-INSERT INTO `paiement` VALUES (5, 'virement.php', 5, 0, '', 0);
-INSERT INTO `paiement` VALUES (6, 'client/paiement/spplus/paiement.php', 0, 0, 'logos_cartes.gif', 1);
-INSERT INTO `paiement` VALUES (7, 'client/paiement/cic/paiement.php', 0, 0, 'logos_cartes.gif', 1);
+INSERT INTO `paiement` VALUES (1, 'client/paiement/banquepop/call_request.php', 0, 0, 'logos_cartes.gif', 0);
+INSERT INTO `paiement` VALUES (2, 'carte.php', 0, 0, 'logos_cartes.gif', 1);
+INSERT INTO `paiement` VALUES (3, 'cheque.php', 1, 0, 'cheque.gif', 1);
+INSERT INTO `paiement` VALUES (4, 'virement.php', 1, 0, '', 1);
+
 
 -- --------------------------------------------------------
 
@@ -706,13 +704,10 @@ CREATE TABLE `paiementdesc` (
 -- Contenu de la table `paiementdesc`
 -- 
 
-INSERT INTO `paiementdesc` VALUES (1, 1, 1, 'Je règle à Crédit', '', '');
+INSERT INTO `paiementdesc` VALUES (1, 1, 1, 'Je règle par Carte Bancaire', '', '');
 INSERT INTO `paiementdesc` VALUES (2, 2, 1, 'Je règle par Carte Bancaire', '', '');
 INSERT INTO `paiementdesc` VALUES (3, 3, 1, 'Je règle par chèque', '', '');
-INSERT INTO `paiementdesc` VALUES (5, 5, 1, 'Je règle par par virement bancaire', '', '');
-INSERT INTO `paiementdesc` VALUES (4, 4, 1, 'Je règle en 6 fois sans frais', '', '');
-INSERT INTO `paiementdesc` VALUES (6, 6, 1, 'Je règle par Carte Bancaire', '', '');
-INSERT INTO `paiementdesc` VALUES (7, 7, 1, 'Je règle par Carte Bancaire', '', '');
+INSERT INTO `paiementdesc` VALUES (4, 4, 1, 'Je règle par virement', '', '');
 
 -- --------------------------------------------------------
 

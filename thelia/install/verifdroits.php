@@ -72,7 +72,7 @@
 				<input type="hidden" name="choixbase" value="<?php echo $_SESSION['choixbase']; ?>" />				
 				<br />
 								
-				Nous allons v&eacute;rifier certains droits sur les fichiers et les répertoires <br /><br />
+				Nous allons v&eacute;rifier certains droits sur les fichiers et les r&eacute;pertoires <br /><br />
 				
 			
 			
