@@ -52,11 +52,11 @@
 	$var->valeur=$_POST['rssadmin'];
 	$var->maj();	
 	
-    $liste = dir("../Template");
+    $liste = dir("../template");
 
     while (false !== ($entry = $liste->read())) {
             if(strstr($entry, ".php")) {
-				copy("../Template/$entry", "../$entry");
+				copy("../template/$entry", "../$entry");
 				@chmod ("../$entry", 0777);  
 			}
     }
