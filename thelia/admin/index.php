@@ -134,14 +134,10 @@ foreach ($items as $item) {
     est une application <br />
     d&eacute;velopp&eacute; par : </span><br />
     <a href="http://www.octolys.fr" class="lien02">octolys.fr</a></p>
-  <p class="geneva11Reg_BAC2CA">18 rue Camille Joubert<br />
-    63300 Thiers<br />
-    T&eacute;l. : 04 73 51 34 41<br />
-  Fax : 04 73 80 14 73</p>
   <p class="geneva11Reg_BAC2CA">B114<br />
-  17 rue du Pr&eacute; la Reine<br />
+  15-17 rue du Pr&eacute; la Reine<br />
     63000 Clermont-Ferrand<br />
-    T&eacute;l. : 04 73 74 31 26<br />
+    T&eacute;l. : 04 73 74 31 19<br />
     Fax : 04 73 90 58 99</p>
 </div> 
 </body>

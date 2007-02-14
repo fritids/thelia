@@ -33,7 +33,6 @@
 
 		$texte = ereg_replace("#DECLINAISON_ID", "$declinaison", $texte);
 		$texte = ereg_replace("#DECLINAISON_DISP", "$declidisp", $texte);
-		$texte = ereg_replace("#DECLINAISON_VAL", "$declival", $texte);
 		$texte = ereg_replace("#DECLINAISON_STOCK", "$declistockmini", $texte);
 
 		return $texte;

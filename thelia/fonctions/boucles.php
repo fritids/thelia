@@ -81,53 +81,58 @@
 		$courante = lireTag($args, "courante");
 		$pasvide = lireTag($args, "pasvide");
 		$ligne = lireTag($args, "ligne");
+		$classement = lireTag($args, "classement");
 		$aleatoire = lireTag($args, "aleatoire");
 		$exclusion = lireTag($args, "exclusion");
 		
 		$res="";
 		$search="";
 
-		// prï¿½aration de la requï¿½e
-		if($id!="")  $search.=" and id in ($id)";
-		if($parent!="") $search.=" and parent=\"$parent\"";
-		if($boutique != "") $search .=" and boutique='$boutique'";
-		if($courante == "1") $search .=" and id='$id_rubrique'";
-		else if($courante == "0") $search .=" and id!='$id_rubrique'";
-		if($ligne!="") $search.=" and ligne=\"$ligne\"";
-		if($exclusion!="") $search .= " and id not in($exclusion)";
-		
 		$rubrique = new Rubrique();
-		
-		if($aleatoire) $order = "order by "  . " RAND()";
-		else $order = "order by classement";
-		
-		$query = "select * from $rubrique->table where 1 $search $order";
-		$resul = mysql_query($query, $rubrique->link);
-	
 		$rubriquedesc = new Rubriquedesc();
 		
+		// prŽparation de la reqžete
+		if($id!="")  $search.=" and $rubrique->table.id in ($id)";
+		if($parent!="") $search.=" and $rubrique->table.parent=\"$parent\"";
+		if($boutique != "") $search .=" and $rubrique->table.boutique='$boutique'";
+		if($courante == "1") $search .=" and $rubrique->table.id='$id_rubrique'";
+		else if($courante == "0") $search .=" and $rubrique->table.id!='$id_rubrique'";
+		if($ligne!="") $search.=" and $rubrique->table.ligne=\"$ligne\"";
+		if($exclusion!="") $search .= " and $rubrique->table.id not in($exclusion)";
+		
+		if($aleatoire) $order = "order by "  . " RAND()";
+		else if($classement == "alpha") $order = "order by $rubriquedesc->table.titre";
+		else if($classement == "alphainv") $order = "order by $rubriquedesc->table.titre desc";
+		else $order = "order by $rubrique->table.classement";
+
+				
+		$query = "select $rubrique->table.id from $rubrique->table,$rubriquedesc->table where $rubrique->table.id=$rubriquedesc->table.rubrique $search $order";
+		$resul = mysql_query($query, $rubrique->link);
+	
 		$compt = 1;
 
 		$nbres = mysql_numrows($resul);
 		if(!$nbres) return "";
 		
 		while( $row = mysql_fetch_object($resul)){
-		
+				
+			$rubrique->charger($row->id);
+			
 			if($pasvide != ""){
-						$rec = arbreBoucle($row->id);
+						$rec = arbreBoucle($rubrique->id);
 						if($rec) $virg=",";
 						else $virg="";
 						
 				$tmprod = new Produit();
-				$query4 = "select count(*) as nbres from $tmprod->table where rubrique in('" . $row->id . "'$virg$rec) and ligne='1'";
+				$query4 = "select count(*) as nbres from $tmprod->table where rubrique in('" . $rubrique->id . "'$virg$rec) and ligne='1'";
 				$resul4 = mysql_query($query4, $tmprod->link);
 				if(!mysql_result($resul4, 0, "nbres")) continue;
 			
 			}
 		
-			$rubriquedesc->charger($row->id, $_SESSION['navig']->lang);
+			$rubriquedesc->charger($rubrique->id, $_SESSION['navig']->lang);
 			
-			$query3 = "select * from $rubrique->table where 1 and parent=\"$row->id\"";
+			$query3 = "select * from $rubrique->table where 1 and parent=\"$rubrique->id\"";
 			$resul3 = mysql_query($query3, $rubrique->link);	
 			if($resul3) $nbenfant = mysql_numrows($resul3);
 
@@ -136,11 +141,11 @@
 			$temp = ereg_replace("#CHAPO", "$rubriquedesc->chapo", $temp);
 			$temp = ereg_replace("#STRIPCHAPO", strip_tags($rubriquedesc->chapo), $temp);	
 			$temp = ereg_replace("#DESCRIPTION", "$rubriquedesc->description", $temp);
-			$temp = ereg_replace("#PARENT", "$row->parent", $temp);
-			$temp = ereg_replace("#ID", "$row->id", $temp);		
-			$temp = ereg_replace("#URL", "rubrique.php?id_rubrique=" . "$row->id", $temp);	
-			$temp = ereg_replace("#REWRITEURL", rewrite_rub("$row->id"), $temp);	
-			$temp = ereg_replace("#LIEN", "$row->lien", $temp);	
+			$temp = ereg_replace("#PARENT", "$rubrique->parent", $temp);
+			$temp = ereg_replace("#ID", "$rubrique->id", $temp);		
+			$temp = ereg_replace("#URL", "rubrique.php?id_rubrique=" . "$rubrique->id", $temp);	
+			$temp = ereg_replace("#REWRITEURL", rewrite_rub("$rubrique->id"), $temp);	
+			$temp = ereg_replace("#LIEN", "$rubrique->lien", $temp);	
 			$temp = ereg_replace("#COMPT", "$compt", $temp);		
 			$temp = ereg_replace("#NBRES", "$nbres", $temp);
 			$temp = ereg_replace("#NBENFANT", "$nbenfant", $temp);		
@@ -639,6 +644,7 @@
 			$courant = lireTag($args, "courant");
 			$profondeur = lireTag($args, "profondeur");		
 			$exclusion = lireTag($args, "exclusion");	
+			$poids = lireTag($args, "poids");
 						
 			if($bloc) $totbloc=$bloc;
 			if(!$deb) $deb=0;
@@ -695,7 +701,8 @@
 			if($garantie!="") $search .= " and garantie=\"$garantie\"";
 			if($prixmin!="") $search .= " and prix2>=\"$prixmin\"";
 			if($prixmax!="") $search .= " and prix2<=\"$prixmax\"";
-			
+			if($poids!="") $search .= " and poids<=\"$poids\"";
+						
 			if($refp!="") $search .= " and ref=\"$refp\"";
 
 			if($bloc == "-1") $bloc = "999999999";
@@ -724,7 +731,7 @@
 
 			$tcaracval = new Caracval();
 
-			while($i<count($lcaracteristique)){
+			while($i<count($lcaracteristique)-1){
 				$caracteristique = $lcaracteristique[$i];
 				$caracdisp = $lcaracdisp[$i];
 				if($caracdisp == "*")
@@ -738,7 +745,7 @@
 				$liste="";
 				
 				while($row = mysql_fetch_object($resul))
-					if(strstr($liste2, "'$row->produit'") || $liste2 == "") $liste .= "'$row->produit', ";
+					$liste .= "'$row->produit', ";
 			
 				$liste = substr($liste, 0, strlen($liste) - 2);
 				
@@ -778,6 +785,60 @@
 			if($liste!="") $search .= " and id in($liste)";	
 			else return "";
 		}	
+
+
+			/* Demande de declinaisons */
+			if($declidisp != ""){
+
+			$ldeclinaison = explode("-", $declinaison);
+			$ldeclidisp = explode("-", $declidisp);
+			$ldeclistockmini = explode("-", $declistockmini);
+			
+			$i = 0;
+			$liste="";
+			$exdecprod = new Exdecprod();
+			$stock = new Stock();
+
+			while($i<count($ldeclinaison)-1){
+
+				$declinaison = $ldeclinaison[$i];
+				$declidisp = $ldeclidisp[$i];
+				$declistockmini = $ldeclistockmini[$i];
+				
+		 		$query = "select * from $exdecprod->table where declidisp='$declidisp'";
+				$resul = mysql_query($query);
+		
+				if(mysql_numrows($resul)) 
+						while($row = mysql_fetch_object($resul))
+							$liste .= "'$row->produit', ";
+	
+				if($liste!="") {
+						$liste = substr($liste, 0, strlen($liste) - 2);
+						$search .= " and id not in($liste)";
+				}	
+		
+				$liste="";
+				
+				if($declistockmini != ""){
+					$query = "select * from $stock->table where declidisp='$declidisp' and valeur>='$declistockmini'";
+					$resul = mysql_query($query);
+
+					if(mysql_numrows($resul)) 
+							while($row = mysql_fetch_object($resul))
+								$liste .= "'$row->produit', ";
+
+					if($liste!="") {
+								$liste = substr($liste, 0, strlen($liste) - 2);
+								$search .= " and id in($liste)";
+					}
+					else return "";
+				}	
+			
+				$i++;
+
+			}
+		
+		}
 				
 			$produit = new Produit();
 			$produitdesc = new Produitdesc();
@@ -1562,6 +1623,7 @@
 		if($caracteristique!="")  $search.=" and caracteristique=\"$caracteristique\"";
 		if($id !="") $search.=" and id=\"$id\"";
 		if($classement == "alpha") $order="order by titre";
+		else if($classement == "alphainv") $order="order by titre desc";
 		
 		$tcaracdisp = new Caracdisp();
 		$tcaracdispdesc = new Caracdispdesc();
@@ -2106,7 +2168,7 @@
 		$exdecprod = new Exdecprod();
 
 		if($classement == "alpha") $order="order by titre";
-
+		else if($classement == "alphainv") $order="order by titre desc";
 
 		$query = "select * from $tdeclidisp->table where 1 $search";
 		$resul = mysql_query($query, $tdeclidisp->link);
