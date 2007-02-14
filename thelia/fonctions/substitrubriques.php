@@ -31,24 +31,26 @@
 		
 	function substitrubriques($texte){
 		global $id_rubrique;
-
-		if(! $id_rubrique) return $texte;
 		
 		$trubrique = new Rubrique();
-	
-		$query = "select * from $trubrique->table where id='$id_rubrique'";
-		$resul = mysql_query($query, $trubrique->link);
-		$row = mysql_fetch_object($resul);
-
 		$trubriquedesc = new Rubriquedesc();
+		
+		if($id_rubrique){
+			$trubrique->charger($id_rubrique);
+			$trubriquedesc->charger($trubrique->id, $_SESSION['navig']->lang);
+		}
 
-		$trubriquedesc->charger($row->id, $_SESSION['navig']->lang);
+		
 		$texte = ereg_replace("#RUBRIQUE_CHAPO", "$trubriquedesc->chapo", $texte);
-		$texte = ereg_replace("#RUBRIQUE_ID", "$row->id", $texte);
+		$texte = ereg_replace("#RUBRIQUE_ID", "$trubrique->id", $texte);
 		$texte = ereg_replace("#RUBRIQUE_NOM", "$trubriquedesc->titre", $texte);
-		$texte = ereg_replace("#RUBRIQUE_PARENT", "$row->parent", $texte);
-		$texte = ereg_replace("#RUBRIQUE_REWRITEURL", rewrite_rub("$row->id"), $texte);	
-
+		$texte = ereg_replace("#RUBRIQUE_PARENT", "$trubrique->parent", $texte);
+		
+		if($id_rubrique)
+			$texte = ereg_replace("#RUBRIQUE_REWRITEURL", rewrite_rub("$trubrique->id"), $texte);	
+		else 
+			$texte = ereg_replace("#RUBRIQUE_REWRITEURL", "", $texte);	
+		
 		return $texte;
 	}
 	

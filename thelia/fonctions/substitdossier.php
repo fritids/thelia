@@ -32,23 +32,18 @@
 	function substitdossier($texte){
 		global $id_dossier;
 		
-		if( ! $id_dossier) return $texte;
-		
 		$tdossier = new Dossier();
-	
-		$query = "select * from $tdossier->table where id='$id_dossier'";
-		$resul = mysql_query($query, $tdossier->link);
-		$row = mysql_fetch_object($resul);
-
 		$tdossierdesc = new Dossierdesc();
-		$query2 = "select * from $tdossierdesc->table where dossier='$row->id'";
-		$resul2 = mysql_query($query2, $tdossier->link);
-		$row2 = mysql_fetch_object($resul2);
+		
+		if($id_dossier){
+			$tdossier->charger($id_dossier);
+			$tdossierdesc->charger($tdossier->id, $_SESSION['navig']->lang);
+		}
 
-		$texte = ereg_replace("#DOSSIER_CHAPO", "$row2->chapo", $texte);
-		$texte = ereg_replace("#DOSSIER_ID", "$row->id", $texte);
-		$texte = ereg_replace("#DOSSIER_NOM", "$row2->titre", $texte);
-		$texte = ereg_replace("#DOSSIER_PARENT", "$row->parent", $texte);
+		$texte = ereg_replace("#DOSSIER_CHAPO", "$tdossierdesc->chapo", $texte);
+		$texte = ereg_replace("#DOSSIER_ID", "$tdossier->id", $texte);
+		$texte = ereg_replace("#DOSSIER_NOM", "$tdossierdesc->titre", $texte);
+		$texte = ereg_replace("#DOSSIER_PARENT", "$tdossier->parent", $texte);
 
 		return $texte;
 	}

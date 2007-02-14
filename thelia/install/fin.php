@@ -51,18 +51,7 @@
 	$var->charger("rssadmin");
 	$var->valeur=$_POST['rssadmin'];
 	$var->maj();	
-	
-    $liste = dir("../template");
 
-    while (false !== ($entry = $liste->read())) {
-            if(strstr($entry, ".php")) {
-				copy("../template/$entry", "../$entry");
-				@chmod ("../$entry", 0777);  
-			}
-    }
-    
-    $liste->close();
-	
 	$_SESSION['serveur']="";
 	$_SESSION['utilisateur']="";
 	$_SESSION['motdepasse']="";

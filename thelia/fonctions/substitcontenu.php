@@ -33,10 +33,13 @@
 	function substitcontenu($texte){
 		global $motcle, $id_contenu;
 
-		if(! $id_contenu) return $texte;
-		
 		$tcontenu = new Contenu();
 		$tcontenudesc = new Contenudesc();
+
+		if($id_contenu){
+			$tcontenu->charger($id_contenu);
+			$tcontenudesc->charger($tcontenu->id, $_SESSION['navig']->lang);
+		}
 		
 		$query = "select * from $tcontenu->table where id='$id_contenu'";
 		$resul = mysql_query($query, $tcontenu->link);

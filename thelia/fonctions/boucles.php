@@ -632,6 +632,10 @@
 			$caracteristique = lireTag($args, "caracteristique");
 			$caracdisp = lireTag($args, "caracdisp");
 			$caracval = lireTag($args, "caracval");
+			$declinaison = lireTag($args, "declinaison");			
+			$declidisp = lireTag($args, "declidisp");
+			$declival = lireTag($args, "declival");
+			$declistockmini = lireTag($args, "declistockmini");
 			$courant = lireTag($args, "courant");
 			$profondeur = lireTag($args, "profondeur");		
 			$exclusion = lireTag($args, "exclusion");	

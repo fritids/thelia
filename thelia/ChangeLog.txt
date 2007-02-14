@@ -6,6 +6,9 @@
 	modification de la gestion des décimales
 	changement des inclusions au niveau des classes
 	correction admin/accessoire.php
+	recherche sur les déclinaisons en stock (boucle produit)
+	correction fonctions/substitproduits.php
+	ajout de fonctions/subtideclinaison.php
 	
 1.1.8
 	mise en place des blocs pour la boucle Contenu

@@ -36,6 +36,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/substitmessage.php");
 	include_once(realpath(dirname(__FILE__)) . "/substitvariable.php");
 	include_once(realpath(dirname(__FILE__)) . "/substitcaracteristique.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitdeclinaison.php");
 	include_once(realpath(dirname(__FILE__)) . "/substitimage.php");
 	include_once(realpath(dirname(__FILE__)) . "/substitdossier.php");
 	include_once(realpath(dirname(__FILE__)) . "/substitcontenu.php");
@@ -74,6 +75,7 @@
 		if(strstr($texte, "#COMMANDE_")) $texte = substitcommande($texte);		
 		if(strstr($texte, "#IMAGE_")) $texte = substitimage($texte);		
 		if(strstr($texte, "#CARACTERISTIQUE_")) $texte = substitcaracteristique($texte);		
+		if(strstr($texte, "#DECLINAISON_")) $texte = substitdeclinaison($texte);		
 		if(strstr($texte, "#DOSSIER_")) $texte = substitdossier($texte);		
 		if(strstr($texte, "#CONTENU_")) $texte = substitcontenu($texte);		
 		
