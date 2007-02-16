@@ -41,15 +41,15 @@
 		}
 
 		
-		$texte = ereg_replace("#RUBRIQUE_CHAPO", "$trubriquedesc->chapo", $texte);
-		$texte = ereg_replace("#RUBRIQUE_ID", "$trubrique->id", $texte);
-		$texte = ereg_replace("#RUBRIQUE_NOM", "$trubriquedesc->titre", $texte);
-		$texte = ereg_replace("#RUBRIQUE_PARENT", "$trubrique->parent", $texte);
+		$texte = str_replace("#RUBRIQUE_CHAPO", "$trubriquedesc->chapo", $texte);
+		$texte = str_replace("#RUBRIQUE_ID", "$trubrique->id", $texte);
+		$texte = str_replace("#RUBRIQUE_NOM", "$trubriquedesc->titre", $texte);
+		$texte = str_replace("#RUBRIQUE_PARENT", "$trubrique->parent", $texte);
 		
 		if($id_rubrique)
-			$texte = ereg_replace("#RUBRIQUE_REWRITEURL", rewrite_rub("$trubrique->id"), $texte);	
+			$texte = str_replace("#RUBRIQUE_REWRITEURL", rewrite_rub("$trubrique->id"), $texte);	
 		else 
-			$texte = ereg_replace("#RUBRIQUE_REWRITEURL", "", $texte);	
+			$texte = str_replace("#RUBRIQUE_REWRITEURL", "", $texte);	
 		
 		return $texte;
 	}

@@ -136,19 +136,19 @@
 			$resul3 = mysql_query($query3, $rubrique->link);	
 			if($resul3) $nbenfant = mysql_numrows($resul3);
 
-			$temp = ereg_replace("#TITRE", "$rubriquedesc->titre", $texte);
-			$temp = ereg_replace("#STRIPTITRE", strip_tags($rubriquedesc->titre), $temp);	
-			$temp = ereg_replace("#CHAPO", "$rubriquedesc->chapo", $temp);
-			$temp = ereg_replace("#STRIPCHAPO", strip_tags($rubriquedesc->chapo), $temp);	
-			$temp = ereg_replace("#DESCRIPTION", "$rubriquedesc->description", $temp);
-			$temp = ereg_replace("#PARENT", "$rubrique->parent", $temp);
-			$temp = ereg_replace("#ID", "$rubrique->id", $temp);		
-			$temp = ereg_replace("#URL", "rubrique.php?id_rubrique=" . "$rubrique->id", $temp);	
-			$temp = ereg_replace("#REWRITEURL", rewrite_rub("$rubrique->id"), $temp);	
-			$temp = ereg_replace("#LIEN", "$rubrique->lien", $temp);	
-			$temp = ereg_replace("#COMPT", "$compt", $temp);		
-			$temp = ereg_replace("#NBRES", "$nbres", $temp);
-			$temp = ereg_replace("#NBENFANT", "$nbenfant", $temp);		
+			$temp = str_replace("#TITRE", "$rubriquedesc->titre", $texte);
+			$temp = str_replace("#STRIPTITRE", strip_tags($rubriquedesc->titre), $temp);	
+			$temp = str_replace("#CHAPO", "$rubriquedesc->chapo", $temp);
+			$temp = str_replace("#STRIPCHAPO", strip_tags($rubriquedesc->chapo), $temp);	
+			$temp = str_replace("#DESCRIPTION", "$rubriquedesc->description", $temp);
+			$temp = str_replace("#PARENT", "$rubrique->parent", $temp);
+			$temp = str_replace("#ID", "$rubrique->id", $temp);		
+			$temp = str_replace("#URL", "rubrique.php?id_rubrique=" . "$rubrique->id", $temp);	
+			$temp = str_replace("#REWRITEURL", rewrite_rub("$rubrique->id"), $temp);	
+			$temp = str_replace("#LIEN", "$rubrique->lien", $temp);	
+			$temp = str_replace("#COMPT", "$compt", $temp);		
+			$temp = str_replace("#NBRES", "$nbres", $temp);
+			$temp = str_replace("#NBENFANT", "$nbenfant", $temp);		
 		
 			
 			$compt ++;
@@ -212,19 +212,19 @@
 			$resul3 = mysql_query($query3, $dossier->link);	
 			if($resul3) $nbenfant = mysql_numrows($resul3);
 
-			$temp = ereg_replace("#TITRE", "$dossierdesc->titre", $texte);
-			$temp = ereg_replace("#STRIPTITRE", strip_tags($dossierdesc->titre), $temp);	
-			$temp = ereg_replace("#CHAPO", "$dossierdesc->chapo", $temp);
-			$temp = ereg_replace("#STRIPCHAPO", strip_tags($dossierdesc->chapo), $temp);	
-			$temp = ereg_replace("#DESCRIPTION", "$dossierdesc->description", $temp);
-			$temp = ereg_replace("#PARENT", "$row->parent", $temp);
-			$temp = ereg_replace("#ID", "$row->id", $temp);		
-			$temp = ereg_replace("#URL", "dossier.php?id_dossier=" . "$row->id", $temp);
-			$temp = ereg_replace("#REWRITEURL", rewrite_dos("$row->id"), $temp);	
-			$temp = ereg_replace("#LIEN", "$row->lien", $temp);	
-			$temp = ereg_replace("#COMPT", "$compt", $temp);		
-			$temp = ereg_replace("#NBRES", "$nbres", $temp);
-			$temp = ereg_replace("#NBENFANT", "$nbenfant", $temp);		
+			$temp = str_replace("#TITRE", "$dossierdesc->titre", $texte);
+			$temp = str_replace("#STRIPTITRE", strip_tags($dossierdesc->titre), $temp);	
+			$temp = str_replace("#CHAPO", "$dossierdesc->chapo", $temp);
+			$temp = str_replace("#STRIPCHAPO", strip_tags($dossierdesc->chapo), $temp);	
+			$temp = str_replace("#DESCRIPTION", "$dossierdesc->description", $temp);
+			$temp = str_replace("#PARENT", "$row->parent", $temp);
+			$temp = str_replace("#ID", "$row->id", $temp);		
+			$temp = str_replace("#URL", "dossier.php?id_dossier=" . "$row->id", $temp);
+			$temp = str_replace("#REWRITEURL", rewrite_dos("$row->id"), $temp);	
+			$temp = str_replace("#LIEN", "$row->lien", $temp);	
+			$temp = str_replace("#COMPT", "$compt", $temp);		
+			$temp = str_replace("#NBRES", "$nbres", $temp);
+			$temp = str_replace("#NBENFANT", "$nbenfant", $temp);		
 		
 			
 			$compt ++;
@@ -308,84 +308,87 @@
 			if($image->produit != 0){
 					$pr->charger_id($image->produit);
 					$prdesc->charger($image->produit);
-					$temp = ereg_replace("#PRODTITRE", $prdesc->titre, $temp);
-					$temp = ereg_replace("#PRODUIT", $image->produit, $temp);
-					$temp = ereg_replace("#PRODREF", $pr->ref, $temp);
-					$temp = ereg_replace("#RUBRIQUE", $pr->rubrique, $temp);
-					$temp = ereg_replace("#COMPT", "$compt", $temp);
+					$temp = str_replace("#PRODTITRE", $prdesc->titre, $temp);
+					$temp = str_replace("#PRODUIT", $image->produit, $temp);
+					$temp = str_replace("#PRODREF", $pr->ref, $temp);
+					$temp = str_replace("#RUBRIQUE", $pr->rubrique, $temp);
+					$temp = str_replace("#COMPT", "$compt", $temp);
 					
 					if(!$largeur && !$hauteur) 
-						$temp = ereg_replace("#GRANDE", "client/gfx/photos/produit/grande/" . $image->fichier, $temp);
-					else $temp = ereg_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/grande/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+						$temp = str_replace("#GRANDE", "client/gfx/photos/produit/grande/" . $image->fichier, $temp);
+					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/grande/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
 					
 					if(!$largeur && !$hauteur) 
-						$temp = ereg_replace("#PETITE",  "client/gfx/photos/produit/petite/" . $image->fichier, $temp);	
-					else $temp = ereg_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/petite/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+						$temp = str_replace("#PETITE",  "client/gfx/photos/produit/petite/" . $image->fichier, $temp);	
+					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/petite/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
 					
-						$temp = ereg_replace("#FPETITE",  "client/gfx/photos/produit/petite/" . $image->fichier, $temp);
-						$temp = ereg_replace("#FGRANDE",  "client/gfx/photos/produit/grande/" . $image->fichier, $temp);
+						$temp = str_replace("#FPETITE",  "client/gfx/photos/produit/petite/" . $image->fichier, $temp);
+						$temp = str_replace("#FGRANDE",  "client/gfx/photos/produit/grande/" . $image->fichier, $temp);
 
 			}
 			
 			else if($image->rubrique != 0){
 				
 				$rudesc->charger($image->rubrique);
-				$temp = ereg_replace("#RUBRIQUE", $image->rubrique, $temp);
-				$temp = ereg_replace("#RUBTITRE", $rudesc->titre, $temp);
+				$temp = str_replace("#RUBRIQUE", $image->rubrique, $temp);
+				$temp = str_replace("#RUBTITRE", $rudesc->titre, $temp);
 			
 					if(!$largeur && !$hauteur) 
-						$temp = ereg_replace("#GRANDE", "client/gfx/photos/rubrique/grande/" . $image->fichier, $temp);
-					else $temp = ereg_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/grande/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+						$temp = str_replace("#GRANDE", "client/gfx/photos/rubrique/grande/" . $image->fichier, $temp);
+					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/grande/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
 					
 					if(!$largeur && !$hauteur) 
-						$temp = ereg_replace("#PETITE",  "client/gfx/photos/rubrique/petite/" . $image->fichier, $temp);	
-					else $temp = ereg_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/petite/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+						$temp = str_replace("#PETITE",  "client/gfx/photos/rubrique/petite/" . $image->fichier, $temp);	
+					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/petite/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
 					
-						$temp = ereg_replace("#FPETITE",  "client/gfx/photos/rubrique/petite/" . $image->fichier, $temp);
-						$temp = ereg_replace("#FGRANDE",  "client/gfx/photos/rubrique/grande/" . $image->fichier, $temp);
+						$temp = str_replace("#FPETITE",  "client/gfx/photos/rubrique/petite/" . $image->fichier, $temp);
+						$temp = str_replace("#FGRANDE",  "client/gfx/photos/rubrique/grande/" . $image->fichier, $temp);
 
 			}
 	
 			else if($image->dossier != 0){
 				
 				$rudesc->charger($image->dossier);
-				$temp = ereg_replace("#RUBRIQUE", $image->dossier, $temp);
-				$temp = ereg_replace("#RUBTITRE", $rudesc->titre, $temp);
+				$temp = str_replace("#RUBRIQUE", $image->dossier, $temp);
+				$temp = str_replace("#RUBTITRE", $rudesc->titre, $temp);
 			
 					if(!$largeur && !$hauteur) 
-						$temp = ereg_replace("#GRANDE", "client/gfx/photos/dossier/grande/" . $image->fichier, $temp);
-					else $temp = ereg_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/grande/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+						$temp = str_replace("#GRANDE", "client/gfx/photos/dossier/grande/" . $image->fichier, $temp);
+					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/grande/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
 					
 					if(!$largeur && !$hauteur) 
-						$temp = ereg_replace("#PETITE",  "client/gfx/photos/dossier/petite/" . $image->fichier, $temp);	
-					else $temp = ereg_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/petite/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+						$temp = str_replace("#PETITE",  "client/gfx/photos/dossier/petite/" . $image->fichier, $temp);	
+					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/petite/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
 					
-						$temp = ereg_replace("#FPETITE",  "client/gfx/photos/dossier/petite/" . $image->fichier, $temp);
-						$temp = ereg_replace("#FGRANDE",  "client/gfx/photos/dossier/grande/" . $image->fichier, $temp);
+						$temp = str_replace("#FPETITE",  "client/gfx/photos/dossier/petite/" . $image->fichier, $temp);
+						$temp = str_replace("#FGRANDE",  "client/gfx/photos/dossier/grande/" . $image->fichier, $temp);
 
 			}	
 	
 			else if($image->contenu != 0){
 			
 					$prdesc->charger($image->contenu);
-					$temp = ereg_replace("#PRODTITRE", $prdesc->titre, $temp);
-					$temp = ereg_replace("#PRODUIT", $image->contenu, $temp);
+					$temp = str_replace("#PRODTITRE", $prdesc->titre, $temp);
+					$temp = str_replace("#PRODUIT", $image->contenu, $temp);
 					
 					if(!$largeur && !$hauteur) 
-						$temp = ereg_replace("#GRANDE", "client/gfx/photos/contenu/grande/" . $image->fichier, $temp);
-					else $temp = ereg_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/grande/" . $image->fichier . "&width=$largeur&height=$hauteur". "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+						$temp = str_replace("#GRANDE", "client/gfx/photos/contenu/grande/" . $image->fichier, $temp);
+					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/grande/" . $image->fichier . "&width=$largeur&height=$hauteur". "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
 					
 					if(!$largeur && !$hauteur) 
-						$temp = ereg_replace("#PETITE",  "client/gfx/photos/contenu/petite/" . $image->fichier, $temp);	
-					else $temp = ereg_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/petite/" . $image->fichier . "&width=$largeur&height=$hauteur". "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+						$temp = str_replace("#PETITE",  "client/gfx/photos/contenu/petite/" . $image->fichier, $temp);	
+					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/petite/" . $image->fichier . "&width=$largeur&height=$hauteur". "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
 					
-						$temp = ereg_replace("#FPETITE",  "client/gfx/photos/contenu/petite/" . $image->fichier, $temp);
-						$temp = ereg_replace("#FGRANDE",  "client/gfx/photos/contenu/grande/" . $image->fichier, $temp);
+						$temp = str_replace("#FPETITE",  "client/gfx/photos/contenu/petite/" . $image->fichier, $temp);
+						$temp = str_replace("#FGRANDE",  "client/gfx/photos/contenu/grande/" . $image->fichier, $temp);
 
 			}	
 	
-				$temp = ereg_replace("#ID",  $image->id, $temp);	
-				$temp = ereg_replace("#FPETITE",  "client/gfx/photos/rubrique/" . $image->fichier, $temp);	
+				$temp = str_replace("#ID",  $image->id, $temp);	
+				$temp = str_replace("#FPETITE",  "client/gfx/photos/rubrique/" . $image->fichier, $temp);	
+				$temp = str_replace("#TITRE",  $imagedesc->titre, $temp);	
+				$temp = str_replace("#CHAPO",  $imagedesc->chapo, $temp);	
+				$temp = str_replace("#DESCRIPTION",  $imagedesc->description, $temp);	
 
 			$compt++;
 				
@@ -437,24 +440,24 @@
 		
 		while( $row = mysql_fetch_object($resul)){
 	
-				$temp = ereg_replace("#ID", "$row->id", $texte);		
-				$temp = ereg_replace("#REF", "$row->ref", $temp);		
-				$temp = ereg_replace("#RAISON", "$row->raison", $temp);		
-				$temp = ereg_replace("#ENTREPRISE", "$row->entreprise", $temp);					
-				$temp = ereg_replace("#NOM", "$row->nom", $temp);					
-				$temp = ereg_replace("#PRENOM", "$row->prenom", $temp);					
-				$temp = ereg_replace("#TELFIXE", "$row->telfixe", $temp);	
-				$temp = ereg_replace("#TELPORT", "$row->telport", $temp);					
-				$temp = ereg_replace("#EMAIL", "$row->email", $temp);					
-				$temp = ereg_replace("#ADRESSE1", "$row->adresse1", $temp);					
-				$temp = ereg_replace("#ADRESSE2", "$row->adresse2", $temp);					
-				$temp = ereg_replace("#ADRESSE3", "$row->adresse3", $temp);					
-				$temp = ereg_replace("#CPOSTAL", "$row->cpostal", $temp);					
-				$temp = ereg_replace("#VILLE", "$row->ville", $temp);					
-				$temp = ereg_replace("#PAYS", "$row->pays", $temp);					
-				$temp = ereg_replace("#PARRAIN", "$row->parrain", $temp);					
-				$temp = ereg_replace("#TYPE", "$row->type", $temp);					
-				$temp = ereg_replace("#POURCENTAGE", "$row->pourcentage", $temp);					
+				$temp = str_replace("#ID", "$row->id", $texte);		
+				$temp = str_replace("#REF", "$row->ref", $temp);		
+				$temp = str_replace("#RAISON", "$row->raison", $temp);		
+				$temp = str_replace("#ENTREPRISE", "$row->entreprise", $temp);					
+				$temp = str_replace("#NOM", "$row->nom", $temp);					
+				$temp = str_replace("#PRENOM", "$row->prenom", $temp);					
+				$temp = str_replace("#TELFIXE", "$row->telfixe", $temp);	
+				$temp = str_replace("#TELPORT", "$row->telport", $temp);					
+				$temp = str_replace("#EMAIL", "$row->email", $temp);					
+				$temp = str_replace("#ADRESSE1", "$row->adresse1", $temp);					
+				$temp = str_replace("#ADRESSE2", "$row->adresse2", $temp);					
+				$temp = str_replace("#ADRESSE3", "$row->adresse3", $temp);					
+				$temp = str_replace("#CPOSTAL", "$row->cpostal", $temp);					
+				$temp = str_replace("#VILLE", "$row->ville", $temp);					
+				$temp = str_replace("#PAYS", "$row->pays", $temp);					
+				$temp = str_replace("#PARRAIN", "$row->parrain", $temp);					
+				$temp = str_replace("#TYPE", "$row->type", $temp);					
+				$temp = str_replace("#POURCENTAGE", "$row->pourcentage", $temp);					
 
 			
 			$res .= $temp . "\n";
@@ -502,14 +505,14 @@
 			$prix2 = round($prod->prix2 * $devise->taux, 2);
 			$convert = round($somme * $devise->taux, 2);
 			$total = round( $_SESSION['navig']->panier->total() * $devise->taux, 2);
-			$temp = ereg_replace("#PRIX2",  "$prix2", $texte);	
+			$temp = str_replace("#PRIX2",  "$prix2", $texte);	
 			
-			$temp = ereg_replace("#PRIX", "$prix", $temp);
-			$temp = ereg_replace("#TOTAL", "$total", $temp);
-			$temp = ereg_replace("#CONVERT", "$convert", $temp);
-			$temp = ereg_replace("#NOM",  "$devise->nom", $temp);	
-			$temp = ereg_replace("#CODE",  "$devise->code", $temp);	
-			$temp = ereg_replace("#TAUX", "$devise->taux", $temp);
+			$temp = str_replace("#PRIX", "$prix", $temp);
+			$temp = str_replace("#TOTAL", "$total", $temp);
+			$temp = str_replace("#CONVERT", "$convert", $temp);
+			$temp = str_replace("#NOM",  "$devise->nom", $temp);	
+			$temp = str_replace("#CODE",  "$devise->code", $temp);	
+			$temp = str_replace("#TAUX", "$devise->taux", $temp);
 
 			$res .= $temp. "\n";;
 		}
@@ -565,8 +568,8 @@
 		while( $row = mysql_fetch_object($resul)){
 			$document->charger($row->id);
 			$documentdesc->charger($document->id);
-			$temp = ereg_replace("#TITRE", "$documentdesc->titre", $texte);
-			$temp = ereg_replace("#FICHIER", "client/document/" . $document->fichier, $texte);
+			$temp = str_replace("#TITRE", "$documentdesc->titre", $texte);
+			$temp = str_replace("#FICHIER", "client/document/" . $document->fichier, $texte);
 
 			$res .= $temp. "\n";;
 		}
@@ -603,7 +606,7 @@
 
 		while( $row = mysql_fetch_object($resul)){
 			$accessoire->charger($row->id);
-			$temp = ereg_replace("#ACCESSOIRE", "$accessoire->accessoire", $texte);
+			$temp = str_replace("#ACCESSOIRE", "$accessoire->accessoire", $texte);
 
 			$res .= $temp. "\n";;
 		}
@@ -876,7 +879,7 @@
 		// substitutions
 		if($type) return $query;
 		
-		$saveReq = ereg_replace("\*", "count(*) as totcount", $saveReq);
+		$saveReq = str_replace("*", "count(*) as totcount", $saveReq);
 		$saveRes = mysql_query($saveReq);
 		$countRes = mysql_result($saveRes, 0, "totcount") . " ";
 	
@@ -944,38 +947,38 @@
 			
 			if($deb != "" && !$page) $debcourant+=$deb-1;
 
-			$temp = ereg_replace("#REF", "$row->ref", $temp);
-			$temp = ereg_replace("#DATE", substr($row->datemodif, 0, 10), $temp);
-			$temp = ereg_replace("#HEURE", substr($row->datemodif, 11), $temp);
-			$temp = ereg_replace("#DEBCOURANT", "$debcourant", $temp);
-			$temp = ereg_replace("#ID", "$row->id", $temp);		
-            $temp = ereg_replace("#PRIXD3", "$prixd3", $temp);
-            $temp = ereg_replace("#PRIXD6", "$prixd6", $temp);
- 			$temp = ereg_replace("#PRIXTOTCRED", "$prixtotcred", $temp);
-            $temp = ereg_replace("#COUTCREDIT", "$coutcredit", $temp);
-            $temp = ereg_replace("#MENSUALITE", "$mensualite", $temp);               
-			$temp = ereg_replace("#PRIX2", "$prix2", $temp);					
-			$temp = ereg_replace("#PRIX", "$prix", $temp);	
-			$temp = ereg_replace("#POURCENTAGE", "$pourcentage", $temp);	
-			$temp = ereg_replace("#RUBRIQUE", "$row->rubrique", $temp);			
-			$temp = ereg_replace("#PERSO", "$row->perso", $temp);			
-			$temp = ereg_replace("#QUANTITE", "$row->quantite", $temp);			
-			$temp = ereg_replace("#APPRO", "$row->appro", $temp);			
-			$temp = ereg_replace("#POIDS", "$row->poids", $temp);			
-			$temp = ereg_replace("#TITRE", "$produitdesc->titre", $temp);
-			$temp = ereg_replace("#STRIPTITRE", strip_tags($produitdesc->titre), $temp);	
-			$temp = ereg_replace("#CHAPO", "$produitdesc->chapo", $temp);	
-			$temp = ereg_replace("#STRIPCHAPO", strip_tags($produitdesc->chapo), $temp);	
-			$temp = ereg_replace("#DESCRIPTION", "$produitdesc->description", $temp);
-			$temp = ereg_replace("#STRIPDESCRIPTION", strip_tags($produitdesc->description), $temp);	
-			$temp = ereg_replace("#URLBOUTIQUE", $boutiqueprod->url, $temp);	
-			$temp = ereg_replace("#URL", "produit.php?ref=" . "$row->ref" . "&id_rubrique=" . "$row->rubrique", $temp);	
-			$temp = ereg_replace("#REWRITEURL", rewrite_prod("$row->ref"), $temp);	
-			$temp = ereg_replace("#GARANTIE", "$row->garantie", $temp);			
+			$temp = str_replace("#REF", "$row->ref", $temp);
+			$temp = str_replace("#DATE", substr($row->datemodif, 0, 10), $temp);
+			$temp = str_replace("#HEURE", substr($row->datemodif, 11), $temp);
+			$temp = str_replace("#DEBCOURANT", "$debcourant", $temp);
+			$temp = str_replace("#ID", "$row->id", $temp);		
+            $temp = str_replace("#PRIXD3", "$prixd3", $temp);
+            $temp = str_replace("#PRIXD6", "$prixd6", $temp);
+ 			$temp = str_replace("#PRIXTOTCRED", "$prixtotcred", $temp);
+            $temp = str_replace("#COUTCREDIT", "$coutcredit", $temp);
+            $temp = str_replace("#MENSUALITE", "$mensualite", $temp);               
+			$temp = str_replace("#PRIX2", "$prix2", $temp);					
+			$temp = str_replace("#PRIX", "$prix", $temp);	
+			$temp = str_replace("#POURCENTAGE", "$pourcentage", $temp);	
+			$temp = str_replace("#RUBRIQUE", "$row->rubrique", $temp);			
+			$temp = str_replace("#PERSO", "$row->perso", $temp);			
+			$temp = str_replace("#QUANTITE", "$row->quantite", $temp);			
+			$temp = str_replace("#APPRO", "$row->appro", $temp);			
+			$temp = str_replace("#POIDS", "$row->poids", $temp);			
+			$temp = str_replace("#TITRE", "$produitdesc->titre", $temp);
+			$temp = str_replace("#STRIPTITRE", strip_tags($produitdesc->titre), $temp);	
+			$temp = str_replace("#CHAPO", "$produitdesc->chapo", $temp);	
+			$temp = str_replace("#STRIPCHAPO", strip_tags($produitdesc->chapo), $temp);	
+			$temp = str_replace("#DESCRIPTION", "$produitdesc->description", $temp);
+			$temp = str_replace("#STRIPDESCRIPTION", strip_tags($produitdesc->description), $temp);	
+			$temp = str_replace("#URLBOUTIQUE", $boutiqueprod->url, $temp);	
+			$temp = str_replace("#URL", "produit.php?ref=" . "$row->ref" . "&id_rubrique=" . "$row->rubrique", $temp);	
+			$temp = str_replace("#REWRITEURL", rewrite_prod("$row->ref"), $temp);	
+			$temp = str_replace("#GARANTIE", "$row->garantie", $temp);			
 
-			$temp = ereg_replace("#PANIER", "panier.php?action=" . "ajouter" . "&" . "ref=" . "$row->ref" , $temp);	
+			$temp = str_replace("#PANIER", "panier.php?action=" . "ajouter" . "&" . "ref=" . "$row->ref" , $temp);	
 
-			$temp = ereg_replace("#RUBTITRE", "$rubriquedesc->titre", $temp);
+			$temp = str_replace("#RUBTITRE", "$rubriquedesc->titre", $temp);
 			
 			
 			$res .= $temp . "\n";
@@ -1109,7 +1112,7 @@
 		// substitutions
 		if($type) return $query;
 
-		$saveReq = ereg_replace("\*", "count(*) as totcount", $saveReq);
+		$saveReq = str_replace("*", "count(*) as totcount", $saveReq);
 		$saveRes = mysql_query($saveReq);
 		$countRes = mysql_result($saveRes, 0, "totcount") . " ";
 		
@@ -1132,22 +1135,23 @@
 				
 			$temp = $texte;
 			
-			$temp = ereg_replace("#DATE", substr($row->datemodif, 0, 10), $temp);
-			$temp = ereg_replace("#HEURE", substr($row->datemodif, 11), $temp);
-			$temp = ereg_replace("#DEBCOURANT", "$debcourant", $temp);
-			$temp = ereg_replace("#ID", "$row->id", $temp);		
-			$temp = ereg_replace("#DOSSIER", "$row->dossier", $temp);			
-			$temp = ereg_replace("#TITRE", "$contenudesc->titre", $temp);
-			$temp = ereg_replace("#STRIPTITRE", strip_tags($contenudesc->titre), $temp);	
-			$temp = ereg_replace("#CHAPO", "$contenudesc->chapo", $temp);	
-			$temp = ereg_replace("#STRIPCHAPO", strip_tags($contenudesc->chapo), $temp);	
-			$temp = ereg_replace("#DESCRIPTION", "$contenudesc->description", $temp);
-			$temp = ereg_replace("#STRIPDESCRIPTION", strip_tags($contenudesc->description), $temp);	
-			$temp = ereg_replace("#URLBOUTIQUE", $boutiqueprod->url, $temp);	
-			$temp = ereg_replace("#URL", "contenu.php?id_contenu=" . "$row->id", $temp);	
-			$temp = ereg_replace("#REWRITEURL", rewrite_cont("$row->id"), $temp);			
-			$temp = ereg_replace("#RUBTITRE", "$dossierdesc->titre", $temp);
-			
+			$temp = str_replace("#DATE", substr($row->datemodif, 0, 10), $temp);
+			$temp = str_replace("#HEURE", substr($row->datemodif, 11), $temp);
+			$temp = str_replace("#DEBCOURANT", "$debcourant", $temp);
+			$temp = str_replace("#ID", "$row->id", $temp);		
+			$temp = str_replace("#DOSSIER", "$row->dossier", $temp);			
+			$temp = str_replace("#TITRE", "$contenudesc->titre", $temp);
+			$temp = str_replace("#STRIPTITRE", strip_tags($contenudesc->titre), $temp);	
+			$temp = str_replace("#CHAPO", "$contenudesc->chapo", $temp);	
+			$temp = str_replace("#STRIPCHAPO", strip_tags($contenudesc->chapo), $temp);	
+			$temp = str_replace("#DESCRIPTION", "$contenudesc->description", $temp);
+			$temp = str_replace("#STRIPDESCRIPTION", strip_tags($contenudesc->description), $temp);	
+			$temp = str_replace("#URLBOUTIQUE", $boutiqueprod->url, $temp);	
+			$temp = str_replace("#URL", "contenu.php?id_contenu=" . "$row->id", $temp);	
+			$temp = str_replace("#REWRITEURL", rewrite_cont("$row->id"), $temp);			
+			$temp = str_replace("#RUBTITRE", "$dossierdesc->titre", $temp);
+			$temp = str_replace("#PRODUIT", "$produit", $temp);
+			$temp = str_replace("#RUBRIQUE", "$rubrique", $temp);			
 			
 			$res .= $temp . "\n";
 			
@@ -1179,7 +1183,7 @@
 				
 				$produit = new Produit();
 				
-				 $query = boucleProduit($texte, ereg_replace("num", "null", $args), 1);
+				 $query = boucleProduit($texte, str_replace("num", "null", $args), 1);
 
 				if($query != ""){ 
 					$pos = strpos($query, "limit");
@@ -1217,10 +1221,10 @@
 					
 					for( ; $i<$nbpage+1 && $i<$fin; $i++ ){
 					
-						$temp = ereg_replace("#PAGE_NUM", "$i", $texte);		
-						$temp = ereg_replace("#PAGE_SUIV", "$pagesuiv", $temp);
-						$temp = ereg_replace("#PAGE_PREC", "$pageprec", $temp);
-						$temp = ereg_replace("#RUBRIQUE", "$id_rubrique", $temp);
+						$temp = str_replace("#PAGE_NUM", "$i", $texte);		
+						$temp = str_replace("#PAGE_SUIV", "$pagesuiv", $temp);
+						$temp = str_replace("#PAGE_PREC", "$pageprec", $temp);
+						$temp = str_replace("#RUBRIQUE", "$id_rubrique", $temp);
 				
 						if($pagecourante && $pagecourante == $i){		
 
@@ -1236,10 +1240,10 @@
 				
 				else if($typeaff == "0"){
 
-					$temp = ereg_replace("#PAGE_NUM", "$i", $texte);
-					$temp = ereg_replace("#PAGE_SUIV", "$pagesuiv", $temp);
-					$temp = ereg_replace("#PAGE_PREC", "$pageprec", $temp);
-					$temp = ereg_replace("#RUBRIQUE", "$id_rubrique", $temp);
+					$temp = str_replace("#PAGE_NUM", "$i", $texte);
+					$temp = str_replace("#PAGE_SUIV", "$pagesuiv", $temp);
+					$temp = str_replace("#PAGE_PREC", "$pageprec", $temp);
+					$temp = str_replace("#RUBRIQUE", "$id_rubrique", $temp);
 					$res .= $temp;
 				}						
 			
@@ -1339,23 +1343,23 @@
 			$totcmdport = number_format($totcmdport, 2); 
 			$port = number_format($port, 2); 
 
-			$temp = ereg_replace("#REF", $_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $texte);
-			$temp = ereg_replace("#TITRE", $produitdesc->titre, $temp);
-			$temp = ereg_replace("#QUANTITE", "$quantite", $temp);
-			$temp = ereg_replace("#PRODUIT", $produitdesc->produit, $temp);
-			$temp = ereg_replace("#PRIXU", "$prix", $temp);
-			$temp = ereg_replace("#TOTAL", "$total", $temp);			
-			$temp = ereg_replace("#ID", $_SESSION['navig']->panier->tabarticle[$i]->produit->id, $temp);
-			$temp = ereg_replace("#ARTICLE", "$i", $temp);
-			$temp = ereg_replace("#PLUSURL", "panier.php?action=" . "modifier" . "&" . "id=" . $i . "&" . "quantite=" . $plus, $temp);			
-			$temp = ereg_replace("#MOINSURL", "panier.php?action=" . "modifier" . "&" . "id=" . $i . "&" . "quantite=" . $moins, $temp);
-			$temp = ereg_replace("#SUPPRURL", "panier.php?action=" . "supprimer" . "&" . "id=" . $i, $temp);			
-			$temp = ereg_replace("#PRODURL", "produit.php?ref=".$_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $temp);		
-			$temp = ereg_replace("#TOTSANSPORT", "$totsansport", $temp);
-			$temp = ereg_replace("#PORT", "$port", $temp);
-			$temp = ereg_replace("#TOTPORT", "$totcmdport", $temp);
-			$temp = ereg_replace("#DECTEXTE", "$dectexte", $temp);
-			$temp = ereg_replace("#DECVAL", "$decval", $temp);
+			$temp = str_replace("#REF", $_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $texte);
+			$temp = str_replace("#TITRE", $produitdesc->titre, $temp);
+			$temp = str_replace("#QUANTITE", "$quantite", $temp);
+			$temp = str_replace("#PRODUIT", $produitdesc->produit, $temp);
+			$temp = str_replace("#PRIXU", "$prix", $temp);
+			$temp = str_replace("#TOTAL", "$total", $temp);			
+			$temp = str_replace("#ID", $_SESSION['navig']->panier->tabarticle[$i]->produit->id, $temp);
+			$temp = str_replace("#ARTICLE", "$i", $temp);
+			$temp = str_replace("#PLUSURL", "panier.php?action=" . "modifier" . "&" . "id=" . $i . "&" . "quantite=" . $plus, $temp);			
+			$temp = str_replace("#MOINSURL", "panier.php?action=" . "modifier" . "&" . "id=" . $i . "&" . "quantite=" . $moins, $temp);
+			$temp = str_replace("#SUPPRURL", "panier.php?action=" . "supprimer" . "&" . "id=" . $i, $temp);			
+			$temp = str_replace("#PRODURL", "produit.php?ref=".$_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $temp);		
+			$temp = str_replace("#TOTSANSPORT", "$totsansport", $temp);
+			$temp = str_replace("#PORT", "$port", $temp);
+			$temp = str_replace("#TOTPORT", "$totcmdport", $temp);
+			$temp = str_replace("#DECTEXTE", "$dectexte", $temp);
+			$temp = str_replace("#DECVAL", "$decval", $temp);
 
 			$res .= $temp;
 		}
@@ -1381,8 +1385,8 @@
 			if($i==$_SESSION['navig']->panier->tabarticle[$article]->quantite) $selected=" selected";
 			else $selected="";
 		
-			$temp = ereg_replace("#NUM", "$i", $texte);
-			$temp = ereg_replace("#SELECTED", $selected, $temp);
+			$temp = str_replace("#NUM", "$i", $texte);
+			$temp = str_replace("#SELECTED", $selected, $temp);
 
 			$res.="$temp"; 
 		}
@@ -1429,9 +1433,9 @@
 		do {
 		if(($i == $niveau-1 && $niveau != "") || $niveau == "") {
 				$trubriquedesc->charger($rubtab[$i]->id, $_SESSION['navig']->lang);
-				$temp = ereg_replace("#ID", $rubtab[$i]->id, $texte);
-				$temp = ereg_replace("#TITRE", "$trubriquedesc->titre", $temp);	
-				$temp = ereg_replace("#URL", "rubrique.php?id_rubrique=" . $rubtab[$i]->id, $temp);	
+				$temp = str_replace("#ID", $rubtab[$i]->id, $texte);
+				$temp = str_replace("#TITRE", "$trubriquedesc->titre", $temp);	
+				$temp = str_replace("#URL", "rubrique.php?id_rubrique=" . $rubtab[$i]->id, $temp);	
 		
 		
 			if(trim($temp) !="") $res .= $temp . "\n";
@@ -1470,13 +1474,13 @@
 
 		while( $row = mysql_fetch_object($resul)){
 			$paiementdesc->charger($row->id, $_SESSION['navig']->lang);
-			$temp = ereg_replace("#ID", "$row->id", $texte);
-			$temp = ereg_replace("#URLTYPE", "$row->url", $temp);
-			$temp = ereg_replace("#URLPAYER", "paiement.php?action=paiement&type_paiement=" . $row->id, $temp);
-			$temp = ereg_replace("#LOGO", "client/gfx/paiement/$row->logo", $temp);
-			$temp = ereg_replace("#TITRE", "$paiementdesc->titre", $temp);
-			$temp = ereg_replace("#CHAPO", "$paiementdesc->chapo", $temp);
-			$temp = ereg_replace("#DESCRIPTION", "$paiementdesc->description", $temp);		
+			$temp = str_replace("#ID", "$row->id", $texte);
+			$temp = str_replace("#URLTYPE", "$row->url", $temp);
+			$temp = str_replace("#URLPAYER", "paiement.php?action=paiement&type_paiement=" . $row->id, $temp);
+			$temp = str_replace("#LOGO", "client/gfx/paiement/$row->logo", $temp);
+			$temp = str_replace("#TITRE", "$paiementdesc->titre", $temp);
+			$temp = str_replace("#CHAPO", "$paiementdesc->chapo", $temp);
+			$temp = str_replace("#DESCRIPTION", "$paiementdesc->description", $temp);		
 			$res .= $temp. "\n";
 		}
 	
@@ -1529,16 +1533,16 @@
 		while( $row = mysql_fetch_object($resul)){
 			$paysdesc->charger_id($row->id);
 			$pays->charger($paysdesc->pays);
-			$temp = ereg_replace("#ID", "$row->pays", $texte);
-			$temp = ereg_replace("#TITRE", "$paysdesc->titre", $temp);
-			$temp = ereg_replace("#CHAPO", "$paysdesc->chapo", $temp);
-			$temp = ereg_replace("#DESCRIPTION", "$paysdesc->description", $temp);	
+			$temp = str_replace("#ID", "$row->pays", $texte);
+			$temp = str_replace("#TITRE", "$paysdesc->titre", $temp);
+			$temp = str_replace("#CHAPO", "$paysdesc->chapo", $temp);
+			$temp = str_replace("#DESCRIPTION", "$paysdesc->description", $temp);	
 			if(($_SESSION['navig']->formcli->pays == $row->pays || $_SESSION['navig']->client->pays == $row->pays) && $select=="") 	
-				$temp = ereg_replace("#SELECTED", "selected", $temp);
-			if($select !="" && $select == $row->pays) $temp = ereg_replace("#SELECTED", "selected", $temp);	
-			else $temp = ereg_replace("#SELECTED", "", $temp);
-			if($default == "1" && $pays->default == "1") $temp = ereg_replace("#DEFAULT", "selected", $temp);	
-			else $temp = ereg_replace("#DEFAULT", "", $temp);
+				$temp = str_replace("#SELECTED", "selected", $temp);
+			if($select !="" && $select == $row->pays) $temp = str_replace("#SELECTED", "selected", $temp);	
+			else $temp = str_replace("#SELECTED", "", $temp);
+			if($default == "1" && $pays->default == "1") $temp = str_replace("#DEFAULT", "selected", $temp);	
+			else $temp = str_replace("#DEFAULT", "", $temp);
 			$res .= $temp. "\n";
 		}
 	
@@ -1581,13 +1585,13 @@
 			
 			if($id != "") $caracteristiquedesc->charger($row->id, $_SESSION['navig']->lang);
 			else $caracteristiquedesc->charger($row->caracteristique, $_SESSION['navig']->lang);
-			if($id != "") $temp = ereg_replace("#ID", "$row->id", $texte);
-			else $temp = ereg_replace("#ID", "$row->caracteristique", $texte);
+			if($id != "") $temp = str_replace("#ID", "$row->id", $texte);
+			else $temp = str_replace("#ID", "$row->caracteristique", $texte);
 
-			$temp = ereg_replace("#TITRE", "$caracteristiquedesc->titre", $temp);
-			$temp = ereg_replace("#CHAPO", "$caracteristiquedesc->chapo", $temp);
-			$temp = ereg_replace("#DESCRIPTION", "$caracteristiquedesc->description", $temp);		
-			$temp = ereg_replace("#PRODUIT", "$produit", $temp);	
+			$temp = str_replace("#TITRE", "$caracteristiquedesc->titre", $temp);
+			$temp = str_replace("#CHAPO", "$caracteristiquedesc->chapo", $temp);
+			$temp = str_replace("#DESCRIPTION", "$caracteristiquedesc->description", $temp);		
+			$temp = str_replace("#PRODUIT", "$produit", $temp);	
 			
 			$res .= $temp. "\n";
 		}
@@ -1673,10 +1677,10 @@
 			if($caracteristique == "$tcaracdisp->caracteristique" . "-" && $caracdisp == $tabliste[$i] . "-") 
 				$selected = "selected=\"selected\""; else $selected = "";
 				
-			$temp = ereg_replace("#ID", $id . $etcaracdisp, $texte);
-			$temp = ereg_replace("#CARACTERISTIQUE", $caracteristique . $etcaracteristique, $temp);
-			$temp = ereg_replace("#TITRE", "$tcaracdispdesc->titre", $temp);
-			$temp = ereg_replace("#SELECTED", "$selected", $temp);
+			$temp = str_replace("#ID", $id . $etcaracdisp, $texte);
+			$temp = str_replace("#CARACTERISTIQUE", $caracteristique . $etcaracteristique, $temp);
+			$temp = str_replace("#TITRE", "$tcaracdispdesc->titre", $temp);
+			$temp = str_replace("#SELECTED", "$selected", $temp);
 			
 			$res .= $temp. "\n";
 		}
@@ -1719,29 +1723,29 @@
 	
 		while( $row = mysql_fetch_object($resul)){
 
-			$temp = ereg_replace("#ID", $row->id, $texte);
-				$temp = ereg_replace("#CARACDISP", $row->caracdisp, $temp);
+			$temp = str_replace("#ID", $row->id, $texte);
+				$temp = str_replace("#CARACDISP", $row->caracdisp, $temp);
 				if($row->caracdisp != 0){
 					$caracdispdesc = new Caracdispdesc();
 					$caracdispdesc->charger_caracdisp($row->caracdisp);
 					if($valeur != "" && (($different == 0 && $caracdispdesc->caracdisp != $valeur) || ($different == 1 && $caracdispdesc->caracdisp == $valeur))) continue;
-					$temp = ereg_replace("#VALEUR", $caracdispdesc->titre, $temp);
+					$temp = str_replace("#VALEUR", $caracdispdesc->titre, $temp);
 					
 				}
 				
 				else {
 					if($valeur != "" && (($different == 0 && $row->valeur != $valeur) || ($different == 1 && $row->valeur == $valeur))) continue;
 					if( $row->valeur=="") continue;
-					$temp = ereg_replace("#VALEUR", $row->valeur, $temp);
+					$temp = str_replace("#VALEUR", $row->valeur, $temp);
 				}
 			
 			$prodtemp->charger_id($produit);
-			$temp = ereg_replace("#RUBRIQUE", $prodtemp->rubrique, $temp);
+			$temp = str_replace("#RUBRIQUE", $prodtemp->rubrique, $temp);
 			
 			$caractemp = new Caracteristiquedesc();
 			$caractemp ->charger($row->caracteristique,  $_SESSION['navig']->lang);
 		
-			$temp = ereg_replace("#TITRECARAC", $caractemp->titre, $temp);
+			$temp = str_replace("#TITRECARAC", $caractemp->titre, $temp);
 			
 				
 			$res .= $temp. "\n";
@@ -1794,22 +1798,22 @@
                 else $raison3f="";			
 			
 			
-				$temp = ereg_replace("#ID", "$row->id", $texte);
-				$temp = ereg_replace("#PRENOM", "$row->prenom", $temp);
-				$temp = ereg_replace("#NOM", "$row->nom", $temp);
-     		    $temp = ereg_replace("#RAISON1F", "$raison1f", $temp);
-       		    $temp = ereg_replace("#RAISON2F", "$raison2f", $temp);
-       		    $temp = ereg_replace("#RAISON3F", "$raison3f", $temp);				
-				$temp = ereg_replace("#RAISON", $raison[$row->raison], $temp);
-				$temp = ereg_replace("#LIBELLE", "$row->libelle", $temp);
-				$temp = ereg_replace("#ADRESSE1", "$row->adresse1", $temp);
-				$temp = ereg_replace("#ADRESSE2", "$row->adresse2", $temp);
-				$temp = ereg_replace("#ADRESSE3", "$row->adresse3", $temp);
-				$temp = ereg_replace("#CPOSTAL", "$row->cpostal", $temp);
-				$temp = ereg_replace("#PAYS", "$row->pays", $temp);
-				$temp = ereg_replace("#VILLE", "$row->ville", $temp);
-				$temp = ereg_replace("#SUPPRURL", "livraison_adresse.php?action=supprimerlivraison&id=$row->id", $temp);
-				$temp = ereg_replace("#URL", "paiement.php?action=modadresse&adresse=$row->id", $temp);
+				$temp = str_replace("#ID", "$row->id", $texte);
+				$temp = str_replace("#PRENOM", "$row->prenom", $temp);
+				$temp = str_replace("#NOM", "$row->nom", $temp);
+     		    $temp = str_replace("#RAISON1F", "$raison1f", $temp);
+       		    $temp = str_replace("#RAISON2F", "$raison2f", $temp);
+       		    $temp = str_replace("#RAISON3F", "$raison3f", $temp);				
+				$temp = str_replace("#RAISON", $raison[$row->raison], $temp);
+				$temp = str_replace("#LIBELLE", "$row->libelle", $temp);
+				$temp = str_replace("#ADRESSE1", "$row->adresse1", $temp);
+				$temp = str_replace("#ADRESSE2", "$row->adresse2", $temp);
+				$temp = str_replace("#ADRESSE3", "$row->adresse3", $temp);
+				$temp = str_replace("#CPOSTAL", "$row->cpostal", $temp);
+				$temp = str_replace("#PAYS", "$row->pays", $temp);
+				$temp = str_replace("#VILLE", "$row->ville", $temp);
+				$temp = str_replace("#SUPPRURL", "livraison_adresse.php?action=supprimerlivraison&id=$row->id", $temp);
+				$temp = str_replace("#URL", "paiement.php?action=modadresse&adresse=$row->id", $temp);
 
 				$res .= $temp. "\n";
 			}
@@ -1832,24 +1836,24 @@
                 if($_SESSION['navig']->client->raison == 3) $raison3f="selected=\"selected\"";
                 else $raison3f="";
 
-        $temp = ereg_replace("#RAISON1F", "$raison1f", $texte);
-        $temp = ereg_replace("#RAISON2F", "$raison2f", $temp);
-        $temp = ereg_replace("#RAISON3F", "$raison3f", $temp);
+        $temp = str_replace("#RAISON1F", "$raison1f", $texte);
+        $temp = str_replace("#RAISON2F", "$raison2f", $temp);
+        $temp = str_replace("#RAISON3F", "$raison3f", $temp);
 		
-		$temp = ereg_replace("#ID", $_SESSION['navig']->client->id, $temp);
-		$temp = ereg_replace("#LIBELLE", "", $temp);
-		$temp = ereg_replace("#RAISON", $raison[$_SESSION['navig']->client->raison], $temp);
-		$temp = ereg_replace("#NOM", $_SESSION['navig']->client->nom, $temp);
-		$temp = ereg_replace("#PRENOM", $_SESSION['navig']->client->prenom, $temp);
-		$temp = ereg_replace("#ADRESSE1", $_SESSION['navig']->client->adresse1, $temp);
-		$temp = ereg_replace("#ADRESSE2", $_SESSION['navig']->client->adresse2, $temp);
-		$temp = ereg_replace("#ADRESSE3", $_SESSION['navig']->client->adresse3, $temp);
-		$temp = ereg_replace("#CPOSTAL", $_SESSION['navig']->client->cpostal, $temp);
-		$temp = ereg_replace("#VILLE", strtoupper($_SESSION['navig']->client->ville), $temp);
-		$temp = ereg_replace("#PAYS", strtoupper($_SESSION['navig']->client->pays), $temp);
-		$temp = ereg_replace("#EMAIL", $_SESSION['navig']->client->email, $temp);
-		$temp = ereg_replace("#TELFIXE", $_SESSION['navig']->client->telfixe, $temp);
-		$temp = ereg_replace("#TELPORT", $_SESSION['navig']->client->telport, $temp);		
+		$temp = str_replace("#ID", $_SESSION['navig']->client->id, $temp);
+		$temp = str_replace("#LIBELLE", "", $temp);
+		$temp = str_replace("#RAISON", $raison[$_SESSION['navig']->client->raison], $temp);
+		$temp = str_replace("#NOM", $_SESSION['navig']->client->nom, $temp);
+		$temp = str_replace("#PRENOM", $_SESSION['navig']->client->prenom, $temp);
+		$temp = str_replace("#ADRESSE1", $_SESSION['navig']->client->adresse1, $temp);
+		$temp = str_replace("#ADRESSE2", $_SESSION['navig']->client->adresse2, $temp);
+		$temp = str_replace("#ADRESSE3", $_SESSION['navig']->client->adresse3, $temp);
+		$temp = str_replace("#CPOSTAL", $_SESSION['navig']->client->cpostal, $temp);
+		$temp = str_replace("#VILLE", strtoupper($_SESSION['navig']->client->ville), $temp);
+		$temp = str_replace("#PAYS", strtoupper($_SESSION['navig']->client->pays), $temp);
+		$temp = str_replace("#EMAIL", $_SESSION['navig']->client->email, $temp);
+		$temp = str_replace("#TELFIXE", $_SESSION['navig']->client->telfixe, $temp);
+		$temp = str_replace("#TELPORT", $_SESSION['navig']->client->telport, $temp);		
 		
 		$res .= $temp. "\n";
 		
@@ -1912,21 +1916,21 @@
 			 	  	
 		  	$statutdesc->charger($row->statut, $_SESSION['navig']->lang);
 
-			$temp = ereg_replace("#ID", "$row->id", $texte);
-			$temp = ereg_replace("#ADRESSE", "$row->adresse", $temp);
-			$temp = ereg_replace("#DATE", $jour . "/" . $mois . "/" . $annee, $temp);
-			$temp = ereg_replace("#REF", "$row->ref", $temp);
-			$temp = ereg_replace("#LIVRAISON", "$row->livraison", $temp);
-			$temp = ereg_replace("#FACTURE", "$row->facture", $temp);
-			$temp = ereg_replace("#DATELIVRAISON", "$row->datelivraison", $temp);
-			$temp = ereg_replace("#ENVOI", "$row->envoi", $temp);
-			$temp = ereg_replace("#PAIEMENT", "$row->paiement", $temp);
-			$temp = ereg_replace("#REMISE", "$row->remise", $temp);
-			$temp = ereg_replace("#STATUT", "$statutdesc->titre", $temp);
-			$temp = ereg_replace("#TOTALCMD", "$total", $temp);
-			$temp = ereg_replace("#PORT", "$port", $temp);
-			$temp = ereg_replace("#TOTCMDPORT", "$totcmdport", $temp);
-			$temp = ereg_replace("#FICHIER", "client/pdf/visudoc.php?ref=" . $row->ref, $temp);
+			$temp = str_replace("#ID", "$row->id", $texte);
+			$temp = str_replace("#ADRESSE", "$row->adresse", $temp);
+			$temp = str_replace("#DATE", $jour . "/" . $mois . "/" . $annee, $temp);
+			$temp = str_replace("#REF", "$row->ref", $temp);
+			$temp = str_replace("#LIVRAISON", "$row->livraison", $temp);
+			$temp = str_replace("#FACTURE", "$row->facture", $temp);
+			$temp = str_replace("#DATELIVRAISON", "$row->datelivraison", $temp);
+			$temp = str_replace("#ENVOI", "$row->envoi", $temp);
+			$temp = str_replace("#PAIEMENT", "$row->paiement", $temp);
+			$temp = str_replace("#REMISE", "$row->remise", $temp);
+			$temp = str_replace("#STATUT", "$statutdesc->titre", $temp);
+			$temp = str_replace("#TOTALCMD", "$total", $temp);
+			$temp = str_replace("#PORT", "$port", $temp);
+			$temp = str_replace("#TOTCMDPORT", "$totcmdport", $temp);
+			$temp = str_replace("#FICHIER", "client/pdf/visudoc.php?ref=" . $row->ref, $temp);
 
 			$res .= $temp. "\n";
 		}
@@ -1961,14 +1965,14 @@
 		
 		while( $row = mysql_fetch_object($resul)){
 		  	$totalprod = $row->prixu * $row->quantite;
-			$temp = ereg_replace("#ID", "$row->id", $texte);
-			$temp = ereg_replace("#REF", "$row->ref", $temp);
-			$temp = ereg_replace("#TITRE", "$row->titre", $temp);
-			$temp = ereg_replace("#CHAPO", "$row->chapo", $temp);
-			$temp = ereg_replace("#DESCRIPTION", "$row->description", $temp);
-			$temp = ereg_replace("#QUANTITE", "$row->quantite", $temp);
-			$temp = ereg_replace("#PRIXU", "$row->prixu", $temp);
-			$temp = ereg_replace("#TOTALPROD", "$totalprod", $temp);
+			$temp = str_replace("#ID", "$row->id", $texte);
+			$temp = str_replace("#REF", "$row->ref", $temp);
+			$temp = str_replace("#TITRE", "$row->titre", $temp);
+			$temp = str_replace("#CHAPO", "$row->chapo", $temp);
+			$temp = str_replace("#DESCRIPTION", "$row->description", $temp);
+			$temp = str_replace("#QUANTITE", "$row->quantite", $temp);
+			$temp = str_replace("#PRIXU", "$row->prixu", $temp);
+			$temp = str_replace("#TOTALPROD", "$totalprod", $temp);
 
 			$res .= $temp. "\n";
 		}
@@ -2029,12 +2033,12 @@
 			$port = round(port($row->id), 2);
 				
 			$transportdesc->charger($row->id, $_SESSION['navig']->lang);
-			$temp = ereg_replace("#TITRE", "$transportdesc->titre", $texte);
-			$temp = ereg_replace("#CHAPO", "$transportdesc->chapo", $temp);
-			$temp = ereg_replace("#DESCRIPTION", "$transportdesc->description", $temp);
-			$temp = ereg_replace("#URLCMD", "commande.php?action=transport&id=" . $row->id, $temp);
-			$temp = ereg_replace("#ID", "$row->id", $temp);	
-			$temp = ereg_replace("#PORT", "$port", $temp);
+			$temp = str_replace("#TITRE", "$transportdesc->titre", $texte);
+			$temp = str_replace("#CHAPO", "$transportdesc->chapo", $temp);
+			$temp = str_replace("#DESCRIPTION", "$transportdesc->description", $temp);
+			$temp = str_replace("#URLCMD", "commande.php?action=transport&id=" . $row->id, $temp);
+			$temp = str_replace("#ID", "$row->id", $temp);	
+			$temp = str_replace("#PORT", "$port", $temp);
 			$res .= $temp. "\n";
 			
 		}
@@ -2083,14 +2087,14 @@
 			$minute = substr($dateh, 14, 2);
 			$seconde = substr($dateh, 17, 2);
 				
-			$temp =  ereg_replace("#SALON", "$chantitle", $texte);
-			$temp = ereg_replace("#WEB", "$chanlink", $temp);			
-			$temp = ereg_replace("#TITRE", "$title", $temp);
-			$temp = ereg_replace("#LIEN", "$link", $temp);
-			$temp = ereg_replace("#DESCRIPTION", "$description", $temp);
-            $temp = ereg_replace("#AUTEUR", "$author", $temp);
-			$temp = ereg_replace("#DATE", "$jour/$mois/$annee", $temp);
-			$temp = ereg_replace("#HEURE", "$heure:$minute:$seconde", $temp);
+			$temp =  str_replace("#SALON", "$chantitle", $texte);
+			$temp = str_replace("#WEB", "$chanlink", $temp);			
+			$temp = str_replace("#TITRE", "$title", $temp);
+			$temp = str_replace("#LIEN", "$link", $temp);
+			$temp = str_replace("#DESCRIPTION", "$description", $temp);
+            $temp = str_replace("#AUTEUR", "$author", $temp);
+			$temp = str_replace("#DATE", "$jour/$mois/$annee", $temp);
+			$temp = str_replace("#HEURE", "$heure:$minute:$seconde", $temp);
 			
 			$i++;
 
@@ -2132,13 +2136,13 @@
 		while( $row = mysql_fetch_object($resul)){
 			if($id != "") $declinaisondesc->charger($row->id, $_SESSION['navig']->lang);
 			else $declinaisondesc->charger($row->declinaison, $_SESSION['navig']->lang);
-			if($id != "") $temp = ereg_replace("#ID", "$row->id", $texte);
-			else $temp = ereg_replace("#ID", "$row->declinaison", $texte);
+			if($id != "") $temp = str_replace("#ID", "$row->id", $texte);
+			else $temp = str_replace("#ID", "$row->declinaison", $texte);
 
-			$temp = ereg_replace("#TITRE", "$declinaisondesc->titre", $temp);
-			$temp = ereg_replace("#CHAPO", "$declinaisondesc->chapo", $temp);
-			$temp = ereg_replace("#DESCRIPTION", "$declinaisondesc->description", $temp);	
-			$temp = ereg_replace("#PRODUIT", "$produit", $temp);
+			$temp = str_replace("#TITRE", "$declinaisondesc->titre", $temp);
+			$temp = str_replace("#CHAPO", "$declinaisondesc->chapo", $temp);
+			$temp = str_replace("#DESCRIPTION", "$declinaisondesc->description", $temp);	
+			$temp = str_replace("#PRODUIT", "$produit", $temp);
 	
 			$res .= $temp. "\n";
 		}
@@ -2220,10 +2224,10 @@
 			
 			$tdeclidispdesc->charger_declidisp($tabliste[$i], $_SESSION['navig']->lang);
 			if(! $tdeclidispdesc->titre) $tdeclidispdesc->charger_declidisp($tabliste[$i]);
-			$temp = ereg_replace("#ID", $tdeclidispdesc->declidisp, $texte);
-			$temp = ereg_replace("#DECLINAISON", $declinaison, $temp);
-			$temp = ereg_replace("#TITRE", "$tdeclidispdesc->titre", $temp);
-			$temp = ereg_replace("#PRODUIT", "$produit", $temp);
+			$temp = str_replace("#ID", $tdeclidispdesc->declidisp, $texte);
+			$temp = str_replace("#DECLINAISON", $declinaison, $temp);
+			$temp = str_replace("#TITRE", "$tdeclidispdesc->titre", $temp);
+			$temp = str_replace("#PRODUIT", "$produit", $temp);
 
 			$res .= $temp. "\n";
 		}
@@ -2245,10 +2249,10 @@
 		$stock = new Stock();		
 		$stock->charger($declidisp, $produit);
 				
-		$temp = ereg_replace("#ID", "$stock->id", $texte);
-		$temp = ereg_replace("#DECLIDISP", "$declidisp", $temp);	
-		$temp = ereg_replace("#PRODUIT", "$produit", $temp);
-		$temp = ereg_replace("#VALEUR", "$stock->valeur", $temp);	
+		$temp = str_replace("#ID", "$stock->id", $texte);
+		$temp = str_replace("#DECLIDISP", "$declidisp", $temp);	
+		$temp = str_replace("#PRODUIT", "$produit", $temp);
+		$temp = str_replace("#VALEUR", "$stock->valeur", $temp);	
 			
 			
 		$compt ++;
@@ -2287,8 +2291,8 @@
 				
 			else $valeur .= $tperso->valeur;
 
-			$temp = ereg_replace("#DECLITITRE", "$declinaisondesc->titre", $texte);
-			$temp = ereg_replace("#VALEUR", "$valeur", $temp);	
+			$temp = str_replace("#DECLITITRE", "$declinaisondesc->titre", $texte);
+			$temp = str_replace("#VALEUR", "$valeur", $temp);	
 			
 			$res .= $temp;				
 		}		

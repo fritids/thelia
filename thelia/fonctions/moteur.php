@@ -70,6 +70,9 @@ function analyse($res){
 	// traitement dans le cas d'un formulaire
 	if($formulaire) $res = traitement_formulaire($res);
 	
+	// si on a un squelette comportant de l'Ajax il faut charger les div
+	if($sajax == 1) $res = chargerDiv(explode("\n", $res));
+
 	// effectue le nombre de passe nécessaire afin de traiter toutes les boucles et sous boucles
 	
 	while(strstr($res, "<THELIA")) {
@@ -78,11 +81,8 @@ function analyse($res){
 		$res = post($res);
 	}
 
-	// si on a un squelette comportant de l'Ajax il faut charger les div
-	if($sajax == 1) $res = chargerDiv(explode("\n", $res));
-
 	// boucles avec sinon
-	$res = ereg_replace("BTHELIA", "THELIA", $res);
+	$res = str_replace("BTHELIA", "THELIA", $res);
 	$res = boucle_sinon(explode("\n", $res));
 
 	// boucles
@@ -212,7 +212,7 @@ function analyse($res){
 		$jsf = fopen("fonctsajaxgen.js", "w");
 		fputs($jsf, $sajaxjs);
 		fclose($jsf);
-		$res = ereg_replace("#SAJAX", $sajaxjs, $res);
+		$res = str_replace("#SAJAX", $sajaxjs, $res);
 	}
 	
 	// inclusion

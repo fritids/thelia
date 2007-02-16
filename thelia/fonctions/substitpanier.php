@@ -70,13 +70,13 @@
 		 
 		$totalht = round($total/1.196, 2);
 		
-		$texte = ereg_replace("#PANIER_TOTALHT", "$totalht", $texte);
+		$texte = str_replace("#PANIER_TOTALHT", "$totalht", $texte);
 		 
-		$texte = ereg_replace("#PANIER_TOTAL", "$total", $texte);
-		$texte = ereg_replace("#PANIER_PORT", "$port", $texte);
-		$texte = ereg_replace("#PANIER_TOTPORT", "$totcmdport", $texte);
-		$texte = ereg_replace("#PANIER_REMISE", "$remise", $texte);
-		$texte = ereg_replace("#PANIER_NBART", "" . $nb_article . "", $texte);
+		$texte = str_replace("#PANIER_TOTAL", "$total", $texte);
+		$texte = str_replace("#PANIER_PORT", "$port", $texte);
+		$texte = str_replace("#PANIER_TOTPORT", "$totcmdport", $texte);
+		$texte = str_replace("#PANIER_REMISE", "$remise", $texte);
+		$texte = str_replace("#PANIER_NBART", "" . $nb_article . "", $texte);
 		
 		
 		return $texte;

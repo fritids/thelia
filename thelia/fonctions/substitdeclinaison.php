@@ -31,9 +31,9 @@
 	function substitdeclinaison($texte){
 		global $declinaison, $declidisp, $declival, $declistock;
 
-		$texte = ereg_replace("#DECLINAISON_ID", "$declinaison", $texte);
-		$texte = ereg_replace("#DECLINAISON_DISP", "$declidisp", $texte);
-		$texte = ereg_replace("#DECLINAISON_STOCK", "$declistockmini", $texte);
+		$texte = str_replace("#DECLINAISON_ID", "$declinaison", $texte);
+		$texte = str_replace("#DECLINAISON_DISP", "$declidisp", $texte);
+		$texte = str_replace("#DECLINAISON_STOCKMINI", "$declistockmini", $texte);
 
 		return $texte;
 	}

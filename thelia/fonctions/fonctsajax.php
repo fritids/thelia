@@ -30,12 +30,12 @@
 function gosaj($boucle, $param){	
 	$boucle = $_SESSION['navig']->tabDiv[$boucle];
 	$boucle = stripslashes($boucle);
-	$boucle = ereg_replace("sthelia", "STHELIA", $boucle);	
-	$boucle = ereg_replace("STHELIA", "THELIA", $boucle);	
-	$boucle = ereg_replace("=#REMPLACER", "=\"#REMPLACER\"", $boucle);	
+	$boucle = str_replace("sthelia", "STHELIA", $boucle);	
+	$boucle = str_replace("STHELIA", "THELIA", $boucle);	
+	$boucle = str_replace("=#REMPLACER", "=\"#REMPLACER\"", $boucle);	
 
 	$boucle = ereg_replace("<THELIA([^>]*)>", "<THELIA\\1>\n", $boucle);
-	$boucle = ereg_replace("</THELIA", "\n</THELIA", $boucle);	
+	$boucle = str_replace("</THELIA", "\n</THELIA", $boucle);	
 	
 	$decLParam = explode("&", $param);
 
@@ -43,7 +43,7 @@ function gosaj($boucle, $param){
 		$decNParam[$i] = explode("=", $decLParam[$i]);
 	
 	for($i=0; $i<count($decNParam); $i++)
-		if(isset($decNParam[$i][1])) $boucle = ereg_replace($decNParam[$i][0] . "=\"#REMPLACER\"", $decNParam[$i][0] . "=\"" . $decNParam[$i][1] ."\"", $boucle);		
+		if(isset($decNParam[$i][1])) $boucle = str_replace($decNParam[$i][0] . "=\"#REMPLACER\"", $decNParam[$i][0] . "=\"" . $decNParam[$i][1] ."\"", $boucle);		
 
 	$boucle = analyse($boucle);	
 	return $boucle; 

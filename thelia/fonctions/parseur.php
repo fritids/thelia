@@ -43,10 +43,10 @@
 			else if(strstr($tab[$i], "<//T_"))	$bsinon=0;
 			
 			if( ($profondeur == 2 && ! strstr($tab[$i], "<THELIA")) || $profondeur>2 ) 
-				$tab[$i] = ereg_replace("#", "#THNO", $tab[$i]);	
+				$tab[$i] = str_replace("#", "#THNO", $tab[$i]);	
 			
-			if($bsinon == 1 &&  strstr($tab[$i], "<THELIA")) $tab[$i] = ereg_replace("<THELIA", "<BTHELIA", $tab[$i]);
-			else if($bsinon == 1 &&  strstr($tab[$i], "</THELIA")) $tab[$i] = ereg_replace("</THELIA", "</BTHELIA", $tab[$i]);
+			if($bsinon == 1 &&  strstr($tab[$i], "<THELIA")) $tab[$i] = str_replace("<THELIA", "<BTHELIA", $tab[$i]);
+			else if($bsinon == 1 &&  strstr($tab[$i], "</THELIA")) $tab[$i] = str_replace("</THELIA", "</BTHELIA", $tab[$i]);
 			
 			$res .= $tab[$i] . "\n";
 		}
@@ -58,7 +58,7 @@
 	// repositionne les tags
 	function post($res){
 		
-		$res = ereg_replace("#THNO", "#", $res);
+		$res = str_replace("#THNO", "#", $res);
 		
 		return $res;
 	}
@@ -459,24 +459,24 @@
 	 	if( $_SESSION['navig']->formcli->telport == "") $res = ereg_replace("#TELPORT\[([^]]*)\]", "\\1", $res);
 	 	else $res = ereg_replace("#TELPORT\[[^]]*\]", "", $res);	
 
-		$res = ereg_replace("#ENTREPRISE", $_SESSION['navig']->formcli->entreprise, $res);
-		$res = ereg_replace("#PRENOM", $_SESSION['navig']->formcli->prenom, $res);
-		$res = ereg_replace("#NOM", $_SESSION['navig']->formcli->nom, $res);
-		$res = ereg_replace("#TELFIXE", $_SESSION['navig']->formcli->telfixe, $res);
-		$res = ereg_replace("#TELPORT", $_SESSION['navig']->formcli->telport, $res);
-		$res = ereg_replace("#EMAIL", $_SESSION['navig']->formcli->email, $res);
-		$res = ereg_replace("#ADRESSE1", $_SESSION['navig']->formcli->adresse1, $res);
-		$res = ereg_replace("#ADRESSE2", $_SESSION['navig']->formcli->adresse2, $res);
-		$res = ereg_replace("#ADRESSE3", $_SESSION['navig']->formcli->adresse3, $res);
-		$res = ereg_replace("#CPOSTAL", $_SESSION['navig']->formcli->cpostal, $res);
-		$res = ereg_replace("#VILLE", $_SESSION['navig']->formcli->ville, $res);
+		$res = str_replace("#ENTREPRISE", $_SESSION['navig']->formcli->entreprise, $res);
+		$res = str_replace("#PRENOM", $_SESSION['navig']->formcli->prenom, $res);
+		$res = str_replace("#NOM", $_SESSION['navig']->formcli->nom, $res);
+		$res = str_replace("#TELFIXE", $_SESSION['navig']->formcli->telfixe, $res);
+		$res = str_replace("#TELPORT", $_SESSION['navig']->formcli->telport, $res);
+		$res = str_replace("#EMAIL", $_SESSION['navig']->formcli->email, $res);
+		$res = str_replace("#ADRESSE1", $_SESSION['navig']->formcli->adresse1, $res);
+		$res = str_replace("#ADRESSE2", $_SESSION['navig']->formcli->adresse2, $res);
+		$res = str_replace("#ADRESSE3", $_SESSION['navig']->formcli->adresse3, $res);
+		$res = str_replace("#CPOSTAL", $_SESSION['navig']->formcli->cpostal, $res);
+		$res = str_replace("#VILLE", $_SESSION['navig']->formcli->ville, $res);
 		
 		if($_SESSION['navig']->formcli->raison == "1") 
-			$res = ereg_replace("#RAISON1", "selected", $res);
+			$res = str_replace("#RAISON1", "selected", $res);
 		else if($_SESSION['navig']->formcli->raison == "2") 
-			$res = ereg_replace("#RAISON2", "selected", $res);
+			$res = str_replace("#RAISON2", "selected", $res);
 		else if($_SESSION['navig']->formcli->raison == "3") 
-			$res = ereg_replace("#RAISON3", "selected", $res);			
+			$res = str_replace("#RAISON3", "selected", $res);			
 
 		
 		return $res;

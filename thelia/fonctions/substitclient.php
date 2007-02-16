@@ -47,29 +47,29 @@
 		$paysdesc->charger($_SESSION['navig']->client->pays);
 		
 		
-		$texte = ereg_replace("#CLIENT_RAISON1F", $raison1f, $texte);
-        $texte = ereg_replace("#CLIENT_RAISON2F", $raison2f, $texte);
-        $texte = ereg_replace("#CLIENT_RAISON3F", $raison3f, $texte);
+		$texte = str_replace("#CLIENT_RAISON1F", $raison1f, $texte);
+        $texte = str_replace("#CLIENT_RAISON2F", $raison2f, $texte);
+        $texte = str_replace("#CLIENT_RAISON3F", $raison3f, $texte);
 		
 		if($_SESSION['navig']->client->id != "") $idclient = $_SESSION['navig']->client->id;
 		else $idclient="0";
 		
-		$texte = ereg_replace("#CLIENT_ID", $idclient, $texte);
-		$texte = ereg_replace("#CLIENT_REF", $_SESSION['navig']->client->ref, $texte);
-		if(isset($raison[$_SESSION['navig']->client->raison])) $texte = ereg_replace("#CLIENT_RAISON", $raison[$_SESSION['navig']->client->raison], $texte);
-		$texte = ereg_replace("#CLIENT_ENTREPRISE", $_SESSION['navig']->client->entreprise, $texte);
-		$texte = ereg_replace("#CLIENT_NOM", $_SESSION['navig']->client->nom, $texte);
-		$texte = ereg_replace("#CLIENT_PRENOM", $_SESSION['navig']->client->prenom, $texte);
-		$texte = ereg_replace("#CLIENT_ADRESSE1", $_SESSION['navig']->client->adresse1, $texte);
-		$texte = ereg_replace("#CLIENT_ADRESSE2", $_SESSION['navig']->client->adresse2, $texte);
-		$texte = ereg_replace("#CLIENT_ADRESSE3", $_SESSION['navig']->client->adresse3, $texte);
-		$texte = ereg_replace("#CLIENT_CPOSTAL", $_SESSION['navig']->client->cpostal, $texte);
-		$texte = ereg_replace("#CLIENT_VILLE", strtoupper($_SESSION['navig']->client->ville), $texte);
-		$texte = ereg_replace("#CLIENT_IDPAYS", $_SESSION['navig']->client->pays, $texte);
-		$texte = ereg_replace("#CLIENT_PAYS", $paysdesc->titre, $texte);
-		$texte = ereg_replace("#CLIENT_EMAIL", $_SESSION['navig']->client->email, $texte);
-		$texte = ereg_replace("#CLIENT_TELFIXE", $_SESSION['navig']->client->telfixe, $texte);
-		$texte = ereg_replace("#CLIENT_TELPORT", $_SESSION['navig']->client->telport, $texte);
+		$texte = str_replace("#CLIENT_ID", $idclient, $texte);
+		$texte = str_replace("#CLIENT_REF", $_SESSION['navig']->client->ref, $texte);
+		if(isset($raison[$_SESSION['navig']->client->raison])) $texte = str_replace("#CLIENT_RAISON", $raison[$_SESSION['navig']->client->raison], $texte);
+		$texte = str_replace("#CLIENT_ENTREPRISE", $_SESSION['navig']->client->entreprise, $texte);
+		$texte = str_replace("#CLIENT_NOM", $_SESSION['navig']->client->nom, $texte);
+		$texte = str_replace("#CLIENT_PRENOM", $_SESSION['navig']->client->prenom, $texte);
+		$texte = str_replace("#CLIENT_ADRESSE1", $_SESSION['navig']->client->adresse1, $texte);
+		$texte = str_replace("#CLIENT_ADRESSE2", $_SESSION['navig']->client->adresse2, $texte);
+		$texte = str_replace("#CLIENT_ADRESSE3", $_SESSION['navig']->client->adresse3, $texte);
+		$texte = str_replace("#CLIENT_CPOSTAL", $_SESSION['navig']->client->cpostal, $texte);
+		$texte = str_replace("#CLIENT_VILLE", strtoupper($_SESSION['navig']->client->ville), $texte);
+		$texte = str_replace("#CLIENT_IDPAYS", $_SESSION['navig']->client->pays, $texte);
+		$texte = str_replace("#CLIENT_PAYS", $paysdesc->titre, $texte);
+		$texte = str_replace("#CLIENT_EMAIL", $_SESSION['navig']->client->email, $texte);
+		$texte = str_replace("#CLIENT_TELFIXE", $_SESSION['navig']->client->telfixe, $texte);
+		$texte = str_replace("#CLIENT_TELPORT", $_SESSION['navig']->client->telport, $texte);
 
 		return $texte;
 	

@@ -95,7 +95,7 @@
 		$dossier->maj();
 
 	    header("Location: listdos.php?parent=$parent");
-
+		exit;
 	}
 	
 	function modifier($id, $lang, $titre, $chapo, $description, $ligne){
@@ -125,7 +125,7 @@
 		$dossierdesc->maj();
 
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $dossier->id);
-
+		exit;
 
 	}
 
@@ -168,7 +168,7 @@
 	
 	 		
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
-
+		exit;
 	}
 	
 	function supprimer($id, $parent){
@@ -178,6 +178,7 @@
 		$dossier->supprimer();
 
 	    header("Location: listdos.php?parent=" . $parent);
+		exit;
 
 	}
 

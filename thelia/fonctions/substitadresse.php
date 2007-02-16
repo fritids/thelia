@@ -36,9 +36,9 @@
 		$query = "select * from $tadresse->table where id='$adresse'";
 		$resul = mysql_query($query, $tadresse->link);
 		$row = mysql_fetch_object($resul);
-		$texte = ereg_replace("#ADRESSE_ID", "$row->id", $texte);
+		$texte = str_replace("#ADRESSE_ID", "$row->id", $texte);
 
-		$texte = ereg_replace("#ADRESSE_ACTIVE", "" . $_SESSION['navig']->adresse . "", $texte);
+		$texte = str_replace("#ADRESSE_ACTIVE", "" . $_SESSION['navig']->adresse . "", $texte);
 		
 		return $texte;
 	}

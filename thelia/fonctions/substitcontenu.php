@@ -46,9 +46,9 @@
 		$row = mysql_fetch_object($resul);
 		$tcontenudesc->charger($row->id);
 		    
-		$texte = ereg_replace("#CONTENU_ID", "$id_contenu", $texte);
-		$texte = ereg_replace("#CONTENU_MOTCLE", "$motcle", $texte);
-		$texte = ereg_replace("#CONTENU_NOM", $tcontenudesc->titre, $texte);
+		$texte = str_replace("#CONTENU_ID", "$id_contenu", $texte);
+		$texte = str_replace("#CONTENU_MOTCLE", "$motcle", $texte);
+		$texte = str_replace("#CONTENU_NOM", $tcontenudesc->titre, $texte);
 
 		return $texte;
 	

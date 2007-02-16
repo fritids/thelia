@@ -39,9 +39,9 @@
 		$query = "select * from $tcommande->table where ref='" . $refs . "'";
 		$resul = mysql_query($query, $tcommande->link);
 		$row = mysql_fetch_object($resul);	
-		$texte = ereg_replace("#COMMANDE_ID", "$row->id", $texte);
-		$texte = ereg_replace("#COMMANDE_REF", "$row->ref", $texte);
-		$texte = ereg_replace("#COMMANDE_TRANSACTION", "$row->transaction", $texte);
+		$texte = str_replace("#COMMANDE_ID", "$row->id", $texte);
+		$texte = str_replace("#COMMANDE_REF", "$row->ref", $texte);
+		$texte = str_replace("#COMMANDE_TRANSACTION", "$row->transaction", $texte);
 
 		return $texte;
 	}

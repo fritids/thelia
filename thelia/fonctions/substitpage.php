@@ -29,7 +29,7 @@
 		
 	function substitpage($texte){
 		global $page;
-		$texte = ereg_replace("#PAGE_CUR", $page, $texte);
+		$texte = str_replace("#PAGE_CUR", $page, $texte);
 		return $texte;
 	
 	}

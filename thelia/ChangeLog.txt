@@ -9,7 +9,12 @@
 	recherche sur les déclinaisons en stock (boucle produit)
 	correction fonctions/substitproduits.php
 	ajout de fonctions/subtideclinaison.php
-	
+	maj de la doc
+	modifications de l'administration (corrections diverses)
+	optimisation du code
+	ajout titre, chapo, desccription sur les images
+	update boucle image
+	 
 1.1.8
 	mise en place des blocs pour la boucle Contenu
 	correction des limites infinies

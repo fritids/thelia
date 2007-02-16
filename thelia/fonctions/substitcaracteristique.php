@@ -31,9 +31,9 @@
 	function substitcaracteristique($texte){
 		global $caracteristique, $caracdisp, $caracval;
 
-		$texte = ereg_replace("#CARACTERISTIQUE_ID", "$caracteristique", $texte);
-		$texte = ereg_replace("#CARACTERISTIQUE_DISP", "$caracdisp", $texte);
-		$texte = ereg_replace("#CARACTERISTIQUE_VAL", "$caracval", $texte);
+		$texte = str_replace("#CARACTERISTIQUE_ID", "$caracteristique", $texte);
+		$texte = str_replace("#CARACTERISTIQUE_DISP", "$caracdisp", $texte);
+		$texte = str_replace("#CARACTERISTIQUE_VAL", "$caracval", $texte);
 
 		return $texte;
 	}

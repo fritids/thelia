@@ -45,21 +45,21 @@
 		
 		global $rt75;
 		
-		$texte = ereg_replace("#URLPREC",  $_SESSION['navig']->urlprec, $texte);
-		$texte = ereg_replace("#URLPAGERET",  $_SESSION['navig']->urlpageret, $texte);
-		$texte = ereg_replace("#URLPANIER",  "panier.php", $texte);
-		$texte = ereg_replace("#URLCOMMANDER",  "commande.php", $texte);
-		$texte = ereg_replace("#URLNOUVEAU",  "nouveau.php", $texte);
-		$texte = ereg_replace("#URLDECONNEXION", "index.php" . "?" . "action=deconnexion", $texte);
-		$texte = ereg_replace("#URLRECHERCHE", "recherche.php", $texte);
-		$texte = ereg_replace("#URLCOURANTE", $_SERVER['PHP_SELF'], $texte);		
-		$texte = ereg_replace("#URLCOURANTEPARAM", $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'], $texte);
-		$texte = ereg_replace("#URLADRESSE",  "adresse.php", $texte);
-		$texte = ereg_replace("#URLPAIEMENT",  "paiement.php", $texte);
-		$texte = ereg_replace("#URLSOMMAIRE",  "index.php", $texte);
-		$texte = ereg_replace("#URLCOMPTE",  "compte.php", $texte);
-		$texte = ereg_replace("#LANG",  $_SESSION['navig']->lang, $texte);
-		$texte = ereg_replace("#RT75",  "$rt75", $texte);
+		$texte = str_replace("#URLPREC",  $_SESSION['navig']->urlprec, $texte);
+		$texte = str_replace("#URLPAGERET",  $_SESSION['navig']->urlpageret, $texte);
+		$texte = str_replace("#URLPANIER",  "panier.php", $texte);
+		$texte = str_replace("#URLCOMMANDER",  "commande.php", $texte);
+		$texte = str_replace("#URLNOUVEAU",  "nouveau.php", $texte);
+		$texte = str_replace("#URLDECONNEXION", "index.php" . "?" . "action=deconnexion", $texte);
+		$texte = str_replace("#URLRECHERCHE", "recherche.php", $texte);
+		$texte = str_replace("#URLCOURANTE", $_SERVER['PHP_SELF'], $texte);		
+		$texte = str_replace("#URLCOURANTEPARAM", $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'], $texte);
+		$texte = str_replace("#URLADRESSE",  "adresse.php", $texte);
+		$texte = str_replace("#URLPAIEMENT",  "paiement.php", $texte);
+		$texte = str_replace("#URLSOMMAIRE",  "index.php", $texte);
+		$texte = str_replace("#URLCOMPTE",  "compte.php", $texte);
+		$texte = str_replace("#LANG",  $_SESSION['navig']->lang, $texte);
+		$texte = str_replace("#RT75",  "$rt75", $texte);
 
 		if(strstr($texte, "#VARIABLE")) $texte = substitvariable($texte);				
 		

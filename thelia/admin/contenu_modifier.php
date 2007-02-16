@@ -70,7 +70,7 @@
 
 	 
 		if($type=="M"){
-			if($contenu->classement == 1) { header("Location: listedos.php?parent=" . $parent); return; }
+			if($contenu->classement == 1) { header("Location: listedos.php?parent=" . $parent); exit; }
 
 			$query = "update $contenu->table set classement=" . $contenu->classement . " where classement=" . ($contenu->classement-1) . " and dossier='" . $parent . "'";
 
@@ -81,7 +81,7 @@
 		
 		else if($type=="D"){
 
-			if($contenu->classement == $maxClassement) { header("Location: listdos.php?parent=" . $parent); return; }
+			if($contenu->classement == $maxClassement) { header("Location: listdos.php?parent=" . $parent); exit; }
 
 			
 			$query = "update $contenu->table set classement=" . $contenu->classement . " where classement=" . ($contenu->classement+1) . " and dossier='" . $parent . "'";
@@ -93,7 +93,7 @@
 		$contenu->maj();
 
 	    header("Location: listdos.php?parent=" . $parent);
-
+		exit;
 	}
 	
 	
@@ -139,6 +139,7 @@
 
 	   
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $contenu->id . "&dossier=" . $contenu->dossier);
+		exit;
 	}
 
 	function ajouter($lang, $dossier, $ligne, $titre, $chapo, $description){
@@ -185,6 +186,7 @@
 	 $contenudesc->add();
 		
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid . "&dossier=" . $contenu->dossier);
+		exit;
 
 	}
 	
@@ -195,7 +197,7 @@
 		$contenu->supprimer();
 
 	    header("Location: listdos.php?parent=" . $parent);
-
+		exit;
 	}
 	
 ?>

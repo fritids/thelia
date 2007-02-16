@@ -32,7 +32,7 @@
 	function substitimage($texte){
 		global $id_image;
 	
-		$texte = ereg_replace("#IMAGE_ID", $id_image, $texte);
+		$texte = str_replace("#IMAGE_ID", $id_image, $texte);
 	
 
 		return $texte;

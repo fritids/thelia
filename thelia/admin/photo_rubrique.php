@@ -39,6 +39,7 @@
 	switch($action){
 		case 'modclassement' : modclassement($id, $rubid, $type); break;		
 		case 'ajouter' : ajouter($rubid); break;
+		case 'modifier' : modifier($id, $titre, $chapo, $description); break;
 		case 'supprimer' : supprimer($id);
 
 	}
@@ -84,7 +85,25 @@
 
 	
 	}	
+
+	function modifier($id, $titre, $chapo, $description){
+		$imagedesc = new Imagedesc();
+		$imagedesc->image = $id;
+		$imagedesc->lang = "1";
 	
+		$imagedesc->charger($id);
+		
+		$imagedesc->titre = $titre;
+		$imagedesc->chapo = $chapo;
+		$imagedesc->description = $description;
+	
+		if(!$imagedesc->id)
+			$imagedesc->add();
+		else 
+			$imagedesc->maj();
+		
+	}
+		
 	function ajouter($id){
 
 		if(!isset($nomorig)) $nomorig="";
@@ -135,7 +154,10 @@
 		
 			$image = new Image();
 			$image->charger($id);
-			
+
+			$imagedesc = new Imagedesc();
+			$imagedesc->charger($image->id);
+						
 			if(file_exists("../client/gfx/photos/rubrique/petite/$image->fichier")){
 				 unlink("../client/gfx/photos/rubrique/petite/$image->fichier");
 				 unlink("../client/gfx/photos/rubrique/grande/$image->fichier");
@@ -143,6 +165,7 @@
 			}
 			
 			$image->supprimer();
+			$imagedesc->delete();
 			
 			
 	}	
@@ -211,21 +234,37 @@ body {
        
         <?php
 			$image = new Image();
-			$imagedesc = new Imagedesc();
+			
 
 			$query = "select * from $image->table where rubrique='$rubid' order by classement";
 			$resul = mysql_query($query, $image->link);
 
 			while($row = mysql_fetch_object($resul)){
+				$imagedesc = new Imagedesc();
 				$imagedesc->charger($row->id);
         ?>
                 
 	 <tr>
-      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><img src="../client/gfx/photos/rubrique/petite/<?php echo($row->fichier); ?>" / ></td>
-      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><div align="center"><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&action=modclassement&type=M&rubid=".$rubrique->id; ?>"><img src="gfx/bt_flecheh.gif" border="0"></a><a href="<?php echo v . "?id=".$row->id."&action=modclassement&type=D&rubid=".$rubrique->id; ?>"><img src="gfx/bt_flecheb.gif" border="0"></a></div></td>
+     <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><img src="../fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/petite/<?php echo($row->fichier); ?>&width=&height=200&opacite=&nb=" border="0" / ></td>
+       <td width="20%">
+		<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+		<input type="hidden" name="action" value="modifier" />
+		<input type="hidden" name="id" value="<?php echo $row->id; ?>" />
+		<input type="hidden" name="rubid" value="<?php echo $rubid; ?>" />
+
+			Titre : <br />
+			<input type="text" name="titre" size="35" value="<?php echo $imagedesc->titre ?>" /> <br /><br />
+			Chapo : <br />
+			<textarea name="chapo" rows="3" cols="40"><?php echo $imagedesc->chapo ?></textarea>
+			Description : <br />
+			<textarea name="description" rows="10" cols="40"><?php echo $imagedesc->description ?></textarea>
+			<input type="submit" value="Enregistrer" />
+		</form>
+	   </td>	
+       <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><div align="center"><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&action=modclassement&type=M&rubid=".$rubrique->id; ?>"><img src="gfx/bt_flecheh.gif" border="0"></a><a href="<?php echo v . "?id=".$row->id."&action=modclassement&type=D&rubid=".$rubrique->id; ?>"><img src="gfx/bt_flecheb.gif" border="0"></a></div></td>
        <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?id=<?php echo($row->id); ?>&rubid=<?php echo($rubrique->id); ?>&action=supprimer">Supprimer</a></td>
 
-      <td width="60%">&nbsp;</td>
+      
 	 </tr>
 	<tr>
     <td colspan="2" height="1" class="fond_CDCDCD"></td>

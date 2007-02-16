@@ -265,13 +265,13 @@
 		$chaine = strtolower($chaine);
  		$chaine = strtr($chaine, $avant, $apres);
   
-  		$chaine = ereg_replace("/", "-", $chaine);
-		$chaine = ereg_replace(" ", "-", $chaine);
-		$chaine = ereg_replace("'", "-", $chaine);
-		$chaine = ereg_replace("\&", "-", $chaine);
-		$chaine = ereg_replace("\?", "", $chaine);	
-		$chaine = ereg_replace("\.", "", $chaine);	
-		$chaine = ereg_replace("!", "", $chaine);			
+  		$chaine = str_replace("/", "-", $chaine);
+		$chaine = str_replace(" ", "-", $chaine);
+		$chaine = str_replace("'", "-", $chaine);
+		$chaine = str_replace("&", "-", $chaine);
+		$chaine = str_replace("?", "", $chaine);	
+		$chaine = str_replace(".", "", $chaine);	
+		$chaine = str_replace("!", "", $chaine);			
 		$chaine = preg_replace('/-+/', '-', $chaine);	
 		
 		return $chaine;
