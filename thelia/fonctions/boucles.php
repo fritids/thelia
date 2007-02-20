@@ -1560,6 +1560,13 @@
 		$res="";
 		
 		// pr�aration de la requ�e
+		 
+		if($produit!=""){
+			$tprod = new Produit();
+			$tprod->charger_id($produit);
+			$rubrique = $tprod->rubrique;
+		}
+
 		if($rubrique!="")  $search.=" and rubrique=\"$rubrique\"";
 		if($id!="")  $search.=" and id=\"$id\"";
 		
@@ -1577,14 +1584,13 @@
 		if(!$nbres) return "";
 
 		while( $row = mysql_fetch_object($resul)){
-
-			$caracteristique->charger($row->id);
-			if($caracteristique->affiche == "0" && $affiche == "1") continue;
 			
 			if($id != "") $caracteristiquedesc->charger($row->id, $_SESSION['navig']->lang);
 			else $caracteristiquedesc->charger($row->caracteristique, $_SESSION['navig']->lang);
 			if($id != "") $temp = str_replace("#ID", "$row->id", $texte);
 			else $temp = str_replace("#ID", "$row->caracteristique", $texte);
+
+			if($caracteristique->affiche == "0" && $affiche == "1") continue;
 
 			$temp = str_replace("#TITRE", "$caracteristiquedesc->titre", $temp);
 			$temp = str_replace("#CHAPO", "$caracteristiquedesc->chapo", $temp);

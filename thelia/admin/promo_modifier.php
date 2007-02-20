@@ -42,7 +42,11 @@
 	if(!isset($types)) $types="";
 	if(!isset($utiliseo)) $utiliseo="";
 	if(!isset($illimiteo)) $illimiteo="";
-	
+
+	$utilisen = "";
+	$illimiten = "";
+	$typep = "";
+		
 ?>
 
 
