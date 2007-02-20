@@ -1,3 +1,6 @@
+1.1.10
+	Optimisation du parseur
+
 1.1.9
 	classement inverse pour la boucle contenu
 	ajout du plugin pour Macromédia Dreamweaver

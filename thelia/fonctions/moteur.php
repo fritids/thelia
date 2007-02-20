@@ -59,12 +59,12 @@ foreach ($_GET as $key => $value) $$key = $value;
 
 function analyse($res){
 	global $formulaire, $sajax;
-	
+
 	// substition simples
-	$res = substit(explode("\n", $res));	
+	$res = substitutions($res);	
 	
 	// laisser les infos pour les connectés ou non connectÈs
-	$res = filtre_connecte(explode("\n", $res));	
+	$res = filtre_connecte($res);	
 	
 
 	// traitement dans le cas d'un formulaire
@@ -74,10 +74,12 @@ function analyse($res){
 	if($sajax == 1) $res = chargerDiv(explode("\n", $res));
 
 	// effectue le nombre de passe nécessaire afin de traiter toutes les boucles et sous boucles
+
+	$res = preg_replace("|<THELIA([^>]*)>\n|Us", "<THELIA\\1>", $res);
 	
 	while(strstr($res, "<THELIA")) {
-		$res = pre($res);
-		$res = boucle_simple(explode("\n", $res));
+		$boucles = pre($res);
+		$res = boucle_simple($res, $boucles);
 		$res = post($res);
 	}
 
@@ -88,15 +90,11 @@ function analyse($res){
 	// boucles
 	
 	while(strstr($res, "<THELIA")) {
-		$res = pre($res);
-		$res = boucle_simple(explode("\n", $res));
+		$boucles = pre($res);
+		$res = boucle_simple($res, $boucles);
 		$res = post($res);
 	}
 	
-	// execution du code php
-	
-	$res = execute_php(explode("\n", $res));
-
 	// on envoie le résultat
 	
 	return $res;

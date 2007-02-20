@@ -27,11 +27,17 @@
 
 
 	// remplace les tags qui ne doivent pas être touchés lors de la passe courante	
-	function pre($res){
+	function pre(&$res){
+
+		$res = preg_replace("|<THELIA([^>]*)>|Us", "\nSAUT_THELIA<THELIA\\1>\nSAUT_THELIA", $res);
+		$res = preg_replace("|</THELIA([^>]*)>|Us", "\nSAUT_THELIA</THELIA\\1>\nSAUT_THELIA", $res);
+
 		$tab = explode("\n", $res);
 		$profondeur = 0;
 		$res="";
 		$bsinon = 0;
+		$compt=0;
+		$boucles="";
 		
 		for($i = 0; $i<count($tab); $i++){
 			if(strstr($tab[$i], "<THELIA")) $profondeur++;
@@ -44,14 +50,24 @@
 			
 			if( ($profondeur == 2 && ! strstr($tab[$i], "<THELIA")) || $profondeur>2 ) 
 				$tab[$i] = str_replace("#", "#THNO", $tab[$i]);	
+			else if(strstr($tab[$i], "<THELIA") && $profondeur < 2){
+				preg_match("/<THELIA_([^ ]*) /", $tab[$i], $liste);
+				$boucles[$compt++] = $liste[1];
+			
+			}	 
 			
 			if($bsinon == 1 &&  strstr($tab[$i], "<THELIA")) $tab[$i] = str_replace("<THELIA", "<BTHELIA", $tab[$i]);
 			else if($bsinon == 1 &&  strstr($tab[$i], "</THELIA")) $tab[$i] = str_replace("</THELIA", "</BTHELIA", $tab[$i]);
 			
 			$res .= $tab[$i] . "\n";
 		}
+
+		$res = preg_replace("|\nSAUT_THELIA|Us", "", $res);
+		$res = preg_replace("|\nSAUT_THELIA|Us", "", $res);				
+
 		
-		return $res;
+
+		return $boucles;
 	}
 	
 	
@@ -59,7 +75,7 @@
 	function post($res){
 		
 		$res = str_replace("#THNO", "#", $res);
-		
+			
 		return $res;
 	}
 	
@@ -88,8 +104,6 @@
 	
 				$texte = "";
 				
-
-
 				$i++;
 
 				// récupère le contenue de la boucle
@@ -124,72 +138,22 @@
 	// filtre si connecte
 	function filtre_connecte($lect){
 
-		$i =0;
-		$res="";
-		
-		while($i<count($lect)) {
-
-			$rec = $lect[$i];
-			
-		
-			if(strstr($rec, "<THELIA SI CONNECTE")){
-				$deb = 0;
-				$i++;
+		// récupère les infos
+			if($_SESSION['navig']->connecte){
 				
-				// récupère les infos
-				if($_SESSION['navig']->connecte)
-					while( ! strstr($lect[$i], "/THELIA SI CONNECTE") && $i<count($lect)) {
-						$res .= $lect[$i++] . "\n";
-					} 
-		  						  	
-		  		else while( ! strstr($lect[$i], "/THELIA SI CONNECTE") && $i<count($lect)) {
-		  			$i++;
-		  		} 
-		  			$i++;
-		  			
-		  			
-				if( strstr($lect[$i-1], "/THELIA SI CONNECTE")  ) $deb=0;
-	  			else { echo "La boucle si connecte n'est pas ferm&eacute;e correctement !"; exit; }
-		  		
-		  			
-			}
+				$lect = preg_replace("|<THELIA SI CONNECTE>(.*)</THELIA SI CONNECTE>|Us", "\\1", $lect);
+				$lect = preg_replace("|<THELIA SI NON CONNECTE>.*</THELIA SI NON CONNECTE>|Us", "", $lect);
 			
-			
-	
-			else if(strstr($rec, "<THELIA SI NON CONNECTE")){
-				$deb = 0;
-				$i++;
-				// récupère les infos
-				if(! $_SESSION['navig']->connecte)
-					while( ! strstr($lect[$i], "/THELIA SI NON CONNECTE") && $i<count($lect)) {
-						$res .= $lect[$i++] . "\n";
-					} 
-		  					
-		  		else while( ! strstr($lect[$i], "/THELIA SI NON CONNECTE") && $i<count($lect)) {
-		  			$i++;
-		  		} 
-		  			$i++;
-		  			
-		  		if( strstr($lect[$i-1], "/THELIA SI NON CONNECTE")  ) $deb=0;
-	  			else { echo "La boucle si connecte n'est pas ferm&eacute;e correctement !"; exit; }
-		  			
-		  			
 			}
-
-
-		else 
-		
-		$res .=  $lect[$i++] . "\n"; 
-	
-		
-
-
-		}	
-		
-	
-					
-		
-		return $res; 
+				
+			else if(! $_SESSION['navig']->connecte){
+				
+				$lect = preg_replace("|<THELIA SI CONNECTE>.*</THELIA SI CONNECTE>|Us", "", $lect);
+				$lect = preg_replace("|<THELIA SI NON CONNECTE>(.*)</THELIA SI NON CONNECTE>|Us", "\\1", $lect);
+			}
+		  			
+		  
+		return $lect; 
 		
 	}
 	
@@ -295,85 +259,25 @@
 		  	
 	}
 	
-	
-	
-	// Substitutions
-	function substit($lect){
 
-		$res = "";
-		$i =0;
-	
-		while($i<count($lect)) {
-
-			$rec = $lect[$i++];
-
-			
-			/* Substitutions des mots clés "simple" */		
-			$res .= substitutions($rec) . "\n";
-			
-		}
-		
-		return $res;
-	}	
-	
-	
 	// Boucles classiques
-	function boucle_simple($lect){
+	function boucle_simple($lect, $boucles){
+
+		for($i=0; $i<count($boucles); $i++){
+
+			preg_match("|<THELIA_" . $boucles[$i] . " ([^>]*)>(.*)</THELIA_" . $boucles[$i] . ">|Us", $lect, $liste);
+
+			$type_boucle = lireTag($liste[1], "type");
+		
+			$args = $liste[1];
+			$lect = preg_replace("|<THELIA_" . $boucles[$i] . " [^>]*>.*</THELIA_" . $boucles[$i] . ">|Us", boucle_exec($type_boucle, $args, $liste[2], "T_" . $boucles[$i]), $lect, 1);
+
+		}	
+
+		return $lect; 
 	
-		$res="";
-		
-		$i =0;
-	
-		while($i<count($lect)) {
-
-			$rec = $lect[$i];
-
-			if(strstr($rec, "<THELIA")){
-
-				$deb=1;
-				
-				// récupère le nom de la boucle
-				ereg("_([^ ]*) ", "$rec", $cut);
-				$nomboucle = $cut[1];
-
-				$args = $rec;
-			
-				// récupère le type de la boucle
-				$type_boucle = lireTag($rec, "type");
-			
-				$texte = "";
-				
-
-
-				$i++;
-
-				// récupère le contenue de la boucle
-				while( ! strstr($lect[$i], "/THELIA_$nomboucle") && $i<count($lect)){
-					
-		  			$texte .= $lect[$i++] . "\n";
-		  			
-		  		} 
-
-	  			if( strstr($lect[$i], "/THELIA_$nomboucle") ) $deb=0;
-	  			else { echo "La boucle $nomboucle n'est pas ferm&eacute;e correctement !"; exit; }
-	  			
-	  			$res .= boucle_exec($type_boucle, $args, $texte, "T_$nomboucle");
-		  	
-
-
-			}
-		
-
-			else  $res .= $rec . "\n"; 
-		
-		 	
-			$i++;
-		
-		}
-
-		return $res; 
 	}
-	
+
 
 	function boucle_exec($type_boucle, $args, $texte){
 		
@@ -510,46 +414,6 @@
 		
 		return $res;
 	}	
-
-
-	// remplacement code php
-	function execute_php($lect){
-
-		$i =0;
-		$res="";
-		
-		while($i<count($lect)) {
-
-			$rec = $lect[$i];
-		
-		
-			if(strstr($rec, "<?php")){
-				$i++;
-				$temp="";
-				// récupère les infos
-				 while( ! strstr($lect[$i], "?>")) {
-				 $temp .= $lect[$i];
-		  			$i++;
-		  			
-		  		} 
-	   			 ob_start();
-	   			 eval($temp);
-	   			 $phpres  = ob_get_contents();
-	  			  ob_end_clean();
-	    		 $res .= $phpres . "\n";
-	 			$i++;
-	 		  		
-		  	}
-		  	
-		  	else  $res .= $lect[$i++] . "\n";	
-
-			
-		}	
-		
-		
-		return $res; 
-		
-	}
 
 	
 ?>

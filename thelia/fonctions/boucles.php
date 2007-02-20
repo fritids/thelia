@@ -153,7 +153,7 @@
 			
 			$compt ++;
 			
-			if(trim($temp) !="") $res .= $temp . "\n";
+			if(trim($temp) !="") $res .= $temp;
 			
 		}
 
@@ -229,7 +229,7 @@
 			
 			$compt ++;
 			
-			if(trim($temp) !="") $res .= $temp . "\n";
+			if(trim($temp) !="") $res .= $temp;
 			
 		}
 	
@@ -392,7 +392,7 @@
 
 			$compt++;
 				
-			$res .= $temp. "\n";;
+			$res .= $temp;
 		}
 
 
@@ -460,7 +460,7 @@
 				$temp = str_replace("#POURCENTAGE", "$row->pourcentage", $temp);					
 
 			
-			$res .= $temp . "\n";
+			$res .= $temp;
 			
 		}
 	
@@ -514,7 +514,7 @@
 			$temp = str_replace("#CODE",  "$devise->code", $temp);	
 			$temp = str_replace("#TAUX", "$devise->taux", $temp);
 
-			$res .= $temp. "\n";;
+			$res .= $temp;
 		}
 
 		return $res;
@@ -571,7 +571,7 @@
 			$temp = str_replace("#TITRE", "$documentdesc->titre", $texte);
 			$temp = str_replace("#FICHIER", "client/document/" . $document->fichier, $texte);
 
-			$res .= $temp. "\n";;
+			$res .= $temp;
 		}
 	
 
@@ -608,7 +608,7 @@
 			$accessoire->charger($row->id);
 			$temp = str_replace("#ACCESSOIRE", "$accessoire->accessoire", $texte);
 
-			$res .= $temp. "\n";;
+			$res .= $temp;
 		}
 
 		return $res;
@@ -926,8 +926,6 @@
 			$prix = $row->prix - ($row->prix * $_SESSION['navig']->client->pourcentage / 100);
 			$prix2 = $row->prix2 - ($row->prix2 * $_SESSION['navig']->client->pourcentage / 100);
 			
-			$prix = number_format($prix, 2); 
-			
 			$pays = new Pays();
 			$pays->charger($_SESSION['navig']->client->pays);
 			
@@ -981,7 +979,7 @@
 			$temp = str_replace("#RUBTITRE", "$rubriquedesc->titre", $temp);
 			
 			
-			$res .= $temp . "\n";
+			$res .= $temp;
 			
 		}
 	
@@ -1153,7 +1151,7 @@
 			$temp = str_replace("#PRODUIT", "$produit", $temp);
 			$temp = str_replace("#RUBRIQUE", "$rubrique", $temp);			
 			
-			$res .= $temp . "\n";
+			$res .= $temp;
 			
 		}
 	
@@ -1438,7 +1436,7 @@
 				$temp = str_replace("#URL", "rubrique.php?id_rubrique=" . $rubtab[$i]->id, $temp);	
 		
 		
-			if(trim($temp) !="") $res .= $temp . "\n";
+			if(trim($temp) !="") $res .= $temp;
 		}	
 			if($i >= $profondeur && $profondeur != "") break;
 		} while($i--);
@@ -1481,7 +1479,7 @@
 			$temp = str_replace("#TITRE", "$paiementdesc->titre", $temp);
 			$temp = str_replace("#CHAPO", "$paiementdesc->chapo", $temp);
 			$temp = str_replace("#DESCRIPTION", "$paiementdesc->description", $temp);		
-			$res .= $temp. "\n";
+			$res .= $temp;
 		}
 	
 
@@ -1543,7 +1541,7 @@
 			else $temp = str_replace("#SELECTED", "", $temp);
 			if($default == "1" && $pays->default == "1") $temp = str_replace("#DEFAULT", "selected", $temp);	
 			else $temp = str_replace("#DEFAULT", "", $temp);
-			$res .= $temp. "\n";
+			$res .= $temp;
 		}
 	
 
@@ -1593,7 +1591,7 @@
 			$temp = str_replace("#DESCRIPTION", "$caracteristiquedesc->description", $temp);		
 			$temp = str_replace("#PRODUIT", "$produit", $temp);	
 			
-			$res .= $temp. "\n";
+			$res .= $temp;
 		}
 
 		return $res;
@@ -1682,7 +1680,7 @@
 			$temp = str_replace("#TITRE", "$tcaracdispdesc->titre", $temp);
 			$temp = str_replace("#SELECTED", "$selected", $temp);
 			
-			$res .= $temp. "\n";
+			$res .= $temp;
 		}
 	
 		
@@ -1748,7 +1746,7 @@
 			$temp = str_replace("#TITRECARAC", $caractemp->titre, $temp);
 			
 				
-			$res .= $temp. "\n";
+			$res .= $temp;
 		}
 	
 	
@@ -1815,7 +1813,7 @@
 				$temp = str_replace("#SUPPRURL", "livraison_adresse.php?action=supprimerlivraison&id=$row->id", $temp);
 				$temp = str_replace("#URL", "paiement.php?action=modadresse&adresse=$row->id", $temp);
 
-				$res .= $temp. "\n";
+				$res .= $temp;
 			}
 	
 		
@@ -1855,7 +1853,7 @@
 		$temp = str_replace("#TELFIXE", $_SESSION['navig']->client->telfixe, $temp);
 		$temp = str_replace("#TELPORT", $_SESSION['navig']->client->telport, $temp);		
 		
-		$res .= $temp. "\n";
+		$res .= $temp;
 		
 		}
 		
@@ -1932,7 +1930,7 @@
 			$temp = str_replace("#TOTCMDPORT", "$totcmdport", $temp);
 			$temp = str_replace("#FICHIER", "client/pdf/visudoc.php?ref=" . $row->ref, $temp);
 
-			$res .= $temp. "\n";
+			$res .= $temp;
 		}
 	
 
@@ -1974,7 +1972,7 @@
 			$temp = str_replace("#PRIXU", "$row->prixu", $temp);
 			$temp = str_replace("#TOTALPROD", "$totalprod", $temp);
 
-			$res .= $temp. "\n";
+			$res .= $temp;
 		}
 	
 
@@ -2039,7 +2037,7 @@
 			$temp = str_replace("#URLCMD", "commande.php?action=transport&id=" . $row->id, $temp);
 			$temp = str_replace("#ID", "$row->id", $temp);	
 			$temp = str_replace("#PORT", "$port", $temp);
-			$res .= $temp. "\n";
+			$res .= $temp;
 			
 		}
 	
@@ -2144,7 +2142,7 @@
 			$temp = str_replace("#DESCRIPTION", "$declinaisondesc->description", $temp);	
 			$temp = str_replace("#PRODUIT", "$produit", $temp);
 	
-			$res .= $temp. "\n";
+			$res .= $temp;
 		}
 
 		return $res;
@@ -2229,7 +2227,7 @@
 			$temp = str_replace("#TITRE", "$tdeclidispdesc->titre", $temp);
 			$temp = str_replace("#PRODUIT", "$produit", $temp);
 
-			$res .= $temp. "\n";
+			$res .= $temp;
 		}
 	
 	
@@ -2257,7 +2255,7 @@
 			
 		$compt ++;
 			
-		if(trim($temp) !="") $res .= $temp . "\n";
+		if(trim($temp) !="") $res .= $temp;
 	
 		return $res;
 		
