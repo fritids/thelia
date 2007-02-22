@@ -1349,8 +1349,8 @@
 			$temp = str_replace("#TOTAL", "$total", $temp);			
 			$temp = str_replace("#ID", $_SESSION['navig']->panier->tabarticle[$i]->produit->id, $temp);
 			$temp = str_replace("#ARTICLE", "$i", $temp);
-			$temp = str_replace("#PLUSURL", "panier.php?action=" . "modifier" . "&" . "id=" . $i . "&" . "quantite=" . $plus, $temp);			
-			$temp = str_replace("#MOINSURL", "panier.php?action=" . "modifier" . "&" . "id=" . $i . "&" . "quantite=" . $moins, $temp);
+			$temp = str_replace("#PLUSURL", "panier.php?action=" . "modifier" . "&" . "article=" . $i . "&" . "quantite=" . $plus, $temp);			
+			$temp = str_replace("#MOINSURL", "panier.php?action=" . "modifier" . "&" . "article=" . $i . "&" . "quantite=" . $moins, $temp);
 			$temp = str_replace("#SUPPRURL", "panier.php?action=" . "supprimer" . "&" . "id=" . $i, $temp);			
 			$temp = str_replace("#PRODURL", "produit.php?ref=".$_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $temp);		
 			$temp = str_replace("#TOTSANSPORT", "$totsansport", $temp);

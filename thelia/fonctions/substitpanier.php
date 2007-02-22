@@ -70,8 +70,14 @@
 		 
 		$totalht = round($total/1.196, 2);
 		
-		$texte = str_replace("#PANIER_TOTALHT", "$totalht", $texte);
-		 
+		
+		$totalht = number_format($totalht, 2);
+		$total = number_format($total, 2);
+		$port = number_format($port, 2);
+		$totcmdport = number_format($totcmdport, 2);
+		$remise = number_format($remise, 2);
+		
+		$texte = str_replace("#PANIER_TOTALHT", "$totalht", $texte);	 
 		$texte = str_replace("#PANIER_TOTAL", "$total", $texte);
 		$texte = str_replace("#PANIER_PORT", "$port", $texte);
 		$texte = str_replace("#PANIER_TOTPORT", "$totcmdport", $texte);
