@@ -7,4 +7,4 @@ Remplacez "thelia" par votre répertoire d'installation bien sûr.
 
 une fois l'installation terminée, supprimez le répertoire install.
 
-Copiez ensuite les fichiers .php du répertoire template à la racine de votre installation si vous souhaitez découvrir le template de base.
+Copiez ensuite les fichiers du répertoire template à la racine de votre installation si vous souhaitez découvrir le template de base.
