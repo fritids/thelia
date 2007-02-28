@@ -51,10 +51,10 @@
 <catalog lang="FR" date="<?php echo($ladate); ?>" GMT="+1" version="1.4">
 <?php
 
-	include("../classes/Produit.class.php");
-	include("../classes/Image.class.php");
-	include("../classes/Rubrique.class.php");
-	include("../classes/Caracval.class.php");
+	include("../../classes/Produit.class.php");
+	include("../../classes/Image.class.php");
+	include("../../classes/Rubrique.class.php");
+	include("../../classes/Caracval.class.php");
 	
 	$i=0;
 	

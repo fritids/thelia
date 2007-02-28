@@ -1,7 +1,7 @@
 <?php
-
-	$fond="template/default/compte.html";
+	$fond="compte.html";
 	$securise=1;
+	$pageret=1;
 	include("fonctions/moteur.php");
 
 ?>

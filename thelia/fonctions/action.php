@@ -85,8 +85,8 @@
 	}
 		
 	// suppression d'un article du panier	
-	function supprimer($id){
-			$_SESSION['navig']->panier->supprimer($id);
+	function supprimer($article){
+			$_SESSION['navig']->panier->supprimer($article);
 	}
 	
 	// modification de la quantité d'un article

@@ -1,5 +1,5 @@
 <?php
-	$fond="template/default/cheque.html";
+	$fond="cheque.html";
 	$securise=1;
 	$pageret=1;
 	$reset=1;

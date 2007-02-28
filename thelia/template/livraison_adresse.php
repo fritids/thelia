@@ -1,8 +1,8 @@
 <?php
 
-	$fond="template/default/livraison_adresse.html";
-	$formulaire=1;
+	$fond="livraison_adresse.html";
+	$pageret=1;
 	$securise=1;
-	include("fonctions/moteur.php");
+-	include("fonctions/moteur.php");
 
 ?>

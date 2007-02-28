@@ -52,9 +52,9 @@ url	title	description	price	offerid	image	category	availability	deliverycost	exp
 ?>
 <?php
 
-	include("../classes/Produit.class.php");
-	include("../classes/Image.class.php");
-	include("../classes/Caracval.class.php");
+	include("../../classes/Produit.class.php");
+	include("../../classes/Image.class.php");
+	include("../../classes/Caracval.class.php");
 	
 	$produit = new Produit();	
 	$produitdesc = new Produitdesc();

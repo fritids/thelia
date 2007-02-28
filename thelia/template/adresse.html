@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+<!-- main css -->
+<!-- Commentaire conditionnel pour IE6-5.x -->
+<!--[if lt IE 7]>
+	<link rel="stylesheet" type="text/css" href="css/ie5-6.css" />
+<![endif]-->
+<!-- Commentaire conditionnel pour IE5.x -->
+<!--[if lt IE 6]>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+<![endif]-->
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<link href="menuDeroulant.css" rel="stylesheet" type="text/css" />
+	
+	</head>
+<body>
+
+	<!-- global wrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+		#INCLURE "entete.html" 
+		#INCLURE "compte.html" 
+		
+		
+			
+  	<!-- Contenu -->
+	
+		<div id="content">
+			#INCLURE "menu.html" 	
+  
+			
+  	<!-- chemin -->
+	
+			<div id="chemin">
+			<a href="index.php">Accueil boutique</a> / Mes adresses</div>
+			
+  	        <!-- formulaire -->
+	
+			<div id="fondContenu2">
+			 <div class="titrePage" style="overflow:hidden; zoom: 1"> Etape de commande n° 2 / Validation de mes coordonnées</div>
+				<div class="sousTitrePage" style="overflow:hidden; zoom: 1">
+				Mon adresse de facturation
+				</div>
+				<THELIA_panier type="PANIER">
+				<div class="ligneFormulaire">
+				#CLIENT_RAISON #CLIENT_PRENOM #CLIENT_NOM
+				</div>
+				</THELIA_panier>
+				<div class="ligneFormulaire">
+				#CLIENT_ADRESSE1 #CLIENT_ADRESSE2 #CLIENT_ADRESSE3
+				</div>
+				<div class="ligneFormulaire">
+				#CLIENT_CPOSTAL #CLIENT_VILLE
+				</div>
+				<div class="ligneFormulaire">
+				#CLIENT_PAYS
+				</div>
+				
+				<div class="ligneFormulaire">
+				
+					<div class="boutonDeBase250" style="overflow: hidden;zoom: 1;;">
+					<dl class="boutonForm250">
+					<dt><a href="compte_modifier.php">Modifier cette adresse</a></dt>
+					</dl>
+					</div>
+					
+				</div>
+				
+				<div class="sousTitrePage" style="overflow:hidden; zoom: 1">
+				Adresse de livraison</div>
+				 <THELIA_adrcours type="ADRESSE" adresse="#ADRESSE_ACTIVE">
+				<div class="ligneFormulaire">
+				#RAISON #PRENOM #NOM	
+							</div>
+				</THELIA_panier>
+				<div class="ligneFormulaire">
+				 #ADRESSE1 #ADRESSE2 #ADRESSE3
+ 				</div>
+				<div class="ligneFormulaire">
+				#CPOSTAL #VILLE 
+				</div>
+				<div class="ligneFormulaire">
+					<THELIA_pays type="PAYS" id="64">
+					  	#TITRE	
+						</THELIA_pays>
+				</div>
+				</THELIA_adrcours>
+	
+		<div class="sousTitrePage" style="overflow:hidden; zoom: 1">S&eacute;lectionner une autre adresse de livraison dans la liste ci-dessous </div>
+				
+				<div class="ligneFormulaire">
+				<a href="adresse.php?action=modadresse&adresse=0">Adresse de facturation par d&eacute;faut </a>
+							</div>
+				<THELIA_adr type="ADRESSE" client="#CLIENT_ID">
+				<div class="ligneFormulaire">
+				 <a href="adresse.php?action=modadresse&adresse=#ID">#LIBELLE</a>
+ 				</div>
+				</THELIA_adr>
+				
+				<div class="sousTitrePage" style="overflow:hidden; zoom: 1">Ajouter une nouvelle adresse de livraison </div>
+				
+				<div class="boutonDeBase250" style="overflow: hidden;zoom: 1;">
+					<dl class="boutonForm250">
+					<dt><a href="livraison_adresse.php">Ajouter une adresse </a></dt>
+					</dl>
+					</div>
+						<div class="sousTitrePage" style="overflow:hidden; zoom: 1">Poursuivre ma commande </div>
+				
+				        <div class="boutonDeBase250" style="overflow: hidden;zoom: 1;">
+					<dl class="boutonForm250">
+					<dt><a href="transport.php">Poursuivre  ma commande</a></dt>
+					</dl>
+					</div>
+		</div>
+			  #INCLURE "pied.html"
+
+	</div>
+	
+</div>
+#INCLURE "referer.html"
+</body>
+</html>

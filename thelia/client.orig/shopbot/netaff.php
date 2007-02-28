@@ -51,10 +51,10 @@
 <catalog lang="FR" date="<?php echo($ladate); ?>">
 <?php
 
-	include("../classes/Produit.class.php");
-	include("../classes/Image.class.php");
-	include("../classes/Rubrique.class.php");
-	include("../classes/Caracval.class.php");
+	include("../../classes/Produit.class.php");
+	include("../../classes/Image.class.php");
+	include("../../classes/Rubrique.class.php");
+	include("../../classes/Caracval.class.php");
 	
 	$i=0;
 	
@@ -93,8 +93,8 @@
 		<description><![CDATA[ <?php echo($description); ?> ]]></description>
 		<brand></brand>
 		<price><?php echo($row->prix2); ?></price>
-		<url><![CDATA[ http://www.istyl.com/orika/produit.php?ref=<?php echo($row->ref); ?>&rt75=53&wx=108]]></url>
-		<img><![CDATA[ http://www.istyl.com/orika/fonctions/redimlive.php?nomorig=../client/gfx/photos/petite/<?php echo($row2->fichier); ?>&width=70&height=70]]></img>
+		<url><![CDATA[ http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=53&wx=108]]></url>
+		<img><![CDATA[ http://www.site.com/fonctions/redimlive.php?nomorig=../client/gfx/photos/petite/<?php echo($row2->fichier); ?>&width=70&height=70]]></img>
 	</product>
 	
 	

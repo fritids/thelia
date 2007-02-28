@@ -312,7 +312,7 @@
 					$temp = str_replace("#PRODUIT", $image->produit, $temp);
 					$temp = str_replace("#PRODREF", $pr->ref, $temp);
 					$temp = str_replace("#RUBRIQUE", $pr->rubrique, $temp);
-					$temp = str_replace("#COMPT", "$compt", $temp);
+					
 					
 					if(!$largeur && !$hauteur) 
 						$temp = str_replace("#GRANDE", "client/gfx/photos/produit/grande/" . $image->fichier, $temp);
@@ -389,7 +389,8 @@
 				$temp = str_replace("#TITRE",  $imagedesc->titre, $temp);	
 				$temp = str_replace("#CHAPO",  $imagedesc->chapo, $temp);	
 				$temp = str_replace("#DESCRIPTION",  $imagedesc->description, $temp);	
-
+				$temp = str_replace("#COMPT", "$compt", $temp);
+				
 			$compt++;
 				
 			$res .= $temp;
@@ -730,7 +731,6 @@
 			$lcaracdisp = explode("-", $caracdisp);
 			
 			$i = 0;
-			$liste2="";
 
 			$tcaracval = new Caracval();
 
@@ -752,14 +752,14 @@
 			
 				$liste = substr($liste, 0, strlen($liste) - 2);
 				
-				$liste2 = $liste;
 				$i++;
 				
+				if($liste!="") $search .= " and id in($liste)";	
+				else return "";
 			}
 
 			
-			if($liste!="") $search .= " and id in($liste)";	
-			else return "";
+
 		}	
 
 			if($caracval != ""){
@@ -779,7 +779,7 @@
 				$liste="";
 				
 				while($row = mysql_fetch_object($resul))
-					if(strstr($liste2, "'$row->produit'") || $liste2 == "") $liste .= "'$row->produit', ";
+					$liste .= "'$row->produit', ";
 				$liste = substr($liste, 0, strlen($liste) - 2);
 				
 				$i++;
@@ -1351,7 +1351,7 @@
 			$temp = str_replace("#ARTICLE", "$i", $temp);
 			$temp = str_replace("#PLUSURL", "panier.php?action=" . "modifier" . "&" . "article=" . $i . "&" . "quantite=" . $plus, $temp);			
 			$temp = str_replace("#MOINSURL", "panier.php?action=" . "modifier" . "&" . "article=" . $i . "&" . "quantite=" . $moins, $temp);
-			$temp = str_replace("#SUPPRURL", "panier.php?action=" . "supprimer" . "&" . "id=" . $i, $temp);			
+			$temp = str_replace("#SUPPRURL", "panier.php?action=" . "supprimer" . "&" . "article=" . $i, $temp);			
 			$temp = str_replace("#PRODURL", "produit.php?ref=".$_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $temp);		
 			$temp = str_replace("#TOTSANSPORT", "$totsansport", $temp);
 			$temp = str_replace("#PORT", "$port", $temp);
@@ -2010,7 +2010,7 @@
 	
 		$pays = new Pays();
 		
-		if($_SESSION['navig']->adresse != ""){
+		if($_SESSION['navig']->adresse != "" && $_SESSION['navig']->adresse != 0){
 			$adr = new Adresse();
 			$adr->charger($_SESSION['navig']->adresse);
 			$pays->charger($adr->pays);

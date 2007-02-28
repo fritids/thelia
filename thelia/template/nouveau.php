@@ -1,5 +1,7 @@
 <?php
-	$fond="template/default/nouveau.html";
+	$fond="nouveau.html";
+	$securise=1;
+	$pageret=1;
 	include("fonctions/moteur.php");
 
 ?>

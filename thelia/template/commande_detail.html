@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+<!-- main css -->
+<!-- Commentaire conditionnel pour IE6-5.x -->
+<!--[if lt IE 7]>
+	<link rel="stylesheet" type="text/css" href="css/ie5-6.css" />
+<![endif]-->
+<!-- Commentaire conditionnel pour IE5.x -->
+<!--[if lt IE 6]>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+<![endif]-->
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<link href="menuDeroulant.css" rel="stylesheet" type="text/css" />
+<script language="javascript">
+
+function valide(){
+	if(document.getElementById('condbox').checked) document.getElementById('formulaire').submit();
+	else alert("Vous devez accepter les conditions generales de vente");
+}
+
+</script>
+
+	
+	</head>
+<body>
+
+	<!-- global wrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+		#INCLURE "entete.html" 
+		#INCLURE "compte.html" 
+		
+		
+			
+  	<!-- Contenu -->
+	
+		<div id="content">
+			#INCLURE "menu.html" 	
+  
+			
+  	<!-- chemin -->
+	
+			<div id="chemin">
+			<a href="index.php">Accueil boutique</a> / Mon panier </div>
+			
+  	        <!-- formulaire -->
+	
+			<div id="fondContenu2">
+			  <div class="sousTitrePage"> D&eacute;tails de la commande</div>
+				<div class="sousTitrePage" style="overflow:hidden; zoom: 1">
+				<span class="sousTitreColonne300">
+				Ma commande</span>
+				<span class="sousTitreColonne300">
+				Prix unitaire</span></div>
+				
+		<THELIA_cmd type="COMMANDE" ref="#COMMANDE_REF" client="#CLIENT_ID">
+				
+			  <div class="lignePanier">
+					<span class="TexteColonne300">
+				N° de commande </span>
+				<span class="TexteColonne300">
+			  #REF</span></div>
+			  <THELIA_venteprod type="VENTEPROD" commande="#ID">
+			  <div class="lignePanier">
+					<span class="TexteColonne300">
+				Produit</span>
+				<span class="TexteColonne300">
+			  #REF</span></div>
+			  <div class="lignePanier">
+					<span class="TexteColonne300">
+				Prix unitaire </span>
+				<span class="TexteColonne300">
+			  #PRIXU</span></div>
+			  <div class="lignePanier">
+					<span class="TexteColonne300">
+				Quantit&eacute;</span>
+				<span class="TexteColonne300">
+			  #QUANTITE</span></div>
+			  <div class="lignePanier">
+					<span class="TexteColonne300">
+				Sous total produit </span>
+				<span class="TexteColonne300">
+			  #TOTALPROD</span></div>
+			  </THELIA_venteprod>
+			  <div class="lignePanier">
+					<span class="TexteColonne300">
+				Date</span>
+				<span class="TexteColonne300">
+			  #DATE</span></div>
+			  <div class="lignePanier">
+					<span class="TexteColonne300">
+				N&deg; de facture 					</span>
+				<span class="TexteColonne300">
+			  #FACTURE</span></div>
+			  <div class="lignePanier">
+					<span class="TexteColonne300">
+				Frais de livraison </span>
+				<span class="TexteColonne300">
+			  #PORT</span></div>
+			  <div class="lignePanierTotal">
+					<span class="TexteColonne300">
+				Total</span>
+				<span class="TexteColonne300">
+			  #<span class="verdana11regOrange">TOTCMDPORT</span></span></div>
+				<div class="lignePanier">
+					<span class="TexteColonne300">
+				Statut</span>
+				<span class="TexteColonne300">
+			  #STATUT</span></div>
+			  </THELIA_cmd>
+					<div class="ligneFormulaire" style="text-align:right">
+				<div class="boutonDeBase250" style="overflow: hidden;zoom: 1">
+					<dl class="boutonForm250">
+					<dt><a href="client/pdf/facture.php?ref=#REF">Visualiser la commande</a></dt>
+					</dl>
+			</div></div>
+				<div class="ligneFormulaire"></div>
+			
+				<div class="ligneFormulaire" style=" height:150px;"></div>
+					
+		  </div>
+		  
+	  </div>
+		
+		</div>
+			  #INCLURE "pied.html"
+
+	
+	
+</div>
+#INCLURE "referer.html"
+</body>
+</html>

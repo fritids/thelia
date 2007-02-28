@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+<!-- main css -->
+<!-- Commentaire conditionnel pour IE6-5.x -->
+<!--[if lt IE 7]>
+	<link rel="stylesheet" type="text/css" href="css/ie5-6.css" />
+<![endif]-->
+<!-- Commentaire conditionnel pour IE5.x -->
+<!--[if lt IE 6]>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+<![endif]-->
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<link href="menuDeroulant.css" rel="stylesheet" type="text/css" />
+	
+	</head>
+<body>
+
+	<!-- global wrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+		#INCLURE "entete.html" 
+		#INCLURE "compte.html" 
+		
+		
+			
+  	<!-- Contenu -->
+	
+		<div id="content">
+			#INCLURE "menu.html" 	
+  
+			
+  	<!-- chemin -->
+	
+			<div id="chemin">
+			<a href="index.php">Accueil boutique Thelia</a> / Mon panier </div>
+			
+  	        <!-- formulaire -->
+	
+			<div id="fondContenu2">
+			 <div class="titrePage" style="overflow:hidden; zoom: 1"> Etape de commande n° 1 / Contenu de mon panier</div>
+				<div class="sousTitrePage" style="overflow:hidden; zoom: 1">
+				<span class="sousTitreColonne200">
+				R&eacute;f&eacute;rences produits </span>
+				<span class="sousTitreColonne100">
+				Prix unit.</span>
+				<span class="sousTitreColonne100">
+				Qté </span><span class="sousTitreColonne100">
+				Total TTC</span>
+				<span class="sousTitreColonne100">
+				Vider </span>				</div>
+				
+				<THELIA_panier type="PANIER">
+				
+			  <div class="lignePanier">
+					<span class="TexteColonne200">
+				#REF - #TITRE 
+		
+					</span>
+				<span class="TexteColonne100">
+				#PRIXU &euro;</span>
+				
+					<form action="#URLPANIER" method="post" name="formpanier#PRODUIT" id="formpanier#PRODUIT">
+                                <input type="hidden" name="article" value="#ARTICLE" />
+                                <input type="hidden" name="action" value="modifier" />
+								<span class="TexteColonne100">
+                                <select name="quantite" size="1" class="zoneDeSaisie" onchange="document.formpanier#PRODUIT.submit()">
+                                   <THELIA_quantite type="QUANTITE" article="#ARTICLE">
+								  
+                                 <option value="#NUM" #SELECTED>#NUM</option>
+								  
+                                  </THELIA_quantite>
+								  
+                                </select></span>
+            </form>
+			<span class="TexteColonne100">
+				#TOTAL &euro;</span>
+				<span class="TexteColonne100">
+				<a href="#SUPPRURL">Supprimer</a></span>		
+			</div>
+				
+				</THELIA_panier>
+				
+				<div class="lignePanierTotal">
+					<span class="TexteColonne200">&nbsp;	</span>
+				<span class="TexteColonne200">TOTAL DU PANIER:</span>
+			<span class="TexteColonne100">
+				#PANIER_TOTAL &euro;</span><span class="TexteColonne100">
+				&nbsp;</span></div>
+				<div class="ligneFormulaire"></div>
+					<div class="ligneFormulaire">
+					<span class="TexteColonne200">&nbsp;	</span>
+				<span class="TexteColonne200">&nbsp;</span>
+			<span class="TexteColonne100">
+				<div class="boutonDeBase180" style="overflow: hidden;zoom: 1">
+					<dl class="boutonForm180">
+					<dt><a href="adresse.php">Valider mon panier</a></dt>
+					</dl>
+					</div></span><span class="TexteColonne100">
+				&nbsp;</span></div>
+				<div class="ligneFormulaire"></div>
+					<div class="ligneFormulaire">
+				
+			
+				<div class="boutonDeBase120" style="overflow: hidden;zoom: 1">
+					<dl class="boutonForm120">
+					<dt><a href="la-collection_1_.html">Retour boutique</a></dt>
+					</dl>
+					</div>
+					</div>
+				<div class="ligneFormulaire"></div>
+				<div class="ligneFormulaire" style=" height:150px;"></div>
+				
+		  </div>	
+	  </div>
+		
+		</div>
+			  #INCLURE "pied.html"
+
+	
+	
+</div>
+#INCLURE "referer.html"
+</body>
+</html>

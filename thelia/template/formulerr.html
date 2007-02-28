@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+<!-- main css -->
+<!-- Commentaire conditionnel pour IE6-5.x -->
+<!--[if lt IE 7]>
+	<link rel="stylesheet" type="text/css" href="css/ie5-6.css" />
+<![endif]-->
+<!-- Commentaire conditionnel pour IE5.x -->
+<!--[if lt IE 6]>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+<![endif]-->
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<link href="menuDeroulant.css" rel="stylesheet" type="text/css" />
+	
+	</head>
+<body>
+
+	<!-- global wrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+		#INCLURE "entete.html" 
+		#INCLURE "compte.html" 
+		
+		
+			
+  	<!-- Contenu -->
+	
+		<div id="content">
+			#INCLURE "menu.html" 	
+  
+			
+  	<!-- chemin -->
+	
+			<div id="chemin">
+			<a href="index.php">Accueil boutique</a> / Mon compte	:	identifiez-vous	</div>
+			
+  	        <!-- formulaire -->
+			
+			  
+			<div id="fondContenu2">	
+						<form action="nouveau.php" method="post" name="nouveau" id="nouveau">
+              <input type="hidden" name="action" value="creercompte" />
+				<div class="sousTitrePage" style="overflow:hidden; zoom: 1">
+				Mon compte / Erreur d'indentification
+				</div>
+				 
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Civilit&eacute; #RAISON[<span class="ChampsObligatoires">(obligatoire)</span>]
+					</div>
+					<div class="encadrementZoneDeSaisie">
+				<select name="raison" size="1" class="zoneDeSaisie">
+                    <option value="" selected="selected">Choisissez ...</option>
+                  <option value="1" #RAISON1>Madame</option>
+                  <option value="2" #RAISON2>Mademoiselle</option>
+                  <option value="3" #RAISON3>Monsieur</option>
+              </select>	
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Nom #NOM[<span class="ChampsObligatoires">(obligatoire)</span>]
+					</div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="nom" value="#NOM" class="zoneDeSaisie" /></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Pr&eacute;nom #PRENOM[<span class="ChampsObligatoires">(obligatoire)</span>]
+					</div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="prenom" value="#PRENOM" class="zoneDeSaisie" /></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Adresse #ADRESSE1[<span class="ChampsObligatoires">(obligatoire)</span>]
+					</div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="adresse1" value="#ADRESSE1" class="zoneDeSaisie" /></input>
+					</div>
+				</div>
+
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Adresse (suite)
+					</div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="adresse2" value="#ADRESSE2" class="zoneDeSaisie" /></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Compl&eacute;ment d'adresse
+					</div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="adresse3" value="#ADRESSE3" class="zoneDeSaisie" /></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Code postal #CPOSTAL[<span class="ChampsObligatoires">(obligatoire)</span>]
+					</div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="cpostal" value="#CPOSTAL" class="zoneDeSaisie" /></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Ville #VILLE[<span class="ChampsObligatoires">(obligatoire)</span>]
+					</div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="ville" value="#VILLE" class="zoneDeSaisie" /></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Pays #PAYS[<span class="ChampsObligatoires">(obligatoire)</span>]
+					</div>
+					<div class="encadrementZoneDeSaisie">
+			
+						<select name="pays" size="1"  class="zoneDeSaisie">
+				<option value="" selected="selected">Choisissez ...</option>
+				<THELIA_pays type="PAYS"  id="64" >             
+                    <option value="#ID"  #SELECTED>#TITRE</option>
+                </THELIA_pays>
+                </select>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					T&eacute;l&eacute;phone fixe #TELFIXE[<span class="ChampsObligatoires">(obligatoire)</span>] 
+					 </div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="telfixe" value="#TELFIXE" class="zoneDeSaisie" /></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					T&eacute;l&eacute;phone portable </div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="telport" value="#TELPORT" class="zoneDeSaisie" /></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					E-mail#EMAIL[<span class="ChampsObligatoires">(V&eacute;rifiez votre E-Mail)</span>]</span></div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" value="#EMAIL" name="email1" class="zoneDeSaisie" /></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Coofirmation de votre email </div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text"  value="#EMAIL" name="email2" class="zoneDeSaisie" /></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Mot de passe #MOTDEPASSE[(<span class="ChampsObligatoires">Vérifiez votre mot de passe. 6 car mini)</span>] </div>
+					<div class="encadrementZoneDeSaisie">
+					<input  name="motdepasse1" type="password" class="zoneDeSaisie" /></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Confirmation de votre mot de passe
+					</div>
+					<div class="encadrementZoneDeSaisie">
+					<input name="motdepasse2" type="password" class="zoneDeSaisie" /></input>
+					</div>
+				
+				</div>
+						<div class="ligneFormulaire"><span class="TexteColonne300">* Champs obligatoires</span>
+				
+					<div class="boutonDeBase10" style="overflow: hidden;zoom: 1">
+					<dl class="boutonForm120">
+					<dt><a href="javascript:document.getElementById('nouveau').submit()">Valider</a></dt>
+					</dl>
+					</div>
+				</div>
+					</form>
+		  </div>
+	
+		</div>
+			  #INCLURE "pied.html"
+
+	</div>
+	
+</div>
+#INCLURE "referer.html"
+</body>
+</html>

@@ -1,0 +1,768 @@
+body {
+	padding: 0;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-align: center;
+	background-image: url(images/fondBody.gif);
+	background-repeat: repeat-x;
+	
+}
+
+a {
+color: #a9c9e9;
+text-decoration: none;
+}
+
+a:visited {
+color: #a1d0ee;
+text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #349ada;
+}
+
+h1 {
+	display: none
+}
+
+h2 {
+	display: none
+}
+
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.titrePage {
+	background-image: url(images/puceBleu.png);
+	background-repeat: no-repeat;
+	background-position: 0px center;
+	color: #349ada;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 13px;
+	font-weight: bold;
+	padding-left: 20px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #92c9eb;
+	float: left;
+	width: 740px;
+	margin-top: 10px;
+	margin-right: 0;
+	margin-bottom: 0px;
+	margin-left: 0;
+}
+
+.sousTitrePage {
+	background-image: url(images/puceGrise.png);
+	background-repeat: no-repeat;
+	background-position: 0px center;
+	color: #959595;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 12px;
+	font-weight: bold;
+	padding-left: 20px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #bababc;
+	float: left;
+	width: 740px;
+	margin-top: 10px;
+	margin-right: 0;
+	margin-bottom: 0px;
+	margin-left: 0;
+}
+.sousTitreColonne300 {
+	color: #959595;
+	text-align: left;
+	font-size: 13px;
+	font-weight: bold;
+	float: left;
+	width:300px;
+	padding-left: 5px;
+}
+.sousTitreColonne200 {
+	color: #959595;
+	text-align: left;
+	padding-left: 10px;
+	font-size: 11px;
+	font-weight: bold;
+	float: left;
+	width:200px;
+}
+.sousTitreColonne150 {
+	color: #959595;
+	text-align: left;
+	padding-left: 10px;
+	font-size: 13px;
+	font-weight: bold;
+	float: left;
+	width:150px;
+}
+.sousTitreColonne100 {
+	color: #959595;
+	text-align: left;
+	padding-left: 10px;
+	font-size: 12px;
+	font-weight: bold;
+	float: left;
+	width:100px;
+}
+.sousTitreColonne50 {
+	color: #959595;
+	text-align: left;
+	padding-left: 10px;
+	font-size: 13px;
+	font-weight: bold;
+	float: left;
+	width:50px;
+}
+.TexteColonne300 {
+	color: #959595;
+	text-align: left;
+	padding-left: 10px;
+	font-size: 11px;
+	float: left;
+	width:300px;
+}
+.TexteColonne200 {
+	color: #959595;
+	text-align: left;
+	padding-left: 10px;
+	font-size: 11px;
+	float: left;
+	width:200px;
+}
+.TexteColonne150 {
+	color: #959595;
+	text-align: left;
+	padding-left: 10px;
+	font-size: 11px;
+	float: left;
+	width:150px;
+}
+.TexteColonne100 {
+	color: #959595;
+	text-align: left;
+	padding-left: 10px;
+	font-size: 11px;
+	float: left;
+	width:100px;
+}
+.TexteColonne50 {
+	color: #959595;
+	text-align: left;
+	padding-left: 10px;
+	font-size: 11px;
+	float: left;
+	width:50px;
+}
+
+/* global wrapper */
+
+#wrapper {
+	max-width: 980px;
+	width: 989px;
+	text-align: left;
+	overflow: visible;
+	position: relative;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	padding: 0;
+	background-position: 0px 0px;
+}
+
+#subwrapper {
+	overflow: hidden;
+	position: relative;
+	padding: 0;
+	width: 989px;
+	background-image: url(images/fondWrapper.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+/* entête */
+
+
+#entete {
+	float: left;
+	width: 980px;
+	padding: 0;
+	margin: 0;
+}
+
+#logo {
+	float: left;
+	width: 262px;
+	padding: 0;
+	text-align: center;
+	height: 62px;
+	margin: 0;
+}
+
+/* mon compte */
+
+
+#monCompte {
+	float: left;
+	width: 469px;
+	background-image: url(images/fondMonCompte.jpg);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	margin: 0;
+	height: 62px;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 20px;
+	padding-left: 0;
+}
+
+#contenuMonCompte {
+	float: left;
+	width: 319px;
+	padding: 0;
+	margin-top: 30px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 150px;
+}
+
+.titreMonCompte {
+	display:none;
+	float: left;
+	background-image: url(images/petitePuceVerte.gif);
+	background-repeat: no-repeat;
+	background-position: 0px center;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 10px;
+	font-size: 11px;
+	color: #626262;
+	margin-top: 0;
+	margin-right: 5px;
+	margin-bottom: 0;
+	margin-left: 0;
+}
+
+.formMonCompte {
+	float: left;
+	background-repeat: no-repeat;
+	background-position: 0px center;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 5px;
+	font-size: 11px;
+	color: #626262;
+	margin-top: 0px;
+	margin-right: 3px;
+	margin-bottom: 0px;
+	margin-left: 0;
+}
+
+.champFormMonCompte {
+	padding: 0;
+	margin: 0;
+	border: 1px solid #2593d7;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #2593d7;
+	background-color: #e9f4fb;
+}
+
+.menuMonCompte {
+	float: left;
+	font-size: 10px;
+	color: #FFFFFF;
+	margin-top: 12px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+	width: 300px;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 5px;
+}
+
+
+/* mon panier */
+
+
+#monPanier {
+	float: left;
+	width: 257px;
+	padding: 0;
+	background-image: url(images/fondMonPanier.jpg);
+	background-repeat: no-repeat;
+	height: 62px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+
+#contenuMonPanier {
+	float: left;
+	width: 120px;
+	font-size: 11px;
+	padding: 0;
+	margin-top: 33px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 125px;
+	font-weight: bold;
+	text-align: left;
+}
+
+a.lienMonPanier:link {
+	color: #EC8200;
+	text-decoration: none;
+}
+
+a.lienMonPanier:visited {
+	color: #EC8200;
+	text-decoration: none;
+}
+
+a.lienMonPanier:hover {
+	color: #EC8200;
+	text-decoration: underline;
+}
+
+a.lienMotDePassePerdu:link {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+a.lienMotDePassePerdu:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+a.lienMotDePassePerdu:hover {
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+
+/* bouton de base */
+
+.boutonDeBase120 {
+	float: left;
+	width:100px;
+	padding: 0;
+	margin: 0;
+}
+.boutonDeBase180 {
+	float: right;
+	width:180px;
+	padding: 0;
+	margin: 0;
+}
+.boutonDeBase250 {
+	float: right;
+	width:230px;
+	padding: 0;
+	margin: 0;
+}
+
+/* menu vertical */
+
+#toutLeMenu {
+	float: left;
+	width:160px;
+	padding: 0;
+	margin-top: 50px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 10px;
+}
+
+/* chemin */
+
+
+#chemin {
+	float: left;
+	width:760px;
+	height: 24px;
+	text-align: right;
+	padding-top: 6px;
+	padding-right: 0px;
+	padding-bottom: 0;
+	padding-left: 0px;
+	color: #2593d7;
+	font-size: 11px;
+	font-weight: bold;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 25px;
+}
+
+#fondContenu {
+	float: left;
+	width:760px;
+	padding: 0;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 25px;
+}
+
+#fondContenu2 {
+	float: left;
+	width:760px;
+	margin: 0;
+	padding-top: 10px;
+	padding-right: 25px;
+	padding-bottom: 0;
+	padding-left: 25px;
+}
+
+
+
+#Pages {
+	float: left;
+	width: 935px;
+	text-align: right;
+	font-size: 11px;
+	color: #7faf10;
+	padding-top: 30px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	margin: 0;
+}
+
+#footer{
+	float: left;
+	width: 970px;
+	font-size: 11px;
+	text-align: right;
+	margin-top: 20px;
+	margin-right: 0px;
+	margin-bottom: 0;
+	margin-left: 10px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #a1d0ee;
+	padding-top: 10px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	color: #a9c9e9;
+}
+
+
+#content {
+	padding: 0;
+	clear: both;
+	margin: 0;
+}
+
+/* vignettes */
+
+.contourVignettes {
+	border: 1px solid #2e97d8;
+}
+.contourVignettesRub {
+	overflow: hidden;zoom: 1;
+	border: 1px solid #2e97d8;
+	height:130px;
+}
+
+/* generic classes */
+
+.floatleft {
+	float: left;
+	margin: 0;
+}
+
+/* listing petits bijoux */
+
+.ListingPiecePetit {
+	float: left;
+	width: 760px;
+	margin: 0;
+	padding: 0;
+}
+
+.bijouPetit {
+	float: left;
+	width: 190px;contourVignettes
+	padding: 0;
+	min-height:230px;
+	text-align: center;
+	margin-top: 20px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+}
+
+.headPiecePetit {
+	float: left;
+	width: 190px;
+	color: #626262;
+	text-align: left;
+	background-image: url(images/headPiecePetit.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	margin: 0;
+	padding: 0;
+	height: 10px;
+}
+
+.legendePiecePetit {
+	float: left;
+	width: 170px;
+	color: #626262;
+	text-align: left;
+	background-image: url(images/fondPiecePetit.png);
+	background-repeat: repeat-y;
+	background-position: 0px 0px;
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	margin: 0;
+}
+
+.footerPiecePetit {
+	float: left;
+	width: 170px;
+	color: #626262;
+	text-align: left;
+	font-size: 12px;
+	font-weight: bold;
+	background-image: url(images/footerPiecePetit.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	padding-top: 6px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	margin: 0;
+	height: 31px;
+}
+
+
+/* Grand bijou */
+
+.CadreGrandPiece {
+	float: left;
+	width: 760px;
+	margin: 0;
+	text-align: center;
+	padding: 0;
+}
+
+.bijouGrand {
+	float: left;
+	width: 570px;
+	padding: 0;
+	text-align: center;
+	margin-top: 20px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 90px;
+}
+
+
+.headPieceGrand {
+	float: left;
+	width: 570px;
+	color: #626262;
+	text-align: left;
+	background-image: url(images/headPieceGrand.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	margin: 0;
+	padding: 0;
+	height: 10px;
+}
+
+.legendePieceGrand {
+	float: left;
+	width: 560px;
+	color: #626262;
+	text-align: left;
+	background-image: url(images/fondPieceGrand.png);
+	background-repeat: repeat-y;
+	background-position: 0px 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	margin: 0;
+}
+
+
+.textePieceGrand {
+	float: left;
+	width: 560px;
+	color: #626262;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: 0;
+	padding-right: 10px;
+}
+
+.prixPieceGrand {
+	float: left;
+	width: 137px;
+	color: #626262;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 0px;
+	margin: 0;
+	font-size: 14px;
+}
+
+.footerPieceGrand {
+	float: left;
+	width: 570px;
+	color: #626262;
+	text-align: left;
+	font-size: 12px;
+	font-weight: bold;
+	background-image: url(images/footerPieceGrand.png);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	padding-top: 6px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	margin: 0;
+	height: 31px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.floatright {
+float: right;
+margin: 0;
+}
+.clear {
+clear: both;
+}
+.center {
+text-align: center;
+}
+.right {
+text-align: right;
+}
+.valign img {
+vertical-align: middle;
+}
+.border {
+border: 1px solid #ff7f00;
+margin: 15px 0;
+}
+.borderbig {
+border: 3px solid yellow;
+}
+.overflow {
+overflow: hidden;
+}
+
+/* formulaire */
+
+.ligneFormulaire {
+	color: #626262;
+	padding-top: 7px;
+	padding-bottom: 5px;
+	font-size: 11px;
+	padding-left: 10px;
+	margin-top: 0px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+	float: left;
+	width: 750px;
+	text-align: left;
+	font-style: italic;
+}
+.lignePanier {
+	text-align: left;
+	font-size: 11px;
+	padding-left: 20px;
+	clear: both;
+	float: left;
+	width: 740px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+.lignePanierTotal {
+	color: #626262;
+	background-color:#E6E6E6;
+	text-align: left;
+	height:20px;
+	padding-top: 7px;
+	padding-bottom: 5px;
+	font-size: 11px;
+	padding-left: 20px;
+	margin-top: 0px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+	clear: both;
+}
+
+.titreChampForm {
+	color: #626262;
+	text-align: left;
+	margin: 0;
+	font-size: 11px;
+	padding: 0px;
+	float: left;
+	width: 180px;
+}
+
+
+.encadrementZoneDeSaisie {
+	float: left;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 5px;
+	margin-top: 0px;
+	margin-right: 5px;
+	margin-bottom: 0px;
+	margin-left: 0;
+}
+
+.zoneDeSaisie {
+	color: #349ada;
+	text-align: left;
+	margin: 0;
+	font-size: 11px;
+	background-color: #e9f4fb;
+	border: 1px solid #349ada;
+	padding: 0px;
+	clear: both;
+	font-weight: bold;
+}
+.ChampsObligatoires {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: 700;
+	color: #e2362d;
+}

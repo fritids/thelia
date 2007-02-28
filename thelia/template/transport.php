@@ -1,5 +1,5 @@
 <?php
-	$fond="template/default/transport.html";
+	$fond="transport.html";
 	$securise=1;
 	$pageret=1;
 	include("fonctions/moteur.php");

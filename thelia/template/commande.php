@@ -1,6 +1,7 @@
 <?php
-
-	$fond="template/default/commande.html";
+	$fond="commande.html";
+	$securise=1;
 	$pageret=1;
--	include("fonctions/moteur.php");
+	include("fonctions/moteur.php");
+
 ?>
