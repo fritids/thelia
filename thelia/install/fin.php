@@ -50,7 +50,7 @@
 	$var->maj();
 			
 	$var->charger("rssadmin");
-	$var->valeur=$_POST['rsspass'];
+	$var->valeur=$_POST['rssadmin'];
 	$var->maj();	
 
 	$_SESSION['serveur']="";
