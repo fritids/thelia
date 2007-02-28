@@ -155,7 +155,7 @@
        <td height="30" align="left" valign="middle" class="cellule_claire">Produits : <span class="geneva11bol_3B4B5B"><?php echo($nbproduit); ?></span> </td>
      </tr>
      <tr>
-       <td height="30" align="left" valign="middle" class="cellule_sombre">Chiffre d'affaire  : <span class="geneva11bol_3B4B5B"><?php echo(round($ca, 2)); ?> &euro;</span> </td>
+       <td height="30" align="left" valign="middle" class="cellule_sombre">Chiffre d'affaires  : <span class="geneva11bol_3B4B5B"><?php echo(round($ca, 2)); ?> &euro;</span> </td>
      </tr>
    </table>
    <br />

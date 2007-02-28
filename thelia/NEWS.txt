@@ -1,2 +1,0 @@
-08/01/07 Mise en place d'un Subversion sur sourceforge
-		 http://sourceforge.net/projects/thelia/
