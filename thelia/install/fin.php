@@ -4,6 +4,7 @@
 	
 	include("../classes/Variable.class.php");
 	include("../classes/Administrateur.class.php");
+	include("../fonctions/divers.php");
 	
 	$admin = new Administrateur();
 	$admin->charger_id(1);
@@ -45,11 +46,11 @@
 	$var->maj();
 			
 	$var->charger("rsspass");
-	$var->valeur=$_POST['rsspass'];
+	$var->valeur=genpass(40);
 	$var->maj();
 			
 	$var->charger("rssadmin");
-	$var->valeur=$_POST['rssadmin'];
+	$var->valeur=$_POST['rsspass'];
 	$var->maj();	
 
 	$_SESSION['serveur']="";

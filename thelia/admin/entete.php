@@ -169,19 +169,17 @@
 
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
-	<?php if($menu != "variables") { ?>
-
+	<?php if($menu != "configuration") { ?>
+	
           <tr>
-            <td height="18" align="left" valign="middle"><a href="variable.php" class="lien04">Gestion des variables </a></td>
+            <td height="18" align="left" valign="middle"><a href="configuration.php" class="lien04">Configuration</a></td>
           </tr>
     <?php } else { ?>      
 
         <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu"><a href="variable.php" class="selection_menul">Gestion des variables</a></td>
+          <td height="18" align="left" valign="middle" class="selection_menu"><a href="configuration.php" class="selection_menul">Configuration</a></td>
         </tr>          
     <?php } ?>    
-
-<!---------------------------------------------------------------------------------------------------------------------------->
 
 <!---------------------------------------------------------------------------------------------------------------------------->
 	<?php if($menu != "fermer") { ?>

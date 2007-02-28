@@ -159,14 +159,6 @@
 
 				<?php										
 					$var = new Variable();
-					$var->charger("rsspass");
-				?>
-				
-				<div class="col">Token RSS :</div>
-				<div class="col"><input type="text" name="rsspass" value="<?php echo $var->valeur ?>" size="30" /></div> 				
-
-				<?php										
-					$var = new Variable();
 					$var->charger("rssadmin");
 				?>
 				

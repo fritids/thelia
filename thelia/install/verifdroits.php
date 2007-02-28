@@ -9,12 +9,13 @@
 		{ header("Location: choixbase.php?err=1"); exit; }
 	
 	$sql = file_get_contents("thelia.sql");
-	
+	$sql = ereg_replace(";',", "-CODE-", $sql);
+		
 	$tab = explode(";", $sql);
 	
 	if(! mysql_numrows(mysql_list_tables($_SESSION['choixbase']))) 
 		for($i=0; $i<count($tab); $i++)
-		mysql_query($tab[$i]);
+		mysql_query(ereg_replace("-CODE-", ";',", $tab[$i]));
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

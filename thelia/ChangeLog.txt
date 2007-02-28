@@ -1,7 +1,11 @@
 1.1.10
 	Optimisation du parseur
 	Correction #PLUSURL #MOINSURL (panier)
-
+	Correction du soucis de devise dans l'import SQL
+	Correction de divers bugs
+	Ajout d'une gestion de la configuration dans l'interface d'administration
+	Génération automatique du token RSS
+	
 1.1.9
 	classement inverse pour la boucle contenu
 	ajout du plugin pour Macromédia Dreamweaver
