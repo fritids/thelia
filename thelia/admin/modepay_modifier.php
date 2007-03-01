@@ -26,153 +26,27 @@
 <?php
 	include_once("pre.php");
 	include("auth.php");
-	if(!isset($action)) $action="";
-	
-	if(! $lang) $lang="1";
+
 
 ?>
-
 <?php
-	include("../classes/Lang.class.php");
-	include("../classes/Message.class.php");
-	include("../classes/Messagedesc.class.php");
+	include("../classes/Modules.class.php");
+
 	
 ?>
-
-
 <?php
 
-	if($action == "modifier"){
+	if($actif != ""){
 
-		$message = new Message();
-		$messagedesc = new Messagedesc();
+		$modules = new Modules();
+		$modules->charger_id($id);
+		$modules->actif = $actif;
+		$modules->maj();
 
- 		$message->charger($nom);
-		$messagedesc->charger($message->id, $lang);
-			
-		$messagedesc->message = $message->id;	
-		$messagedesc->titre = $_POST['titre'];
-		$messagedesc->chapo = $_POST['chapo'];
-		$messagedesc->description = $_POST['description'];
-		$messagedesc->lang = $lang;
-
-		if($messagedesc->id)
- 			$messagedesc->maj();
-
-		else
-			$messagedesc->add();
  		
 	}		
-	
+
+	header("Location: modepay.php");
 
 
 ?>
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>THELIA / BACK OFFICE</title>
-<link href="styles.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-
-<?php
-	$menu="configuration";
-	include("entete.php");
-?>
-
-<?php
-	
-	$message = new Message();
-	if(isset($_GET['nom']))
-		$message->charger($_GET['nom']);
-	else 
-		$message->charger($_POST['nom']);
-	$messagedesc = new Messagedesc();
-	$messagedesc->charger($message->id, $lang);
-
-?>
-
-<div id="contenu_int"> 
-   <p class="titre_rubrique">Gestion des messages</p>
-   <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="configuration.php" class="lien04">Configuration</a> &nbsp;<img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="message.php" class="lien04">Gestion des messages</a> &nbsp;<img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="#" class="lien04">Modifier</a>   </p>
- 
- <table width="710" border="0" cellpadding="5" cellspacing="0">
-    <tr>
-      <td width="600" height="30" class="titre_cellule_tres_sombre">
-					Modifier le message 
-							<?php
-								$langl = new Lang();
-								$query = "select * from $langl->table";
-								$resul = mysql_query($query);
-								while($row = mysql_fetch_object($resul)){
-									$langl->charger($row->id);
-						    ?>
-
-						  		 &nbsp; <a href="<?php echo($_SERVER['PHP_SELF']); ?>?nom=<?php echo($nom); ?>&lang=<?php echo($langl->id); ?>"  class="lien06"><?php echo($langl->description); ?></a>
-						  		&nbsp; 
-						  <?php } ?> 
-		</td>
-    </tr>
-  </table>
-
-
-	<form action="<?php echo $_SERVER['PHP_SELF'] ?>" id="formulaire" method="POST">
-	
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
-
-   <tr>
-     <td width="400" height="30"  class="cellule_sombre">NOM</td>
-     <td width="130"  class="cellule_sombre"><?php echo $message->nom; ?></td>
-     <td width="130"  class="cellule_sombre">&nbsp;</td>
-     <td width="10"  class="cellule_sombre">&nbsp;</td>
-   </tr>
-
-
-     <tr>
-       <td width="400" height="30" class="cellule_claire">TITRE</td>
-       <td width="130"  class="cellule_claire"><input type="text" class="form" name="titre" size="50" value="<?php echo $messagedesc->titre; ?>" /></td>
-       <td width="130"  class="cellule_claire">&nbsp;</td>
-       <td width="10"  class="cellule_claire">&nbsp;</td>
-     </tr>
-
-
-     <tr>
-       <td height="30" class="cellule_sombre">CHAPO</td>
-       <td class="cellule_sombre">
-         <textarea name="chapo" class="form" cols="30" rows="5"><?php echo $messagedesc->chapo; ?></textarea>
-       </td>
-       <td class="cellule_sombre">&nbsp;</td>
-       <td align="center" valign="middle" class="cellule_sombre">&nbsp;</td>
-     </tr>
-
-     <tr>
-       <td height="30" class="cellule_claire">DESCRIPTION</td>
-       <td class="cellule_claire">
-       <textarea name="description" class="form" cols="50" rows="10"><?php echo $messagedesc->description; ?></textarea>
-       </td>
-       <td class="cellule_claire">&nbsp;</td>
-       <td align="center" valign="middle" class="cellule_claire">&nbsp;</td>
-     </tr>
-
-     <tr>
-       <td height="30" class="cellule_sombre">&nbsp;</td>
-       <td class="cellule_sombre"><a href="#" class="txt_vert_11" onClick="document.getElementById('formulaire').submit();">Modifier</a> <a href="#"><img src="gfx/suivant.gif" onClick="document.getElementById('formulaire').submit();" width="12" height="9" border="0" /></a></span></span></td>
-       <td class="cellule_sombre">&nbsp;</td>
-       <td align="center" valign="middle" class="cellule_sombre">&nbsp;</td>
-     </tr>
-   
-   <input type="hidden" name="action" value="modifier" />
-   <input type="hidden" name="lang" value="<?php echo $lang ?>" />
-   <input type="hidden" name="nom" value="<?php echo($message->nom); ?>" />
-
-	 </table> 
-
-	</form>
-	
-</div>
-</body>
-</html>

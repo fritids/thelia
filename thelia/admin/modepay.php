@@ -38,8 +38,7 @@
 <body>
 
 <?php
-	include("../classes/Paiement.class.php");
-	include("../classes/Paiementdesc.class.php");
+	include("../classes/Modules.class.php");
 ?>
 <?php
 	$menu="paiement";
@@ -58,17 +57,19 @@
 
 
 <?php
+
+	$modules = new Modules();
+	
 	$i=0;
 	
-	$paiement = new Paiement();
-	$paiementdesc = new Paiementdesc();
-	
-	$query = "select * from $paiement->table";
-	$resul = mysql_query($query, $paiement->link);
+	$d = dir("../client/paiement");
 
-	while($row = mysql_fetch_object($resul)){
+	while (false !== ($entry = $d->read())) {
+	   
+	if( substr($entry, 0, 1) == ".") continue;
 
-		 $paiementdesc->charger($row->id);
+		 $modules->charger($entry);
+
 		 $i++;
 	
 		if(!($i%2)) $fond="cellule_sombre";
@@ -78,12 +79,27 @@
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
   <tr class="<?php echo $fond; ?>">
-    <td width="21%" height="30"><?php echo $paiementdesc->titre; ?></td>
+    <td width="21%" height="30"><?php echo $entry; ?></td>
     <td width="63%" height="30">
       
     </td>
     <td width="16%" height="30">
-      <div align="left"><a href="message_modifier.php?nom=<?php echo $paiementdesc->titre ?>" class="txt_vert_11">Poursuivre </a><a href="modepay_visualiser.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+      <div align="left">
+	<?php 
+		if($modules->actif){
+	?>
+		<a href="modepay_modifier.php?id=<?php echo $modules->id ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
+	<?php
+		} else {
+	?>
+
+		<a href="modepay_modifier.php?id=<?php echo $modules->id ?>&actif=1" class="txt_vert_11">Activer </a>
+		
+	<?php
+			
+		}
+	?>
+	   </div>
     </td>
   </tr>
 
@@ -93,6 +109,9 @@
 <?php 
 
 	}
+	
+
+   $d->close();
 ?>
 
 </div>

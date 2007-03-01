@@ -2175,3 +2175,27 @@ CREATE TABLE `zone` (
 -- 
 
 INSERT INTO `zone` VALUES (1, 'France', 0, 1, 0, 1);
+
+-- 
+-- Table structure for table `modules`
+-- 
+
+CREATE TABLE `modules` (
+  `id` int(11) NOT NULL auto_increment,
+  `nom` text NOT NULL,
+  `type` smallint(6) NOT NULL,
+  `actif` smallint(6) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 ;
+
+-- 
+-- Dumping data for table `modules`
+-- 
+
+INSERT INTO `modules` VALUES (1, 'cheque', 1, 1);
+INSERT INTO `modules` VALUES (2, 'virement', 1, 1);
+INSERT INTO `modules` VALUES (3, 'cic', 1, 1);
+INSERT INTO `modules` VALUES (4, 'paybox', 1, 1);
+INSERT INTO `modules` VALUES (5, 'spplus', 1, 1);
+INSERT INTO `modules` VALUES (6, 'atos', 1, 1);
+

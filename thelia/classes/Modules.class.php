@@ -46,7 +46,11 @@
 
 		}
 
-	
+		function charger_id($id){
+		
+			return $this->getVars("select * from $this->table where id=\"$id\"");
+
+		}	
 	}
 
 
