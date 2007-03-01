@@ -58,8 +58,7 @@
 
 <?php
 
-	$modules = new Modules();
-	
+		
 	$i=0;
 	
 	$d = dir("../client/paiement");
@@ -67,7 +66,7 @@
 	while (false !== ($entry = $d->read())) {
 	   
 	if( substr($entry, 0, 1) == ".") continue;
-
+		 $modules = new Modules();
 		 $modules->charger($entry);
 
 		 $i++;
@@ -88,12 +87,12 @@
 	<?php 
 		if($modules->actif){
 	?>
-		<a href="modepay_modifier.php?id=<?php echo $modules->id ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
+		<a href="modepay_modifier.php?nom=<?php echo $entry ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
 	<?php
 		} else {
 	?>
 
-		<a href="modepay_modifier.php?id=<?php echo $modules->id ?>&actif=1" class="txt_vert_11">Activer </a>
+		<a href="modepay_modifier.php?nom=<?php echo $entry ?>&actif=1" class="txt_vert_11">Activer </a>
 		
 	<?php
 			

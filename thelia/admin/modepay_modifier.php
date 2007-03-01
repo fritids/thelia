@@ -39,11 +39,15 @@
 	if($actif != ""){
 
 		$modules = new Modules();
-		$modules->charger_id($id);
+		$modules->charger($nom);
 		$modules->actif = $actif;
-		$modules->maj();
-
- 		
+		$modules->nom = $nom;		
+		
+		if($modules->id)
+			$modules->maj();
+		else
+		 	$modules->add();
+		
 	}		
 
 	header("Location: modepay.php");
