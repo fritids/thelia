@@ -44,7 +44,7 @@
 <body>
 
 <?php
-	$menu="devises";
+	$menu="paiement";
 	include("entete.php");
 ?>
 

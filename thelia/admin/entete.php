@@ -124,21 +124,19 @@
 
 <!---------------------------------------------------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------------------------------------------------->
-        
-	<?php if($menu != "promo") { ?>
-        
+	<?php if($menu != "paiement") { ?>
+
           <tr>
-            <td height="18" align="left" valign="middle"><a href="promo.php" class="lien04">Gestion des codes promos</a></td>
+            <td height="18" align="left" valign="middle"><a href="paiement.php" class="lien04">Gestion du paiement </a></td>
           </tr>
     <?php } else { ?>      
 
         <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu"><a href="promo.php" class="selection_menul">Gestion des codes promos</a></td>
+          <td height="18" align="left" valign="middle" class="selection_menu"><a href="paiement.php" class="selection_menul">Gestion du paiement</a></td>
         </tr>          
     <?php } ?>    
 
 <!---------------------------------------------------------------------------------------------------------------------------->
-
 <!---------------------------------------------------------------------------------------------------------------------------->
 	<?php if($menu != "livraisons") { ?>
 
@@ -149,21 +147,6 @@
 
         <tr>
           <td height="18" align="left" valign="middle" class="selection_menu"><a href="gestlivraison.php" class="selection_menul">Gestion des livraisons</a></td>
-        </tr>          
-    <?php } ?>    
-
-<!---------------------------------------------------------------------------------------------------------------------------->
-
-<!---------------------------------------------------------------------------------------------------------------------------->
-	<?php if($menu != "devises") { ?>
-
-          <tr>
-            <td height="18" align="left" valign="middle"><a href="devise.php" class="lien04">Gestion des devises </a></td>
-          </tr>
-    <?php } else { ?>      
-
-        <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu"><a href="devise.php" class="selection_menul">Gestion des devises</a></td>
         </tr>          
     <?php } ?>    
 

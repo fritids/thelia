@@ -41,13 +41,13 @@
 	include("../classes/Boutique.class.php");
 ?>
 <?php
-	$menu="configuration";
+	$menu="paiement";
 	include("entete.php");
 ?>
 
 <div id="contenu_int"> 
-   <p class="titre_rubrique">Configuration </p>
-     <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Configuration</a>              
+   <p class="titre_rubrique">Gestion du paiement</p>
+     <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Gestion du paiement</a>              
     </p>
      <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
@@ -57,12 +57,12 @@
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
   <tr class="cellule_sombre">
-    <td width="21%" height="30">Gestion des variables</td>
-    <td width="63%" height="30">
+    <td width="31%" height="30">Gestion des codes promos</td>
+    <td width="53%" height="30">
       
     </td>
     <td width="16%" height="30">
-      <div align="left"><a href="variable.php" class="txt_vert_11">Poursuivre </a><a href="variable.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+      <div align="left"><a href="promo.php" class="txt_vert_11">Poursuivre </a><a href="promo.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
     </td>
   </tr>
  
@@ -70,15 +70,24 @@
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
   <tr class="cellule_claire">
-    <td width="21%" height="30">Gestion des messages</td>
-    <td width="63%" height="30">
+    <td width="31%" height="30">Gestion des devises</td>
+    <td width="53%" height="30">
       
     </td>
     <td width="16%" height="30">
-      <div align="left"><a href="message.php" class="txt_vert_11">Poursuivre </a><a href="message.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+      <div align="left"><a href="devise.php" class="txt_vert_11">Poursuivre </a><a href="devise.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
     </td>
   </tr>
 
+  <tr class="cellule_sombre">
+    <td width="31%" height="30">Gestion des modes de paiement</td>
+    <td width="53%" height="30">
+      
+    </td>
+    <td width="16%" height="30">
+      <div align="left"><a href="modepay.php" class="txt_vert_11">Poursuivre </a><a href="modepay.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    </td>
+  </tr>
  
   </table>
 

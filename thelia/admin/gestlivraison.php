@@ -50,17 +50,39 @@
    <p class="titre_rubrique">Gestion des livraisons </p>
     <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="gestlivraison.php" class="lien04">Gestion des livraisons</a>              
     </p>
-    <table width="710" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre"><a href="transport.php" class="lien_titre_cellule_tres_sombre">GESTION DES TYPES DE TRANSPORT </a></td>
-     </tr>
-   </table>
-   <br /><br />
      <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre"><a href="zone.php" class="lien_titre_cellule_tres_sombre">GESTION DES ZONES DE TRANSPORT </a></td>
+       <td width="600" height="30" class="titre_cellule_tres_sombre">VOTRE CHOIX</td>
      </tr>
    </table>
+
+   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+
+  <tr class="cellule_sombre">
+    <td width="31%" height="30">Gestion des type de transport</td>
+    <td width="53%" height="30">
+
+    </td>
+    <td width="16%" height="30">
+      <div align="left"><a href="transport.php" class="txt_vert_11">Poursuivre </a><a href="transport.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    </td>
+  </tr>
+
+  </table>
+   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+
+  <tr class="cellule_claire">
+    <td width="31%" height="30">Gestion des zones de transport</td>
+    <td width="53%" height="30">
+
+    </td>
+    <td width="16%" height="30">
+      <div align="left"><a href="zone.php" class="txt_vert_11">Poursuivre </a><a href="zone.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    </td>
+  </tr>
+
+  </table>
+
 </div>
 </body>
 </html>
