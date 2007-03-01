@@ -29,7 +29,6 @@
 ?>
 <?php
 	include("../classes/Variable.class.php");
-	
 ?>
 
 
