@@ -2194,8 +2194,8 @@ CREATE TABLE `modules` (
 
 INSERT INTO `modules` VALUES (1, 'cheque', 1, 1);
 INSERT INTO `modules` VALUES (2, 'virement', 1, 1);
-INSERT INTO `modules` VALUES (3, 'cic', 1, 1);
-INSERT INTO `modules` VALUES (4, 'paybox', 1, 1);
-INSERT INTO `modules` VALUES (5, 'spplus', 1, 1);
-INSERT INTO `modules` VALUES (6, 'atos', 1, 1);
+INSERT INTO `modules` VALUES (3, 'cic', 1, 0);
+INSERT INTO `modules` VALUES (4, 'paybox', 1, 0);
+INSERT INTO `modules` VALUES (5, 'spplus', 1, 0);
+INSERT INTO `modules` VALUES (6, 'atos', 1, 0);
 

@@ -80,7 +80,7 @@
 
   <tr class="<?php echo $fond; ?>">
     <td width="21%" height="30"><?php echo $entry; ?></td>
-    <td width="63%" height="30">
+    <td width="69%" height="30">
       
     </td>
     <td width="16%" height="30">
@@ -101,7 +101,8 @@
 	?>
 	   </div>
     </td>
-  </tr>
+  
+</tr>
 
  
   </table>
@@ -113,6 +114,7 @@
 
    $d->close();
 ?>
+
 
 </div>
 </body>
