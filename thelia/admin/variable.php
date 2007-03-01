@@ -43,7 +43,7 @@
 <body>
 
 <?php
-	$menu="variables";
+	$menu="configuration";
 	include("entete.php");
 ?>
 
