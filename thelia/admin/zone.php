@@ -121,14 +121,14 @@
 	 				$list .= "'" . $resh[$i] . "'" . ",";
 	 			
 	 			$list = substr($list, 0, strlen($list)-1);	
-	 			$query = "update pays set zone='-1' where id in ($list) and zone='" . $zcours->id . "'";	
+	 			$query = "update $pays->table set zone='-1' where id in ($list) and zone='" . $zcours->id . "'";	
 				if($list) $resul = mysql_query($query, $pays->link);
 	 			$list = "";
 	 			for($i=0; $i<count($resd); $i++)
 	 				$list .= "'" . $resd[$i] . "'" . ",";
 	 			
 	 			$list = substr($list, 0, strlen($list)-1);	
-	 			$query = "update pays set zone='" . $zcours->id . "' where id in ($list)";
+	 			$query = "update $pays->table set zone='" . $zcours->id . "' where id in ($list)";
 				if($list) $resul = mysql_query($query, $pays->link);
 
 	}
@@ -169,14 +169,14 @@
 	 				$list .= "'" . $resh[$i] . "'" . ",";
 	 			
 	 			$list = substr($list, 0, strlen($list)-1);	
-	 			$query = "update pays set zone='' where id in ($list) and zone='" . $zone->id . "'";	
+	 			$query = "update $pays->table set zone='' where id in ($list) and zone='" . $zone->id . "'";	
 				if($list) $resul = mysql_query($query, $pays->link);
 	 			$list = "";
 	 			for($i=0; $i<count($resd); $i++)
 	 				$list .= "'" . $resd[$i] . "'" . ",";
 	 			
 	 			$list = substr($list, 0, strlen($list)-1);	
-	 			$query = "update pays set zone='" . $zone->id . "' where id in ($list)";
+	 			$query = "update $pays->table set zone='" . $zone->id . "' where id in ($list)";
 				if($list) $resul = mysql_query($query, $pays->link);
 					
 
@@ -188,7 +188,7 @@
 				$zone = new Zone();
 
 	 		
-	 			$query = "update pays set zone='-1' where zone='$zcours'";	
+	 			$query = "update $pays->table set zone='-1' where zone='$zcours'";	
 				$resul = mysql_query($query, $pays->link);	
 				
 				$zone->charger($zcours);

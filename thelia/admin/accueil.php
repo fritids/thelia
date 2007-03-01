@@ -83,7 +83,7 @@
 	$resul = mysql_query($query, $commande->link);
 	$nbcmdlivree = mysql_result($resul, 0, "nb");	
 	
-	$query = "select * from commande where statut>=2 and statut<>5";
+	$query = "select * from $commande->table where statut>=2 and statut<>5";
 	$resul = mysql_query($query);
 	
 	$list="";
