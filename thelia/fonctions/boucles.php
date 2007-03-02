@@ -46,9 +46,6 @@
 	include_once("classes/Documentdesc.class.php");
 	include_once("classes/Accessoire.class.php");
 	include_once("classes/Boutique.class.php");
-	include_once("classes/Transport.class.php");
-	include_once("classes/Transportdesc.class.php");
-	include_once("classes/Transproduit.class.php");
 	include_once("classes/Pays.class.php");
 	include_once("classes/Paysdesc.class.php");
 	include_once("classes/Zone.class.php");
@@ -1994,22 +1991,18 @@
 		// rŽcupŽration des arguments
 
 		$id = lireTag($args, "id");		
-		
-	//penser à la zone			
-	// penser au produit
+
 	
 		$res="";
 		
-		$transport = new Transport();
+		$modules = new Modules();
 	
-		$query = "select * from $transport->table";
+		$query = "select * from $modules->table where type='2'";
 
-		$resul = mysql_query($query, $transport->link);
+		$resul = mysql_query($query, $modules->link);
 		$nbres = mysql_numrows($resul);
 		if(!$nbres) return "";
-		
-		$transportdesc = new Transportdesc();
-	
+
 		$pays = new Pays();
 		
 		if($_SESSION['navig']->adresse != "" && $_SESSION['navig']->adresse != 0){
@@ -2020,28 +2013,24 @@
 			
 		else 
 			$pays->charger($_SESSION['navig']->client->pays);
-		
-		$transproduit = new Transproduit();
+
 		$transzone = new Transzone();
 		
 		   while( $row = mysql_fetch_object($resul)){
-		   
+		
 		  	 if( ! $transzone->charger($row->id, $pays->zone)) continue;
 
-		/*
-			for($i=0; $i<$_SESSION['navig']->panier->nbart; $i++){
-				
-				if(! $transproduit->charger($row->id, $_SESSION['navig']->panier->tabarticle[$i]->produit->id)
-					|| ! $transzone->charger($row->id, $pays->zone)) continue;
-			}
-		*/		
-		
+			$modules = new Modules();
+			$modules->charger_id($row->id);
+
 			$port = round(port($row->id), 2);
-				
-			$transportdesc->charger($row->id, $_SESSION['navig']->lang);
-			$temp = str_replace("#TITRE", "$transportdesc->titre", $texte);
-			$temp = str_replace("#CHAPO", "$transportdesc->chapo", $temp);
-			$temp = str_replace("#DESCRIPTION", "$transportdesc->description", $temp);
+			$titre = $modules->getTitre();
+			$chapo = $modules->getChapo();
+			$description = $modules->getDescription();
+	
+			$temp = str_replace("#TITRE", "$titre", $texte);
+			$temp = str_replace("#CHAPO", "$chapo", $temp);
+			$temp = str_replace("#DESCRIPTION", "$description", $temp);
 			$temp = str_replace("#URLCMD", "commande.php?action=transport&id=" . $row->id, $temp);
 			$temp = str_replace("#ID", "$row->id", $temp);	
 			$temp = str_replace("#PORT", "$port", $temp);
@@ -2050,9 +2039,8 @@
 		}
 	
 	
+			return $res;
 
-		return $res;
-	
 	}	
 
 

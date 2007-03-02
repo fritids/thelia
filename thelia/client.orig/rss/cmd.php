@@ -24,10 +24,10 @@
 /*************************************************************************************/
 ?>
 <?php
-	include("../classes/Variable.class.php");
+	include("../../classes/Variable.class.php");
 	$code = new Variable();
 	$code->charger("rsspass"); 
-	if($id != $code->valeur) exit;
+	if($_GET['rsspass'] != $code->valeur) exit;
 
 	$site = new Variable();
 	$site->charger("urlsite");
@@ -47,10 +47,10 @@
 	<language>fr</language>
 
 <?php
-	include("../classes/Commande.class.php");
-	include("../classes/Venteprod.class.php");
-	include("../classes/Statutdesc.class.php");
-	include("../classes/Client.class.php");
+	include("../../classes/Commande.class.php");
+	include("../../classes/Venteprod.class.php");
+	include("../../classes/Statutdesc.class.php");
+	include("../../classes/Client.class.php");
 
 	$commande = new Commande();
 	$venteprod = new Venteprod();

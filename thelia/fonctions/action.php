@@ -51,7 +51,6 @@
 	
 	// changement de transport
 	function transport($id){
-		$transproduit = new Transproduit();
 		$transzone = new Transzone();
 
 		$pays = new Pays();

@@ -548,10 +548,12 @@ $reply\nFrom:$from\n".$mail_mime);
 		if( $_SESSION['navig']->adresse != 0) $chadr=1;
 		else $chadr=0;
 	
-		$transport = new Transport();
+		$modules = new Modules();
 	
-		if(!$type) $transport->charger($_SESSION['navig']->commande->transport);
-		else $transport->charger($type);
+		if(!$type) $modules->charger_id($_SESSION['navig']->commande->transport);
+		else $modules->charger_id($type);
+		
+		if($modules->type != "2") return -1;
 		
 		$p = new Pays();
 		if($chadr){
@@ -564,18 +566,19 @@ $reply\nFrom:$from\n".$mail_mime);
 			$p->charger($_SESSION['navig']->client->pays);
 			$cpostal = $_SESSION['navig']->client->cpostal;
 		}
-	
+
 
 		$zone = new Zone();
 		$zone->charger($p->zone);
-		$classe = $transport->classe;
-
-		if(! file_exists("client/transports/$classe" . ".class.php")){
+		
+		if(! file_exists("client/transports/" . $modules->nom . "/" . $modules->nom . ".class.php")){
 			return -1;
 		}	
+		
+	
+		include_once("client/transports/" . $modules->nom . "/" . $modules->nom . ".class.php");
 
-		include_once("client/transports/$classe" . ".class.php");
-		$port = new $classe();
+		$port = new $modules->nom();
 		
 		$port->nbart = $_SESSION['navig']->panier->nbart();
 		$port->poids = $_SESSION['navig']->panier->poids();

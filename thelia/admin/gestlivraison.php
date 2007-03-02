@@ -59,7 +59,7 @@
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
   <tr class="cellule_sombre">
-    <td width="31%" height="30">Gestion des type de transport</td>
+    <td width="31%" height="30">Gestion des transports</td>
     <td width="53%" height="30">
 
     </td>
@@ -72,7 +72,7 @@
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
   <tr class="cellule_claire">
-    <td width="31%" height="30">Gestion des zones de transport</td>
+    <td width="31%" height="30">Gestion des zones</td>
     <td width="53%" height="30">
 
     </td>

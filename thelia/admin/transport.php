@@ -31,8 +31,7 @@
         include("../lib/Sajax.php");
         include("../fonctions/divers.php");
         include("../classes/Zone.class.php"); 
-        include("../classes/Transport.class.php");
-        include("../classes/Transportdesc.class.php");
+        include("../classes/Modules.class.php");
         include("../classes/Transzone.class.php");
        
 		include_once("../lib/JSON.php");
@@ -46,46 +45,45 @@
                 $i=0;
                    
                 $tab = array();
-                $transport = new Transport();
-                $query = "select * from $transport->table";
-                $resul = mysql_query($query, $transport->link);
-                if(! mysql_numrows($resul)) return "";
-                
-                while($row = mysql_fetch_object($resul)){
-                		$transport = new Transport();
-                		$transport->charger($row->id);	
-                        $tab[$i] = new Transport();
-                        $tab[$i++] = $transport;
-                }
+   
+
+				$d = dir("../client/transports");
+
+				while (false !== ($entry = $d->read())) {
+
+				if( substr($entry, 0, 1) == ".") continue;
+					 $modules = new Modules();
+					 $modules->charger($entry);
+
+					 if(! $modules->id){
+
+						$modules = new Modules();
+						$modules->nom = $entry;
+						$modules->type="2";
+						$modules->actif=0;
+						$modules->add();
+
+					 }
+
+				}
+
+				$modules = new Modules();
+				$query = "select * from $modules->table where type='2'";
+				$resul = mysql_query($query, $modules->link);
+				
+				while ($row = mysql_fetch_object($resul)) {
+					 $modules = new Modules();
+					 $modules->charger($row->nom);
+					 $tab[$i] = new Modules();
+                     $tab[$i++] = $modules;	
+					
+
+				}
+   
 			   
                 return tabSerialise($tab);
 	}	
 	
-	function chargertdesc(){
-
-                $i=0;
-                
-                $tab = array();
-                $transport = new Transport();
-                $transportdesc = new Transportdesc();
-                	
-                $query = "select * from $transport->table";
-                $resul = mysql_query($query, $transport->link);
-                if(! mysql_numrows($resul)) return "";
-                
-                while($row = mysql_fetch_object($resul)){
-                		$transport = new Transport();
-                		$transportdesc = new Transportdesc();
-                		$transportdesc->charger($row->id);	
-                        $transport->charger($row->id);
-                        $tab[$i] = new Transportdesc();
-                        $tab[$i++] = $transportdesc;
-                }
-
-
-                return tabSerialise($tab);
-                
-	}
 
 	function chargerz($transport, $type){
                 $i=0;
@@ -147,19 +145,12 @@
 
 	}	
 	
-	function validem($tcours, $strd, $strh){
+	function valide($transport, $strd, $strh){
 
-				$transport = new Transport();
 				$transzone = new Transzone();
 								
 	 			$json = new Services_JSON();
 
-	 			$tcours = stripslashes($tcours);
-	 			$tcours = $json->decode($tcours);
-
-				$transport->id = $tcours->id;
-				$transport->classe = $tcours->classe;
-				$transport->maj();
 				
 	 			$strd = stripslashes($strd);
 	 			$resd = $json->decode($strd);
@@ -167,12 +158,12 @@
 	 			$strh = stripslashes($strh);
 	 			$resh = $json->decode($strh);
 	 		
-	 			$query = "delete from $transzone->table where transport='$tcours->id'";
+	 			$query = "delete from $transzone->table where transport='$transport'";
 				$resul = mysql_query($query, $transzone->link);
 			
 	 			for($i=0; $i<count($resd); $i++){
 	 				$transzone = new Transzone();
-	 				$transzone->transport=$tcours->id;
+	 				$transzone->transport=$transport;
 	 				$transzone->zone=$resd[$i];
 	 				$transzone->actif="1";
 	 				$transzone->add();	 			
@@ -183,74 +174,16 @@
 	}
 
 
-	function validea($tcours, $strd, $strh){
 
-				$zone = new Zone();
-				$transport = new Transport();
-				$transportdesc = new Transportdesc();
-				$transzone = new Transzone();
-								
-	 			$json = new Services_JSON();
-
-	 			$tcours = stripslashes($tcours);
-	 			$tcours = $json->decode($tcours);
-
-				
-				$transport->id = "";
-				$transport->actif = "1";
-				$transport->classe = $tcours->classe;
-				$lastid = $transport->add();
-				$transport->charger($lastid);
-				
-				$transportdesc->transport = $lastid;
-				$transportdesc->lang = "1";
-				$transportdesc->titre=$tcours->titre;
-				$transportdesc->add();
-				
-				
-	 			$strd = stripslashes($strd);
-	 			$resd = $json->decode($strd);
-	 			
-	 			$strh = stripslashes($strh);
-	 			$resh = $json->decode($strh);
-		
-	 				
-	 			for($i=0; $i<count($resd); $i++){
-	 				$transzone->transport = $lastid;
-	 				$transzone->zone = $resd[$i];
-	 				$transzone->actif = "1";
-					$transzone->add();	 	
-				}
-
-	}
-
-	function supprt($tcours){
-
-				$transport = new Transport();
-				$transportdesc = new Transportdesc();
-				$transzone = new Transzone();					
-			
-	 			$query = "delete from $transportdesc->table where transport='$tcours'";	
-				$resul = mysql_query($query, $transzone->link);	
-					 		
-	 			$query = "delete from $transzone->table where transport='$tcours'";	
-				$resul = mysql_query($query, $transzone->link);	
-				
-				$transport->charger($tcours);
-				$transport->delete();
-
-	}	
 ?>
 <?php
 		//$sajax_debug_mode = 1;
       	sajax_init();        
       	sajax_export("chargert");
-        sajax_export("chargertdesc");
         sajax_export("chargerz");
-        sajax_export("validem");
-        sajax_export("validea");
-        sajax_export("supprt");
-
+      	sajax_export("chargertzone");
+        sajax_export("valide");
+ 
         sajax_handle_client_request();
 
 ?>
@@ -266,33 +199,31 @@
 //-->
 	
 	var rest;
-	var restdesc;
 	var indexCours;
 	
 	function charger(){
 
-		restdesc = eval(sx_chargertdesc());
 		rest = eval(sx_chargert());
 
 		var contenu;
 		
 		document.getElementById("divt").innerHTML="";
 
-		if(restdesc) {
+		if(rest) {
 		
-		for(i=0; i<restdesc.length; i++)  {
+		for(i=0; i<rest.length; i++)  {
 			var trindex;
-			trindex = restdesc[i]['transport'];
+			trindex = rest[i]['id'];
 
 			contenu="";
 			contenu=contenu + "<div style='border-bottom: solid #CDCDCD 1px;'>";
 			
 			contenu=contenu + "<span style=' position: absolute;  margin-left: 50px;'>";
-			contenu=contenu + restdesc[i]['titre'];
+			contenu=contenu + rest[i]['nom'];
 			contenu=contenu + "</span>";
 
 			contenu=contenu + "<span style=' width: 50px;margin-left: 400px;'>";
-			contenu=contenu + "<a href='#' onClick=\"chargertdesc('" + i + "')\"><img src='gfx/b_edit.png' width='16' height='16' border='0'></a>";
+			contenu=contenu + "<a href='#' onClick=\"chargertzone('" + rest[i]['id'] + "')\"><img src='gfx/b_edit.png' width='16' height='16' border='0'></a>";
 			contenu=contenu + "</span>";
 
 			contenu=contenu + "</div>";
@@ -309,7 +240,6 @@
 
          	document.getElementById('selectszoneha').options.length = 0;
          	document.getElementById('selectszoneda').options.length = 0;
-        // 	document.getElementById('selectszoneda').options[0] = element;
          	document.getElementById('nclassea').value='Classe'; 
 
 
@@ -326,14 +256,12 @@
 	}
 	
 
-      function chargertdesc(index){
+      function chargertzone(index){
 
       	indexCours = index;
-      	document.getElementById('ntransportm').value=restdesc[index]['titre'];
-      	document.getElementById('nclassem').value=rest[index]['classe'];
 
-     	var reszd = eval(sx_chargerz(restdesc[index]['transport'], 'd'));    
-  		var reszh = eval(sx_chargerz(restdesc[index]['transport'], 'h'));
+     	var reszd = eval(sx_chargerz(index, 'd'));    
+  		var reszh = eval(sx_chargerz(index, 'h'));
 
 		document.getElementById('selectszonedm').options.length = 0;
        	document.getElementById('selectszonehm').options.length = 0;
@@ -386,11 +314,7 @@
 	  }	  
 	  
 	  
-	  function validem(){
-	  	var zObj = new Object();
-	 	zObj.id =   rest[indexCours]['id'];
-	 	zObj.titre = document.getElementById('ntransportm').value;
-	 	zObj.classe = document.getElementById('nclassem').value;
+	  function valide(){
 
 	  	var zoned = new Array();
 	  	var zoneh = new Array();
@@ -401,37 +325,11 @@
 	 	for(i=0; i<document.getElementById('selectszonehm').length; i++)
 	  		zoneh[i] = document.getElementById('selectszonehm').options[i].value;
 
-	  	 sx_validem(JSON.stringify(zObj), JSON.stringify(zoned), JSON.stringify(zoneh)); 
-	 	 charger();
+	 	 sx_valide( indexCours, JSON.stringify(zoned), JSON.stringify(zoneh)); 
 	 	 alert("Modification effectue"); 
 }	
-	  function validea(){
 
-	  	var zObj = new Object();
-	 	zObj.id =  '';	 		 
-
-	 	zObj.titre = document.getElementById('ntransporta').value;
-	 	zObj.classe = document.getElementById('nclassea').value;
-
-	  	var zoned = new Array();
-	  	var zoneh = new Array();
-	  	
-	  	for(i=0; i<document.getElementById('selectszoneda').length; i++)
-	  		zoned[i] = document.getElementById('selectszoneda').options[i].value;
-	
-	 	for(i=0; i<document.getElementById('selectszoneha').length; i++)
-	  		zoneh[i] = document.getElementById('selectszoneha').options[i].value;
-
-	  	 sx_validea(JSON.stringify(zObj), JSON.stringify(zoned), JSON.stringify(zoneh)); 
-	 	 charger();	  
-	  	 alert("Modification effectue"); 
-	  }
-	  
-	  
-      function supprt(index){
-     	 sx_supprt(index);
-	 	 charger();	        	
-      }	            
+       
 </script>
 <script>
         <?php
@@ -451,8 +349,8 @@
 ?>
 
 <div id="contenu_int"> 
-   <p class="titre_rubrique">Gestion des types de transport </p>
-    <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="gestlivraison.php" class="lien04"> Gestion des livraisons</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="#" class="lien04">Gestion des types de transport</a>    </p>
+   <p class="titre_rubrique">Gestion des transports</p>
+    <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="gestlivraison.php" class="lien04"> Gestion des livraisons</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="#" class="lien04">Gestion des transports</a>    </p>
     <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES TRANSPORTS </td>
@@ -498,7 +396,7 @@
    <td height="30" class="cellule_claire_vide">&nbsp;</td>
    <td height="30" class="cellule_claire_vide"></td>
    <td class="cellule_claire_vide"> 
-     <input name="Submit" type="button" onClick="validem();" class="geneva11bol_3B4B5B" value="Valider">
+     <input name="Submit" type="button" onClick="valide();" class="geneva11bol_3B4B5B" value="Valider">
    </td>
  </tr>
   </table>

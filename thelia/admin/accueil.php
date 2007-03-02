@@ -46,12 +46,18 @@
 
 	else if($_SESSION["util"] == "") header("Location: index.php");
 ?>
+<?php
+	$rsscmd = new Variable();
+	$rsscmd->charger("rsspass");
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>THELIA / BACK OFFICE</title>
 <link href="styles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Syndiquer tout le site" href="../client/rss/cmd.php?rsspass=<?php echo $rsscmd->valeur; ?>" />
 </head>
 
 <?php

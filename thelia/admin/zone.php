@@ -261,7 +261,7 @@
          	document.getElementById('selectspaysda').options.length = 0;
         // 	document.getElementById('selectspaysda').options[0] = element;
          	document.getElementById('nzonea').value='Nom de la zone'; 
-         	document.getElementById('nunitea').value='Unite de transport'; 
+         	document.getElementById('nunitea').value='Forfait'; 
 
   			var resp = eval(sx_chargerp('', ''));
 

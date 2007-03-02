@@ -54,11 +54,33 @@
 		
 		
 		function getTitre(){
-			return $this->nom;
+			
+			if($this->type == "1")
+				$rep="paiement";
+				
+			else if($this->type == "2")
+				$rep="transports";
+				
+	     	include(realpath(dirname(__FILE__)) . "/../client/$rep/" . $this->nom . "/" . "config.php");
+			
+			if($_SESSION['navig']->lang == "")
+				$lang="1";
+			else $lang=$_SESSION['navig']->lang;
+			
+			$titre="titre" . $lang;
+		
+			return $$titre;
 		}
 				
 		function getChapo(){
-	     	include(realpath(dirname(__FILE__)) . "/../client/paiement/" . $this->nom . "/" . "config.php");
+			
+			if($this->type == "1")
+				$rep="paiement";
+				
+			else if($this->type == "2")
+				$rep="transports";
+				
+	     	include(realpath(dirname(__FILE__)) . "/../client/$rep/" . $this->nom . "/" . "config.php");
 			
 			if($_SESSION['navig']->lang == "")
 				$lang="1";
@@ -70,7 +92,14 @@
 		}
 		
 		function getDescription(){
-	     	include(realpath(dirname(__FILE__)) . "/../client/paiement/" . $this->nom . "/" . "config.php");
+			
+			if($this->type == "1")
+				$rep="paiement";
+				
+			else if($this->type == "2")
+				$rep="transport";
+							
+	     	include(realpath(dirname(__FILE__)) . "/../client/$rep/" . $this->nom . "/" . "config.php");
 			
 			if($_SESSION['navig']->lang == "")
 				$lang="1";
