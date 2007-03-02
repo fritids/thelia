@@ -1,6 +1,6 @@
 <?php
-	$titre1="Chèque";
-	$chapo1="";
+	$titre1="Cheque";
+	$chapo1="Cheque";
 	$description1="";
 	
 	$titre2="";

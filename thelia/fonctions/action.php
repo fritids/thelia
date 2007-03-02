@@ -66,12 +66,7 @@
              $pays->charger($_SESSION['navig']->client->pays);
 
 		if( ! $transzone->charger($id, $pays->zone)) return;
-		
-	/*	for($i=0; $i<$_SESSION['navig']->panier->nbart; $i++){
-				if(! $transproduit->charger($id, $_SESSION['navig']->panier->tabarticle[$i]->produit->id)
-					|| ! $transzone->charger($id, $pays->zone)) return;
-			}
-	*/
+	
 		$_SESSION['navig']->commande->transport = $id;	
 
 	}
@@ -132,8 +127,8 @@
 		$poids = 0;
 		$unitetr = 0;
 		
-		$paiement = new Paiement();
-		$paiement->charger($type_paiement);
+		$modules = new Modules();
+		$modules->charger_id($type_paiement);
 
 		$commande = new Commande();
 		$commande->transport = $_SESSION['navig']->commande->transport;
@@ -297,24 +292,8 @@
 
 		mail($_SESSION['navig']->client->email , "$sujet", "$corps", "From: $emailcontact->valeur");	
 		mail($emailcontact->valeur , "$sujet", "$corps2", "From: $emailcontact->valeur");
-/*
-		$smtp = new Smtp();
-		$smtp->server = "127.0.0.1";
-
-		$smtp->from = $emailcontact->valeur;
-		$smtp->rcpt = $_SESSION['navig']->client->email;
-		$smtp->subject = "$sujet";
-		$smtp->texte = "$corps";
-		$smtp->envoyer();
-
-		$smtp->from = $emailcontact->valeur;
-		$smtp->rcpt = $emailcontact->valeur;
-		$smtp->subject = "$sujet";
-		$smtp->texte = "$corps2";
-		$smtp->envoyer();
-*/
 			 		
-		redirige($paiement->url . "?total=$total");
+		redirige("client/paiement/" . $modules->nom . "/" . "paiement.php" . "?total=$total");
 	}
 	
 	// crŽation d'un compte
@@ -366,7 +345,6 @@
 			
 			$client->add();
 			
-			//$_SESSION['navig']->connecte = 1; 
                		 $rec = $client->charger_mail($client->email);
 
                 	if($rec) {

@@ -1,6 +1,6 @@
 <?php
 	$titre1="Paybox";
-	$chapo1="";
+	$chapo1="Carte bancaire";
 	$description1="";
 	
 	$titre2="";

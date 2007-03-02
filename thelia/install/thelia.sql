@@ -1827,7 +1827,6 @@ CREATE TABLE `produit` (
   `ligne` smallint(6) NOT NULL default '0',
   `garantie` int(11) NOT NULL default '0',
   `poids` float NOT NULL default '0',
-  `unitetr` int(11) NOT NULL default '0',
   `tva` float NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
@@ -2065,25 +2064,6 @@ CREATE TABLE `transportdesc` (
 -- 
 
 INSERT INTO `transportdesc` VALUES (1, 1, 1, 'Colissimo', '', '');
-
--- --------------------------------------------------------
-
--- 
--- Structure de la table `transproduit`
--- 
-
-CREATE TABLE `transproduit` (
-  `id` int(11) NOT NULL auto_increment,
-  `transport` int(11) NOT NULL default '0',
-  `produit` int(11) NOT NULL default '0',
-  `actif` smallint(6) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
-
--- 
--- Contenu de la table `transproduit`
--- 
-
 
 -- --------------------------------------------------------
 

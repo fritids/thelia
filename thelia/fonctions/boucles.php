@@ -1470,12 +1470,17 @@
 
 		while( $row = mysql_fetch_object($resul)){
 
+			include("client/paiement/" . "$row->nom" . "/" . "config.php");
+			$titre = "titre" . $_SESSION['navig']->lang; 
+			$chapo = "chapo" . $_SESSION['navig']->lang; 
+			$description = "description" . $_SESSION['navig']->lang; 
+										
 			$temp = str_replace("#ID", "$row->id", $texte);
 			$temp = str_replace("#URLPAYER", "paiement.php?action=paiement&type_paiement=" . $row->id, $temp);
-			$temp = str_replace("#LOGO", "client/" . "$row->nom" . "/logo.jpg", $temp);
-	//		$temp = str_replace("#TITRE", "$paiementdesc->titre", $temp);
-	//		$temp = str_replace("#CHAPO", "$paiementdesc->chapo", $temp);
-			$temp = str_replace("#DESCRIPTION", "$paiementdesc->description", $temp);		
+			$temp = str_replace("#LOGO", "client/paiement/" . "$row->nom" . "/logo.jpg", $temp);
+			$temp = str_replace("#TITRE", $$titre, $temp);
+			$temp = str_replace("#CHAPO", $$chapo, $temp);
+			$temp = str_replace("#DESCRIPTION", $$description, $temp);		
 			$res .= $temp;
 		}
 	

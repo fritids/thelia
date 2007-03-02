@@ -51,6 +51,36 @@
 			return $this->getVars("select * from $this->table where id=\"$id\"");
 
 		}	
+		
+		
+		function getTitre(){
+			return $this->nom;
+		}
+				
+		function getChapo(){
+	     	include(realpath(dirname(__FILE__)) . "/../client/paiement/" . $this->nom . "/" . "config.php");
+			
+			if($_SESSION['navig']->lang == "")
+				$lang="1";
+			else $lang=$_SESSION['navig']->lang;
+			
+			$chapo="chapo" . $lang;
+		
+			return $$chapo;
+		}
+		
+		function getDescription(){
+	     	include(realpath(dirname(__FILE__)) . "/../client/paiement/" . $this->nom . "/" . "config.php");
+			
+			if($_SESSION['navig']->lang == "")
+				$lang="1";
+			else $lang=$_SESSION['navig']->lang;
+			
+			$description="description" . $lang;
+		
+			return $$description;			
+		}
+		
 	}
 
 

@@ -35,7 +35,7 @@
 	include_once("../../classes/Client.class.php");
 	include_once("../../classes/Venteprod.class.php");
 	include_once("../../classes/Produit.class.php");
-	include_once("../../classes/Paiementdesc.class.php");
+	include_once("../../classes/Modules.class.php");
 	include_once("../../classes/Adresse.class.php");
 	include_once("../../classes/Transportdesc.class.php");
 	include_once("../../classes/Zone.class.php");
@@ -166,10 +166,9 @@
   		$resul2 = mysql_query($query2, $venteprod->link);
   		$total = mysql_result($resul2, 0, "total");
 
-		$paiementdesc = new Paiementdesc();
-		$paiementdesc->charger($commande->paiement);
+		$modules = new Modules();
+		$modules->charger_id($commande->paiement);
 
-		//$total -=  $commande->remise;
 		$total += $commande->port;
 	
 		$total = round($total, 2);
@@ -233,7 +232,7 @@
 
   		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(47,241);	  			
-    	$pdf->write(10, $paiementdesc->titre);
+    	$pdf->write(10, $modules->getChapo());
 	
   		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(47,248);	  			

@@ -463,9 +463,9 @@
       </td>
     </tr>
  <tr class="cellule_claire_vide">
-   <td height="30" class="cellule_sombre_vide"><span class="geneva11bol_3B4B5B">Definir l'unit&eacute; de transport: </span></td>
+   <td height="30" class="cellule_sombre_vide"><span class="geneva11bol_3B4B5B">Forfait: </span></td>
    <td height="30" class="cellule_sombre_vide">
-     <input name="text2" type="text" class="form" id="nunitem" value="Unite de transport" />
+     <input name="text2" type="text" class="form" id="nunitem" value="Forfait" />
    </td>
    <td class="cellule_sombre_vide"></td>
  </tr>
@@ -513,9 +513,9 @@
       </td>
     </tr>
  <tr class="cellule_claire_vide">
-   <td height="30" class="cellule_sombre_vide"><span class="geneva11bol_3B4B5B">Definir l'unit&eacute; de transport: </span></td>
+   <td height="30" class="cellule_sombre_vide"><span class="geneva11bol_3B4B5B">Forfait: </span></td>
    <td height="30" class="cellule_sombre_vide">
-     <input name="text3" type="text" class="form" id="nunitea" onclick="this.value=''" value="Unite de transport" />
+     <input name="text3" type="text" class="form" id="nunitea" onclick="this.value=''" value="Forfait" />
    </td>
    <td class="cellule_sombre_vide"></td>
  </tr>

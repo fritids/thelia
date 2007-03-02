@@ -75,8 +75,8 @@
 	
 	switch($action){
 		case 'modclassement' : modclassement($ref, $parent, $type); break;
-		case 'modifier' : modifier($id, $lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $unitetr, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
-		case 'ajouter' : ajouter($lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $unitetr, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
+		case 'modifier' : modifier($id, $lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
+		case 'ajouter' : ajouter($lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
 		case 'acdec' : moddecli($produit, $id, 1); break;
 		case 'desdec' : moddecli($produit, $id, 0); break;
 		case 'supprimer' : supprimer($ref, $parent);
@@ -124,7 +124,7 @@
 
 	}
 	
-	function modifier($id, $lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $unitetr, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
+	function modifier($id, $lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
 
      if(  $_SESSION["bout"] == "") {
           header("Location: catalogue.php" );
@@ -163,7 +163,6 @@
 	   	 $produit->quantite = 99;
 		 $produit->appro = $appro;  
 		 $produit->poids = $poids;
-		 $produit->unitetr = $unitetr;
 		 $produit->stock = $stock;
 		 $produit->tva = ereg_replace(",", ".", $tva);
 		 $produitdesc->chapo = $chapo;
@@ -271,7 +270,7 @@
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
 	}
 
-	function ajouter($lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids,  $unitetr, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
+	function ajouter($lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
 
      if(  $_SESSION["bout"] == "") {
           header("Location: catalogue.php" );
@@ -318,7 +317,6 @@
 	// $produit->quantite = $quantite; 
 	 $produit->appro = $appro;  
 	 $produit->poids = $poids;
-	 $produit->unitetr = $unitetr;
 	 $produit->stock = $stock;
 	 $produit->tva = ereg_replace(",", ".", $tva);
 	 $produit->classement = $maxClassement + 1;
@@ -703,12 +701,6 @@
       <td height="30" class="titre_cellule">POIDS</td>
       <td class="cellule_sombre">
         <input type="text" name="poids" value="<?php echo($produit->poids); ?>" />
-        </span></td>
-    </tr>
-	 <tr>
-      <td height="30" class="titre_cellule">UNITE DE TRANSPORT </td>
-      <td class="cellule_sombre">
-        <input type="text" name="unitetr" value="<?php echo($produit->unitetr); ?>" />
         </span></td>
     </tr>
     

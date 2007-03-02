@@ -39,7 +39,7 @@
 	include("../classes/Client.class.php");
 	include("../classes/Venteprod.class.php");
 	include("../classes/Statut.class.php");
-	include("../classes/Paiementdesc.class.php");
+	include("../classes/Modules.class.php");
 	include("../classes/Rubrique.class.php");
 
 	if(!isset($action)) $action="";
@@ -51,8 +51,8 @@
 <?php
 	$commande = new Commande();
 	$commande->charger_ref($ref);
-	$paiementdesc = new Paiementdesc();
-	$paiementdesc->charger($commande->paiement);
+	$modules = new Modules();
+	$modules->charger_id($commande->paiement);
 
 ?>
 
@@ -205,7 +205,9 @@
    <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td height="30" class="titre_cellule">TYPE DE R&Egrave;GLEMENT </td>
-       <td class="cellule_sombre"><?php echo($paiementdesc->titre); ?></td>
+       <td class="cellule_sombre">
+			<?php echo($modules->getChapo()); ?>
+	  </td>
      </tr>
      <tr>
        <td height="30" class="titre_cellule">R&Eacute;F&Eacute;RENCE DE LA TRANSACTION </td>
