@@ -35,8 +35,7 @@
 	include_once("classes/Contenudesc.class.php");
 	include_once("classes/Produit.class.php");
 	include_once("classes/Produitdesc.class.php");
-	include_once("classes/Paiement.class.php");
-	include_once("classes/Paiementdesc.class.php");
+	include_once("classes/Modules.class.php");
 	include_once("classes/Adresse.class.php");
 	include_once("classes/Commande.class.php");
 	include_once("classes/Venteprod.class.php");
@@ -1455,29 +1454,27 @@
 		
 		$id = lireTag($args, "id");		
 		$search ="";
-		
+	
 		// pr�aration de la requ�e
 		if($id!="")  $search.=" and id=\"$id\"";
 	
-		$paiement = new Paiement();
-		$paiementdesc = new Paiementdesc();
-	
-		$query = "select * from $paiement->table where active='1' $search";
+		$modules = new Modules();
+		
+		$query = "select * from $modules->table where actif='1' $search";
 
-		$resul = mysql_query($query, $paiement->link);
+		$resul = mysql_query($query, $modules->link);
 	
 		$nbres = mysql_numrows($resul);
 		if(!$nbres) return "";
 		
 
 		while( $row = mysql_fetch_object($resul)){
-			$paiementdesc->charger($row->id, $_SESSION['navig']->lang);
+
 			$temp = str_replace("#ID", "$row->id", $texte);
-			$temp = str_replace("#URLTYPE", "$row->url", $temp);
 			$temp = str_replace("#URLPAYER", "paiement.php?action=paiement&type_paiement=" . $row->id, $temp);
-			$temp = str_replace("#LOGO", "client/gfx/paiement/$row->logo", $temp);
-			$temp = str_replace("#TITRE", "$paiementdesc->titre", $temp);
-			$temp = str_replace("#CHAPO", "$paiementdesc->chapo", $temp);
+			$temp = str_replace("#LOGO", "client/" . "$row->nom" . "/logo.jpg", $temp);
+	//		$temp = str_replace("#TITRE", "$paiementdesc->titre", $temp);
+	//		$temp = str_replace("#CHAPO", "$paiementdesc->chapo", $temp);
 			$temp = str_replace("#DESCRIPTION", "$paiementdesc->description", $temp);		
 			$res .= $temp;
 		}

@@ -69,6 +69,16 @@
 		 $modules = new Modules();
 		 $modules->charger($entry);
 
+		 if(! $modules->id){
+			
+			$modules = new Modules();
+			$modules->nom = $entry;
+			$modules->type="1";
+			$modules->actif=0;
+			$modules->add();
+			
+		 }
+		
 		 $i++;
 	
 		if(!($i%2)) $fond="cellule_sombre";

@@ -43,10 +43,8 @@
 		$modules->actif = $actif;
 		$modules->nom = $nom;		
 		
-		if($modules->id)
-			$modules->maj();
-		else
-		 	$modules->add();
+		$modules->maj();
+	
 		
 	}		
 
