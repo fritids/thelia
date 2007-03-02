@@ -8,3 +8,9 @@ INSTALLATION
 
 - editez le fichier config.php et donnez des valeurs à $cle, $siret.
   Elles vous seront fournies par votre banque.
+
+Concernant les adresses à appeler lors d'une erreur de paiement ou d'un succès, vous devez les fournir à spplus.
+
+Vous devez aussi leur fournir l'adresse de confirmation de commande.
+
+Ex : http://www.monsite.com/client/paiement/spplus/confirmation.php
