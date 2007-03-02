@@ -86,7 +86,7 @@
     //    -> Unix    : $logfile="/home/repertoire/log/logfile.txt";
     //
 
-	$logfile="/var/log/cyberplus/site";
+	$logfile="/var/log/atos/site";
 
 	// Ouverture du fichier de log en append
 

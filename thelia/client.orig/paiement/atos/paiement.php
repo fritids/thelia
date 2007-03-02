@@ -15,10 +15,10 @@
 	$monsite = new Variable();
 	$monsite->charger("nomsite");
 	
-	print ("<HTML><HEAD><TITLE>CYBERPLUS - Paiement Securise sur Internet</TITLE></HEAD>");
+	print ("<HTML><HEAD><TITLE>ATOS - Paiement Securise sur Internet</TITLE></HEAD>");
 	print ("<BODY bgcolor=#ffffff>");
 	print ("<Font color=#000000>");
-	print ("<center><H1>PAIEMENT SECURISE CYBERPLUS </H1></center><br><br>");
+	print ("<center><H1>PAIEMENT SECURISE ATOS </H1></center><br><br>");
 	print ("<center><H1>" . $monsite->valeur . "</H1></center><br><br>");
 
 	//		Affectation des paramètres obligatoires

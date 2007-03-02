@@ -14,10 +14,10 @@
 
 <?php
 
-	print ("<HTML><HEAD><TITLE>CYBERPLUS - Paiement Securise sur Internet</TITLE></HEAD>");
+	print ("<HTML><HEAD><TITLE>ATOS - Paiement Securise sur Internet</TITLE></HEAD>");
 	print ("<BODY bgcolor=#ffffff>");
 	print ("<Font color=#000000>");
-	print ("<center><H1>Test de l'API plug-in CYBERPLUS</H1></center><br><br>");
+	print ("<center><H1>Test de l'API plug-in ATOS</H1></center><br><br>");
 
 	// Récupération de la variable cryptée DATA
 
@@ -108,7 +108,7 @@
 	// OK, affichage des champs de la réponse
 	else {
 	print("<center>\n");
-	print("<H3>R&eacute;ponse manuelle du serveur CYBERPLUS</H3>\n");
+	print("<H3>R&eacute;ponse manuelle du serveur ATOS</H3>\n");
 	print("</center>\n");
 	print("<b><h4>\n");
 	print("<br><hr>\n");

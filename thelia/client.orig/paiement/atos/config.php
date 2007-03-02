@@ -12,5 +12,5 @@
 	$description3="";
 
 	// N° de Marchand
-	$merchant_id = "048320646200010";
+	$merchant_id = "xxxxxxxxxxxxxxx";
 ?>
