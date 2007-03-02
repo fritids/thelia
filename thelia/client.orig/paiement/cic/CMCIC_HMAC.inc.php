@@ -1,4 +1,7 @@
 <?php
+
+include_once(realpath(dirname(__FILE__)) . "/config.php");
+
 /*****************************************************************************
  *
  * CM_CIC_Paiement "open source" kit for CyberMUT-P@iement(TM) and
@@ -55,17 +58,19 @@ define("CMCIC_PHP1_FORM",
         <input type=\"hidden\" name=\"lgue\"           value=\"%s\">
         <input type=\"hidden\" name=\"societe\"        value=\"%s\">
         <input type=\"hidden\" name=\"texte-libre\"    value=\"%s\">
-        <input type=\"image\" src=\"../logo/VISA.gif\" name=\"bouton\"         value=\"%s\">
+        <input type=\"image\" src=\"logo.jpg\" name=\"bouton\"         value=\"%s\">
     </form>");
 
 // <<<--- begin custom OverWrite --------------
-define("CMCIC_DIR", "/test/");
+define("CMCIC_DIR", "$dir");
 
-define("CMCIC_SERVER", "ssl.paiement.cic-banques.fr");
+define("CMCIC_SERVER", "$serveur");
 
 function CMCIC_hmac($CMCIC_Tpe, $data="")
 {
-	$pass = "PASSKEY";
+	global $motdepasse;
+	
+	$pass = "$motdepasse";
     // OverWrite with Your's !
     // A remplacer par votre paramétrage.
 

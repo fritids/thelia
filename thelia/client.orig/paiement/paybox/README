@@ -1,0 +1,14 @@
+Ce plugin PAYBOX permet de gérer un nombre important de paiement sécurisé bancaire.
+
+
+INSTALLATION
+============
+
+- copiez le binaire modulev2.cgi de Paybox dans le répertoire bin
+- éditez le fichier paiement et définissez les variables suivantes :
+
+PBX_SITE= 
+PBX_RANG= 
+PBX_IDENTIFIANT=
+
+Les informations vous seront fournies par Paybox

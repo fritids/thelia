@@ -1,4 +1,9 @@
 <?php
+
+include_once(realpath(dirname(__FILE__)) . "/config.php");
+
+global $tpe, $soc, $key, $motdepasse, $retourok, $retourko, $dir, $serveur;
+
 /*****************************************************************************
  *
  * CM_CIC_Paiement "open source" kit for CyberMUT-P@iement(TM) and
@@ -47,17 +52,17 @@
 switch ($soc) 
 {
     case "doNotOverwrite":
-       $MyTpe = array ( "tpe" =>"TPE", "soc" => "SAC", "key" => "KEY" );
+       $MyTpe = array ( "tpe" =>"$tpe", "$soc" => "$soc", "key" => "$key" );
 
         break;
     default:
-$MyTpe = array ( "tpe" =>"TPE", "soc" => "SAC", "key" => "KEY" );
+$MyTpe = array ( "tpe" =>"$tpe", "soc" => "$soc", "key" => "$key" );
 
     // <<<--- begin custom OverWrite ---
 
-$MyTpe = array ( "tpe" =>"TPE", "soc" => "SAC", "key" => "KEY" );
-    $MyTpe["retourok"] = "http://www.google.fr";
-    $MyTpe["retourko"] = "http://www.google.nz";
+$MyTpe = array ( "tpe" =>"$tpe", "soc" => "$soc", "key" => "$key" );
+    $MyTpe["retourok"] = "$retourok";
+    $MyTpe["retourko"] = "$retourko";
     $MyTpe["submit"]   = "Paiement";
 
     // --->>>  end  custom OverWrite ---

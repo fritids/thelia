@@ -11,4 +11,14 @@
 	$chapo3="";
 	$description3="";
 
+	$tpe="";
+	$soc="";
+	$key="";
+	$motdepasse="";
+	$retourok="";
+	$retourko="";
+	
+	$dir="/";
+	$serveur="ssl.paiement.cic-banques.fr";
+
 ?>

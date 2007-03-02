@@ -1,0 +1,20 @@
+Ce plugin CIC permet de gérer le paiement via cet organisme bancaire.
+
+
+INSTALLATION
+============
+
+- editez le fichier config.php et donnez des valeurs aux variables suivantes :
+
+$tpe="";	 // N° TPE
+$soc="";	 // N° de société
+$key="";	 // clé
+$motdepasse=""; // mot de passe
+$retourok=""; // url de retour si paiement OK
+$retourko=""; // url de retour si paiement non OK
+
+La banque vous fournira toutes les valeurs (exceptées les url de retour)
+
+Pour utiliser la réponse automatique, vous devrez fournir l'url à appeler à votre banque.
+
+Ex : http://www.monsite.com/client/paiement/cic/confirmation.php
