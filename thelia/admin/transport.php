@@ -295,10 +295,6 @@
 			contenu=contenu + "<a href='#' onClick=\"chargertdesc('" + i + "')\"><img src='gfx/b_edit.png' width='16' height='16' border='0'></a>";
 			contenu=contenu + "</span>";
 
-			contenu=contenu + "<span style='width: 50px;margin-left: 50px;'>";
-			contenu=contenu + "<a href='#' onClick=\"supprt('" + trindex + "')\"><img src='gfx/b_drop.png' width='16' height='16' border='0'></a>";
-			contenu=contenu + "</span>";
-
 			contenu=contenu + "</div>";
 			document.getElementById("divt").innerHTML=document.getElementById("divt").innerHTML + contenu;
 			
@@ -314,7 +310,6 @@
          	document.getElementById('selectszoneha').options.length = 0;
          	document.getElementById('selectszoneda').options.length = 0;
         // 	document.getElementById('selectszoneda').options[0] = element;
-         	document.getElementById('ntransporta').value='Nom du transport'; 
          	document.getElementById('nclassea').value='Classe'; 
 
 
@@ -479,14 +474,7 @@
      </tr>
    </table>
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
- 
-  <tr class="cellule_sombre_vide">
-    <td width="34%" height="30" class="cellule_sombre_vide"> 
-	<input name="text" type="text" class="form" id="ntransportm" value="Nom du transport">
-	</td>
-    <td  height="30">    </td>
-    <td width="27%"></td>
-  </tr>
+
  <tr class="cellule_claire_vide">
     <td width="34%" height="30" class="geneva11bol_3B4B5B">
       <div align="center">
@@ -507,13 +495,6 @@
       </td>
     </tr>
  <tr class="cellule_claire_vide">
-   <td height="30" class="cellule_sombre_vide"><span class="geneva11bol_3B4B5B">Definir la classe:</span></td>
-   <td height="30" class="cellule_sombre_vide">
-     <input name="text2" type="text" class="form" id="nclassem" value="Classe" />
-   </td>
-   <td class="cellule_sombre_vide"></td>
- </tr>
- <tr class="cellule_claire_vide">
    <td height="30" class="cellule_claire_vide">&nbsp;</td>
    <td height="30" class="cellule_claire_vide"></td>
    <td class="cellule_claire_vide"> 
@@ -521,58 +502,7 @@
    </td>
  </tr>
   </table>
-  <table width="710" border="0" cellpadding="5" cellspacing="0">
-    <tr>
-      <td height="5"></td>
-    </tr>
-    <tr>
-      <td width="600" height="30" class="titre_cellule_tres_sombre2">AJOUTER UN TRANSPORT</td>
-    </tr>
-  </table>
-   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
- 
-  <tr class="cellule_sombre_vide">
-    <td width="34%" height="30" class="cellule_sombre_vide"><span class="arial11_bold_626262">
-      <input name="text3" type="text" class="form" id="ntransporta" onclick="this.value=''" value="Nom du transport" />
-    </span></td>
-    <td  height="30">    </td>
-    <td width="27%"></td>
-  </tr>
- <tr class="cellule_claire_vide">
-    <td width="34%" height="30" class="geneva11bol_3B4B5B">
-      <div align="center">
-        <select name="select3" class="form" id="selectszoneha">
-                </select>
-      </div>
-    </td>
-    <td width="39%" height="30"> <div align="center">
-      <input name="Submit2" type="button" onclick="ajoutzone('a');" class="geneva11bol_3B4B5B" value="Ajouter une zone &gt;&gt; " />
-      <br />
-      <div align="center">
-        <input name="Submit2" type="button" onclick="supprzone('a');" class="geneva11bol_3B4B5B" value="&lt;&lt; Supprimer une zone" />
-      </div>
-    </div></td>
-                          <td><div align="center">
-                            <select name="select4" size="5" multiple="multiple" class="form" id="selectszoneda">
-                                                        </select>
-                          </div> 
-      </td>
-    </tr>
- <tr class="cellule_claire_vide">
-   <td height="30" class="cellule_sombre_vide"><span class="geneva11bol_3B4B5B">Definir la classe:</span></td>
-   <td height="30" class="cellule_sombre_vide">
-     <input name="text4" type="text" class="form" id="nclassea" onclick="this.value=''" value="Classe" />
-   </td>
-   <td class="cellule_sombre_vide"></td>
- </tr>
- <tr class="cellule_claire_vide">
-   <td height="30" class="cellule_claire_vide">&nbsp;</td>
-   <td height="30" class="cellule_claire_vide"></td>
-   <td class="cellule_claire_vide">
-     <input name="Submit3" type="button" onclick="validea();" class="geneva11bol_3B4B5B" value="Ajouter" />
-   </td>
- </tr>
-  </table>
+
 </div>
 </body>
 </html>
