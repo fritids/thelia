@@ -1,0 +1,29 @@
+###############################################################################
+#
+#	Fichier des parametres du commercant
+#
+#	Remarque :	Ce fichier parametre est sous la responsabilite du
+#				commercant
+#
+###############################################################################
+
+# Logo du commercant (il apparait en entete sur les pages de paiement)
+
+ADVERT!merchant.gif!
+
+# URL de retour automatique de la reponse du paiement
+
+AUTO_RESPONSE_URL!http://www.monsite.com/client/paiement/atos/call_autoresponse.php!
+
+# URL de retour suite a paiement refuse
+
+CANCEL_URL!http://www.monsite.com/index.php!
+
+# URL de retour suite a paiement accepte
+
+RETURN_URL!http://www.monsite.com/redir.php!
+
+
+# END OF FILE
+
+

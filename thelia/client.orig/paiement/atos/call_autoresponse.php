@@ -16,7 +16,7 @@
     // Cette variable est facultative. Si elle n'est pas renseignée,
     // l'API positionne la valeur à "./pathfile".
 
-	$pathfile="pathfile=/home/site/pathfile";
+	$pathfile="pathfile=conf/pathfile";
 
 //Initialisation du chemin de l'executable response (à modifier)
 	//ex :
@@ -24,7 +24,7 @@
 	//-> Unix    : $path_bin = "/home/repertoire/bin/response"
 	//
 
-	$path_bin = "/home/cyberplus/bin/response";
+	$path_bin = "bin/response";
 
 	// Appel du binaire response
 

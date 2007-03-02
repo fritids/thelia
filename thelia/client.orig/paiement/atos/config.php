@@ -11,4 +11,6 @@
 	$chapo3="";
 	$description3="";
 
+	// N° de Marchand
+	$merchant_id = "048320646200010";
 ?>

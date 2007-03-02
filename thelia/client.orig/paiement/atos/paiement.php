@@ -1,5 +1,8 @@
 <?php
 	include_once("../../../classes/Navigation.class.php");	
+	include_once("../../../classes/Variable.class.php");	
+	include_once(realpath(dirname(__FILE__)) . "/config.php");
+		
 	session_start();
 	
 	$total = 0;
@@ -9,15 +12,18 @@
 	$total = round($total, 2);
 	$total *= 100;
 	
+	$monsite = new Variable();
+	$monsite->charger("nomsite");
+	
 	print ("<HTML><HEAD><TITLE>CYBERPLUS - Paiement Securise sur Internet</TITLE></HEAD>");
 	print ("<BODY bgcolor=#ffffff>");
 	print ("<Font color=#000000>");
 	print ("<center><H1>PAIEMENT SECURISE CYBERPLUS </H1></center><br><br>");
-	print ("<center><H1>MONSITE SITE . COM</H1></center><br><br>");
+	print ("<center><H1>" . $monsite->valeur . "</H1></center><br><br>");
 
 	//		Affectation des paramètres obligatoires
 
-	$parm="merchant_id=045065789500014";
+	$parm="merchant_id=$merchant_id";
 	$parm="$parm merchant_country=fr";
 	$parm="$parm amount=$total";
 	$parm="$parm currency_code=978";
@@ -31,7 +37,7 @@
     // Cette variable est facultative. Si elle n'est pas renseignée,
     // l'API positionne la valeur à "./pathfile".
 
-		$parm="$parm pathfile=/home/site/pathfile";
+		$parm="$parm pathfile=conf/pathfile";
 
 	//		Si aucun transaction_id n'est affecté, request en génère
 	//		un automatiquement à partir de heure/minutes/secondes
@@ -46,7 +52,7 @@
 	$_SESSION['navig']->commande = new Commande();
 	
 	
-	$path_bin = "/home/cyberplus/bin/request";
+	$path_bin = "bin/request";
 
 
 	//	Appel du binaire request
