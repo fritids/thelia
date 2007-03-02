@@ -239,8 +239,7 @@
 		 	$total += $venteprod->prixu * $venteprod->quantite;
 		 	$nbart++;
 		 	$poids+= $_SESSION['navig']->panier->tabarticle[$i]->produit->poids;
-		 	$unitetr+=$_SESSION['navig']->panier->tabarticle[$i]->produit->unitetr;
-		 	
+	 	
 		 	$corps2 .= $venteprod->ref . " " . $venteprod->titre . " " . $venteprod->prixu . " euro * " .  $venteprod->quantite . "\n";
 		}	
  

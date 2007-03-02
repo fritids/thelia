@@ -25,7 +25,7 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 <?php
 	if(!isset($action)) $action="";
@@ -49,7 +49,7 @@
 </head>
 
 <?php
-	include("../classes/Client.class.php");
+	include_once("../classes/Client.class.php");
 	
 ?>
 
@@ -92,7 +92,7 @@
 
 <?php
 	$menu="client";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 
 <div id="contenu_int"> 

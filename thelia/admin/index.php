@@ -26,7 +26,7 @@
 <?php
 	@ini_set('default_socket_timeout', 5);
 	include_once("pre.php");
-	include("../classes/Administrateur.class.php");
+	include_once("../classes/Administrateur.class.php");
 	
 	session_start();
 	

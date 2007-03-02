@@ -25,14 +25,14 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 	
 	if(!isset($action)) $action="";
 	if(!isset($page)) $page=0;
 	
 ?>
 <?php
-	include("../classes/Promo.class.php");
+	include_once("../classes/Promo.class.php");
 	
 ?>
 <?php
@@ -112,7 +112,7 @@
 ?>
 <?php
 	$menu="paiement";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

@@ -25,13 +25,13 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 	
 	if(!isset($action)) $action="";
 	
 ?>
 <?php
-	include("../classes/Variable.class.php");
+	include_once("../classes/Variable.class.php");
 
 	if($action == "modifier"){
 	

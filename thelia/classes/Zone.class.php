@@ -31,12 +31,10 @@
 		var $id;
 		var $nom;
 		var $unite;
-		var $moddoc;
-		var $devise;
-		var $tva;
+
 		
 		var $table="zone";
-		var $bddvars=array("id", "nom", "unite", "moddoc", "devise", "tva");
+		var $bddvars=array("id", "nom", "unite");
 		
 		function Zone(){
 			$this->Baseobj();	

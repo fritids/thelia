@@ -37,7 +37,7 @@
 	include_once("../../classes/Produit.class.php");
 	include_once("../../classes/Modules.class.php");
 	include_once("../../classes/Adresse.class.php");
-	include_once("../../classes/Transportdesc.class.php");
+	include_once("../../classes/Modules.class.php");
 	include_once("../../classes/Zone.class.php");
 	include_once("../../classes/Pays.class.php");
 	include_once("../../classes/Paysdesc.class.php");

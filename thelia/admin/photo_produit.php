@@ -25,11 +25,11 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
-	include("../fonctions/divers.php");
-	include("../classes/Image.class.php");
-	include("../classes/Produit.class.php");
-	include("../classes/Variable.class.php");
+	include_once("auth.php");
+	include_once("../fonctions/divers.php");
+	include_once("../classes/Image.class.php");
+	include_once("../classes/Produit.class.php");
+	include_once("../classes/Variable.class.php");
 	
 	if(!isset($action)) $action="";
 

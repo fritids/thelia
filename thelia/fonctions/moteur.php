@@ -45,7 +45,6 @@ foreach ($_GET as $key => $value) $$key = $value;
 	include_once("classes/Venteprod.class.php");
     include_once("classes/Message.class.php");
 	include_once("classes/Messagedesc.class.php");
-	include_once("classes/Transproduit.class.php");
 	include_once("classes/Transzone.class.php");
 	include_once("classes/Variable.class.php");	
 	include_once("classes/Promo.class.php");
@@ -168,7 +167,7 @@ function analyse($res){
 
 	switch($action){
 		case 'ajouter' : ajouter($ref); break;
-		case 'supprimer' : supprimer($id); break;
+		case 'supprimer' : supprimer($article); break;
 		case 'modifier' : modifier($article, $quantite); break;
 		case 'connexion' : connexion($email,$motdepasse); break;	
 		case 'deconnexion' : deconnexion(); break;	

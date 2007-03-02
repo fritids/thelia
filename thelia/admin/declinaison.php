@@ -25,7 +25,7 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 	
 	if(!isset($i)) $i=0;
 	if(!isset($id)) $id="";
@@ -47,7 +47,7 @@
 	include_once("../fonctions/divers.php");?>
 <?php
 	$menu="catalogue";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 
 <div id="contenu_int"> 

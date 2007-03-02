@@ -25,16 +25,16 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 <?php
-	include("../classes/Caracteristique.class.php");
-	include("../fonctions/divers.php");
+	include_once("../classes/Caracteristique.class.php");
+	include_once("../fonctions/divers.php");
 	include_once("../lib/JSON.php");
 	
-	include("../classes/Lang.class.php");  
-	include("../classes/Caracdisp.class.php");
-	include("../classes/Rubcaracteristique.class.php");
+	include_once("../classes/Lang.class.php");  
+	include_once("../classes/Caracdisp.class.php");
+	include_once("../classes/Rubcaracteristique.class.php");
 
 	if(!isset($action)) $action="";
 	if(!isset($lang)) $lang="1";
@@ -314,11 +314,11 @@
 <body>
 
 <?php
-	include("../classes/Boutique.class.php");
+	include_once("../classes/Boutique.class.php");
 ?>
 <?php
 	$menu="catalogue";
-	include("entete.php");
+	include_once("entete.php");
 	
 	if(!$lang) $lang=1;
 ?>

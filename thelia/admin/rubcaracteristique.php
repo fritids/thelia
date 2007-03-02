@@ -25,17 +25,17 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 <?php
 
-        include("../lib/Sajax.php");
-        include("../fonctions/divers.php");
-        include("../classes/Rubcaracteristique.class.php");
-        include("../classes/Caracteristique.class.php");
-        include("../classes/Caracval.class.php");
-        include("../classes/Rubrique.class.php");
-        include("../classes/Lang.class.php");
+        include_once("../lib/Sajax.php");
+        include_once("../fonctions/divers.php");
+        include_once("../classes/Rubcaracteristique.class.php");
+        include_once("../classes/Caracteristique.class.php");
+        include_once("../classes/Caracval.class.php");
+        include_once("../classes/Rubrique.class.php");
+        include_once("../classes/Lang.class.php");
 
       
 		include_once("../lib/JSON.php");
@@ -238,11 +238,11 @@
 <body onLoad="charger(<?php echo($id); ?>);">
 
 <?php
-	include("../classes/Boutique.class.php");
+	include_once("../classes/Boutique.class.php");
 ?>
 <?php
 	$menu="catalogue";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 
 <div id="contenu_int"> 

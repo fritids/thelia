@@ -25,7 +25,7 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 
 
@@ -40,7 +40,7 @@
 <body>
 
 <?php
-	include("../classes/Boutique.class.php");
+	include_once("../classes/Boutique.class.php");
 ?>
 <?php
 	include_once("../classes/Rubrique.class.php");
@@ -50,7 +50,7 @@
 ?>
 <?php
 	$menu="catalogue";
-	include("entete.php");
+	include_once("entete.php");
 	
 	if(!isset($parent)) $parent="";
 	if(!isset($lang)) $lang="";

@@ -25,14 +25,14 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 <?php
-        include("../lib/Sajax.php");
-        include("../fonctions/divers.php");
-        include("../classes/Zone.class.php"); 
-        include("../classes/Modules.class.php");
-        include("../classes/Transzone.class.php");
+        include_once("../lib/Sajax.php");
+        include_once("../fonctions/divers.php");
+        include_once("../classes/Zone.class.php"); 
+        include_once("../classes/Modules.class.php");
+        include_once("../classes/Transzone.class.php");
        
 		include_once("../lib/JSON.php");
 		
@@ -341,11 +341,11 @@
 <body onLoad="charger()">
 
 <?php
-	include("../classes/Boutique.class.php");
+	include_once("../classes/Boutique.class.php");
 ?>
 <?php
 	$menu="livraisons";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 
 <div id="contenu_int"> 

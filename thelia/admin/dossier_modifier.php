@@ -25,7 +25,7 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 	
 	if(!isset($action)) $action="";
 	if(!isset($parent)) $parent="0";
@@ -223,7 +223,7 @@
 
 <?php
 	$menu="contenu";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 <div id="contenu_int">
   <p class="titre_rubrique">Description g&eacute;n&eacute;rale de la rubrique de contenu </p>

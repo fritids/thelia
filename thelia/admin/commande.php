@@ -25,7 +25,7 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -36,10 +36,10 @@
 </head>
 <?php
 
-	include("../classes/Commande.class.php");
-	include("../classes/Client.class.php");
-	include("../classes/Venteprod.class.php");
-	include("../classes/Statutdesc.class.php");
+	include_once("../classes/Commande.class.php");
+	include_once("../classes/Client.class.php");
+	include_once("../classes/Venteprod.class.php");
+	include_once("../classes/Statutdesc.class.php");
 
 	if(!isset($action)) $action="";
 	if(!isset($client)) $client="";
@@ -100,7 +100,7 @@ function supprimer(id){
 
 <?php
 	$menu="commande";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 
 

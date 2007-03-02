@@ -35,9 +35,7 @@ if( isset($_SESSION['navig']) && (($_SESSION['navig']->client->id != $commande->
 	include_once("../../classes/Client.class.php");
 	include_once("../../classes/Venteprod.class.php");
 	include_once("../../classes/Produit.class.php");
-	include_once("../../classes/Paiementdesc.class.php");
 	include_once("../../classes/Adresse.class.php");
-	include_once("../../classes/Transportdesc.class.php");
 	include_once("../../classes/Zone.class.php");
 	include_once("../../classes/Pays.class.php");
 	include_once("../../classes/Moddoc.class.php");
@@ -63,7 +61,7 @@ if( isset($_SESSION['navig']) && (($_SESSION['navig']->client->id != $commande->
 		exit;
 	}	
 	
-	include("../pdf/modeles/" . $moddoc->facture . ".class.php");
+	include_once("../pdf/modeles/" . $moddoc->facture . ".class.php");
 	
 	$facture = new Facture();
 	$facture->creer($ref);

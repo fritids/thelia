@@ -25,7 +25,7 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 	if(!isset($action)) $action="";
 	
 	if(! $lang) $lang="1";
@@ -33,9 +33,9 @@
 ?>
 
 <?php
-	include("../classes/Lang.class.php");
-	include("../classes/Message.class.php");
-	include("../classes/Messagedesc.class.php");
+	include_once("../classes/Lang.class.php");
+	include_once("../classes/Message.class.php");
+	include_once("../classes/Messagedesc.class.php");
 	
 ?>
 
@@ -81,7 +81,7 @@
 
 <?php
 	$menu="configuration";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 
 <?php

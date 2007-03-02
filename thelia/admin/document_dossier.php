@@ -25,15 +25,15 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 	
 	if(!isset($action)) $action="";
 	
 ?>
 <?php
-	include("../fonctions/divers.php");
-	include("../classes/Document.class.php");  
-	include("../classes/Dossier.class.php");
+	include_once("../fonctions/divers.php");
+	include_once("../classes/Document.class.php");  
+	include_once("../classes/Dossier.class.php");
     
 ?>
 <?php

@@ -61,15 +61,16 @@
 			else if($this->type == "2")
 				$rep="transports";
 				
-	     	include(realpath(dirname(__FILE__)) . "/../client/$rep/" . $this->nom . "/" . "config.php");
+	     	include_once(realpath(dirname(__FILE__)) . "/../client/$rep/" . $this->nom . "/" . "config.php");
 			
 			if($_SESSION['navig']->lang == "")
 				$lang="1";
 			else $lang=$_SESSION['navig']->lang;
 			
 			$titre="titre" . $lang;
-		
-			return $$titre;
+			
+			if(isset($$titre))
+				return $$titre;
 		}
 				
 		function getChapo(){
@@ -80,15 +81,17 @@
 			else if($this->type == "2")
 				$rep="transports";
 				
-	     	include(realpath(dirname(__FILE__)) . "/../client/$rep/" . $this->nom . "/" . "config.php");
+	     	include_once(realpath(dirname(__FILE__)) . "/../client/$rep/" . $this->nom . "/" . "config.php");
 			
 			if($_SESSION['navig']->lang == "")
-				$lang="1";
-			else $lang=$_SESSION['navig']->lang;
+					$lang="1";
+				else $lang=$_SESSION['navig']->lang;
+		
 			
 			$chapo="chapo" . $lang;
 		
-			return $$chapo;
+			if(isset($$chapo))
+				return $$chapo;
 		}
 		
 		function getDescription(){
@@ -97,9 +100,9 @@
 				$rep="paiement";
 				
 			else if($this->type == "2")
-				$rep="transport";
+				$rep="transports";
 							
-	     	include(realpath(dirname(__FILE__)) . "/../client/$rep/" . $this->nom . "/" . "config.php");
+	     	include_once(realpath(dirname(__FILE__)) . "/../client/$rep/" . $this->nom . "/" . "config.php");
 			
 			if($_SESSION['navig']->lang == "")
 				$lang="1";
@@ -107,7 +110,8 @@
 			
 			$description="description" . $lang;
 		
-			return $$description;			
+			if(isset($$description))
+				return $$description;			
 		}
 		
 	}

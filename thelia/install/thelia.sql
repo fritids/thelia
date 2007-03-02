@@ -641,25 +641,6 @@ INSERT INTO `messagedesc` VALUES (8, 1, 2, 'Password modified', '', 'Vous allez 
 -- --------------------------------------------------------
 
 -- 
--- Structure de la table `moddoc`
--- 
-
-CREATE TABLE `moddoc` (
-  `id` int(11) NOT NULL auto_increment,
-  `facture` text NOT NULL,
-  `livraison` text NOT NULL,
-  PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=3 ;
-
--- 
--- Contenu de la table `moddoc`
--- 
-
-INSERT INTO `moddoc` VALUES (1, 'simplefact', 'simplelivr');
-INSERT INTO `moddoc` VALUES (2, 'simplefact', 'simplelivr');
-
--- --------------------------------------------------------
--- 
 -- Structure de la table `pays`
 -- 
 
@@ -2051,11 +2032,8 @@ CREATE TABLE `zone` (
   `id` int(11) NOT NULL auto_increment,
   `nom` text NOT NULL,
   `unite` float NOT NULL default '0',
-  `moddoc` int(11) NOT NULL default '0',
-  `devise` int(11) NOT NULL default '0',
-  `tva` smallint(6) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=49 ;
+) TYPE=MyISAM AUTO_INCREMENT=2 ;
 
 -- 
 -- Contenu de la table `zone`

@@ -25,7 +25,7 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 <?php
 		if(!isset($boutique)) $boutique="";
@@ -60,7 +60,7 @@
 
 <?php
 	$menu="contenu";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 
 <div id="contenu_int"> 

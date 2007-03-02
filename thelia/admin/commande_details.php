@@ -25,7 +25,7 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -35,12 +35,12 @@
 <link href="styles.css" rel="stylesheet" type="text/css" />
 
 <?php
-	include("../classes/Commande.class.php");
-	include("../classes/Client.class.php");
-	include("../classes/Venteprod.class.php");
-	include("../classes/Statut.class.php");
-	include("../classes/Modules.class.php");
-	include("../classes/Rubrique.class.php");
+	include_once("../classes/Commande.class.php");
+	include_once("../classes/Client.class.php");
+	include_once("../classes/Venteprod.class.php");
+	include_once("../classes/Statut.class.php");
+	include_once("../classes/Modules.class.php");
+	include_once("../classes/Rubrique.class.php");
 
 	if(!isset($action)) $action="";
 	if(!isset($statutch)) $statutch="";
@@ -78,7 +78,7 @@
 
 <?php
 	$menu="commande";
-	include("entete.php");
+	include_once("entete.php");
 ?> 
 
 <div id="contenu_int"> 

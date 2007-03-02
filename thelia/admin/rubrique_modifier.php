@@ -25,7 +25,7 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 	
 	if(!isset($action)) $action="";
 	if(!isset($lang)) $lang="1";
@@ -39,9 +39,9 @@
 	include_once("../classes/Rubriquedesc.class.php");
 	include_once("../classes/Lang.class.php");
 	include_once("../fonctions/divers.php");
-    include("../classes/Rubcaracteristique.class.php");
-    include("../classes/Caracteristique.class.php");
-    include("../classes/Image.class.php");
+    include_once("../classes/Rubcaracteristique.class.php");
+    include_once("../classes/Caracteristique.class.php");
+    include_once("../classes/Image.class.php");
    
 ?>
 <?php
@@ -244,7 +244,7 @@
 </head>
 
 <?php
-	include("../classes/Client.class.php");
+	include_once("../classes/Client.class.php");
 	
 ?>
 
@@ -276,7 +276,7 @@
 
 <?php
 	$menu="catalogue";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 <div id="contenu_int">
   <p class="titre_rubrique">Modiifer les caract&eacute;ristiques de la rubrique </p>

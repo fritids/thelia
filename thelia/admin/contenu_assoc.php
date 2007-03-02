@@ -25,12 +25,12 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
-	include("../fonctions/divers.php");
-	include("../classes/Rubrique.class.php");
-	include("../classes/Contenu.class.php");
-	include("../classes/Contenuassoc.class.php");
-	include("../classes/Dossier.class.php");
+	include_once("auth.php");
+	include_once("../fonctions/divers.php");
+	include_once("../classes/Rubrique.class.php");
+	include_once("../classes/Contenu.class.php");
+	include_once("../classes/Contenuassoc.class.php");
+	include_once("../classes/Dossier.class.php");
 	
 	if(!isset($action)) $action="";
 

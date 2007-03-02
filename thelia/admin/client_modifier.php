@@ -25,7 +25,7 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -34,11 +34,11 @@
 <title>THELIA / BACK OFFICE</title>
 <link href="styles.css" rel="stylesheet" type="text/css" />
 <?php
-	include("../classes/Rubrique.class.php");
-	include("../fonctions/divers.php");
-	include("../classes/Client.class.php");
-	include("../classes/Pays.class.php");
-	include("../classes/Paysdesc.class.php");
+	include_once("../classes/Rubrique.class.php");
+	include_once("../fonctions/divers.php");
+	include_once("../classes/Client.class.php");
+	include_once("../classes/Pays.class.php");
+	include_once("../classes/Paysdesc.class.php");
 	
 	
 ?>
@@ -64,7 +64,7 @@
 
 <?php
 	$menu="client";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 
 <div id="contenu_int"> 

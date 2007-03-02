@@ -25,13 +25,13 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 <?php
-	include("../lib/Sajax.php");
-	include("../fonctions/divers.php");
-	include("../classes/Accessoire.class.php");
-	include("../classes/Produit.class.php");	
+	include_once("../lib/Sajax.php");
+	include_once("../fonctions/divers.php");
+	include_once("../classes/Accessoire.class.php");
+	include_once("../classes/Produit.class.php");	
 
 	if(!isset($action)) $action="";
 ?>

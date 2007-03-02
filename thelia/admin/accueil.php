@@ -61,9 +61,9 @@
 </head>
 
 <?php
-	include("../classes/Client.class.php");	
-	include("../classes/Produit.class.php");	
-	include("../classes/Commande.class.php");	
+	include_once("../classes/Client.class.php");	
+	include_once("../classes/Produit.class.php");	
+	include_once("../classes/Commande.class.php");	
 
 ?>
 
@@ -126,7 +126,7 @@
 
 <?php
 	$menu="accueil";
-	include("entete.php");
+	include_once("entete.php");
 
 ?>
 

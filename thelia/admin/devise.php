@@ -25,10 +25,10 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 <?php
-	include("../classes/Devise.class.php");
+	include_once("../classes/Devise.class.php");
 	
 ?>
 
@@ -45,7 +45,7 @@
 
 <?php
 	$menu="paiement";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 
 <div id="contenu_int"> 

@@ -52,9 +52,7 @@
 	include_once("../classes/Image.class.php");
     include_once("../classes/Document.class.php");  
     include_once("../classes/Accessoire.class.php");  
-    include_once("../classes/Transport.class.php");  
     include_once("../classes/Transzone.class.php");  
-    include_once("../classes/Transproduit.class.php");  
     include_once("../classes/Zone.class.php");  
     include_once("../classes/Pays.class.php");  
     include_once("../classes/Lang.class.php");  
@@ -63,7 +61,6 @@
     include_once("../classes/Caracval.class.php"); 
     include_once("../classes/Caracdisp.class.php"); 
     include_once("../classes/Declidisp.class.php");
-    
     include_once("../classes/Rubdeclinaison.class.php");  
     include_once("../classes/Declinaison.class.php");  
     include_once("../classes/Exdecprod.class.php");  
@@ -72,7 +69,7 @@
 
 ?>
 <?php
-	
+
 	switch($action){
 		case 'modclassement' : modclassement($ref, $parent, $type); break;
 		case 'modifier' : modifier($id, $lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
@@ -380,23 +377,7 @@
 		}			
 	
 	
-	 $transport = new Transport();
-	 $transproduit = new Transproduit();
-	  	 
-	 $query = "select * from $transport->table";
-	 $resul = mysql_query($query);
-	 
-	 while($row = mysql_fetch_object($resul)){
-
-	 	$transproduit->transport = $row->id;
-	 	$transproduit->produit = $lastid;
-	 	$transproduit->actif = 1;
-	 	$transproduit->add();
-	 
-	 }
-	 
-
-   	$rubdeclinaison = new Rubdeclinaison();
+	$rubdeclinaison = new Rubdeclinaison();
    	$declinaisondesc = new Declinaisondesc();
    	$declidisp = new Declidisp();
     $declidispdesc = new Declidispdesc();
@@ -503,7 +484,7 @@
 	}
 </script>
 
-<?php include("tinymce.php"); ?>
+<?php include_once("tinymce.php"); ?>
 
 </head>
 

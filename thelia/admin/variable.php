@@ -25,10 +25,10 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 <?php
-	include("../classes/Variable.class.php");
+	include_once("../classes/Variable.class.php");
 ?>
 
 
@@ -44,7 +44,7 @@
 
 <?php
 	$menu="configuration";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 
 <div id="contenu_int"> 

@@ -25,7 +25,7 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 	
 	if(!isset($action)) $action="";
 	if(!isset($lang)) $lang="1";
@@ -36,14 +36,14 @@
 	 include_once("../classes/Variable.class.php");  
 ?>
 <?php
-	include("../classes/Dossier.class.php");
-	include("../classes/Rubrique.class.php");
-	include("../fonctions/divers.php");
-	include("../classes/Image.class.php");
-    include("../classes/Document.class.php");  
-    include("../classes/Zone.class.php");  
-    include("../classes/Pays.class.php");  
-    include("../classes/Lang.class.php");  
+	include_once("../classes/Dossier.class.php");
+	include_once("../classes/Rubrique.class.php");
+	include_once("../fonctions/divers.php");
+	include_once("../classes/Image.class.php");
+    include_once("../classes/Document.class.php");  
+    include_once("../classes/Zone.class.php");  
+    include_once("../classes/Pays.class.php");  
+    include_once("../classes/Lang.class.php");  
 ?>
 <?php
 	
@@ -222,14 +222,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>THELIA / BACK OFFICE</title>
 <link href="styles.css" rel="stylesheet" type="text/css" />
-<?php include("tinymce.php"); ?>
+<?php include_once("tinymce.php"); ?>
 </head>
 
 <body>
 
 <?php
 	$menu="contenu";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 <div id="contenu_int">
   <p class="titre_rubrique">Description g&eacute;n&eacute;rale du contenu </p>

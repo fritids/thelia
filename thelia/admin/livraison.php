@@ -25,7 +25,7 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 <?php
 
@@ -34,9 +34,7 @@
 	include_once("../classes/Client.class.php");
 	include_once("../classes/Venteprod.class.php");
 	include_once("../classes/Produit.class.php");
-	include_once("../classes/Paiementdesc.class.php");
 	include_once("../classes/Adresse.class.php");
-	include_once("../classes/Transportdesc.class.php");
 	include_once("../classes/Zone.class.php");
 	include_once("../classes/Pays.class.php");
 	include_once("../classes/Moddoc.class.php");
@@ -57,7 +55,7 @@
 	$moddoc = new Moddoc();
 	$moddoc->charger($zone->moddoc);
 
-	include("../client/pdf/modeles/" . $moddoc->livraison . ".class.php");
+	include_once("../client/pdf/modeles/" . $moddoc->livraison . ".class.php");
 	
 	$livraison = new Livraison();
 	$livraison->creer($ref);

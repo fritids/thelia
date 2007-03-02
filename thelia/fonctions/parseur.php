@@ -267,11 +267,12 @@
 
 			preg_match("|<THELIA_" . $boucles[$i] . " ([^>]*)>(.*)</THELIA_" . $boucles[$i] . ">|Us", $lect, $liste);
 
-			$type_boucle = lireTag($liste[1], "type");
+			if(isset($liste[1])){
+				$type_boucle = lireTag($liste[1], "type");
 		
-			$args = $liste[1];
-			$lect = preg_replace("|<THELIA_" . $boucles[$i] . " [^>]*>.*</THELIA_" . $boucles[$i] . ">|Us", boucle_exec($type_boucle, $args, $liste[2], "T_" . $boucles[$i]), $lect, 1);
-
+				$args = $liste[1];
+				$lect = preg_replace("|<THELIA_" . $boucles[$i] . " [^>]*>.*</THELIA_" . $boucles[$i] . ">|Us", boucle_exec($type_boucle, $args, $liste[2], "T_" . $boucles[$i]), $lect, 1);
+			}
 		}	
 
 		return $lect; 

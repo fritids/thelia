@@ -25,16 +25,16 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 ?>
 <?php
-	include("../classes/Rubrique.class.php");
-	include("../fonctions/divers.php");
-	include("../classes/Client.class.php");
-	include("../classes/Paysdesc.class.php");
-	include("../classes/Commande.class.php");
-	include("../classes/Venteprod.class.php");
-	include("../classes/Statutdesc.class.php");
+	include_once("../classes/Rubrique.class.php");
+	include_once("../fonctions/divers.php");
+	include_once("../classes/Client.class.php");
+	include_once("../classes/Paysdesc.class.php");
+	include_once("../classes/Commande.class.php");
+	include_once("../classes/Venteprod.class.php");
+	include_once("../classes/Statutdesc.class.php");
 
 	if(!isset($action)) $action="";
 	if(!isset($type)) $type="";
@@ -146,7 +146,7 @@ function supprimer(id){
 
 <?php
 	$menu="client";
-	include("entete.php");
+	include_once("entete.php");
 ?>
 
 <div id="contenu_int"> 

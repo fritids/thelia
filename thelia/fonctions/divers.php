@@ -535,8 +535,8 @@ $reply\nFrom:$from\n".$mail_mime);
   // suppression d'accent
   function supprAccent($texte) {
   
-  	return strtr( $texte,"ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ",
-"AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn" );
+	return strtr( $texte,"ËçåÌ€ˆ‡‰‹ŠŒñîïÍ…¯˜—™›š¿éƒæè‘‚íêëì“’”•ôòó†œŸØ„–",
+	"AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn" );
   
   }
   

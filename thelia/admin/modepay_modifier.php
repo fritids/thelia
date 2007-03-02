@@ -25,12 +25,12 @@
 ?>
 <?php
 	include_once("pre.php");
-	include("auth.php");
+	include_once("auth.php");
 
 
 ?>
 <?php
-	include("../classes/Modules.class.php");
+	include_once("../classes/Modules.class.php");
 
 	
 ?>
