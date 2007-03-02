@@ -659,58 +659,6 @@ INSERT INTO `moddoc` VALUES (1, 'simplefact', 'simplelivr');
 INSERT INTO `moddoc` VALUES (2, 'simplefact', 'simplelivr');
 
 -- --------------------------------------------------------
-
--- 
--- Structure de la table `paiement`
--- 
-
-CREATE TABLE `paiement` (
-  `id` int(11) NOT NULL auto_increment,
-  `url` varchar(100) NOT NULL default '',
-  `type` smallint(6) NOT NULL default '0',
-  `devise` int(11) NOT NULL default '0',
-  `logo` varchar(30) NOT NULL default '',
-  `active` smallint(6) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=8 ;
-
--- 
--- Contenu de la table `paiement`
--- 
-
-INSERT INTO `paiement` VALUES (1, 'client/paiement/banquepop/call_request.php', 0, 0, 'logos_cartes.gif', 0);
-INSERT INTO `paiement` VALUES (2, 'carte.php', 0, 0, 'logos_cartes.gif', 1);
-INSERT INTO `paiement` VALUES (3, 'cheque.php', 1, 0, 'cheque.gif', 1);
-INSERT INTO `paiement` VALUES (4, 'virement.php', 1, 0, '', 1);
-
-
--- --------------------------------------------------------
-
--- 
--- Structure de la table `paiementdesc`
--- 
-
-CREATE TABLE `paiementdesc` (
-  `id` int(11) NOT NULL auto_increment,
-  `paiement` int(11) NOT NULL default '0',
-  `lang` int(11) NOT NULL default '0',
-  `titre` text NOT NULL,
-  `chapo` text NOT NULL,
-  `description` text NOT NULL,
-  PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=8 ;
-
--- 
--- Contenu de la table `paiementdesc`
--- 
-
-INSERT INTO `paiementdesc` VALUES (1, 1, 1, 'Je règle par Carte Bancaire', '', '');
-INSERT INTO `paiementdesc` VALUES (2, 2, 1, 'Je règle par Carte Bancaire', '', '');
-INSERT INTO `paiementdesc` VALUES (3, 3, 1, 'Je règle par chèque', '', '');
-INSERT INTO `paiementdesc` VALUES (4, 4, 1, 'Je règle par virement', '', '');
-
--- --------------------------------------------------------
-
 -- 
 -- Structure de la table `pays`
 -- 
@@ -2024,48 +1972,7 @@ CREATE TABLE `stock` (
 -- 
 
 
--- --------------------------------------------------------
 
--- 
--- Structure de la table `transport`
--- 
-
-CREATE TABLE `transport` (
-  `id` int(11) NOT NULL auto_increment,
-  `actif` smallint(6) NOT NULL default '0',
-  `classe` text NOT NULL,
-  PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
-
--- 
--- Contenu de la table `transport`
--- 
-
-INSERT INTO `transport` VALUES (1, 1, 'Colissimo');
-
--- --------------------------------------------------------
-
--- 
--- Structure de la table `transportdesc`
--- 
-
-CREATE TABLE `transportdesc` (
-  `id` int(11) NOT NULL auto_increment,
-  `transport` int(11) NOT NULL default '0',
-  `lang` int(11) NOT NULL default '0',
-  `titre` text NOT NULL,
-  `chapo` text NOT NULL,
-  `description` text NOT NULL,
-  PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
-
--- 
--- Contenu de la table `transportdesc`
--- 
-
-INSERT INTO `transportdesc` VALUES (1, 1, 1, 'Colissimo', '', '');
-
--- --------------------------------------------------------
 
 -- 
 -- Structure de la table `transzone`
@@ -2082,7 +1989,7 @@ CREATE TABLE `transzone` (
 -- Contenu de la table `transzone`
 -- 
 
-INSERT INTO `transzone` VALUES (1, 1, 1);
+INSERT INTO `transzone` VALUES (1, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -2166,16 +2073,17 @@ CREATE TABLE `modules` (
   `type` smallint(6) NOT NULL,
   `actif` smallint(6) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM AUTO_INCREMENT=10 ;
 
 -- 
 -- Dumping data for table `modules`
 -- 
-
-INSERT INTO `modules` VALUES (1, 'cheque', 1, 1);
-INSERT INTO `modules` VALUES (2, 'virement', 1, 1);
+INSERT INTO `modules` VALUES (1, 'atos', 1, 0);
+INSERT INTO `modules` VALUES (2, 'cheque', 1, 1);
 INSERT INTO `modules` VALUES (3, 'cic', 1, 0);
 INSERT INTO `modules` VALUES (4, 'paybox', 1, 0);
 INSERT INTO `modules` VALUES (5, 'spplus', 1, 0);
-INSERT INTO `modules` VALUES (6, 'atos', 1, 0);
-
+INSERT INTO `modules` VALUES (6, 'virement', 1, 0);
+INSERT INTO `modules` VALUES (7, 'Colissimo', 2, 1);
+INSERT INTO `modules` VALUES (8, 'Forfait', 2, 0);
+INSERT INTO `modules` VALUES (9, 'Place', 2, 0);

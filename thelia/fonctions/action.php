@@ -249,15 +249,9 @@
 			$pays = new Pays();
 			$pays->charger($_SESSION['navig']->client->pays);
 			
-			$zone = new Zone();
-			$zone->charger($pays->zone);
-			
-		if( !$zone->tva)
-			$total = round($total/1.196, 2);
-		
-		 		if($_SESSION['navig']->client->pourcentage>0) $commande->remise = $total * $_SESSION['navig']->client->pourcentage / 100;
+		 	if($_SESSION['navig']->client->pourcentage>0) $commande->remise = $total * $_SESSION['navig']->client->pourcentage / 100;
 
-		$total -= $commande->remise;
+			$total -= $commande->remise;
 		
 		if($_SESSION['navig']->promo->id != ""){
 			if($_SESSION['navig']->promo->type == "1" && $_SESSION['navig']->promo->mini <= $total) $commande->remise += $_SESSION['navig']->promo->valeur;

@@ -928,7 +928,7 @@
 			$zone = new Zone();
 			$zone->charger($pays->zone);
 			
-			if($_SESSION['navig']->client->type == "1" || (! $zone->tva && $zone->id)){
+			if($_SESSION['navig']->client->type == "1"){
 				$prix = $prix/1.196;
 				$prix2 = $prix2/1.196;
 			}
@@ -1289,7 +1289,7 @@
 			$zone = new Zone();
 			$zone->charger($pays->zone);
 						
-			if($_SESSION['navig']->client->type ||  (!$zone->tva && $zone->id)) {
+			if($_SESSION['navig']->client->type) {
 				$prix = round($prix/1.196, 2);
 				$total = round($total/1.196, 2);
 				$port = round($port/1.196, 2);
