@@ -1,0 +1,10 @@
+Ce plugin SPPLUS permet de gérer les paiements avec la Caisse d'Epargne.
+
+
+INSTALLATION
+============
+
+- vous devez compiler le module spplus sur votre serveur web.
+
+- editez le fichier config.php et donnez des valeurs à $cle, $siret.
+  Elles vous seront fournies par votre banque.

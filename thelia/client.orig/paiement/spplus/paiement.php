@@ -1,4 +1,7 @@
 <?php
+
+include_once(realpath(dirname(__FILE__)) . "/config.php");
+
 //------------------------------------------------------------------------------------------------------------
 // appel_spplus_php.php
 // KIT SPPLUS : Page de test de l'interface de paiement avec API PHP
@@ -34,10 +37,10 @@
 
 // INFORMATIONS A MODIFIER POUR CHAQUE COMMERCANT FOURNIES PAR LE SERVICE INTEGRATION SPPLUS
 // cle marchand du commercant au format NT
-   $clent = "CLE";
+   $clent = "$cle";
 
 // code siret du commercant
-   $codesiret = "SIRET";
+   $codesiret = "$siret";
 
 // Montant à récupérer du panier
    $montant="$total";

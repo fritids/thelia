@@ -11,4 +11,6 @@
 	$chapo3="";
 	$description3="";
 
+	$cle="";
+	$siret="";
 ?>
