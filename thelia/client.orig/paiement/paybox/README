@@ -11,4 +11,10 @@ PBX_SITE=
 PBX_RANG= 
 PBX_IDENTIFIANT=
 
-Les informations vous seront fournies par Paybox
+Les informations vous seront fournies par Paybox.
+
+Concernant les adresses à appeler lors d'une erreur de paiement ou d'un succès, vous devez les fournir à Paybox.
+
+Vous devez aussi leur fournir l'adresse de confirmation de commande.
+
+Ex : http://www.monsite.com/client/paiement/paybox/confirmation.php
