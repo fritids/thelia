@@ -38,8 +38,6 @@ if( isset($_SESSION['navig']) && (($_SESSION['navig']->client->id != $commande->
 	include_once("../../classes/Adresse.class.php");
 	include_once("../../classes/Zone.class.php");
 	include_once("../../classes/Pays.class.php");
-	include_once("../../classes/Moddoc.class.php");
-		
 
 	$commande = new Commande();
 	$commande->charger_ref($ref);
@@ -53,15 +51,7 @@ if( isset($_SESSION['navig']) && (($_SESSION['navig']->client->id != $commande->
   	$zone = new Zone();
   	$zone->charger($pays->zone);
 
-	$moddoc = new Moddoc();
-	$moddoc->charger($zone->moddoc);
-
-	if(! file_exists("../pdf/modeles/" . $moddoc->facture . ".class.php")){
-		echo "Aucun modèle associé à la zone";
-		exit;
-	}	
-	
-	include_once("../pdf/modeles/" . $moddoc->facture . ".class.php");
+	include_once("../pdf/modeles/facture.php");
 	
 	$facture = new Facture();
 	$facture->creer($ref);

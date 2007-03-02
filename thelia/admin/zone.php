@@ -146,10 +146,6 @@
 				$zone->nom = $zcours->nom;
 				$zone->unite = $zcours->unite;
 				
-				$zone->moddoc = 1;
-				$zone->tva = 1;				
-				
-				
 				$lastid = $zone->add();
 
 				$zone->charger($lastid);

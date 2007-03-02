@@ -37,8 +37,6 @@
 	include_once("../classes/Adresse.class.php");
 	include_once("../classes/Zone.class.php");
 	include_once("../classes/Pays.class.php");
-	include_once("../classes/Moddoc.class.php");
-		
 
 	$commande = new Commande();
 	$commande->charger_ref($ref);
@@ -52,10 +50,9 @@
   	$zone = new Zone();
   	$zone->charger($pays->zone);
 
-	$moddoc = new Moddoc();
-	$moddoc->charger($zone->moddoc);
 
-	include_once("../client/pdf/modeles/" . $moddoc->livraison . ".class.php");
+	
+	include_once("../client/pdf/modeles/livraison.php");
 	
 	$livraison = new Livraison();
 	$livraison->creer($ref);

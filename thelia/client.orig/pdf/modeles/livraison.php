@@ -39,9 +39,6 @@
 	include_once("../classes/Zone.class.php");
 	include_once("../classes/Pays.class.php");
 	include_once("../classes/Paysdesc.class.php");
-	include_once("../classes/Moddoc.class.php");
-		
-
 
 	class Livraison{
 	
@@ -59,23 +56,22 @@
 
   			$zone = new Zone();
   			$zone->charger($pays->zone);
-
-			$moddoc = new Moddoc();
-			$moddoc->charger($zone->moddoc);
-
-
+	
+			if($pays->lang)
+				$lang=$pays->lang;
+			else $lang="1";
 	
 			$pdf= new fpdi();
 			$pdf->SetAutoPageBreak(false);
-			$pagecount = $pdf->setSourceFile("../client/pdf/doc/" . $moddoc->livraison . ".pdf");
+			$pagecount = $pdf->setSourceFile("../client/pdf/doc/" . "livraison" . $lang . ".pdf");
 			$tplidx = $pdf->ImportPage(1);
 
 		
 			$pdf->addPage();
 			$pdf->useTemplate($tplidx);
 		
-			$transportdesc = new Transportdesc();
-			$transportdesc->charger($commande->transport);
+			$modules = new Modules();
+			$modules->charger_id($commande->transport);
 	
 
 			$venteprod = new Venteprod();
@@ -249,7 +245,7 @@
 
   			$pdf->SetFont('Arial','',8);
 			$pdf->SetXY(47,242);	  			
-   		    $pdf->write(10,"$transportdesc->titre");
+   		    $pdf->write(10, $modules->getChapo());
 
 
 			$pdf->Output("livraison" . $commande->ref . ".pdf","I");	

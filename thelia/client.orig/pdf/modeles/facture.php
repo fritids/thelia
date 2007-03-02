@@ -41,7 +41,6 @@
 	include_once("../../classes/Zone.class.php");
 	include_once("../../classes/Pays.class.php");
 	include_once("../../classes/Paysdesc.class.php");
-	include_once("../../classes/Moddoc.class.php");
 	
 	class Facture{
 	
@@ -63,20 +62,20 @@
 
   		$zone = new Zone();
   		$zone->charger($pays->zone);
-
-		$moddoc = new Moddoc();
-		$moddoc->charger($zone->moddoc);
-
-
 	
 		$pdf= new fpdi();
 		$pdf->SetAutoPageBreak(false);
 		
+
+		if($pays->lang)
+			$lang=$pays->lang;
+			else $lang="1";
+
 		
-		$pagecount = $pdf->setSourceFile("../pdf/doc/pagesimple.pdf");
+		$pagecount = $pdf->setSourceFile("../pdf/doc/fpagesimple" . $lang . ".pdf");
 		$pagesimple = $pdf->ImportPage(1);
 		
-		$pagecount = $pdf->setSourceFile("../pdf/doc/" . $moddoc->facture . ".pdf");
+		$pagecount = $pdf->setSourceFile("../pdf/doc/fpagecomplete" . $lang . ".pdf");
 		$tplidx = $pdf->ImportPage(1);
 
 		$nbpage = $this->comptPage();
@@ -89,9 +88,6 @@
 
 
 		$this->entete();
-	  		
-  		$transportdesc = new Transportdesc();
-		$transportdesc->charger($commande->transport);
 	
 		$venteprod = new Venteprod();
 	
@@ -233,10 +229,13 @@
   		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(47,241);	  			
     	$pdf->write(10, $modules->getChapo());
+
+		$modules = new Modules();
+		$modules->charger_id($commande->transport);
 	
   		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(47,248);	  			
-  	  $pdf->write(10,"$transportdesc->titre");
+  	  	$pdf->write(10, $modules->getChapo());
 
 		$pdf->Output("facture" . $commande->facture . ".pdf","I");
 		
