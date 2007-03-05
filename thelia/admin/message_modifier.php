@@ -28,7 +28,7 @@
 	include_once("auth.php");
 	if(!isset($action)) $action="";
 	
-	if(! $lang) $lang="1";
+	if(! isset($lang)) $lang="1";
 
 ?>
 

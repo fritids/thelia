@@ -1,11 +1,14 @@
-1.2
+1.2.1
+
+1.2.0
 	Optimisation du parseur
 	Correction #PLUSURL #MOINSURL (panier)
 	Correction du soucis de devise dans l'import SQL
 	Correction de divers bugs
 	Ajout d'une gestion de la configuration dans l'interface d'administration
-	Génération automatique du token RSS
-	Mise en place des modes de paiement sous forme de plugins (modules)
+	Génération automatique du token RSS lors de l'installation
+	Mise en place des modes de paiement et des modes de transport sous forme de plugins (modules)
+	Mise en place d'un nouveau template de base
 	
 1.1.9
 	classement inverse pour la boucle contenu

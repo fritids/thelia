@@ -1962,11 +1962,13 @@
 		$nbres = mysql_numrows($resul);
 		if(!$nbres) return "";
 		
-		$row->prixu = number_format($row->prixu, 2);
-		$totalprod = number_format($totalprod, 2);
 		
 		while( $row = mysql_fetch_object($resul)){
-		  	$totalprod = $row->prixu * $row->quantite;
+			
+			$prixu = number_format($row->prixu, 2);
+			$totalprod = $row->prixu * $row->quantite;
+			$totalprod = number_format($totalprod, 2);
+			
 			$temp = str_replace("#ID", "$row->id", $texte);
 			$temp = str_replace("#REF", "$row->ref", $temp);
 			$temp = str_replace("#TITRE", "$row->titre", $temp);

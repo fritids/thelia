@@ -46,6 +46,9 @@ function gosaj($boucle, $param){
 		if(isset($decNParam[$i][1])) $boucle = str_replace($decNParam[$i][0] . "=\"#REMPLACER\"", $decNParam[$i][0] . "=\"" . $decNParam[$i][1] ."\"", $boucle);		
 
 	$boucle = analyse($boucle);	
+	$boucle = str_replace("#S_", "#", $boucle);
+	$boucle = substitutions($boucle);
+	
 	return $boucle; 
 
 }

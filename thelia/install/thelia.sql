@@ -2039,7 +2039,7 @@ CREATE TABLE `zone` (
 -- Contenu de la table `zone`
 -- 
 
-INSERT INTO `zone` VALUES (1, 'France', 0, 1, 0, 1);
+INSERT INTO `zone` VALUES (1, 'France', 0);
 
 -- 
 -- Table structure for table `modules`

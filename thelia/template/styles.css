@@ -490,7 +490,7 @@ a.lienMotDePassePerdu:hover {
 	margin: 0;
 }
 
-/* listing petits bijoux */
+/* listing petits */
 
 .ListingPiecePetit {
 	float: left;
@@ -499,7 +499,7 @@ a.lienMotDePassePerdu:hover {
 	padding: 0;
 }
 
-.bijouPetit {
+.piecePetit {
 	float: left;
 	width: 190px;contourVignettes
 	padding: 0;
@@ -558,7 +558,7 @@ a.lienMotDePassePerdu:hover {
 }
 
 
-/* Grand bijou */
+/* Grand piece */
 
 .CadreGrandPiece {
 	float: left;
@@ -568,7 +568,7 @@ a.lienMotDePassePerdu:hover {
 	padding: 0;
 }
 
-.bijouGrand {
+.pieceGrand {
 	float: left;
 	width: 570px;
 	padding: 0;
