@@ -1,5 +1,5 @@
 <?php
 	$fond="index_page.html";
-	$pageret=0;
+	$pageret=1;
 	include("fonctions/moteur.php");
 ?>
