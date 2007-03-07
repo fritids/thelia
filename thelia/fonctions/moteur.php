@@ -54,8 +54,11 @@ foreach ($_GET as $key => $value) $$key = $value;
 	include_once("fonctions/fonctsajax.php");
 	include_once("client/fonctperso/perso.php");
 
-	include_once("lib/Sajax.php");	
-
+	include_once("lib/Sajax.php");
+	
+    if(isset($sajax) && $sajax == "1")
+	        include_once("lib/JSON.php");
+    
 function analyse($res){
 	global $formulaire, $sajax;
 
@@ -209,7 +212,7 @@ function analyse($res){
 		$jsf = fopen("fonctsajaxgen.js", "w");
 		fputs($jsf, $sajaxjs);
 		fclose($jsf);
-		$res = str_replace("#SAJAX", $sajaxjs, $res);
+        $res = str_replace("#SAJAX", "<script>" . $sajaxjs . "</script>" . "\n<script type=\"text/javascript\" src=\"fonctions/json.js\"></script>", $res);
 	}
 	
 	// inclusion

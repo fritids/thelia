@@ -34,8 +34,8 @@ function do_analyse(boucle, param) {
 	if(! document.getElementById(boucleMoment).innerHTML) return "";
 }
 
-function do_ajout(ref) {
-	sx_ajoutsaj(ref);
+function do_ajout(ref, dec) {
+	sx_ajoutsaj(ref, JSON.stringify(dec));
  }
 
 function do_modpass(pass) {

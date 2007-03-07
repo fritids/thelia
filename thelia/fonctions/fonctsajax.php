@@ -54,9 +54,17 @@ function gosaj($boucle, $param){
 }
 
 // ajout panier
-function ajoutsaj($ref){
+function ajoutsaj($ref, $dec){
+	
+    $dec = stripslashes($dec);
+    $json = new Services_JSON();
+    $dec = $json->decode($dec);
 
-	ajouter($ref);
+    for($i=0; $i<count($dec); $i++){
+            $var = "declinaison" . $dec[$i]->id;
+            $_POST[$var]=$dec[$i]->valeur;
+    }
+    ajouter($ref);
 
 }
 

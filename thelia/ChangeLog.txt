@@ -1,4 +1,6 @@
 1.2.1
+1.2.1
+	Gestion des dclinaisons lors d'un ajout Ajax
 
 1.2.0
 	Optimisation du parseur
