@@ -116,7 +116,7 @@ ul {
 	font-size: 12px;
 	font-weight: bold;
 	float: left;
-	width:100px;
+	width:120px;
 }
 .sousTitreColonne50 {
 	color: #959595;
@@ -157,7 +157,7 @@ ul {
 	padding-left: 10px;
 	font-size: 11px;
 	float: left;
-	width:100px;
+	width:120px;
 }
 .TexteColonne50 {
 	color: #959595;
@@ -361,7 +361,7 @@ a.lienMotDePassePerdu:hover {
 
 .boutonDeBase120 {
 	float: left;
-	width:100px;
+	width:120px;
 	padding: 0;
 	margin: 0;
 }
