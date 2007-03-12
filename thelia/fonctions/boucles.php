@@ -1947,12 +1947,15 @@
 	
 		// rŽcupŽration des arguments
 		$commande_id = lireTag($args, "commande");		
+		$produit = lireTag($args, "produit");
+		$stat = lireTag($args, "stat");
 		
 		$search ="";
 		$res="";
 		
 		// prŽparation de la requte
 		if($commande_id!="")  $search.=" and commande=\"$commande_id\"";		
+		if($produit!="")  $search.=" and ref=\"$produit\"";		
 	
 		$venteprod = new Venteprod();
 
@@ -1969,7 +1972,12 @@
 			$totalprod = $row->prixu * $row->quantite;
 			$totalprod = number_format($totalprod, 2);
 			
+			$query = "select count(*) as nbvente from $venteprod->table where ref=\"" . $row->ref . "\"";
+			$resul = mysql_query($query, $venteprod->link);
+			$nbvente = mysql_result($resul, 0, "nbvente");
+			
 			$temp = str_replace("#ID", "$row->id", $texte);
+			$temp = str_replace("#COMMANDE", "$row->commande", $temp);
 			$temp = str_replace("#REF", "$row->ref", $temp);
 			$temp = str_replace("#TITRE", "$row->titre", $temp);
 			$temp = str_replace("#CHAPO", "$row->chapo", $temp);

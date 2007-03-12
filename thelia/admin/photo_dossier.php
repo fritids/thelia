@@ -96,7 +96,7 @@
 		if($photo != ""){
 
        	    $extension = substr($photo_name, strlen($nomorig)-3);
-			$fich = substr($photo_name, 0, strlen($doc_name)-4);
+			$fich = substr($photo_name, 0, strlen($photo_name)-4);
 			
 			$photoprodw = new Variable();
 			$photoprodw->charger("photorubw");
