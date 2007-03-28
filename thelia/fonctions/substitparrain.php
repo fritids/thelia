@@ -31,7 +31,7 @@
 	function substitparrain($texte){
 		global $id_parrain;
 		
-		if(! isset($id_parrain) || $id_parrain !="")
+		if(! isset($id_parrain) || $id_parrain =="")
 			return $texte;
 			
 		$client = new Client();
