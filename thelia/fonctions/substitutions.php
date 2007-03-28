@@ -40,6 +40,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/substitimage.php");
 	include_once(realpath(dirname(__FILE__)) . "/substitdossier.php");
 	include_once(realpath(dirname(__FILE__)) . "/substitcontenu.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitparrain.php");
 						 
 	function substitutions($texte){
 		
@@ -78,6 +79,7 @@
 		if(strstr($texte, "#DECLINAISON_")) $texte = substitdeclinaison($texte);		
 		if(strstr($texte, "#DOSSIER_")) $texte = substitdossier($texte);		
 		if(strstr($texte, "#CONTENU_")) $texte = substitcontenu($texte);		
+		if(strstr($texte, "#PARRAIN_")) $texte = substitparrain($texte);		
 		
 		return $texte;
 	

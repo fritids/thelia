@@ -1,4 +1,6 @@
 1.2.1
+	Maj du plugin pour Dreamweaver
+	
 1.2.1
 	Gestion des dclinaisons lors d'un ajout Ajax
 

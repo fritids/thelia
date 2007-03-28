@@ -34,10 +34,13 @@
   	<!-- chemin -->
 	 <THELIA_PROD type="PRODUIT" ref="#PRODUIT_REF"> 
 			<div id="chemin">
-			<a href="index.php">Accueil boutique</a> / 
-			<span class="bold"><a href="#URL">#RUBTITRE</a></span>		
+				<a href="index.php">Accueil boutique</a> / <THELIA_chemrub type="CHEMIN"><THELIA_rubdetchem type="RUBRIQUE" id="#ID"><a href="#URL">#TITRE</a> /</THELIA_rubdetchem></THELIA_chemrub> 
+
+				<span class="bold"><THELIA_rubdetchemcur type="RUBRIQUE" id="#ID"><a href="#URL">#TITRE</a> /</THELIA_rubdetchemcur></span>	
 			
-			/ <span class="bold">#TITRE </span>			</div>
+			 <span class="bold">#TITRE </span>			
+			
+			</div>
 	
 			<div id="fondContenu">			
 				
