@@ -31,6 +31,14 @@
 	function substitparrain($texte){
 		global $id_parrain;
 		
+		if(! isset($id_parrain) || $id_parrain !="")
+			return $texte;
+			
+		$client = new Client();
+		$client->charger_id($id_parrain);
+		
+		$texte = str_replace("#PARRAIN_EMAIL", "$client->email", $texte);
+		
 	
 		
 		return $texte;
