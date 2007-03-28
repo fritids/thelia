@@ -109,13 +109,17 @@
 ?>
 <?php
 	$client = new Client();
-	
 	$client->charger_ref($ref);
 	
 	if($client->raison == "1") $civilite = "Madame";
 	else if($client->raison == "2") $civilite = "Mademoiselle";
 	else if($client->raison == "3") $civilite = "Monsieur";
 
+
+	if($client->parrain){
+		$parrain = new Client();
+		$parrain->charger_id($client->parrain);
+	}
 	
 	$paysdesc = new Paysdesc();
 	$paysdesc->charger($client->pays);
@@ -151,7 +155,7 @@ function supprimer(id){
 
 <div id="contenu_int"> 
    <p class="titre_rubrique">Gestion des clients / D&eacute;tail du compte client n&deg;  <?php echo($ref); ?></p>
-<p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="client.php" class="lien04">Gestion des clients</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Visualiser        
+<p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="client.php" class="lien04">Gestion des clients</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Visualiser</a>        
     </p>     
    <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
@@ -211,6 +215,14 @@ function supprimer(id){
        <td height="30" class="titre_cellule">E-MAIL</td>
        <td class="cellule_sombre"><a href="mailto:<?php echo($client->email); ?>" class="txt_vert_11"><?php echo($client->email); ?> </a> </td>
      </tr>
+
+	<?php if(isset($parrain)) { ?>
+     <tr>
+       <td height="30" class="titre_cellule">PARRAIN</td>
+       <td class="cellule_sombre"><a href="client_visualiser.php?ref=<?php echo $parrain->ref ?>" class="txt_vert_11"><?php echo $parrain->prenom . " " . $parrain->nom; ?> </a> </td>
+     </tr>
+	<?php } ?>
+	
      <tr>
        <td height="30" class="titre_cellule">Remise </td>
        <td class="cellule_claire"><?php echo($client->pourcentage); ?> %</td>
@@ -302,8 +314,59 @@ function supprimer(id){
 
 
    </table>
-   <br />
-   
+
+   <br /><br />
+  
+ <table width="710" border="0" cellpadding="5" cellspacing="0">
+     <tr>
+       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES FILLEULS DE CE CLIENT</td>
+     </tr>
+   </table>
+   <table width="710" border="0" cellpadding="5" cellspacing="0">
+     <tr>
+       <td width="140" height="30" class="titre_cellule">NOM</td>
+       <td width="130" class="titre_cellule">PRENOM</td>
+       <td width="130" class="titre_cellule">EMAIL</td>
+     </tr>
+
+
+
+
+ <?php
+  	
+	$listepar = new Client();
+	
+	$query = "select * from $listepar->table where parrain=" . $client->id;
+	$resul = mysql_query($query);
+	
+	$i=0;
+	
+	while($row = mysql_fetch_object($resul)){
+		$listepar->charger_id($row->id);
+  		
+		if(!($i%2)) $fond="cellule_sombre";
+  		else $fond="cellule_claire";
+
+  		$i++;
+  ?>
+
+
+     <tr>
+       <td class="<?php echo($fond); ?>"><a href="client_visualiser.php?ref=<?php echo $listepar->ref ?>" class="txt_vert_11"><?php echo $listepar->nom; ?></a></td>
+       <td class="<?php echo($fond); ?>"><?php echo $listepar->prenom; ?></td>
+       <td class="<?php echo($fond); ?>"><a href="mailto:<?php echo $listepar->email ?>" class="txt_vert_11"><?php echo $listepar->email; ?></a></td>
+     
+     </tr>
+
+
+<?php } ?>
+
+
+
+
+   </table>
+
+
    <!--
    <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
