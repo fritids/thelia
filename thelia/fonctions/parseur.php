@@ -364,6 +364,9 @@
 	 	if( $_SESSION['navig']->formcli->telport == "") $res = ereg_replace("#TELPORT\[([^]]*)\]", "\\1", $res);
 	 	else $res = ereg_replace("#TELPORT\[[^]]*\]", "", $res);	
 
+		$tmpparrain = new Client();
+		$tmpparrain->charger_id($_SESSION['navig']->formcli->parrain);
+		
 		$res = str_replace("#ENTREPRISE", $_SESSION['navig']->formcli->entreprise, $res);
 		$res = str_replace("#PRENOM", $_SESSION['navig']->formcli->prenom, $res);
 		$res = str_replace("#NOM", $_SESSION['navig']->formcli->nom, $res);
@@ -375,6 +378,7 @@
 		$res = str_replace("#ADRESSE3", $_SESSION['navig']->formcli->adresse3, $res);
 		$res = str_replace("#CPOSTAL", $_SESSION['navig']->formcli->cpostal, $res);
 		$res = str_replace("#VILLE", $_SESSION['navig']->formcli->ville, $res);
+		$res = str_replace("#PARRAIN", $tmpparrain->email, $res);
 		
 		if($_SESSION['navig']->formcli->raison == "1") 
 			$res = str_replace("#RAISON1", "selected", $res);
