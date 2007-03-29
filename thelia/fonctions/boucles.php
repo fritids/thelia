@@ -96,6 +96,8 @@
 		if($ligne!="") $search.=" and $rubrique->table.ligne=\"$ligne\"";
 		if($exclusion!="") $search .= " and $rubrique->table.id not in($exclusion)";
 		
+		$search .= " and lang=" . $_SESSION['navig']->lang;
+		
 		if($aleatoire) $order = "order by "  . " RAND()";
 		else if($classement == "alpha") $order = "order by $rubriquedesc->table.titre";
 		else if($classement == "alphainv") $order = "order by $rubriquedesc->table.titre desc";

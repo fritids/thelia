@@ -1,5 +1,8 @@
 1.2.1
 	Maj du plugin pour Dreamweaver
+	Corrections diverses
+	Amélioration de la gestion du parrainage
+	Correction d'un soucis de langue sur certaines boucles
 	
 1.2.1
 	Gestion des déclinaisons lors d'un ajout Ajax
