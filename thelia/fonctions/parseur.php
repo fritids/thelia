@@ -46,6 +46,7 @@
 			if(strstr($tab[$i], "</BTHELIA")) $profondeur--;
 			
 			if(strstr($tab[$i], "<T_"))	$bsinon=1;
+			else if(strstr($tab[$i], "</T_"))	$bsinon=0;
 			else if(strstr($tab[$i], "<//T_"))	$bsinon=0;
 			
 			if( ($profondeur == 2 && ! strstr($tab[$i], "<THELIA")) || $profondeur>2 ) 
@@ -380,14 +381,15 @@
 		$res = str_replace("#VILLE", $_SESSION['navig']->formcli->ville, $res);
 		$res = str_replace("#PARRAIN", $tmpparrain->email, $res);
 		
-		if($_SESSION['navig']->formcli->raison == "1") 
-			$res = str_replace("#RAISON1", "selected", $res);
-		else if($_SESSION['navig']->formcli->raison == "2") 
-			$res = str_replace("#RAISON2", "selected", $res);
-		else if($_SESSION['navig']->formcli->raison == "3") 
-			$res = str_replace("#RAISON3", "selected", $res);			
-
-		
+		if($_SESSION['navig']->formcli->raison == "")
+		     $res = str_replace(array("#RAISON0","#RAISON1","#RAISON2","#RAISON3"),array("selected=\"selected\"","","",""), $res);
+		else if($_SESSION['navig']->formcli->raison == "1")
+		     $res = str_replace(array("#RAISON0","#RAISON1","#RAISON2","#RAISON3"),array("","selected=\"selected\"","",""), $res);
+		else if($_SESSION['navig']->formcli->raison == "2")
+		     $res = str_replace(array("#RAISON0","#RAISON1","#RAISON2","#RAISON3"),array("","","selected=\"selected\"",""), $res);
+		else if($_SESSION['navig']->formcli->raison == "3")
+		     $res = str_replace(array("#RAISON0","#RAISON1","#RAISON2","#RAISON3"),array("","","","selected=\"selected\""), $res);
+				
 		return $res;
 	}
 	

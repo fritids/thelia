@@ -13,8 +13,7 @@
 		
 	$tab = explode(";", $sql);
 	
-	if(! mysql_numrows(mysql_list_tables($_SESSION['choixbase']))) 
-		for($i=0; $i<count($tab); $i++)
+	for($i=0; $i<count($tab); $i++)
 		mysql_query(ereg_replace("-CODE-", ";',", $tab[$i]));
 ?>
 

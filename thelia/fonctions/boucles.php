@@ -568,6 +568,8 @@
 			$document->charger($row->id);
 			$documentdesc->charger($document->id);
 			$temp = str_replace("#TITRE", "$documentdesc->titre", $texte);
+			$temp = str_replace("#CHAPO", "$documentdesc->chapo", $texte);
+			$temp = str_replace("#DESCRIPTION", "$documentdesc->description", $texte);
 			$temp = str_replace("#FICHIER", "client/document/" . $document->fichier, $texte);
 
 			$res .= $temp;
