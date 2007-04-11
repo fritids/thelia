@@ -4,6 +4,7 @@
 	Amélioration de la gestion du parrainage
 	Correction d'un soucis de langue sur certaines boucles
 	Modification des boucles conditionnelles
+	Correction de l'installation (base comportant déjà des tables)
 	
 1.2.1
 	Gestion des déclinaisons lors d'un ajout Ajax
