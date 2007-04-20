@@ -25,20 +25,20 @@
 ?>
 <?php
 	include_once("classes/Variable.class.php");
-	
+
 	/* Subsitutions de type variable */
-		
+
 	function substitvariable($texte){
-				
-		ereg("\(([^\"]*)\)", "$texte", $cut);
 
-		$variable = new Variable();
-		$variable->charger($cut[1]);
+        ereg("\(([^\)]*)\)", "$texte", $cut);
 
+        $variable = new Variable();
+        $variable->charger($cut[1]);
 
-		$texte = ereg_replace("#VARIABLE\(([^\"]*)\)", "$variable->valeur", $texte);
-
-		return $texte;
+        $texte = ereg_replace("#VARIABLE\(" . $cut[1] . "\)", "$variable->valeur", $texte);
+        if(strstr($texte, "#VARIABLE")) return substitvariable($texte);
+        else return $texte;
 	}
+
 	
 ?>
