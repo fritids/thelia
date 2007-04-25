@@ -325,6 +325,12 @@
 	}
 
 	function traitement_formulaire($res){
+
+        if($navig->formcli->email !=""){
+                 $client = new Client();
+                 if( $client->existe($navig->formcli->email)) $res = ereg_replace("#EXISTE\[([^]]*)\]", "\\1", $res);
+                 else $res = ereg_replace("#EXISTE\[[^]]*\]", "", $res);
+   		}
 	
 	 	if( $_SESSION['navig']->formcli->raison == "" ) $res = ereg_replace("#RAISON\[([^]]*)\]", "\\1", $res);
 	 	else $res = ereg_replace("#RAISON\[[^]]*\]", "", $res);

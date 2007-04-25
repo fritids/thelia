@@ -1173,6 +1173,7 @@
 			$typeaff = lireTag($args, "typeaff");
 			$max = lireTag($args, "max");
 			$affmin = lireTag($args, "affmin");
+            $avance = lireTag($args, "avance");
 			
 			$i="";
 			
@@ -1237,14 +1238,30 @@
 				
 				}
 				
-				else if($typeaff == "0"){
+                else if($typeaff == "0" && ($avance == "precedente" && $pageprec != $page)){
 
-					$temp = str_replace("#PAGE_NUM", "$i", $texte);
-					$temp = str_replace("#PAGE_SUIV", "$pagesuiv", $temp);
-					$temp = str_replace("#PAGE_PREC", "$pageprec", $temp);
-					$temp = str_replace("#RUBRIQUE", "$id_rubrique", $temp);
-					$res .= $temp;
-				}						
+                        $temp = str_replace("#PAGE_NUM", "$page", $texte);
+                        $temp = str_replace("#PAGE_PREC", "$pageprec", $temp);
+                        $temp = str_replace("#RUBRIQUE", "$id_rubrique", $temp);
+                        $res .= $temp;
+                }
+
+                else if($typeaff == "0" && ($avance == "suivante" && $pagesuiv != $page)){
+
+                        $temp = str_replace("#PAGE_NUM", "$page", $texte);
+                        $temp = str_replace("#PAGE_SUIV", "$pagesuiv", $temp);
+                        $temp = str_replace("#RUBRIQUE", "$id_rubrique", $temp);
+                        $res .= $temp;
+                }
+
+                else if($typeaff == "0" && $avance == ""){
+
+                        $temp = str_replace("#PAGE_NUM", "$page", $texte);
+                        $temp = str_replace("#PAGE_SUIV", "$pagesuiv", $temp);
+                        $temp = str_replace("#PAGE_PREC", "$pageprec", $temp);
+                        $temp = str_replace("#RUBRIQUE", "$id_rubrique", $temp);
+                        $res .= $temp;
+                }					
 			
 		
 				return $res;

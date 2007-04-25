@@ -302,7 +302,7 @@
 		$client->telfixe = $telfixe;
 		$client->telport =$telport; 
 		if( preg_match("/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z.]+$/","$email1") 
-			&& $email1==$email2 && ! $client->existe($email1)) $client->email = $email1;
+			&& $email1==$email2) $client->email = $email1;
 		$client->adresse1 = $adresse1;
 		$client->adresse2 = $adresse2;
 		$client->adresse3 = $adresse3;
@@ -330,7 +330,7 @@
 			
 			
 		if($client->raison!="" && $client->prenom!="" && $client->nom!="" && $client->email!="" && $client->motdepasse!="" 
-			&& $client->email && $client->adresse1 !="" && $client->cpostal!="" && $client->ville !="" && $client->pays !="" && $obligeok){
+			&& $client->email && ! $client->existe($email1) && $client->adresse1 !="" && $client->cpostal!="" && $client->ville !="" && $client->pays !="" && $obligeok){
 			$_SESSION['navig']->client = $client;	
 
 			$client->crypter();

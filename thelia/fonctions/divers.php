@@ -241,7 +241,8 @@
 		
 			$url = substr($url, 0, $html);
 		
-		
+			$url =  html_entity_decode($url);
+			
 			$url = ereg_caracspec($url);
 
 			return $url . ".html";
