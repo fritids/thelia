@@ -66,7 +66,12 @@
 
                 $commande->maj();
         }
-        
+
+    if($colis != ""){
+		$commande->colis = $colis;
+		$commande->maj();		
+	}
+		
 	if($fichier) copy("$fichier", "../client/commande/" . $ref . ".pdf");
 
 	if($action == "supprfic") unlink("../client/commande/" . $ref . ".pdf");
@@ -268,6 +273,21 @@
      </tr>
    </table>
    <br />
+<table width="710" border="0" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="600" height="30" class="titre_cellule_tres_sombre">N&deg; de colis</td>
+  </tr>
+</table>
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="30" align="left" valign="middle" class="titre_cellule"><form action="<?php echo($_SERVER['PHP_SELF']); ?>" name="formcolis" method="post">
+               <input type="hidden" name="ref" value="<?php echo($ref); ?>">
+				<input type="text" name="colis" value="<?php echo $commande->colis ?>" /> <input type="submit" value="Valider" />
+
+             </form></td>
+  </tr>
+</table>
+<br />
    <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="600" height="30" class="titre_cellule_tres_sombre">FICHIER JOINT </td>

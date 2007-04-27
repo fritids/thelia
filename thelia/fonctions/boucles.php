@@ -1954,6 +1954,7 @@
 			$temp = str_replace("#TOTALCMD", "$total", $temp);
 			$temp = str_replace("#PORT", "$port", $temp);
 			$temp = str_replace("#TOTCMDPORT", "$totcmdport", $temp);
+			$temp = str_replace("#COLIS", "$row->colis", $temp);
 			$temp = str_replace("#FICHIER", "client/pdf/visudoc.php?ref=" . $row->ref, $temp);
 
 			$res .= $temp;

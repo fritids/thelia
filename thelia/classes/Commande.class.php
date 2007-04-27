@@ -42,11 +42,11 @@
 		var $affilie;
 		var $datelivraison;
 		var $remise;
-		var $envoi;
+		var $colis;
 		var $paiement;
 		var $statut;
 		var $table="commande";
-		var $bddvars = array("id", "client", "adresse", "date", "datefact", "ref", "transaction", "livraison", "facture", "transport", "port", "affilie", "datelivraison", "remise", "envoi", "paiement", "statut");
+		var $bddvars = array("id", "client", "adresse", "date", "datefact", "ref", "transaction", "livraison", "facture", "transport", "port", "affilie", "datelivraison", "remise", "colis", "paiement", "statut");
 
 		function Commande(){
 			$this->Baseobj();

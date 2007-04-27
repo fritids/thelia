@@ -25,6 +25,7 @@
 ?>
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Commande.class.php");
 
 	class Client extends Baseobj{
 
@@ -86,6 +87,25 @@
 		function charger_ref($ref){
 			return $this->getVars("select * from $this->table where ref=\"$ref\"");		
 		}
+		
+		function acommande(){
+			$commande = new Commande();
+			$query = "select * from $commande->table where statut>1 and client=\"" . $this->id . "\"";
+			$resul = mysql_query($query, $commande->link);
+			if(mysql_numrows($resul)) 
+				return 1;
+			else 
+				return 0;
+			
+		}
+
+		function nbcommandes(){
+			$commande = new Commande();
+			$query = "select * from $commande->table where statut>1 and client=\"" . $this->id . "\"";
+			$resul = mysql_query($query, $commande->link);
+			return mysql_numrows($resul);
+		}		
+		
 	}
 
 
