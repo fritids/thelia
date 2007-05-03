@@ -80,11 +80,15 @@
 		$classement = lireTag($args, "classement");
 		$aleatoire = lireTag($args, "aleatoire");
 		$exclusion = lireTag($args, "exclusion");
+		$deb = lireTag($args, "deb");
 		$num = lireTag($args, "num");
 		
 		$res="";
 		$search="";
-
+		$limit="";
+		
+		if(!$deb) $deb=0;
+		
 		$rubrique = new Rubrique();
 		$rubriquedesc = new Rubriquedesc();
 		
@@ -106,7 +110,7 @@
 		else $order = "order by $rubrique->table.classement";
 
 				
-		$query = "select $rubrique->table.id from $rubrique->table,$rubriquedesc->table where $rubrique->table.id=$rubriquedesc->table.rubrique $search $order";
+		$query = "select $rubrique->table.id from $rubrique->table,$rubriquedesc->table where $rubrique->table.id=$rubriquedesc->table.rubrique $search $order $limit";
 		$resul = mysql_query($query, $rubrique->link);
 	
 		$compt = 1;
@@ -172,6 +176,7 @@
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
 		$boutique = lireTag($args, "boutique");
+		$deb = lireTag($args, "deb");
 		$num = lireTag($args, "num");
 		$courant = lireTag($args, "courant");
 		$ligne = lireTag($args, "ligne");
@@ -180,6 +185,9 @@
 		
 		$search="";
 		$res="";
+		$limit="";
+		
+		if(!$deb) $deb=0;
 		
 		// pr�aration de la requ�e
 		if($id!="")  $search.=" and id=\"$id\"";
@@ -196,7 +204,7 @@
 		if($aleatoire) $order = "order by "  . " RAND()";
 		else $order = "order by classement";
 		
-		$query = "select * from $dossier->table where 1 $search $order";
+		$query = "select * from $dossier->table where 1 $search $order $limit";
 		$resul = mysql_query($query, $dossier->link);
 	
 		$dossierdesc = new Dossierdesc();
