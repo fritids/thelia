@@ -80,6 +80,7 @@
 		$classement = lireTag($args, "classement");
 		$aleatoire = lireTag($args, "aleatoire");
 		$exclusion = lireTag($args, "exclusion");
+		$num = lireTag($args, "num");
 		
 		$res="";
 		$search="";
@@ -94,6 +95,7 @@
 		if($courante == "1") $search .=" and $rubrique->table.id='$id_rubrique'";
 		else if($courante == "0") $search .=" and $rubrique->table.id!='$id_rubrique'";
 		if($ligne!="") $search.=" and $rubrique->table.ligne=\"$ligne\"";
+		if($num!="") $limit .= " limit $deb,$num";
 		if($exclusion!="") $search .= " and $rubrique->table.id not in($exclusion)";
 		
 		$search .= " and lang=" . $_SESSION['navig']->lang;
@@ -170,6 +172,7 @@
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
 		$boutique = lireTag($args, "boutique");
+		$num = lireTag($args, "num");
 		$courant = lireTag($args, "courant");
 		$ligne = lireTag($args, "ligne");
 		$aleatoire = lireTag($args, "aleatoire");
@@ -185,6 +188,7 @@
 		if($courant == "1") $search .=" and id='$id_dossier'";
 		else if($courant == "0") $search .=" and id!='$id_dossier'";
 		if($ligne != "") $search .=" and ligne='$ligne'";
+		if($num!="") $limit .= " limit $deb,$num";
 		if($exclusion!="") $search .= " and id not in($exclusion)";
 		
 		$dossier = new Dossier();
