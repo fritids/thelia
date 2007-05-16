@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+<!-- main css -->
+<!-- Commentaire conditionnel pour IE6-5.x -->
+<!--[if lt IE 7]>
+	<link rel="stylesheet" type="text/css" href="css/ie5-6.css" />
+<![endif]-->
+<!-- Commentaire conditionnel pour IE5.x -->
+<!--[if lt IE 6]>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+<![endif]-->
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<link href="menuDeroulant.css" rel="stylesheet" type="text/css" />
+	
+	</head>
+<body>
+
+	<!-- global wrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+		#INCLURE "entete.html" 
+		#INCLURE "compte.html" 
+		
+		
+			
+  	<!-- Contenu -->
+	
+		<div id="content">
+			#INCLURE "menu.html" 	
+  
+			
+  	<!-- chemin -->
+	
+			<div id="chemin">
+			<a href="index.php">Accueil boutique</a> / Mes adresses</div>
+			
+  	        <!-- formulaire -->
+	
+			<div id="fondContenu2">
+				<div class="sousTitrePage" style="overflow:hidden; zoom: 1">
+				Mon compte / Adresses de livraison				</div>
+				<div class="sousTitrePage" style="overflow:hidden; zoom: 1">
+				Ajouter une adresse de livraison			</div>
+				<form action="#URLCOURANTE" method="post" name="modifier" id="modifier">
+                    <input type="hidden" name="action" value="modifierlivraison" />
+					 <THELIA_adr type="ADRESSE" adresse="#ADRESSE_ID" client="#CLIENT_ID">
+					   <input name="id" type="hidden" value="#ID" />
+                      <input name="adresse" type="hidden" value="#ID" />
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Lib&eacute;ll&eacute;
+					de l'adresse* </div>
+					<div class="encadrementZoneDeSaisie">
+					 <input name="libelle" type="text" class="zoneDeSaisie"  value="#LIBELLE"/></input>
+					</div>
+				</div>
+					<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Civilit&eacute;
+					*</div>
+					<div class="encadrementZoneDeSaisie">
+				  <select name="raison" size="1" class="zoneDeSaisie">
+                            <option value="1" #RAISON1F>Madame</option>
+                            <option value="2" #RAISON2F>Mademoiselle</option>
+                            <option value="3" #RAISON3F>Monsieur</option>
+                       </select>
+					</div>
+				</div>
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Nom
+					*</div>
+					<div class="encadrementZoneDeSaisie">
+				 <input type="text" name="nom" class="zoneDeSaisie"  value="#NOM"/></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Pr&eacute;nom
+					*</div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="prenom" class="zoneDeSaisie"  value="#PRENOM"/></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Adresse
+					*</div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="adresse1" class="zoneDeSaisie"  value="#ADRESSE1"/></input>
+					</div>
+				</div>
+
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Adresse (suite)
+					</div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="adresse2" class="zoneDeSaisie"  value="#ADRESSE2"/></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Compl&eacute;ment d'adresse
+					</div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="adresse3" class="zoneDeSaisie"  value="#ADRESSE3"/></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Code postal
+					&deg;</div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="cpostal" class="zoneDeSaisie" value="#CPOSTAL" /></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Ville
+					*</div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="ville" class="zoneDeSaisie" value="#VILLE"/></input>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					Pays
+					*</div>
+					<div class="encadrementZoneDeSaisie">
+					
+							<select name="pays" size="1" class="zoneDeSaisie">
+                   					 <THELIA_pays type="PAYS" zdefinie="1" >
+                      						<option value="#ID" #SELECTED>#TITRE</option>
+                    				</THELIA_pays>
+         				     </select>
+					</div>
+				</div>
+				
+				<div class="ligneFormulaire">
+					<div class="titreChampForm">
+					T&eacute;l&eacute;phone fixe * </div>
+					<div class="encadrementZoneDeSaisie">
+					<input type="text" name="telfixe" class="zoneDeSaisie" value="#CLIENT_TELFIXE"/></input></div>
+					<div class="boutonDeBase120" style="overflow: hidden;zoom: 1">
+					<dl class="boutonForm120">
+					<dt><a href="javascript:document.getElementById('modifier').submit()">Valider</a></dt>
+					</dl>
+					</div>
+					
+				</div>
+				
+			   </THELIA_adr>
+		
+		</form>		
+				
+		</div>
+			  #INCLURE "pied.html"
+
+	</div>
+	
+</div>
+#INCLURE "referer.html"
+</body>
+</html>

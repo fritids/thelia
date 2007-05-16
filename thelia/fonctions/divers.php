@@ -48,19 +48,19 @@
 		
 		$trubrique = new Rubrique();
 		$trubrique->parent = $id;
-		$trubriquedesc = new Rubriquedesc();
 
 		
 		$i =  0;
  		do {
+			$trubriquedesc = new Rubriquedesc();
 			$trubrique->charger("$trubrique->parent");	
 			$trubriquedesc->charger($trubrique->id);
+			$tab[$i] = new Rubriquedesc();	
 			$tab[$i++] = $trubriquedesc;	
-
 		} while($trubrique->parent != 0); 
-	
+
 		$i--;
-	
+
 		return $tab;
 		
 	
@@ -74,11 +74,10 @@
 		
 		$tdossier = new Dossier();
 		$tdossier->parent = $id;
-		$tdossierdesc = new Dossierdesc();
-
 		
 		$i =  0;
  		do {
+			$tdossierdesc = new Dossierdesc();
 			$tdossier->charger("$tdossier->parent");	
 			$tdossierdesc->charger($tdossier->id);
 			$tab[$i++] = $tdossierdesc;	

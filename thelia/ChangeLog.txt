@@ -2,7 +2,8 @@
 	ajout support n° de colis
 	a faire : ALTER TABLE  `commande` CHANGE  `envoi`  `colis` TEXT NOT NULL
 	changement de la gestion des pages (possibilité de masquer précédente et suivante si on en a pas besoin)
-
+	deb et num utilisable dans les boucles RUBRIQUE et DOSSIER
+	
 1.2.1
 	Maj du plugin pour Dreamweaver
 	Corrections diverses
