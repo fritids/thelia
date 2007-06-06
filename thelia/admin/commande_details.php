@@ -211,7 +211,7 @@
      <tr>
        <td height="30" class="titre_cellule">TYPE DE R&Egrave;GLEMENT </td>
        <td class="cellule_sombre">
-			<?php echo($modules->getChapo()); ?>
+			<?php echo($modules->getTitre()); ?>
 	  </td>
      </tr>
      <tr>
