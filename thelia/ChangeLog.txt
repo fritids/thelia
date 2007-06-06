@@ -1,3 +1,6 @@
+1.2.3
+	ajout d'un systeme de plugins cote boutique
+	
 1.2.2
 	ajout support n° de colis
 	changement de la gestion des pages (possibilité de masquer précédente et suivante si on en a pas besoin)

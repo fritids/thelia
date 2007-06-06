@@ -44,11 +44,16 @@
 		$modules->nom = $nom;		
 		
 		$modules->maj();
-	
 		
 	}		
 
-	header("Location: modepay.php");
+	if($actif == 1){
+		include("../client/plugins/front/$nom". ".php");
+		init_plugins();
+		
+	}
+
+	header("Location: plugins_front.php");
 
 
 ?>

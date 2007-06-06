@@ -23,32 +23,3 @@
 /*                                                                                   */
 /*************************************************************************************/
 ?>
-<?php
-	include_once("pre.php");
-	include_once("auth.php");
-
-
-?>
-<?php
-	include_once("../classes/Modules.class.php");
-
-	
-?>
-<?php
-
-	if($actif != ""){
-
-		$modules = new Modules();
-		$modules->charger($nom);
-		$modules->actif = $actif;
-		$modules->nom = $nom;		
-		
-		$modules->maj();
-	
-		
-	}		
-
-	header("Location: modepay.php");
-
-
-?>
