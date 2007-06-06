@@ -1,8 +1,16 @@
 1.2.2
 	ajout support n° de colis
-	a faire : ALTER TABLE  `commande` CHANGE  `envoi`  `colis` TEXT NOT NULL
 	changement de la gestion des pages (possibilité de masquer précédente et suivante si on en a pas besoin)
 	deb et num utilisable dans les boucles RUBRIQUE et DOSSIER
+	Possibilité d'inclure du code PHP dans les squelettes (pas de short tag donc <?php). Ajoutez simplement $parsephp=1; dans les
+	squelettes contenant du php.
+	Vous devez exécutez les requêtes suivantes sur votre serveur MySQL :
+			ALTER TABLE  `pays` ADD  `tva` SMALLINT NOT NULL AFTER  `default` ;
+			UPDATE pays set tva="0";
+			UPDATE pays set tva="1" where id in(5,6,13,20,40,51,58,63,64,69,78,83,86,103,110,137,140,141,147,167);
+			ALTER TABLE  `modules` ADD  `classement` INT NOT NULL ;
+			ALTER TABLE  `commande` CHANGE  `envoi`  `colis` TEXT NOT NULL;
+
 	
 1.2.1
 	Maj du plugin pour Dreamweaver

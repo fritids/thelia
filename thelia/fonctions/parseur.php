@@ -280,6 +280,13 @@
 	
 	}
 
+	function moduleBoucle($type_boucle){
+	
+		$type_fonction = strtolower($type_boucle);
+		$type_fonction[0] = strtoupper($type_fonction[0]);
+        $fonc_boucle = "boucle" . $type_fonction;		
+		return $fonc_boucle();
+	}
 
 	function boucle_exec($type_boucle, $args, $texte){
 		
@@ -313,7 +320,7 @@
 			 	 case 'DECVAL' : $res .= boucleDecval($texte, $args); break;					 	 	 	 
 	 			 case 'RSS' : $res .= boucleRSS($texte, $args); break;	 
 	 			 case 'STOCK' : $res .= boucleStock($texte, $args); break;	 
-	 			 
+	 			 default: $res.= moduleboucle($type_boucle); break;
 			 }
 			 
 			 

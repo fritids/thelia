@@ -32,9 +32,10 @@
 		var $lang; 
 		var $zone; 
 		var $default;
-	 
+	 	var $tva;
+	
 		var $table="pays";
-		var $bddvars=array("id", "lang", "zone", "default");
+		var $bddvars=array("id", "lang", "zone", "default", "tva");
 		
 		function Pays(){
 			$this->Baseobj();	

@@ -1491,7 +1491,7 @@
 	
 		$modules = new Modules();
 		
-		$query = "select * from $modules->table where type='1' and actif='1' $search";
+		$query = "select * from $modules->table where type='1' and actif='1' $search order by classement";
 		$resul = mysql_query($query, $modules->link);
 	
 		$nbres = mysql_numrows($resul);

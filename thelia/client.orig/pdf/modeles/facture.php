@@ -87,7 +87,7 @@
 		else $pdf->useTemplate($pagesimple);		
 
 
-		$this->entete();
+		$istva = $this->entete();
 	
 		$venteprod = new Venteprod();
 	
@@ -116,7 +116,7 @@
 	        $pdf->SetFont('Arial','',8);
    	        $pdf->SetXY(42,$hauteursave);
 
-			$chapo = $venteprod->titre . " - " . $venteprod->chapo;
+			$chapo = $venteprod->titre;
 		
 			$chapo = ereg_replace("<br/>", "\n", $chapo);
 	     
@@ -125,9 +125,12 @@
 			$recy = $pdf->getY();
 			$pdf->SetFont('Arial','',8);
 
-                        $pdf->SetXY(107,$hauteursave);
-                    	$pdf->write(5,round($venteprod->tva, 2));		
-		
+            $pdf->SetXY(107,$hauteursave);
+            if($istva)
+				$pdf->write(5,round($venteprod->tva, 2));		
+			else 
+				$pdf->write(5,"N/A");
+				
 			$pdf->SetXY(127,$hauteursave);		
 	 	    $pdf->write(5,round($venteprod->prixu/($venteprod->tva/100+1), 2)); 
 			$pdf->SetXY(149,$hauteursave);		
@@ -173,16 +176,22 @@
                 $query2 = "SELECT sum(prixu*quantite) as total FROM $venteprod->table where commande='$commande->id' and tva like '19.6'";
                 $resul2 = mysql_query($query2, $venteprod->link);
                 $total19 = mysql_result($resul2, 0, "total")/1.196;
-		$tva19=$total19*19.6/100;
+				$tva19=$total19*19.6/100;
 		
                 $pdf->SetFont('Arial','',8);
                 $pdf->SetXY(179,232.5);
-                $pdf->write(10, round($total19,2));
- 	  
+                if($istva)
+                	$pdf->write(10, round($total19,2));
+ 	  			else
+					$pdf->write(10, "N/A");
+					
                 $pdf->SetFont('Arial','',8);
                 $pdf->SetXY(179,238);
-                $pdf->write(10, round($tva19, 2));
-
+                if($istva)
+					$pdf->write(10, round($tva19, 2));
+				else
+					$pdf->write(10, "N/A");
+					
                 /* 5, 5 % */
                 $query2 = "SELECT sum(prixu*quantite) as total FROM $venteprod->table where commande='$commande->id' and tva like '5.5'";
                 $resul2 = mysql_query($query2, $venteprod->link);
@@ -191,12 +200,19 @@
 
                 $pdf->SetFont('Arial','',8);
                 $pdf->SetXY(179,242.5);
-                $pdf->write(10, round($total5,2));
-
+                
+ 				if($istva)
+					$pdf->write(10, round($total5,2));
+				else
+					$pdf->write(10, "N/A");
+					
                 $pdf->SetFont('Arial','',8);
                 $pdf->SetXY(179,247.5);
-                $pdf->write(10, round($tva5, 2));
-
+                if($istva)
+					$pdf->write(10, round($tva5, 2));
+				else
+					$pdf->write(10, "N/A");
+					
                 /* 2, 1 % */
                 $query2 = "SELECT sum(prixu*quantite) as total FROM $venteprod->table where commande='$commande->id' and tva like '2.1'";
                 $resul2 = mysql_query($query2, $venteprod->link);
@@ -205,11 +221,17 @@
 
                 $pdf->SetFont('Arial','',8);
                 $pdf->SetXY(179,252.5);
-                $pdf->write(10, round($total2,2));
-
+                if($istva)
+                	$pdf->write(10, round($total2,2));
+				else
+					$pdf->write(10, "N/A");
+					
                 $pdf->SetFont('Arial','',8);
                 $pdf->SetXY(179,257.5);
-                $pdf->write(10, round($tva2, 2));
+                if($istva)
+                	$pdf->write(10, round($tva2, 2));
+				else
+					$pdf->write(10, "N/A");
 
 	
 		$pdf->SetFont('Arial','',8);
@@ -228,14 +250,14 @@
 
   		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(47,241);	  			
-    	$pdf->write(10, $modules->getChapo());
+    	$pdf->write(10, html_entity_decode($modules->getTitre()));
 
 		$modules = new Modules();
 		$modules->charger_id($commande->transport);
 	
   		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(47,248);	  			
-  	  	$pdf->write(10, $modules->getChapo());
+  	  	$pdf->write(10,  html_entity_decode($modules->getTitre()));
 
 		$pdf->Output("facture" . $commande->facture . ".pdf","I");
 		
@@ -355,6 +377,11 @@
 		$pdf->SetXY(122,$hauteur);	
   		$pdf->write(10, $paysdesc->titre);
 
+                $hauteur+=3;
+
+                $pdf->SetFont('Arial','',8);
+                $pdf->SetXY(122,$hauteur);
+                $pdf->write(10, $client->telfixe);
 
 		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(52,52);	
@@ -372,7 +399,10 @@
 		$pdf->SetXY(12,67);	  			
     	$pdf->write(10,$commande->ref);
 	
-		
+	$pays  = new Pays();
+	$pays->charger($adressecl->pays);
+	return $pays->tva; 
+
 	}
 
 

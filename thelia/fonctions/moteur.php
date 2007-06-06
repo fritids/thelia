@@ -140,6 +140,7 @@ function analyse($res){
 	if(!isset($email2)) $email2="";	
 	if(!isset($id)) $id="";	
 	if(!isset($sajax)) $sajax="";	
+	if(!isset($parsephp)) $parsephp="";	
 	
 	// création de la session si non existante
 	
@@ -219,7 +220,17 @@ function analyse($res){
 	$res = inclusion(explode("\n", $res));
 		
 	// Résultat envoyé au navigateur
-	echo perso(analyse($res));
+
+	$res =  perso(analyse($res));
+	
+	if($parsephp == 1){
+    	$res=str_replace('<'.'?php','<'.'?',$res);
+    	$res='?'.'>'.trim($res).'<'.'?';
+    	$res = eval($res);
+	}
+	
+    echo $res;
+
 
 	
 	// Reset de la commande
