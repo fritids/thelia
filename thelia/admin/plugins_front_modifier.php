@@ -48,7 +48,7 @@
 	}		
 
 	if($actif == 1){
-		include("../client/plugins/front/$nom". ".php");
+		include("../client/plugins/front/$nom/$nom". ".php");
 		init_plugins();
 		
 	}

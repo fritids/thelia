@@ -309,12 +309,20 @@
 	
 	function boucle_exec($type_boucle, $args, $texte){
 		
+		global $page;
+		
 		$res = "";
+		
 		if(! $_SESSION['navig']->client->id)
 			$client = 0;
 		else $client = $_SESSION['navig']->client->id;
 		
-		$variables = $client . $_SESSION['navig']->lang . $_SESSION['navig']->page;
+		if($page) $pagevar = $page;
+		else if($_SESSION['navig']->page)
+			$pagevar = $_SESSION['navig']->page;
+		else $pagevar = 0;
+		
+		$variables = $client . $_SESSION['navig']->lang . $pagevar;
 			
 		$rescache = cache_exec($type_boucle, $args, $texte, $variables);
 			

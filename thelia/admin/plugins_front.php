@@ -41,13 +41,13 @@
 	include_once("../classes/Modules.class.php");
 ?>
 <?php
-	$menu="paiement";
+	$menu="configuration";
 	include_once("entete.php");
 ?>
 
 <div id="contenu_int"> 
-   <p class="titre_rubrique">Gestion des modes de paiement </p>
-     <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="paiement.php" class="lien04">Gestion de paiement</a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="#" class="lien04">Gestion des modes de paiement</a>
+   <p class="titre_rubrique">Gestion des plugins du site public</p>
+   <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="configuration.php" class="lien04">Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="plugins.php" class="lien04">Gestion des plugins</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Plugins du site public</a>             
     </p>
      <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
@@ -61,7 +61,7 @@
 		
 	$i=0;
 	
-	$d = dir("../client/paiement");
+	$d = dir("../client/plugins/front");
 
 	while (false !== ($entry = $d->read())) {
 	   
@@ -73,7 +73,7 @@
 			
 			$modules = new Modules();
 			$modules->nom = $entry;
-			$modules->type="1";
+			$modules->type="3";
 			$modules->actif=0;
 			$modules->add();
 			
@@ -97,12 +97,12 @@
 	<?php 
 		if($modules->actif){
 	?>
-		<a href="modepay_modifier.php?nom=<?php echo $entry ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
+		<a href="plugins_front_modifier.php?nom=<?php echo $entry ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
 	<?php
 		} else {
 	?>
 
-		<a href="modepay_modifier.php?nom=<?php echo $entry ?>&actif=1" class="txt_vert_11">Activer </a>
+		<a href="plugins_front_modifier.php?nom=<?php echo $entry ?>&actif=1" class="txt_vert_11">Activer </a>
 		
 	<?php
 			

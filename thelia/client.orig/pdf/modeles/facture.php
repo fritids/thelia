@@ -440,7 +440,7 @@ function comptPage(){
 	        $pdf->SetFont('Arial','',8);
    	        $pdf->SetXY(42,$hauteursave);
 
-			$chapo = $venteprod->titre . " - " . $venteprod->chapo;
+            $chapo = $venteprod->titre;
 		
 			$chapo = ereg_replace("<br/>", "\n", $chapo);
 	     
