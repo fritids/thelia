@@ -55,7 +55,10 @@
 		$tempcmd->charger($id);
 		
 		$tempcmd->supprimer();
-		
+
+		$cache->vider("COMMANDE", "%");		
+		$cache->vider("VENTEPROD", "%");		
+		$cache->vider("CLIENT", "%");		
 	}
 	
 ?>

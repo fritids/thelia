@@ -30,6 +30,7 @@
 	include_once("../classes/Image.class.php");
 	include_once("../classes/Contenu.class.php");
 	include_once("../classes/Variable.class.php");
+	include_once("../classes/Cache.class.php");
 
 	if(!isset($action)) $action="";
 	
@@ -82,7 +83,9 @@
 		
 		$image->maj();
 
-	
+		$cache = new Cache();
+		$cache->vider("IMAGE", "%");		
+		$cache->vider("CONTENU", "%");
 	}
 	
 	
@@ -126,6 +129,10 @@
     		resize("../client/gfx/photos/contenu/petite/" . $fich . "_" . $lastid . "." . $extension, $photoprodw->valeur);
 		}
 	 }
+	
+		$cache = new Cache();
+		$cache->vider("IMAGE", "%");		
+		$cache->vider("CONTENU", "%");
 	}
 
 	function modifier($id, $titre, $chapo, $description){
@@ -143,7 +150,10 @@
 			$imagedesc->add();
 		else 
 			$imagedesc->maj();
-		
+
+		$cache = new Cache();
+		$cache->vider("IMAGE", "%");		
+		$cache->vider("CONTENU", "%");		
 	}
 	
 	function supprimer($id){
@@ -163,7 +173,9 @@
 			$image->supprimer();
 			$imagedesc->delete();
 			
-			
+			$cache = new Cache();
+			$cache->vider("IMAGE", "%");		
+			$cache->vider("CONTENU", "%");			
 	}	
 	
 ?>

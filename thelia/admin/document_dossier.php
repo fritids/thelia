@@ -34,7 +34,7 @@
 	include_once("../fonctions/divers.php");
 	include_once("../classes/Document.class.php");  
 	include_once("../classes/Dossier.class.php");
-    
+ 	include_once("../classes/Cache.class.php");
 ?>
 <?php
 	switch($action){
@@ -82,6 +82,11 @@
 		}
 		
 		$document->maj();
+		
+		$cache = new Cache();
+		$cache->vider("DOCUMENT", "%");		
+		$cache->vider("DOSSIER", "%");
+		$cache->vider("CONTENU", "%");			
 
 	
 	}	
@@ -114,6 +119,10 @@
 			copy("$doc", "../client/document/" . $fich . "_" . $dossier . "." . $ext);
 		}
 
+		$cache = new Cache();
+		$cache->vider("DOCUMENT", "%");		
+		$cache->vider("DOSSIER", "%");
+		$cache->vider("CONTENU", "%");
 	}
 
 
@@ -128,6 +137,10 @@
 			
 			$document->supprimer();
 			
+			$cache = new Cache();
+			$cache->vider("DOCUMENT", "%");		
+			$cache->vider("DOSSIER", "%");
+			$cache->vider("CONTENU", "%");			
 		
 	}	
 	

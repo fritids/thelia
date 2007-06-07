@@ -100,7 +100,12 @@
 	 				$rubdeclinaison->add();
 	 			}
 
-
+				$cache = new Cache();
+				$cache->vider("RUBRIQUE", "%");
+				$cache->vider("DECLINAISON", "%");
+				$cache->vider("DECLIDISP", "%");
+				$cache->vider("DECVAL", "%");
+				$cache->vider("PRODUIT", "%");
 
 	}
 

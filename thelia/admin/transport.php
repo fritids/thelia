@@ -33,12 +33,15 @@
         include_once("../classes/Zone.class.php"); 
         include_once("../classes/Modules.class.php");
         include_once("../classes/Transzone.class.php");
+		include_once("../classes/Cache.class.php");
        
 		include_once("../lib/JSON.php");
 		
 ?>
 <?php
 
+	$cache = new Cache();
+	$cache->vider("TRANSPORT", "%");
 
 	function chargert(){
 

@@ -45,7 +45,7 @@
 		var $adresse=0;
 		var $commande;
 		var $promo;
-		var $pagecur;
+		var $page;
 		var $affilie;
 		var $lang;
 		
@@ -57,7 +57,7 @@
 			$this->formcli = new Client();
 			$this->commande = new Commande();
 			$this->promo = new Promo();
-			$this->pagecur = 0;
+			$this->page = 0;
 		}
 
 

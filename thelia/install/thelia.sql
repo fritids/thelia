@@ -2057,3 +2057,19 @@ INSERT INTO `modules` VALUES (6, 'virement', 1, 0, 6);
 INSERT INTO `modules` VALUES (7, 'Colissimo', 2, 1, 1);
 INSERT INTO `modules` VALUES (8, 'Forfait', 2, 0, 2);
 INSERT INTO `modules` VALUES (9, 'Place', 2, 0, 3);
+
+-- 
+-- Structure de la table `cache`
+-- 
+
+CREATE TABLE `cache` (
+  `id` int(11) NOT NULL auto_increment,
+  `session` text NOT NULL,
+  `texte` text NOT NULL,
+  `args` text NOT NULL,
+  `variables` text NOT NULL,
+  `type_boucle` text NOT NULL,
+  `res` text NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

@@ -27,6 +27,10 @@
 
 	// ajout panier
 	function ajouter($ref){
+		
+		$cache = new Cache();
+		$cache->vider_session(session_id(), "PANIER", "%");
+		
 		if(!isset($quantite)) $quantite=1;
 
 		$perso = array();
@@ -80,11 +84,15 @@
 		
 	// suppression d'un article du panier	
 	function supprimer($article){
+			$cache = new Cache();
+			$cache->vider_session(session_id(), "PANIER", "%");
 			$_SESSION['navig']->panier->supprimer($article);
 	}
 	
 	// modification de la quantit d'un article
 	function modifier($article, $quantite){
+		$cache = new Cache();
+		$cache->vider_session(session_id(), "PANIER", "%");
 		$_SESSION['navig']->panier->modifier($article, $quantite);		
 	}
 	
@@ -285,6 +293,16 @@
 		mail($_SESSION['navig']->client->email , "$sujet", "$corps", "From: $emailcontact->valeur");	
 		mail($emailcontact->valeur , "$sujet", "$corps2", "From: $emailcontact->valeur");
 			 		
+		$cache = new Cache();
+		$cache->vider("RUBRIQUE", "%");
+		$cache->vider("PRODUIT", "%");
+		$cache->vider("VENTEPROD", "%");
+		$cache->vider("COMMANDE", "%");
+		$cache->vider("STOCK", "%");
+		$cache->vider("CLIENT", "%");
+		
+		$cache->vider_session(session_id(), "PANIER", "%");
+		
 		redirige("client/paiement/" . $modules->nom . "/" . "paiement.php" . "?total=$total");
 	}
 	
@@ -343,7 +361,10 @@
                        		$_SESSION['navig']->client = $client;
                         	$_SESSION['navig']->connecte = 1;
 	                }
-
+			
+			$cache = new Cache();
+			$cache->vider("CLIENT", "%");
+			
 			redirige("nouveau.php");
 		}	
 		
@@ -386,6 +407,10 @@
 			&& $client->email && $client->adresse1 !="" && $client->cpostal!="" && $client->ville !="" && $client->pays !="" && $obligeok){
 				$client->maj();
 		 		$_SESSION['navig']->client = $client;	
+		
+			$cache = new Cache();
+			$cache->vider("CLIENT", "%");
+				
 		 	redirige($_SESSION['navig']->urlpageret);	
 
 			}
@@ -420,7 +445,10 @@
 		
 	// cration d'une adresse de livraison	
 	function creerlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays){
-		
+
+		$cache = new Cache();
+		$cache->vider("ADRESSE", $_SESSION['navig']->client->id . "%");
+				
 		if($libelle != "" && $raison != "" && $prenom != "" && $nom != "" && $adresse1 != ""
 			 && $cpostal != "" && $ville != "" && $pays != ""){
 		
@@ -448,6 +476,9 @@
 	
 	// suppression d'une adresse de livraison
     function supprimerlivraison($id){
+		 $cache = new Cache();
+		 $cache->vider("ADRESSE", $_SESSION['navig']->client->id . "%");
+		
          $adresse = new Adresse();
          $adresse->charger($id);
          $adresse->delete();
@@ -455,7 +486,10 @@
 
 	// modification d'une adresse de livraison
 	function modifierlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays){
-	
+
+		$cache = new Cache();
+		$cache->vider("ADRESSE", $_SESSION['navig']->client->id . "%");
+			
 		$adresse = new Adresse();
 		$adresse->charger($id);
 	

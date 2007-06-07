@@ -35,7 +35,8 @@
 	include_once("../classes/Commande.class.php");
 	include_once("../classes/Venteprod.class.php");
 	include_once("../classes/Statutdesc.class.php");
-
+	include_once("../classes/Cache.class.php");
+	
 	if(!isset($action)) $action="";
 	if(!isset($type)) $type="";
 	
@@ -78,7 +79,11 @@
 				
 		$client->maj();
 
-	
+		$cache = new Cache();
+		$cache->vider("CLIENT", "%");
+		$cache->vider("COMMANDE", "%");
+		$cache->vider("VENTEPROD", "%");
+			
 		header("Location: client_visualiser.php?ref=" . $ref);
 
 	}
@@ -90,6 +95,11 @@
 		$client->charger_ref($ref);
 		$client->delete();
 
+		$cache = new Cache();
+		$cache->vider("CLIENT", "%");
+		$cache->vider("COMMANDE", "%");
+		$cache->vider("VENTEPROD", "%");
+		
 		header("Location: client.php");
 
 	}
@@ -103,6 +113,11 @@
 		$tempcmd->charger($id);
 		
 		$tempcmd->supprimer();
+		
+		$cache = new Cache();
+		$cache->vider("CLIENT", "%");
+		$cache->vider("COMMANDE", "%");
+		$cache->vider("VENTEPROD", "%");		
 
 	}
 	

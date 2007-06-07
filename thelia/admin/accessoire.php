@@ -117,6 +117,9 @@
 		
 		$accessoire->maj();
 
+		$cache = new Cache();
+		$cache->vider("PRODUIT", "%");
+		$cache->vider("ACCESSOIRE", "%");
 	
 	}
 	
@@ -141,7 +144,11 @@
 			$lastid = $accessoire->add();
 			
 		}
-		
+
+		$cache = new Cache();
+		$cache->vider("PRODUIT", "%");
+		$cache->vider("ACCESSOIRE", "%");
+				
 		return afficher($courant);
 
 	}
@@ -190,7 +197,11 @@ $res .= "	 <tr>"
 			$accessoire->charger($id);
 
 			$accessoire->supprimer();
-		
+
+			$cache = new Cache();
+			$cache->vider("PRODUIT", "%");
+			$cache->vider("ACCESSOIRE", "%");
+					
 			return afficher($courant);
 
 	}	

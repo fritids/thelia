@@ -33,7 +33,8 @@
         include_once("../classes/Zone.class.php");
         include_once("../classes/Pays.class.php");
         include_once("../classes/Paysdesc.class.php");
-      
+ 		include_once("../classes/Cache.class.php");
+     
 		include_once("../lib/JSON.php");
 
 ?>
@@ -130,6 +131,9 @@
 	 			$query = "update $pays->table set zone='" . $zcours->id . "' where id in ($list)";
 				if($list) $resul = mysql_query($query, $pays->link);
 
+				$cache = new Cache();
+				$cache->vider("TRANSPORT", "%");
+				$cache->vider("PAYS", "%");
 	}
 
 
@@ -172,7 +176,10 @@
 	 			$list = substr($list, 0, strlen($list)-1);	
 	 			$query = "update $pays->table set zone='" . $zone->id . "' where id in ($list)";
 				if($list) $resul = mysql_query($query, $pays->link);
-					
+
+				$cache = new Cache();
+				$cache->vider("TRANSPORT", "%");
+				$cache->vider("PAYS", "%");					
 
 	}
 
@@ -188,6 +195,9 @@
 				$zone->charger($zcours);
 				$zone->delete();
 
+				$cache = new Cache();
+				$cache->vider("TRANSPORT", "%");
+				$cache->vider("PAYS", "%");
 	}	
 	
 ?>

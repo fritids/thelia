@@ -30,6 +30,7 @@
 	include_once("../classes/Image.class.php");
 	include_once("../classes/Produit.class.php");
 	include_once("../classes/Variable.class.php");
+	include_once("../classes/Cache.class.php");
 	
 	if(!isset($action)) $action="";
 
@@ -83,7 +84,10 @@
 		
 		$image->maj();
 
-	
+		$cache = new Cache();
+		$cache->vider("IMAGE", "%");		
+		$cache->vider("PRODUIT", "%");
+			
 	}
 	
 	
@@ -131,7 +135,10 @@
 		
 	}	
 		
-
+	$cache = new Cache();
+	$cache->vider("IMAGE", "%");		
+	$cache->vider("PRODUIT", "%");
+	
 	}
 
 	function modifier($id, $titre, $chapo, $description){
@@ -149,7 +156,10 @@
 			$imagedesc->add();
 		else 
 			$imagedesc->maj();
-		
+
+		$cache = new Cache();
+		$cache->vider("IMAGE", "%");		
+		$cache->vider("PRODUIT", "%");		
 	}
 
 	function supprimer($id){
@@ -166,7 +176,10 @@
 			
 			$image->supprimer();
 			$imagedesc->delete();
-			
+
+			$cache = new Cache();
+			$cache->vider("IMAGE", "%");		
+			$cache->vider("PRODUIT", "%");			
 	}	
 	
 ?>

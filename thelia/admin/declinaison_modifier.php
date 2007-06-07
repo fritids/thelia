@@ -40,6 +40,7 @@
     include_once("../classes/Lang.class.php");  
 	include_once("../classes/Declidisp.class.php");
 	include_once("../classes/Rubdeclinaison.class.php");
+	include_once("../classes/Cache.class.php");	
 ?>
 <?php
 	switch($action){
@@ -90,6 +91,12 @@
 		
 		$declinaison->maj();
 
+		$cache = new Cache();
+		$cache->vider("DECLINAISON", "%");		
+		$cache->vider("DECLIDISP", "%");
+		$cache->vider("DECVAL", "%");
+		$cache->vider("PRODUIT", "%");
+		
 	    header("Location: declinaison.php");
 
 	}
@@ -158,7 +165,13 @@
 										
 		$declinaison->maj();
 		$declinaisondesc->maj();
-	   
+
+		$cache = new Cache();
+		$cache->vider("DECLINAISON", "%");		
+		$cache->vider("DECLIDISP", "%");
+		$cache->vider("DECVAL", "%");
+		$cache->vider("PRODUIT", "%");
+			   
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $declinaison->id);
 	}
 
@@ -216,8 +229,14 @@
 		$declidispdesc->add();
 
 	}
-	
-	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
+
+	$cache = new Cache();
+	$cache->vider("DECLINAISON", "%");		
+	$cache->vider("DECLIDISP", "%");
+	$cache->vider("DECVAL", "%");
+	$cache->vider("PRODUIT", "%");
+		
+	header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
 
 	}
 	
@@ -266,6 +285,12 @@
 		
 		$tdeclidispdesc->add();
 
+		$cache = new Cache();
+		$cache->vider("DECLINAISON", "%");		
+		$cache->vider("DECLIDISP", "%");
+		$cache->vider("DECVAL", "%");
+		$cache->vider("PRODUIT", "%");
+		
 	}
 	
 	function majdeclidisp($id, $lang){
@@ -295,6 +320,13 @@
 			
 		
 		}	
+
+		$cache = new Cache();
+		$cache->vider("DECLINAISON", "%");		
+		$cache->vider("DECLIDISP", "%");
+		$cache->vider("DECVAL", "%");
+		$cache->vider("PRODUIT", "%");		
+		
 	}	
 ?>
 <?php

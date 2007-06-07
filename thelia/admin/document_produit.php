@@ -34,7 +34,7 @@
 	include_once("../fonctions/divers.php");
 	include_once("../classes/Document.class.php");  
 	include_once("../classes/Produit.class.php");
-    
+	include_once("../classes/Cache.class.php");
 ?>
 <?php
 	
@@ -85,6 +85,10 @@
 		
 		$document->maj();
 
+		$cache = new Cache();
+		$cache->vider("DOCUMENT", "%");		
+		$cache->vider("PRODUIT", "%");
+		$cache->vider("RUBRIQUE", "%");
 	
 	}	
 	
@@ -116,6 +120,10 @@
 			copy("$doc", "../client/document/" . $fich . "_" . $produit . "." . $ext);	
 		}
 
+		$cache = new Cache();
+		$cache->vider("DOCUMENT", "%");		
+		$cache->vider("PRODUIT", "%");
+		$cache->vider("RUBRIQUE", "%");
 	}
 
 	function modifier($id, $titre, $chapo, $description){
@@ -134,7 +142,11 @@
 			$documentdesc->add();
 		else 
 			$documentdesc->maj();
-		
+
+		$cache = new Cache();
+		$cache->vider("DOCUMENT", "%");		
+		$cache->vider("PRODUIT", "%");
+		$cache->vider("RUBRIQUE", "%");		
 	}
 
 	function supprimer($id){
@@ -148,7 +160,10 @@
 			
 			$document->supprimer();
 			
-		
+			$cache = new Cache();
+			$cache->vider("DOCUMENT", "%");		
+			$cache->vider("PRODUIT", "%");
+			$cache->vider("RUBRIQUE", "%");		
 	}	
 	
 ?>

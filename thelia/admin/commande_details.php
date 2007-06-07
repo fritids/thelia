@@ -41,6 +41,7 @@
 	include_once("../classes/Statut.class.php");
 	include_once("../classes/Modules.class.php");
 	include_once("../classes/Rubrique.class.php");
+	include_once("../classes/Cache.class.php");
 
 	if(!isset($action)) $action="";
 	if(!isset($statutch)) $statutch="";
@@ -65,11 +66,17 @@
                 	$commande->genfact();
 
                 $commande->maj();
+
+				$cache = new Cache();
+				$cache->vider("COMMANDE", "%");		
+				$cache->vider("CLIENT", "%");
         }
 
     if($colis != ""){
 		$commande->colis = $colis;
-		$commande->maj();		
+		$commande->maj();
+		
+		$cache->vider("COMMANDE", "%");		
 	}
 		
 	if($fichier) copy("$fichier", "../client/commande/" . $ref . ".pdf");

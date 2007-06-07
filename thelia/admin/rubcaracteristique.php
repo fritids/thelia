@@ -121,8 +121,12 @@
 	 				$rubcaracteristique->add();
 	 			}
 
-
-
+				$cache = new Cache();
+				$cache->vider("RUBRIQUE", "%");
+				$cache->vider("CARACTERISTIQUE", "%");
+				$cache->vider("CARACDISP", "%");
+				$cache->vider("CARACVAL", "%");
+				$cache->vider("PRODUIT", "%");
 	}
 
 

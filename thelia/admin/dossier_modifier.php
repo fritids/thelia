@@ -39,7 +39,7 @@
 	include_once("../classes/Dossierdesc.class.php");
 	include_once("../classes/Lang.class.php");
 	include_once("../fonctions/divers.php");
-
+	include_once("../classes/Cache.class.php");
 ?>
 <?php
 
@@ -94,6 +94,11 @@
 		
 		$dossier->maj();
 
+		$cache = new Cache();
+		$cache->vider("DOSSIER", "%");
+		$cache->vider("CONTENU", "%");
+
+		
 	    header("Location: listdos.php?parent=$parent");
 		exit;
 	}
@@ -124,6 +129,10 @@
 		$dossier->maj();
 		$dossierdesc->maj();
 
+		$cache = new Cache();
+		$cache->vider("DOSSIER", "%");
+		$cache->vider("CONTENU", "%");
+		
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $dossier->id);
 		exit;
 
@@ -166,7 +175,10 @@
 		
 		$dossierdesc->add();
 	
-	 		
+		$cache = new Cache();
+		$cache->vider("DOSSIER", "%");
+		$cache->vider("CONTENU", "%");
+			 		
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
 		exit;
 	}
@@ -177,6 +189,10 @@
 		$dossier->charger($id);
 		$dossier->supprimer();
 
+		$cache = new Cache();
+		$cache->vider("DOSSIER", "%");
+		$cache->vider("CONTENU", "%");
+		
 	    header("Location: listdos.php?parent=" . $parent);
 		exit;
 
@@ -188,7 +204,10 @@
 		$dossier->image=0;
 		if(file_exists("../client/gfx/photos/dossier/" . $dossier->id . ".jpg")) unlink("../client/gfx/photos/dossier/" . $dossier->id . ".jpg");
 		$dossier->maj();
-	
+
+		$cache = new Cache();
+		$cache->vider("DOSSIER", "%");
+		$cache->vider("CONTENU", "%");	
 	}	
 ?>
 

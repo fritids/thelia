@@ -32,6 +32,7 @@
 ?>
 <?php
 	include_once("../classes/Devise.class.php");
+	include_once("../classes/Cache.class.php");
 
 	if($action == "modifier"){
 	
@@ -41,7 +42,10 @@
  		$devise->nom = $nom;	
  		$devise->taux = $taux;	
  		$devise->maj();
- 			
+ 
+		$cache = new Cache();
+		$cache->vider("PRODUIT", "%");		
+					
 		header("Location: devise.php");
 	}		
 	
@@ -52,7 +56,10 @@
  		$devise->nom = $nnom;	
  		$devise->taux = $ntaux;	
  		$devise->add();		
-		
+
+		$cache = new Cache();
+		$cache->vider("PRODUIT", "%");
+				
 		header("Location: devise.php");
 	}
 
@@ -61,7 +68,10 @@
 		$devise = new Devise();
  		$devise->charger($id);
  		$devise->delete();		
-		
+
+		$cache = new Cache();
+		$cache->vider("PRODUIT", "%");
+				
 		header("Location: devise.php");
 	}	
 ?>

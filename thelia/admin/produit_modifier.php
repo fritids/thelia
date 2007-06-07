@@ -65,7 +65,7 @@
     include_once("../classes/Declinaison.class.php");  
     include_once("../classes/Exdecprod.class.php");  
     include_once("../classes/Stock.class.php");  
-   
+ 	include_once("../classes/Cache.class.php");
 
 ?>
 <?php
@@ -119,6 +119,18 @@
 
 	    header("Location: parcourir.php?parent=" . $parent);
 
+		$cache = new Cache();
+		$cache->vider("RUBRIQUE", "%");
+		$cache->vider("PRODUIT", "%");
+		$cache->vider("QUANTITE", "%");
+		$cache->vider("CARACTERISTIQUE", "%");
+		$cache->vider("CARACDISP", "%");
+		$cache->vider("CARACVAL", "%");
+		$cache->vider("DECLINAISON", "%");
+		$cache->vider("DECLIDISP", "%");
+		$cache->vider("DECVAL", "%");
+		$cache->vider("STOCK", "%");
+	
 	}
 	
 	function modifier($id, $lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
@@ -262,6 +274,17 @@
 	}
 
 
+	$cache = new Cache();
+	$cache->vider("RUBRIQUE", "%");
+	$cache->vider("PRODUIT", "%");
+	$cache->vider("QUANTITE", "%");
+	$cache->vider("CARACTERISTIQUE", "%");
+	$cache->vider("CARACDISP", "%");
+	$cache->vider("CARACVAL", "%");
+	$cache->vider("DECLINAISON", "%");
+	$cache->vider("DECLIDISP", "%");
+	$cache->vider("DECVAL", "%");
+	$cache->vider("STOCK", "%");
 
 		
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
@@ -407,11 +430,20 @@
 	}
 
 
+	$cache = new Cache();
+	$cache->vider("RUBRIQUE", "%");
+	$cache->vider("PRODUIT", "%");
+	$cache->vider("QUANTITE", "%");
+	$cache->vider("CARACTERISTIQUE", "%");
+	$cache->vider("CARACDISP", "%");
+	$cache->vider("CARACVAL", "%");
+	$cache->vider("DECLINAISON", "%");
+	$cache->vider("DECLIDISP", "%");
+	$cache->vider("DECVAL", "%");
+	$cache->vider("STOCK", "%");
 
 
-
-	
-	    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
+    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
 
 	}
 
@@ -432,6 +464,18 @@
 			
 		}
 
+		$cache = new Cache();
+		$cache->vider("RUBRIQUE", "%");
+		$cache->vider("PRODUIT", "%");
+		$cache->vider("QUANTITE", "%");
+		$cache->vider("CARACTERISTIQUE", "%");
+		$cache->vider("CARACDISP", "%");
+		$cache->vider("CARACVAL", "%");
+		$cache->vider("DECLINAISON", "%");
+		$cache->vider("DECLIDISP", "%");
+		$cache->vider("DECVAL", "%");
+		$cache->vider("STOCK", "%");
+
 	}
 	
 	function supprimer($ref, $parent){
@@ -443,6 +487,19 @@
 		$stock = new Stock();
 		$query = "delete from $stock->table where produit='" . $produit->id . "'"; 
 		$resul = mysql_query($query, $stock->link);
+
+		$cache = new Cache();
+		$cache->vider("RUBRIQUE", "%");
+		$cache->vider("PRODUIT", "%");
+		$cache->vider("QUANTITE", "%");
+		$cache->vider("CARACTERISTIQUE", "%");
+		$cache->vider("CARACDISP", "%");
+		$cache->vider("CARACVAL", "%");
+		$cache->vider("DECLINAISON", "%");
+		$cache->vider("DECLIDISP", "%");
+		$cache->vider("DECVAL", "%");
+		$cache->vider("STOCK", "%");
+
 		
 	    header("Location: parcourir.php?parent=" . $parent);
 

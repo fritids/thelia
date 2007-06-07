@@ -24,30 +24,52 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("pre.php");
-	include_once("auth.php");
-
-
-?>
-<?php
-	include_once("../classes/Modules.class.php");
-	include_once("../classes/Cache.class.php");
-?>
-<?php
-
-	if($actif != ""){
-
-		$modules = new Modules();
-		$modules->charger($nom);
-		$modules->actif = $actif;
-		$modules->nom = $nom;		
-		
-		$modules->maj();
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 	
-		
-	}		
+	class Cache extends Baseobj{
 
-	header("Location: modepay.php");
+		var $id;
+		var $session;
+		var $texte;
+		var $args;
+		var $variables;
+		var $type_boucle;
+		var $res;
+		var $date;
+				
+		var $table="cache";
+		var $bddvars=array("id", "session", "texte", "args", "variables", "type_boucle", "res", "date");
+		
+		function Cache(){
+			$this->Baseobj();	
+		}
+
+
+		function charger_id($id){
+			return $this->getVars("select * from $this->table where id=\"$id\"");
+		}
+
+
+		function charger($texte, $args, $variables, $type_boucle){
+			return $this->getVars("select * from $this->table where texte=\"$texte\" and args=\"$args\" and variables=\"$variables\" and type_boucle=\"$type_boucle\"");
+		}
+
+		function charger_session($session, $texte, $args, $variables, $type_boucle){
+			return $this->getVars("select * from $this->table where session=\"$session\" and texte=\"$texte\" and args=\"$args\" and variables=\"$variables\" and type_boucle=\"$type_boucle\"");
+		}
+			
+
+		function vider($type_boucle, $variables){
+			$query = "delete from $this->table where type_boucle=\"$type_boucle\" and variables like \"$variables\"";
+			$resul = mysql_query($query, $this->link);
+		}	
+			
+		function vider_session($session, $type_boucle, $variables){
+			$query = "delete from $this->table where session=\"$session\" and type_boucle=\"$type_boucle\" and variables like \"$variables\"";
+			$resul = mysql_query($query, $this->link);
+		}	
+				
+	}
 
 
 ?>

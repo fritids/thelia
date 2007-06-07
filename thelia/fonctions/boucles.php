@@ -2090,6 +2090,9 @@
 
         function boucleRSS($texte, $args){
 
+		$cache = new Cache();
+		$cache->vider("RSS", "%");
+			
 		@ini_set('default_socket_timeout', 5);
                 
 		// rcupration des arguments

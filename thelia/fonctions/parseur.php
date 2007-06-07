@@ -288,10 +288,39 @@
 		return $fonc_boucle($texte, $args);
 	}
 
+	function cache_exec($type_boucle, $args, $texte, $variables){
+	
+		$iscache = 0;
+		$cache = new Cache();
+		
+		if($type_boucle == "PANIER")
+			$iscache = $cache->charger_session(session_id(), md5($texte), md5($args), $variables, $type_boucle);
+				
+		else 
+			$iscache = $cache->charger(md5($texte), md5($args), $variables, $type_boucle);
+		
+		
+			if($iscache)
+				return $cache->res;
+			
+		else return 0;
+		
+	}
+	
 	function boucle_exec($type_boucle, $args, $texte){
 		
 		$res = "";
+		if(! $_SESSION['navig']->client->id)
+			$client = 0;
+		else $client = $_SESSION['navig']->client->id;
 		
+		$variables = $client . $_SESSION['navig']->lang . $_SESSION['navig']->page;
+			
+		$rescache = cache_exec($type_boucle, $args, $texte, $variables);
+			
+		if($rescache != "0")
+			return $rescache;
+
 			switch($type_boucle){
 			 	 case 'RUBRIQUE' : $res .= boucleRubrique($texte, $args); break;
 			 	 case 'DOSSIER' : $res .= boucleDossier($texte, $args); break;
@@ -323,7 +352,16 @@
 	 			 default: $res.= moduleBoucle($type_boucle, $texte, $args); break;
 			 }
 			 
-			 
+			$cache = new Cache();
+			$cache->session = session_id();
+			$cache->texte = md5($texte);
+			$cache->args = md5($args);
+			$cache->type_boucle = $type_boucle;
+			$cache->res = $res;
+			$cache->variables = $variables;
+			$cache->date = date("Y-m-d H:i:s");
+			$cache->add();
+			
 			 return $res;
 			 
 		
