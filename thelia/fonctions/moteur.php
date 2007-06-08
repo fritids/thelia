@@ -225,9 +225,11 @@ function analyse($res){
 	$modules = new Modules();	
 	$query = "select * from $modules->table where type='3' and actif='1'";
 	$resul = mysql_query($query, $modules->link);
-	while($row = mysql_fetch_object($resul))
-		include("client/plugins/front/" . $row->nom . "/" . $row->nom . ".php");
-		
+	while($row = mysql_fetch_object($resul)){
+		include("client/plugins/" . $row->nom . "/" . $row->nom . ".php");
+		$action_plugin = "action_" . $row->nom;
+		$action_plugin();
+	}	
 	// Rsultat envoy au navigateur
 
 	$res =  perso(analyse($res));

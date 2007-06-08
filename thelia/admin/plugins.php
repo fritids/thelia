@@ -97,12 +97,12 @@
 	<?php 
 		if($modules->actif){
 	?>
-		<a href="plugins_front_modifier.php?nom=<?php echo $entry ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
+		<a href="plugins_modifier.php?nom=<?php echo $entry ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
 	<?php
 		} else {
 	?>
 
-		<a href="plugins_front_modifier.php?nom=<?php echo $entry ?>&actif=1" class="txt_vert_11">Activer </a>
+		<a href="plugins_modifier.php?nom=<?php echo $entry ?>&actif=1" class="txt_vert_11">Activer </a>
 		
 	<?php
 			

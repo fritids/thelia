@@ -49,11 +49,12 @@
 
 	if($actif == 1){
 		include("../client/plugins/$nom/$nom". ".php");
-		init_plugins();
+		$foncinit = "init_" . $nom;
+		$foncinit();
 		
 	}
 
-	header("Location: plugins_front.php");
+	header("Location: plugins.php");
 
 
 ?>

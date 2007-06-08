@@ -283,8 +283,7 @@
 	function moduleBoucle($type_boucle, $texte, $args){
 	
 		$type_fonction = strtolower($type_boucle);
-		$type_fonction[0] = strtoupper($type_fonction[0]);
-        $fonc_boucle = "boucle" . $type_fonction;		
+        $fonc_boucle = "boucle_" . $type_fonction;		
 		return $fonc_boucle($texte, $args);
 	}
 
@@ -309,26 +308,30 @@
 	
 	function boucle_exec($type_boucle, $args, $texte){
 		
-		global $page;
+		global $page, $nocache;
 		
 		$res = "";
 		
-		if(! $_SESSION['navig']->client->id)
-			$client = 0;
-		else $client = $_SESSION['navig']->client->id;
+		if(! $nocache && $type_boucle != "RSS"){
 		
-		if($page) $pagevar = $page;
-		else if($_SESSION['navig']->page)
-			$pagevar = $_SESSION['navig']->page;
-		else $pagevar = 0;
 		
-		$variables = $client . $_SESSION['navig']->lang . $pagevar;
+			if(! $_SESSION['navig']->client->id)
+				$client = 0;
+			else $client = $_SESSION['navig']->client->id;
+		
+			if($page) $pagevar = $page;
+			else if($_SESSION['navig']->page)
+				$pagevar = $_SESSION['navig']->page;
+			else $pagevar = 0;
+		
+			$variables = $client . $_SESSION['navig']->lang . $pagevar;
 			
-		$rescache = cache_exec($type_boucle, $args, $texte, $variables);
+			$rescache = cache_exec($type_boucle, $args, $texte, $variables);
 			
-		if($rescache != "0")
-			return $rescache;
+			if($rescache != "0")
+				return $rescache;
 
+		}
 			switch($type_boucle){
 			 	 case 'RUBRIQUE' : $res .= boucleRubrique($texte, $args); break;
 			 	 case 'DOSSIER' : $res .= boucleDossier($texte, $args); break;
