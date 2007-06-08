@@ -48,10 +48,16 @@
 	}		
 
 	if($actif == 1){
-		include("../client/plugins/$nom/$nom". ".php");
+		include_once("../client/plugins/$nom/$nom". ".php");
 		$foncinit = "init_" . $nom;
 		$foncinit();
 		
+	}
+
+	else if($actif == 0){
+		include_once("../client/plugins/$nom/$nom". ".php");
+		$foncdestroy = "destroy_" . $nom;
+		$foncdestroy();	
 	}
 
 	header("Location: plugins.php");

@@ -1,7 +1,7 @@
 1.2.3
-	ajout d'un systeme de plugins cote boutique
+	ajout d'un systeme de plugins
 	ajout d'un systeme de cache au niveau des boucles
-	
+		
 	Requetes a executer :
 	
 	REATE TABLE `cache` (
