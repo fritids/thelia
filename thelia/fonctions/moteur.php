@@ -116,6 +116,7 @@ function analyse($res){
 	if(!isset($lang)) $lang="";
 	if(!isset($affilie)) $affilie="";
 	if(!isset($action)) $action="";
+	if(!isset($append)) $append=0;
 	if(!isset($securise)) $securise=0;
 	if(!isset($transport)) $transport=0;
 	if(!isset($panier)) $panier=0;
@@ -171,7 +172,7 @@ function analyse($res){
 	// Actions
 
 	switch($action){
-		case 'ajouter' : ajouter($ref); break;
+		case 'ajouter' : ajouter($ref, $append); break;
 		case 'supprimer' : supprimer($article); break;
 		case 'modifier' : modifier($article, $quantite); break;
 		case 'connexion' : connexion($email,$motdepasse); break;	

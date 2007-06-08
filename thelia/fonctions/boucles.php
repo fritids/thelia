@@ -986,9 +986,8 @@
 			$temp = str_replace("#URL", "produit.php?ref=" . "$row->ref" . "&id_rubrique=" . "$row->rubrique", $temp);	
 			$temp = str_replace("#REWRITEURL", rewrite_prod("$row->ref"), $temp);	
 			$temp = str_replace("#GARANTIE", "$row->garantie", $temp);			
-
+			$temp = str_replace("#PANIERAPPEND", "panier.php?action=" . "ajouter" . "&" . "ref=" . "$row->ref" . "&" . "append=1", $temp);	
 			$temp = str_replace("#PANIER", "panier.php?action=" . "ajouter" . "&" . "ref=" . "$row->ref" , $temp);	
-
 			$temp = str_replace("#RUBTITRE", "$rubriquedesc->titre", $temp);
 			
 			

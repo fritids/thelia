@@ -39,17 +39,17 @@
 			$this->tabarticle=array();
 		}
 
-		function ajouter($ref, $quantite, $tdeclidisp=""){
+		function ajouter($ref, $quantite, $tdeclidisp="", $append=0){
 			
 			$existe = 0;
 			
             for($i=0; $i<$this->nbart+1; $i++)
                 if(isset($this->tabarticle[$i]))
                 	if(isset($this->tabarticle[$i]->produit->ref) && $this->tabarticle[$i]->produit->ref == $ref){
-                	      if(! count($tdeclidisp)) $existe = 1;
+                	      if(! count($tdeclidisp)) {$existe = 1; $indice = $i;}
               			  for($j=0; $j<count($this->tabarticle[$i]->perso); $j++){
 
-                   if($this->tabarticle[$i]->perso[$j] == $tdeclidisp[$j]) $existe = 1;
+                   if($this->tabarticle[$i]->perso[$j] == $tdeclidisp[$j]) {$existe = 1; $indice = $i;}
                    else { $existe = 0; break; }
                                         
                 }
@@ -60,6 +60,8 @@
 			
 			if(!$existe) 				
 				$this->tabarticle[$this->nbart] = new Article($ref, $quantite, $tdeclidisp);
+			else if($existe && $append)
+				$this->tabarticle[$indice]->quantite += $quantite;
 			
 				if(isset($this->tabarticle[$this->nbart]) && $this->tabarticle[$this->nbart]->produit->ref) $this->nbart++; 
 			

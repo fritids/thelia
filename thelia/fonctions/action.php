@@ -26,11 +26,9 @@
 <?php
 
 	// ajout panier
-	function ajouter($ref){
+	function ajouter($ref, $append=0){
 		
-		$cache = new Cache();
-		$cache->vider_session(session_id(), "PANIER", "%");
-		
+	
 		if(!isset($quantite)) $quantite=1;
 
 		$perso = array();
@@ -49,7 +47,11 @@
 			}
 		}
 
-		$_SESSION['navig']->panier->ajouter($ref, $quantite, $perso);	
+		$_SESSION['navig']->panier->ajouter($ref, $quantite, $perso, $append);	
+		
+		$cache = new Cache();
+		$cache->vider_session(session_id(), "PANIER", "%");
+		$cache->vider_session(session_id(), "QUANTITE", "%");
 		
 	}
 	
@@ -87,13 +89,19 @@
 			$cache = new Cache();
 			$cache->vider_session(session_id(), "PANIER", "%");
 			$_SESSION['navig']->panier->supprimer($article);
+			
+			$cache->vider_session(session_id(), "PANIER", "%");
+			$cache->vider_session(session_id(), "QUANTITE", "%");
 	}
 	
 	// modification de la quantit d'un article
 	function modifier($article, $quantite){
 		$cache = new Cache();
 		$cache->vider_session(session_id(), "PANIER", "%");
-		$_SESSION['navig']->panier->modifier($article, $quantite);		
+		$_SESSION['navig']->panier->modifier($article, $quantite);
+		
+		$cache->vider_session(session_id(), "PANIER", "%");
+		$cache->vider_session(session_id(), "QUANTITE", "%");		
 	}
 	
 	// connexion du client	
@@ -446,9 +454,6 @@
 	// cration d'une adresse de livraison	
 	function creerlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays){
 
-		$cache = new Cache();
-		$cache->vider("ADRESSE", $_SESSION['navig']->client->id . "%");
-				
 		if($libelle != "" && $raison != "" && $prenom != "" && $nom != "" && $adresse1 != ""
 			 && $cpostal != "" && $ville != "" && $pays != ""){
 		
@@ -467,7 +472,10 @@
 			$lastid = $adresse->add();
 			
 			$_SESSION['navig']->adresse=$lastid;
-			
+
+			$cache = new Cache();
+			$cache->vider("ADRESSE", $_SESSION['navig']->client->id . "%");
+						
 			redirige($_SESSION['navig']->urlpageret);	
 		
 		}
@@ -476,20 +484,19 @@
 	
 	// suppression d'une adresse de livraison
     function supprimerlivraison($id){
-		 $cache = new Cache();
-		 $cache->vider("ADRESSE", $_SESSION['navig']->client->id . "%");
 		
          $adresse = new Adresse();
          $adresse->charger($id);
          $adresse->delete();
+
+		 $cache = new Cache();
+		 $cache->vider("ADRESSE", $_SESSION['navig']->client->id . "%");
     }
 
 	// modification d'une adresse de livraison
 	function modifierlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays){
 
-		$cache = new Cache();
-		$cache->vider("ADRESSE", $_SESSION['navig']->client->id . "%");
-			
+		
 		$adresse = new Adresse();
 		$adresse->charger($id);
 	
@@ -511,6 +518,9 @@
 			$adresse->pays = $pays;
 			$adresse->maj();
 		}
+		
+		$cache = new Cache();
+		$cache->vider("ADRESSE", $_SESSION['navig']->client->id . "%");
 	}
 
 	// changement du mot de passe
