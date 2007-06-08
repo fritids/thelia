@@ -61,7 +61,7 @@
 		
 	$i=0;
 	
-	$d = dir("../client/plugins/front");
+	$d = dir("../client/plugins");
 
 	while (false !== ($entry = $d->read())) {
 	   
