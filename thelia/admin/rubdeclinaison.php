@@ -62,6 +62,8 @@
                $resul = mysql_query($query, $declinaison->link);
                 while($row = mysql_fetch_object($resul)){                		
 
+						$declinaisondesc = new Declinaisondesc();
+						
                 		$res = $rubdeclinaison->charger($rubrique, $row->id);
 
                 		if(($type=="h" && $res) || ($type=="d" && !$res)) continue;

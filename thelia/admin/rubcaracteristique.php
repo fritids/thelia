@@ -76,6 +76,8 @@
 
 		while($row = mysql_fetch_object($resul)){                		
 
+						$caracteristiquedesc = new Caracteristiquedesc();
+						
                 		$res = $rubcaracteristique->charger($rubrique, $row->id);
                 		if(($type=="h" && $res) || ($type=="d" && !$res)) continue;
 
