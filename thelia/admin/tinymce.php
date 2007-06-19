@@ -39,7 +39,7 @@
 	    elements : "description",
 		theme : "advanced",
 		plugins : "table,advlink",
-		theme_advanced_disable : "bold,italic,underline,hr,strikethrough,justifyleft,justifycenter,justifyright,justifyfull,formatselect,separator,help,anchor,cleanup,link,unlink,bullist,numlist,outdent,indent,undo,redo,removeformat,visualaid,image",
+	//	theme_advanced_disable : "bold,italic,underline,hr,strikethrough,justifyleft,justifycenter,justifyright,justifyfull,formatselect,separator,help,anchor,cleanup,link,unlink,bullist,numlist,outdent,indent,undo,redo,removeformat,visualaid,image",
 		theme_advanced_buttons3_add_before : "tablecontrols,separator",
 		theme_advanced_toolbar_location : "top",
 		theme_advanced_toolbar_align : "left",

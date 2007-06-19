@@ -1792,6 +1792,7 @@ CREATE TABLE `promo` (
   `mini` float NOT NULL default '0',
   `utilise` smallint(6) NOT NULL default '0',
   `illimite` smallint(6) NOT NULL default '0',
+  `datefin` datetime NOT NULL,
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM AUTO_INCREMENT=1 ;
 

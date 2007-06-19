@@ -41,7 +41,7 @@
 		exit;
 	}
 	
-	// renvoie le chemin pour aller ˆ une rubrique donnŽe
+	// renvoie le chemin pour aller à une rubrique donnée
 	function chemin($id){
 
 		$tab ="";
@@ -256,10 +256,10 @@
 		return $fichier;
 	}
 
-	// remplacement des caractres spŽciaux + accents
+	// remplacement des caractères spéciaux + accents
 	function ereg_caracspec($chaine){
 		
-		$avant = "ˆ‡‰‹ŠŒ˜—™›š¿Ž‘“’”•œžŸØ–çåËÌ€‚ƒæéèîïñ¯Í…òóô†";  
+		$avant = "àáâãäåòóôõöøèéêëçìíîïùúûüÿñÁÂÀÅÃÄÇÉÊÈËÓÔÒØÕÖÚÛÙÜ";  
   		$apres = "aaaaaaooooooeeeeciiiiuuuuynaaaaaaceeeeoooooouuuu"; 
 		
 		$chaine = strtolower($chaine);
@@ -277,7 +277,7 @@
 		return $chaine;
 	}
 	
-	// hiŽrarchie des rubriques
+	// hiérarchie des rubriques
 	function arbreBoucle($depart, $profondeur=0, $i=0){
 		$rec="";
 		$i++;
@@ -326,7 +326,7 @@
 		return $rec;
 	}
 
-	// hiŽrarchie des dossiers
+	// hiérarchie des dossiers
 	function arbreBoucle_dos($depart, $profondeur=0, $i=0){
 
 		$rec="";
@@ -449,7 +449,7 @@
 
  	}
 
-	// gŽnŽration mot de passe
+	// génération mot de passe
 	function genpass($size){ 
 		 $key_g = ""; 
  		 $letter = "abcdefghijklmnopqrstuvwxyz"; 
@@ -466,7 +466,7 @@
   		return $key_g; 
 }
  
- 	// gŽnŽration de code
+ 	// génération de code
 	function gencode($size){ 
 		 $key_g = ""; 
 		 $letter="";
@@ -483,7 +483,7 @@
   		return $key_g; 
 }
   
- 	// envoie de fichier en pice jointe
+ 	// envoie de fichier en pièce jointe
 	function mail_fichier($to , $sujet , $message , $fichier , $typemime , $nom , $reply , $from){ 
   $limite = "_parties_".md5(uniqid (rand())); 
   
@@ -519,7 +519,7 @@
 $reply\nFrom:$from\n".$mail_mime); 
 }
 	
-	// sŽrialisation de tableau
+	// sérialisation de tableau
    function tabSerialise($tab){
  	  	$res = "[";
    	
@@ -535,7 +535,7 @@ $reply\nFrom:$from\n".$mail_mime);
   // suppression d'accent
   function supprAccent($texte) {
   
-	return strtr( $texte,"ËçåÌ€ˆ‡‰‹ŠŒñîïÍ…¯˜—™›š¿éƒæèŽ‘‚íêëì“’”•ôòó†œžŸØ„–",
+	return strtr( $texte,"ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ",
 	"AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn" );
   
   }
@@ -591,7 +591,7 @@ $reply\nFrom:$from\n".$mail_mime);
 		return $port->calcule();
 	} 
 
-	// vŽrification de l'existance d'une url
+	// vérification de l'existance d'une url
 	function url_exists($url)
 	{
  	$handle = @fopen($url, "r");

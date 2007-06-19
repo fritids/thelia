@@ -292,7 +292,7 @@
 		$iscache = 0;
 		$cache = new Cache();
 		
-		if($type_boucle == "PANIER")
+		if($type_boucle == "PANIER" || $type_boucle == "QUANTITE" || $type_boucle == "TRANSPORT")
 			$iscache = $cache->charger_session(session_id(), md5($texte), md5($args), $variables, $type_boucle);
 				
 		else 
@@ -312,7 +312,7 @@
 		
 		$res = "";
 		
-		if(! $nocache && $type_boucle != "RSS"){
+		if(! $nocache && !strstr("$args", "nocache=\"1\"")){
 		
 		
 			if(! $_SESSION['navig']->client->id)

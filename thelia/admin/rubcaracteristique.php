@@ -109,13 +109,6 @@
 	 			$query = "delete from $rubcaracteristique->table where rubrique='$rubrique'";	
 				$resul = mysql_query($query, $rubcaracteristique->link);
 
-
-	 			for($i=0; $i<count($resh); $i++){
-	 				$caracval = new Caracval();
-   					$caracval->charger($rubrique, $resh[$i]);
-	 				$caracval->delete();
-	 			}
-
 				
 	 			for($i=0; $i<count($resd); $i++){
 	 				$rubcaracteristique->rubrique = $rubrique;

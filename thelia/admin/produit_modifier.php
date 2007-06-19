@@ -122,6 +122,7 @@
 		$cache = new Cache();
 		$cache->vider("RUBRIQUE", "%");
 		$cache->vider("PRODUIT", "%");
+		$cache->vider("PAGE", "%");
 		$cache->vider("QUANTITE", "%");
 		$cache->vider("CARACTERISTIQUE", "%");
 		$cache->vider("CARACDISP", "%");
@@ -277,6 +278,7 @@
 	$cache = new Cache();
 	$cache->vider("RUBRIQUE", "%");
 	$cache->vider("PRODUIT", "%");
+	$cache->vider("PAGE", "%");
 	$cache->vider("QUANTITE", "%");
 	$cache->vider("CARACTERISTIQUE", "%");
 	$cache->vider("CARACDISP", "%");
@@ -433,6 +435,7 @@
 	$cache = new Cache();
 	$cache->vider("RUBRIQUE", "%");
 	$cache->vider("PRODUIT", "%");
+	$cache->vider("PAGE", "%");
 	$cache->vider("QUANTITE", "%");
 	$cache->vider("CARACTERISTIQUE", "%");
 	$cache->vider("CARACDISP", "%");
@@ -467,6 +470,7 @@
 		$cache = new Cache();
 		$cache->vider("RUBRIQUE", "%");
 		$cache->vider("PRODUIT", "%");
+		$cache->vider("PAGE", "%");
 		$cache->vider("QUANTITE", "%");
 		$cache->vider("CARACTERISTIQUE", "%");
 		$cache->vider("CARACDISP", "%");
@@ -491,6 +495,7 @@
 		$cache = new Cache();
 		$cache->vider("RUBRIQUE", "%");
 		$cache->vider("PRODUIT", "%");
+		$cache->vider("PAGE", "%");
 		$cache->vider("QUANTITE", "%");
 		$cache->vider("CARACTERISTIQUE", "%");
 		$cache->vider("CARACDISP", "%");

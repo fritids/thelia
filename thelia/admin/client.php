@@ -84,7 +84,7 @@
   	if($page<$nbpage) $pagesuiv=$page+1;
   	else $pagesuiv=$page;
   	 
-  	$ordclassement = "order by nom";
+  	$ordclassement = "order by ref desc";
 
 ?>
 

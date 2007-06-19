@@ -130,18 +130,27 @@
 				$pdf->write(5,round($venteprod->tva, 2));		
 			else 
 				$pdf->write(5,"N/A");
+			
+			$pdf->SetXY(127,$hauteursave);
+			if($istva)	
+	 	    	$pdf->write(5,round($venteprod->prixu/($venteprod->tva/100+1), 2)); 
 				
-			$pdf->SetXY(127,$hauteursave);		
-	 	    $pdf->write(5,round($venteprod->prixu/($venteprod->tva/100+1), 2)); 
+			else
+				$pdf->write(5,"N/A"); 
+				
 			$pdf->SetXY(149,$hauteursave);		
 		    $pdf->write(5,$venteprod->prixu); 
 			$pdf->SetFont('Arial','',8);
 			$pdf->SetXY(170,$hauteursave);		
             $pdf->write(5,$venteprod->quantite); 
 			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(183,$hauteursave);		
-    	    $pdf->write(5, round(($venteprod->quantite*$venteprod->prixu) /($venteprod->tva/100+1), 2)); 
-
+			$pdf->SetXY(183,$hauteursave);	
+			
+			if($istva)		
+    	    	$pdf->write(5, round(($venteprod->quantite*$venteprod->prixu) /($venteprod->tva/100+1), 2)); 
+			else
+				$pdf->write(5, "N/A"); 
+			
 			$hauteur=$recy + 5;
 
 			if($hauteur > 220){

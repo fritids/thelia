@@ -70,7 +70,7 @@
 	/* Gestion des boucles de type Rubrique*/
 	function boucleRubrique($texte, $args){
 		global $id_rubrique;
-		// r�cup�ration des arguments
+		// récupération des arguments
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
 		$boutique = lireTag($args, "boutique");
@@ -92,7 +92,7 @@
 		$rubrique = new Rubrique();
 		$rubriquedesc = new Rubriquedesc();
 		
-		// pr�paration de la req�ete
+		// préparation de la reqûete
 		if($id!="")  $search.=" and $rubrique->table.id in ($id)";
 		if($parent!="") $search.=" and $rubrique->table.parent=\"$parent\"";
 		if($boutique != "") $search .=" and $rubrique->table.boutique='$boutique'";
@@ -172,7 +172,7 @@
 	
 		global $id_dossier;
 		
-		// r�cup�ration des arguments
+		// récupération des arguments
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
 		$boutique = lireTag($args, "boutique");
@@ -189,7 +189,7 @@
 		
 		if(!$deb) $deb=0;
 		
-		// pr�aration de la requ�e
+		// prÔøΩaration de la requÔøΩe
 		if($id!="")  $search.=" and id=\"$id\"";
 		if($parent!="") $search.=" and parent=\"$parent\"";
 		if($boutique != "") $search .=" and boutique='$boutique'";
@@ -252,7 +252,7 @@
 	
 	function boucleImage($texte, $args){
 
-		// r�cup�ration des arguments
+		// récupération des arguments
 		$produit = lireTag($args, "produit");
 		$id = lireTag($args, "id");
 		$num = lireTag($args, "num");
@@ -415,7 +415,7 @@
 
 	/* Gestion des boucles de type Client*/
 	function boucleClient($texte, $args){
-		// r�cup�ration des arguments
+		// récupération des arguments
 		$id = lireTag($args, "id");
 		$ref = lireTag($args, "ref");
 		$raison = lireTag($args, "raison");
@@ -430,7 +430,7 @@
 		$search="";
 		$res="";
 		
-		// pr�aration de la requ�e
+		// prÔøΩaration de la requÔøΩe
 		if($id!="")  $search.=" and id=\"$id\"";
 		if($ref!="")  $search.=" and ref=\"$ref\"";
 		if($raison!="")  $search.=" and raison=\"$raison\"";
@@ -484,7 +484,7 @@
 	
 	function boucleDevise($texte, $args){
 
-		// r�cup�ration des arguments
+		// récupération des arguments
 		$produit = lireTag($args, "produit");
 		$id = lireTag($args, "id");
 		$somme = lireTag($args, "somme");
@@ -509,7 +509,7 @@
 	
 		$nbres = mysql_numrows($resul);
 		if(!$nbres) return "";
-
+		
 		while( $row = mysql_fetch_object($resul)){
 			$devise->charger($row->id);
 			$prix = round($prod->prix * $devise->taux, 2);
@@ -534,7 +534,7 @@
 
 	function boucleDocument($texte, $args){
 
-		// r�cup�ration des arguments
+		// récupération des arguments
 		$produit = lireTag($args, "produit");
 		$rubrique = lireTag($args, "rubrique");
 		$nb = lireTag($args, "nb");
@@ -595,7 +595,7 @@
 
 	function boucleAccessoire($texte, $args){
 
-		// r�cup�ration des arguments
+		// récupération des arguments
 		$produit = lireTag($args, "produit");
 		$num = lireTag($args, "num");
 		$aleatoire = lireTag($args, "aleatoire");
@@ -631,7 +631,7 @@
 	function boucleProduit($texte, $args, $type=0){
 			global $page, $totbloc, $ref, $pagesess;
 			
-			// r�cup�ration des arguments
+			// récupération des arguments
 			$rubrique = lireTag($args, "rubrique");
 			$boutique = lireTag($args, "boutique");
 			$deb = lireTag($args, "deb");
@@ -685,7 +685,7 @@
 			$res="";
 			$virg="";
 			
-			// pr�aration de la requ�e
+			// prÔøΩaration de la requÔøΩe
 			
 			if($courant == "1") $search .= " and ref=\"$ref\"";
 			else if($courant == "0") $search .= " and ref!=\"$ref\"";
@@ -953,8 +953,8 @@
 			$prix = round($prix, 2);
 			$prix2 = round($prix2, 2);
 		
-			$prix = number_format($prix, 2); 
-			$prix2 = number_format($prix2, 2); 
+			$prix = number_format($prix, 2, ".", ""); 
+			$prix2 = number_format($prix2, 2, ".", ""); 
 			
 			if($deb != "" && !$page) $debcourant+=$deb-1;
 
@@ -1004,7 +1004,7 @@
 	function boucleContenu($texte, $args, $type=0){
 			global $page, $totbloc, $id_contenu;
 			
-			// r�cup�ration des arguments
+			// récupération des arguments
 			$dossier = lireTag($args, "dossier");
 			$boutique = lireTag($args, "boutique");
 			$deb = lireTag($args, "deb");
@@ -1032,7 +1032,7 @@
 			$limit="";
 			$res="";
 			
-			// pr�aration de la requ�e
+			// prÔøΩaration de la requÔøΩe
 			if($dossier!=""){
 				if($profondeur == "") $profondeur=0;
 				$rec = arbreBoucle_dos($dossier, $profondeur);
@@ -1176,7 +1176,7 @@
 	function bouclePage($texte, $args){
 			global $page, $id_rubrique;
 			
-			// r�cup�ration des arguments
+			// récupération des arguments
 			
 			$num = lireTag($args, "num");
 			$courante = lireTag($args, "courante");
@@ -1365,10 +1365,10 @@
 				
 			}	
 		
-			$prix = number_format($prix, 2); 
-			$total = number_format($total, 2); 
+			$prix = number_format($prix, 2, ".", ""); 
+			$total = number_format($total, 2, ".", ""); 
 			$totcmdport = number_format($totcmdport, 2); 
-			$port = number_format($port, 2); 
+			$port = number_format($port, 2, ".", ""); 
 
 			$temp = str_replace("#REF", $_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $texte);
 			$temp = str_replace("#TITRE", $produitdesc->titre, $temp);
@@ -1397,18 +1397,22 @@
 	
 		
 	function boucleQuantite($texte, $args){
-		// r�cup�ration des arguments
+		// récupération des arguments
 
 		$res="";
 	
 		$article = lireTag($args, "article");
+		$max = lireTag($args, "max");
 		
 		$prodtemp = new Produit();
 		$prodtemp->charger($_SESSION['navig']->panier->tabarticle[$article]->produit->ref);
 
+		if($max == "") 
+			$max = $prodtemp->quantite;
+			
 		$j = 0;
 		
-		for($i=1; $i<$prodtemp->quantite; $i++){
+		for($i=1; $i<$max; $i++){
 			if($i==$_SESSION['navig']->panier->tabarticle[$article]->quantite) $selected=" selected";
 			else $selected="";
 		
@@ -1426,7 +1430,7 @@
 	function boucleChemin($texte, $args){
 		global $id_rubrique;
 
-		// r�cup�ration des arguments
+		// récupération des arguments
 
 		$rubrique = lireTag($args, "rubrique");		
 		$profondeur = lireTag($args, "profondeur");		
@@ -1439,7 +1443,7 @@
 		$search ="";
 		$res="";
 		
-		// pr�aration de la requ�e
+		// prÔøΩaration de la requÔøΩe
 		if($rubrique!="" && isset($id))  $search.=" and id=\"$id\"";
 
 		$trubrique = new Rubrique();
@@ -1485,7 +1489,7 @@
 		$id = lireTag($args, "id");		
 		$search ="";
 	
-		// pr�aration de la requ�e
+		// prÔøΩaration de la requÔøΩe
 		if($id!="")  $search.=" and id=\"$id\"";
 	
 		$modules = new Modules();
@@ -1532,7 +1536,7 @@
 		$search ="";
 		$res="";
 		
-		// pr�aration de la requ�e
+		// prÔøΩaration de la requÔøΩe
 		if($id!="")  $search.=" and id=\"$id\"";
 		if($zone!="")  $search.=" and zone=\"$zone\"";
 		if($zdefinie!="") $search.=" and zone!=\"-1\"";
@@ -1590,7 +1594,7 @@
 		$search ="";
 		$res="";
 		
-		// pr�aration de la requ�e
+		// prÔøΩaration de la requÔøΩe
 		 
 		if($produit!=""){
 			$tprod = new Produit();
@@ -1658,7 +1662,7 @@
 		
 		$search ="";
 		
-		// pr�aration de la requ�e
+		// prÔøΩaration de la requÔøΩe
 		if($caracteristique!="")  $search.=" and caracteristique=\"$caracteristique\"";
 		if($id !="") $search.=" and id=\"$id\"";
 		if($classement == "alpha") $order="order by titre";
@@ -1742,7 +1746,7 @@
 		$search ="";
 		$res="";
 		
-		// pr�aration de la requ�e
+		// prÔøΩaration de la requÔøΩe
 		$search.=" and caracteristique=\"$caracteristique\"";
 		$search.=" and produit=\"$produit\"";
 		
@@ -1796,7 +1800,7 @@
 		$adresse = new Adresse();
 	
 
-		// r�cup�ration des arguments
+		// récupération des arguments
 
 		$adresse_id = lireTag($args, "adresse");		
 		$client_id = lireTag($args, "client");
@@ -1808,7 +1812,7 @@
 		$raison[2] = "Mlle";
 		$raison[3] = "M";
 				
-		// pr�aration de la requ�e
+		// prÔøΩaration de la requÔøΩe
 		if($adresse_id!="")  $search.=" and id=\"$adresse_id\"";
 		if($client_id!="")  $search.=" and client=\"$client_id\"";
 		
@@ -1904,7 +1908,7 @@
 		$commande = new Commande();
 	
 	
-		// r�cup�ration des arguments
+		// récupération des arguments
 
 		$commande_ref = lireTag($args, "ref");		
 		$client_id = lireTag($args, "client");
@@ -1915,7 +1919,7 @@
 		$search ="";
 		$res="";
 		
-		// pr�aration de la requ�e
+		// prÔøΩaration de la requÔøΩe
 		if($commande_ref!="")  $search.=" and ref=\"$commande_ref\"";
 		if($client_id!="")  $search.=" and client=\"$client_id\"";
 		if($statut!="" && $statut!="paye")  $search.=" and statut=\"$statut\"";
@@ -1979,7 +1983,7 @@
 	
 	function boucleVenteprod($texte, $args){	
 	
-		// r�cup�ration des arguments
+		// récupération des arguments
 		$commande_id = lireTag($args, "commande");		
 		$produit = lireTag($args, "produit");
 		$stat = lireTag($args, "stat");
@@ -1987,7 +1991,7 @@
 		$search ="";
 		$res="";
 		
-		// pr�paration de la requ�te
+		// préparation de la requête
 		if($commande_id!="")  $search.=" and commande=\"$commande_id\"";		
 		if($produit!="")  $search.=" and ref=\"$produit\"";		
 	
@@ -2002,9 +2006,9 @@
 		
 		while( $row = mysql_fetch_object($resul)){
 			
-			$prixu = number_format($row->prixu, 2);
+			$prixu = number_format($row->prixu, 2, ".", "");
 			$totalprod = $row->prixu * $row->quantite;
-			$totalprod = number_format($totalprod, 2);
+			$totalprod = number_format($totalprod, 2, ".", "");
 			
 			$query = "select count(*) as nbvente from $venteprod->table where ref=\"" . $row->ref . "\"";
 			$resul = mysql_query($query, $venteprod->link);
@@ -2031,7 +2035,7 @@
 
 	function boucleTransport($texte, $args){	
 
-		// r�cup�ration des arguments
+		// récupération des arguments
 
 		$id = lireTag($args, "id");		
 
@@ -2094,7 +2098,7 @@
 			
 		@ini_set('default_socket_timeout', 5);
                 
-		// r�cup�ration des arguments
+		// récupération des arguments
                 $url = lireTag($args, "url");
                 $nb = lireTag($args, "nb");
 				$deb = lireTag($args, "deb");
@@ -2157,7 +2161,7 @@
 		$search ="";
 		$res="";
 		
-		// pr�paration de la requ�te
+		// préparation de la requête
 		if($rubrique!="")  $search.=" and rubrique=\"$rubrique\"";
 		if($id!="")  $search.=" and id=\"$id\"";
 			
@@ -2203,7 +2207,7 @@
 		$tabliste[0]="";
 		$res="";
 		
-		// pr�paration de la requ�te
+		// préparation de la requête
 		if($declinaison!="")  $search.=" and declinaison=\"$declinaison\"";
 		if($id !="") $search.=" and id=\"$id\"";
 		$tdeclidisp = new Declidisp();

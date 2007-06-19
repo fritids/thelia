@@ -35,7 +35,7 @@
 		
 		$i = 0;
 		
-		// vŽrification si un produit avec la mme dŽclinaison est dŽjˆ prŽsent
+		// vérification si un produit avec la même déclinaison est déjà présent
 		foreach ($_POST as $key => $valeur) {
 			
 			if(strstr($key, "declinaison")){
@@ -81,23 +81,22 @@
 		$promo = new Promo();
 		$promo->charger($code);
 		$_SESSION['navig']->promo = $promo;	
-
+		$cache = new Cache();
+		$cache->vider_session(session_id(), "PANIER", "%");
 	}
 		
 	// suppression d'un article du panier	
 	function supprimer($article){
 			$cache = new Cache();
-			$cache->vider_session(session_id(), "PANIER", "%");
 			$_SESSION['navig']->panier->supprimer($article);
 			
 			$cache->vider_session(session_id(), "PANIER", "%");
 			$cache->vider_session(session_id(), "QUANTITE", "%");
 	}
 	
-	// modification de la quantitŽ d'un article
+	// modification de la quantité d'un article
 	function modifier($article, $quantite){
 		$cache = new Cache();
-		$cache->vider_session(session_id(), "PANIER", "%");
 		$_SESSION['navig']->panier->modifier($article, $quantite);
 		
 		$cache->vider_session(session_id(), "PANIER", "%");
@@ -113,6 +112,10 @@
 		if($rec) {
 			$_SESSION['navig']->client = $client;
 			$_SESSION['navig']->connecte = 1; 
+			$cache = new Cache();
+			$cache->vider_session(session_id(), "PANIER", "%");
+			$cache->vider_session(session_id(), "QUANTITE", "%");
+			$cache->vider_session(session_id(), "TRANSPORT", "%");
 			if($_SESSION['navig']->urlpageret) redirige($_SESSION['navig']->urlpageret);
 			else redirige("index.php");
 		}
@@ -121,20 +124,29 @@
 		
 	}
 	
-	// dŽconnexion du client
+	// déconnexion du client
 	function deconnexion(){
 
 		$_SESSION['navig']->client= new Client();
-		$_SESSION['navig']->connecte = 0;		
+		$_SESSION['navig']->connecte = 0;	
+		$cache = new Cache();
+		$cache->vider_session(session_id(), "PANIER", "%");
+		$cache->vider_session(session_id(), "QUANTITE", "%");
+		$cache->vider_session(session_id(), "TRANSPORT", "%");	
 		redirige($_SESSION['navig']->urlpageret);		
 	}
 
 	// modification de l'adresse en cours	
 	function modadresse($adresse){
 		$_SESSION['navig']->adresse=$adresse;
+		$cache = new Cache();
+		$cache->vider_session(session_id(), "ADRESSE", "%");
+		$cache->vider_session(session_id(), "PAYS", "%");
+		$cache->vider_session(session_id(), "CLIENT", "%");
+		$cache->vider_session(session_id(), "TRANSPORT", "%");
 	}
 	
-	// procŽdure de paiement
+	// procédure de paiement
 	function paiement($type_paiement){
 	
 		$total = 0;
@@ -209,7 +221,7 @@
 												
 			for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
 				
-				// diminution des stocks de dŽclinaison
+				// diminution des stocks de déclinaison
 				$stock->charger($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur, $_SESSION['navig']->panier->tabarticle[$i]->produit->id);
                 $stock->valeur-=$_SESSION['navig']->panier->tabarticle[$i]->quantite;
                 $stock->maj();
@@ -314,7 +326,7 @@
 		redirige("client/paiement/" . $modules->nom . "/" . "paiement.php" . "?total=$total");
 	}
 	
-	// crŽation d'un compte
+	// création d'un compte
 	function creercompte($raison, $entreprise, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2, $parrain){
 
 		global $obligetelfixe, $obligetelport;
@@ -376,7 +388,11 @@
 			redirige("nouveau.php");
 		}	
 		
-		else redirige("formulerr.php");
+		else {
+				$cache = new Cache();
+				$cache->vider_session(session_id(), "PAYS", "%");
+				redirige("formulerr.php");
+		}		
 	}
 	
 	// modification de compte	
@@ -418,6 +434,7 @@
 		
 			$cache = new Cache();
 			$cache->vider("CLIENT", "%");
+			$cache->vider("PAYS", "%");
 				
 		 	redirige($_SESSION['navig']->urlpageret);	
 
@@ -451,7 +468,7 @@
 
 	}
 		
-	// crŽation d'une adresse de livraison	
+	// création d'une adresse de livraison	
 	function creerlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays){
 
 		if($libelle != "" && $raison != "" && $prenom != "" && $nom != "" && $adresse1 != ""

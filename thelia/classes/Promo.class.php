@@ -35,9 +35,10 @@
 		var $mini;
 		var $utilise;
 		var $illimite;
+		var $datefin;
 		
 		var $table="promo";
-		var $bddvars = array("id", "code", "type", "valeur", "mini", "utilise", "illimite");
+		var $bddvars = array("id", "code", "type", "valeur", "mini", "utilise", "illimite", "datefin");
 
 		function Promo(){
 			$this->Baseobj();	

@@ -1,10 +1,11 @@
-1.2.3
+1.3.0
 	ajout d'un systeme de plugins
 	ajout d'un systeme de cache au niveau des boucles
-		
+	Date de validit√© sur code promo
+	atrribut nocache:"1" sur toutes les boucles si on ne souhaite pas mettre en cache	
 	Requetes a executer :
 	
-	REATE TABLE `cache` (
+	CREATE TABLE `cache` (
 	  `id` int(11) NOT NULL auto_increment,
 	  `session` text NOT NULL,
 	  `texte` text NOT NULL,
@@ -16,13 +17,16 @@
 	  PRIMARY KEY  (`id`)
 	) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 	
+	ALTER TABLE  `promo` ADD  `datefin` DATETIME NOT NULL ;
+	
+	
 1.2.2
-	ajout support n° de colis
-	changement de la gestion des pages (possibilité de masquer précédente et suivante si on en a pas besoin)
+	ajout support n¬∞ de colis
+	changement de la gestion des pages (possibilit√© de masquer pr√©c√©dente et suivante si on en a pas besoin)
 	deb et num utilisable dans les boucles RUBRIQUE et DOSSIER
-	Possibilité d'inclure du code PHP dans les squelettes (pas de short tag donc <?php). Ajoutez simplement $parsephp=1; dans les
+	Possibilit√© d'inclure du code PHP dans les squelettes (pas de short tag donc <?php). Ajoutez simplement $parsephp=1; dans les
 	squelettes contenant du php.
-	Vous devez exécutez les requêtes suivantes sur votre serveur MySQL :
+	Vous devez ex√©cutez les requ√™tes suivantes sur votre serveur MySQL :
 			ALTER TABLE  `pays` ADD  `tva` SMALLINT NOT NULL AFTER  `default` ;
 			UPDATE pays set tva="0";
 			UPDATE pays set tva="1" where id in(5,6,13,20,40,51,58,63,64,69,78,83,86,103,110,137,140,141,147,167);
@@ -33,13 +37,13 @@
 1.2.1
 	Maj du plugin pour Dreamweaver
 	Corrections diverses
-	Amélioration de la gestion du parrainage
+	Am√©lioration de la gestion du parrainage
 	Correction d'un soucis de langue sur certaines boucles
 	Modification des boucles conditionnelles
-	Correction de l'installation (base comportant déjà des tables)
+	Correction de l'installation (base comportant d√©j√† des tables)
 	
 1.2.1
-	Gestion des déclinaisons lors d'un ajout Ajax
+	Gestion des d√©clinaisons lors d'un ajout Ajax
 
 1.2.0
 	Optimisation du parseur
@@ -47,19 +51,19 @@
 	Correction du soucis de devise dans l'import SQL
 	Correction de divers bugs
 	Ajout d'une gestion de la configuration dans l'interface d'administration
-	Génération automatique du token RSS lors de l'installation
+	G√©n√©ration automatique du token RSS lors de l'installation
 	Mise en place des modes de paiement et des modes de transport sous forme de plugins (modules)
 	Mise en place d'un nouveau template de base
 	
 1.1.9
 	classement inverse pour la boucle contenu
-	ajout du plugin pour Macromédia Dreamweaver
-	modification de l'installation --> compatibilité
-	ajout d'un transport par défaut à l'installation
-	modification de la gestion des décimales
+	ajout du plugin pour Macrom√©dia Dreamweaver
+	modification de l'installation --> compatibilit√©
+	ajout d'un transport par d√©faut √† l'installation
+	modification de la gestion des d√©cimales
 	changement des inclusions au niveau des classes
 	correction admin/accessoire.php
-	recherche sur les déclinaisons en stock (boucle produit)
+	recherche sur les d√©clinaisons en stock (boucle produit)
 	correction fonctions/substitproduits.php
 	ajout de fonctions/subtideclinaison.php
 	maj de la doc
@@ -77,18 +81,18 @@
 	
 1.1.7
 	correction de la documentation
-	update de admin/commande_détails.php
+	update de admin/commande_d√©tails.php
 	diverses corrections de bugs
 	correction de substitcommande.php
 	ajout des substitutions #PRODUIT_PRIXMIN, #PRODUIT_PRIXMAX
 	correction importante de toutes les substitutions
-	réorganisation des répertoires
+	r√©organisation des r√©pertoires
 	modification de l'installation
 	
 1.1.6
 	modification de la boucle accessoire
-	ajout de système d'exclusion
-	modification de l'install pour mysql_list_dbs désactivée
+	ajout de syst√®me d'exclusion
+	modification de l'install pour mysql_list_dbs d√©sactiv√©e
 	
 1.1.5
 	Divers bugs mineurs
@@ -98,8 +102,8 @@
 	Correction rubcaracteristique.php
 	Correction rubdeclinaison.php
 	Correction retour rubrique_modifier.php
-	Mise à jour des Examples
-	Mise à jour des substitutions
+	Mise √† jour des Examples
+	Mise √† jour des substitutions
 	Modification des header(Location)
 	
 1.1.4
@@ -115,9 +119,9 @@
 	modification de l'initialisation de tinymce ( pour le flash )
 	diverses corrections de boucles
 	utilisation de mysql_connect au lieu de mysql_pconnect bien pratique
-	mais posant problème sur les serveurs mutualisés (max_user_connections)
-	modification de zone.php dans admin/ posant problème sur certains serveurs
-	modification des déconnexions à MySQL
+	mais posant probl√®me sur les serveurs mutualis√©s (max_user_connections)
+	modification de zone.php dans admin/ posant probl√®me sur certains serveurs
+	modification des d√©connexions √† MySQL
 	modification du squelette panier.html #PRODUIT != #ARTICLE
 	modification de la boucle Quantite
 	modification de action.php
@@ -130,26 +134,26 @@
 	diverses modifications graphiques dans l'interface d'administration
 	modification rewriting et soucis d'accents
 	ajout classement inverse dans la boucle produit
-	ajout d'attributs à la boucle Panier
+	ajout d'attributs √† la boucle Panier
 	classement possible dans la boucle Caracdisp
 	modification boucle Panier #PRODUIT
-	utilisation de mail au lieu de la classe Smtp par défaut
+	utilisation de mail au lieu de la classe Smtp par d√©faut
 	
 1.1
-	ajout de la gestion de l'argument produit dans la boucle caractéristique
-	modification des stocks à la commande
-	quelques notices cachées par l'Ajax
-	Gestion des stocks activée au niveau du paiement
+	ajout de la gestion de l'argument produit dans la boucle caract√©ristique
+	modification des stocks √† la commande
+	quelques notices cach√©es par l'Ajax
+	Gestion des stocks activ√©e au niveau du paiement
 	
 1.0.9
 	correction de quelques notices qui subsistaient
 	ajout de l'attribut transaction dans la classe commande
-	correction boucle caractéristique
+	correction boucle caract√©ristique
 	suppression de quelques notices 
 	ajout du param deb pour la boucle RSS
-	changement du nom de la page index.html dans les exemples pour éviter
-	le .html par défaut sur certaines configs de serveur.
-	ajout dans la table variable du flux RSS affichée à l'entrée de l'interdace d'admin
+	changement du nom de la page index.html dans les exemples pour √©viter
+	le .html par d√©faut sur certaines configs de serveur.
+	ajout dans la table variable du flux RSS affich√©e √† l'entr√©e de l'interdace d'admin
 	pour l'ajouter manuellement :
 	INSERT INTO `variable` VALUES ('', 'rssadmin', 'http://www.octolys.fr/rss.php');
 	
@@ -160,50 +164,50 @@
 	Correction de Cnx.class.php.orig ( tag long )
 	
 1.0.7
-	Ajout d'un squelette d'exemple ajax dans le répertoire Example
-	Remplacement de spaw par tinymce. Seuls les styles et les tableaux sont activés afin de ne pas dénaturer la nature d'une page
+	Ajout d'un squelette d'exemple ajax dans le r√©pertoire Example
+	Remplacement de spaw par tinymce. Seuls les styles et les tableaux sont activ√©s afin de ne pas d√©naturer la nature d'une page
 	Veuillez simplement executer cette requete : INSERT INTO `variable` VALUES ('', 'style_chem', '/styles_spaw.css');
-	en remplaçant le chemin par celui menant ‡ votre feuille de style.
+	en rempla√ßant le chemin par celui menant ‚Ä° votre feuille de style.
 	ajout de la substitution #CLIENT_IDPAYS
 	correction de la gestion des stocks
 	
 1.0.6
-	Définition des variables non définies pour éviter les notices dans le cas o˘ le php.ini les affiche.
+	D√©finition des variables non d√©finies pour √©viter les notices dans le cas oÀò le php.ini les affiche.
 	Remplacement de mb_strtoupper par strtoupper
 	Diverses corrections dans l'interface d'administration
-	Correction du soucis de référence sous IE 6
+	Correction du soucis de r√©f√©rence sous IE 6
 	Ajout support PNG
 	
 1.0.5
-	Modification du code afin de faire fonctionner Thelia avec un short tag ‡ Off.
-	Si vous avez des squelettes déj‡ réalisés, n'oubliez pas de modifier vos fichiers php en remplaçant <? par <?php
+	Modification du code afin de faire fonctionner Thelia avec un short tag ‚Ä° Off.
+	Si vous avez des squelettes d√©j‚Ä° r√©alis√©s, n'oubliez pas de modifier vos fichiers php en rempla√ßant <? par <?php
 	
 1.0.4
-	Modification du code afin de faire fonctionner Thelia avec un register global ‡ Off.
-	Modification du fichier sql pour la compatibilité entre les versions de MySQL.
-	Désactivation de l'éditeur spaw par défaut
+	Modification du code afin de faire fonctionner Thelia avec un register global ‚Ä° Off.
+	Modification du fichier sql pour la compatibilit√© entre les versions de MySQL.
+	D√©sactivation de l'√©diteur spaw par d√©faut
 	
 1.0.3
-	Ajout du répertoire modules dans les exemples omis dans la version précédente.
+	Ajout du r√©pertoire modules dans les exemples omis dans la version pr√©c√©dente.
 	
 1.0.2
-	ajout du paramètre courant à la boucle CONTENU
-	changement modèles pdf ( facture, bl ) pour permettre la sauvegarde avec un nom de fichier "logique"
-	ajout de l'attribut aléatoire pour les boucles RUBRIQUE, DOSSIER, IMAGE
+	ajout du param√®tre courant √† la boucle CONTENU
+	changement mod√®les pdf ( facture, bl ) pour permettre la sauvegarde avec un nom de fichier "logique"
+	ajout de l'attribut al√©atoire pour les boucles RUBRIQUE, DOSSIER, IMAGE
 	upload multiple de photos
-	correction du bug des chemins pour la création des factures et des bons de livraison
-	ajout d'un répertoire exemple avec des exemples de squelettes.
+	correction du bug des chemins pour la cr√©ation des factures et des bons de livraison
+	ajout d'un r√©pertoire exemple avec des exemples de squelettes.
 	
 1.0.1
-	ajout du paramètre courant à la boucle DOSSIER
+	ajout du param√®tre courant √† la boucle DOSSIER
 	correction de #URL dans la boucle CONTENU
-	correction de la configuration de l'éditeur HTML dans l'admin ( gestion des images )
-	modification de la table variable ( pour les images dans l'éditeur )
+	correction de la configuration de l'√©diteur HTML dans l'admin ( gestion des images )
+	modification de la table variable ( pour les images dans l'√©diteur )
 	ajout du mode miroir pour la boucle IMAGE
-	ajout de l'attribut panier au chargement du squelette permettant d'interdir l'accés à une page si le panier est vide
-	le changement de l'ordre des caractéristiques et des déclinaisons est maintenant possible
-	correction des chemins dans l'interface d'administration concernant les caractéristiques et les déclinaisons
+	ajout de l'attribut panier au chargement du squelette permettant d'interdir l'acc√©s √† une page si le panier est vide
+	le changement de l'ordre des caract√©ristiques et des d√©clinaisons est maintenant possible
+	correction des chemins dans l'interface d'administration concernant les caract√©ristiques et les d√©clinaisons
 	
 
 1.0
-	1ère version GPL de THELIA
+	1√®re version GPL de THELIA

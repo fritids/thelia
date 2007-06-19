@@ -40,6 +40,7 @@
 	include_once("../classes/Client.class.php");
 	include_once("../classes/Venteprod.class.php");
 	include_once("../classes/Statutdesc.class.php");
+	include_once("../classes/Cache.class.php");
 
 	if(!isset($action)) $action="";
 	if(!isset($client)) $client="";
@@ -56,6 +57,7 @@
 		
 		$tempcmd->supprimer();
 
+		$cache = new Cache();
 		$cache->vider("COMMANDE", "%");		
 		$cache->vider("VENTEPROD", "%");		
 		$cache->vider("CLIENT", "%");		
