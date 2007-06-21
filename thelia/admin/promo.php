@@ -15,7 +15,7 @@
 /*      This program is distributed in the hope that it will be useful,              */
 /*      but WITHOUT ANY WARRANTY; without even the implied warranty of               */
 /*      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                */
-/*      GNU General Public License for more details.                                 */
+/*      GNU General Public Lifcense for more details.                                 */
 /*                                                                                   */
 /*      You should have received a copy of the GNU General Public License            */
 /*      along with this program; if not, write to the Free Software                  */
@@ -59,15 +59,15 @@
 
 	
 	switch($action){
-		case 'ajouter' : ajouter($code, $type, $valeur, $utilise, $illimite); break;
-		case 'modifier' : modifier($id, $code, $type, $valeur, $utilise, $illimite); break;
+		case 'ajouter' : ajouter($code, $type, $valeur, $mini, $utilise, $illimite, $jour, $mois, $annee); break;
+		case 'modifier' : modifier($id, $code, $type, $valeur, $mini, $utilise, $illimite, $jour, $mois, $annee); break;
 		case 'supprimer' : supprimer($id);
 
 	}
 	
 ?>
 <?php
-	function modifier($id, $code, $type, $valeur, $utilise, $illimite){
+	function modifier($id, $code, $type, $valeur, $mini, $utilise, $illimite, $jour, $mois, $annee){
 
 		$promo = new Promo();
 		$promo->charger_id($id);
@@ -77,13 +77,15 @@
 		$promo->utilise = $utilise;
 		$promo->illimite = $illimite;
 		$promo->valeur = $valeur;
-		
+		$promo->mini = $mini;
+		$promo->datefin = $annee . "-" . $mois . "-" . $jour . " " . "00:00:00";
+	
 		$promo->maj();
 			
 	}
 	
 
-	function ajouter( $code, $type, $valeur, $utilise, $illimite){
+	function ajouter( $code, $type, $valeur, $mini, $utilise, $illimite, $jour, $mois, $annee){
 
 
 		$promo = new Promo();
@@ -93,7 +95,8 @@
 		$promo->utilise = $utilise;
 		$promo->illimite = $illimite;		
 		$promo->valeur = $valeur;
-		
+		$promo->mini = $mini;
+		$promo->datefin = $annee . "-" . $mois . "-" . $jour . " " . "00:00:00";
 		$promo->add();
 		
 	}
@@ -137,8 +140,10 @@
     <td height="30" class="titre_cellule">CODE</td>
     <td height="30" class="titre_cellule">TYPE</td>
     <td height="30" class="titre_cellule">VALEUR</td>
+    <td height="30" class="titre_cellule">MINI</td>
     <td height="30" class="titre_cellule">UTILISE</td>
     <td height="30" class="titre_cellule">ILLIMITE</td>
+	<td height="30" class="titre_cellule">DATE EXP</td>
 	<td height="30" class="titre_cellule">&nbsp;</td>
 	<td height="30" class="titre_cellule">&nbsp;</td>
   </tr>
@@ -155,13 +160,21 @@
   		if(!($i%2)) $fond="cellule_sombre";
   		else $fond="cellule_claire";
   		$i++;
+
+		$jour = substr($row->datefin, 8, 2);
+		$mois = substr($row->datefin, 5, 2);
+		$annee = substr($row->datefin, 0, 4);
+
   ?>
     
   <tr class="<?php echo($fond); ?>">
     <td height="30">&nbsp;<?php echo($row->code); ?></td>
-    <td height="30">&nbsp;<?php if($row->type == 1) { ?> somme <?php } else { ?> Pourcentage <?php } ?></td>
-    <td height="30">&nbsp;<?php if($row-> utilise == 1) { ?> OUI <?php } else { ?> NON <?php } ?></td>
+    <td height="30">&nbsp;<?php if($row->type == 1) { ?> S <?php } else { ?> P <?php } ?></td>
+	<td height="30">&nbsp;<?php echo($row->valeur); ?></td>
+	<td height="30">&nbsp;<?php echo($row->mini); ?></td>
+	<td height="30">&nbsp;<?php if($row-> utilise == 1) { ?> OUI <?php } else { ?> NON <?php } ?></td>
     <td height="30">&nbsp;<?php if($row-> illimite == 1) { ?> OUI <?php } else { ?> NON <?php } ?></td>
+	<td height="30">&nbsp;<?php if($row->datefin != "0000-00-00 00:00:00") echo $jour . "/" . $mois . "/" . $annee; else echo "//"; ?></td>
     <td height="30"><a href="promo_modifier.php?id=<?php echo($row->id); ?>" class="txt_vert_11">Modifier</a> <a href="promo_modifier.php?id=<?php echo($row->id); ?>" class="txt_vert_11"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
     <td height="30"><a href="promo.php?id=<?php echo($row->id); ?>&action=supprimer" class="txt_vert_11">Supprimer</a> <a href="promo.php?id=<?php echo($row->id); ?>&action=supprimer" class="txt_vert_11"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
 

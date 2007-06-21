@@ -63,7 +63,9 @@
 	if($promo->type == "1") $types = "checked=\"checked\"";
 	else $typep = "checked=\"checked\""; 
 
-	
+	$jour = substr($promo->datefin, 8, 2);
+	$mois = substr($promo->datefin, 5, 2);
+	$annee = substr($promo->datefin, 0, 4);	
 
 ?>
 </head>
@@ -112,6 +114,11 @@ pourcentage
        <td class="cellule_sombre">
        <input name="valeur" type="text" class="form" value="<?php echo($promo->valeur); ?>" size="10" />       </td>
      </tr>
+	     <tr>
+	       <td height="30" class="titre_cellule">MINI </td>
+	       <td class="cellule_sombre">
+	       <input name="mini" type="text" class="form" value="<?php echo($promo->mini); ?>" size="10" />       </td>
+	     </tr>
      <tr>
        <td height="30" class="titre_cellule">UTILISE</td>
        <td class="cellule_claire">
@@ -123,6 +130,13 @@ pourcentage
        <td class="cellule_claire">
          Oui <input name="illimite" type="radio" class="form" value="1" <?php echo($illimiteo); ?> /> &nbsp; Non <input name="illimite" type="radio" class="form" value="0" <?php echo($illimiten); ?> />
        </span></td>
+     </tr>
+     <tr>
+       <td height="30" class="titre_cellule">DATE D'EXPIRATION</td>
+       <td class="cellule_sombre">
+       <input name="jour" type="text" class="form" value="<?php echo($jour); ?>" size="2" /> 
+       <input name="mois" type="text" class="form" value="<?php echo($mois); ?>" size="2" />
+	   <input name="annee" type="text" class="form" value="<?php echo($annee); ?>" size="4" /></td>
      </tr>
    </table>
 </form>

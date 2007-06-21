@@ -45,8 +45,8 @@
 		}
 		
 		function charger($code){
-		
-			return $this->getVars("select * from $this->table where code=\"$code\" and (utilise='0' OR illimite='1')");
+			$datedj = date("Y-m-d H:i:s");
+			return $this->getVars("select * from $this->table where code=\"$code\" and datefin<'$datedj' and (utilise='0' OR illimite='1')");
 
 		}
 

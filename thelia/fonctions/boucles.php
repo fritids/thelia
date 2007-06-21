@@ -2010,9 +2010,9 @@
 			$totalprod = $row->prixu * $row->quantite;
 			$totalprod = number_format($totalprod, 2, ".", "");
 			
-			$query = "select count(*) as nbvente from $venteprod->table where ref=\"" . $row->ref . "\"";
-			$resul = mysql_query($query, $venteprod->link);
-			$nbvente = mysql_result($resul, 0, "nbvente");
+			$query2 = "select count(*) as nbvente from $venteprod->table where ref=\"" . $row->ref . "\"";
+			$resul2 = mysql_query($query2, $venteprod->link);
+			$nbvente = mysql_result($resul2, 0, "nbvente");
 			
 			$temp = str_replace("#ID", "$row->id", $texte);
 			$temp = str_replace("#COMMANDE", "$row->commande", $temp);

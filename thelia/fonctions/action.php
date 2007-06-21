@@ -282,7 +282,7 @@
 		
 		if($_SESSION['navig']->promo->id != ""){
 			if($_SESSION['navig']->promo->type == "1" && $_SESSION['navig']->promo->mini <= $total) $commande->remise += $_SESSION['navig']->promo->valeur;
-			else if($_SESSION['navig']->promo->type == "2") $commande->remise += $total * $_SESSION['navig']->promo->valeur / 100;
+			else if($_SESSION['navig']->promo->type == "2" && $_SESSION['navig']->promo->mini <= $total) $commande->remise += $total * $_SESSION['navig']->promo->valeur / 100;
 			
 		
 			$_SESSION['navig']->promo->utilise = 1;
