@@ -1913,10 +1913,12 @@
 		$commande_ref = lireTag($args, "ref");		
 		$client_id = lireTag($args, "client");
 		$statut = lireTag($args, "statut");
+		$classement = lireTag($args, "classement");
 		
 		if($commande_ref == "" && $client_id == "") return;
 
 		$search ="";
+		$order="";
 		$res="";
 		
 		// prÔøΩaration de la requÔøΩe
@@ -1925,8 +1927,11 @@
 		if($statut!="" && $statut!="paye")  $search.=" and statut=\"$statut\"";
 		else if($statut=="paye")  $search.=" and statut>\"1\"";
 
+		if($classement == "inverse")
+			$order = "order by date";
+		else $order = "order by date desc";
 	
-		$query = "select * from $commande->table where 1 $search";
+		$query = "select * from $commande->table where 1 $search $order";
 		$resul = mysql_query($query, $commande->link);
 		$nbres = mysql_numrows($resul);
 		if(!$nbres) return "";
