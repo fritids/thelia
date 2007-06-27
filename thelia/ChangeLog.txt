@@ -21,6 +21,7 @@
 	
 	ALTER TABLE  `promo` ADD  `datefin` DATETIME NOT NULL ;
 	
+	modification du fichier sql contenant les tables Thelia (compatibilité)
 	
 1.2.2
 	ajout support n° de colis

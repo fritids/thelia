@@ -42,7 +42,8 @@
 	include_once("../classes/Modules.class.php");
 	include_once("../classes/Rubrique.class.php");
 	include_once("../classes/Cache.class.php");
-
+	include_once("../client/fonctperso/perso_statut.php");
+	
 	if(!isset($action)) $action="";
 	if(!isset($statutch)) $statutch="";
 	if(!isset($fichier)) $fichier="";
@@ -67,6 +68,8 @@
 
                 $commande->maj();
 
+				perso_statut();
+				
 				$cache = new Cache();
 				$cache->vider("COMMANDE", "%");		
 				$cache->vider("CLIENT", "%");

@@ -38,7 +38,63 @@
 <body>
 
 <?php
+	include_once("../classes/Boutique.class.php");
+?>
+<?php
 	$menu="modules";
 	include_once("entete.php");
-	include_once("../client/plugins/$nom/$nom" . "_admin.php");
 ?>
+
+<div id="contenu_int"> 
+   <p class="titre_rubrique">Liste des modules</p>
+     <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Liste des modules</a>              
+    </p>
+     <table width="710" border="0" cellpadding="5" cellspacing="0">
+     <tr>
+       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES BOUTIQUES </td>
+     </tr>
+   </table>
+   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+
+       <?php
+
+	include_once("../classes/Modules.class.php");
+	$modules = new Modules();	
+	$query = "select * from $modules->table where type='3' and actif='1'";
+	$resul = mysql_query($query, $modules->link);
+	
+	while($row = mysql_fetch_object($resul)){
+	
+		if(!($i%2)) $fond="cellule_sombre";
+  		else $fond="cellule_claire";
+  		$i++;
+
+		if(file_exists("../client/plugins/" .$row->nom . "/" . $row->nom. "_admin.php")){
+				$nom_module = $row->nom;
+				$nom_module[0] = strtoupper($nom_module[0]);
+				
+
+?>     
+   
+
+
+    
+  <tr class="<?php echo($fond); ?>">
+    <td width="21%" height="30"><?php echo($row->nom); ?></td>
+    <td width="63%" height="30">
+      
+    </td>
+    <td width="16%" height="30">
+      <div align="left"><a href="module.php?nom=<?php echo $row->nom; ?>" class="txt_vert_11">Poursuivre </a><a href="module.php?nom=<?php echo $row->nom; ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    </td>
+  </tr>
+
+     
+<?php
+	}
+ }
+?>  
+  </table>
+</div>
+</body>
+</html>

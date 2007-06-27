@@ -164,40 +164,21 @@
         </tr>          
     <?php } ?>    
 
-<!---------------------------------------------------------------------------------------------------------------------------->
-<?php
-	include("../classes/Modules.class.php");
-	$modules = new Modules();	
-	$query = "select * from $modules->table where type='3' and actif='1'";
-	$resul = mysql_query($query, $modules->link);
-	while($row = mysql_fetch_object($resul)){
-	
-		if(file_exists("../client/plugins/" .$row->nom . "/" . $row->nom. "_admin.php")){
-			$nom_module = $row->nom;
-			$nom_module[0] = strtoupper($nom_module[0]);
-		
-?>
 
-	<!---------------------------------------------------------------------------------------------------------------------------->
-		<?php if($menu != $row->nom) { ?>
+<!--------------------------------------------------------------------------------------------------------------------------------->
+		<?php if($menu != "modules") { ?>
 
 	          <tr>
-	            <td height="18" align="left" valign="middle"><a href="module.php?nom=<?php echo $row->nom; ?>" class="lien04"><?php echo $nom_module; ?></a></td>
+	            <td height="18" align="left" valign="middle"><a href="module_liste.php" class="lien04">Modules</a></td>
 	          </tr>
 	    <?php } else { ?>      
 
 	        <tr>
-	          <td height="18" align="left" valign="middle" class="selection_menu"><a href="module.php?nom=<?php echo $row->nom; ?>" class="selection_menul"><?php echo $nom_module; ?></a></td>
+	          <td height="18" align="left" valign="middle" class="selection_menu"><a href="module_liste.php" class="selection_menul">Modules</a></td>
 	        </tr>          
 	    <?php } ?>    
+<!--------------------------------------------------------------------------------------------------------------------------------->
 
-	<!---------------------------------------------------------------------------------------------------------------------------->
-	
-<?php			
-		}
-	}
-	
-?>	
 	
 
 	<?php if($menu != "fermer") { ?>

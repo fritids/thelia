@@ -244,6 +244,8 @@
 			
 			$url = ereg_caracspec($url);
 
+			$url = strip_tags($url);
+			
 			return $url . ".html";
 	}	
 
