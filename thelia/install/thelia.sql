@@ -650,7 +650,7 @@ CREATE TABLE `pays` (
   `default` int(11) NOT NULL,
   `tva` smallint(6) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=259 ;
+)  AUTO_INCREMENT=259 ;
 
 -- 
 -- Contenu de la table `pays`
@@ -2044,7 +2044,7 @@ CREATE TABLE `modules` (
   `actif` smallint(6) NOT NULL,
   `classement` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 ;
+)  AUTO_INCREMENT=10 ;
 
 -- 
 -- Dumping data for table `modules`
@@ -2073,4 +2073,4 @@ CREATE TABLE `cache` (
   `res` text NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;

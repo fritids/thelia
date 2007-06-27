@@ -320,9 +320,7 @@
 			else $client = $_SESSION['navig']->client->id;
 		
 			if($page) $pagevar = $page;
-			else if($_SESSION['navig']->page)
-				$pagevar = $_SESSION['navig']->page;
-			else $pagevar = 0;
+			else $pagevar = 1;
 		
 			$variables = $client . $_SESSION['navig']->lang . $pagevar;
 			
