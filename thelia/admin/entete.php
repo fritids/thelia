@@ -166,10 +166,10 @@
 
 
 <!--------------------------------------------------------------------------------------------------------------------------------->
-		<?php if($menu != "modules") { ?>
+		<?php if($menu != "plugins") { ?>
 
 	          <tr>
-	            <td height="18" align="left" valign="middle"><a href="module_liste.php" class="lien04">Modules</a></td>
+	            <td height="18" align="left" valign="middle"><a href="module_liste.php" class="lien04">Plugins</a></td>
 	          </tr>
 	    <?php } else { ?>      
 
