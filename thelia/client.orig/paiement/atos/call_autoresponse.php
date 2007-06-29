@@ -1,6 +1,8 @@
 <?php
 
 	include_once("../../../classes/Commande.class.php");	
+	include_once("../../../fonctions/divers.php");	
+	
 	$commande = new Commande();
 
 	
@@ -79,6 +81,8 @@
 	}
 	
 	$commande->maj();
+	
+	modules_fonction("confirmation", $commande);
 	
 	// Initialisation du chemin du fichier de log (à modifier)
     //   ex :

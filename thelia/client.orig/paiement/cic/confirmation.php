@@ -1,7 +1,7 @@
 <?php
 
 	include_once("../../../classes/Commande.class.php");	
-
+	include_once("../../../fonctions/divers.php");
 
     $reference = $_POST['reference'];
     $etat = $_POST['code-retour'];
@@ -15,7 +15,8 @@
 	
 	$commande->maj();
 
-
+	modules_fonction("confirmation", $commande);
+	
 @require_once("CMCIC_HMAC.inc.php");
 if (!function_exists('CMCIC_hmac')) 
 {

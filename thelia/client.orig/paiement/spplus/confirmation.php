@@ -1,6 +1,8 @@
 <?php
 
 	include_once("../../../classes/Commande.class.php");	
+	include_once("../../../fonctions/divers.php");	
+	
 	$commande = new Commande();
 
 	$commande->charger_trans($reference);
@@ -11,5 +13,6 @@
 	
 	$commande->maj();
 
+	modules_fonction("confirmation", $commande);
 	
 ?>

@@ -21,11 +21,11 @@
 	
 	ALTER TABLE  `promo` ADD  `datefin` DATETIME NOT NULL ;
 	
-	modification du fichier sql contenant les tables Thelia (compatibilité)
+	modification du fichier sql contenant les tables Thelia (compatibilité de versions)
 	
 	Suppression des fonctperso (plugins maintenant)
 	
-	
+
 1.2.2
 	ajout support n° de colis
 	changement de la gestion des pages (possibilité de masquer précédente et suivante si on en a pas besoin)
