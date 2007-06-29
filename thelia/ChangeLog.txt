@@ -23,6 +23,9 @@
 	
 	modification du fichier sql contenant les tables Thelia (compatibilité)
 	
+	Suppression des fonctperso (plugins maintenant)
+	
+	
 1.2.2
 	ajout support n° de colis
 	changement de la gestion des pages (possibilité de masquer précédente et suivante si on en a pas besoin)

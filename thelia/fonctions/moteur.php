@@ -34,7 +34,7 @@ foreach ($_GET as $key => $value) $$key = $value;
 
 	/* Moteur */
 	
-	/* Le fichier html associŽ au php ( fond ) est parsŽ afin de subsituer les informations au bon endroit */
+	/* Le fichier html associé au php ( fond ) est parsé afin de subsituer les informations au bon endroit */
 
 	include_once("fonctions/boucles.php");
 	include_once("fonctions/substitutions.php");
@@ -53,7 +53,6 @@ foreach ($_GET as $key => $value) $$key = $value;
 	include_once("classes/Cache.class.php");
 	include_once("fonctions/parseur.php");
 	include_once("fonctions/fonctsajax.php");
-	include_once("client/fonctperso/perso.php");
 
 	include_once("lib/Sajax.php");
 	
@@ -66,7 +65,7 @@ function analyse($res){
 	// substition simples
 	$res = substitutions($res);	
 	
-	// laisser les infos pour les connectŽs ou non connectés
+	// laisser les infos pour les connectés ou non connectÈs
 	$res = filtre_connecte($res);	
 	
 
@@ -76,7 +75,7 @@ function analyse($res){
 	// si on a un squelette comportant de l'Ajax il faut charger les div
 	if($sajax == 1) $res = chargerDiv(explode("\n", $res));
 
-	// effectue le nombre de passe nŽcessaire afin de traiter toutes les boucles et sous boucles
+	// effectue le nombre de passe nécessaire afin de traiter toutes les boucles et sous boucles
 
 	$res = preg_replace("|<THELIA([^>]*)>\n|Us", "<THELIA\\1>", $res);
 	
@@ -98,7 +97,7 @@ function analyse($res){
 		$res = post($res);
 	}
 	
-	// on envoie le rŽsultat
+	// on envoie le résultat
 	
 	return $res;
 
@@ -144,14 +143,14 @@ function analyse($res){
 	if(!isset($sajax)) $sajax="";	
 	if(!isset($parsephp)) $parsephp="";	
 	
-	// crŽation de la session si non existante
+	// création de la session si non existante
 	
 	if(! isset($_SESSION["navig"])){
 	 	$_SESSION["navig"] = new Navigation();
 	 	$_SESSION["navig"]->lang="1";	
 	 }	
 	
-	// URL prŽcŽdente
+	// URL précédente
 	if(isset($_SERVER['HTTP_REFERER'])) $_SESSION["navig"]->urlprec = $_SERVER['HTTP_REFERER']; 
 	
 	// Page retour
@@ -190,13 +189,13 @@ function analyse($res){
 	}
 
 
-	// SŽcurisation
+	// Sécurisation
 	if($securise && ! $_SESSION["navig"]->connecte) { header("Location: connexion.php"); exit; }
 
-	// VŽrif transport 
+	// Vérif transport 
 	if($transport && ! $_SESSION["navig"]->commande->transport) { header("Location: transport.php"); exit; }
 	
-	// VŽrif panier
+	// Vérif panier
 	if($panier && ! $_SESSION["navig"]->panier->nbart) { header("Location: index.php"); exit; } 
 	
     // Paiement
@@ -223,17 +222,11 @@ function analyse($res){
 		
 		
 	// inclusions des plugins
-	$modules = new Modules();	
-	$query = "select * from $modules->table where type='3' and actif='1'";
-	$resul = mysql_query($query, $modules->link);
-	while($row = mysql_fetch_object($resul)){
-		include("client/plugins/" . $row->nom . "/" . $row->nom . ".php");
-		$action_plugin = "action_" . $row->nom;
-		$action_plugin();
-	}	
-	// RŽsultat envoyŽ au navigateur
+	modules_fonction("action");
+	
+	// Résultat envoyé au navigateur
 
-	$res =  perso(analyse($res));
+	$res =  analyse($res);
 	
 	if($parsephp == 1){
     	$res=str_replace('<'.'?php','<'.'?',$res);

@@ -284,7 +284,9 @@
 	
 		$type_fonction = strtolower($type_boucle);
         $fonc_boucle = "boucle_" . $type_fonction;		
-		return $fonc_boucle($texte, $args);
+		if(function_exists($fonc_boucle))
+			return $fonc_boucle($texte, $args);
+		else return "";
 	}
 
 	function cache_exec($type_boucle, $args, $texte, $variables){

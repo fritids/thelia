@@ -24,7 +24,7 @@
 /*************************************************************************************/
 ?>
 <?php
-	function perso_statut($commande, $statut, $type){
+	function perso_statut($commande){
 		
 	
 	}

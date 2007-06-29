@@ -25,6 +25,8 @@
 ?>
 <?php
 
+	include_once(realpath(dirname(__FILE__)) . "/../classes/Modules.class.php");
+
 	// lecture des arguments
 	function lireTag($ligne, $tag){
 	
@@ -603,4 +605,17 @@ $reply\nFrom:$from\n".$mail_mime);
  	return true;
 	}
  
+	function modules_fonction($fonc, $args = ""){
+		$modules = new Modules();	
+		$query = "select * from $modules->table where type='3' and actif='1'";
+		$resul = mysql_query($query, $modules->link);
+		
+		while($row = mysql_fetch_object($resul)){
+			include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $row->nom . "/" . $row->nom . ".php");
+			$action_plugin = $fonc . "_" . $row->nom;
+			if(function_exists($action_plugin))
+				$action_plugin($args);
+		}		
+		
+	}
 ?>
