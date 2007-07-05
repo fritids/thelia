@@ -48,7 +48,7 @@
 	include_once("entete.php");
 ?>
 <?php
-	if($action == "videcache"){
+	if(isset($action) && $action == "videcache"){
 		$cache = new Cache();
 		$query = "delete from $cache->table";
 		$resul = mysql_query($query, $cache->link);
