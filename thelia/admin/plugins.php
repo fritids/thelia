@@ -69,6 +69,14 @@
 		 $modules = new Modules();
 		 $modules->charger($entry);
 
+		$nomclass = $entry;
+		$nomclass[0] = strtoupper($nomclass[0]);
+		
+		include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php");
+		$tmpobj = new $nomclass();
+	
+		if(get_parent_class($tmpobj) != "PluginsClassiques") continue;
+			
 		 if(! $modules->id){
 			
 			$modules = new Modules();
@@ -78,31 +86,42 @@
 			$modules->add();
 			
 		 }
-		
+	
+	
+	}
+
+  	$d->close();
+	
+	$query = "select * from $modules->table where type='3'";
+	$resul = mysql_query($query, $modules->link);
+	
+	while($row = mysql_fetch_object($resul)){
+			
 		 $i++;
 	
 		if(!($i%2)) $fond="cellule_sombre";
   		else $fond="cellule_claire";
+	
 ?>
 
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
   <tr class="<?php echo $fond; ?>">
-    <td width="21%" height="30"><?php echo $entry; ?></td>
+    <td width="21%" height="30"><?php echo $row->nom; ?></td>
     <td width="69%" height="30">
       
     </td>
     <td width="16%" height="30">
       <div align="left">
 	<?php 
-		if($modules->actif){
+		if($row->actif){
 	?>
-		<a href="plugins_modifier.php?nom=<?php echo $entry ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
+		<a href="plugins_modifier.php?nom=<?php echo $row->nom ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
 	<?php
 		} else {
 	?>
 
-		<a href="plugins_modifier.php?nom=<?php echo $entry ?>&actif=1" class="txt_vert_11">Activer </a>
+		<a href="plugins_modifier.php?nom=<?php echo $row->nom ?>&actif=1" class="txt_vert_11">Activer </a>
 		
 	<?php
 			
@@ -121,7 +140,7 @@
 	}
 	
 
-   $d->close();
+ 
 ?>
 
 

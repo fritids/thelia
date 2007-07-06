@@ -50,14 +50,21 @@
                 $tab = array();
    
 
-				$d = dir("../client/transports");
+				$d = dir("../client/plugins");
 
 				while (false !== ($entry = $d->read())) {
 
 				if( substr($entry, 0, 1) == ".") continue;
 					 $modules = new Modules();
 					 $modules->charger($entry);
+					
+					$nomclass = $entry;
+					$nomclass[0] = strtoupper($nomclass[0]);
 
+					include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php");
+					$tmpobj = new $nomclass();
+
+					if(get_parent_class($tmpobj) != "PluginsTransports") continue;
 					 if(! $modules->id){
 
 						$modules = new Modules();

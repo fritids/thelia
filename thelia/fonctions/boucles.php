@@ -2071,14 +2071,20 @@
 		   while( $row = mysql_fetch_object($resul)){
 		
 		  	 if( ! $transzone->charger($row->id, $pays->zone)) continue;
-
+	
 			$modules = new Modules();
 			$modules->charger_id($row->id);
+			
+			$nom = $modules->nom;
+			$nom[0] = strtoupper($nom[0]);
 
+			include("client/plugins/" . $modules->nom . "/$nom.class.php");
+			$tmpobj = new $nom();
+			
 			$port = round(port($row->id), 2);
-			$titre = $modules->getTitre();
-			$chapo = $modules->getChapo();
-			$description = $modules->getDescription();
+			$titre = $tmpobj->getTitre();
+			$chapo = $tmpobj->getChapo();
+			$description = $tmpobj->getDescription();
 	
 			$temp = str_replace("#TITRE", "$titre", $texte);
 			$temp = str_replace("#CHAPO", "$chapo", $temp);
