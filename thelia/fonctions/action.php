@@ -331,7 +331,7 @@
 		
 		$tmpobj = new $nomclass();
 		$tmpobj->paiement($commande);
-	//	redirige("client/paiement/" . $modules->nom . "/" . "paiement.php" . "?total=$total");
+
 	}
 	
 	// création d'un compte

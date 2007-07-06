@@ -257,9 +257,15 @@
 		$pdf->SetXY(179,272.5);	  			
     	$pdf->write(10,$total-$commande->remise);
 
+        $nom = $modules->nom;
+        $nom[0] = strtoupper($nom[0]);
+
+        include("../../client/plugins/" . $modules->nom . "/$nom.class.php");
+        $tmpobj = new $nom();
+
   		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(47,241);	  			
-    	$pdf->write(10, html_entity_decode($modules->getTitre()));
+    	$pdf->write(10, html_entity_decode($tmpobj->getTitre()));
 
 		
 		$modules = new Modules();
