@@ -253,7 +253,6 @@
 			$pdf->SetXY(47,242);	  			
    		    $pdf->write(10, $tmpobj->getChapo());
 
-
 			$pdf->Output("livraison" . $commande->ref . ".pdf","I");	
 			
 			$pdf->closeParsers();

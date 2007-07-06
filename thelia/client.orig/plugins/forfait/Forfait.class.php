@@ -117,7 +117,6 @@
 							
 	     	include(realpath(dirname(__FILE__)) . "/config.php");
 	
-		
 			if(isset($devise))
 				return $devise;			
 		}

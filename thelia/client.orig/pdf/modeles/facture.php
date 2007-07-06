@@ -261,6 +261,7 @@
 		$pdf->SetXY(47,241);	  			
     	$pdf->write(10, html_entity_decode($modules->getTitre()));
 
+		
 		$modules = new Modules();
 		$modules->charger_id($commande->transport);
 

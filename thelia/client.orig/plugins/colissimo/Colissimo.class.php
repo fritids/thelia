@@ -41,7 +41,6 @@
 			$this->PluginsTransports;
 		}
 		
-		
 		function calcule(){
 			if($this->poids<=0.5) return 6;
 			else if($this->poids>0.5 && $this->poids<=1) return 6.50;
