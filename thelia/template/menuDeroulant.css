@@ -83,6 +83,44 @@ dl#menu li a:hover, dl#menu li .selected {
 
  
 /* tous les boutons */
+.boutonForm100 {
+	padding: 0;
+	margin: 0;
+}
+
+dl.boutonForm100 {
+	width: 100px;
+}
+
+dl.boutonForm100 dt {
+	cursor: pointer;
+	text-align: left;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+dl.boutonForm100 dt a {
+	text-decoration: none;
+	color: #FF6500;
+	display: block;
+	background-image: url(images/puceOrange+.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	height: 17px;
+	padding-right: 0px;
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 0px;
+	font-style: normal;
+}
+
+dl.boutonForm100 dt a:hover {
+	text-decoration: none;
+	background-color: #ec8000;
+	color: #FFFFFF;
+}
+
 
 .boutonForm120 {
 	padding: 0;

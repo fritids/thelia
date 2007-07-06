@@ -51,6 +51,7 @@ foreach ($_GET as $key => $value) $$key = $value;
 	include_once("classes/Perso.class.php");
 	include_once("classes/Smtp.class.php");
 	include_once("classes/Cache.class.php");
+	include_once("classes/PluginsClassiques.class.php");
 	include_once("fonctions/parseur.php");
 	include_once("fonctions/fonctsajax.php");
 

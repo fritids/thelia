@@ -218,8 +218,7 @@
 	  			
 					$boucle .= $res[$compt++] . "\n";
   			
-					$compt++;
-					
+						
 				while( ! strstr($res[$compt], "</T_$nomboucle") && $compt<count($res)){
 					$apres .= $res[$compt++] . "\n";
 					
@@ -281,11 +280,21 @@
 	}
 
 	function moduleBoucle($type_boucle, $texte, $args){
-	
+		
 		$type_fonction = strtolower($type_boucle);
-        $fonc_boucle = "boucle_" . $type_fonction;		
-		if(function_exists($fonc_boucle))
-			return $fonc_boucle($texte, $args);
+
+		$modules = new Modules();	
+		$query = "select * from $modules->table where type='3' and nom='$type_fonction' and actif='1'";
+		$resul = mysql_query($query, $modules->link);
+		if(! mysql_numrows($resul))
+	   		return "";
+
+		$type_fonction[0] = strtoupper($type_fonction[0]);
+
+		$tmpobj = new $type_fonction();
+
+		if(method_exists($tmpobj, "boucle"))
+			return $tmpobj->boucle($texte, $args);
 		else return "";
 	}
 

@@ -24,47 +24,42 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("pre.php");
-	include_once("auth.php");
-
-
-?>
-<?php
-	include_once("../classes/Modules.class.php");
-
+	include_once(realpath(dirname(__FILE__)) . "/Plugins.class.php");
 	
-?>
-<?php
+	class PluginsClassiques extends Plugins{
 
-	if($actif != ""){
-
-		$modules = new Modules();
-		$modules->charger($nom);
-		$modules->actif = $actif;
-		$modules->nom = $nom;		
 		
-		$modules->maj();
+		function PluginsClassiques(){
+			$this->Plugins();			
+		}
 		
-	}		
+		function init(){
+				
+		}
 
-	$nomclass = $nom;
-	$nomclass[0] = strtoupper($nomclass[0]);
-	
-	if($actif == 1){
-		include_once("../client/plugins/$nom/$nomclass". ".class.php");
-		$tmpobj = new $nomclass();
-		$tmpobj->init();
-
+		
+		function destroy(){
+			
+		}
+		
+		function boucle($texte, $args){
+			
+		}
+		
+		function action($res){
+			
+			
+		}
+		
+		function statut($commande){
+			
+		}
+		
+		function confirmation($commande){
+			
+		}
 		
 	}
-
-	else if($actif == 0){
-		include_once("../client/plugins/$nom/$nomclass". ".class.php");
-		$tmpobj = new $nomclass();
-		$tmpobj->destroy();
-	}
-
-	header("Location: plugins.php");
 
 
 ?>

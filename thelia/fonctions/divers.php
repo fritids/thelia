@@ -611,10 +611,15 @@ $reply\nFrom:$from\n".$mail_mime);
 		$resul = mysql_query($query, $modules->link);
 		
 		while($row = mysql_fetch_object($resul)){
-			include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $row->nom . "/" . $row->nom . ".php");
-			$action_plugin = $fonc . "_" . $row->nom;
-			if(function_exists($action_plugin))
-				$action_plugin($args);
+			$nomclass = $row->nom;
+			$nomclass[0] = strtoupper($nomclass[0]);
+			
+			include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $row->nom . "/" . $nomclass . ".class.php");
+			$tmpobj = new $nomclass();
+			if(get_parent_class($tmpobj) != "PluginsClassiques") return "";
+		
+			if(method_exists($tmpobj, $fonc))
+				$tmpobj->$fonc($args);
 		}		
 		
 	}

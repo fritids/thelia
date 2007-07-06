@@ -59,6 +59,8 @@
 ?>
 
 <?php
+		$cache = new Cache();
+		
         if($statutch){
                 $commande->statut = $statutch;
 
@@ -70,7 +72,7 @@
 
 				modules_fonction("statut", $commande);
 				
-				$cache = new Cache();
+				
 				$cache->vider("COMMANDE", "%");		
 				$cache->vider("CLIENT", "%");
         }

@@ -69,6 +69,7 @@ CREATE TABLE `adresse` (
   `adresse3` varchar(40) NOT NULL default '',
   `cpostal` varchar(10) NOT NULL default '',
   `ville` varchar(30) NOT NULL default '',
+  `tel` text NOT NULL,
   `pays` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM AUTO_INCREMENT=1 ;
@@ -205,6 +206,7 @@ CREATE TABLE `client` (
   `ref` text NOT NULL,
   `raison` smallint(6) NOT NULL default '0',
   `entreprise` text NOT NULL,
+  `siret` text NOT NULL,
   `nom` text NOT NULL,
   `prenom` text NOT NULL,
   `adresse1` varchar(40) NOT NULL default '',
@@ -654,264 +656,272 @@ CREATE TABLE `pays` (
 
 -- 
 -- Contenu de la table `pays`
--- 
 
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (1, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (2, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (3, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (4, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (5, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (6, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (7, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (8, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (9, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (10, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (11, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (12, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (13, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (14, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (15, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (16, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (17, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (18, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (19, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (20, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (21, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (22, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (23, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (24, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (25, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (26, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (27, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (28, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (29, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (30, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (31, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (32, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (33, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (34, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (35, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (246, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (37, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (38, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (39, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (40, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (41, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (42, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (43, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (44, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (45, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (46, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (47, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (48, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (49, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (50, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (51, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (52, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (53, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (54, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (55, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (56, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (57, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (58, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (59, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (195, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (61, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (62, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (63, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (64, 0, 1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (65, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (66, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (67, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (68, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (69, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (70, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (71, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (72, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (73, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (74, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (75, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (76, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (77, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (78, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (79, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (80, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (81, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (82, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (83, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (84, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (85, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (86, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (87, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (88, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (89, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (90, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (91, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (92, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (93, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (94, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (95, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (96, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (97, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (98, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (99, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (100, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (101, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (102, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (103, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (104, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (105, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (106, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (107, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (108, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (109, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (110, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (111, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (112, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (113, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (114, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (115, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (116, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (117, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (118, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (119, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (120, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (121, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (122, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (123, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (124, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (125, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (126, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (127, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (128, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (129, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (130, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (131, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (132, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (133, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (134, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (135, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (136, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (137, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (138, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (139, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (140, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (141, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (142, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (143, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (144, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (145, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (146, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (147, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (148, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (149, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (150, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (151, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (152, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (153, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (154, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (155, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (156, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (157, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (158, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (159, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (160, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (161, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (162, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (163, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (164, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (165, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (166, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (167, 0, -1, 0, 1);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (168, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (169, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (170, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (171, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (172, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (173, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (174, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (175, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (176, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (177, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (178, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (179, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (180, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (181, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (182, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (183, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (184, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (185, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (186, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (187, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (188, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (189, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (190, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (191, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (192, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (193, 0, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (247, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (196, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (197, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (198, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (199, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (200, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (201, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (202, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (203, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (204, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (205, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (206, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (207, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (208, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (209, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (210, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (211, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (212, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (213, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (214, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (215, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (216, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (217, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (218, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (219, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (220, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (221, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (222, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (223, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (224, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (225, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (226, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (227, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (228, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (229, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (230, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (231, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (232, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (233, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (234, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (235, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (236, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (237, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (238, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (239, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (240, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (241, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (242, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (243, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (244, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (245, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (248, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (249, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (250, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (251, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (252, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (253, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (254, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (255, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (256, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (257, 1, -1, 0, 0);
-INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES (258, 1, -1, 0, 0);
-
+INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES 
+(1, 0, 55, 0, 0),
+(2, 0, 54, 0, 0),
+(3, 0, 53, 0, 0),
+(4, 0, 53, 0, 0),
+(5, 0, 47, 0, 1),
+(6, 0, 49, 0, 1),
+(7, 0, 54, 0, 0),
+(8, 0, 55, 0, 0),
+(9, 0, 54, 0, 0),
+(10, 0, 55, 0, 0),
+(11, 0, 53, 0, 0),
+(12, 0, 55, 0, 0),
+(13, 0, 50, 0, 1),
+(14, 0, 53, 0, 0),
+(15, 0, 55, 0, 0),
+(16, 0, 54, 0, 0),
+(17, 0, 55, 0, 0),
+(18, 0, 55, 0, 0),
+(19, 0, 55, 0, 0),
+(20, 0, 47, 0, 1),
+(21, 0, 55, 0, 0),
+(22, 0, 54, 0, 0),
+(23, 0, 55, 0, 0),
+(24, 0, 53, 0, 0),
+(25, 0, 55, 0, 0),
+(26, 0, 55, 0, 0),
+(27, 0, 53, 0, 0),
+(28, 0, 54, 0, 0),
+(29, 0, 55, 0, 0),
+(30, 0, 55, 0, 0),
+(31, 0, 53, 0, 0),
+(32, 0, 54, 0, 0),
+(33, 0, 54, 0, 0),
+(34, 0, 55, 0, 0),
+(35, 0, 54, 0, 0),
+(246, 1, 55, 0, 0),
+(37, 0, 54, 0, 0),
+(38, 0, 55, 0, 0),
+(39, 0, 55, 0, 0),
+(40, 0, 53, 0, 1),
+(41, 0, 55, 0, 0),
+(42, 0, 54, 0, 0),
+(43, 0, 54, 0, 0),
+(44, 0, 55, 0, 0),
+(45, 0, 55, 0, 0),
+(46, 0, 55, 0, 0),
+(47, 0, 55, 0, 0),
+(48, 0, 54, 0, 0),
+(49, 0, 53, 0, 0),
+(50, 0, 55, 0, 0),
+(51, 0, 50, 0, 1),
+(52, 0, 54, 0, 0),
+(53, 0, 55, 0, 0),
+(54, 0, 54, 0, 0),
+(55, 0, 54, 0, 0),
+(56, 0, 55, 0, 0),
+(57, 0, 54, 0, 0),
+(58, 0, 48, 0, 1),
+(59, 0, 53, 0, 0),
+(195, 1, -1, 0, 0),
+(61, 0, 54, 0, 0),
+(62, 0, 55, 0, 0),
+(63, 0, 51, 0, 1),
+(64, 0, 49, 1, 1),
+(65, 0, 54, 0, 0),
+(66, 0, 54, 0, 0),
+(67, 0, 53, 0, 0),
+(68, 0, 54, 0, 0),
+(69, 0, 52, 0, 1),
+(70, 0, 55, 0, 0),
+(71, 0, 55, 0, 0),
+(72, 0, 54, 0, 0),
+(73, 0, 54, 0, 0),
+(74, 0, 54, 0, 0),
+(75, 0, 55, 0, 0),
+(76, 0, 55, 0, 0),
+(77, 0, 55, 0, 0),
+(78, 0, 52, 0, 1),
+(79, 0, 55, 0, 0),
+(80, 0, 55, 0, 0),
+(81, 0, 54, 0, 0),
+(82, 0, 54, 0, 0),
+(83, 0, 50, 0, 1),
+(84, 0, 52, 0, 0),
+(85, 0, 54, 0, 0),
+(86, 0, 48, 0, 1),
+(87, 0, 55, 0, 0),
+(88, 0, 55, 0, 0),
+(89, 0, 54, 0, 0),
+(90, 0, 55, 0, 0),
+(91, 0, 54, 0, 0),
+(92, 0, 55, 0, 0),
+(93, 0, 55, 0, 0),
+(94, 0, 54, 0, 0),
+(95, 0, 55, 0, 0),
+(96, 0, 54, 0, 0),
+(97, 0, 53, 0, 0),
+(98, 0, 54, 0, 0),
+(99, 0, 54, 0, 0),
+(100, 0, 54, 0, 0),
+(101, 0, 52, 0, 0),
+(102, 0, 53, 0, 0),
+(103, 0, 47, 0, 1),
+(104, 0, 53, 0, 0),
+(105, 0, 54, 0, 0),
+(106, 0, 55, 0, 0),
+(107, 0, 54, 0, 0),
+(108, 0, 55, 0, 0),
+(109, 0, 54, 0, 0),
+(110, 0, 54, 0, 1),
+(111, 0, 53, 0, 0),
+(112, 0, 55, 0, 0),
+(113, 0, 54, 0, 0),
+(114, 0, 54, 0, 0),
+(115, 0, 55, 0, 0),
+(116, 0, 55, 0, 0),
+(117, 0, 53, 0, 0),
+(118, 0, 49, 0, 0),
+(119, 0, 55, 0, 0),
+(120, 0, 54, 0, 0),
+(121, 0, 54, 0, 0),
+(122, 0, 55, 0, 0),
+(123, 0, 55, 0, 0),
+(124, 0, 55, 0, 0),
+(125, 0, 54, 0, 0),
+(126, 0, 54, 0, 0),
+(127, 0, 55, 0, 0),
+(128, 0, 51, 0, 0),
+(129, 0, 55, 0, 0),
+(130, 0, 54, 0, 0),
+(131, 0, 54, 0, 0),
+(132, 0, 55, 0, 0),
+(133, 0, 55, 0, 0),
+(134, 0, 55, 0, 0),
+(135, 0, 55, 0, 0),
+(136, 0, 55, 0, 0),
+(137, 0, 47, 0, 1),
+(138, 0, 55, 0, 0),
+(139, 0, 55, 0, 0),
+(140, 0, 52, 0, 1),
+(141, 0, 50, 0, 1),
+(142, 0, 54, 0, 0),
+(143, 0, 54, 0, 0),
+(144, 0, 55, 0, 0),
+(145, 0, 52, 0, 0),
+(146, 0, 53, 0, 0),
+(147, 0, 48, 0, 1),
+(148, 0, 53, 0, 0),
+(149, 0, 54, 0, 0),
+(150, 0, 55, 0, 0),
+(151, 0, 55, 0, 0),
+(152, 0, 55, 0, 0),
+(153, 0, 55, 0, 0),
+(154, 0, 55, 0, 0),
+(155, 0, 55, 0, 0),
+(156, 0, 55, 0, 0),
+(157, 0, 54, 0, 0),
+(158, 0, 54, 0, 0),
+(159, 0, 55, 0, 0),
+(160, 0, 54, 0, 0),
+(161, 0, 55, 0, 0),
+(162, 0, 52, 0, 0),
+(163, 0, 52, 0, 0),
+(164, 0, 54, 0, 0),
+(165, 0, 54, 0, 0),
+(166, 0, 55, 0, 0),
+(167, 0, 51, 0, 1),
+(168, 0, 51, 0, 0),
+(169, 0, 55, 0, 0),
+(170, 0, 54, 0, 0),
+(171, 0, 54, 0, 0),
+(172, 0, 55, 0, 0),
+(173, 0, 54, 0, 0),
+(174, 0, 54, 0, 0),
+(175, 0, 55, 0, 0),
+(176, 0, 54, 0, 0),
+(177, 0, 55, 0, 0),
+(178, 0, 55, 0, 0),
+(179, 0, 53, 0, 0),
+(180, 0, 55, 0, 0),
+(181, 0, 53, 0, 0),
+(182, 0, 55, 0, 0),
+(183, 0, 53, 0, 0),
+(184, 0, 55, 0, 0),
+(185, 0, 48, 0, 0),
+(186, 0, 55, 0, 0),
+(187, 0, 55, 0, 0),
+(188, 0, 55, 0, 0),
+(189, 0, 54, 0, 0),
+(190, 0, 53, 0, 0),
+(191, 0, 54, 0, 0),
+(192, 0, 54, 0, 0),
+(193, 0, 54, 0, 0),
+(247, 1, 54, 0, 0),
+(196, 1, 54, 0, 0),
+(197, 1, 54, 0, 0),
+(198, 1, 54, 0, 0),
+(199, 1, 54, 0, 0),
+(200, 1, 54, 0, 0),
+(201, 1, 54, 0, 0),
+(202, 1, 54, 0, 0),
+(203, 1, 54, 0, 0),
+(204, 1, 54, 0, 0),
+(205, 1, 54, 0, 0),
+(206, 1, 54, 0, 0),
+(207, 1, 54, 0, 0),
+(208, 1, 54, 0, 0),
+(209, 1, 54, 0, 0),
+(210, 1, 54, 0, 0),
+(211, 1, 54, 0, 0),
+(212, 1, 54, 0, 0),
+(213, 1, 54, 0, 0),
+(214, 1, 54, 0, 0),
+(215, 1, 54, 0, 0),
+(216, 1, 54, 0, 0),
+(217, 1, 54, 0, 0),
+(218, 1, 54, 0, 0),
+(219, 1, 54, 0, 0),
+(220, 1, 54, 0, 0),
+(221, 1, 54, 0, 0),
+(222, 1, 54, 0, 0),
+(223, 1, 54, 0, 0),
+(224, 1, 54, 0, 0),
+(225, 1, 54, 0, 0),
+(226, 1, 54, 0, 0),
+(227, 1, 54, 0, 0),
+(228, 1, 54, 0, 0),
+(229, 1, 54, 0, 0),
+(230, 1, 54, 0, 0),
+(231, 1, 54, 0, 0),
+(232, 1, 54, 0, 0),
+(233, 1, 54, 0, 0),
+(234, 1, 54, 0, 0),
+(235, 1, 54, 0, 0),
+(236, 1, 54, 0, 0),
+(237, 1, 54, 0, 0),
+(238, 1, 54, 0, 0),
+(239, 1, 54, 0, 0),
+(240, 1, 54, 0, 0),
+(241, 1, 54, 0, 0),
+(242, 1, 54, 0, 0),
+(243, 1, 54, 0, 0),
+(244, 1, 54, 0, 0),
+(245, 1, 54, 0, 0),
+(248, 1, 54, 0, 0),
+(249, 1, 54, 0, 0),
+(250, 1, 54, 0, 0),
+(251, 1, 54, 0, 0),
+(252, 1, 54, 0, 0),
+(253, 1, 54, 0, 0),
+(254, 1, 54, 0, 0),
+(255, 1, 54, 0, 0),
+(256, 1, 54, 0, 0),
+(257, 1, 54, 0, 0),
+(258, 1, 54, 0, 0),
+(259, 0, 56, 0, 0),
+(260, 0, 56, 0, 0),
+(261, 0, 56, 0, 0),
+(262, 0, 56, 0, 0),
+(263, 0, 56, 0, 0),
+(264, 0, 56, 0, 0),
+(265, 0, 57, 0, 0),
+(266, 0, 57, 0, 0),
+(267, 0, 57, 0, 0);
 -- --------------------------------------------------------
 
 -- 
@@ -2031,8 +2041,17 @@ CREATE TABLE `zone` (
 -- Contenu de la table `zone`
 -- 
 
-INSERT INTO `zone` VALUES (1, 'France', 0);
-
+INSERT INTO `zone` VALUES (49, 'France', 0);
+INSERT INTO `zone` VALUES (47, 'inter zone 1', 0);
+INSERT INTO `zone` VALUES (48, 'inter Zone 2', 0);
+INSERT INTO `zone` VALUES (50, 'inter Zone 3', 0);
+INSERT INTO `zone` VALUES (51, 'inter Zone 4', 0);
+INSERT INTO `zone` VALUES (52, 'inter Zone 5', 0);
+INSERT INTO `zone` VALUES (53, 'inter Zone 6', 0);
+INSERT INTO `zone` VALUES (54, 'inter Zone 7', 0);
+INSERT INTO `zone` VALUES (55, 'inter Zone 8', 0);
+INSERT INTO `zone` VALUES (56, 'Outre-Mer DOM', 0);
+INSERT INTO `zone` VALUES (57, 'Outre-Mer TOM', 0);
 -- 
 -- Table structure for table `modules`
 -- 

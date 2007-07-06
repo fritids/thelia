@@ -24,47 +24,26 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("pre.php");
-	include_once("auth.php");
-
-
-?>
-<?php
-	include_once("../classes/Modules.class.php");
-
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Cache.class.php");
 	
-?>
-<?php
+	class Plugins extends Baseobj{
 
-	if($actif != ""){
-
-		$modules = new Modules();
-		$modules->charger($nom);
-		$modules->actif = $actif;
-		$modules->nom = $nom;		
+		function Plugins(){
+			$this->Baseobj();				
+		}
 		
-		$modules->maj();
+		function init(){
+			
+		}
+
+		function destroy(){
+			
+		}		
 		
-	}		
-
-	$nomclass = $nom;
-	$nomclass[0] = strtoupper($nomclass[0]);
-	
-	if($actif == 1){
-		include_once("../client/plugins/$nom/$nomclass". ".class.php");
-		$tmpobj = new $nomclass();
-		$tmpobj->init();
-
+		
 		
 	}
-
-	else if($actif == 0){
-		include_once("../client/plugins/$nom/$nomclass". ".class.php");
-		$tmpobj = new $nomclass();
-		$tmpobj->destroy();
-	}
-
-	header("Location: plugins.php");
 
 
 ?>
