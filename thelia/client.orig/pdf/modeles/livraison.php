@@ -243,9 +243,15 @@
 	    	$pdf->SetXY(11,72);	  			
    		    $pdf->write(10,$commande->ref);
 
+			$nom = $modules->nom;
+			$nom[0] = strtoupper($nom[0]);
+
+			include("../client/plugins/" . $modules->nom . "/$nom.class.php");
+			$tmpobj = new $nom();
+			
   			$pdf->SetFont('Arial','',8);
 			$pdf->SetXY(47,242);	  			
-   		    $pdf->write(10, $modules->getChapo());
+   		    $pdf->write(10, $tmpobj->getChapo());
 
 
 			$pdf->Output("livraison" . $commande->ref . ".pdf","I");	

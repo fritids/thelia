@@ -64,7 +64,7 @@
 			else if($this->type == "2")
 				$rep="transports";
 				
-	     	include(realpath(dirname(__FILE__)) . "/../client/$rep/" . $this->nom . "/" . "config.php");
+	     	include(realpath(dirname(__FILE__)) . "/config.php");
 			
 			if($_SESSION['navig']->lang == "")
 				$lang="1";
@@ -84,7 +84,7 @@
 			else if($this->type == "2")
 				$rep="transports";
 				
-	     	include(realpath(dirname(__FILE__)) . "/../client/$rep/" . $this->nom . "/" . "config.php");
+	     	include(realpath(dirname(__FILE__)) . "/config.php");
 			
 			if($_SESSION['navig']->lang == "")
 					$lang="1";
@@ -105,7 +105,7 @@
 			else if($this->type == "2")
 				$rep="transports";
 							
-	     	include(realpath(dirname(__FILE__)) . "/../client/$rep/" . $this->nom . "/" . "config.php");
+	     	include(realpath(dirname(__FILE__)) . "/config.php");
 			
 			if($_SESSION['navig']->lang == "")
 				$lang="1";
@@ -125,7 +125,7 @@
 			else if($this->type == "2")
 				$rep="transports";
 							
-	     	include(realpath(dirname(__FILE__)) . "/../client/$rep/" . $this->nom . "/" . "config.php");
+	     	include(realpath(dirname(__FILE__)) . "/config.php");
 	
 		
 			if(isset($devise))

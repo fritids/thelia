@@ -574,13 +574,16 @@ $reply\nFrom:$from\n".$mail_mime);
 
 		$zone = new Zone();
 		$zone->charger($p->zone);
+	
+		$nom = $modules->nom;
+		$nom[0] = strtoupper($nom[0]);
 		
-		if(! file_exists("client/transports/" . $modules->nom . "/" . $modules->nom . ".class.php")){
+		if(! file_exists("client/plugins/" . $modules->nom . "/$nom.class.php")){
 			return -1;
 		}	
 		
 	
-		include_once("client/transports/" . $modules->nom . "/" . $modules->nom . ".class.php");
+		include_once("client/plugins/" . $modules->nom . "/$nom.class.php");
 
 		$port = new $modules->nom();
 		
