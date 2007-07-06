@@ -28,21 +28,17 @@
 	include_once(realpath(dirname(__FILE__)) . "/../../../classes/PluginsPaiements.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Variable.class.php");
 	
-	class Cheque extends PluginsPaiements{
+	class Cic extends PluginsPaiements{
 
 
-		function Cheque(){
+		function Cic(){
 			$this->PluginsPaiements;
 		}
 		
 	
 		function paiement($commande){
-			global $total;
-			
-			$urlsite = new Variable();
-			$urlsite->charger("urlsite");
 
-			header("Location: " . $urlsite->valeur . "/cheque.php?total=$total")			
+			header("Location: " . "client/plugins/cic/paiement.php");			
 		}
 	
 	}

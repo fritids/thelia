@@ -28,10 +28,10 @@
 	include_once(realpath(dirname(__FILE__)) . "/../../../classes/PluginsPaiements.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Variable.class.php");
 	
-	class Cheque extends PluginsPaiements{
+	class Virement extends PluginsPaiements{
 
 
-		function Cheque(){
+		function Virement(){
 			$this->PluginsPaiements;
 		}
 		
@@ -42,7 +42,7 @@
 			$urlsite = new Variable();
 			$urlsite->charger("urlsite");
 
-			header("Location: " . $urlsite->valeur . "/cheque.php?total=$total")			
+			header("Location: " . $urlsite->valeur . "/virement.php?total=$total")			
 		}
 	
 	}

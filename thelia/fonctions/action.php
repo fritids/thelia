@@ -322,8 +322,16 @@
 		$cache->vider("CLIENT", "%");
 		
 		$cache->vider_session(session_id(), "PANIER", "%");
+	
 		
-		redirige("client/paiement/" . $modules->nom . "/" . "paiement.php" . "?total=$total");
+		$nomclass=$modules->nom;
+		$nomclass[0] = strtoupper($nomclass[0]);
+
+		include("client/plugins/" . $modules->nom . "/" . $nomclass . ".class.php");
+		
+		$tmpobj = new $nomclass();
+		$tmpobj->paiement($commande);
+	//	redirige("client/paiement/" . $modules->nom . "/" . "paiement.php" . "?total=$total");
 	}
 	
 	// création d'un compte
