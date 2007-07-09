@@ -2116,3 +2116,19 @@ CREATE TABLE `cache` (
   `date` datetime NOT NULL,
   PRIMARY KEY  (`id`)
 )  AUTO_INCREMENT=1 ;
+
+---
+--- Structure de la table `histostock`
+---
+
+CREATE TABLE `histostock` (
+  `id` int(11) NOT NULL auto_increment,
+  `avant` float NOT NULL,
+  `apres` float NOT NULL,
+  `produit` int(11) NOT NULL,
+  `declidisp` int(11) NOT NULL,
+  `administrateur` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY  (`id`)
+) AUTO_INCREMENT=1 ;
+
