@@ -1503,17 +1503,25 @@
 
 		while( $row = mysql_fetch_object($resul)){
 
-			include("client/paiement/" . "$row->nom" . "/" . "config.php");
-			$titre = "titre" . $_SESSION['navig']->lang; 
-			$chapo = "chapo" . $_SESSION['navig']->lang; 
-			$description = "description" . $_SESSION['navig']->lang; 
+			$modules = new Modules();
+			$modules->charger_id($row->id);
+			
+			$nom = $modules->nom;
+			$nom[0] = strtoupper($nom[0]);
+
+			include("client/plugins/" . $modules->nom . "/$nom.class.php");
+			$tmpobj = new $nom();
+			
+			$titre = $tmpobj->getTitre();
+			$chapo = $tmpobj->getChapo();
+			$description = $tmpobj->getDescription();
 										
 			$temp = str_replace("#ID", "$row->id", $texte);
 			$temp = str_replace("#URLPAYER", "paiement.php?action=paiement&amp;type_paiement=" . $row->id, $temp);
-			$temp = str_replace("#LOGO", "client/paiement/" . "$row->nom" . "/logo.jpg", $temp);
-			$temp = str_replace("#TITRE", $$titre, $temp);
-			$temp = str_replace("#CHAPO", $$chapo, $temp);
-			$temp = str_replace("#DESCRIPTION", $$description, $temp);		
+			$temp = str_replace("#LOGO", "client/plugins/" . "$row->nom" . "/logo.jpg", $temp);
+			$temp = str_replace("#TITRE", $titre, $temp);
+			$temp = str_replace("#CHAPO", $chapo, $temp);
+			$temp = str_replace("#DESCRIPTION", $description, $temp);		
 			$res .= $temp;
 		}
 	

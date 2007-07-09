@@ -4,25 +4,7 @@
 	Date de validité sur code promo + minimum de commande
 	attribut nocache:"1" sur toutes les boucles si on ne souhaite pas mettre en cache	
 	Correction boucle VENTEPROD
-	
-	Requetes a executer :
-	
-	CREATE TABLE `cache` (
-	  `id` int(11) NOT NULL auto_increment,
-	  `session` text NOT NULL,
-	  `texte` text NOT NULL,
-	  `args` text NOT NULL,
-	  `variables` text NOT NULL,
-	  `type_boucle` text NOT NULL,
-	  `res` text NOT NULL,
-	  `date` datetime NOT NULL,
-	  PRIMARY KEY  (`id`)
-	) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-	
-	ALTER TABLE  `promo` ADD  `datefin` DATETIME NOT NULL ;
-	
 	modification du fichier sql contenant les tables Thelia (compatibilité de versions)
-	
 	Suppression des fonctperso (plugins maintenant)
 	
 
