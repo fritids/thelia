@@ -30,7 +30,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>THELIA / BACK OFFICE</title>
 <link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
@@ -72,7 +72,7 @@
   </tr>
      
   <tr class="cellule_sombre">
-    <td width="21%" height="30">Les caractÃ©ristiques</td>
+    <td width="21%" height="30">Les caractéristiques</td>
     <td width="63%" height="30">
       
     </td>
@@ -82,7 +82,7 @@
   </tr>
 
   <tr class="cellule_claire">
-    <td width="21%" height="30">Les dÃ©clinaisons</td>
+    <td width="21%" height="30">Les déclinaisons</td>
     <td width="63%" height="30">
       
     </td>

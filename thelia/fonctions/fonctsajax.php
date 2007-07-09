@@ -77,7 +77,7 @@ function modifpasssaj($pass){
 		$client->maj();
 }
 
-// modif coordonnées
+// modif coordonnÃ©es
 function modifcoordsaj($raison, $nom, $prenom, $telfixe, $telport, $email, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays){
 			$client = New Client();
 			$client->charger_id($_SESSION['navig']->client->id);

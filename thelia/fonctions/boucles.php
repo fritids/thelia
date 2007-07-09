@@ -70,7 +70,7 @@
 	/* Gestion des boucles de type Rubrique*/
 	function boucleRubrique($texte, $args){
 		global $id_rubrique;
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
 		$boutique = lireTag($args, "boutique");
@@ -172,7 +172,7 @@
 	
 		global $id_dossier;
 		
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
 		$boutique = lireTag($args, "boutique");
@@ -252,7 +252,7 @@
 	
 	function boucleImage($texte, $args){
 
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
 		$produit = lireTag($args, "produit");
 		$id = lireTag($args, "id");
 		$num = lireTag($args, "num");
@@ -415,7 +415,7 @@
 
 	/* Gestion des boucles de type Client*/
 	function boucleClient($texte, $args){
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
 		$id = lireTag($args, "id");
 		$ref = lireTag($args, "ref");
 		$raison = lireTag($args, "raison");
@@ -484,7 +484,7 @@
 	
 	function boucleDevise($texte, $args){
 
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
 		$produit = lireTag($args, "produit");
 		$id = lireTag($args, "id");
 		$somme = lireTag($args, "somme");
@@ -534,7 +534,7 @@
 
 	function boucleDocument($texte, $args){
 
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
 		$produit = lireTag($args, "produit");
 		$rubrique = lireTag($args, "rubrique");
 		$nb = lireTag($args, "nb");
@@ -595,7 +595,7 @@
 
 	function boucleAccessoire($texte, $args){
 
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
 		$produit = lireTag($args, "produit");
 		$num = lireTag($args, "num");
 		$aleatoire = lireTag($args, "aleatoire");
@@ -631,7 +631,7 @@
 	function boucleProduit($texte, $args, $type=0){
 			global $page, $totbloc, $ref, $pagesess;
 			
-			// récupération des arguments
+			// rÃ©cupÃ©ration des arguments
 			$rubrique = lireTag($args, "rubrique");
 			$boutique = lireTag($args, "boutique");
 			$deb = lireTag($args, "deb");
@@ -1004,7 +1004,7 @@
 	function boucleContenu($texte, $args, $type=0){
 			global $page, $totbloc, $id_contenu;
 			
-			// récupération des arguments
+			// rÃ©cupÃ©ration des arguments
 			$dossier = lireTag($args, "dossier");
 			$boutique = lireTag($args, "boutique");
 			$deb = lireTag($args, "deb");
@@ -1176,7 +1176,7 @@
 	function bouclePage($texte, $args){
 			global $page, $id_rubrique;
 			
-			// récupération des arguments
+			// rÃ©cupÃ©ration des arguments
 			
 			$num = lireTag($args, "num");
 			$courante = lireTag($args, "courante");
@@ -1397,7 +1397,7 @@
 	
 		
 	function boucleQuantite($texte, $args){
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
 
 		$res="";
 	
@@ -1430,7 +1430,7 @@
 	function boucleChemin($texte, $args){
 		global $id_rubrique;
 
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
 
 		$rubrique = lireTag($args, "rubrique");		
 		$profondeur = lireTag($args, "profondeur");		
@@ -1808,7 +1808,7 @@
 		$adresse = new Adresse();
 	
 
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
 
 		$adresse_id = lireTag($args, "adresse");		
 		$client_id = lireTag($args, "client");
@@ -1916,7 +1916,7 @@
 		$commande = new Commande();
 	
 	
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
 
 		$commande_ref = lireTag($args, "ref");		
 		$client_id = lireTag($args, "client");
@@ -1996,7 +1996,7 @@
 	
 	function boucleVenteprod($texte, $args){	
 	
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
 		$commande_id = lireTag($args, "commande");		
 		$produit = lireTag($args, "produit");
 		$stat = lireTag($args, "stat");
@@ -2048,7 +2048,7 @@
 
 	function boucleTransport($texte, $args){	
 
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
 
 		$id = lireTag($args, "id");		
 
@@ -2117,7 +2117,7 @@
 			
 		@ini_set('default_socket_timeout', 5);
                 
-		// récupération des arguments
+		// rÃ©cupÃ©ration des arguments
                 $url = lireTag($args, "url");
                 $nb = lireTag($args, "nb");
 				$deb = lireTag($args, "deb");

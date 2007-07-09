@@ -23,7 +23,7 @@
 /*                                                                                   */
 /*************************************************************************************/
 ?>
-<?php header("Content-type: text/plain; charset=UTF-8");?>
+<?php header("Content-type: text/plain; charset=iso-8859-1");?>
 #type=basic
 #country=fr
 #currency=eur
@@ -74,7 +74,7 @@ url	title	description	price	offerid	image	category	availability	deliverycost	exp
 
                 $description = ereg_replace("&nbsp;", "", strip_tags($produitdesc->description));
                 $description = ereg_replace("\r\n", " ", $description);		
-		$description = ereg_replace("CaractÃ©ristiques :", "", $description);
+		$description = ereg_replace("Caractéristiques :", "", $description);
 		$description = trim($description);
 ?>
 http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=53&wx=108	<?php echo($produitdesc->titre); ?>	<?php echo($description); ?>	<?php echo($row->prix2); ?>	<?php echo($row->ref); ?>	http://www.site.com/client/gfx/photos/petite/<?php echo($row2->fichier); ?>	 Formule 1 / Sports mecaniques	En Stock	<?php echo(calculport($row->poids)); ?>	20070101
@@ -103,7 +103,7 @@ http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=53&wx=108	<?p
 
                 $description = ereg_replace("&nbsp;", "", strip_tags($produitdesc->description));
                 $description = ereg_replace("\r\n", " ", $description);		
-				$description = ereg_replace("CaractÃ©ristiques :", "", $description);
+				$description = ereg_replace("Caractéristiques :", "", $description);
 		$description = trim($description);
 ?>
 http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=53&wx=108	<?php echo($produitdesc->titre); ?>	<?php echo($description); ?>	<?php echo($row->prix2); ?>	<?php echo($row->ref); ?>	http://www.site.com/client/gfx/photos/petite/<?php echo($row2->fichier); ?>	 Formule 1 / Sports mecaniques	Dispo le <?php echo($caracval->valeur); ?>	<?php echo(calculport($row->poids)); ?>	20070101

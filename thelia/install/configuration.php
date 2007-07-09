@@ -30,7 +30,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>THELIA</title>
 
 <link href="styles.css" rel="stylesheet" type="text/css" />
@@ -45,7 +45,7 @@
 
 <div id="wrapper"style="overflow:hidden;zoom: 1">
 		
-		<!-- EntÃªte -->
+		<!-- Entête -->
 		
 	<div id="entete"style="overflow:hidden;zoom: 1">
 		<h1><span>Thelia</span></h1>
@@ -77,7 +77,7 @@
 			
 				<br />
 								
-				Passons Ã  la configuration de Thelia <br /><br />
+				Passons à la configuration de Thelia <br /><br />
 				
 				<?php
 					include("../classes/Variable.class.php");
@@ -91,7 +91,7 @@
 
 				<?php if(isset($_GET['err']) && $_GET['err']) { ?>
 				
-					<span class="erreur">Veuillez vÃ©rifier votre nom d'utilisateur/mot de passe</span>
+					<span class="erreur">Veuillez vérifier votre nom d'utilisateur/mot de passe</span>
 					
 				<?php } ?>				
 				
@@ -147,14 +147,14 @@
 					$var->charger("tva");
 				?>
 				
-				<div class="col">TVA par dÃ©faut :</div>
+				<div class="col">TVA par défaut :</div>
 				<div class="col"><input type="text" name="tva" value="<?php echo $var->valeur ?>" size="30" /></div> 				
 				<?php										
 					$var = new Variable();
 					$var->charger("style_chem");
 				?>
 								
-				<div class="col">Feuille de style de l'Ã©diteur :</div>
+				<div class="col">Feuille de style de l'éditeur :</div>
 				<div class="col"><input type="text" name="style_chem" value="<?php echo $var->valeur ?>" size="30" /></div> 		
 
 				<?php										

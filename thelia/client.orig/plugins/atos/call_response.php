@@ -1,10 +1,10 @@
 <!--
 -------------------------------------------------------------
- Topic		: Exemple PHP traitement de la rÃ©ponse de paiement
+ Topic		: Exemple PHP traitement de la réponse de paiement
  Version 	: 500
 
-	Dans cet exemple, les donnÃ©es de la transaction	sont
-	dÃ©cryptÃ©es et affichÃ©es sur le navigateur de l'internaute.
+	Dans cet exemple, les données de la transaction	sont
+	décryptées et affichées sur le navigateur de l'internaute.
 
 -------------------------------------------------------------
 -->
@@ -19,21 +19,21 @@
 	print ("<Font color=#000000>");
 	print ("<center><H1>Test de l'API plug-in ATOS</H1></center><br><br>");
 
-	// RÃ©cupÃ©ration de la variable cryptÃ©e DATA
+	// Récupération de la variable cryptée DATA
 
 	$message="message=$DATA";
 
-	// Initialisation du chemin du fichier pathfile (Ã  modifier)
+	// Initialisation du chemin du fichier pathfile (à modifier)
     //   ex :
     //    -> Windows : $pathfile="pathfile=c:\\repertoire\\pathfile";
     //    -> Unix    : $pathfile="pathfile=/home/repertoire/pathfile";
     //
-    // Cette variable est facultative. Si elle n'est pas renseignÃ©e,
-    // l'API positionne la valeur Ã  "./pathfile".
+    // Cette variable est facultative. Si elle n'est pas renseignée,
+    // l'API positionne la valeur à "./pathfile".
 
 	$pathfile="pathfile=conf/pathfile";
 	
-	// Initialisation du chemin de l'executable response (Ã  modifier)
+	// Initialisation du chemin de l'executable response (à modifier)
 	// ex :
 	// -> Windows : $path_bin = "c:\\repertoire\\bin\\response";
 	// -> Unix    : $path_bin = "/home/repertoire/bin/response";
@@ -46,8 +46,8 @@
 	$result=exec("$path_bin $message");
 
 	//	Sortie de la fonction : !code!error!v1!v2!v3!...!v29
-	//		- code=0	: la fonction retourne les donnÃ©es de la transaction dans les variables v1, v2, ...
-	//				: Ces variables sont dÃ©crites dans le GUIDE DU PROGRAMMEUR
+	//		- code=0	: la fonction retourne les données de la transaction dans les variables v1, v2, ...
+	//				: Ces variables sont décrites dans le GUIDE DU PROGRAMMEUR
 	//		- code=-1 	: La fonction retourne un message d'erreur dans la variable error
 
 
@@ -55,7 +55,7 @@
 
 	$tableau = explode ("!", $result);
 
-	//	RÃ©cupÃ©ration des donnÃ©es de la rÃ©ponse
+	//	Récupération des données de la réponse
 
 	$code = $tableau[1];
 	$error = $tableau[2];
@@ -105,7 +105,7 @@
 		print (" message erreur : $error <br>");
 	}
 
-	// OK, affichage des champs de la rÃ©ponse
+	// OK, affichage des champs de la réponse
 	else {
 	print("<center>\n");
 	print("<H3>R&eacute;ponse manuelle du serveur ATOS</H3>\n");

@@ -36,7 +36,7 @@
 		}
 		
 		function init(){
-			$this->ajout_desc("chÃ¨que", "chÃ¨que", "", 1);			
+			$this->ajout_desc("chèque", "chèque", "", 1);			
 		}
 	
 		function paiement($commande){

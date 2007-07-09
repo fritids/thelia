@@ -34,7 +34,7 @@ foreach ($_GET as $key => $value) $$key = $value;
 
 	/* Moteur */
 	
-	/* Le fichier html associÈ au php ( fond ) est parsÈ afin de subsituer les informations au bon endroit */
+	/* Le fichier html associ√© au php ( fond ) est pars√© afin de subsituer les informations au bon endroit */
 
 	include_once("fonctions/boucles.php");
 	include_once("fonctions/substitutions.php");
@@ -65,7 +65,7 @@ function analyse($res){
 	// substition simples
 	$res = substitutions($res);	
 	
-	// laisser les infos pour les connectÈs ou non connect»s
+	// laisser les infos pour les connect√©s ou non connect√às
 	$res = filtre_connecte($res);	
 	
 
@@ -75,7 +75,7 @@ function analyse($res){
 	// si on a un squelette comportant de l'Ajax il faut charger les div
 	if($sajax == 1) $res = chargerDiv(explode("\n", $res));
 
-	// effectue le nombre de passe nÈcessaire afin de traiter toutes les boucles et sous boucles
+	// effectue le nombre de passe n√©cessaire afin de traiter toutes les boucles et sous boucles
 
 	$res = preg_replace("|<THELIA([^>]*)>\n|Us", "<THELIA\\1>", $res);
 	
@@ -97,7 +97,7 @@ function analyse($res){
 		$res = post($res);
 	}
 	
-	// on envoie le rÈsultat
+	// on envoie le r√©sultat
 	
 	return $res;
 
@@ -143,14 +143,14 @@ function analyse($res){
 	if(!isset($sajax)) $sajax="";	
 	if(!isset($parsephp)) $parsephp="";	
 	
-	// crÈation de la session si non existante
+	// cr√©ation de la session si non existante
 	
 	if(! isset($_SESSION["navig"])){
 	 	$_SESSION["navig"] = new Navigation();
 	 	$_SESSION["navig"]->lang="1";	
 	 }	
 	
-	// URL prÈcÈdente
+	// URL pr√©c√©dente
 	if(isset($_SERVER['HTTP_REFERER'])) $_SESSION["navig"]->urlprec = $_SERVER['HTTP_REFERER']; 
 	
 	// Page retour
@@ -189,13 +189,13 @@ function analyse($res){
 	}
 
 
-	// SÈcurisation
+	// S√©curisation
 	if($securise && ! $_SESSION["navig"]->connecte) { header("Location: connexion.php"); exit; }
 
-	// VÈrif transport 
+	// V√©rif transport 
 	if($transport && ! $_SESSION["navig"]->commande->transport) { header("Location: transport.php"); exit; }
 	
-	// VÈrif panier
+	// V√©rif panier
 	if($panier && ! $_SESSION["navig"]->panier->nbart) { header("Location: index.php"); exit; } 
 	
     // Paiement
@@ -224,7 +224,7 @@ function analyse($res){
 	// inclusions des plugins
 	modules_fonction("action");
 	
-	// RÈsultat envoyÈ au navigateur
+	// R√©sultat envoy√© au navigateur
 
 	$res =  analyse($res);
 	

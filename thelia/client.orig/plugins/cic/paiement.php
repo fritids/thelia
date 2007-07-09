@@ -18,7 +18,7 @@
  *
  * CM_CIC_Paiement: kit "open source" pour CyberMUT-P@iement(TM) et
  *                  P@iementCIC(TM).
- * GÃ©nÃ©ration d'un formulaire de paiement CMCIC. Exemple compatible RFC2104,
+ * Génération d'un formulaire de paiement CMCIC. Exemple compatible RFC2104,
  * base en PHP4.
  *
  * Fichier "CheckOutStub.php" :
@@ -27,7 +27,7 @@
  * Version  : 1.03
  * Date     : 18/12/2003
  *
- * Copyright: (c) 2003 Euro-Information. Tous droits rÃ©servÃ©s.
+ * Copyright: (c) 2003 Euro-Information. Tous droits réservés.
  * Consulter le document de licence "Licence.txt" joint.
  *
  *****************************************************************************/
@@ -58,31 +58,31 @@
 <?php
 
 // Nothing to customize below before a first successfull receipt test
-// Rien Ã  changer ci-dessous avant un premier A/R test correct
+// Rien à changer ci-dessous avant un premier A/R test correct
 
 // PHP implementation of RFC2104 hmac sha1 ---
-// ImplÃ©mentation en PHP de RFC2104 hmac sha1 ---
+// Implémentation en PHP de RFC2104 hmac sha1 ---
 @require_once("CMCIC_HMAC.inc.php");
 if ( !function_exists('CMCIC_hmac') ) { die ('cant require hmac function.'); }
 
 // ----------------------------------------------------------------------------
 // function CMCIC_getMyTpe
 //
-// IN:  Code sociÃ©tÃ© / Company code
+// IN:  Code société / Company code
 //      Code langue / Language code
-// OUT: Tableau contenant les champs suivants (paramÃ¨tres du tpe):
-//       tpe: NumÃ©ro de tpe / TPE number
-//       soc: Code sociÃ©tÃ© / Company code
-//       key: ClÃ© / Key
+// OUT: Tableau contenant les champs suivants (paramètres du tpe):
+//       tpe: Numéro de tpe / TPE number
+//       soc: Code société / Company code
+//       key: Clé / Key
 //       retourok: Url retour ok / Return url ok
 //       retourko: Url retour non ok / Return url non ok
-//       submit: Texte du bouton pour accÃ©der Ã  la page de paiement /
+//       submit: Texte du bouton pour accéder à la page de paiement /
 //       Text button to access payment page
 //
 // Description: Get TPE Number, 2nd part of Key and other Merchant
 //              Configuration. Datas from Merchant DataBase
 //                           ********************
-//              Rechercher le numÃ©ro de TPE, la 2nde partie de clef et autres
+//              Rechercher le numéro de TPE, la 2nde partie de clef et autres
 //              infos de configuration Marchand
 // ----------------------------------------------------------------------------
 function CMCIC_getMyTpe($soc="mysoc",$lang="")
@@ -96,11 +96,11 @@ function CMCIC_getMyTpe($soc="mysoc",$lang="")
 // function HtmlEncode
 //
 // IN:  chaine a encoder / String to encode
-// OUT: Chaine encodÃ©e / Encoded string
+// OUT: Chaine encodée / Encoded string
 //
 // Description: Encode special characters under HTML format
 //                           ********************
-//              Encodage des caractÃ¨res speciaux au format HTML
+//              Encodage des caractères speciaux au format HTML
 // ----------------------------------------------------------------------------
 function HtmlEncode ($data)
 {
@@ -125,17 +125,17 @@ function HtmlEncode ($data)
 // ----------------------------------------------------------------------------
 // function CreerFormulaireHmac
 //
-// IN: NumÃ©ro de TPE / TPE number
-//     RÃ©fÃ©rence commande/ Order reference
+// IN: Numéro de TPE / TPE number
+//     Référence commande/ Order reference
 //     Code langue / Language code
-//     Code sociÃ©tÃ© / Company code
+//     Code société / Company code
 //     Montant / Amount
 //     Devise / Currency
 //     Texte libre / Order Comment
 //     Texte du bouton / Button Text
 // OUT: Formulaire de paiement / Payment form
 //
-// Description: GÃ©nÃ©ration du formulaire / Format CMCIC Payment Form
+// Description: Génération du formulaire / Format CMCIC Payment Form
 // ----------------------------------------------------------------------------
 function CreerFormulaireHmac($CMCIC_Tpe,
                                $Amount,
@@ -147,7 +147,7 @@ function CreerFormulaireHmac($CMCIC_Tpe,
                                $Button_Text)
 {
     // Prepare the return link. Context will be added to return Url
-    // PrÃ©paration du lien de retour. Un contexte est ajoutÃ© au lien.
+    // Préparation du lien de retour. Un contexte est ajouté au lien.
     $Return_Context = "?order_ref=".$Order_Reference;
 
     if ($Order_Comment == "") { $Order_Comment .= "-"; }
@@ -193,8 +193,8 @@ function CreerFormulaireHmac($CMCIC_Tpe,
 // Begin Main : Build payment variables from order context and format
 //              CMCIC-compliant Payment form.
 //                           ********************
-//              CrÃ©er les variables du paiement Ã  partir du contexte commande
-//              et crÃ©er le formulaire de paiement CMCIC.
+//              Créer les variables du paiement à partir du contexte commande
+//              et créer le formulaire de paiement CMCIC.
 // ----------------------------------------------------------------------------
 $CMCIC_Tpe = CMCIC_getMyTpe();               // TPE init variables
 $CtlHmac   = CMCIC_CtlHmac($CMCIC_Tpe);      // TPE ok feedback
@@ -203,8 +203,8 @@ $CtlHmac   = CMCIC_CtlHmac($CMCIC_Tpe);      // TPE ok feedback
 //  CheckOut Stub setting fictious Merchant and Order datas.
 //  That's your job to set actual order fields. Here is a stub.
 //                           ********************
-//  Valorisation arbitraire des donnÃ©es commandes pour faire tourner un
-//  exemple. Il vous appartient de donner les valeurs rÃ©elles associÃ©es Ã  une
+//  Valorisation arbitraire des données commandes pour faire tourner un
+//  exemple. Il vous appartient de donner les valeurs réelles associées à une
 //  commande.
 // -----------------------------------------------------------------------------
 
@@ -216,7 +216,7 @@ if (($stub_method == "GET") or ($stub_method == "POST")) {
 else
     die ('Invalid REQUEST_METHOD (not GET, not POST).');
 
-// RÃ©fÃ©rence: unique, alphaNum (A-Z a-z 0-9), longueur maxi 12 caractÃ¨res
+// Référence: unique, alphaNum (A-Z a-z 0-9), longueur maxi 12 caractères
 @$Reference_12 = $_SESSION['navig']->commande->transaction;
 $Reference_Cde = urlencode(substr($Reference_12, 0, 12));
 
@@ -224,7 +224,7 @@ $Reference_Cde = urlencode(substr($Reference_12, 0, 12));
 @$Language_2   = $stub_order['language']."FR";   
 $Code_Langue   = urlencode(substr($Language_2 , 0, 2));
 
-// Code sociÃ©tÃ©: fourni par CM-CIC
+// Code société: fourni par CM-CIC
 $Code_Societe     = $CMCIC_Tpe['soc'];
 
 // Montant: format  "xxxxx.yy" (pas de blancs))
@@ -233,10 +233,10 @@ $Montant          = "$total";
 // Devise: norme ISO 4217 
 $Devise           = "EUR";
 
-// texte libre: une rÃ©fÃ©rence longue, des contextes de session pour le retour .
+// texte libre: une référence longue, des contextes de session pour le retour .
 $Texte_Libre      = "";
 
-// Texte du bouton pour accÃ©der au serveur CM-CIC
+// Texte du bouton pour accéder au serveur CM-CIC
 $Texte_Bouton     = $CMCIC_Tpe['submit']; 
 
 // --------------------------------------------------- End Stub ---------------
@@ -259,7 +259,7 @@ $Formulaire_Paiement = CreerFormulaireHmac($CMCIC_Tpe,
 // ----------------------------------------------------------------------------
 // Your Page displaying payment button to be customized  
 //                           ********************
-// Votre page Ã  personnaliser affichant le bouton
+// Votre page à personnaliser affichant le bouton
 // ----------------------------------------------------------------------------
 ?>
 <TABLE BORDER="0" WIDTH="60%" ALIGN="CENTER">

@@ -22,7 +22,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>THELIA</title>
 
 <link href="styles.css" rel="stylesheet" type="text/css" />
@@ -37,7 +37,7 @@
 
 <div id="wrapper"style="overflow:hidden;zoom: 1">
 		
-		<!-- EntÃªte -->
+		<!-- Entête -->
 		
 	<div id="entete"style="overflow:hidden;zoom: 1">
 		<h1><span>Thelia</span></h1>
@@ -90,7 +90,7 @@
 						if( ! is_writable($liste[$i])) {
 				
 				?>
-						<span class="erreur">Le rÃ©pertoire <?php echo $liste[$i] ?> n'est pas accessible en Ã©criture</span><br />
+						<span class="erreur">Le répertoire <?php echo $liste[$i] ?> n'est pas accessible en écriture</span><br />
 				<?php	
 							$err=1;	
 						}
@@ -111,7 +111,7 @@
 						if( ! is_writable($liste[$i])) {
 
 					?>
-						<span class="erreur">Le fichier <?php echo $liste[$i] ?> n'est pas accessible en Ã©criture</span><br />
+						<span class="erreur">Le fichier <?php echo $liste[$i] ?> n'est pas accessible en écriture</span><br />
 					<?php	
 						$err=1;	
 						}

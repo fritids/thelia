@@ -5,21 +5,21 @@
 	
 	$commande = new Commande();
 	
-	// RÃ©cupÃ©ration de la variable cryptÃ©e DATA
+	// Récupération de la variable cryptée DATA
 
 	$message="message=$DATA";
 
-	// Initialisation du chemin du fichier pathfile (Ã  modifier)
+	// Initialisation du chemin du fichier pathfile (à modifier)
     //   ex :
     //    -> Windows : $pathfile="pathfile=c:\\repertoire\\pathfile"
     //    -> Unix    : $pathfile="pathfile=/home/repertoire/pathfile"
     //
-    // Cette variable est facultative. Si elle n'est pas renseignÃ©e,
-    // l'API positionne la valeur Ã  "./pathfile".
+    // Cette variable est facultative. Si elle n'est pas renseignée,
+    // l'API positionne la valeur à "./pathfile".
 
 	$pathfile="pathfile=conf/pathfile";
 
-//Initialisation du chemin de l'executable response (Ã  modifier)
+//Initialisation du chemin de l'executable response (à modifier)
 	//ex :
 	//-> Windows : $path_bin = "c:\\repertoire\\bin\\response"
 	//-> Unix    : $path_bin = "/home/repertoire/bin/response"
@@ -32,8 +32,8 @@
 	$result=exec("$path_bin $message $pathfile");
 
 	//	Sortie de la fonction : !code!error!v1!v2!v3!...!v29
-	//		- code=0	: la fonction retourne les donnÃ©es de la transaction dans les variables v1, v2, ...
-	//				: Ces variables sont dÃ©crites dans le GUIDE DU PROGRAMMEUR
+	//		- code=0	: la fonction retourne les données de la transaction dans les variables v1, v2, ...
+	//				: Ces variables sont décrites dans le GUIDE DU PROGRAMMEUR
 	//		- code=-1 	: La fonction retourne un message d'erreur dans la variable error
 
 
@@ -83,7 +83,7 @@
 	
 	modules_fonction("confirmation", $commande);
 	
-	// Initialisation du chemin du fichier de log (Ã  modifier)
+	// Initialisation du chemin du fichier de log (à modifier)
     //   ex :
     //    -> Windows : $logfile="c:\\repertoire\\log\\logfile.txt";
     //    -> Unix    : $logfile="/home/repertoire/log/logfile.txt";
@@ -111,7 +111,7 @@ fputs($fp, "code $customer_ip_address \n");
  	}
 	else {
 
-	// OK, Sauvegarde des champs de la rÃ©ponse
+	// OK, Sauvegarde des champs de la réponse
 
 	fwrite( $fp, "merchant_id : $merchant_id\n");
 	fwrite( $fp, "merchant_country : $merchant_country\n");
