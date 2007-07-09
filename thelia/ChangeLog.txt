@@ -6,7 +6,7 @@
 	Correction boucle VENTEPROD
 	modification du fichier sql contenant les tables Thelia (compatibilité de versions)
 	Suppression des fonctperso (plugins maintenant)
-	
+	Passage en UTF-8
 
 1.2.2
 	ajout support n° de colis

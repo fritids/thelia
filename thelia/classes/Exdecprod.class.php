@@ -29,7 +29,7 @@
 	// Classe Activite
 
 	// id --> identifiant activite
-	// desc --> nom de l'activité
+	// desc --> nom de l'activitÃ©
 	
 	class Exdecprod extends Baseobj{
 
@@ -51,9 +51,6 @@
 			return $this->getVars("select * from $this->table where produit=\"$produit\" and declidisp=\"$declidisp\"");
 
 		}
-
-	
-			
 
 
 	}

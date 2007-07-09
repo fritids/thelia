@@ -26,7 +26,7 @@
 <?php
 
 
-	// remplace les tags qui ne doivent pas être touchés lors de la passe courante	
+	// remplace les tags qui ne doivent pas Ãªtre touchÃ©s lors de la passe courante	
 	function pre(&$res){
 
 		$res = preg_replace("|<THELIA([^>]*)>|Us", "\nSAUT_THELIA<THELIA\\1>\nSAUT_THELIA", $res);
@@ -97,7 +97,7 @@
 				$compt++;
 				$deb=1;
 				
-				// récupère le nom de la boucle
+				// rÃ©cupÃ¨re le nom de la boucle
 				ereg("_([^ ]*) ", "$rec", $cut);
 				$nomboucle = $cut[1];
 
@@ -107,7 +107,7 @@
 				
 				$i++;
 
-				// récupère le contenue de la boucle
+				// rÃ©cupÃ¨re le contenue de la boucle
 				while( ! strstr($lect[$i], "/STHELIA_$nomboucle") && $i<count($lect)){
 					
 		  			$texte .= $lect[$i++] . "\n";
@@ -139,7 +139,7 @@
 	// filtre si connecte
 	function filtre_connecte($lect){
 
-		// récupère les infos
+		// rÃ©cupÃ¨re les infos
 			if($_SESSION['navig']->connecte){
 				
 				$lect = preg_replace("|<THELIA SI CONNECTE>(.*)</THELIA SI CONNECTE>|Us", "\\1", $lect);
@@ -182,7 +182,7 @@
 				$nomboucle = $cut[1];
 	
 				$i++;	
-				// récupère le contenue de la boucle
+				// rÃ©cupÃ¨re le contenue de la boucle
 				while( ! strstr($lect[$i], "//T_" . $nomboucle) && $i<count($lect)){
 						
 		  			$res[$compt++] = $lect[$i++] . "\n";
@@ -492,6 +492,5 @@
 		
 		return $res;
 	}	
-
 	
 ?>

@@ -36,7 +36,7 @@
         $nom->charger("nomsite");
 
 ?>
-<?php echo "<?php xml version=\"1.0\" encoding=\"iso-8859-1\"?>"; ?>
+<?php echo "<?php xml version=\"1.0\" encoding=\"UTF-8\"?>"; ?>
 
 <rss version="0.91" xmlns:dc="http://purl.org/dc/elements/1.1/">
 
@@ -113,5 +113,3 @@
 </channel>
 
 </rss>
-
-

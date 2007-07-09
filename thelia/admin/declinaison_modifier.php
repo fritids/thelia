@@ -347,7 +347,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>THELIA / BACK OFFICE</title>
 <link href="styles.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript" type="text/JavaScript">
@@ -475,7 +475,7 @@
                       <?php if($lang == "1") { ?>
                               <a href="#" onClick="ajout()" class="txt_vert_11">Ajouter une valeur <img src="gfx/suivant.gif" width="12" height="9" border="0" /></a>
                       <?php } else { ?>
-                      		  <a href="#" onClick="maj()" class="txt_vert_11">Mettre à jour <img src="gfx/suivant.gif" width="12" height="9" border="0" /></a>
+                      		  <a href="#" onClick="maj()" class="txt_vert_11">Mettre Ã  jour <img src="gfx/suivant.gif" width="12" height="9" border="0" /></a>
                       
                       <?php } ?>        
                               

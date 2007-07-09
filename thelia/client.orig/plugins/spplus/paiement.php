@@ -6,19 +6,19 @@ include_once(realpath(dirname(__FILE__)) . "/config.php");
 // appel_spplus_php.php
 // KIT SPPLUS : Page de test de l'interface de paiement avec API PHP
 //---------------------------------------------------------------------------------------------------------
-// Destinataire :		             Sites en intégration
+// Destinataire :		             Sites en intÃ©gration
 // Auteur :				               Julien Bodin & Eric Duval
-// Numéro Version :              1.10
-// Date création	:	             25/08/2005
-// Date dernière Modification :  25/08/2005
+// NumÃ©ro Version :              1.10
+// Date crÃ©ation	:	             25/08/2005
+// Date derniÃ¨re Modification :  25/08/2005
 //---------------------------------------------------------------------------------------------------------
 //
-// Le script appel_spplus_php.php vous permettra de sécuriser l'appel au serveur de paiement SP PLUS.
+// Le script appel_spplus_php.php vous permettra de sÃ©curiser l'appel au serveur de paiement SP PLUS.
 // En effet, il permet d'appeler une des fonctions de calcul du sceau HMAC puis d'appliquer une signature
-// numérique sur la chaîne des paramètres à envoyer au serveur de paiement SPPLUS.
+// numÃ©rique sur la chaÃ®ne des paramÃ¨tres Ã  envoyer au serveur de paiement SPPLUS.
 //
-// Ce script présente les fonctions qui permettent de calculer le sceau numérique HMAC à partir  
-// de l'ensemble des paramètres passés au serveur de paiement SP PLUS.
+// Ce script prÃ©sente les fonctions qui permettent de calculer le sceau numÃ©rique HMAC Ã  partir  
+// de l'ensemble des paramÃ¨tres passÃ©s au serveur de paiement SP PLUS.
 //
 //------------------------------------------------------------------------------------------------------------
 
@@ -34,7 +34,6 @@ include_once(realpath(dirname(__FILE__)) . "/config.php");
 	$total = round($total, 2);
 
 
-
 // INFORMATIONS A MODIFIER POUR CHAQUE COMMERCANT FOURNIES PAR LE SERVICE INTEGRATION SPPLUS
 // cle marchand du commercant au format NT
    $clent = "$cle";
@@ -42,34 +41,34 @@ include_once(realpath(dirname(__FILE__)) . "/config.php");
 // code siret du commercant
    $codesiret = "$siret";
 
-// Montant à récupérer du panier
+// Montant Ã  rÃ©cupÃ©rer du panier
    $montant="$total";
 
-// Devise dans laquelle est exprimé la commande : 978 Code pour l'EURO
+// Devise dans laquelle est exprimÃ© la commande : 978 Code pour l'EURO
    $devise="978";
 
-// Référence de la commande pour le commercant : unique pour chaque paiement effectué, limitée à 20 caractères
+// RÃ©fÃ©rence de la commande pour le commercant : unique pour chaque paiement effectuÃ©, limitÃ©e Ã  20 caractÃ¨res
   // $reference = "spp" . date("YmdHis");
 	$reference = $_SESSION['navig']->commande->transaction;
 	
-// L'email de l'internaute : élément fortement conseillé pour identification internaute
+// L'email de l'internaute : Ã©lÃ©ment fortement conseillÃ© pour identification internaute
    $email=$_SESSION['navig']->client->email;
    
 // Langue choisie pour l'interface de paiement
    $langue="FR";
 
-// Taxe appliquée
+// Taxe appliquÃ©e
    $taxe="0.0";
 
 // Moyen de paiement choisi
    $moyen="CBS";
    
-// Modalité de paiement choisie
+// ModalitÃ© de paiement choisie
    $modalite="1x";
 
-// la fonction ci dessous permet de charger dynamiquement la librairie SP PLUS si elle n'est pas déclarée dans le fichier php.ini (rubrique extensions)
+// la fonction ci dessous permet de charger dynamiquement la librairie SP PLUS si elle n'est pas dÃ©clarÃ©e dans le fichier php.ini (rubrique extensions)
    dl('php_spplus.so');
-   if (!extension_loaded('SPPLUS')) { echo "extension SP PLUS non chargée<br><br>\n"; }
+   if (!extension_loaded('SPPLUS')) { echo "extension SP PLUS non chargÃ©e<br><br>\n"; }
 
 // Fonction de calcul calcul_hmac
    $calcul_hmac=calcul_hmac($clent,$codesiret,$reference,$langue,$devise,$montant,$taxe,$validite);
@@ -86,7 +85,7 @@ include_once(realpath(dirname(__FILE__)) . "/config.php");
    $url_nthmac = "https://www.spplus.net/IPaiement/initialiserPaiement.do?siret=$codesiret&reference=$reference&langue=$langue&devise=$devise&montant=$montant&taxe=$taxe&moyen=$moyen&modalite=$modalite&hmac=$nthmac";
 
 // Fonction d'encryptage de l'url SigneUrlPaiement
-// Cryptage en base 64 de la chaîne de paramètres à envoyer au serveur SPPLUS
+// Cryptage en base 64 de la chaÃ®ne de paramÃ¨tres Ã  envoyer au serveur SPPLUS
    $url_signeurlpaiement = "https://www.spplus.net/IPaiement/initialiserPaiement.do?siret=$codesiret&reference=$reference&langue=$langue&devise=$devise&montant=$montant&taxe=$taxe&moyen=$moyen&modalite=$modalite";
    $urlspplus=signeurlpaiement($clent,$url_signeurlpaiement);
 

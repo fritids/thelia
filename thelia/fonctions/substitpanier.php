@@ -84,7 +84,6 @@
 		$texte = str_replace("#PANIER_REMISE", "$remise", $texte);
 		$texte = str_replace("#PANIER_NBART", "" . $nb_article . "", $texte);
 		
-		
 		return $texte;
 	
 	}

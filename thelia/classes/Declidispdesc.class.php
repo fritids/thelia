@@ -29,7 +29,7 @@
 	// Classe Activite
 
 	// id --> identifiant activite
-	// desc --> nom de l'activité
+	// desc --> nom de l'activitÃ©
 	
 	class Declidispdesc extends Baseobj{
 
@@ -67,6 +67,5 @@
 		}
 		
 	}
-
 
 ?>

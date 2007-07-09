@@ -35,7 +35,7 @@
 		
 		$i = 0;
 		
-		// vérification si un produit avec la même déclinaison est déjà présent
+		// vÃ©rification si un produit avec la mÃªme dÃ©clinaison est dÃ©jÃ  prÃ©sent
 		foreach ($_POST as $key => $valeur) {
 			
 			if(strstr($key, "declinaison")){
@@ -94,7 +94,7 @@
 			$cache->vider_session(session_id(), "QUANTITE", "%");
 	}
 	
-	// modification de la quantité d'un article
+	// modification de la quantitÃ© d'un article
 	function modifier($article, $quantite){
 		$cache = new Cache();
 		$_SESSION['navig']->panier->modifier($article, $quantite);
@@ -124,7 +124,7 @@
 		
 	}
 	
-	// déconnexion du client
+	// dÃ©connexion du client
 	function deconnexion(){
 
 		$_SESSION['navig']->client= new Client();
@@ -146,7 +146,7 @@
 		$cache->vider_session(session_id(), "TRANSPORT", "%");
 	}
 	
-	// procédure de paiement
+	// procÃ©dure de paiement
 	function paiement($type_paiement){
 	
 		$total = 0;
@@ -221,7 +221,7 @@
 												
 			for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
 				
-				// diminution des stocks de déclinaison
+				// diminution des stocks de dÃ©clinaison
 				$stock->charger($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur, $_SESSION['navig']->panier->tabarticle[$i]->produit->id);
                 $stock->valeur-=$_SESSION['navig']->panier->tabarticle[$i]->quantite;
                 $stock->maj();
@@ -334,7 +334,7 @@
 
 	}
 	
-	// création d'un compte
+	// crÃ©ation d'un compte
 	function creercompte($raison, $entreprise, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2, $parrain){
 
 		global $obligetelfixe, $obligetelport;
@@ -476,7 +476,7 @@
 
 	}
 		
-	// création d'une adresse de livraison	
+	// crÃ©ation d'une adresse de livraison	
 	function creerlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays){
 
 		if($libelle != "" && $raison != "" && $prenom != "" && $nom != "" && $adresse1 != ""
@@ -576,7 +576,8 @@
                         
  			$msg->charger("mdpmodif");
                         $msgdesc->charger($msg->id);
-			echo "<script language=\"javascript\">";                                        echo "alert(\"$msgdesc->description\");";
+			echo "<script language=\"javascript\">";                                        
+			echo "alert(\"$msgdesc->description\");";
                         echo "location='index.php'";
                         echo "</script>"; 
 		}

@@ -24,6 +24,7 @@
 /*************************************************************************************/
 ?>
 <?php
+
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 
 	// Classe Activite

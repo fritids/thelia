@@ -29,7 +29,7 @@
 	
 	// Classe Request
 
-	// table --> table à requêter
+	// table --> table Ã  requÃªter
 
 	class Requete extends Cnx{
 
@@ -80,7 +80,6 @@
 			$query = "truncate table `$this->table` ";
 			$resul = mysql_query($query, $this->link);
 		}
-
 		
 	}
 	

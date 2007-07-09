@@ -50,8 +50,6 @@
 			return $this->getVars("select * from $this->table where rubrique=\"$rubrique\" and lang=\"$lang\"");
 
 		}
-
-
 		
 	}
 

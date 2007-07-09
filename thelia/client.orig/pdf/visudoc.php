@@ -68,6 +68,5 @@ if((($_SESSION['navig']->client->id != $commande->client) || ($commande->statut<
 
 		$pdf->closeParsers();
 
-
 	
 ?>

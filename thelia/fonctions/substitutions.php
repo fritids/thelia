@@ -82,7 +82,6 @@
 		if(strstr($texte, "#PARRAIN_")) $texte = substitparrain($texte);		
 		
 		return $texte;
-	
 	}
 	
 ?>

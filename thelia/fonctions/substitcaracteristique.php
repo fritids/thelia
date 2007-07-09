@@ -25,7 +25,6 @@
 ?>
 <?php
 
-	
 	/* Subsitutions de type caracteristique */
 		
 	function substitcaracteristique($texte){

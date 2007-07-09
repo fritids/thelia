@@ -133,7 +133,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>THELIA / BACK OFFICE</title>
 <script language="JavaScript" type="text/JavaScript">
 <!--
@@ -159,7 +159,7 @@ body {
 </head>
 
 <body>
-<p class="titre_rubrique">Gestion des contenus associés</p>
+<p class="titre_rubrique">Gestion des contenus associÃ©s</p>
 
  
   <table width="100%"  border="0" cellpadding="0" cellspacing="2" class="fond_F0F0F0">

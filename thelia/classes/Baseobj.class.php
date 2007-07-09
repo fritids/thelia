@@ -36,7 +36,6 @@
 			$this->Requete();
 		}
 
-
 		function getListVarsSql(){
 			$listvars="";
 			

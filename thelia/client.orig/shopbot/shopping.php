@@ -23,8 +23,8 @@
 /*                                                                                   */
 /*************************************************************************************/
 ?>
-<?php header("Content-type: text/plain; charset=ISO-8815-1");?>
-RÈfÈrence;Fabricant;CUP;Nom du produit;Description du produit;Prix du produit (doit s'entendre TTC);URL produit;URL image;Cat√©gorie;Stock;Description du stock;Frais de port  ;Poids
+<?php header("Content-type: text/plain; charset=UTF-8");?>
+R√©f√©rence;Fabricant;CUP;Nom du produit;Description du produit;Prix du produit (doit s'entendre TTC);URL produit;URL image;Cat√É¬©gorie;Stock;Description du stock;Frais de port  ;Poids
 <?php
         function calculport($poids){
 
@@ -69,7 +69,7 @@ RÈfÈrence;Fabricant;CUP;Nom du produit;Description du produit;Prix du produit (d
 
                 $description = ereg_replace("&nbsp;", "", strip_tags($produitdesc->description));
                 $description = ereg_replace("\r\n", " ", $description);		
-		$description = ereg_replace("CaractÈristiques :", "", $description);
+		$description = ereg_replace("Caract√©ristiques :", "", $description);
 		$description = trim($description);
 ?>
 <?php echo($row->ref); ?>;;;<?php echo($produitdesc->titre); ?>;<?php echo($description); ?>;<?php echo($row->prix2); ?>;http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=55&wx=115;http://www.site.com/client/gfx/photos/petite/<?php echo($row2->fichier); ?>;Jouets;En Stock;;<?php echo(calculport($row->poids)); ?>
@@ -99,7 +99,7 @@ RÈfÈrence;Fabricant;CUP;Nom du produit;Description du produit;Prix du produit (d
 
                 $description = ereg_replace("&nbsp;", "", strip_tags($produitdesc->description));
                 $description = ereg_replace("\r\n", " ", $description);		
-				$description = ereg_replace("CaractÈristiques :", "", $description);
+				$description = ereg_replace("Caract√©ristiques :", "", $description);
                 $description = trim($description);
 ?>
 <?php echo($row->ref); ?>;;;<?php echo($produitdesc->titre); ?>;<?php echo($description); ?>;<?php echo($row->prix2); ?>;http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=55&wx=115;http://www.site.com/client/gfx/photos/petite/<?php echo($row2->fichier); ?>;Jouets;Dispo le <?php echo($caracval->valeur); ?>;<?php echo(calculport($row->poids)); ?>

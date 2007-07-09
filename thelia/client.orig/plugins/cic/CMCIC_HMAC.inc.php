@@ -21,7 +21,7 @@ include_once(realpath(dirname(__FILE__)) . "/config.php");
  *
  * CM_CIC_Paiement: kit "open source" pour CyberMUT-P@iement(TM) et
  *                  P@iementCIC(TM).
- * ImplÈmentation RFC 2104 HMAC pour PHP
+ * Impl√©mentation RFC 2104 HMAC pour PHP
  *
  * Fichier "CMCIC_HMAC.inc.php" :
  *
@@ -29,7 +29,7 @@ include_once(realpath(dirname(__FILE__)) . "/config.php");
  * Version  : 1.03
  * Date     : 18/12/2003
  *
- * Copyright: (c) 2003 Euro-Information. Tous droits rÈservÈs.
+ * Copyright: (c) 2003 Euro-Information. Tous droits r√©serv√©s.
  * Consulter le document de licence "Licence.txt" joint.
  *
  *****************************************************************************/
@@ -72,7 +72,7 @@ function CMCIC_hmac($CMCIC_Tpe, $data="")
 	
 	$pass = "$motdepasse";
     // OverWrite with Your's !
-    // A remplacer par votre paramÈtrage.
+    // A remplacer par votre param√©trage.
 
 // --->>> end custom OverWrite ----------------
 
@@ -100,9 +100,9 @@ function CMCIC_hmac($CMCIC_Tpe, $data="")
 // Eliminates the need to install mhash to compute a HMAC
 // Adjusted from the md5 version by Lance Rushing .
 
-// ImplÈmentation RFC 2104 HMAC pour PHP 4 >= 4.3.0 - CrÈation d'un SHA1 HMAC.
+// Impl√©mentation RFC 2104 HMAC pour PHP 4 >= 4.3.0 - Cr√©ation d'un SHA1 HMAC.
 // Elimine l'installation de mhash pour le calcul d'un HMAC
-// AdaptÈe de la version MD5 de Lance Rushing.
+// Adapt√©e de la version MD5 de Lance Rushing.
 // ----------------------------------------------------------------------------
 
 function hmac_sha1 ($key, $data)

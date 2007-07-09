@@ -1,5 +1,4 @@
 <?php
-
-	// N° de Marchand
+	// NÂ° de Marchand
 	$merchant_id = "xxxxxxxxxxxxxxx";
 ?>

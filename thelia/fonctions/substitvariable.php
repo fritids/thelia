@@ -40,5 +40,4 @@
         else return $texte;
 	}
 
-	
 ?>

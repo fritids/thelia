@@ -30,7 +30,6 @@
 		
 	function substitparrain($texte){
 		global $id_parrain;
-		
 				
 		$client = new Client();
 		$client->charger_id($id_parrain);

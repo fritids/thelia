@@ -27,7 +27,7 @@
 
 	include_once(realpath(dirname(__FILE__)) . "/Article.class.php");
 
-	// Déninition du panier
+	// DÃ©ninition du panier
 	
 	class Panier {
 
@@ -139,6 +139,5 @@
 		}
 
 	}
-
 
 ?>

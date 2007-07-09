@@ -26,13 +26,13 @@ if (!function_exists('CMCIC_hmac'))
 // ----------------------------------------------------------------------------
 // function CMCIC_getMyTpe
 //
-// IN: Code société / Company code
+// IN: Code sociÃ©tÃ© / Company code
 //     Code langue / Language code
 //
-// OUT: Paramètres du Tpe / Tpe parameters
+// OUT: ParamÃ¨tres du Tpe / Tpe parameters
 // Description: Get TPE Number, 2nd part of Key and other Merchant
 //              Configuration Datas from merchant DataBase
-//              Rechercher le numéro de TPE, la 2nde partie cryptée de clef
+//              Rechercher le numÃ©ro de TPE, la 2nde partie cryptÃ©e de clef
 //              et autres infos de configuration Marchand
 // ----------------------------------------------------------------------------
 function CMCIC_getMyTpe($soc="mysoc",$lang="")
@@ -45,10 +45,10 @@ function CMCIC_getMyTpe($soc="mysoc",$lang="")
 // ----------------------------------------------------------------------------
 // function TesterHmac
 //
-// IN: Paramètres du Tpe / Tpe parameters
+// IN: ParamÃ¨tres du Tpe / Tpe parameters
 //     Champs du formulaire / Form fields
-// OUT: Résultat vérification / Verification result
-// description: Vérifier le MAC et préparer la Reponse
+// OUT: RÃ©sultat vÃ©rification / Verification result
+// description: VÃ©rifier le MAC et prÃ©parer la Reponse
 //              Perform MAC verification and create Receipt
 // ----------------------------------------------------------------------------
 function TesterHmac($CMCIC_Tpe, $CMCIC_bruteVars )
@@ -90,7 +90,7 @@ function TesterHmac($CMCIC_Tpe, $CMCIC_bruteVars )
 }
 
 // Begin Main : Retrieve Variables posted by CMCIC Payment Server 
-//              Recevoir les variables postées par le serveur bancaire
+//              Recevoir les variables postÃ©es par le serveur bancaire
 
 $CMCIC_reqMethod  = $HTTP_SERVER_VARS["REQUEST_METHOD"];
 if (($CMCIC_reqMethod == "GET") or ($CMCIC_reqMethod == "POST")) {
@@ -109,10 +109,10 @@ if (!($isVariableEmpty > " "))
     // require register_globals to be on. Using form variables as globals
     // can easily lead to possible security problems, if the code is not 
     // very well thought of.
-    // Il est recommandé de ne pas écrire de scripts qui exige de paramétrer
-    // register_globals à on. Utiliser les variables du formulaire comme
-    // globales peut amener des problèmes de sécurité si votre script n'est
-    // pas très bien conçu.
+    // Il est recommandÃ© de ne pas Ã©crire de scripts qui exige de paramÃ©trer
+    // register_globals Ã  on. Utiliser les variables du formulaire comme
+    // globales peut amener des problÃ¨mes de sÃ©curitÃ© si votre script n'est
+    // pas trÃ¨s bien conÃ§u.
 
     // var_dump($CMCIC_bruteVars);
     echo "\r\nTrying PHP<=3 old style ! "."\r\n";
@@ -149,7 +149,7 @@ if (!($isVariableEmpty > " "))
 //-----------------------------------------------------------------------------
 // Dump variables may give you an idea about what to do
 //                           ********************
-// Vider ces variables peut vous aider à voir ce qui est à coder
+// Vider ces variables peut vous aider Ã  voir ce qui est Ã  coder
 //-----------------------------------------------------------------------------
 // var_dump($Verified_Result_Array);
 // var_dump($CMCIC_bruteVars);
@@ -164,5 +164,4 @@ if (!($isVariableEmpty > " "))
 // Copyright (c) 2003 Euro-Information ( mailto:centrecom@e-i.com )
 // All rights reserved. ---
 
-	
 ?>

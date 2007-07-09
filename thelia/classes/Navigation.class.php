@@ -30,7 +30,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/Commande.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Promo.class.php");
 	
-	// Définition de la navigation
+	// DÃ©finition de la navigation
 	
 	class Navigation {
 
@@ -63,6 +63,5 @@
 
 		
 	}
-
 
 ?>

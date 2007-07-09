@@ -4,23 +4,22 @@
 	include_once("../../../fonctions/divers.php");	
 	
 	$commande = new Commande();
-
 	
-	// Récupération de la variable cryptée DATA
+	// RÃ©cupÃ©ration de la variable cryptÃ©e DATA
 
 	$message="message=$DATA";
 
-	// Initialisation du chemin du fichier pathfile (à modifier)
+	// Initialisation du chemin du fichier pathfile (Ã  modifier)
     //   ex :
     //    -> Windows : $pathfile="pathfile=c:\\repertoire\\pathfile"
     //    -> Unix    : $pathfile="pathfile=/home/repertoire/pathfile"
     //
-    // Cette variable est facultative. Si elle n'est pas renseignée,
-    // l'API positionne la valeur à "./pathfile".
+    // Cette variable est facultative. Si elle n'est pas renseignÃ©e,
+    // l'API positionne la valeur Ã  "./pathfile".
 
 	$pathfile="pathfile=conf/pathfile";
 
-//Initialisation du chemin de l'executable response (à modifier)
+//Initialisation du chemin de l'executable response (Ã  modifier)
 	//ex :
 	//-> Windows : $path_bin = "c:\\repertoire\\bin\\response"
 	//-> Unix    : $path_bin = "/home/repertoire/bin/response"
@@ -33,8 +32,8 @@
 	$result=exec("$path_bin $message $pathfile");
 
 	//	Sortie de la fonction : !code!error!v1!v2!v3!...!v29
-	//		- code=0	: la fonction retourne les données de la transaction dans les variables v1, v2, ...
-	//				: Ces variables sont décrites dans le GUIDE DU PROGRAMMEUR
+	//		- code=0	: la fonction retourne les donnÃ©es de la transaction dans les variables v1, v2, ...
+	//				: Ces variables sont dÃ©crites dans le GUIDE DU PROGRAMMEUR
 	//		- code=-1 	: La fonction retourne un message d'erreur dans la variable error
 
 
@@ -84,7 +83,7 @@
 	
 	modules_fonction("confirmation", $commande);
 	
-	// Initialisation du chemin du fichier de log (à modifier)
+	// Initialisation du chemin du fichier de log (Ã  modifier)
     //   ex :
     //    -> Windows : $logfile="c:\\repertoire\\log\\logfile.txt";
     //    -> Unix    : $logfile="/home/repertoire/log/logfile.txt";
@@ -112,7 +111,7 @@ fputs($fp, "code $customer_ip_address \n");
  	}
 	else {
 
-	// OK, Sauvegarde des champs de la réponse
+	// OK, Sauvegarde des champs de la rÃ©ponse
 
 	fwrite( $fp, "merchant_id : $merchant_id\n");
 	fwrite( $fp, "merchant_country : $merchant_country\n");

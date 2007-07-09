@@ -23,8 +23,8 @@
 /*                                                                                   */
 /*************************************************************************************/
 ?>
-<?php header("Content-type: text/plain; charset=ISO-8815-1");?>
-<?php echo"<?php xml version=\"1.0\" encoding=\"ISO-8859-1\"?>";?> 
+<?php header("Content-type: text/plain; charset=UTF-8");?>
+<?php echo"<?php xml version=\"1.0\" encoding=\"UTF-8\"?>";?> 
 <?php
 	function calculport($poids){
 
@@ -79,7 +79,7 @@
 
 		$description = ereg_replace("&nbsp;", "", strip_tags($produitdesc->description));
 		$description = ereg_replace("\r\n", " ", $description);
-		$description = ereg_replace("Caractéristiques :", "", $description);
+		$description = ereg_replace("CaractÃ©ristiques :", "", $description);
 		$description = trim($description);
 
 		$rubriquedesc->charger($row->rubrique);		

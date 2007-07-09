@@ -31,15 +31,13 @@
 	// Classe Activite
 
 	// id --> identifiant activite
-	// desc --> nom de l'activitÈ
+	// desc --> nom de l'activit√©
 	
 	class Caracdisp extends Baseobj{
 
 		var $id;
 		var $caracteristique;
 
-
-				
 		var $table="caracdisp";
 		var $bddvars = array("id", "caracteristique");
 

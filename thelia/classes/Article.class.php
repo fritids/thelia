@@ -29,7 +29,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/Produitdesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Perso.class.php");
 
-	// Déniniftion de l'article
+	// DÃ©niniftion de l'article
 
 	class Article {
 
@@ -49,7 +49,6 @@
 			    $this->quantite = $quantite;
 			    $this->perso = $perso;
 		}
-
 
 	}
 
