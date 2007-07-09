@@ -65,13 +65,13 @@
 							<span class="bold">#TITRE</span> <br />#DESCRIPTION
 							</div>
 							<div class="prixPieceGrand" style="overflow: hidden;zoom: 1">
-							<span class="bold">#PRIX â‚¬ </span>
+							<span class="bold">#PRIX &euro; </span>
 							</div>
 						</div>
 						<div class="footerPieceGrand" style="overflow: hidden;zoom: 1">
 						<div class="boutonDeBase120" style="padding-left:10px;overflow: hidden;zoom: 1">
 							<dl class="boutonForm120">
-							<dt><a href="panier.php?action=ajouter&ref=#REF">Ajouter</a></dt>
+							<dt><a href="panier.php?action=ajouter&amp;ref=#REF">Ajouter</a></dt>
 							</dl>
 						</div>	
 						</div>
@@ -81,16 +81,16 @@
 				
 			</div>
 			</THELIA_PROD>
-	<!-- page suivante / Page prÃ©cÃ©dente -->
+	<!-- page suivante / Page précédente -->
 			<div id="Pages">
 			<THELIA_PAGEPREC type="PAGE" rubrique="#RUBRIQUE_ID" caracteristique="#CARACTERISTIQUE_ID" caracdisp="#CARACTERISTIQUE_DISP" num="9" typeaff="0">
-			<a href="rubrique.php?id_rubrique=#RUBRIQUE_ID&page=#PAGE_PREC">Page prÃ©cÃ©dente</a>
+			<a href="rubrique.php?id_rubrique=#RUBRIQUE_ID&amp;page=#PAGE_PREC">Page précédente</a>
 			</THELIA_PAGEPREC>
 			
 			<THELIA_CPAGE type="PAGE" rubrique="#RUBRIQUE_ID"  num="9" max="10" typeaff="1" profondeur="1">
 				|
                 <THELIA_PAGECONT_PASCOUR type="PAGE" rubrique="#RUBRIQUE_ID"  num="9" courante="0" pagecourante="#PAGE_NUM" max="10" typeaff="1" profondeur="1"> 
-				 <a href="rubrique.php?id_rubrique=#RUBRIQUE_ID&page=#PAGE_NUM">#PAGE_NUM</a>
+				 <a href="rubrique.php?id_rubrique=#RUBRIQUE_ID&amp;page=#PAGE_NUM">#PAGE_NUM</a>
 				   </THELIA_PAGECONT_PASCOUR>
 			     |
 			        <THELIA_PAGECONT_COUR type="PAGE" rubrique="#RUBRIQUE_ID" caracteristique="#CARACTERISTIQUE_ID" caracdisp="#CARACTERISTIQUE_DISP" num="9" courante="1" pagecourante="#PAGE_NUM" max="10" typeaff="1" profondeur="1"> 
@@ -99,7 +99,7 @@
 				</THELIA_CPAGE>	
 				 | 
 			   <THELIA_PAGESUIV type="PAGE" rubrique="#RUBRIQUE_ID" caracteristique="#CARACTERISTIQUE_ID" caracdisp="#CARACTERISTIQUE_DISP" num="9" max="10" typeaff="0" profondeur="1"> 
-					<a href="rubrique.php?id_rubrique=#RUBRIQUE_ID&page=#PAGE_SUIV">Page suivante</a>
+					<a href="rubrique.php?id_rubrique=#RUBRIQUE_ID&amp;page=#PAGE_SUIV">Page suivante</a>
 			</THELIA_PAGESUIV>
 			</div>
 		</div>
