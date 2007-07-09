@@ -73,20 +73,35 @@
      $nomclass = $entry;
      $nomclass[0] = strtoupper($nomclass[0]);
 
-    include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php");
-    $tmpobj = new $nomclass();
+	if(file_exists(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php")){
+		
+    	include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php");
+    	$tmpobj = new $nomclass();
 
     	 if(get_parent_class($tmpobj) != "PluginsPaiements") continue;
 
-		 if(! $modules->id){
-			$tmpobj->init();
-			$modules = new Modules();
-			$modules->nom = $entry;
-			$modules->type="1";
-			$modules->actif=0;
-			$modules->add();
+		 	if(! $modules->id){
+				$tmpobj->init();
+				$modules = new Modules();
+				$modules->nom = $entry;
+				$modules->type="1";
+				$modules->actif=0;
+				$modules->add();
 			
-		 }
+		 	}
+	
+		}
+	}
+	
+	$modules = new Modules();
+	$query = "select * from $modules->table where type='1'";
+	$resul = mysql_query($query, $modules->link);
+	
+	$i=0;
+	
+	while($row = mysql_fetch_object($resul)){
+	
+	
 		
 		 $i++;
 	
@@ -97,21 +112,21 @@
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
   <tr class="<?php echo $fond; ?>">
-    <td width="21%" height="30"><?php echo $entry; ?></td>
+    <td width="21%" height="30"><?php echo $row->nom; ?></td>
     <td width="69%" height="30">
       
     </td>
     <td width="16%" height="30">
       <div align="left">
 	<?php 
-		if($modules->actif){
+		if($row->actif){
 	?>
-		<a href="modepay_modifier.php?nom=<?php echo $entry ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
+		<a href="modepay_modifier.php?nom=<?php echo $row->nom ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
 	<?php
 		} else {
 	?>
 
-		<a href="modepay_modifier.php?nom=<?php echo $entry ?>&actif=1" class="txt_vert_11">Activer </a>
+		<a href="modepay_modifier.php?nom=<?php echo $row->nom ?>&actif=1" class="txt_vert_11">Activer </a>
 		
 	<?php
 			

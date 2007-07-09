@@ -26,6 +26,7 @@
 <?php
 	include_once("pre.php");
 	include_once("auth.php");
+	include_once("../lib/pclzip.lib.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -58,6 +59,17 @@
 
 <?php
 
+	if(isset($action) && $action == "ajouter"){
+		
+		if($plugin) copy("$plugin", "../client/plugins/" . $plugin_name);
+		$archive = new PclZip("../client/plugins/" . $plugin_name);
+		$list = $archive->extract('../client/plugins/');
+		if ($list == 0) {
+		  die("ERROR : '".$archive->errorInfo(true)."'");
+		}
+		
+		unlink("../client/plugins/" . $plugin_name);
+	}
 		
 	$i=0;
 	
@@ -72,21 +84,23 @@
 		$nomclass = $entry;
 		$nomclass[0] = strtoupper($nomclass[0]);
 		
-		include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php");
-		$tmpobj = new $nomclass();
+		if(file_exists(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php")){
+			
+			include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php");
+			$tmpobj = new $nomclass();
 	
-		if(get_parent_class($tmpobj) != "PluginsClassiques") continue;
+			if(get_parent_class($tmpobj) != "PluginsClassiques") continue;
 			
-		 if(! $modules->id){
+		 	if(! $modules->id){
 			
-			$modules = new Modules();
-			$modules->nom = $entry;
-			$modules->type="3";
-			$modules->actif=0;
-			$modules->add();
+				$modules = new Modules();
+				$modules->nom = $entry;
+				$modules->type="3";
+				$modules->actif=0;
+				$modules->add();
 			
-		 }
-	
+		 	}
+		}
 	
 	}
 
@@ -142,6 +156,26 @@
 
  
 ?>
+
+<br />
+
+<table width="710" border="0" cellpadding="5" cellspacing="0">
+  <tr>
+    <td width="600" height="30" class="titre_cellule_tres_sombre">AJOUTER UN PLUGIN </td>
+  </tr>
+</table>
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="30" align="left" valign="middle" class="titre_cellule">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" ENCTYPE="multipart/form-data">
+				<input type="hidden" name="action" value="ajouter" />
+                <input type="file" name="plugin" />
+               <input type="submit" value="Valider" />
+               
+               <br /><br />
+                      </form></td>
+  </tr>
+</table>
 
 
 </div>

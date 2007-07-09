@@ -61,22 +61,25 @@
 					$nomclass = $entry;
 					$nomclass[0] = strtoupper($nomclass[0]);
 
-					include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php");
-					$tmpobj = new $nomclass();
+					if(file_exists(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php")){
+							
+						include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php");
+						$tmpobj = new $nomclass();
 
-					if(get_parent_class($tmpobj) != "PluginsTransports") continue;
-					 if(! $modules->id){
-						$tmpobj->init();
-						$modules = new Modules();
-						$modules->nom = $entry;
-						$modules->type="2";
-						$modules->actif=1;
-						$modules->add();
+						if(get_parent_class($tmpobj) != "PluginsTransports") continue;
+					 	if(! $modules->id){
+							$tmpobj->init();
+							$modules = new Modules();
+							$modules->nom = $entry;
+							$modules->type="2";
+							$modules->actif=1;
+							$modules->add();
 
-					 }
+					 	}
 
+					}
 				}
-
+				
 				$modules = new Modules();
 				$query = "select * from $modules->table where type='2'";
 				$resul = mysql_query($query, $modules->link);
