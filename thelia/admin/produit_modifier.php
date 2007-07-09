@@ -550,32 +550,6 @@
 
 </head>
 
-<?php include_once("../classes/Client.class.php"); ?>
-
-<?php
-	$client = new Client();
-  	
-  	
-	if($page=="") $page=1;
-  		 
-	$query = "select * from $client->table";
-  	$resul = mysql_query($query, $client->link);
-  	$num = mysql_numrows($resul);
-  	
-  	$nbpage = ceil($num/20);
-  	
-  	$debut = ($page-1) * 20;
-  	
-  	if($page>1) $pageprec=$page-1;
-  	else $pageprec=$page;
-
-  	if($page<$nbpage) $pagesuiv=$page+1;
-  	else $pagesuiv=$page;
-  	 
-  	$ordclassement = "order by nom";
-
-?>
-
 <body>
 
 <?php
@@ -942,7 +916,16 @@
     
     <?php } ?>
   </table>
-   
+ 
+	<?php
+		$jour = substr($produit->datemodif, 8, 2);
+		$mois = substr($produit->datemodif, 5, 2);
+		$annee = substr($produit->datemodif, 0, 4);
+		$heure = substr($produit->datemodif, 11, 2);
+		$minute = substr($produit->datemodif, 14, 2);
+		$seconde = substr($produit->datemodif, 17, 2);  	
+	?>
+	  
   <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr><input type="submit" id="boutoncache" style="display: none">
       <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" onClick="envoyer()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onclick="envoyer()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
@@ -961,6 +944,10 @@
       <td width="246" height="30" class="titre_cellule">URL réécrite : </td>
       <td width="444" class="titre_cellule"><?php echo(rewrite_prod("$produit->ref", $lang)); ?></td>
 	</tr>
+	<tr>
+      <td width="246" height="30" class="titre_cellule">Date modif : </td>
+      <td width="444" class="titre_cellule"><?php echo "$jour/$mois/$annee $heure:$minute:$seconde"; ?></td>
+	</tr>	
   </table>
 </div>
 

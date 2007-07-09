@@ -44,7 +44,8 @@
 		
 		$modules->maj();
 	
-		
+		$cache = new Cache();
+		$cache->vider("PAIEMENT", "%");
 	}		
 
 	header("Location: modepay.php");
