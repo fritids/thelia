@@ -40,10 +40,11 @@
 		var $adresse3;
 		var $cpostal;
 		var $ville;
+		var $tel;
 		var $pays;	
 	
 		var $table="adresse";
-		var $bddvars = array("id", "libelle", "client", "raison", "nom", "prenom", "adresse1", "adresse2", "adresse3", "cpostal", "ville", "pays");
+		var $bddvars = array("id", "libelle", "client", "raison", "nom", "prenom", "adresse1", "adresse2", "adresse3", "cpostal", "ville", "tel", "pays");
 
 		function Adresse(){
 			$this->Baseobj();

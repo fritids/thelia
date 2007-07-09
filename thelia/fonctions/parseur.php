@@ -451,6 +451,7 @@
 		$res = str_replace("#CPOSTAL", $_SESSION['navig']->formcli->cpostal, $res);
 		$res = str_replace("#VILLE", $_SESSION['navig']->formcli->ville, $res);
 		$res = str_replace("#PARRAIN", $tmpparrain->email, $res);
+		$res = str_replace("#SIRET", $_SESSION['navig']->formcli->siret, $res);
 		
 		if($_SESSION['navig']->formcli->raison == "")
 		     $res = str_replace(array("#RAISON0","#RAISON1","#RAISON2","#RAISON3"),array("selected=\"selected\"","","",""), $res);

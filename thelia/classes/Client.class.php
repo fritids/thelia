@@ -33,6 +33,7 @@
 		var $ref;
 		var $raison;
 		var $entreprise;
+		var $siret;
 		var $nom;
 		var $prenom;
 		var $telfixe;
@@ -50,7 +51,7 @@
 		var $pourcentage;
 				
 		var $table="client";
-		var $bddvars = array("id", "ref", "raison", "entreprise", "nom", "prenom", "telfixe", "telport", "email", "motdepasse", "adresse1", "adresse2", "adresse3", "cpostal", "ville", "pays", "parrain", "type", "pourcentage");
+		var $bddvars = array("id", "ref", "raison", "entreprise", "siret", "nom", "prenom", "telfixe", "telport", "email", "motdepasse", "adresse1", "adresse2", "adresse3", "cpostal", "ville", "pays", "parrain", "type", "pourcentage");
 
 		function Client(){
 			$this->Baseobj();

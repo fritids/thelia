@@ -335,7 +335,7 @@
 	}
 	
 	// création d'un compte
-	function creercompte($raison, $entreprise, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2, $parrain){
+	function creercompte($raison, $entreprise, $siret, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2, $parrain){
 
 		global $obligetelfixe, $obligetelport;
 
@@ -354,6 +354,7 @@
 		$client->adresse3 = $adresse3;
 		$client->cpostal = $cpostal;
 		$client->ville = $ville;
+		$client->siret = $siret;
 		$client->pays = $pays;
 		$client->type = "0";
 		
@@ -404,7 +405,7 @@
 	}
 	
 	// modification de compte	
-	function modifiercompte($raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2){
+	function modifiercompte($raison, $entreprise, $siret, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2){
 
 		global $obligetelfixe, $obligetelport;
 
@@ -414,6 +415,8 @@
 		if( $motdepasse1 == "" ){
 			$client->id = $_SESSION['navig']->client->id;
 			$client->raison = $raison;
+			$client->siret = $siret;
+			$client->entreprise = $entreprise;
 			$client->nom = $nom;
 			$client->prenom = $prenom;
 			$client->telfixe = $telfixe;
@@ -477,7 +480,7 @@
 	}
 		
 	// création d'une adresse de livraison	
-	function creerlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays){
+	function creerlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $tel, $pays){
 
 		if($libelle != "" && $raison != "" && $prenom != "" && $nom != "" && $adresse1 != ""
 			 && $cpostal != "" && $ville != "" && $pays != ""){
@@ -492,6 +495,7 @@
 			$adresse->adresse3 = $adresse3;
 			$adresse->cpostal = $cpostal;
 			$adresse->ville = $ville;
+			$adresse->tel = $tel;
 			$adresse->pays = $pays;
 			$adresse->client = $_SESSION['navig']->client->id;
 			$lastid = $adresse->add();
@@ -519,7 +523,7 @@
     }
 
 	// modification d'une adresse de livraison
-	function modifierlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays){
+	function modifierlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $tel, $pays){
 
 		
 		$adresse = new Adresse();
@@ -540,6 +544,7 @@
 			$adresse->adresse3 = $adresse3;
 			$adresse->cpostal = $cpostal;
 			$adresse->ville = $ville;
+			$adresse->tel = $tel;
 			$adresse->pays = $pays;
 			$adresse->maj();
 		}
