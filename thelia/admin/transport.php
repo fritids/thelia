@@ -66,11 +66,11 @@
 
 					if(get_parent_class($tmpobj) != "PluginsTransports") continue;
 					 if(! $modules->id){
-
+						$tmpobj->init();
 						$modules = new Modules();
 						$modules->nom = $entry;
 						$modules->type="2";
-						$modules->actif=0;
+						$modules->actif=1;
 						$modules->add();
 
 					 }

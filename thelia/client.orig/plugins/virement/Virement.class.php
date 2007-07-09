@@ -32,9 +32,12 @@
 
 
 		function Virement(){
-			$this->PluginsPaiements;
+			$this->PluginsPaiements("virement");
 		}
-		
+
+		function init(){
+			$this->ajout_desc("virement", "virement", "", 1);
+		}
 	
 		function paiement($commande){
 			global $total;

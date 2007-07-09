@@ -29,18 +29,10 @@
 	class PluginsClassiques extends Plugins{
 
 		
-		function PluginsClassiques(){
-			$this->Plugins();			
+		function PluginsClassiques($nom=""){
+			$this->Plugins($nom);			
 		}
 		
-		function init(){
-				
-		}
-
-		
-		function destroy(){
-			
-		}
 		
 		function boucle($texte, $args){
 			

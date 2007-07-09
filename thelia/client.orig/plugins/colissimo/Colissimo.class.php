@@ -38,7 +38,12 @@
 		var $cpostal;
 
 		function Colissimo(){
-			$this->PluginsTransports;
+			$this->PluginsTransports("colissimo");
+		}
+		
+		function init(){
+			$this->ajout_desc("Colissimo", "Colissimo", "", 1);
+			
 		}
 		
 		function calcule(){

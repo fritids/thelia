@@ -30,9 +30,13 @@
 	
 	class Atos extends PluginsPaiements{
 
+		function init(){
+			$this->ajout_desc("CB", "CB", "", 1);
+	
+		}
 
 		function Atos(){
-			$this->PluginsPaiements;
+			$this->PluginsPaiements("atos");
 		}
 		
 	

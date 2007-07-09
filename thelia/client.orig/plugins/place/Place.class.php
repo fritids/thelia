@@ -38,9 +38,12 @@
 		var $cpostal;
 
 		function Place(){
-			$this->PluginsTransports;
+			$this->PluginsTransports("place");
 		}
 		
+		function init(){
+			$this->ajout_desc("Sur place", "Sur place", "", 1);
+		}		
 		
 		function calcule(){
 			return 0;

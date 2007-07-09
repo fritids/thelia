@@ -1972,7 +1972,7 @@ CREATE TABLE `transzone` (
 -- Contenu de la table `transzone`
 -- 
 
-INSERT INTO `transzone` VALUES (1, 7, 1);
+INSERT INTO `transzone` VALUES (1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -2035,23 +2035,23 @@ CREATE TABLE `zone` (
   `nom` text NOT NULL,
   `unite` float NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=2 ;
+) TYPE=MyISAM AUTO_INCREMENT=12 ;
 
 -- 
 -- Contenu de la table `zone`
 -- 
 
-INSERT INTO `zone` VALUES (49, 'France', 0);
-INSERT INTO `zone` VALUES (47, 'inter zone 1', 0);
-INSERT INTO `zone` VALUES (48, 'inter Zone 2', 0);
-INSERT INTO `zone` VALUES (50, 'inter Zone 3', 0);
-INSERT INTO `zone` VALUES (51, 'inter Zone 4', 0);
-INSERT INTO `zone` VALUES (52, 'inter Zone 5', 0);
-INSERT INTO `zone` VALUES (53, 'inter Zone 6', 0);
-INSERT INTO `zone` VALUES (54, 'inter Zone 7', 0);
-INSERT INTO `zone` VALUES (55, 'inter Zone 8', 0);
-INSERT INTO `zone` VALUES (56, 'Outre-Mer DOM', 0);
-INSERT INTO `zone` VALUES (57, 'Outre-Mer TOM', 0);
+INSERT INTO `zone` VALUES (1, 'France', 0);
+INSERT INTO `zone` VALUES (2, 'inter zone 1', 0);
+INSERT INTO `zone` VALUES (3, 'inter Zone 2', 0);
+INSERT INTO `zone` VALUES (4, 'inter Zone 3', 0);
+INSERT INTO `zone` VALUES (5, 'inter Zone 4', 0);
+INSERT INTO `zone` VALUES (6, 'inter Zone 5', 0);
+INSERT INTO `zone` VALUES (7, 'inter Zone 6', 0);
+INSERT INTO `zone` VALUES (8, 'inter Zone 7', 0);
+INSERT INTO `zone` VALUES (9, 'inter Zone 8', 0);
+INSERT INTO `zone` VALUES (10, 'Outre-Mer DOM', 0);
+INSERT INTO `zone` VALUES (11, 'Outre-Mer TOM', 0);
 -- 
 -- Table structure for table `modules`
 -- 
@@ -2065,18 +2065,41 @@ CREATE TABLE `modules` (
   PRIMARY KEY  (`id`)
 )  AUTO_INCREMENT=10 ;
 
+INSERT INTO `modules` (`id`, `nom`, `type`, `actif`, `classement`) VALUES 
+(1, 'place', 2, 1, 0),
+(2, 'colissimo', 2, 1, 0),
+(3, 'forfait', 2, 1, 0),
+(4, 'paybox', 1, 0, 0),
+(5, 'spplus', 1, 0, 0),
+(6, 'cheque', 1, 0, 0),
+(7, 'cic', 1, 0, 0),
+(8, 'atos', 1, 0, 0),
+(9, 'virement', 1, 0, 0);
 -- 
--- Dumping data for table `modules`
+-- Table structure for table `modulesdesc`
 -- 
-INSERT INTO `modules` VALUES (1, 'atos', 1, 0, 1);
-INSERT INTO `modules` VALUES (2, 'cheque', 1, 1, 2);
-INSERT INTO `modules` VALUES (3, 'cic', 1, 0, 3);
-INSERT INTO `modules` VALUES (4, 'paybox', 1, 0, 4);
-INSERT INTO `modules` VALUES (5, 'spplus', 1, 0, 5);
-INSERT INTO `modules` VALUES (6, 'virement', 1, 0, 6);
-INSERT INTO `modules` VALUES (7, 'Colissimo', 2, 1, 1);
-INSERT INTO `modules` VALUES (8, 'Forfait', 2, 0, 2);
-INSERT INTO `modules` VALUES (9, 'Place', 2, 0, 3);
+
+CREATE TABLE `modulesdesc` (
+  `id` int(11) NOT NULL auto_increment,
+  `plugin` text NOT NULL,
+  `lang` int(11) NOT NULL default '0',
+  `titre` text NOT NULL,
+  `chapo` text NOT NULL,
+  `description` text NOT NULL,
+  `devise` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) AUTO_INCREMENT=10;
+
+INSERT INTO `modulesdesc` (`id`, `plugin`, `lang`, `titre`, `chapo`, `description`, `devise`) VALUES 
+(1, 'place', 1, 'Sur place', 'Sur place', '', 0),
+(2, 'colissimo', 1, 'Colissimo', 'Colissimo', '', 0),
+(3, 'forfait', 1, 'Forfait', 'Forfait', '', 0),
+(4, 'paybox', 1, 'CB', 'CB', '', 0),
+(5, 'spplus', 1, 'CB', 'CB', '', 0),
+(6, 'cheque', 1, 'chèque', 'chèque', '', 0),
+(7, 'cic', 1, 'CB', 'CB', '', 0),
+(8, 'atos', 1, 'CB', 'CB', '', 0),
+(9, 'virement', 1, 'virement', 'virement', '', 0);
 
 -- 
 -- Structure de la table `cache`

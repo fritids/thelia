@@ -32,9 +32,12 @@
 
 
 		function Spplus(){
-			$this->PluginsPaiements;
+			$this->PluginsPaiements("spplus");
 		}
 		
+		function init(){
+			$this->ajout_desc("CB", "CB", "", 1);			
+		}
 	
 		function paiement($commande){
 

@@ -24,30 +24,36 @@
 /*************************************************************************************/
 ?>
 <?php
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 
-	include_once(realpath(dirname(__FILE__)) . "/../../../classes/PluginsPaiements.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Variable.class.php");
-	
-	class Cheque extends PluginsPaiements{
+	class Modulesdesc extends Baseobj{
+
+		var $id;
+		var $plugin;
+		var $lang;
+		var $titre;
+		var $chapo;
+		var $description;
+		var $devise;
+				
+		var $table="modulesdesc";
+		var $bddvars = array("id", "plugin", "lang", "titre", "chapo", "description", "devise");
+
+		function Modulesdesc(){
+			$this->Baseobj();
+		}
 
 
-		function Cheque(){
-			$this->PluginsPaiements("cheque");
+		function charger($plugin, $lang=1){
+		
+			if($lang==0 || $lang=="") $lang=1;
+			$res = $this->getVars("select * from $this->table where plugin=\"$plugin\" and lang=\"$lang\"");
+			if(! $res) 
+				return $this->getVars("select * from $this->table where plugin=\"$plugin\" and lang=\"1\"");
+			else return $res;
+			
 		}
 		
-		function init(){
-			$this->ajout_desc("chèque", "chèque", "", 1);			
-		}
-	
-		function paiement($commande){
-			global $total;
-			
-			$urlsite = new Variable();
-			$urlsite->charger("urlsite");
-
-			header("Location: " . $urlsite->valeur . "/cheque.php?total=$total");			
-		}
-	
 	}
 
 

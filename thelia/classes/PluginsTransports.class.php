@@ -29,17 +29,8 @@
 	class PluginsTransports extends Plugins{
 
 		
-		function PluginsTransports(){
-			$this->Plugins();			
-		}
-		
-		function init(){
-				
-		}
-
-		
-		function destroy(){
-			
+		function PluginsTransports($nom=""){
+			$this->Plugins($nom);			
 		}
 		
 
@@ -47,58 +38,7 @@
 			
 		}
 
-		function getTitre(){
-				
-	     	include(realpath(dirname(__FILE__)) . "/config.php");
-			
-			if($_SESSION['navig']->lang == "")
-				$lang="1";
-			else $lang=$_SESSION['navig']->lang;
-			
-			$titre="titre" . $lang;
-			
-			if(isset($$titre))
-				return $$titre;
-		}
-				
-		function getChapo(){
 
-				
-	     	include(realpath(dirname(__FILE__)) . "/config.php");
-			
-			if($_SESSION['navig']->lang == "")
-					$lang="1";
-				else $lang=$_SESSION['navig']->lang;
-		
-			
-			$chapo="chapo" . $lang;
-		
-			if(isset($$chapo))
-				return $$chapo;
-		}
-		
-		function getDescription(){
-
-	     	include(realpath(dirname(__FILE__)) . "/config.php");
-			
-			if($_SESSION['navig']->lang == "")
-				$lang="1";
-			else $lang=$_SESSION['navig']->lang;
-			
-			$description="description" . $lang;
-		
-			if(isset($$description))
-				return $$description;			
-		}
-
-		function getDevise(){
-							
-	     	include(realpath(dirname(__FILE__)) . "/config.php");
-	
-		
-			if(isset($devise))
-				return $devise;			
-		}
 
 		
 	}

@@ -79,7 +79,7 @@
     	 if(get_parent_class($tmpobj) != "PluginsPaiements") continue;
 
 		 if(! $modules->id){
-			
+			$tmpobj->init();
 			$modules = new Modules();
 			$modules->nom = $entry;
 			$modules->type="1";

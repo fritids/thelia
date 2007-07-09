@@ -32,10 +32,13 @@
 
 
 		function Paybox(){
-			$this->PluginsPaiements;
+			$this->PluginsPaiements("paybox");
 		}
 		
-	
+		function init(){
+			$this->ajout_desc("CB", "CB", "", 1);
+		}
+		
 		function paiement($commande){
 
 			header("Location: " . "client/plugins/paybox/paiement.php");			

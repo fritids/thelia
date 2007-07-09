@@ -38,10 +38,13 @@
 		var $cpostal;
 
 		function Forfait(){
-			$this->PluginsTransports;
+			$this->PluginsTransports("forfait");
 		}
 		
-		
+		function init(){
+			$this->ajout_desc("Forfait", "Forfait", "", 1);
+			
+		}		
 		function calcule(){
 			return $this->unitetr;
 		

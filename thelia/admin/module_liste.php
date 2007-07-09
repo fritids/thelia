@@ -51,7 +51,7 @@
     </p>
      <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES BOUTIQUES </td>
+       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES MODULES </td>
      </tr>
    </table>
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">

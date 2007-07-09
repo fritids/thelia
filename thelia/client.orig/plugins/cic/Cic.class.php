@@ -32,9 +32,12 @@
 
 
 		function Cic(){
-			$this->PluginsPaiements;
+			$this->PluginsPaiements("cic");
 		}
 		
+		function init(){
+			$this->ajout_desc("CB", "CB", "", 1);			
+		}
 	
 		function paiement($commande){
 

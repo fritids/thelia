@@ -26,11 +26,15 @@
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Cache.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Modulesdesc.class.php");
 	
 	class Plugins extends Baseobj{
+		
+		var $nom_plugin;
 
-		function Plugins(){
-			$this->Baseobj();				
+		function Plugins($nom=""){
+			$this->Baseobj();	
+			$this->nom_plugin = $nom;			
 		}
 		
 		function init(){
@@ -41,7 +45,63 @@
 			
 		}		
 		
+		function getTitre(){
+			
+			if($_SESSION['navig']->lang == "")
+				$lang="1";
+			else $lang=$_SESSION['navig']->lang;
+
+			$modulesdesc = new Modulesdesc();
+			$modulesdesc->charger($this->nom_plugin);
+			
+			return $modulesdesc->titre;
+			
+		}
+				
+		function getChapo(){
+
+			if($_SESSION['navig']->lang == "")
+					$lang="1";
+				else $lang=$_SESSION['navig']->lang;
 		
+				$modulesdesc = new Modulesdesc();
+				$modulesdesc->charger($this->nom_plugin);
+
+				return $modulesdesc->chapo;
+		}
+		
+		function getDescription(){
+
+			if($_SESSION['navig']->lang == "")
+				$lang="1";
+			else $lang=$_SESSION['navig']->lang;
+			
+			$modulesdesc = new Modulesdesc();
+			$modulesdesc->charger($this->nom_plugin);
+			
+			return $modulesdesc->chapo;		
+		}
+
+		function ajout_desc($titre, $chapo, $description, $lang, $devise=""){
+			if($lang == "") 
+				$lang=1;
+				
+			$modulesdesc = new Modulesdesc();
+			$res = $modulesdesc->charger($this->nom_plugin, $lang);
+			
+			$modulesdesc->plugin = $this->nom_plugin;
+			$modulesdesc->titre = $titre;
+			$modulesdesc->chapo = $chapo;
+			$modulesdesc->description = $description;
+			$modulesdesc->lang = $lang;
+			$modulesdesc->devise = $devise;
+			
+			if($res)
+				$modulesdesc->maj();
+			else $modulesdesc->add();
+			
+			
+		}
 		
 	}
 
