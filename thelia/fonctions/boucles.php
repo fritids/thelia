@@ -70,7 +70,7 @@
 	/* Gestion des boucles de type Rubrique*/
 	function boucleRubrique($texte, $args){
 		global $id_rubrique;
-		// récupération des arguments
+		// r�cup�ration des arguments
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
 		$boutique = lireTag($args, "boutique");
@@ -92,7 +92,7 @@
 		$rubrique = new Rubrique();
 		$rubriquedesc = new Rubriquedesc();
 		
-		// préparation de la reqûete
+		// preparation de la requete
 		if($id!="")  $search.=" and $rubrique->table.id in ($id)";
 		if($parent!="") $search.=" and $rubrique->table.parent=\"$parent\"";
 		if($boutique != "") $search .=" and $rubrique->table.boutique='$boutique'";
@@ -172,7 +172,7 @@
 	
 		global $id_dossier;
 		
-		// récupération des arguments
+		// r�cup�ration des arguments
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
 		$boutique = lireTag($args, "boutique");
@@ -189,7 +189,7 @@
 		
 		if(!$deb) $deb=0;
 		
-		// prÔøΩaration de la requÔøΩe
+		// preparation de la requete
 		if($id!="")  $search.=" and id=\"$id\"";
 		if($parent!="") $search.=" and parent=\"$parent\"";
 		if($boutique != "") $search .=" and boutique='$boutique'";
@@ -252,7 +252,7 @@
 	
 	function boucleImage($texte, $args){
 
-		// récupération des arguments
+		// r�cup�ration des arguments
 		$produit = lireTag($args, "produit");
 		$id = lireTag($args, "id");
 		$num = lireTag($args, "num");
@@ -415,7 +415,7 @@
 
 	/* Gestion des boucles de type Client*/
 	function boucleClient($texte, $args){
-		// récupération des arguments
+		// r�cup�ration des arguments
 		$id = lireTag($args, "id");
 		$ref = lireTag($args, "ref");
 		$raison = lireTag($args, "raison");
@@ -430,7 +430,7 @@
 		$search="";
 		$res="";
 		
-		// prÔøΩaration de la requÔøΩe
+		// preparation de la requete
 		if($id!="")  $search.=" and id=\"$id\"";
 		if($ref!="")  $search.=" and ref=\"$ref\"";
 		if($raison!="")  $search.=" and raison=\"$raison\"";
@@ -484,7 +484,7 @@
 	
 	function boucleDevise($texte, $args){
 
-		// récupération des arguments
+		// r�cup�ration des arguments
 		$produit = lireTag($args, "produit");
 		$id = lireTag($args, "id");
 		$somme = lireTag($args, "somme");
@@ -534,7 +534,7 @@
 
 	function boucleDocument($texte, $args){
 
-		// récupération des arguments
+		// r�cup�ration des arguments
 		$produit = lireTag($args, "produit");
 		$rubrique = lireTag($args, "rubrique");
 		$nb = lireTag($args, "nb");
@@ -595,7 +595,7 @@
 
 	function boucleAccessoire($texte, $args){
 
-		// récupération des arguments
+		// r�cup�ration des arguments
 		$produit = lireTag($args, "produit");
 		$num = lireTag($args, "num");
 		$aleatoire = lireTag($args, "aleatoire");
@@ -631,7 +631,7 @@
 	function boucleProduit($texte, $args, $type=0){
 			global $page, $totbloc, $ref, $pagesess;
 			
-			// récupération des arguments
+			// r�cup�ration des arguments
 			$rubrique = lireTag($args, "rubrique");
 			$boutique = lireTag($args, "boutique");
 			$deb = lireTag($args, "deb");
@@ -685,7 +685,7 @@
 			$res="";
 			$virg="";
 			
-			// prÔøΩaration de la requÔøΩe
+			// preparation de la requete
 			
 			if($courant == "1") $search .= " and ref=\"$ref\"";
 			else if($courant == "0") $search .= " and ref!=\"$ref\"";
@@ -1004,7 +1004,7 @@
 	function boucleContenu($texte, $args, $type=0){
 			global $page, $totbloc, $id_contenu;
 			
-			// récupération des arguments
+			// r�cup�ration des arguments
 			$dossier = lireTag($args, "dossier");
 			$boutique = lireTag($args, "boutique");
 			$deb = lireTag($args, "deb");
@@ -1032,7 +1032,7 @@
 			$limit="";
 			$res="";
 			
-			// prÔøΩaration de la requÔøΩe
+			// preparation de la requete
 			if($dossier!=""){
 				if($profondeur == "") $profondeur=0;
 				$rec = arbreBoucle_dos($dossier, $profondeur);
@@ -1176,7 +1176,7 @@
 	function bouclePage($texte, $args){
 			global $page, $id_rubrique;
 			
-			// récupération des arguments
+			// r�cup�ration des arguments
 			
 			$num = lireTag($args, "num");
 			$courante = lireTag($args, "courante");
@@ -1397,7 +1397,7 @@
 	
 		
 	function boucleQuantite($texte, $args){
-		// récupération des arguments
+		// r�cup�ration des arguments
 
 		$res="";
 	
@@ -1430,7 +1430,7 @@
 	function boucleChemin($texte, $args){
 		global $id_rubrique;
 
-		// récupération des arguments
+		// r�cup�ration des arguments
 
 		$rubrique = lireTag($args, "rubrique");		
 		$profondeur = lireTag($args, "profondeur");		
@@ -1443,7 +1443,7 @@
 		$search ="";
 		$res="";
 		
-		// prÔøΩaration de la requÔøΩe
+		// preparation de la requete
 		if($rubrique!="" && isset($id))  $search.=" and id=\"$id\"";
 
 		$trubrique = new Rubrique();
@@ -1489,7 +1489,7 @@
 		$id = lireTag($args, "id");		
 		$search ="";
 	
-		// prÔøΩaration de la requÔøΩe
+		// preparation de la requete
 		if($id!="")  $search.=" and id=\"$id\"";
 	
 		$modules = new Modules();
@@ -1509,7 +1509,7 @@
 			$nom = $modules->nom;
 			$nom[0] = strtoupper($nom[0]);
 
-			include("client/plugins/" . $modules->nom . "/$nom.class.php");
+			include_once("client/plugins/" . $modules->nom . "/$nom.class.php");
 			$tmpobj = new $nom();
 			
 			$titre = $tmpobj->getTitre();
@@ -1544,7 +1544,7 @@
 		$search ="";
 		$res="";
 		
-		// prÔøΩaration de la requÔøΩe
+		// preparation de la requete
 		if($id!="")  $search.=" and id=\"$id\"";
 		if($zone!="")  $search.=" and zone=\"$zone\"";
 		if($zdefinie!="") $search.=" and zone!=\"-1\"";
@@ -1602,7 +1602,7 @@
 		$search ="";
 		$res="";
 		
-		// prÔøΩaration de la requÔøΩe
+		// preparation de la requete
 		 
 		if($produit!=""){
 			$tprod = new Produit();
@@ -1670,7 +1670,7 @@
 		
 		$search ="";
 		
-		// prÔøΩaration de la requÔøΩe
+		// preparation de la requete
 		if($caracteristique!="")  $search.=" and caracteristique=\"$caracteristique\"";
 		if($id !="") $search.=" and id=\"$id\"";
 		if($classement == "alpha") $order="order by titre";
@@ -1754,7 +1754,7 @@
 		$search ="";
 		$res="";
 		
-		// prÔøΩaration de la requÔøΩe
+		// preparation de la requete
 		$search.=" and caracteristique=\"$caracteristique\"";
 		$search.=" and produit=\"$produit\"";
 		
@@ -1808,7 +1808,7 @@
 		$adresse = new Adresse();
 	
 
-		// récupération des arguments
+		// r�cup�ration des arguments
 
 		$adresse_id = lireTag($args, "adresse");		
 		$client_id = lireTag($args, "client");
@@ -1820,7 +1820,7 @@
 		$raison[2] = "Mlle";
 		$raison[3] = "M";
 				
-		// prÔøΩaration de la requÔøΩe
+		// preparation de la requete
 		if($adresse_id!="")  $search.=" and id=\"$adresse_id\"";
 		if($client_id!="")  $search.=" and client=\"$client_id\"";
 		
@@ -1916,7 +1916,7 @@
 		$commande = new Commande();
 	
 	
-		// récupération des arguments
+		// r�cup�ration des arguments
 
 		$commande_ref = lireTag($args, "ref");		
 		$client_id = lireTag($args, "client");
@@ -1929,7 +1929,7 @@
 		$order="";
 		$res="";
 		
-		// prÔøΩaration de la requÔøΩe
+		// preparation de la requete
 		if($commande_ref!="")  $search.=" and ref=\"$commande_ref\"";
 		if($client_id!="")  $search.=" and client=\"$client_id\"";
 		if($statut!="" && $statut!="paye")  $search.=" and statut=\"$statut\"";
@@ -1996,7 +1996,7 @@
 	
 	function boucleVenteprod($texte, $args){	
 	
-		// récupération des arguments
+		// r�cup�ration des arguments
 		$commande_id = lireTag($args, "commande");		
 		$produit = lireTag($args, "produit");
 		$stat = lireTag($args, "stat");
@@ -2004,7 +2004,7 @@
 		$search ="";
 		$res="";
 		
-		// préparation de la requête
+		// preparation de la requete
 		if($commande_id!="")  $search.=" and commande=\"$commande_id\"";		
 		if($produit!="")  $search.=" and ref=\"$produit\"";		
 	
@@ -2048,7 +2048,7 @@
 
 	function boucleTransport($texte, $args){	
 
-		// récupération des arguments
+		// r�cup�ration des arguments
 
 		$id = lireTag($args, "id");		
 
@@ -2086,7 +2086,7 @@
 			$nom = $modules->nom;
 			$nom[0] = strtoupper($nom[0]);
 
-			include("client/plugins/" . $modules->nom . "/$nom.class.php");
+			include_once("client/plugins/" . $modules->nom . "/$nom.class.php");
 			$tmpobj = new $nom();
 			
 			$port = round(port($row->id), 2);
@@ -2117,7 +2117,7 @@
 			
 		@ini_set('default_socket_timeout', 5);
                 
-		// récupération des arguments
+		// r�cup�ration des arguments
                 $url = lireTag($args, "url");
                 $nb = lireTag($args, "nb");
 				$deb = lireTag($args, "deb");
@@ -2180,7 +2180,7 @@
 		$search ="";
 		$res="";
 		
-		// préparation de la requête
+		// preparation de la requete
 		if($rubrique!="")  $search.=" and rubrique=\"$rubrique\"";
 		if($id!="")  $search.=" and id=\"$id\"";
 			
@@ -2226,7 +2226,7 @@
 		$tabliste[0]="";
 		$res="";
 		
-		// préparation de la requête
+		// preparation de la requete
 		if($declinaison!="")  $search.=" and declinaison=\"$declinaison\"";
 		if($id !="") $search.=" and id=\"$id\"";
 		$tdeclidisp = new Declidisp();

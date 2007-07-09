@@ -30,7 +30,6 @@
 	require('../../lib/fpdf/fpdi.php');
 
 
-
 	include_once("../../classes/Commande.class.php");
 	include_once("../../classes/Client.class.php");
 	include_once("../../classes/Venteprod.class.php");
@@ -260,12 +259,12 @@
         $nom = $modules->nom;
         $nom[0] = strtoupper($nom[0]);
 
-        include("../../client/plugins/" . $modules->nom . "/$nom.class.php");
+        include_once("../../client/plugins/" . $modules->nom . "/$nom.class.php");
         $tmpobj = new $nom();
 
   		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(47,241);	  			
-    	$pdf->write(10, html_entity_decode($tmpobj->getTitre()));
+    	$pdf->write(10, $tmpobj->getTitre());
 
 		
 		$modules = new Modules();
@@ -274,12 +273,12 @@
 		$nom = $modules->nom;
 		$nom[0] = strtoupper($nom[0]);
 
-		include("../../client/plugins/" . $modules->nom . "/$nom.class.php");
+		include_once("../../client/plugins/" . $modules->nom . "/$nom.class.php");
 		$tmpobj = new $nom();
 		
   		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(47,248);	  			
-  	  	$pdf->write(10,  html_entity_decode($tmpobj->getTitre()));
+  	  	$pdf->write(10, $tmpobj->getTitre());
 
 		$pdf->Output("facture" . $commande->facture . ".pdf","I");
 		

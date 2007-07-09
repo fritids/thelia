@@ -82,7 +82,6 @@
                 		if(($type=="h" && $res) || ($type=="d" && !$res)) continue;
 
                         $caracteristiquedesc->charger($row->id);
-                        $caracteristiquedesc->titre = htmlentities($caracteristiquedesc->titre);
 			$tab[$i] = new Caracteristiquedesc();
                         $tab[$i++] = $caracteristiquedesc;
                 }

@@ -246,7 +246,7 @@
 			$nom = $modules->nom;
 			$nom[0] = strtoupper($nom[0]);
 
-			include("../client/plugins/" . $modules->nom . "/$nom.class.php");
+			include_once("../client/plugins/" . $modules->nom . "/$nom.class.php");
 			$tmpobj = new $nom();
 			
   			$pdf->SetFont('Arial','',8);
@@ -257,8 +257,6 @@
 			
 			$pdf->closeParsers();
 
-		
-		
 		
 		}
 	

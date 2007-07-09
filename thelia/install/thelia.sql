@@ -721,7 +721,7 @@ INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES
 (61, 0, 54, 0, 0),
 (62, 0, 55, 0, 0),
 (63, 0, 51, 0, 1),
-(64, 0, 49, 1, 1),
+(64, 0, 1, 1, 1),
 (65, 0, 54, 0, 0),
 (66, 0, 54, 0, 0),
 (67, 0, 53, 0, 0),
@@ -2071,7 +2071,7 @@ INSERT INTO `modules` (`id`, `nom`, `type`, `actif`, `classement`) VALUES
 (3, 'forfait', 2, 1, 0),
 (4, 'paybox', 1, 0, 0),
 (5, 'spplus', 1, 0, 0),
-(6, 'cheque', 1, 0, 0),
+(6, 'cheque', 1, 1, 0),
 (7, 'cic', 1, 0, 0),
 (8, 'atos', 1, 0, 0),
 (9, 'virement', 1, 0, 0);
