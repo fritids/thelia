@@ -30,7 +30,6 @@
 	
 	class Virement extends PluginsPaiements{
 
-
 		function Virement(){
 			$this->PluginsPaiements("virement");
 		}
