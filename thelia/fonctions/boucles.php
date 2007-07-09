@@ -454,7 +454,8 @@
 				$temp = str_replace("#ID", "$row->id", $texte);		
 				$temp = str_replace("#REF", "$row->ref", $temp);		
 				$temp = str_replace("#RAISON", "$row->raison", $temp);		
-				$temp = str_replace("#ENTREPRISE", "$row->entreprise", $temp);					
+				$temp = str_replace("#ENTREPRISE", "$row->entreprise", $temp);
+				$temp = str_replace("#SIRET", "$row->siret", $temp);					
 				$temp = str_replace("#NOM", "$row->nom", $temp);					
 				$temp = str_replace("#PRENOM", "$row->prenom", $temp);					
 				$temp = str_replace("#TELFIXE", "$row->telfixe", $temp);	
@@ -1859,6 +1860,7 @@
 				$temp = str_replace("#CPOSTAL", "$row->cpostal", $temp);
 				$temp = str_replace("#PAYS", "$row->pays", $temp);
 				$temp = str_replace("#VILLE", "$row->ville", $temp);
+				$temp = str_replace("#TEL", "$row->tel", $temp);
 				$temp = str_replace("#SUPPRURL", "livraison_adresse.php?action=supprimerlivraison&amp;id=$row->id", $temp);
 				$temp = str_replace("#URL", "paiement.php?action=modadresse&amp;adresse=$row->id", $temp);
 
