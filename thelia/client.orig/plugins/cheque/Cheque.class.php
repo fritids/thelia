@@ -42,7 +42,7 @@
 			$urlsite = new Variable();
 			$urlsite->charger("urlsite");
 
-			header("Location: " . $urlsite->valeur . "/cheque.php?total=$total")			
+			header("Location: " . $urlsite->valeur . "/cheque.php?total=$total");			
 		}
 	
 	}

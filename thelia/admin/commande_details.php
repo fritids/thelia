@@ -223,7 +223,14 @@
      <tr>
        <td height="30" class="titre_cellule">TYPE DE R&Egrave;GLEMENT </td>
        <td class="cellule_sombre">
-			<?php echo($modules->getTitre()); ?>
+		<?php 
+	            $nom = $modules->nom; 
+	            $nom[0] = strtoupper($nom[0]);                                
+				include("../client/plugins/" . $modules->nom . "/$nom.class.php");
+	           	$tmpobj = new $nom();
+                echo $tmpobj->getTitre();                
+	     ?>
+
 	  </td>
      </tr>
      <tr>
