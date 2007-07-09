@@ -70,7 +70,7 @@
 	/* Gestion des boucles de type Rubrique*/
 	function boucleRubrique($texte, $args){
 		global $id_rubrique;
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
 		$boutique = lireTag($args, "boutique");
@@ -172,7 +172,7 @@
 	
 		global $id_dossier;
 		
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
 		$boutique = lireTag($args, "boutique");
@@ -252,7 +252,7 @@
 	
 	function boucleImage($texte, $args){
 
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
 		$produit = lireTag($args, "produit");
 		$id = lireTag($args, "id");
 		$num = lireTag($args, "num");
@@ -326,11 +326,11 @@
 					
 					if(!$largeur && !$hauteur) 
 						$temp = str_replace("#GRANDE", "client/gfx/photos/produit/grande/" . $image->fichier, $temp);
-					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/grande/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/grande/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
 					
 					if(!$largeur && !$hauteur) 
 						$temp = str_replace("#PETITE",  "client/gfx/photos/produit/petite/" . $image->fichier, $temp);	
-					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/petite/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/petite/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
 					
 						$temp = str_replace("#FPETITE",  "client/gfx/photos/produit/petite/" . $image->fichier, $temp);
 						$temp = str_replace("#FGRANDE",  "client/gfx/photos/produit/grande/" . $image->fichier, $temp);
@@ -345,11 +345,11 @@
 			
 					if(!$largeur && !$hauteur) 
 						$temp = str_replace("#GRANDE", "client/gfx/photos/rubrique/grande/" . $image->fichier, $temp);
-					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/grande/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/grande/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
 					
 					if(!$largeur && !$hauteur) 
 						$temp = str_replace("#PETITE",  "client/gfx/photos/rubrique/petite/" . $image->fichier, $temp);	
-					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/petite/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/petite/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
 					
 						$temp = str_replace("#FPETITE",  "client/gfx/photos/rubrique/petite/" . $image->fichier, $temp);
 						$temp = str_replace("#FGRANDE",  "client/gfx/photos/rubrique/grande/" . $image->fichier, $temp);
@@ -364,11 +364,11 @@
 			
 					if(!$largeur && !$hauteur) 
 						$temp = str_replace("#GRANDE", "client/gfx/photos/dossier/grande/" . $image->fichier, $temp);
-					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/grande/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/grande/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
 					
 					if(!$largeur && !$hauteur) 
 						$temp = str_replace("#PETITE",  "client/gfx/photos/dossier/petite/" . $image->fichier, $temp);	
-					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/petite/" . $image->fichier . "&width=$largeur&height=$hauteur" . "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/petite/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
 					
 						$temp = str_replace("#FPETITE",  "client/gfx/photos/dossier/petite/" . $image->fichier, $temp);
 						$temp = str_replace("#FGRANDE",  "client/gfx/photos/dossier/grande/" . $image->fichier, $temp);
@@ -383,11 +383,11 @@
 					
 					if(!$largeur && !$hauteur) 
 						$temp = str_replace("#GRANDE", "client/gfx/photos/contenu/grande/" . $image->fichier, $temp);
-					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/grande/" . $image->fichier . "&width=$largeur&height=$hauteur". "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/grande/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur". "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
 					
 					if(!$largeur && !$hauteur) 
 						$temp = str_replace("#PETITE",  "client/gfx/photos/contenu/petite/" . $image->fichier, $temp);	
-					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/petite/" . $image->fichier . "&width=$largeur&height=$hauteur". "&opacite=" . $opacite . "&nb=" . "$noiretblanc" . "&miroir=" . "$miroir", $temp);
+					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/petite/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur". "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
 					
 						$temp = str_replace("#FPETITE",  "client/gfx/photos/contenu/petite/" . $image->fichier, $temp);
 						$temp = str_replace("#FGRANDE",  "client/gfx/photos/contenu/grande/" . $image->fichier, $temp);
@@ -415,7 +415,7 @@
 
 	/* Gestion des boucles de type Client*/
 	function boucleClient($texte, $args){
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
 		$id = lireTag($args, "id");
 		$ref = lireTag($args, "ref");
 		$raison = lireTag($args, "raison");
@@ -484,7 +484,7 @@
 	
 	function boucleDevise($texte, $args){
 
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
 		$produit = lireTag($args, "produit");
 		$id = lireTag($args, "id");
 		$somme = lireTag($args, "somme");
@@ -534,7 +534,7 @@
 
 	function boucleDocument($texte, $args){
 
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
 		$produit = lireTag($args, "produit");
 		$rubrique = lireTag($args, "rubrique");
 		$nb = lireTag($args, "nb");
@@ -595,7 +595,7 @@
 
 	function boucleAccessoire($texte, $args){
 
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
 		$produit = lireTag($args, "produit");
 		$num = lireTag($args, "num");
 		$aleatoire = lireTag($args, "aleatoire");
@@ -631,7 +631,7 @@
 	function boucleProduit($texte, $args, $type=0){
 			global $page, $totbloc, $ref, $pagesess;
 			
-			// rÃ©cupÃ©ration des arguments
+			// récupération des arguments
 			$rubrique = lireTag($args, "rubrique");
 			$boutique = lireTag($args, "boutique");
 			$deb = lireTag($args, "deb");
@@ -986,8 +986,8 @@
 			$temp = str_replace("#URL", "produit.php?ref=" . "$row->ref" . "&id_rubrique=" . "$row->rubrique", $temp);	
 			$temp = str_replace("#REWRITEURL", rewrite_prod("$row->ref"), $temp);	
 			$temp = str_replace("#GARANTIE", "$row->garantie", $temp);			
-			$temp = str_replace("#PANIERAPPEND", "panier.php?action=" . "ajouter" . "&" . "ref=" . "$row->ref" . "&" . "append=1", $temp);	
-			$temp = str_replace("#PANIER", "panier.php?action=" . "ajouter" . "&" . "ref=" . "$row->ref" , $temp);	
+			$temp = str_replace("#PANIERAPPEND", "panier.php?action=" . "ajouter" . "&amp;" . "ref=" . "$row->ref" . "&amp;" . "append=1", $temp);	
+			$temp = str_replace("#PANIER", "panier.php?action=" . "ajouter" . "&amp;" . "ref=" . "$row->ref" , $temp);	
 			$temp = str_replace("#RUBTITRE", "$rubriquedesc->titre", $temp);
 			
 			
@@ -1004,7 +1004,7 @@
 	function boucleContenu($texte, $args, $type=0){
 			global $page, $totbloc, $id_contenu;
 			
-			// rÃ©cupÃ©ration des arguments
+			// récupération des arguments
 			$dossier = lireTag($args, "dossier");
 			$boutique = lireTag($args, "boutique");
 			$deb = lireTag($args, "deb");
@@ -1176,7 +1176,7 @@
 	function bouclePage($texte, $args){
 			global $page, $id_rubrique;
 			
-			// rÃ©cupÃ©ration des arguments
+			// récupération des arguments
 			
 			$num = lireTag($args, "num");
 			$courante = lireTag($args, "courante");
@@ -1378,9 +1378,9 @@
 			$temp = str_replace("#TOTAL", "$total", $temp);			
 			$temp = str_replace("#ID", $_SESSION['navig']->panier->tabarticle[$i]->produit->id, $temp);
 			$temp = str_replace("#ARTICLE", "$i", $temp);
-			$temp = str_replace("#PLUSURL", "panier.php?action=" . "modifier" . "&" . "article=" . $i . "&" . "quantite=" . $plus, $temp);			
-			$temp = str_replace("#MOINSURL", "panier.php?action=" . "modifier" . "&" . "article=" . $i . "&" . "quantite=" . $moins, $temp);
-			$temp = str_replace("#SUPPRURL", "panier.php?action=" . "supprimer" . "&" . "article=" . $i, $temp);			
+			$temp = str_replace("#PLUSURL", "panier.php?action=" . "modifier" . "&amp;" . "article=" . $i . "&amp;" . "quantite=" . $plus, $temp);			
+			$temp = str_replace("#MOINSURL", "panier.php?action=" . "modifier" . "&amp;" . "article=" . $i . "&amp;" . "quantite=" . $moins, $temp);
+			$temp = str_replace("#SUPPRURL", "panier.php?action=" . "supprimer" . "&amp;" . "article=" . $i, $temp);			
 			$temp = str_replace("#PRODURL", "produit.php?ref=".$_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $temp);		
 			$temp = str_replace("#TOTSANSPORT", "$totsansport", $temp);
 			$temp = str_replace("#PORT", "$port", $temp);
@@ -1397,7 +1397,7 @@
 	
 		
 	function boucleQuantite($texte, $args){
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
 
 		$res="";
 	
@@ -1430,7 +1430,7 @@
 	function boucleChemin($texte, $args){
 		global $id_rubrique;
 
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
 
 		$rubrique = lireTag($args, "rubrique");		
 		$profondeur = lireTag($args, "profondeur");		
@@ -1517,7 +1517,7 @@
 			$description = $tmpobj->getDescription();
 										
 			$temp = str_replace("#ID", "$row->id", $texte);
-			$temp = str_replace("#URLPAYER", "paiement.php?action=paiement&type_paiement=" . $row->id, $temp);
+			$temp = str_replace("#URLPAYER", "paiement.php?action=paiement&amp;type_paiement=" . $row->id, $temp);
 			$temp = str_replace("#LOGO", "client/plugins/" . "$row->nom" . "/logo.jpg", $temp);
 			$temp = str_replace("#TITRE", $titre, $temp);
 			$temp = str_replace("#CHAPO", $chapo, $temp);
@@ -1808,7 +1808,7 @@
 		$adresse = new Adresse();
 	
 
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
 
 		$adresse_id = lireTag($args, "adresse");		
 		$client_id = lireTag($args, "client");
@@ -1859,8 +1859,8 @@
 				$temp = str_replace("#CPOSTAL", "$row->cpostal", $temp);
 				$temp = str_replace("#PAYS", "$row->pays", $temp);
 				$temp = str_replace("#VILLE", "$row->ville", $temp);
-				$temp = str_replace("#SUPPRURL", "livraison_adresse.php?action=supprimerlivraison&id=$row->id", $temp);
-				$temp = str_replace("#URL", "paiement.php?action=modadresse&adresse=$row->id", $temp);
+				$temp = str_replace("#SUPPRURL", "livraison_adresse.php?action=supprimerlivraison&amp;id=$row->id", $temp);
+				$temp = str_replace("#URL", "paiement.php?action=modadresse&amp;adresse=$row->id", $temp);
 
 				$res .= $temp;
 			}
@@ -1916,7 +1916,7 @@
 		$commande = new Commande();
 	
 	
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
 
 		$commande_ref = lireTag($args, "ref");		
 		$client_id = lireTag($args, "client");
@@ -1996,7 +1996,7 @@
 	
 	function boucleVenteprod($texte, $args){	
 	
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
 		$commande_id = lireTag($args, "commande");		
 		$produit = lireTag($args, "produit");
 		$stat = lireTag($args, "stat");
@@ -2048,7 +2048,7 @@
 
 	function boucleTransport($texte, $args){	
 
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
 
 		$id = lireTag($args, "id");		
 
@@ -2097,7 +2097,7 @@
 			$temp = str_replace("#TITRE", "$titre", $texte);
 			$temp = str_replace("#CHAPO", "$chapo", $temp);
 			$temp = str_replace("#DESCRIPTION", "$description", $temp);
-			$temp = str_replace("#URLCMD", "commande.php?action=transport&id=" . $row->id, $temp);
+			$temp = str_replace("#URLCMD", "commande.php?action=transport&amp;id=" . $row->id, $temp);
 			$temp = str_replace("#ID", "$row->id", $temp);	
 			$temp = str_replace("#PORT", "$port", $temp);
 			$res .= $temp;
@@ -2117,7 +2117,7 @@
 			
 		@ini_set('default_socket_timeout', 5);
                 
-		// rÃ©cupÃ©ration des arguments
+		// récupération des arguments
                 $url = lireTag($args, "url");
                 $nb = lireTag($args, "nb");
 				$deb = lireTag($args, "deb");
