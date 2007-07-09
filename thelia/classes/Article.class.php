@@ -29,7 +29,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/Produitdesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Perso.class.php");
 
-	// DÃ©niniftion de l'article
+	// Déniniftion de l'article
 
 	class Article {
 

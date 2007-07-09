@@ -325,4 +325,3 @@ if (browser.isIE) {
     document.removeEventListener("mouseup",   dragStop, true);
   }
 }
-

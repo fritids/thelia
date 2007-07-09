@@ -59,9 +59,7 @@
              $this->ligne($fp, "\r\n");
              $this->ligne($fp, $this->texte . "\r\n");
              $this->ligne($fp, ".\r\n", 1);
-
        }
 
  }
-
 ?>

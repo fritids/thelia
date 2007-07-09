@@ -29,7 +29,7 @@
 	// Classe Statudesc
 
 	// id --> identifiant activite
-	// desc --> nom de l'activitÃ©
+	// desc --> nom de l'activité
 	
 	class Statutdesc extends Baseobj{
 

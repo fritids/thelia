@@ -29,7 +29,7 @@
 	
 	// Classe Request
 
-	// table --> table Ã  requÃªter
+	// table --> table à requêter
 
 	class Requete extends Cnx{
 
