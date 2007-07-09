@@ -11,7 +11,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>THELIA</title>
 
 <link href="styles.css" rel="stylesheet" type="text/css" />
@@ -26,7 +26,7 @@
 
 <div id="wrapper"style="overflow:hidden;zoom: 1">
 		
-		<!-- Entête -->
+		<!-- EntÃªte -->
 		
 	<div id="entete"style="overflow:hidden;zoom: 1">
 		<h1><span>Thelia</span></h1>
@@ -57,7 +57,7 @@
 				<br />
 				
 				Bienvenue au sein du programme d'installation de Thelia.<br />
-				Nous allons vous guider tout au long de ce processus afin d'installer l'application sur votre système.<br /><br />
+				Nous allons vous guider tout au long de ce processus afin d'installer l'application sur votre systÃ¨me.<br /><br />
 				
 				<form action="bdd.php" method="post">
 					<input type="submit" value="Continuer" />

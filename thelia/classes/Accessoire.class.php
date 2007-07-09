@@ -29,7 +29,7 @@
 	// Classe Activite
 
 	// id --> identifiant activite
-	// desc --> nom de l'activitÈ
+	// desc --> nom de l'activit√©
 	
 	class Accessoire extends Baseobj{
 

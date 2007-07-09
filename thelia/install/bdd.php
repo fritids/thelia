@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>THELIA</title>
 
 <link href="styles.css" rel="stylesheet" type="text/css" />
@@ -18,10 +18,10 @@
 
 <div id="wrapper"style="overflow:hidden;zoom: 1">
 		
-		<!-- Entête -->
+		<!-- EntÃªte -->
 		
 	<div id="entete"style="overflow:hidden;zoom: 1">
-		<h1><span>Thélia</span></h1>
+		<h1><span>ThÃ©lia</span></h1>
 	</div>
 	
 		<!-- Menu -->
@@ -44,15 +44,15 @@
 		<div id="colonneDeGauche"style="overflow:hidden;zoom: 1">
 		
 			<div id="chapeau"style="overflow:hidden;zoom: 1">
-			<h2>Connexion &agrave; la base de données</h2>
+			<h2>Connexion &agrave; la base de donnÃ©es</h2>
 		
 				<br />
-				Nous allons installé les informations nécessaires en base de donneés.<br /><br />
+				Nous allons installÃ© les informations nÃ©cessaires en base de donneÃ©s.<br /><br />
 				
-				Nous allons pour cela vous demander différentes informations. <br /><br />
+				Nous allons pour cela vous demander diffÃ©rentes informations. <br /><br />
 				
 				<?php if(isset($_GET['err']) && $_GET['err']) { ?>
-					<span class="erreur">Erreur ! Veuillez vérifier vos informations de connexion</span>
+					<span class="erreur">Erreur ! Veuillez vÃ©rifier vos informations de connexion</span>
 				<?php } ?>
 				<form action="choixbase.php" method="post">
 				
