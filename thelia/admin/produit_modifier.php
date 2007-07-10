@@ -72,8 +72,8 @@
 
 	switch($action){
 		case 'modclassement' : modclassement($ref, $parent, $type); break;
-		case 'modifier' : modifier($id, $lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
-		case 'ajouter' : ajouter($lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
+		case 'modifier' : modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
+		case 'ajouter' : ajouter($lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
 		case 'acdec' : moddecli($produit, $id, 1); break;
 		case 'desdec' : moddecli($produit, $id, 0); break;
 		case 'supprimer' : supprimer($ref, $parent);
@@ -134,7 +134,7 @@
 	
 	}
 	
-	function modifier($id, $lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
+	function modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
 
      if(  $_SESSION["bout"] == "") {
           header("Location: catalogue.php" );
@@ -292,7 +292,7 @@
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
 	}
 
-	function ajouter($lang, $ref, $prix, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
+	function ajouter($lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
 
      if(  $_SESSION["bout"] == "") {
           header("Location: catalogue.php" );
@@ -670,6 +670,12 @@
       <td height="30" class="titre_cellule">TVA </td>
       <td class="cellule_claire">
         <input name="tva" type="text" class="form" value="<?php echo($tva); ?>" />
+        </span></td>
+    </tr>
+    <tr>
+      <td height="30" class="titre_cellule">Eco-taxe </td>
+      <td class="cellule_claire">
+        <input name="ecotaxe" type="text" class="form" value="<?php echo($produit->ecotaxe); ?>" />
         </span></td>
     </tr>
     <tr>
