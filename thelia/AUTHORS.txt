@@ -7,11 +7,11 @@ Yoan De Macedo : yoan@octolys.fr
 
 Charte graphique :
 
-Amplitude MultimÃ©dia : contact@amplitude-thiers.com
-FrÃ©dÃ©ric Melon : fred@octolys.fr
+Amplitude Multimédia : contact@amplitude-thiers.com
+Frédéric Melon : fred@octolys.fr
 
-Tests et propositions de fonctionnalitÃˆs :
+Tests et propositions de fonctionnalitÈs :
 
-CÃ©dric Sibaud : cedric@octolys.fr
+Cédric Sibaud : cedric@octolys.fr
 Jean-David Olekhnovitch : jd@octolys.fr
-JoÃ«l Mossand : joel@octolys.fr
+Joël Mossand : joel@octolys.fr

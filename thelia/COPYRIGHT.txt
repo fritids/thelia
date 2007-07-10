@@ -1,13 +1,13 @@
 THELIA
 Copyright (C) 2005-2006 par:
 
-Si vous avez contribuÃ© Ã  THELIA et que vous n'Ãªtes pas sur la liste,
+Si vous avez contribué à THELIA et que vous n'êtes pas sur la liste des contributeurs,
 Contactez-nous (voir: AUTHORS) et nous vous ajouterons.
 
 Yoan De Macedo
-FrÃ©dÃ©ric Melon
-CÃ©dric Sibaud
-JoÃ«l Mossand
+Frédéric Melon
+Cédric Sibaud
+Joël Mossand
 Jean-David Olekhnovitch
 Octolys Development
-Amplitude MultimÃ©dia
+Amplitude Multimédia
