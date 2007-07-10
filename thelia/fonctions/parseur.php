@@ -323,7 +323,7 @@
 		
 		$res = "";
 		
-		if(! $nocache && !strstr("$args", "nocache=\"1\"")){
+		if(! $nocache && !strstr("$args", "nocache=\"1\"") && !strstr("$args", "aleatoire=\"1\"") && !strstr("$args", "courant=\"1\"") && !strstr("$args", "courante=\"1\"") ){
 		
 		
 			if(! $_SESSION['navig']->client->id)

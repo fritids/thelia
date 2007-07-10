@@ -233,7 +233,7 @@
 				// recup valeur declidisp ou string
 				if($declinaison->isDeclidisp($tperso->declinaison)){
 					$declidisp->charger($tperso->valeur);
-					$declidispdesc->charger($declidisp->id);
+					$declidispdesc->charger_declidisp($declidisp->id);
 					$dectexte .= " - " . $declinaisondesc->titre . " " . $declidispdesc->titre . " ";
 				}
 				

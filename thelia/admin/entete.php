@@ -174,7 +174,7 @@
 	    <?php } else { ?>      
 
 	        <tr>
-	          <td height="18" align="left" valign="middle" class="selection_menu"><a href="module_liste.php" class="selection_menul">Modules</a></td>
+	          <td height="18" align="left" valign="middle" class="selection_menu"><a href="module_liste.php" class="selection_menul">Plugins</a></td>
 	        </tr>          
 	    <?php } ?>    
 <!--------------------------------------------------------------------------------------------------------------------------------->

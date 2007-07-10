@@ -109,7 +109,7 @@
   <tr>
     <td height="30" class="titre_cellule">N&deg; DU CLIENT</td>
     <td height="30" class="titre_cellule">SOCI&Eacute;T&Eacute;</td>
-    <td height="30" class="titre_cellule">NOM &amp; PR&Eacute;NOM </td>
+    <td height="30" class="titre_cellule">PR&Eacute;NOM &amp; NOM</td>
     <td height="30" class="titre_cellule">E-MAIL</td>
     <td height="30" class="titre_cellule">&nbsp;</td>
     <td height="30" class="titre_cellule">&nbsp;</td>
