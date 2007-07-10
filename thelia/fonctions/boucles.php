@@ -939,6 +939,7 @@
 
 			$prix = $row->prix - ($row->prix * $_SESSION['navig']->client->pourcentage / 100);
 			$prix2 = $row->prix2 - ($row->prix2 * $_SESSION['navig']->client->pourcentage / 100);
+			$ecotaxe = $row->ecotaxe;
 			
 			$pays = new Pays();
 			$pays->charger($_SESSION['navig']->client->pays);
@@ -949,6 +950,8 @@
 			if($_SESSION['navig']->client->type == "1"){
 				$prix = $prix/1.196;
 				$prix2 = $prix2/1.196;
+				$ecotaxe = $row->ecotaxe/1.196;
+				
 			}
 			
 			$prix = round($prix, 2);
@@ -971,6 +974,7 @@
             $temp = str_replace("#MENSUALITE", "$mensualite", $temp);               
 			$temp = str_replace("#PRIX2", "$prix2", $temp);					
 			$temp = str_replace("#PRIX", "$prix", $temp);	
+			$temp = str_replace("#ECOTAXE", "$row->ecotaxe", $temp);	
 			$temp = str_replace("#POURCENTAGE", "$pourcentage", $temp);	
 			$temp = str_replace("#RUBRIQUE", "$row->rubrique", $temp);			
 			$temp = str_replace("#PERSO", "$row->perso", $temp);			

@@ -1745,6 +1745,7 @@ CREATE TABLE `produit` (
   `ref` text NOT NULL,
   `datemodif` datetime NOT NULL default '0000-00-00 00:00:00',
   `prix` float NOT NULL default '0',
+  `ecotaxe` float NOT NULL,
   `promo` smallint(6) NOT NULL default '0',
   `prix2` float NOT NULL default '0',
   `reappro` smallint(6) NOT NULL default '0',
