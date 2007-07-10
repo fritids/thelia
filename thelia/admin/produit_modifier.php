@@ -162,6 +162,7 @@
 		 $produit->datemodif = date("Y-m-d H:i:s");		
 		 $produit->prix = $prix; 
 		 $produit->prix2 = $prix2;
+		 $produit->ecotaxe = $ecotaxe;
 		 $produit->rubrique = $rubrique; 
 	 	 if($promo == "on") $produit->promo = 1; else $produit->promo = 0;
 	 	 if($reappro == "on") $produit->reappro = 1; else $produit->reappro = 0;	 	 
@@ -328,6 +329,7 @@
 	 $produit->prix = $prix; 
 	 $produit->prix2 = $prix2;
 	 if($produit->prix2 == "") $produit->prix2 = $prix;
+	 $produit->ecotaxe = $ecotaxe;
 	 $produit->quantite = 10;
 	 $produit->rubrique = $rubrique; 
 	 if($promo == "on") $produit->promo = 1; else $produit->promo = 0;
