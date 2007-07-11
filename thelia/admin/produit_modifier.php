@@ -131,8 +131,7 @@
 		$cache->vider("DECLIDISP", "%");
 		$cache->vider("DECVAL", "%");
 		$cache->vider("STOCK", "%");
-		$cache->vider("CHEMIN", "%");
-	
+		$cache->vider("CHEMIN", "%");	
 	}
 	
 	function modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
@@ -632,20 +631,16 @@
     <tr>
       <td height="30" class="titre_cellule">REFERENCE :</td>
       <td class="cellule_sombre">
-        <input type="text" name="ref" id="ref_c" class="form" value="<?php echo($produit->ref); ?>" <?php if($ref) echo "disabled";?>>
-      </td>
+        <input type="text" name="ref" id="ref_c" class="form" value="<?php echo($produit->ref); ?>" <?php if($ref) echo "disabled";?>>      </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">TITRE DU PRODUIT </td>
-      <td class="cellule_claire"><input name="titre" type="text" class="form" value="<?php echo($produitdesc->titre); ?>">
-      </td>
+      <td class="cellule_claire"><input name="titre" type="text" class="form" value="<?php echo($produitdesc->titre); ?>">      </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">CHAPO (resumé de la description)</td>
       <td class="cellule_sombre">
-        <textarea name="chapo" cols="40" rows="2" class="form"><?php echo($produitdesc->chapo); ?></textarea>
-        
-      </td>
+        <textarea name="chapo" cols="40" rows="2" class="form"><?php echo($produitdesc->chapo); ?></textarea>      </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">DESCRIPTION DU PRODUIT</td>
@@ -656,9 +651,8 @@
         </span></td>
     </tr>
 	 <tr>
-      <td width="250" height="30" class="titre_cellule">CARACTERISTIQUES DU PRODUIT </td>
-      <td width="440" class="cellule_sombre"></span></td>
-    </tr>
+      <td height="30" colspan="2" class="titre_cellule_tres_sombre">Caractéristiques du produit </span></td>
+      </tr>
     <tr>
       <td width="250" height="30" class="titre_cellule">PRIX</td>
       <td width="440" class="cellule_sombre">
@@ -780,12 +774,10 @@
      			if( $caracdispdesc->caracdisp == $caracval->caracdisp) $selected="selected"; else $selected="";
      	?>
           <option value="<?php echo($caracdispdesc->caracdisp); ?>" <?php echo($selected); ?>>
-            <?php echo($caracdispdesc->titre); ?>
-            </option>
+            <?php echo($caracdispdesc->titre); ?>            </option>
           <?php } ?>
         </select>
-        <?php } ?>
-</td>
+        <?php } ?></td>
     </tr>
     
          <?php } ?>
@@ -841,9 +833,7 @@
             
             
              <?php if($res) { ?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&produit=<?php echo($produitdesc->produit); ?>&rubrique=<?php echo($rubrique); ?>&action=acdec&id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">Activer</a> <?php } else {?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&produit=<?php echo($produitdesc->produit); ?>&rubrique=<?php echo($rubrique); ?>&action=desdec&id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">D&eacute;sactiver</a> <?php } ?> <br />
-          <?php } ?>
-     
-</td>
+          <?php } ?></td>
     </tr>
     
          <?php } ?>        
@@ -900,9 +890,7 @@
 	 <tr>
       <td width="250" height="30" class="titre_cellule">CONTENUS ASSOCIES :</td>
       <td width="440" class="cellule_sombre">
-  		   <a href="#" class="lien04" onclick="window.open('contenu_assoc.php?objet=<?php echo($produit->id); ?>&type=1', 'gestion', 'scrollbars=yes, resizable=yes, width=800, height=800');"> G&eacute;rer les contenus associ&eacute;s</a>
-        
-      </td>
+  		   <a href="#" class="lien04" onclick="window.open('contenu_assoc.php?objet=<?php echo($produit->id); ?>&type=1', 'gestion', 'scrollbars=yes, resizable=yes, width=800, height=800');"> G&eacute;rer les contenus associ&eacute;s</a>      </td>
     </tr>    
 	 <tr>
       <td height="30" class="titre_cellule">DOCUMENTS</td>

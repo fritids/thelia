@@ -13,7 +13,16 @@ margin: 0;
 padding: 0;
 background: #FFFFFF;
 }
-
+#wrapper {
+	width: 990px;
+	text-align: left;
+	overflow: visible;
+	position: relative;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	padding: 0;
+}
 #entete{
 	width: 100%;
 	margin-top: 8px;
@@ -71,13 +80,15 @@ background: #FFFFFF;
 }
 
 #coordonnees{
-	padding-top: 150px;
-	margin-left: 620px;
-	clip: rect(auto,auto,0px,auto);
+	overflow:hidden; zoom:1;
+	float:left;
+	z-index:10;
+	padding-top:200px;
 }
 
 #chapeau{
 	margin-bottom: 30px;
+	float:left;
 }
 
 #paragraphe{
@@ -87,6 +98,7 @@ background: #FFFFFF;
 	margin-bottom: 30px;
 	text-align: justify;
 	vertical-align: bottom;
+	float:left;
 }
 
 .photo {
@@ -581,7 +593,7 @@ a.lien06:hover {
 	border-top-width: 1px;
 	border-top-style: dotted;
 	border-top-color: #9DACB6;
-	text-align:left;
+	text-align:right;
 }
 
 .arial11_reg_626262 {
@@ -683,9 +695,7 @@ div#resultat {
 #coordonnees {
     position:absolute;
     width: 500px;
-    top: 30px;
-    left:0px;
-    background-color: #FFFFFF;
+    top: 87px;
+    left:595px;
     
 }
-
