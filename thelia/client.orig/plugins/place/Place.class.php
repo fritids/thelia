@@ -29,14 +29,6 @@
 	
 	class Place extends PluginsTransports{
 
-		var $poids;
-		var $nbart;
-		var $total;
-		var $zone;
-		var $pays;
-		var $unitetr;
-		var $cpostal;
-
 		function Place(){
 			$this->PluginsTransports("place");
 		}

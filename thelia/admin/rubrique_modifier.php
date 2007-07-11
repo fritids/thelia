@@ -108,6 +108,7 @@
 		$cache->vider("DECLINAISON", "%");
 		$cache->vider("DECLIDISP", "%");
 		$cache->vider("DECVAL", "%");	
+		$cache->vider("CHEMIN", "%");
 		
 	    header("Location: parcourir.php?parent=$parent");
 
@@ -149,6 +150,7 @@
 		$cache->vider("DECLINAISON", "%");
 		$cache->vider("DECLIDISP", "%");
 		$cache->vider("DECVAL", "%");
+		$cache->vider("CHEMIN", "%");
 		
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $rubrique->id);
 
@@ -217,7 +219,8 @@
 		$cache->vider("DECLINAISON", "%");
 		$cache->vider("DECLIDISP", "%");
 		$cache->vider("DECVAL", "%");	 
-	 		
+	 	$cache->vider("CHEMIN", "%");
+			
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
 
 	}
@@ -240,7 +243,8 @@
 		$cache->vider("DECLINAISON", "%");
 		$cache->vider("DECLIDISP", "%");
 		$cache->vider("DECVAL", "%");
-
+		$cache->vider("CHEMIN", "%");
+		
 	    header("Location: parcourir.php?parent=" . $parent);
 		exit;
 	}
@@ -261,6 +265,7 @@
 		$cache->vider("DECLINAISON", "%");
 		$cache->vider("DECLIDISP", "%");
 		$cache->vider("DECVAL", "%");
+		$cache->vider("CHEMIN", "%");
 		
 	}	
 ?>

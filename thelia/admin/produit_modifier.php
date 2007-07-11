@@ -131,6 +131,7 @@
 		$cache->vider("DECLIDISP", "%");
 		$cache->vider("DECVAL", "%");
 		$cache->vider("STOCK", "%");
+		$cache->vider("CHEMIN", "%");
 	
 	}
 	
@@ -288,6 +289,7 @@
 	$cache->vider("DECLIDISP", "%");
 	$cache->vider("DECVAL", "%");
 	$cache->vider("STOCK", "%");
+	$cache->vider("CHEMIN", "%");
 
 		
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
@@ -446,8 +448,8 @@
 	$cache->vider("DECLIDISP", "%");
 	$cache->vider("DECVAL", "%");
 	$cache->vider("STOCK", "%");
-
-
+	$cache->vider("CHEMIN", "%");
+	
     header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
 
 	}
@@ -481,7 +483,8 @@
 		$cache->vider("DECLIDISP", "%");
 		$cache->vider("DECVAL", "%");
 		$cache->vider("STOCK", "%");
-
+		$cache->vider("CHEMIN", "%");
+				
 	}
 	
 	function supprimer($ref, $parent){
@@ -506,8 +509,8 @@
 		$cache->vider("DECLIDISP", "%");
 		$cache->vider("DECVAL", "%");
 		$cache->vider("STOCK", "%");
-
-		
+		$cache->vider("CHEMIN", "%");
+				
 	    header("Location: parcourir.php?parent=" . $parent);
 
 	}

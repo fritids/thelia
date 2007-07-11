@@ -26,7 +26,6 @@
 <?php
 
 	include_once(realpath(dirname(__FILE__)) . "/../../../classes/PluginsPaiements.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Variable.class.php");
 	
 	class Paybox extends PluginsPaiements{
 

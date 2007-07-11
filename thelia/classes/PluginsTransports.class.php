@@ -28,7 +28,15 @@
 	
 	class PluginsTransports extends Plugins{
 
-		
+
+		var $poids;
+		var $nbart;
+		var $total;
+		var $zone;
+		var $pays;
+		var $unitetr;
+		var $cpostal;
+				
 		function PluginsTransports($nom=""){
 			$this->Plugins($nom);			
 		}

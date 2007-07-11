@@ -988,7 +988,7 @@
 			$temp = str_replace("#DESCRIPTION", "$produitdesc->description", $temp);
 			$temp = str_replace("#STRIPDESCRIPTION", strip_tags($produitdesc->description), $temp);	
 			$temp = str_replace("#URLBOUTIQUE", $boutiqueprod->url, $temp);	
-			$temp = str_replace("#URL", "produit.php?ref=" . "$row->ref" . "&id_rubrique=" . "$row->rubrique", $temp);	
+			$temp = str_replace("#URL", "produit.php?ref=" . "$row->ref" . "&amp;id_rubrique=" . "$row->rubrique", $temp);	
 			$temp = str_replace("#REWRITEURL", rewrite_prod("$row->ref"), $temp);	
 			$temp = str_replace("#GARANTIE", "$row->garantie", $temp);			
 			$temp = str_replace("#PANIERAPPEND", "panier.php?action=" . "ajouter" . "&amp;" . "ref=" . "$row->ref" . "&amp;" . "append=1", $temp);	
