@@ -4,7 +4,7 @@
 	Date de validité sur code promo + minimum de commande
 	attribut nocache="1" sur toutes les boucles si on ne souhaite pas mettre en cache	
 	Correction boucle VENTEPROD
-	modification du fichier sql contenant les tables Thelia (compatibilité de versions)
+	modification du fichier sql contenant les tables Thelia (compatibilité de versions MySQL)
 	Suppression des fonctperso (plugins maintenant)
 	Nouveau template de base
 	Corrections graphiques de l'interface d'administration

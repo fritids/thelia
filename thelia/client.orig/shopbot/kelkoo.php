@@ -61,7 +61,7 @@ url	title	description	price	offerid	image	category	availability	deliverycost	exp
 
 	$image = new Image();
 	
-	$query = "select * from $produit->table where boutique='1' and ligne='1' and reappro='0'";
+	$query = "select * from $produit->table ligne='1' and reappro='0'";
 	$resul = mysql_query($query, $produit->link);
 
 	while($row = mysql_fetch_object($resul)){
@@ -87,7 +87,7 @@ http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=53&wx=108	<?p
 
 	$image = new Image();
 	
-	$query = "select * from $produit->table where boutique='1' and ligne='1' and reappro='1'";
+	$query = "select * from $produit->table where ligne='1' and reappro='1'";
 	$resul = mysql_query($query, $produit->link);
 
 	while($row = mysql_fetch_object($resul)){

@@ -65,7 +65,7 @@
 	$declinaison = new Declinaison();
 	$declinaisondesc = new Declinaisondesc();
 	
-	$query = "select * from $declinaison->table where order by classement";
+	$query = "select * from $declinaison->table order by classement";
 	$resul = mysql_query($query, $declinaison->link);		
 
 	while($row = mysql_fetch_object($resul)){

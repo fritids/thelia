@@ -30,12 +30,11 @@
 	class Caracteristique extends Baseobj{
 
 		var $id;
-		var $boutique;
 		var $affiche;
 		var $classement;
 		
 		var $table="caracteristique";
-		var $bddvars = array("id", "boutique", "affiche", "classement");
+		var $bddvars = array("id", "affiche", "classement");
 
 		function Caracteristique(){
 			$this->Baseobj();	

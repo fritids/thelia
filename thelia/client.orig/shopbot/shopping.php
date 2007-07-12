@@ -56,7 +56,7 @@ Référence;Fabricant;CUP;Nom du produit;Description du produit;Prix du produit (d
 
 	$image = new Image();
 	
-	$query = "select * from $produit->table where boutique='1' and ligne='1' and reappro='0'";
+	$query = "select * from $produit->table where ligne='1' and reappro='0'";
 	$resul = mysql_query($query, $produit->link);
 
 	while($row = mysql_fetch_object($resul)){
@@ -83,7 +83,7 @@ Référence;Fabricant;CUP;Nom du produit;Description du produit;Prix du produit (d
 
 	$image = new Image();
 	
-	$query = "select * from $produit->table where boutique='1' and ligne='1' and reappro='1'";
+	$query = "select * from $produit->table where ligne='1' and reappro='1'";
 	$resul = mysql_query($query, $produit->link);
 
 	while($row = mysql_fetch_object($resul)){

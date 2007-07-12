@@ -65,7 +65,7 @@
 
 	$image = new Image();
 	 
-	$query = "select * from $produit->table where boutique='1' and ligne='1' and reappro='0'";
+	$query = "select * from $produit->table where ligne='1' and reappro='0'";
 	$resul = mysql_query($query, $produit->link);
 
 	while($row = mysql_fetch_object($resul)){
