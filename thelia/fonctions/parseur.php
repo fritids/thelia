@@ -321,6 +321,7 @@
 		
 		global $page, $nocache;
 		
+		$variables="";
 		$res = "";
 		
 		if(! $nocache && !strstr("$args", "nocache=\"1\"") && 

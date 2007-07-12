@@ -46,8 +46,14 @@
 	
 	if(!isset($action)) $action="";
 	if(!isset($statutch)) $statutch="";
-	if(!isset($fichier)) $fichier="";
 	
+	if(isset($_FILES['fichier'])){
+		$fichier = $_FILES['fichier']['tmp_name']; 
+		$fichier_name = $_FILES['fichier']['name'];
+	}
+		
+	if(!isset($fichier)) $fichier="";
+
 ?>
 
 <?php

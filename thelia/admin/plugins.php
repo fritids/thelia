@@ -58,8 +58,12 @@
 
 
 <?php
-
-	if(isset($action) && $action == "ajouter"){
+	if(isset($_FILES['plugin'])){
+		$plugin = $_FILES['plugin']['tmp_name']; 
+		$plugin_name = $_FILES['plugin']['name'];
+	}
+	
+	if(isset($action) && $action == "ajouter" && isset($plugin)){
 		
 		if($plugin) copy("$plugin", "../client/plugins/" . $plugin_name);
 		$archive = new PclZip("../client/plugins/" . $plugin_name);

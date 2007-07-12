@@ -1429,7 +1429,6 @@
 		$trubrique = new Rubrique();
 		$trubrique->charger($rubrique);
 		$trubriquedesc = new Rubriquedesc();
-
 		
 		$i =  0;
  		do {
