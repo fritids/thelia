@@ -38,58 +38,52 @@
 <body>
 
 <?php
-	include_once("../classes/Boutique.class.php");
-?>
-<?php
 	$menu="catalogue";
 	include_once("entete.php");
 ?>
 
 <div id="contenu_int"> 
    <p class="titre_rubrique">Gestion du catalogue </p>
-     <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Gestion du catalogue</a>              
+     <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="catalogue.php" class="lien04">Gestion du catalogue</a>              
     </p>
-     <table width="710" border="0" cellpadding="5" cellspacing="0">
+    <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES BOUTIQUES </td>
+       <td width="600" height="30" class="titre_cellule_tres_sombre">GESTION DU CATALOGUE</td>
      </tr>
    </table>
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
-       <?php
-	$boutique = new Boutique();
-	
-	$query = "select * from $boutique->table where actif=\"1\"";
-	$resul = mysql_query($query);
-	
-	$i=0;
-	
-	while($row = mysql_fetch_object($resul)){
-	
-		if(!($i%2)) $fond="cellule_sombre";
-  		else $fond="cellule_claire";
-  		$i++;
-		
-
-?>     
-   
-
-
     
-  <tr class="<?php echo($fond); ?>">
-    <td width="21%" height="30"><?php echo($row->nom); ?></td>
+  <tr class="cellule_claire">
+    <td width="21%" height="30">Les produits</td>
     <td width="63%" height="30">
       
     </td>
     <td width="16%" height="30">
-      <div align="left"><a href="navigation.php?boutique=<?php echo($row->id); ?>" class="txt_vert_11">Poursuivre </a><a href="navigation.php?boutique=<?php echo($row->id); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+      <div align="left"><a href="parcourir.php" class="txt_vert_11">Poursuivre </a><a href="parcourir.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    </td>
+  </tr>
+     
+  <tr class="cellule_sombre">
+    <td width="21%" height="30">Les caractéristiques</td>
+    <td width="63%" height="30">
+      
+    </td>
+    <td width="16%" height="30">
+      <div align="left"><a href="caracteristique.php" class="txt_vert_11">Poursuivre </a><a href="caracteristique.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
     </td>
   </tr>
 
-     
-<?php
-}
-?>  
+  <tr class="cellule_claire">
+    <td width="21%" height="30">Les déclinaisons</td>
+    <td width="63%" height="30">
+      
+    </td>
+    <td width="16%" height="30">
+      <div align="left"><a href="declinaison.php" class="txt_vert_11">Poursuivre </a><a href="declinaison.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    </td>
+  </tr>
+  
   </table>
 </div>
 </body>

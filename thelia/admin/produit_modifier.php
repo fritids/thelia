@@ -29,7 +29,6 @@
 	
 	if(!isset($action)) $action="";
 	if(!isset($lang)) $lang="1";
-	if(!isset($bout)) $bout="";
 	if(!isset($page)) $page="";
 	if(!isset($id)) $id="";
 	if(!isset($promo)) $promo="";
@@ -40,7 +39,6 @@
 	if(!isset($appro)) $appro="";
 	if(!isset($ref)) $ref="";
 	if(!isset($ligne)) $ligne="";
-	if(!isset($_SESSION["bout"])) $_SESSION["bout"]="";
 	
 ?>
 <?php
@@ -136,10 +134,6 @@
 	
 	function modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
 
-     if(  $_SESSION["bout"] == "") {
-          header("Location: catalogue.php" );
-          exit;
-     }
      
 		if(!$lang) $lang=1;
 		
@@ -158,7 +152,6 @@
 		
 		}
 
-		 $produit->boutique = $_SESSION["bout"];
 		 $produit->datemodif = date("Y-m-d H:i:s");		
 		 $produit->prix = $prix; 
 		 $produit->prix2 = $prix2;
@@ -295,12 +288,7 @@
 	}
 
 	function ajouter($lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
-
-     if(  $_SESSION["bout"] == "") {
-          header("Location: catalogue.php" );
-          exit;
-     }
-             
+  
 
 	 $ref = ereg_replace(" ", "", $ref);
 	 $ref = ereg_replace("/", "", $ref);
@@ -326,7 +314,6 @@
 
 	 $produit->ref = $ref;
 	 $produit->datemodif = date("Y-m-d H:i:s"); 
-	 $produit->boutique = $_SESSION["bout"];
 	 $produit->prix = $prix; 
 	 $produit->prix2 = $prix2;
 	 if($produit->prix2 == "") $produit->prix2 = $prix;
@@ -522,8 +509,6 @@
 	$produit->charger($ref);
 	$produitdesc->charger($produit->id, $lang);
 
-	if($ref !="") $_SESSION["bout"] = $produit->boutique;
-		
 	$produitdesc->chapo = ereg_replace("<br/>", "\n", $produitdesc->chapo);
 	$produitdesc->description = ereg_replace("<br/>", "\n", $produitdesc->description);
 	

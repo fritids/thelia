@@ -32,7 +32,6 @@
 	if(!isset($parent)) $parent="";
 	if(!isset($page)) $page="";
 	if(!isset($id)) $id="";
-	if(!isset($_SESSION["bout"])) $_SESSION["bout"]="";	
 ?>
 <?php
 	include_once("../classes/Rubrique.class.php");
@@ -158,16 +157,10 @@
 	}
 
 	function ajouter($parent, $lang, $titre, $chapo, $description, $lien, $ligne){
-
-     if(  $_SESSION["bout"] == "0") {
-          header("Location: catalogue.php" );
-          exit;
-     }
-         		
+	
 		$rubrique = new Rubrique();
 		$rubrique->parent=$parent;
 		$rubrique->lien = $lien;
-		$rubrique->boutique = $_SESSION["bout"];
 
 		if($ligne!="") $rubrique->ligne = 1;
 		else $rubrique->ligne = 0;	
@@ -278,8 +271,6 @@
 		
 		$rubrique->charger($id);
 		$rubriquedesc->charger($id, $lang);
-		
-		$_SESSION["bout"] = $rubrique->boutique;
 	}
 	
 	$query = "select * from $rubrique->table where parent=\"$parent\"";

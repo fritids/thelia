@@ -31,7 +31,6 @@
 	if(!isset($parent)) $parent="0";
 	if(!isset($lang)) $lang="1";
 	if(!isset($id)) $id="";
-	if(!isset($_SESSION["bout"])) $_SESSION["bout"]="";	
 ?>
 <?php
 
@@ -139,15 +138,9 @@
 	}
 
 	function ajouter($parent, $lang, $titre, $chapo, $description, $ligne){
-	
-     if(  $_SESSION["bout"] == "0") {
-          header("Location: catalogue.php" );
-          exit;
-     }
-         		
+  		
 		$dossier = new Dossier();
 		$dossier->parent=$parent;
-		$dossier->boutique = $_SESSION["bout"];
 
 		if($ligne!="") $dossier->ligne = 1;
 		else $dossier->ligne = 0;	
@@ -220,7 +213,6 @@
 		$dossier->charger($id);
 		$dossierdesc->charger($id, $lang);
 		
-		$_SESSION["bout"] = $dossier->boutique;
 	}
 
 	$query = "select * from $dossier->table where parent=\"$parent\"";

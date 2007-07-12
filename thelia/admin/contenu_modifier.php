@@ -30,7 +30,6 @@
 	if(!isset($action)) $action="";
 	if(!isset($lang)) $lang="1";
 	if(!isset($ligne)) $ligne="";
-	if(!isset($_SESSION["bout"])) $_SESSION["bout"]="";	
 ?>
 <?php
 	 include_once("../classes/Variable.class.php");  
@@ -106,11 +105,6 @@
 
 	 if(!isset($id)) $id="";
 
-     if(  $_SESSION["bout"] == "") {
-          header("Location: listdos.php" );
-          exit;
-     }
-     
 		if(!$lang) $lang=1;
 		
 		$contenu = new Contenu();
@@ -131,7 +125,6 @@
 			$cache->vider("DOSSIER", "%");	
 		}
 
-		 $contenu->boutique = $_SESSION["bout"];
 		 $contenu->datemodif = date("Y-m-d H:i:s");		
 		 $contenu->dossier = $dossier; 
 	 	 if($ligne == "on") $contenu->ligne = 1; else $contenu->ligne = 0;
@@ -157,13 +150,7 @@
 
  	 if(!isset($id)) $id="";
 	 
-     if(  $_SESSION["bout"] == "") {
-          header("Location: listdos.php" );
-          exit;
-     }
-             
-
-	 $contenu = new Contenu();
+ 	 $contenu = new Contenu();
 	 $contenu->charger($id);
 	 
    	 if($contenu->id) return;
@@ -175,7 +162,6 @@
 	 $resul = mysql_query($query, $contenu->link);
      $maxClassement = mysql_result($resul, 0, "maxClassement");
 
-	 $contenu->boutique = $_SESSION["bout"];
 	 $contenu->datemodif = date("Y-m-d H:i:s");	
 	 $contenu->dossier = $dossier; 
 	 if($ligne == "on") $contenu->ligne = 1; else $contenu->ligne = 0;
@@ -253,9 +239,7 @@
     <?php
     				$cont = new Contenu();
     				$cont->charger($id);
-    				
-    				if($id) $_SESSION["bout"] = $cont->boutique;
-    				
+   				
     				$contdesc = new Contenudesc();
     				$contdesc->charger($cont->id);
     														

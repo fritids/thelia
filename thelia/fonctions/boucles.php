@@ -73,7 +73,6 @@
 		// récupération des arguments
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
-		$boutique = lireTag($args, "boutique");
 		$courante = lireTag($args, "courante");
 		$pasvide = lireTag($args, "pasvide");
 		$ligne = lireTag($args, "ligne");
@@ -95,7 +94,6 @@
 		// preparation de la requete
 		if($id!="")  $search.=" and $rubrique->table.id in ($id)";
 		if($parent!="") $search.=" and $rubrique->table.parent=\"$parent\"";
-		if($boutique != "") $search .=" and $rubrique->table.boutique='$boutique'";
 		if($courante == "1") $search .=" and $rubrique->table.id='$id_rubrique'";
 		else if($courante == "0") $search .=" and $rubrique->table.id!='$id_rubrique'";
 		if($ligne!="") $search.=" and $rubrique->table.ligne=\"$ligne\"";
@@ -175,7 +173,6 @@
 		// récupération des arguments
 		$id = lireTag($args, "id");
 		$parent = lireTag($args, "parent");
-		$boutique = lireTag($args, "boutique");
 		$deb = lireTag($args, "deb");
 		$num = lireTag($args, "num");
 		$courant = lireTag($args, "courant");
@@ -192,7 +189,6 @@
 		// preparation de la requete
 		if($id!="")  $search.=" and id=\"$id\"";
 		if($parent!="") $search.=" and parent=\"$parent\"";
-		if($boutique != "") $search .=" and boutique='$boutique'";
 		if($courant == "1") $search .=" and id='$id_dossier'";
 		else if($courant == "0") $search .=" and id!='$id_dossier'";
 		if($ligne != "") $search .=" and ligne='$ligne'";
@@ -634,7 +630,6 @@
 			
 			// récupération des arguments
 			$rubrique = lireTag($args, "rubrique");
-			$boutique = lireTag($args, "boutique");
 			$deb = lireTag($args, "deb");
 			$num = lireTag($args, "num");
 			$bloc = lireTag($args, "bloc");
@@ -711,7 +706,6 @@
 			$search .= " and ligne=\"1\"";
 
 			if($id!="") $search .= " and id=\"$id\"";				 
-			if($boutique != "") $search .=" and boutique='$boutique'";
 			if($nouveaute!="") $search .= " and nouveaute=\"$nouveaute\"";
 			if($promo!="") $search .= " and promo=\"$promo\"";
 			if($reappro!="") $search .= " and reappro=\"$reappro\"";
@@ -860,9 +854,7 @@
 			$produit = new Produit();
 			$produitdesc = new Produitdesc();
 			
-			$boutiqueprod = new Boutique();
-			
-			
+		
 			if($motcle){
 				$liste="";
 				
@@ -898,9 +890,6 @@
 		$countRes = mysql_result($saveRes, 0, "totcount") . " ";
 	
 		while( $row = mysql_fetch_object($resul) ){
-		
-			
-			$boutiqueprod->charger($row->boutique);
 			
 			if(!$promo){
 				 $prixd3 = round($row->prix/3, 2);	
@@ -987,7 +976,6 @@
 			$temp = str_replace("#STRIPCHAPO", strip_tags($produitdesc->chapo), $temp);	
 			$temp = str_replace("#DESCRIPTION", "$produitdesc->description", $temp);
 			$temp = str_replace("#STRIPDESCRIPTION", strip_tags($produitdesc->description), $temp);	
-			$temp = str_replace("#URLBOUTIQUE", $boutiqueprod->url, $temp);	
 			$temp = str_replace("#URL", "produit.php?ref=" . "$row->ref" . "&amp;id_rubrique=" . "$row->rubrique", $temp);	
 			$temp = str_replace("#REWRITEURL", rewrite_prod("$row->ref"), $temp);	
 			$temp = str_replace("#GARANTIE", "$row->garantie", $temp);			
@@ -1011,7 +999,6 @@
 			
 			// récupération des arguments
 			$dossier = lireTag($args, "dossier");
-			$boutique = lireTag($args, "boutique");
 			$deb = lireTag($args, "deb");
 			$num = lireTag($args, "num");
 			$bloc = lireTag($args, "bloc");
@@ -1049,7 +1036,6 @@
 			$search .= " and ligne=\"1\"";
 
 			if($id!="") $search .= " and id=\"$id\"";				 
-			if($boutique != "") $search .=" and boutique='$boutique'";
 			if($courant == "1") $search .=" and id='$id_contenu'";
 			else if($courant == "0") $search .=" and id!='$id_contenu'";
 			if($exclusion!="") $search .= " and id not in($exclusion)";
@@ -1094,9 +1080,6 @@
 			$contenu = new Contenu();
 			$contenudesc = new Contenudesc();
 			
-			$boutiqueprod = new Boutique();
-			
-			
 			if($motcle){
 				$liste="";
 				
@@ -1132,9 +1115,6 @@
 		$countRes = mysql_result($saveRes, 0, "totcount") . " ";
 		
 		while( $row = mysql_fetch_object($resul) ){
-		
-			
-			$boutiqueprod->charger($row->boutique);
 	
 			if($num>0) 
 				if($comptbloc>=ceil($countRes/$num) && $bloc!="") continue;
@@ -1161,7 +1141,6 @@
 			$temp = str_replace("#STRIPCHAPO", strip_tags($contenudesc->chapo), $temp);	
 			$temp = str_replace("#DESCRIPTION", "$contenudesc->description", $temp);
 			$temp = str_replace("#STRIPDESCRIPTION", strip_tags($contenudesc->description), $temp);	
-			$temp = str_replace("#URLBOUTIQUE", $boutiqueprod->url, $temp);	
 			$temp = str_replace("#URL", "contenu.php?id_contenu=" . "$row->id", $temp);	
 			$temp = str_replace("#REWRITEURL", rewrite_cont("$row->id"), $temp);			
 			$temp = str_replace("#RUBTITRE", "$dossierdesc->titre", $temp);

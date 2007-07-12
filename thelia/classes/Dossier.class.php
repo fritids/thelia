@@ -33,12 +33,11 @@
 		var $id;
 		var $parent;
 		var $lien;
-		var $boutique;
 		var $ligne;
 		var $classement;
 		
 		var $table="dossier";
-		var $bddvars = array("id", "parent", "lien", "boutique", "ligne", "classement");
+		var $bddvars = array("id", "parent", "lien", "ligne", "classement");
 		
 		function Dossier(){
 			$this->Baseobj();	

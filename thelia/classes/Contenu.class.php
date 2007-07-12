@@ -30,14 +30,13 @@
 	class Contenu extends Baseobj{
 
 		var $id;
-		var $boutique;
 		var $datemodif;
 		var $ligne;
 		var $dossier; 
 		var $classement;
 	 
 		var $table="contenu";
-		var $bddvars=array("id", "boutique", "datemodif", "ligne", "dossier", "classement");
+		var $bddvars=array("id", "datemodif", "ligne", "dossier", "classement");
 		
 		function Contenu(){
 			$this->Baseobj();	

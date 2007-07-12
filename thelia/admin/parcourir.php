@@ -109,7 +109,7 @@
 	$rubrique = new Rubrique();
 	$rubriquedesc = new Rubriquedesc();
 	
-	$query = "select * from $rubrique->table where parent=\"$parent\" and boutique=\"" . $_SESSION['bout'] ."\" order by classement";
+	$query = "select * from $rubrique->table where parent=\"$parent\" order by classement";
 	$resul = mysql_query($query, $rubrique->link);		
 
 	$i=0;

@@ -30,7 +30,6 @@
 	class Produit extends Baseobj{
 
 		var $id;
-		var $boutique;
 		var $ref;
 		var $datemodif;
 		var $prix; 
@@ -51,7 +50,7 @@
 		var $classement;
 	 
 		var $table="produit";
-		var $bddvars=array("id", "boutique", "ref", "datemodif", "prix", "ecotaxe", "promo", "reappro", "ligne", "garantie", "prix2", "rubrique", "nouveaute", "perso", "stock", "quantite", "appro", "poids", "tva", "classement");
+		var $bddvars=array("id", "ref", "datemodif", "prix", "ecotaxe", "promo", "reappro", "ligne", "garantie", "prix2", "rubrique", "nouveaute", "perso", "stock", "quantite", "appro", "poids", "tva", "classement");
 		
 		function Produit(){
 			$this->Baseobj();	
