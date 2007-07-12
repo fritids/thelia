@@ -1,16 +1,16 @@
 THELIA
 ============================================================
 
-Developpeur :
+Développeur :
 
 Yoan De Macedo : yoan@octolys.fr
 
 Charte graphique :
 
-Amplitude Multimédia : contact@amplitude-thiers.com
+Scopika (Amplitude Multimédia) : contact@scopika.com
 Frédéric Melon : fred@octolys.fr
 
-Tests et propositions de fonctionnalitÈs :
+Tests, ergonomie :
 
 Cédric Sibaud : cedric@octolys.fr
 Jean-David Olekhnovitch : jd@octolys.fr

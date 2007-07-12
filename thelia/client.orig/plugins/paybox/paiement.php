@@ -1,6 +1,8 @@
 <?php
 
 include_once("../../../classes/Navigation.class.php");
+include_once(realpath(dirname(__FILE__)) . "/../../../classes/Variable.class.php");
+
 session_start();
 
 $total = 0;
@@ -15,7 +17,10 @@ $trans =$_SESSION['navig']->commande->transaction;
 $_SESSION['navig']->panier = new Panier();
 $_SESSION['navig']->commande = new Commande();
 
-exec("./paiement $total " . $trans . " " . $_SESSION['navig']->client->email . " " . "http://www.site.com/merci.php" . " " .  "http://www.site.com/regret.php" . " " . "http://www.site.com/regret.php", $tab);
+$urlsite = new Variable();
+$urlsite->charger("urlsite");
+
+exec("./paiement $total " . $trans . " " . $_SESSION['navig']->client->email . " " . $urlsite->valeur . "/merci.php" . " " .  $urlsite->valeur . "/regret.php" . " " . $urlsite->valeur . "/regret.php", $tab);
 header($tab[0]);
 header($tab[1]);
 header($tab[2]);
