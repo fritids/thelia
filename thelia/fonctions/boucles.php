@@ -1815,7 +1815,9 @@
 
 		$adresse_id = lireTag($args, "adresse");		
 		$client_id = lireTag($args, "client");
-	
+		$defaut = lireTag($args, "defaut");
+		
+		
 		$search ="";
 		$res="";
 		
@@ -1827,7 +1829,12 @@
 		if($adresse_id!="")  $search.=" and id=\"$adresse_id\"";
 		if($client_id!="")  $search.=" and client=\"$client_id\"";
 		
-	
+		if($defaut =="1" && $adresse_id != "0")
+			return "";
+		
+		else if($defaut =="0" && $adresse_id == "0")
+			return "";
+			
 		if($adresse_id != "0" ) {
 			$query = "select * from $adresse->table where 1 $search";
 			$resul = mysql_query($query, $adresse->link);

@@ -13,7 +13,7 @@
 <![endif]-->
 <link href="styles.css" rel="stylesheet" type="text/css" />
 
-<script language="javascript">
+<script type="text/JavaScript">
 
 function valide(){
 	if(document.getElementById('condbox').checked) document.getElementById('formulaire').submit();
@@ -92,13 +92,15 @@ function valide(){
 			</table>
 			<br />
 			Saisir votre code de réduction
-			<input name="code" type="text" class="zoneDeSaisie">
+			<input name="code" type="text" class="zoneDeSaisie"/>
 			<br /><br />
+			
+			<!-- faire le lien vers le contenu des conditions generales de vente -->
 			<input type="checkbox" id="condbox" class="zoneDeSaisie" />
             J'ai lu et j'accepte 
 			<a href="#">les conditions g&eacute;n&eacute;rales de vente.</a>
 			<div class="boutonMonCompteContenu">
-			<a href="#" onClick="valide()">Poursuivre ma commande </a>			</div>
+			<a href="javascript:valide()">Poursuivre ma commande </a>			</div>
 			</form>
 			</div>
 		#INCLURE "pied.html"

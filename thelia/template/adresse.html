@@ -70,24 +70,27 @@
 				<h3>Mon adresse de livraison </h3>
 				</div>
 				
-				<span class="textePage">
+			  <span class="textePage">
 				<THELIA_adrcours type="ADRESSE" adresse="#ADRESSE_ACTIVE">
 				#RAISON #PRENOM #NOM	
 				<br />
 				#ADRESSE1 #ADRESSE2 #ADRESSE3
 				<br />
-				#CPOSTAL #VILLE 
-				<THELIA_pays type="PAYS" id="64">
-				#TITRE	
-				</THELIA_pays>
-				</THELIA_adrcours>
-				</span>
-				
-				<div class="separation">
-				</div>
-				
+			  #CPOSTAL #VILLE 
+			  <THELIA_pays type="PAYS" id="64">
+			  #TITRE	
+			  </THELIA_pays>
+			  
+			  </span>
+			  <br />
+			<THELIA_adrmodcours type="ADRESSE" adresse="#ADRESSE_ACTIVE" defaut="0">
+					  <a href="livraison_modifier.php?adresse=#ID">Modifier cette adresse</a>
+			</THELIA_adrmodcours>
+			
+			 </THELIA_adrcours>
+			
 				<br /><br />
-				<span class="commentaires"> S&eacute;lectionnez une autre adresse de livraison dans la liste ci-dessous</span><br />
+				<span class="commentaires"> S&eacute;lectionnez une autre adresse de livraison : </span><br />
 				<a href="adresse.php?action=modadresse&amp;adresse=0">Mon adresse de facturation par d&eacute;faut </a>
 				<THELIA_adr type="ADRESSE" client="#CLIENT_ID">
 				<br />
@@ -95,11 +98,7 @@
 				</THELIA_adr>
 				<br />
 				<br />
-				
-<!-- Ajout & suppression d'adresses de livraison -->
-
-				<span class="commentaires">Ajouter une nouvelle adresse de livraison</span><br />
-				<a href="livraison_adresse.php">Ajouter une adresse</a><br />
+				<a href="livraison_adresse.php">Ajouter une adresse de livraison </a><br />
 				<br />
 				<div class="boutonMonCompteContenu">
 				<a href="transport.php">Poursuivre  ma commande</a>

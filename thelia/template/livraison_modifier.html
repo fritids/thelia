@@ -48,7 +48,7 @@
 			
 <!-- Contenu de la page -->
 
-			<form action="#URLCOURANTE" method="post" name="modifier" id="modifier">
+			<form action="#URLPAGERET" method="post" name="modifier" id="modifier">
 			<input type="hidden" name="action" value="modifierlivraison" />
 			<THELIA_adr type="ADRESSE" adresse="#ADRESSE_ID" client="#CLIENT_ID">
 			<input name="id" type="hidden" value="#ID" />
@@ -57,7 +57,7 @@
 			<table width="785" border="0" cellspacing="0" cellpadding="5">
   				<tr>
     				<td width="200" class="ligneTableau">Libell&eacute; de l'adresse*</td>
-    				<td width="565" class="ligneTableau"><input name="libelle" type="text" class="zoneDeSaisie"  value="#LIBELLE"/></input></td>
+    				<td width="565" class="ligneTableau"><input name="libelle" type="text" class="zoneDeSaisie"  value="#LIBELLE"/></td>
   				</tr>
   				<tr>
     				<td class="ligneTableau">Civilit&eacute;*</td>
@@ -71,31 +71,31 @@
   				</tr>
   				<tr>
   					<td class="ligneTableau">Nom*</td>
-  					<td class="ligneTableau"><input type="text" name="nom" class="zoneDeSaisie"  value="#NOM"/></input></td>
+  					<td class="ligneTableau"><input type="text" name="nom" class="zoneDeSaisie"  value="#NOM"/></td>
 				</tr>
   				<tr>
 					<td class="ligneTableau">Pr&eacute;nom*</td>
-  					<td class="ligneTableau"><input type="text" name="prenom" class="zoneDeSaisie"  value="#PRENOM"/></input></td>
+  					<td class="ligneTableau"><input type="text" name="prenom" class="zoneDeSaisie"  value="#PRENOM"/></td>
 				</tr>
   				<tr>
 					<td class="ligneTableau">Adresse*</td>
-					<td class="ligneTableau"><input type="text" name="adresse1" class="zoneDeSaisie"  value="#ADRESSE1"/></input></td>
+					<td class="ligneTableau"><input type="text" name="adresse1" class="zoneDeSaisie"  value="#ADRESSE1"/></td>
 				</tr>
   				<tr>
 					<td class="ligneTableau">Adresse (suite) </td>
-  					<td class="ligneTableau"><input type="text" name="adresse2" class="zoneDeSaisie"  value="#ADRESSE2"/></input></td>
+  					<td class="ligneTableau"><input type="text" name="adresse2" class="zoneDeSaisie"  value="#ADRESSE2"/></td>
 				</tr>
   				<tr>
 					<td class="ligneTableau">Compl&eacute;ment d'adresse </td>
-  					<td class="ligneTableau"><input type="text" name="adresse3" class="zoneDeSaisie"  value="#ADRESSE3"/></input></td>
-				  </tr>
+  					<td class="ligneTableau"><input type="text" name="adresse3" class="zoneDeSaisie"  value="#ADRESSE3"/></td>
+			  </tr>
   					<tr>
   					  <td class="ligneTableau">Code postal* </td>
-  					  <td class="ligneTableau"><input type="text" name="cpostal" class="zoneDeSaisie" value="#CPOSTAL" /></input></td>
+  					  <td class="ligneTableau"><input type="text" name="cpostal" class="zoneDeSaisie" value="#CPOSTAL" /></td>
 				  </tr>
 				  <tr>
   					  <td class="ligneTableau">Ville*</td>
-  					  <td class="ligneTableau"><input type="text" name="ville" class="zoneDeSaisie" value="#VILLE"/></input></td>
+  					  <td class="ligneTableau"><input type="text" name="ville" class="zoneDeSaisie" value="#VILLE"/></td>
 				  </tr>
 				  <tr>
   					  <td class="ligneTableau">Pays*</td>
@@ -109,15 +109,15 @@
 				</tr>
   				<tr>
   					  <td class="ligneTableau">T&eacute;l&eacute;phone fixe* </td>
-  					  <td class="ligneTableau"><input type="text" name="telfixe" class="zoneDeSaisie" value="#CLIENT_TELFIXE"/></input></td>
+  					  <td class="ligneTableau"><input type="text" name="telfixe" class="zoneDeSaisie" value="#CLIENT_TELFIXE"/></td>
 				</tr>
 			</table>
 
 				<div class="boutonMonCompteContenu">
 				<a href="javascript:document.getElementById('modifier').submit()">Valider ces modifications  </a>
 				</div>
-					
-			</THELIA_adr>
+			
+			    </THELIA_adr>
 			</form>		
 			</div>
 		#INCLURE "pied.html"
