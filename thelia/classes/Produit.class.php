@@ -43,14 +43,13 @@
 		var $nouveaute;
 		var $perso;  
 		var $stock;
-		var $quantite; 
 		var $appro;  			
 		var $poids;  
 		var $tva;		
 		var $classement;
 	 
 		var $table="produit";
-		var $bddvars=array("id", "ref", "datemodif", "prix", "ecotaxe", "promo", "reappro", "ligne", "garantie", "prix2", "rubrique", "nouveaute", "perso", "stock", "quantite", "appro", "poids", "tva", "classement");
+		var $bddvars=array("id", "ref", "datemodif", "prix", "ecotaxe", "promo", "reappro", "ligne", "garantie", "prix2", "rubrique", "nouveaute", "perso", "stock", "appro", "poids", "tva", "classement");
 		
 		function Produit(){
 			$this->Baseobj();	

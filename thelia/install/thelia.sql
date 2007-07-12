@@ -1727,7 +1727,6 @@ CREATE TABLE `produit` (
   `nouveaute` smallint(6) NOT NULL default '0',
   `perso` int(11) NOT NULL default '0',
   `stock` int(11) NOT NULL default '0',
-  `quantite` int(11) NOT NULL default '0',
   `appro` date NOT NULL default '0000-00-00',
   `ligne` smallint(6) NOT NULL default '0',
   `garantie` int(11) NOT NULL default '0',

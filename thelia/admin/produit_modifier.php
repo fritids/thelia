@@ -35,7 +35,6 @@
 	if(!isset($reappro)) $reappro="";
 	if(!isset($nouveaute)) $nouveaute="";
 	if(!isset($perso)) $perso="";
-	if(!isset($quantite)) $quantite="";
 	if(!isset($appro)) $appro="";
 	if(!isset($ref)) $ref="";
 	if(!isset($ligne)) $ligne="";
@@ -70,8 +69,8 @@
 
 	switch($action){
 		case 'modclassement' : modclassement($ref, $parent, $type); break;
-		case 'modifier' : modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
-		case 'ajouter' : ajouter($lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
+		case 'modifier' : modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
+		case 'ajouter' : ajouter($lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
 		case 'acdec' : moddecli($produit, $id, 1); break;
 		case 'desdec' : moddecli($produit, $id, 0); break;
 		case 'supprimer' : supprimer($ref, $parent);
@@ -132,7 +131,7 @@
 		$cache->vider("CHEMIN", "%");	
 	}
 	
-	function modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
+	function modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
 
      
 		if(!$lang) $lang=1;
@@ -163,8 +162,6 @@
 	 	 if($ligne == "on") $produit->ligne = 1; else $produit->ligne = 0;
 		 $produit->garantie = $garantie;  
 		 $produit->perso = $perso;  
-	//	 $produit->quantite = $quantite;
-	   	 $produit->quantite = 99;
 		 $produit->appro = $appro;  
 		 $produit->poids = $poids;
 		 $produit->stock = $stock;
@@ -287,7 +284,7 @@
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
 	}
 
-	function ajouter($lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $quantite, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
+	function ajouter($lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
   
 
 	 $ref = ereg_replace(" ", "", $ref);
@@ -318,7 +315,6 @@
 	 $produit->prix2 = $prix2;
 	 if($produit->prix2 == "") $produit->prix2 = $prix;
 	 $produit->ecotaxe = $ecotaxe;
-	 $produit->quantite = 10;
 	 $produit->rubrique = $rubrique; 
 	 if($promo == "on") $produit->promo = 1; else $produit->promo = 0;
 	 if($reappro == "on") $produit->reappro = 1; else $produit->reappro = 0;
@@ -326,7 +322,6 @@
 	 if($ligne == "on") $produit->ligne = 1; else $produit->ligne = 0;
 	 $produit->garantie = $garantie;  
 	 $produit->perso = $perso;  
-	// $produit->quantite = $quantite; 
 	 $produit->appro = $appro;  
 	 $produit->poids = $poids;
 	 $produit->stock = $stock;

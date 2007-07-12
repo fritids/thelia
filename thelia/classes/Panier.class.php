@@ -63,7 +63,7 @@
 			else if($existe && $append)
 				$this->tabarticle[$indice]->quantite += $quantite;
 			
-				if(isset($this->tabarticle[$this->nbart]) && $this->tabarticle[$this->nbart]->produit->ref) $this->nbart++; 
+				if(isset($this->tabarticle[$this->nbart]) && isset($this->tabarticle[$this->nbart]->produit) && $this->tabarticle[$this->nbart]->produit->ref) $this->nbart++; 
 			
 		}	
 		

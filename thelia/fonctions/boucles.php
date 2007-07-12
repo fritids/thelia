@@ -966,7 +966,6 @@
 			$temp = str_replace("#POURCENTAGE", "$pourcentage", $temp);	
 			$temp = str_replace("#RUBRIQUE", "$row->rubrique", $temp);			
 			$temp = str_replace("#PERSO", "$row->perso", $temp);			
-			$temp = str_replace("#QUANTITE", "$row->quantite", $temp);			
 			$temp = str_replace("#APPRO", "$row->appro", $temp);			
 			$temp = str_replace("#POIDS", "$row->poids", $temp);			
 			$temp = str_replace("#TITRE", "$produitdesc->titre", $temp);
@@ -1391,7 +1390,7 @@
 		$prodtemp->charger($_SESSION['navig']->panier->tabarticle[$article]->produit->ref);
 
 		if($max == "") 
-			$max = $prodtemp->quantite;
+			$max = 10;
 			
 		$j = 0;
 		
