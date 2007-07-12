@@ -79,27 +79,6 @@ CREATE TABLE `adresse` (
 -- 
 
 
--- --------------------------------------------------------
-
--- 
--- Structure de la table `boutique`
--- 
-
-CREATE TABLE `boutique` (
-  `id` int(11) NOT NULL auto_increment,
-  `nom` text NOT NULL,
-  `url` text NOT NULL,
-  `actif` smallint(6) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=2 ;
-
--- 
--- Contenu de la table `boutique`
--- 
-
-INSERT INTO `boutique` VALUES (1, 'boutique', '', 1);
-
--- --------------------------------------------------------
 
 -- 
 -- Structure de la table `caracdisp`
@@ -143,7 +122,6 @@ CREATE TABLE `caracdispdesc` (
 
 CREATE TABLE `caracteristique` (
   `id` int(11) NOT NULL auto_increment,
-  `boutique` int(11) NOT NULL default '0',
   `affiche` int(11) NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
@@ -270,7 +248,6 @@ CREATE TABLE `commande` (
 
 CREATE TABLE `contenu` (
   `id` int(11) NOT NULL auto_increment,
-  `boutique` int(11) NOT NULL default '0',
   `datemodif` datetime NOT NULL default '0000-00-00 00:00:00',
   `dossier` int(11) NOT NULL default '0',
   `ligne` smallint(6) NOT NULL default '0',
@@ -368,7 +345,6 @@ CREATE TABLE `declidispdesc` (
 
 CREATE TABLE `declinaison` (
   `id` int(11) NOT NULL auto_increment,
-  `boutique` int(11) NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM AUTO_INCREMENT=1 ;
@@ -474,7 +450,6 @@ CREATE TABLE `dossier` (
   `id` int(11) NOT NULL auto_increment,
   `parent` int(11) NOT NULL default '0',
   `lien` text NOT NULL,
-  `boutique` int(11) NOT NULL default '0',
   `ligne` smallint(6) NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
@@ -1741,7 +1716,6 @@ INSERT INTO `paysdesc` VALUES (834, 267, 3, 'Wallis-et-Futuna', '', '');
 
 CREATE TABLE `produit` (
   `id` int(11) NOT NULL auto_increment,
-  `boutique` int(11) NOT NULL default '0',
   `ref` text NOT NULL,
   `datemodif` datetime NOT NULL default '0000-00-00 00:00:00',
   `prix` float NOT NULL default '0',
@@ -1858,7 +1832,6 @@ CREATE TABLE `rubrique` (
   `id` int(11) NOT NULL auto_increment,
   `parent` int(11) NOT NULL default '0',
   `lien` text NOT NULL,
-  `boutique` int(11) NOT NULL default '0',
   `ligne` smallint(6) NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)

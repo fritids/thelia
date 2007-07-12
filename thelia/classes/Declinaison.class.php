@@ -31,11 +31,10 @@
 	class Declinaison extends Baseobj{
 
 		var $id;
-		var $affiche;
 		var $classement;
 		
 		var $table="declinaison";
-		var $bddvars = array("id", "boutique", "classement");
+		var $bddvars = array("id", "classement");
 
 		function Declinaison(){
 			$this->Baseobj();	

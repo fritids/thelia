@@ -58,7 +58,7 @@
                 $caracteristique = new Caracteristique();
                 $caracteristiquedesc = new Caracteristiquedesc();
               
-            	$query = "select ($caracteristique->table.id) from $caracteristique->table where boutique=\"" . $_SESSION['bout'] ."\"";
+            	$query = "select ($caracteristique->table.id) from $caracteristique->table";
 
                $resul = mysql_query($query, $caracteristique->link);
 

@@ -122,9 +122,7 @@
 			$caracteristiquedesc->charger($caracteristique->id, $lang);
 		
 		}
-
-		 $caracteristique->boutique = $_SESSION["bout"];
-				
+			
 		 if($affiche!="") $caracteristique->affiche = 1;
 		 else $caracteristique->affiche = 0;
 					                 
@@ -163,7 +161,6 @@
 
 
 	 $caracteristique->id = $id;
-	 $caracteristique->boutique = $_SESSION["bout"];
 	 if($affiche!="") $caracteristique->affiche = 1;
 	 else $caracteristique->affiche = 0;	 
 	 

@@ -153,8 +153,7 @@
 			$declinaisondesc->charger($declinaison->id, $lang);
 		
 		}
-		 $declinaison->boutique = $_SESSION["bout"];
-				
+			
 			                 
 		 $declinaisondesc->chapo = $chapo;
 		 $declinaisondesc->description = $description;
@@ -197,7 +196,6 @@
 
 
 	 $declinaison->id = $id;
-	 $declinaison->boutique = $_SESSION["bout"];
 	 $declinaison->classement =  $maxClassement + 1;
 
 	 $lastid = $declinaison->add();

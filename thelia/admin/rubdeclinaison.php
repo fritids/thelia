@@ -58,7 +58,7 @@
                 $declinaison = new Declinaison();
                 $declinaisondesc = new Declinaisondesc();
               
-            	$query = "select ($declinaison->table.id) from $declinaison->table where boutique=\"" . $_SESSION['bout'] ."\"";
+            	$query = "select ($declinaison->table.id) from $declinaison->table";
 
                $resul = mysql_query($query, $declinaison->link);
                 while($row = mysql_fetch_object($resul)){                		

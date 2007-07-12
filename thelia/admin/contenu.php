@@ -28,13 +28,10 @@
 	include_once("auth.php");
 ?>
 <?php
-		if(!isset($boutique)) $boutique="";
 		if(!isset($parent)) $parent=0;
 		if(!isset($lang)) $lang=0;
 		if(!isset($i)) $i=0;
 
-	if($boutique != "")
-	 	$_SESSION["bout"] = $boutique;
 ?>	
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -113,7 +110,7 @@
 	$dossier = new Dossier();
 	$dossierdesc = new Dossierdesc();
 	
-	$query = "select * from $dossier->table where parent=\"$parent\" and boutique=\"" . $_SESSION['bout'] ."\" order by classement";
+	$query = "select * from $dossier->table where parent=\"$parent\" order by classement";
 	$resul = mysql_query($query, $dossier->link);		
 
 	while($row = mysql_fetch_object($resul)){
@@ -170,7 +167,7 @@
 	$contenu = new Contenu();
 	$contenudesc = new ContenuDesc();
 	
-	$query = "select * from $contenu->table where dossier=\"$parent\" and boutique=\"" . $_SESSION['bout'] ."\" order by classement";
+	$query = "select * from $contenu->table where dossier=\"$parent\" order by classement";
 	$resul = mysql_query($query, $contenu->link);		
 
 	while($row = mysql_fetch_object($resul)){
