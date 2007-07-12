@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+<!-- main css -->
+<!-- Commentaire conditionnel pour IE6-5.x -->
+<!--[if lt IE 7]>
+	<link rel="stylesheet" type="text/css" href="css/ie5-6.css" />
+<![endif]-->
+<!-- Commentaire conditionnel pour IE5.x -->
+<!--[if lt IE 6]>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+<![endif]-->
+<link href="styles.css" rel="stylesheet" type="text/css" />
+	
+</head>
+<body>
+
+<!-- wrapper & subwrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+	
+	#INCLURE "entete.html"
+		
+<!-- chemin -->	
+		
+		<div id="chemin">
+		Vous &ecirc;tes ici :
+		<a href="index.php" class="LIEN_chemin">Accueil boutique</a> /	Moncompte	: modifier mes informations
+		</div>
+
+<!-- contenu -->
+	
+		<div id="content">
+		
+		#INCLURE"menu.html"
+		
+			<div id="contenu">
+			
+<!-- Titre de la page -->
+
+				<div class="titrePage">
+				<h2>Mon compte : modifier mes informations </h2>
+				</div>
+				
+<!-- formulaire "Modifier mon mot de passe" -->
+
+				<div class="sousTitrePage">
+				<h3>Modifier mon mot de passe </h3>
+				</div>
+					
+			<form action="compte.php" method="post" name="modifier1" id="modifier1">
+            <input type="hidden" name="action" value="modifiercompte" />
+			<table width="785" border="0" cellspacing="0" cellpadding="5">
+ 				<tr>
+    				<td width="200" class="ligneTableau">Mon mot de passe #MOTDEPASSE[<span class="obligatoire">(Vérifiez votre mot de passe. 6 car mini)</span>]</td>
+   					<td width="565" class="ligneTableau"><input name="motdepasse1" type="password" class="zoneDeSaisie" /></td>
+  				</tr>
+  				<tr>
+    				<td class="ligneTableau">Confirmation du mot de passe</td>
+    				<td class="ligneTableau"><input name="motdepasse2" type="password" class="zoneDeSaisie" /></td>
+  				</tr>
+			</table>
+			
+				<div class="boutonMonCompteContenu">
+				<a href="javascript:document.getElementById('modifier1').submit()">Valider</a>
+				</div>
+			</form>
+				
+				<div class="separation">
+				</div>
+				
+<!-- formulaire "Je suis un nouveau client" -->
+
+				<div class="sousTitrePage">
+				<h3>Je suis un nouveau client </h3>
+				</div>
+				
+		   	<form action="compte_modifier.php" method="post" name="modifier2" id="modifier2">
+            <input type="hidden" name="action" value="modifiercompte" /> 
+			<table width="785" border="0" cellspacing="0" cellpadding="5">
+  				<tr>
+    				<td width="200" class="ligneTableau">Civilit&eacute; #RAISON[<span class="obligatoire">(obligatoire)</span>]</td>
+    				<td width="565" class="ligneTableau">
+					<select name="raison" size="1" class="zoneDeSaisie">
+                    <option value="">Choisissez ...</option>
+                    <option value="1" #CLIENT_RAISON1F>Madame</option>
+                    <option value="2" #CLIENT_RAISON2F>Mademoiselle</option>
+                    <option value="3" #CLIENT_RAISON3F>Monsieur</option>
+              		</select>					</td>
+  				</tr>
+  				<tr>
+    				<td class="ligneTableau">Nom #NOM[<span class="obligatoire">(obligatoire)</span>]</td>
+    				<td class="ligneTableau"><input type="text" name="nom"   value="#CLIENT_NOM" class="zoneDeSaisie" /></td>
+  				</tr>
+  				<tr>
+  				  <td class="ligneTableau">Pr&eacute;nom#PRENOM[<span class="obligatoire">(obligatoire)</span>]</td>
+  				  <td class="ligneTableau"><input type="text" name="prenom"   value="#CLIENT_PRENOM" class="zoneDeSaisie" /></td>
+			  </tr>
+  				<tr>
+  				  <td class="ligneTableau">Adresse #ADRESSE1[<span class="obligatoire">(obligatoire)</span>]</td>
+  				  <td class="ligneTableau"><input type="text" name="adresse1" class="zoneDeSaisie"  value="#CLIENT_ADRESSE1" /></td>
+			  </tr>
+  				<tr>
+  				  <td class="ligneTableau">Adresse (suite) </td>
+  				  <td class="ligneTableau"><input type="text" name="adresse2" class="zoneDeSaisie"  value="#CLIENT_ADRESSE2"/></td>
+			  </tr>
+  				<tr>
+  				  <td class="ligneTableau">Compl&eacute;ment d'adresse </td>
+  				  <td class="ligneTableau"><input type="text" name="adresse3" class="zoneDeSaisie"  value="#CLIENT_ADRESSE3"/></td>
+			  </tr>
+  				<tr>
+  				  <td class="ligneTableau">Code postal #CPOSTAL[<span class="obligatoire">(obligatoire)</span>] </td>
+  				  <td class="ligneTableau"><input type="text" name="cpostal" class="zoneDeSaisie"   value="#CLIENT_CPOSTAL"/></td>
+			  </tr>
+  				<tr>
+  				  <td class="ligneTableau">Ville #VILLE[<span class="obligatoire">(obligatoire)</span>]</td>
+  				  <td class="ligneTableau"><input type="text" name="ville" class="zoneDeSaisie"   value="#CLIENT_VILLE"/></td>
+			  </tr>
+  				<tr>
+  				  <td class="ligneTableau">Pays #PAYS[<span class="obligatoire">(obligatoire)</span>]</td>
+  				  <td class="ligneTableau">
+				  <select name="pays" size="1" class="zoneDeSaisie">
+				  <option value="" selected="selected">Choisissez ...</option>
+				  <THELIA_pays type="PAYS"  id="64" >           
+                  <option value="#ID"  #SELECTED>#TITRE</option>
+				  </THELIA_pays>
+				  </select>
+				  </td>
+			  </tr>
+  				<tr>
+  				  <td class="ligneTableau">Téléphone fixe #TELFIXE[<span class="obligatoire">(obligatoire)</span>] </td>
+  				  <td class="ligneTableau"><input type="text" name="telfixe"   value="#CLIENT_TELFIXE"  class="zoneDeSaisie" /></td>
+			  </tr>
+  				<tr>
+  				  <td class="ligneTableau">T&eacute;l&eacute;phone portable </td>
+  				  <td class="ligneTableau"><input type="text" name="telport" class="zoneDeSaisie"   value="#CLIENT_TELPORT"/></td>
+			  </tr>
+  				<tr>
+  				  <td class="ligneTableau">E-mail#EMAIL[<span class="obligatoire">(V&eacute;rifiez votre E-Mail)</span>]</td>
+  				  <td class="ligneTableau"><input type="text" name="email1" class="zoneDeSaisie"  value="#CLIENT_EMAIL"/></td>
+			  </tr>
+  				<tr>
+  				  <td class="ligneTableau">Confirmation de votre e-mail </td>
+  				  <td class="ligneTableau"><input type="text" name="email2" class="zoneDeSaisie"  value="#CLIENT_EMAIL"/></td>
+			  </tr>
+			</table>
+				<div class="boutonMonCompteContenu">
+				<a href="javascript:document.getElementById('modifier2').submit()">Valider</a>
+				</div>
+			</form>
+			</div>
+		#INCLURE "pied.html"
+		</div>
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>

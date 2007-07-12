@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+<!-- main css -->
+<!-- Commentaire conditionnel pour IE6-5.x -->
+<!--[if lt IE 7]>
+	<link rel="stylesheet" type="text/css" href="css/ie5-6.css" />
+<![endif]-->
+<!-- Commentaire conditionnel pour IE5.x -->
+<!--[if lt IE 6]>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+<![endif]-->
+<link href="styles.css" rel="stylesheet" type="text/css" />
+	
+</head>
+<body>
+
+<!-- wrapper & subwrapper-->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+	
+	#INCLURE "entete.html"
+		
+<!-- chemin-->	
+		
+		<div id="chemin">
+		Vous &ecirc;tes ici :
+		<a href="index.php" class="LIEN_chemin">Accueil boutique</a> / 
+		Identifiez-vous
+		</div>
+		
+			
+<!-- contenu-->
+	
+		<div id="content">
+		
+		#INCLURE"menu.html"
+		
+			<div id="contenu">
+			
+<!-- Titre de la page-->
+
+				<div class="titrePage">
+				<h2>Identifiez-vous </h2>
+				</div>
+				
+<!-- Contenu de la page-->
+
+				<div class="sousTitrePage">
+				<h3>J'ai d&eacute;j&agrave; un compte </h3>
+				</div>
+				
+				<form action="#URLCOURANTE" method="post" name="connexion" id="connexion">
+            	<input type="hidden" name="action" value="connexion" />
+				
+				<table width="785" border="0" cellspacing="0" cellpadding="5">
+					<tr>
+						<td class="ligneTableau">Mon e-mail </td>
+						<td class="ligneTableau"><input name="email" type="text" class="zoneDeSaisie"/></td>
+					</tr>
+				  	<tr>
+   						<td width="200" class="ligneTableau">Mon mot de passe </td>
+    					<td width="565" class="ligneTableau"><input name="motdepasse" type="password"  class="zoneDeSaisie"/></td>
+  					</tr>
+				</table>
+				<div class="boutonMonCompteContenu">
+				<a href="javascript:document.getElementById('connexion').submit()">Valider</a>
+				</div>
+				</form>
+				
+				<div class="separation">
+				</div>
+			
+				<div class="sousTitrePage">
+				<h3>Je suis un nouveau client </h3>
+				</div>
+				
+				<form action="nouveau.php" method="post" name="nouveau" id="nouveau">
+            	<input type="hidden" name="action" value="creercompte" />
+				
+				<table width="785" border="0" cellspacing="0" cellpadding="5">
+					<tr>
+						<td class="ligneTableau">Civilit&eacute;</td>
+						<td class="ligneTableau">
+						<select name="raison" size="1" class="zoneDeSaisie">
+            			<option value="" selected="selected">Choisissez ...</option>
+            			<option value="1">Madame</option>
+            			<option value="2">Mademoiselle</option>
+            			<option value="3">Monsieur</option>
+            			</select>
+						</td>
+					</tr>
+					<tr>
+						<td width="200" class="ligneTableau">Nom</td>
+						<td width="565" class="ligneTableau"><input name="nom" type="text" class="zoneDeSaisie"/></td>
+					</tr>
+					<tr>
+					  <td class="ligneTableau">Pr&eacute;nom</td>
+					  <td class="ligneTableau"><input name="prenom" type="text" class="zoneDeSaisie"/></td>
+				  </tr>
+				  <tr>
+				  	<td class="ligneTableau">Adresse</td>
+					<td class="ligneTableau"><input name="adresse1" type="text" class="zoneDeSaisie"/></td>
+				  </tr>
+				  <tr>
+				  	<td class="ligneTableau">Adrese (suite) </td>
+					<td class="ligneTableau"><input name="adresse2" type="text" class="zoneDeSaisie"/></td>
+				  </tr>
+				  <tr>
+				  	<td class="ligneTableau">Compl&eacute;ment d'adresse </td>
+					<td class="ligneTableau"><input name="adresse3" type="text" class="zoneDeSaisie"/></td>
+				  </tr>
+				  <tr>
+					<td class="ligneTableau">Code postal </td>
+					<td class="ligneTableau"><input name="cpostal" type="text" class="zoneDeSaisie"/></td>
+				  </tr>
+				  <tr>
+					<td class="ligneTableau">Ville</td>
+					<td class="ligneTableau"><input name="ville" type="text" class="zoneDeSaisie"/></td>
+				  </tr>
+				  <tr>
+					<td class="ligneTableau">Pays</td>
+					<td class="ligneTableau">
+					<select name="pays" size="1" class="zoneDeSaisie">
+					<option value="" selected="selected">Choisissez ...</option>
+					<THELIA_pays type="PAYS"  id="64" >           
+					<option value="#ID">#TITRE</option>
+					</THELIA_pays>
+					</select>	
+					</td>
+				  </tr>
+				  <tr>
+				  	<td class="ligneTableau">T&eacute;l&eacute;phone fixe </td>
+					<td class="ligneTableau"><input name="telfixe" type="text" class="zoneDeSaisie"/></td>
+				  </tr>
+				  <tr>
+				  	<td class="ligneTableau">T&eacute;l&eacute;phone portable </td>
+					<td class="ligneTableau"><input name="telport" type="text" class="zoneDeSaisie"/></td>
+				  </tr>
+				  <tr>
+				  	<td class="ligneTableau">E-mail</td>
+					<td class="ligneTableau"><input name="email1" type="text" class="zoneDeSaisie"/></td>
+				  </tr>
+				  <tr>
+				  	<td class="ligneTableau">Confirmation de votre e-mail </td>
+					<td class="ligneTableau"><input name="email2" type="text" class="zoneDeSaisie"/></td>
+				  </tr>
+				  <tr>
+				  	<td class="ligneTableau">Mot de passe </td>
+					<td class="ligneTableau"><input  name="motdepasse1" type="password" class="zoneDeSaisie"/></td>
+				  </tr>
+				  <tr>
+					<td class="ligneTableau">Confirmation de votre mot de passe </td>
+					<td class="ligneTableau"><input name="motdepasse2" type="password" class="zoneDeSaisie"/></td>
+				  </tr>
+			</table>
+			<div class="boutonMonCompteContenu">
+            <a href="javascript:document.getElementById('nouveau').submit()">Valider</a>
+			</div>
+            </form>
+			</div>
+		#INCLURE "pied.html"
+		</div>
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>

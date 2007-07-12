@@ -1,0 +1,24 @@
+<!-- menu général-->
+
+		<div id="menuGeneral">
+			<dl id="menu">
+			<THELIA_MENU_RUBRIQUES type="RUBRIQUE" parent="0" profondeur="1" boutique="1" classement="manuel">
+				<dt><a href="#URL">#TITRE</a></dt>
+				<dd class="ssmenu">
+					<ul>
+					<THELIA_BLOC_SOUS_MENU type="RUBRIQUE" parent="#ID">
+					<THELIA_SOUS_MENU_RUBRIQUE type="RUBRIQUE" id="#ID" courante="0">
+						<li><a href="#URL">#TITRE</a></li>
+					</THELIA_SOUS_MENU_RUBRIQUE>	
+					<THELIA_SOUS_MENU_RUBRIQUE_SELECTION type="RUBRIQUE" id="#ID" courante="1">
+						<li><a href="#URL" class="selected">#TITRE</a></li>
+					</THELIA_SOUS_MENU_RUBRIQUE_SELECTION>
+					</THELIA_BLOC_SOUS_MENU>
+					</ul>
+				</dd>
+				</THELIA_MENU_RUBRIQUES>
+				<THELIA_MENU_CONTENU type="CONTENU" parent="0" profondeur="1" boutique="1" classement="manuel">
+				<dt><a href="#URL">#TITRE</a></dt>
+			</THELIA_MENU_CONTENU>
+			</dl>
+		</div>

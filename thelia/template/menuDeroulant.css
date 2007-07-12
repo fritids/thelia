@@ -1,0 +1,241 @@
+ 
+/* menu vertical */
+
+
+dl, dt, dd, li {
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+#menu {
+	position: relative;
+	padding: 0;
+	margin: 0;
+}
+
+dl#menu {
+	width: 160px;
+}
+
+/* menu */
+
+dl#menu dt {
+	cursor: pointer;
+	text-align: left;
+	font-weight: bold;
+	color: #ec8000;
+	font-size: 11px;
+}
+
+dl#menu dt a {
+	text-decoration: none;
+	color: #ec8000;
+	display: block;
+	background-image: url(images/puceOrangeA_Up.gif);
+	background-repeat: no-repeat;
+	background-position: 0px;
+	height: 19px;
+	margin: 0;
+	padding-top: 5px;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 20px;
+}
+
+dl#menu dt a:hover, dl#menu dt .selected {
+	background-image: url(images/puceOrangeA_Dn.gif);
+	color: #FFFFFF;
+	background-color: #EC8000;
+	background-position: 0px;
+}
+
+/* sous-menu vertical */
+
+dl#menu dd {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+dl#menu li {
+	text-align: left;
+}
+
+dl#menu li a {
+	text-decoration: none;
+	color: #EC8000;
+	display: block;
+	background-image: url(images/puceOrangeA_Up_Petit.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 5px;
+	height: 100%;
+	padding-left: 25px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+dl#menu li a:hover, dl#menu li .selected {
+	background-image: url(images/puceOrangeA_Dn_Petit.gif);
+	color: #FFFFFF;
+	background-position: 0px 5px;
+	background-color: #EC8000;
+}
+
+ 
+/* tous les boutons */
+.boutonForm100 {
+	padding: 0;
+	margin: 0;
+}
+
+dl.boutonForm100 {
+	width: 100px;
+}
+
+dl.boutonForm100 dt {
+	cursor: pointer;
+	text-align: left;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+dl.boutonForm100 dt a {
+	text-decoration: none;
+	color: #FF6500;
+	display: block;
+	background-image: url(images/puceOrange+.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	height: 17px;
+	padding-right: 0px;
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 0px;
+	font-style: normal;
+}
+
+dl.boutonForm100 dt a:hover {
+	text-decoration: none;
+	background-color: #ec8000;
+	color: #FFFFFF;
+}
+
+
+.boutonForm120 {
+	padding: 0;
+	margin: 0;
+}
+
+dl.boutonForm120 {
+	width: 120px;
+}
+
+dl.boutonForm120 dt {
+	cursor: pointer;
+	text-align: left;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+dl.boutonForm120 dt a {
+	text-decoration: none;
+	color: #FF6500;
+	display: block;
+	background-image: url(images/puceOrange+.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	height: 17px;
+	padding-right: 0px;
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 0px;
+	font-style: normal;
+}
+
+dl.boutonForm120 dt a:hover {
+	text-decoration: none;
+	background-color: #ec8000;
+	color: #FFFFFF;
+}
+
+/* bouton longueur250 */
+
+.boutonForm250 {
+	padding: 0;
+	margin: 0;
+	font-style: normal;
+}
+
+dl.boutonForm250 {
+	width: 230px;
+}
+
+dl.boutonForm250 dt {
+	cursor: pointer;
+	text-align: left;
+	font-weight: bold;
+	color: #EC8000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+dl.boutonForm250 dt a {
+	text-decoration: none;
+	color: #EC8000;
+	display: block;
+	background-image: url(images/puceOrangeA_Up.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 2px;
+	height: 100%;
+	padding-top: 2px;
+	padding-right: 0px;
+	padding-bottom: 2px;
+	padding-left: 18px;
+}
+
+dl.boutonForm250 dt a:hover {
+	background-image: url(images/puceOrangeA_Dn.gif);
+	color: #FFFFFF;
+	background-color: #EC8000;
+}
+/* bouton longueur180 */
+
+.boutonForm180 {
+	padding: 0;
+	margin: 0;
+	font-style: normal;
+}
+
+dl.boutonForm180 {
+	width: 180px;
+}
+
+dl.boutonForm180 dt {
+	cursor: pointer;
+	text-align: left;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+dl.boutonForm180 dt a {
+	text-decoration: none;
+	color: #EC8000;
+	display: block;
+	background-image: url(images/puceOrangeA_Up.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 2px;
+	height: 100%;
+	padding-top: 2px;
+	padding-right: 0px;
+	padding-bottom: 2px;
+	padding-left: 18px;
+}
+
+dl.boutonForm180 dt a:hover {
+	background-image: url(images/puceOrangeA_Dn.gif);
+	color: #FFFFFF;
+	background-color: #EC8000;
+}

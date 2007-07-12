@@ -1,0 +1,46 @@
+<!-- entête -->
+	
+		<div id="entete">
+			<div class="logo">
+				<h1>Titre<br />
+				de votre boutique</h1>
+			</div>
+			<div id="monCompte">
+				<h3>Mon compte</h3>
+				<THELIA SI NON CONNECTE>
+				<form action="#URLCOURANTE" method="post" id="connex" >
+				<input type="hidden" name="action" value="connexion" />
+				<div class="formMonCompte">
+					<input name="email" type="text" class="champFormMonCompte" value="e-mail" size="13" />
+				</div>
+				<div class="formMonCompte">
+					<input name="motdepasse" type="password" class="champFormMonCompte" value="000000" size="13" />
+				</div>
+				<div class="boutonMonCompteEntete">
+					<a href="javascript:document.getElementById('connex').submit()" class="LIEN_entete">Valider</a>
+				</div>			
+				<div class="menuMonCompte">
+					<a href="mdpoublie.php" class="LIEN_entete">J'ai perdu mon  mot de passe perdu ?</a> | <a href="creercompte.php" class="LIEN_entete">Je souhaite cr&eacute;er un compte ?</a>				</div>
+				</form>
+				</THELIA SI NON CONNECTE>
+				
+				<THELIA SI CONNECTE>
+				<div class="menuMonCompte">
+					Bonjour #CLIENT_PRENOM #CLIENT_NOM<br />
+					<a href="moncompte.php" onmouseover="flashProxy.call('affiche', 'Acceder a vos informations personnelles <u>#CLIENT_PRENOM</u>');" onmouseout="flashProxy.call('cacher')" class="LIEN_entete">Voir mon compte</a> - 
+					<a href="#URLDECONNEXION" onmouseover="flashProxy.call('affiche', 'Au revoir !');" onmouseout="flashProxy.call('cacher')" class="LIEN_entete">Me déconnecter</a>				</div>
+				</THELIA SI CONNECTE>
+			</div>
+			
+	  	  <div id="monPanier">
+		  		<h3>Mes achats</h3>
+		  		<T_PANIER>
+				<a href="#URLPANIER" class="LIEN_entete">Votre panier contient #PANIER_NBART article(s).</a>
+				<THELIA_PANIER type="PANIER">
+				</THELIA_PANIER>
+						
+		  </T_PANIER>
+			  	<a href="#URLPANIER" class="LIEN_entete">Votre panier est vide !</a>
+				<//T_PANIER>
+			</div>
+		</div>

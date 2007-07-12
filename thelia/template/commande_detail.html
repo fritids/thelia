@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+<!-- main css -->
+<!-- Commentaire conditionnel pour IE6-5.x -->
+<!--[if lt IE 7]>
+	<link rel="stylesheet" type="text/css" href="css/ie5-6.css" />
+<![endif]-->
+<!-- Commentaire conditionnel pour IE5.x -->
+<!--[if lt IE 6]>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+<![endif]-->
+<link href="styles.css" rel="stylesheet" type="text/css" />
+
+<script language="javascript">
+
+function valide(){
+	if(document.getElementById('condbox').checked) document.getElementById('formulaire').submit();
+	else alert("Vous devez accepter les conditions generales de vente");
+}
+
+</script>
+
+	
+</head>
+<body>
+
+<!-- wrapper & subwrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+	
+	#INCLURE "entete.html"
+		
+<!-- chemin -->	
+		
+		<div id="chemin">
+		Vous &ecirc;tes ici :
+		<a href="index.php" class="LIEN_chemin">Accueil boutique</a> /	
+		Validation de ma commande </div>
+		
+<!-- contenu -->
+	
+		<div id="content">
+		
+		#INCLURE"menu.html"
+		
+			<div id="contenu">
+			
+<!-- Titre de la rubrique -->
+
+				<THELIA_cmd type="COMMANDE" ref="#COMMANDE_REF" client="#CLIENT_ID">
+				<div class="titrePage">
+				<h2>D&eacute;tail de la commande N&deg;#REF </h2>
+				</div>
+			
+<!-- Contenu de la page -->
+	
+		    	<div class="textePage">
+				N° de commande : #REF
+		    	<THELIA_venteprod type="VENTEPROD" commande="#ID">
+			  	<br />
+			  	Produit : #REF<br />
+				Prix unitaire : #PRIXU<br />
+				Quantit&eacute; : #QUANTITE<br />
+				Sous total produit : #TOTALPROD<br />
+		  		Date : #DATE<br />
+		  		N&deg; de facture : #FACTURE<br />
+				Frais de livraison : #PORT<br />
+				Total : #TOTCMDPORT<br />
+				Statut : #STATUT
+				</div>
+			 
+				<div class="boutonMonCompteContenu">
+				<a href="client/pdf/facture.php?ref=#REF">Visualiser la facture au format PDF </a>
+				</div>
+				<div class="boutonMonCompteContenu">
+				<a href="#">Retour </a>	
+				</div>
+				</THELIA_cmd>
+			</div>
+		#INCLURE "pied.html"
+		</div>
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>

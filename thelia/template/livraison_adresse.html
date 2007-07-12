@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+<!-- main css -->
+<!-- Commentaire conditionnel pour IE6-5.x -->
+<!--[if lt IE 7]>
+	<link rel="stylesheet" type="text/css" href="css/ie5-6.css" />
+<![endif]-->
+<!-- Commentaire conditionnel pour IE5.x -->
+<!--[if lt IE 6]>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+<![endif]-->
+<link href="styles.css" rel="stylesheet" type="text/css" />
+	
+</head>
+<body>
+
+<!-- wrapper & subwrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+	
+	#INCLURE "entete.html"
+		
+<!-- chemin -->	
+		
+		<div id="chemin">
+		Vous &ecirc;tes ici :
+		<a href="index.php" class="LIEN_chemin">Accueil boutique</a> /	
+		Mon compte : mes adresses de livraison
+		</div>
+		
+<!-- contenu -->
+	
+		<div id="content">
+		
+		#INCLURE"menu.html"
+		
+			<div id="contenu">
+			
+<!-- Titre de la rubrique -->
+
+				<div class="titrePage">
+				<h2>Mon compte : mes adresses de livraison </h2>
+				</div>
+
+<!-- Contenu de la page -->
+
+				<div class="sousTitrePage">
+				<h3>Mes adresses de livraison</h3>
+				</div>
+	
+			<THELIA_adr type="ADRESSE" client="#CLIENT_ID">
+			
+				<div class="textePage">
+				#LIBELLE
+				</div>
+				
+			<a href="livraison_modifier.php?adresse=#ID">Modifier cette adresse<br />
+			</a><a href="#SUPPRURL">Supprimer cette adresse </a>
+			</THELIA_adr>
+				
+				<div class="separation">
+				</div>
+
+				<div class="sousTitrePage">
+				<h3>Ajouter une nouvelle adresse de livraison</h3>
+				</div>
+				
+			<form action="adresse.php" method="post" name="nouveau" id="nouveau">
+            <input type="hidden" name="action" value="creerlivraison" />
+			<table width="785" border="0" cellspacing="0" cellpadding="5">
+  				<tr>
+    				<td width="200" class="ligneTableau">Lib&eacute;ll&eacute; de l'adresse* </td>
+    				<td width="565" class="ligneTableau"><input name="libelle" type="text" class="zoneDeSaisie"/></input></td>
+  				</tr>
+				<tr>
+   					<td class="ligneTableau">Civilit&eacute;*</td>
+   					<td class="ligneTableau">
+					<select name="raison" size="1" class="zoneDeSaisie">
+                	<option value="" selected="selected">Choisissez ...</option>
+                	<option value="1">Madame</option>
+               		<option value="2">Mademoiselle</option>
+               		<option value="3">Monsieur</option>
+               		</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="ligneTableau">Nom*</td>
+					<td class="ligneTableau"><input type="text" name="nom" class="zoneDeSaisie" /></input></td>
+				</tr>
+  				<tr>
+  				  	<td class="ligneTableau">Pr&eacute;nom*</td>
+  				  	<td class="ligneTableau"><input type="text" name="prenom" class="zoneDeSaisie" /></input></td>
+			  	</tr>
+  				<tr>
+  				  	<td class="ligneTableau">Adresse*</td>
+  				  	<td class="ligneTableau"><input type="text" name="adresse1" class="zoneDeSaisie" /></input></td>
+			  	</tr>
+  				<tr>
+  				  	<td class="ligneTableau">Adresse (suite) </td>
+  				  	<td class="ligneTableau"><input type="text" name="adresse2" class="zoneDeSaisie" /></input></td>
+			  	</tr>
+  				<tr>
+  				  	<td class="ligneTableau">Compl&eacute;ment d'adresse </td>
+ 				  	<td class="ligneTableau"><input type="text" name="adresse3" class="zoneDeSaisie" /></input></td>
+			  	</tr>
+  				<tr>
+  				  	<td class="ligneTableau">Code postal*</td>
+  				  	<td class="ligneTableau"><input type="text" name="cpostal" class="zoneDeSaisie" /></input></td>
+			  	</tr>
+  				<tr>
+  				  	<td class="ligneTableau">Ville*</td>
+  				  	<td class="ligneTableau"><input type="text" name="ville" class="zoneDeSaisie" /></input></td>
+			  	</tr>
+  				<tr>
+  				  	<td class="ligneTableau">Pays*</td>
+  				  	<td class="ligneTableau">
+				  	<select name="pays" size="1"  class="zoneDeSaisie">
+				  	<option value="" selected="selected">Choisissez ...</option>
+				  	<THELIA_pays type="PAYS"  id="64" >           
+				  	<option value="#ID">#TITRE</option>
+				  	</THELIA_pays>
+				  	</select>
+					</td>
+			  	</tr>
+				<tr>
+  				  	<td class="ligneTableau">T&eacute;l&eacute;phone fixe* </td>
+  				  	<td class="ligneTableau"><input type="text" name="telfixe" class="zoneDeSaisie" /></input></td>
+			  	</tr>
+			 </table>
+			 
+			 	<div class="boutonMonCompteContenu">
+				<a href="javascript:document.getElementById('nouveau').submit()">Valider</a>
+				</div>
+			</form>
+			</div>
+		#INCLURE "pied.html"
+		</div>
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>
