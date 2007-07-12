@@ -11,10 +11,10 @@
 				<form action="#URLCOURANTE" method="post" id="connex" >
 				<input type="hidden" name="action" value="connexion" />
 				<div class="formMonCompte">
-					<input name="email" type="text" class="champFormMonCompte" value="e-mail" size="13" />
+					<input name="email" type="text" class="champFormMonCompte" value="e-mail" size="13" onclick="this.value='';" />
 				</div>
 				<div class="formMonCompte">
-					<input name="motdepasse" type="password" class="champFormMonCompte" value="000000" size="13" />
+					<input name="motdepasse" type="password" class="champFormMonCompte" value="000000" size="13" onclick="this.value='';" />
 				</div>
 				<div class="boutonMonCompteEntete">
 					<a href="javascript:document.getElementById('connex').submit()" class="LIEN_entete">Valider</a>

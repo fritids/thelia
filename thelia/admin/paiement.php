@@ -38,9 +38,6 @@
 <body>
 
 <?php
-	include_once("../classes/Boutique.class.php");
-?>
-<?php
 	$menu="paiement";
 	include_once("entete.php");
 ?>

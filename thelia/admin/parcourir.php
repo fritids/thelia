@@ -40,9 +40,6 @@
 <body>
 
 <?php
-	include_once("../classes/Boutique.class.php");
-?>
-<?php
 	include_once("../classes/Rubrique.class.php");
 	include_once("../classes/Produit.class.php");
 

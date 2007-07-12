@@ -45,7 +45,6 @@
 	include_once("classes/Document.class.php");
 	include_once("classes/Documentdesc.class.php");
 	include_once("classes/Accessoire.class.php");
-	include_once("classes/Boutique.class.php");
 	include_once("classes/Pays.class.php");
 	include_once("classes/Paysdesc.class.php");
 	include_once("classes/Zone.class.php");

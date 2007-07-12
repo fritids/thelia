@@ -123,6 +123,7 @@ function analyse($res){
 	if(!isset($pageret)) $pageret=0;	
 	if(!isset($reset)) $reset=0;	
 	if(!isset($entreprise)) $entreprise="";	
+	if(!isset($siret)) $siret="";	
 	if(!isset($parrain)) $parrain="";	
 	if(!isset($motdepasse1)) $motdepasse1="";	
 	if(!isset($motdepasse2)) $motdepasse2="";	
@@ -137,6 +138,7 @@ function analyse($res){
 	if(!isset($pays)) $pays="";		
 	if(!isset($telfixe)) $telfixe="";	
 	if(!isset($telport)) $telport="";	
+	if(!isset($tel)) $tel="";	
 	if(!isset($email1)) $email1="";	
 	if(!isset($email2)) $email2="";	
 	if(!isset($id)) $id="";	

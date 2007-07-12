@@ -39,9 +39,6 @@
 <body>
 
 <?php
-	include_once("../classes/Boutique.class.php");
-?>
-<?php
 	$menu="livraisons";
 	include_once("entete.php");
 ?>

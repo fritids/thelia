@@ -39,7 +39,6 @@
 <body>
 
 <?php
-	include_once("../classes/Boutique.class.php");
 	include_once("../classes/Cache.class.php");
 	
 ?>
