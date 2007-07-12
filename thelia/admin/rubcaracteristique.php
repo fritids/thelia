@@ -36,8 +36,8 @@
         include_once("../classes/Caracval.class.php");
         include_once("../classes/Rubrique.class.php");
         include_once("../classes/Lang.class.php");
-
-      
+		include_once("../classes/Cache.class.php");
+	 	      
 		include_once("../lib/JSON.php");
 	
 	if(!isset($lang)) $lang="";

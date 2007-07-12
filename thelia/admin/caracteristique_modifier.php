@@ -36,6 +36,9 @@
 	include_once("../classes/Caracdisp.class.php");
 	include_once("../classes/Rubcaracteristique.class.php");
 
+ 	include_once("../classes/Cache.class.php");
+
+
 	if(!isset($action)) $action="";
 	if(!isset($lang)) $lang="1";
 	if(!isset($tabdisp)) $tabdisp="";
@@ -91,6 +94,12 @@
 		
 		$caracteristique->maj();
 
+		$cache = new Cache();
+		$cache->vider("CARACTERISTIQUE", "%");		
+		$cache->vider("CARACDISP", "%");
+		$cache->vider("CARACVAL", "%");
+		$cache->vider("PRODUIT", "%");
+		
 	    header("Location: caracteristique.php");
 
 	}
@@ -128,7 +137,13 @@
 	
 		 $caracteristique->maj();
 		 $caracteristiquedesc->maj();
-											
+
+		$cache = new Cache();
+		$cache->vider("CARACTERISTIQUE", "%");		
+		$cache->vider("CARACDISP", "%");
+		$cache->vider("CARACVAL", "%");
+		$cache->vider("PRODUIT", "%");
+													
 	     header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $id);
 	}
 
@@ -169,6 +184,12 @@
 	 
 	 $caracteristiquedesc->add();
 
+		$cache = new Cache();
+		$cache->vider("CARACTERISTIQUE", "%");		
+		$cache->vider("CARACDISP", "%");
+		$cache->vider("CARACVAL", "%");
+		$cache->vider("PRODUIT", "%");
+		
 	   header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
 
 	}
@@ -193,7 +214,12 @@
 		$caracteristique->charger($id);
 		$caracteristique->supprimer();
 
-
+		$cache = new Cache();
+		$cache->vider("CARACTERISTIQUE", "%");		
+		$cache->vider("CARACDISP", "%");
+		$cache->vider("CARACVAL", "%");
+		$cache->vider("PRODUIT", "%");
+		
 	    header("Location: caracteristique.php");
 
 	}
@@ -202,6 +228,12 @@
                 $tcaracdisp = new Caracdisp();	
 		$tcaracdisp->charger($caracdisp);
 		$tcaracdisp->supprimer();
+		
+		$cache = new Cache();
+		$cache->vider("CARACTERISTIQUE", "%");		
+		$cache->vider("CARACDISP", "%");
+		$cache->vider("CARACVAL", "%");
+		$cache->vider("PRODUIT", "%");
 	}
 
 	function ajcaracdisp($id, $caracdisp, $lang){
@@ -219,6 +251,11 @@
 		
 		$tcaracdispdesc->add();
 
+		$cache = new Cache();
+		$cache->vider("CARACTERISTIQUE", "%");		
+		$cache->vider("CARACDISP", "%");
+		$cache->vider("CARACVAL", "%");
+		$cache->vider("PRODUIT", "%");
 	}
 	
 	
@@ -246,11 +283,15 @@
 
 			else $caracdispdesc->maj();
 			
-			
+
 		
 		}
 	
-	
+		$cache = new Cache();
+		$cache->vider("CARACTERISTIQUE", "%");		
+		$cache->vider("CARACDISP", "%");
+		$cache->vider("CARACVAL", "%");
+		$cache->vider("PRODUIT", "%");	
 	
 	}
 ?>

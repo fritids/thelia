@@ -1441,8 +1441,6 @@
 		$profondeur = lireTag($args, "profondeur");		
 		$niveau = lireTag($args, "niveau");		
 		
-		
-		if($rubrique=="") $rubrique=$id_rubrique;
 		if($rubrique=="") return "";
 
 		$search ="";

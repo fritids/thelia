@@ -54,6 +54,10 @@
 			
 		}
 		
+		function verif($plugin, $lang){
+			return $this->getVars("select * from $this->table where plugin=\"$plugin\" and lang=\"$lang\"");
+		}
+		
 	}
 
 ?>

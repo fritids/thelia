@@ -271,6 +271,7 @@
   
   		$chaine = str_replace("/", "-", $chaine);
 		$chaine = str_replace(" ", "-", $chaine);
+		$chaine = str_replace(chr(39), "-", $chaine);
 		$chaine = str_replace("'", "-", $chaine);
 		$chaine = str_replace("&", "-", $chaine);
 		$chaine = str_replace("?", "", $chaine);	

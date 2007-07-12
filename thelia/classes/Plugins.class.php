@@ -82,12 +82,10 @@
 			return $modulesdesc->chapo;		
 		}
 
-		function ajout_desc($titre, $chapo, $description, $lang, $devise=""){
-			if($lang == "") 
-				$lang=1;
-				
+		function ajout_desc($titre, $chapo, $description, $lang=1, $devise=""){
+					
 			$modulesdesc = new Modulesdesc();
-			$res = $modulesdesc->charger($this->nom_plugin, $lang);
+			$res = $modulesdesc->verif($this->nom_plugin, $lang);
 			
 			$modulesdesc->plugin = $this->nom_plugin;
 			$modulesdesc->titre = $titre;
