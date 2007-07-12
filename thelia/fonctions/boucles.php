@@ -1418,7 +1418,7 @@
 		$j = 0;
 		
 		for($i=1; $i<$max; $i++){
-			if($i==$_SESSION['navig']->panier->tabarticle[$article]->quantite) $selected=" selected";
+			if($i==$_SESSION['navig']->panier->tabarticle[$article]->quantite) $selected="selected=\"selected\"";
 			else $selected="";
 		
 			$temp = str_replace("#NUM", "$i", $texte);
@@ -1582,10 +1582,10 @@
 			$temp = str_replace("#CHAPO", "$paysdesc->chapo", $temp);
 			$temp = str_replace("#DESCRIPTION", "$paysdesc->description", $temp);	
 			if(($_SESSION['navig']->formcli->pays == $row->pays || $_SESSION['navig']->client->pays == $row->pays) && $select=="") 	
-				$temp = str_replace("#SELECTED", "selected", $temp);
-			if($select !="" && $select == $row->pays) $temp = str_replace("#SELECTED", "selected", $temp);	
+				$temp = str_replace("#SELECTED", "selected=\"selected\"", $temp);
+			if($select !="" && $select == $row->pays) $temp = str_replace("#SELECTED", "selected=\"selected\"", $temp);	
 			else $temp = str_replace("#SELECTED", "", $temp);
-			if($default == "1" && $pays->default == "1") $temp = str_replace("#DEFAULT", "selected", $temp);	
+			if($default == "1" && $pays->default == "1") $temp = str_replace("#DEFAULT", "selected=\"selected\"", $temp);	
 			else $temp = str_replace("#DEFAULT", "", $temp);
 			$res .= $temp;
 		}

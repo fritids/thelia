@@ -1,5 +1,5 @@
 <?php
-	$fond="template/default/rss.html";
+	$fond="rss.html";
 	include("fonctions/moteur.php");
 
 ?>

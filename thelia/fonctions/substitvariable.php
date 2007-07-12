@@ -30,7 +30,7 @@
 
 	function substitvariable($texte){
 
-        ereg("\(([^\)]*)\)", "$texte", $cut);
+		 ereg("#VARIABLE\(([^\)]*)\)", "$texte", $cut);
 
         $variable = new Variable();
         $variable->charger($cut[1]);
