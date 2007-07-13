@@ -30,9 +30,10 @@
 
 		var $id;
 		var $nom;
-
+		var $protege;
+		
 		var $table="message";
-		var $bddvars = array("id", "nom");
+		var $bddvars = array("id", "nom", "protege");
 
 		function Message(){
 			$this->Baseobj();	

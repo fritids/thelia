@@ -31,9 +31,10 @@
 		var $id;
 		var $nom;
 		var $valeur; 
-	 
+	 	var $protege;
+	
 		var $table="variable";
-		var $bddvars=array("id", "nom", "valeur");
+		var $bddvars=array("id", "nom", "valeur", "protege");
 		
 		function Variable(){
 			$this->Baseobj();	

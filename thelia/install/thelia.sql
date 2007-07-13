@@ -571,6 +571,7 @@ INSERT INTO `lang` VALUES (3, 'Espanol');
 CREATE TABLE `message` (
   `id` int(11) NOT NULL auto_increment,
   `nom` text NOT NULL,
+  `protege` smallint(6) NOT NULL,
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM AUTO_INCREMENT=8 ;
 
@@ -578,13 +579,13 @@ CREATE TABLE `message` (
 -- Contenu de la table `message`
 -- 
 
-INSERT INTO `message` VALUES (1, 'mdpmodif');
-INSERT INTO `message` VALUES (2, 'mdpnonvalide');
-INSERT INTO `message` VALUES (3, 'nouveaumdp1');
-INSERT INTO `message` VALUES (4, 'nouveaumdp2');
-INSERT INTO `message` VALUES (5, 'sujetcommande');
-INSERT INTO `message` VALUES (6, 'corpscommande1');
-INSERT INTO `message` VALUES (7, 'corpscommande2');
+INSERT INTO `message` VALUES (1, 'mdpmodif', '1');
+INSERT INTO `message` VALUES (2, 'mdpnonvalide', '1');
+INSERT INTO `message` VALUES (3, 'nouveaumdp1', '1');
+INSERT INTO `message` VALUES (4, 'nouveaumdp2', '1');
+INSERT INTO `message` VALUES (5, 'sujetcommande', '1');
+INSERT INTO `message` VALUES (6, 'corpscommande1', '1');
+INSERT INTO `message` VALUES (7, 'corpscommande2', '1');
 
 -- --------------------------------------------------------
 
@@ -1957,6 +1958,7 @@ CREATE TABLE `variable` (
   `id` int(11) NOT NULL auto_increment,
   `nom` text NOT NULL,
   `valeur` text NOT NULL,
+  `protege` smallint(6) NOT NULL,
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM AUTO_INCREMENT=10 ;
 
@@ -1964,13 +1966,13 @@ CREATE TABLE `variable` (
 -- Contenu de la table `variable`
 -- 
 
-INSERT INTO `variable` VALUES (1, 'emailcontact', 'commande@monsite.com');
-INSERT INTO `variable` VALUES (2, 'nomsite', 'Mon Site');
-INSERT INTO `variable` VALUES (3, 'urlsite', 'http://www.monsite.com');
-INSERT INTO `variable` VALUES (4, 'tva', '19.6');
-INSERT INTO `variable` VALUES (5, 'style_chem', '/style_editeur.css');
-INSERT INTO `variable` VALUES (6, 'rsspass', '');
-INSERT INTO `variable` VALUES (7, 'rssadmin', 'http://www.octolys.fr/rss.php');
+INSERT INTO `variable` VALUES (1, 'emailcontact', 'commande@monsite.com', '1');
+INSERT INTO `variable` VALUES (2, 'nomsite', 'Mon Site', '1');
+INSERT INTO `variable` VALUES (3, 'urlsite', 'http://www.monsite.com', '1');
+INSERT INTO `variable` VALUES (4, 'tva', '19.6', '1');
+INSERT INTO `variable` VALUES (5, 'style_chem', '/style_editeur.css', '1');
+INSERT INTO `variable` VALUES (6, 'rsspass', '', '1');
+INSERT INTO `variable` VALUES (7, 'rssadmin', 'http://www.octolys.fr/rss.php', '1');
 -- --------------------------------------------------------
 
 -- 
