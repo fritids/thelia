@@ -84,6 +84,7 @@ background: #FFFFFF;
 	float:left;
 	z-index:10;
 	padding-top:200px;
+	padding-left: 10px;
 }
 
 #chapeau{

@@ -44,11 +44,6 @@
 <title>THELIA / BACK OFFICE</title>
 
 <link href="styles.css" rel="stylesheet" type="text/css" />
-<SCRIPT LANGUAGE="JavaScript">
-/* On crée une fonction de verification */
-function validForm(formulaire)
-formulaire.submit();
-</SCRIPT>
 
 </head>
 
@@ -79,7 +74,7 @@ formulaire.submit();
              <input name="motdepasse" type="password" class="form" size="19" />
              <input name="action" type="hidden" value="identifier" />
            </span></td>
-           <td width="60" align="left"><a href="#" onClick="document.getElementById('formulaire').submit()"><img src="gfx/zone_d_identification/bt_valider.gif" width="54" height="20" border="0" /></a></td>
+           <td width="60" align="left"><input type="image" src="gfx/zone_d_identification/bt_valider.gif" width="54" height="20" border="0" /></td>
          </tr>
          </form>   
        </table></td>
