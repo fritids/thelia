@@ -1962,7 +1962,6 @@
 			$temp = str_replace("#LIVRAISON", "$row->livraison", $temp);
 			$temp = str_replace("#FACTURE", "$row->facture", $temp);
 			$temp = str_replace("#DATELIVRAISON", "$row->datelivraison", $temp);
-			$temp = str_replace("#ENVOI", "$row->envoi", $temp);
 			$temp = str_replace("#PAIEMENT", "$row->paiement", $temp);
 			$temp = str_replace("#REMISE", "$row->remise", $temp);
 			$temp = str_replace("#STATUT", "$statutdesc->titre", $temp);

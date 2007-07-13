@@ -39,12 +39,11 @@
 		}
 	
 		function paiement($commande){
-			global $total;
 			
 			$urlsite = new Variable();
 			$urlsite->charger("urlsite");
 
-			header("Location: " . $urlsite->valeur . "/virement.php?total=$total");		
+			header("Location: " . $urlsite->valeur . "/virement.php");		
 		}
 	
 	}

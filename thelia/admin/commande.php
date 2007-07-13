@@ -92,7 +92,7 @@
 
 ?>
 
-<script language="JavaScript" type="text/JavaScript">
+<script type="text/JavaScript">
 
 function supprimer(id){
 	if(confirm("Voulez-vous vraiment supprimer cette commande ?")) location="commande.php?action=supprimer&id=" + id;
