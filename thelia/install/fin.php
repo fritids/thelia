@@ -28,14 +28,6 @@
 	$var->charger("urlsite");
 	$var->valeur=$_POST['urlsite'];
 	$var->maj();
-				
-	$var->charger("photorubw");
-	$var->valeur=$_POST['photorubw'];
-	$var->maj();
-		
-	$var->charger("photoprodw");				
-	$var->valeur=$_POST['photoprodw'];
-	$var->maj();
 		
 	$var->charger("tva");
 	$var->valeur=$_POST['tva'];

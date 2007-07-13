@@ -1967,12 +1967,10 @@ CREATE TABLE `variable` (
 INSERT INTO `variable` VALUES (1, 'emailcontact', 'commande@monsite.com');
 INSERT INTO `variable` VALUES (2, 'nomsite', 'Mon Site');
 INSERT INTO `variable` VALUES (3, 'urlsite', 'http://www.monsite.com');
-INSERT INTO `variable` VALUES (4, 'photorubw', '200');
-INSERT INTO `variable` VALUES (5, 'photoprodw', '200');
-INSERT INTO `variable` VALUES (6, 'tva', '19.6');
-INSERT INTO `variable` VALUES (7, 'style_chem', '/style_editeur.css');
-INSERT INTO `variable` VALUES (8, 'rsspass', '');
-INSERT INTO `variable` VALUES (9, 'rssadmin', 'http://www.octolys.fr/rss.php');
+INSERT INTO `variable` VALUES (4, 'tva', '19.6');
+INSERT INTO `variable` VALUES (5, 'style_chem', '/style_editeur.css');
+INSERT INTO `variable` VALUES (6, 'rsspass', '');
+INSERT INTO `variable` VALUES (7, 'rssadmin', 'http://www.octolys.fr/rss.php');
 -- --------------------------------------------------------
 
 -- 

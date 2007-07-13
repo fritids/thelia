@@ -320,15 +320,10 @@
 					
 					
 					if(!$largeur && !$hauteur) 
-						$temp = str_replace("#GRANDE", "client/gfx/photos/produit/grande/" . $image->fichier, $temp);
-					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/grande/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
+						$temp = str_replace("#IMAGE", "client/gfx/photos/produit/" . $image->fichier, $temp);
+					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
 					
-					if(!$largeur && !$hauteur) 
-						$temp = str_replace("#PETITE",  "client/gfx/photos/produit/petite/" . $image->fichier, $temp);	
-					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/petite/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
-					
-						$temp = str_replace("#FPETITE",  "client/gfx/photos/produit/petite/" . $image->fichier, $temp);
-						$temp = str_replace("#FGRANDE",  "client/gfx/photos/produit/grande/" . $image->fichier, $temp);
+					$temp = str_replace("#FICHIER",  "client/gfx/photos/produit/" . $image->fichier, $temp);
 
 			}
 			
@@ -339,15 +334,10 @@
 				$temp = str_replace("#RUBTITRE", $rudesc->titre, $temp);
 			
 					if(!$largeur && !$hauteur) 
-						$temp = str_replace("#GRANDE", "client/gfx/photos/rubrique/grande/" . $image->fichier, $temp);
-					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/grande/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
-					
-					if(!$largeur && !$hauteur) 
-						$temp = str_replace("#PETITE",  "client/gfx/photos/rubrique/petite/" . $image->fichier, $temp);	
-					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/petite/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
-					
-						$temp = str_replace("#FPETITE",  "client/gfx/photos/rubrique/petite/" . $image->fichier, $temp);
-						$temp = str_replace("#FGRANDE",  "client/gfx/photos/rubrique/grande/" . $image->fichier, $temp);
+						$temp = str_replace("#IMAGE", "client/gfx/photos/rubrique/" . $image->fichier, $temp);
+					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
+				
+					$temp = str_replace("#FICHIER",  "client/gfx/photos/rubrique/" . $image->fichier, $temp);
 
 			}
 	
@@ -358,15 +348,10 @@
 				$temp = str_replace("#RUBTITRE", $rudesc->titre, $temp);
 			
 					if(!$largeur && !$hauteur) 
-						$temp = str_replace("#GRANDE", "client/gfx/photos/dossier/grande/" . $image->fichier, $temp);
-					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/grande/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
+						$temp = str_replace("#IMAGE", "client/gfx/photos/dossier/" . $image->fichier, $temp);
+					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
 					
-					if(!$largeur && !$hauteur) 
-						$temp = str_replace("#PETITE",  "client/gfx/photos/dossier/petite/" . $image->fichier, $temp);	
-					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/petite/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
-					
-						$temp = str_replace("#FPETITE",  "client/gfx/photos/dossier/petite/" . $image->fichier, $temp);
-						$temp = str_replace("#FGRANDE",  "client/gfx/photos/dossier/grande/" . $image->fichier, $temp);
+					$temp = str_replace("#FICHIER",  "client/gfx/photos/dossier/" . $image->fichier, $temp);
 
 			}	
 	
@@ -377,20 +362,14 @@
 					$temp = str_replace("#PRODUIT", $image->contenu, $temp);
 					
 					if(!$largeur && !$hauteur) 
-						$temp = str_replace("#GRANDE", "client/gfx/photos/contenu/grande/" . $image->fichier, $temp);
-					else $temp = str_replace("#GRANDE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/grande/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur". "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
+						$temp = str_replace("#IMAGE", "client/gfx/photos/contenu/" . $image->fichier, $temp);
+					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur". "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
 					
-					if(!$largeur && !$hauteur) 
-						$temp = str_replace("#PETITE",  "client/gfx/photos/contenu/petite/" . $image->fichier, $temp);	
-					else $temp = str_replace("#PETITE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/petite/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur". "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
-					
-						$temp = str_replace("#FPETITE",  "client/gfx/photos/contenu/petite/" . $image->fichier, $temp);
-						$temp = str_replace("#FGRANDE",  "client/gfx/photos/contenu/grande/" . $image->fichier, $temp);
+						$temp = str_replace("#FICHIER",  "client/gfx/photos/contenu/" . $image->fichier, $temp);
 
 			}	
 	
 				$temp = str_replace("#ID",  $image->id, $temp);	
-				$temp = str_replace("#FPETITE",  "client/gfx/photos/rubrique/" . $image->fichier, $temp);	
 				$temp = str_replace("#TITRE",  $imagedesc->titre, $temp);	
 				$temp = str_replace("#CHAPO",  $imagedesc->chapo, $temp);	
 				$temp = str_replace("#DESCRIPTION",  $imagedesc->description, $temp);	

@@ -127,23 +127,6 @@
 			
 				<?php										
 					$var = new Variable();
-					$var->charger("photorubw");
-				?>
-							
-				<div class="col">Taille de la petite vignette produit :</div>
-				<div class="col"><input type="text" name="photorubw" value="<?php echo $var->valeur ?>" size="30" /></div> 				
-				
-				
-				<?php										
-					$var = new Variable();
-					$var->charger("photoprodw");
-				?>				
-				
-				<div class="col">Taille de la petite vignette rubrique :</div>
-				<div class="col"><input type="text" name="photoprodw" value="<?php echo $var->valeur ?>" size="30" /></div> 		
-				
-				<?php										
-					$var = new Variable();
 					$var->charger("tva");
 				?>
 				
