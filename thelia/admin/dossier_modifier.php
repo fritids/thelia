@@ -349,9 +349,11 @@
     </tr>
   </table>
    </form>
+
+<?php if($id != ""){ ?>
    <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr>
-      <td height="30" colspan="2" class="titre_cellule_tres_sombre">Informations sur la rubrique							</td>
+      <td height="30" colspan="2" class="titre_cellule_tres_sombre">Informations sur le dossier							</td>
     </tr>
 	<tr>
       <td width="246" height="30" class="titre_cellule">ID</td>
@@ -362,6 +364,8 @@
       <td width="444" class="titre_cellule"><?php echo(rewrite_dos("$dossier->id", $lang)); ?></td>
 	</tr>
   </table>
+<?php } ?>
+
 </div>
 </body>
 </html>

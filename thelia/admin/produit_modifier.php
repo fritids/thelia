@@ -911,6 +911,9 @@
     </tr>
   </table>
    </form>
+
+<?php if($ref != ""){ ?>
+
    <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="30" colspan="2" class="titre_cellule_tres_sombre">Informations sur le produit </td>
@@ -928,6 +931,9 @@
       <td width="444" class="titre_cellule"><?php echo "$jour/$mois/$annee $heure:$minute:$seconde"; ?></td>
 	</tr>	
   </table>
+
+<?php } ?>
+
 </div>
 
 </body>

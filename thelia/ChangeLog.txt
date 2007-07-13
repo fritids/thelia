@@ -9,6 +9,7 @@
 	Nouveau template de base
 	Corrections graphiques de l'interface d'administration
 	Suppression de la documentation en PDF en faveur de http://wiki.thelia.fr (bien plus pratique)
+	#GRANDE et #PETITE n'existe plus au niveau de la boucle IMAGE. #IMAGE remplace les 2.
 	
 1.2.2
 	ajout support n° de colis
