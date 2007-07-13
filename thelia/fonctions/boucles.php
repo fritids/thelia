@@ -1420,17 +1420,17 @@
 		
 		if($rubrique=="") return "";
 
-		$search ="";
 		$res="";
 		
-		// preparation de la requete
-		if($rubrique!="" && isset($id))  $search.=" and id=\"$id\"";
-
 		$trubrique = new Rubrique();
 		$trubrique->charger($rubrique);
 		$trubriquedesc = new Rubriquedesc();
 		
 		$i =  0;
+		
+		if(! $trubrique->parent)
+			return "";
+			
  		do {
 			$trubrique->charger("$trubrique->parent");	
 			$rubtab[$i++] = $trubrique;

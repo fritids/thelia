@@ -81,7 +81,7 @@
 				}
 				while($tot --){
 			?>
-			<a href="#" onclick="document.getElementById('formulaire').submit()"></a> <a href="parcourir.php?parent=<?php echo($res[$tot+1]->rubrique); ?>" class="lien04"> <?php echo($res[$tot+1]->titre); ?></a>                             
+				<a href="#" onclick="document.getElementById('formulaire').submit()"></a> <a href="parcourir.php?parent=<?php echo($res[$tot+1]->rubrique); ?>" class="lien04"> <?php echo($res[$tot+1]->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />                             
             <?php
             	}
             

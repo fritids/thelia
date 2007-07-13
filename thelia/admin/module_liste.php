@@ -60,6 +60,8 @@
 	$query = "select * from $modules->table where type='3' and actif='1'";
 	$resul = mysql_query($query, $modules->link);
 	
+	$i=0;
+	
 	while($row = mysql_fetch_object($resul)){
 	
 		if(!($i%2)) $fond="cellule_sombre";
