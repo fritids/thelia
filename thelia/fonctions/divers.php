@@ -307,6 +307,7 @@
 	function arbreOption($depart, $niveau, $prubrique){
 
 		$rec="";
+		$espace="";
 		
 		$niveau++;
 		$trubrique = new Rubrique();
