@@ -113,12 +113,12 @@
 	<?php if($menu != "contenu") { ?>
         
           <tr>
-            <td height="18" align="left" valign="middle"><a href="contenu.php" class="lien04">Gestion du contenu</a></td>
+            <td height="18" align="left" valign="middle"><a href="listdos.php" class="lien04">Gestion du contenu</a></td>
           </tr>
     <?php } else { ?>      
 
         <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu"><a href="contenu.php" class="selection_menul">Gestion du contenu</a></td>
+          <td height="18" align="left" valign="middle" class="selection_menu"><a href="listdos.php" class="selection_menul">Gestion du contenu</a></td>
         </tr>          
     <?php } ?>    
 

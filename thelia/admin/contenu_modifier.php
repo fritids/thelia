@@ -234,7 +234,7 @@
 ?>
 <div id="contenu_int">
   <p class="titre_rubrique">Description g&eacute;n&eacute;rale du contenu </p>
-  <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="contenu.php" class="lien04">Gestion du contenu </a> 
+  <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="listdos.php" class="lien04">Gestion du contenu </a>
   
     <?php
     				$cont = new Contenu();
@@ -258,7 +258,7 @@
 				if($cont->dossier || $dossier){
 			
 			?>	
-					<img src="gfx/suivant.gif" width="12" height="9" border="0" />
+				<img src="gfx/suivant.gif" width="12" height="9" border="0" />
 			<?php	
 				}
 			
@@ -279,11 +279,11 @@
 		
 			
 			?>
-			<a href="listdos.php?parent=<?php echo($parentdesc->dossier); ?>" class="lien04"><?php echo($parentdesc->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />&nbsp;
+			<a href="listdos.php?parent=<?php echo($parentdesc->dossier); ?>" class="lien04"><?php echo($parentdesc->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />
 			
 			 <?php if( $id) { ?>
 			 
-			<a href="#" class="lien04"><?php echo($contdesc->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />&nbsp;
+			<a href="#" class="lien04"><?php echo($contdesc->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />
            Modifier<?php } else { ?> Ajouter <?php } ?> </p>	
                                     
    <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" id="formulaire" ENCTYPE="multipart/form-data">

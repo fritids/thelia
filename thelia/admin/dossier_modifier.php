@@ -238,7 +238,7 @@
 ?>
 <div id="contenu_int">
   <p class="titre_rubrique">Description g&eacute;n&eacute;rale de la rubrique de contenu </p>
-  <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="contenu.php" class="lien04">Gestion</a><a href="contenu.php" class="lien04">du contenu </a>              
+  <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="listdos.php" class="lien04">Gestion</a><a href="listdos.php" class="lien04">du contenu </a>              
 
     <?php
                     $parentdesc = new Dossierdesc();
