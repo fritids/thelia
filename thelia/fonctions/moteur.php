@@ -158,10 +158,8 @@ function analyse($res){
 	// Page retour
 	if($_SERVER['QUERY_STRING']) $qpt="?"; else $qpt="";
 	
-	if($pageret &&  ! $securise && isset($_SERVER['HTTP_REFERER'])) $_SESSION["navig"]->urlpageret = $_SERVER['HTTP_REFERER']; 
-	else if($pageret) $_SESSION["navig"]->urlpageret =  $_SERVER['PHP_SELF'] . $qpt . $_SERVER['QUERY_STRING'];
-	
-	if($_SESSION["navig"]->urlpageret=="") $_SESSION["navig"]->urlpageret = "index.php";
+	if($pageret && isset($_SERVER['HTTP_REFERER'])) $_SESSION["navig"]->urlpageret =  $_SERVER['PHP_SELF'] . $qpt . $_SERVER['QUERY_STRING'];
+	else if($_SESSION["navig"]->urlpageret=="") $_SESSION["navig"]->urlpageret = "index.php";
 
 	// Langue
 	if($lang) $_SESSION["navig"]->lang = $lang;

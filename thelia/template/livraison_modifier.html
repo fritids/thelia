@@ -2,15 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 	#INCLURE "meta.html"
-<!-- main css -->
-<!-- Commentaire conditionnel pour IE6-5.x -->
-<!--[if lt IE 7]>
-	<link rel="stylesheet" type="text/css" href="css/ie5-6.css" />
-<![endif]-->
-<!-- Commentaire conditionnel pour IE5.x -->
-<!--[if lt IE 6]>
-	<link rel="stylesheet" type="text/css" href="styles.css" />
-<![endif]-->
+
 <link href="styles.css" rel="stylesheet" type="text/css" />
 	
 </head>
@@ -48,7 +40,7 @@
 			
 <!-- Contenu de la page -->
 
-			<form action="#URLPAGERET" method="post" name="modifier" id="modifier">
+			<form action="adresse.php" method="post" name="modifier" id="modifier">
 			<input type="hidden" name="action" value="modifierlivraison" />
 			<THELIA_adr type="ADRESSE" adresse="#ADRESSE_ID" client="#CLIENT_ID">
 			<input name="id" type="hidden" value="#ID" />
@@ -108,8 +100,8 @@
 					  </td>
 				</tr>
   				<tr>
-  					  <td class="ligneTableau">T&eacute;l&eacute;phone fixe* </td>
-  					  <td class="ligneTableau"><input type="text" name="telfixe" class="zoneDeSaisie" value="#CLIENT_TELFIXE"/></td>
+  					  <td class="ligneTableau">T&eacute;l&eacute;phone</td>
+  					  <td class="ligneTableau"><input type="text" name="tel" class="zoneDeSaisie" value="#TEL"/></td>
 				</tr>
 			</table>
 

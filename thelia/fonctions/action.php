@@ -133,7 +133,6 @@
 		$cache->vider_session(session_id(), "PANIER", "%");
 		$cache->vider_session(session_id(), "QUANTITE", "%");
 		$cache->vider_session(session_id(), "TRANSPORT", "%");	
-		redirige($_SESSION['navig']->urlpageret);		
 	}
 
 	// modification de l'adresse en cours	

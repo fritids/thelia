@@ -51,7 +51,12 @@
 		$texte = str_replace("#URLPANIER",  "panier.php", $texte);
 		$texte = str_replace("#URLCOMMANDER",  "commande.php", $texte);
 		$texte = str_replace("#URLNOUVEAU",  "nouveau.php", $texte);
-		$texte = str_replace("#URLDECONNEXION", "index.php" . "?" . "action=deconnexion", $texte);
+
+        if($_SERVER['QUERY_STRING'] != "")
+                $texte = str_replace("#URLDECONNEXION", $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'] . "&amp;action=deconnexion", $texte);
+        else    
+                $texte = str_replace("#URLDECONNEXION", $_SERVER['PHP_SELF'] . "?" . "action=deconnexion", $texte);
+
 		$texte = str_replace("#URLRECHERCHE", "recherche.php", $texte);
 		$texte = str_replace("#URLCOURANTE", $_SERVER['PHP_SELF'], $texte);		
 		$texte = str_replace("#URLCOURANTEPARAM", $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'], $texte);
