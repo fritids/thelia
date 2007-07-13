@@ -120,7 +120,7 @@
 			else redirige("index.php");
 		}
 		
-		else redirige("connexion.php");
+		else redirige("connexion.php?errconnex=1");
 		
 	}
 	
@@ -400,7 +400,7 @@
 		else {
 				$cache = new Cache();
 				$cache->vider_session(session_id(), "PAYS", "%");
-				redirige("formulerr.php");
+				redirige("formulerr.php?errform=1");
 		}		
 	}
 	

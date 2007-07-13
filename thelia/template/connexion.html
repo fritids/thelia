@@ -52,12 +52,12 @@
 				<h3>J'ai d&eacute;j&agrave; un compte </h3>
 				</div>
 				
-				<form action="#URLCOURANTE" method="post" name="connexion" id="connexion">
+				<form action="#URLPAGERET" method="post" name="connexion" id="connexion">
             	<input type="hidden" name="action" value="connexion" />
 				
 				<table width="775" border="0" cellspacing="0" cellpadding="5">
 					<tr>
-						<td class="ligneTableau">Mon e-mail </td>
+						<td class="ligneTableau">Mon e-mail #ERRCONNEX[<span class="obligatoire">(e-mail ou mot de passe incorrects)</span>]<</td>
 						<td class="ligneTableau"><input name="email" type="text" class="zoneDeSaisie"/></td>
 					</tr>
 				  	<tr>

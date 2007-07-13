@@ -80,7 +80,12 @@
 		if(strstr($texte, "#DOSSIER_")) $texte = substitdossier($texte);		
 		if(strstr($texte, "#CONTENU_")) $texte = substitcontenu($texte);		
 		if(strstr($texte, "#PARRAIN_")) $texte = substitparrain($texte);		
-		
+	
+		if( isset($_GET['errconnex']) && $_GET['errconnex'] == "1")
+			$texte = ereg_replace("#ERRCONNEX\[([^]]*)\]", "\\1", $texte);
+		else 
+			$texte = ereg_replace("#ERRCONNEX\[([^]]*)\]", "", $texte);
+			
 		return $texte;
 	}
 	

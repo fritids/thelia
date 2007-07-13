@@ -60,7 +60,7 @@ foreach ($_GET as $key => $value) $$key = $value;
 	        include_once("lib/JSON.php");
     
 function analyse($res){
-	global $formulaire, $sajax;
+	global $formulaire, $formconnex, $sajax;
 
 	// substition simples
 	$res = substitutions($res);	
@@ -70,8 +70,8 @@ function analyse($res){
 	
 
 	// traitement dans le cas d'un formulaire
-	if($formulaire) $res = traitement_formulaire($res);
-	
+	if(isset($_GET['errform']) && $_GET['errform'] == "1") $res = traitement_formulaire($res);
+		
 	// si on a un squelette comportant de l'Ajax il faut charger les div
 	if($sajax == 1) $res = chargerDiv(explode("\n", $res));
 
