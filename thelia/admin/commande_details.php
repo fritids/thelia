@@ -83,7 +83,7 @@
 				$cache->vider("CLIENT", "%");
         }
 
-    if($colis != ""){
+    if(isset($colis) && $colis != ""){
 		$commande->colis = $colis;
 		$commande->maj();
 		
