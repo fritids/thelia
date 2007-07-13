@@ -456,7 +456,7 @@
 		while($row = mysql_fetch_object($resul)){
 			$imagedesc->charger($row->id);
 	?>
-        &nbsp;<img src="../client/gfx/photos/rubrique/petite/<?php echo($row->fichier); ?>" border="0" />       
+        &nbsp;<img src="../client/gfx/photos/rubrique/<?php echo($row->fichier); ?>" border="0" />       
          <br />
     <?php
 		}

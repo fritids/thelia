@@ -72,7 +72,7 @@ Référence;Fabricant;CUP;Nom du produit;Description du produit;Prix du produit (d
 		$description = ereg_replace("Caractéristiques :", "", $description);
 		$description = trim($description);
 ?>
-<?php echo($row->ref); ?>;;;<?php echo($produitdesc->titre); ?>;<?php echo($description); ?>;<?php echo($row->prix2); ?>;http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=55&wx=115;http://www.site.com/client/gfx/photos/petite/<?php echo($row2->fichier); ?>;Jouets;En Stock;;<?php echo(calculport($row->poids)); ?>
+<?php echo($row->ref); ?>;;;<?php echo($produitdesc->titre); ?>;<?php echo($description); ?>;<?php echo($row->prix2); ?>;http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=55&wx=115;http://www.site.com/client/gfx/photos/<?php echo($row2->fichier); ?>;Jouets;En Stock;;<?php echo(calculport($row->poids)); ?>
 
 <?php	}	?>
 <?php
@@ -102,7 +102,7 @@ Référence;Fabricant;CUP;Nom du produit;Description du produit;Prix du produit (d
 				$description = ereg_replace("Caractéristiques :", "", $description);
                 $description = trim($description);
 ?>
-<?php echo($row->ref); ?>;;;<?php echo($produitdesc->titre); ?>;<?php echo($description); ?>;<?php echo($row->prix2); ?>;http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=55&wx=115;http://www.site.com/client/gfx/photos/petite/<?php echo($row2->fichier); ?>;Jouets;Dispo le <?php echo($caracval->valeur); ?>;<?php echo(calculport($row->poids)); ?>
+<?php echo($row->ref); ?>;;;<?php echo($produitdesc->titre); ?>;<?php echo($description); ?>;<?php echo($row->prix2); ?>;http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=55&wx=115;http://www.site.com/client/gfx/photos/produit/<?php echo($row2->fichier); ?>;Jouets;Dispo le <?php echo($caracval->valeur); ?>;<?php echo(calculport($row->poids)); ?>
 
 <?php	}	?>
 

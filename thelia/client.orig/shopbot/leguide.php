@@ -95,7 +95,7 @@
 		</description>
 		<regular_price currency="EUR" tax_included="1" tax_value="19.6"><?php echo($row->prix2); ?></regular_price>
 		<product_url><![CDATA[ http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=53&wx=108 ]]></product_url>
-		<image_url><![CDATA[ http://www.site.com/fonctions/redimlive.php?nomorig=../client/gfx/photos/petite/<?php echo($row2->fichier); ?>&width=70&height=70 ]]></image_url>
+		<image_url><![CDATA[ http://www.site.com/fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo($row2->fichier); ?>&width=70&height=70 ]]></image_url>
 		<delivery currency="EUR">
 			FR;<?php echo(calculport($row->poids)); ?>;0
 		</delivery>
@@ -157,7 +157,7 @@
 		</description>
 		<regular_price currency="EUR" tax_included="1" tax_value="19.6"><?php echo($row->prix2); ?></regular_price>
 		<product_url><![CDATA[ http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=53&wx=108 ]]></product_url>
-		<image_url><![CDATA[ http://www.site.com/fonctions/redimlive.php?nomorig=../client/gfx/photos/petite/<?php echo($row2->fichier); ?>&width=70&height=70 ]]></image_url>
+		<image_url><![CDATA[ http://www.site.com/fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo($row2->fichier); ?>&width=70&height=70 ]]></image_url>
 		<delivery currency="EUR">
 			FR;<?php echo(calculport($row->poids)); ?>;<?php echo($jour); ?>
 		</delivery>

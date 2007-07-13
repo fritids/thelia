@@ -94,7 +94,7 @@
 		<brand></brand>
 		<price><?php echo($row->prix2); ?></price>
 		<url><![CDATA[ http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=53&wx=108]]></url>
-		<img><![CDATA[ http://www.site.com/fonctions/redimlive.php?nomorig=../client/gfx/photos/petite/<?php echo($row2->fichier); ?>&width=70&height=70]]></img>
+		<img><![CDATA[ http://www.site.com/fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo($row2->fichier); ?>&width=70&height=70]]></img>
 	</product>
 	
 	

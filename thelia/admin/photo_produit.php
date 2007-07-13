@@ -128,9 +128,7 @@
 			$image->fichier = $fich . "_" . $lastid . "." . $extension;
 			$image->maj();
 			
-			copy("$photo", "../client/gfx/photos/produit/grande/" . $fich . "_" . $lastid . "." . $extension);
-	   		copy("$photo", "../client/gfx/photos/produit/petite/" . $fich . "_" . $lastid . "." . $extension);
-    		resize("../client/gfx/photos/produit/petite/" . $fich . "_" . $lastid . "." . $extension, $photoprodw->valeur);
+			copy("$photo", "../client/gfx/photos/produit/" . $fich . "_" . $lastid . "." . $extension);
 		}
 		
 	}	
@@ -169,10 +167,9 @@
 			$imagedesc = new Imagedesc();
 			$imagedesc->charger($image->id);
 			
-			if(file_exists("../client/gfx/photos/produit/petite/$image->fichier")){
-				 unlink("../client/gfx/photos/produit/petite/$image->fichier");
-				 unlink("../client/gfx/photos/produit/grande/$image->fichier");
-			}
+			if(file_exists("../client/gfx/photos/produit/$image->fichier"))
+				 unlink("../client/gfx/photos/produit/$image->fichier");
+		
 			
 			$image->supprimer();
 			$imagedesc->delete();
@@ -268,7 +265,7 @@ body {
         ?>
               
 	 <tr>
-      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><img src="../fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/petite/<?php echo($row->fichier); ?>&width=&height=200&opacite=&nb=" border="0" / ></td>
+      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><img src="../fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo($row->fichier); ?>&width=&height=200&opacite=&nb=" border="0" / ></td>
       <td width="20%">
 	<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 	<input type="hidden" name="action" value="modifier" />

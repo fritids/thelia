@@ -62,14 +62,10 @@ if(!isset($miroir)) $miroir="";
  		else if(strstr($nomorig, "client/gfx/photos/produit")) $type = "produit";
  		else if(strstr($nomorig, "client/gfx/photos/dossier")) $type = "dossier";
  		else if(strstr($nomorig, "client/gfx/photos/contenu")) $type = "contenu";
+  		
+		ereg("/([^\/]*.jpg)", $nomorig, $nsimple);
  		
- 		
-		if(strstr($nomorig, "/petite/")) $taille = "petite";
- 		else $taille = "grande";
- 		
- 		ereg($taille . "/(.*)", $nomorig, $nsimple);
- 		
-  		$nomcache = "client/cache/" . $type . "/" . $width . "_" . $height . "_" . $opacite . "_" . $nb . "_" . $miroir . "-" . $taille . "_" . $nsimple[1];
+  		$nomcache = "client/cache/" . $type . "/" . $width . "_" . $height . "_" . $opacite . "_" . $nb . "_" . $miroir . "_" . $nsimple[1];
  		
  		if(file_exists("../$nomcache")) { header("Location: ../$nomcache"); exit; }
  		
