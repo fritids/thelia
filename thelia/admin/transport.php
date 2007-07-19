@@ -66,7 +66,7 @@
 						include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php");
 						$tmpobj = new $nomclass();
 
-						if(get_parent_class($tmpobj) != "PluginsTransports") continue;
+						if(strtolower(get_parent_class($tmpobj)) != "pluginstransports") continue;
 					 	if(! $modules->id){
 							$tmpobj->init();
 							$modules = new Modules();
@@ -236,8 +236,7 @@
 			contenu=contenu + "</span>";
 
 			contenu=contenu + "<span style=' width: 50px;margin-left: 400px;'>";
-			contenu=contenu + "<a href='#' onClick=\"chargertzone('" + rest[i]['id'] + "')\"><img src='gfx/b_edit.png' width='16' height='16' border='0'></a>";
-			contenu=contenu + "</span>";
+			contenu=contenu + "<a href=\"javascript:chargertzone('" + rest[i]['id'] + "')\"><img src='gfx/b_edit.png' width='16' height='16' border='0'></a>";			contenu=contenu + "</span>";
 
 			contenu=contenu + "</div>";
 			document.getElementById("divt").innerHTML=document.getElementById("divt").innerHTML + contenu;
@@ -251,10 +250,6 @@
 			element.text = "liste des zones";
 			element.value="0";
 
-         	document.getElementById('selectszoneha').options.length = 0;
-         	document.getElementById('selectszoneda').options.length = 0;
-         	document.getElementById('nclassea').value='Classe'; 
-
 
   			var resz = eval(sx_chargerz('', ''));
   		  	for(i=0; i<resz.length; i++){
@@ -262,7 +257,6 @@
       		 element.text=resz[i]['nom'];
       		 element.value=resz[i]['id'];
       		
-      		 document.getElementById('selectszoneha').options[document.getElementById('selectszoneha').length]=element;
 
       		}	                        
                     	     

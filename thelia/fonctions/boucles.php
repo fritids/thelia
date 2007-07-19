@@ -688,8 +688,8 @@
 			if($promo!="") $search .= " and promo=\"$promo\"";
 			if($reappro!="") $search .= " and reappro=\"$reappro\"";
 			if($garantie!="") $search .= " and garantie=\"$garantie\"";
-			if($prixmin!="") $search .= " and prix2>=\"$prixmin\"";
-			if($prixmax!="") $search .= " and prix2<=\"$prixmax\"";
+			if($prixmin!="") $search .= " and ((prix2>=\"$prixmin\" and promo=\"1\") or (prix>=\"$prixmin\" and promo=\"0\"))";
+			if($prixmax!="") $search .= " and ((prix2<=\"$prixmax\" and promo=\"1\") or (prix<=\"$prixmax\" and promo=\"0\"))";
 			if($poids!="") $search .= " and poids<=\"$poids\"";
 						
 			if($refp!="") $search .= " and ref=\"$refp\"";
@@ -1302,9 +1302,8 @@
 			$dectexte = "";
 			$decval = "";
 			
-			if(isset($compt) && isset($_SESSION['navig']->panier->tabarticle[$compt]))
 			
-			  for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$compt]->perso); $compt++){
+		    for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
 				$tperso = $_SESSION['navig']->panier->tabarticle[$i]->perso[$compt];
 				$declinaison->charger($tperso->declinaison);
 				// recup valeur declidisp ou string
@@ -2317,7 +2316,7 @@
 				$valeur = $declidispdesc->titre;
 			}
 				
-			else $valeur .= $tperso->valeur;
+			else $valeur = $tperso->valeur;
 
 			$temp = str_replace("#DECLITITRE", "$declinaisondesc->titre", $texte);
 			$temp = str_replace("#VALEUR", "$valeur", $temp);	

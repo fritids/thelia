@@ -40,7 +40,7 @@ if( isset($_SESSION['navig']) && (($_SESSION['navig']->client->id != $commande->
 	include_once("../../classes/Pays.class.php");
 
 	$commande = new Commande();
-	$commande->charger_ref($ref);
+	$commande->charger_ref($_GET['ref']);
 
     $client = new Client();
   	$client->charger_id($commande->client);
@@ -54,6 +54,6 @@ if( isset($_SESSION['navig']) && (($_SESSION['navig']->client->id != $commande->
 	include_once("../pdf/modeles/facture.php");
 	
 	$facture = new Facture();
-	$facture->creer($ref);
+	$facture->creer($_GET['ref']);
 	
 ?>

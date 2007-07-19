@@ -93,7 +93,7 @@
 			include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php");
 			$tmpobj = new $nomclass();
 	
-			if(get_parent_class($tmpobj) != "PluginsClassiques") continue;
+			if(strtolower(get_parent_class($tmpobj)) != "pluginsclassiques") continue;
 			
 		 	if(! $modules->id){
 			

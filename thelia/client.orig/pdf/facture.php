@@ -24,10 +24,6 @@
 /*************************************************************************************/
 ?>
 <?php
-foreach ($_POST as $key => $value) $$key = $value;
-foreach ($_GET as $key => $value) $$key = $value;
-?>
-<?php
 
 include_once("../../classes/Navigation.class.php");
 include("../../classes/Administrateur.class.php");
@@ -35,7 +31,7 @@ include("../../classes/Administrateur.class.php");
 session_start();
 
 $commande = new Commande();
-$commande->charger_ref($ref);
+$commande->charger_ref($_GET['ref']);
 
 include("../../admin/facture.php");
 

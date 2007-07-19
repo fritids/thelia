@@ -621,7 +621,7 @@ $reply\nFrom:$from\n".$mail_mime);
 			
 			include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $row->nom . "/" . $nomclass . ".class.php");
 			$tmpobj = new $nomclass();
-			if(get_parent_class($tmpobj) != "PluginsClassiques") return "";
+			if(strtolower(get_parent_class($tmpobj)) != "pluginsclassiques") return "";
 		
 			if(method_exists($tmpobj, $fonc))
 				$tmpobj->$fonc($args);

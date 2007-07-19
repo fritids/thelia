@@ -464,7 +464,7 @@
                         $resul2 = mysql_query($query2);
                         while($row2 = mysql_fetch_object($resul2)){
                                 $caracdispdesc->charger($row2->id,1);
-                                $caracdispdesclang->charger_caracdisp($row2->id, $lang);
+                                $caracdispdesclang->charger_caracdisp($row2->caracdisp, $lang);
 
              ?>
                             <tr class="titre_cellule">

@@ -39,7 +39,7 @@
 			$this->tabarticle=array();
 		}
 
-		function ajouter($ref, $quantite, $tdeclidisp="", $append=0){
+		function ajouter($ref, $quantite, $tdeclidisp="", $append, $nouveau){
 			
 			$existe = 0;
 			
@@ -58,7 +58,7 @@
             }
             
 			
-			if(!$existe) 				
+			if(!$existe || $nouveau == 1) 				
 				$this->tabarticle[$this->nbart] = new Article($ref, $quantite, $tdeclidisp);
 			else if($existe && $append)
 				$this->tabarticle[$indice]->quantite += $quantite;

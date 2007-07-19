@@ -1,3 +1,17 @@
+1.3.1
+	amélioration de la fonction recherche par prixmin/prixmax
+	ajout infos déclinaison dans l'admin
+	correction boucleDecval (declinaison dupliquée)
+	correction bouclePanier (declinaison dupliquée)
+	possibilité de forcer un nouvel article dans le panier même si déjà existant, quantité au choix
+	correction des caracteristiques, déclinaisons au niveau des traductions dans l'interface d'admin
+	modification de la gestion du cache après différents tests.
+	mise à jour de sécurité
+	gestion différente du cache, ajouter cache=1 pour mettre en cache une boucle 			 	
+	(http://blog.thelia.fr/index.php?2007/07/18/112-thelia-et-le-cache)
+	correction de la détection des plugins pour php4. En effet les fonctions get_class* retournent le nom de la classe 
+	en minuscule ... alors qu'avec les versions récentes de PHP, son véritable nom est retourné.
+	
 1.3.0
 	ajout d'un systeme de plugins
 	ajout d'un systeme de cache au niveau des boucles

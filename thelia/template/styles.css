@@ -1,6 +1,7 @@
 /* 
- * Copyright (c) 2007 http://www.thelia.fr. Tous droits réservés.
+ * Copyright (c) 2007 Copyright (c) Octolys Development
  * Ce template a été réalisé par http://www.scopika.com & http://www.fredodo.com
+ * Il est soumis à la licence GPL
  */
 
 /* Ce fichier définit le style visuel pour les différents éléments des pages.
@@ -598,6 +599,13 @@ dl#menu li a {
 dl#menu li a:hover, dl#menu li .selected {
 	color: #FFFFFF;
 	background-color: #EC8000;
+}
+
+.invisibleW3C {
+	width: 0; 
+	height: 0;
+	padding: 0; 
+	margin: 0;
 }
 
 /* Signature

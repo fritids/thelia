@@ -24,10 +24,6 @@
 /*************************************************************************************/
 ?>
 <?php
-foreach ($_POST as $key => $value) $$key = $value;
-foreach ($_GET as $key => $value) $$key = $value;
-?>
-<?php
 	include_once("classes/Navigation.class.php");
 
 	session_start();
@@ -111,39 +107,80 @@ function analyse($res){
 	sajax_export("modifcoordsaj");
 	sajax_handle_client_request();
 
-	// initialisation des variables
+	// initialisation des variables du couple php/html
 	if(!isset($lang)) $lang="";
 	if(!isset($affilie)) $affilie="";
-	if(!isset($action)) $action="";
-	if(!isset($append)) $append=0;
+	if(!isset($sajax)) $sajax="";	
+	if(!isset($parsephp)) $parsephp="";
 	if(!isset($securise)) $securise=0;
-	if(!isset($transport)) $transport=0;
 	if(!isset($panier)) $panier=0;
 	if(!isset($vpaiement)) $vpaiement=0;	
 	if(!isset($pageret)) $pageret=0;	
-	if(!isset($reset)) $reset=0;	
-	if(!isset($entreprise)) $entreprise="";	
-	if(!isset($siret)) $siret="";	
-	if(!isset($parrain)) $parrain="";	
-	if(!isset($motdepasse1)) $motdepasse1="";	
-	if(!isset($motdepasse2)) $motdepasse2="";	
-	if(!isset($raison)) $raison="";	
-	if(!isset($prenom)) $prenom="";	
-	if(!isset($nom)) $nom="";		
-	if(!isset($adresse1)) $adresse1="";	
-	if(!isset($adresse2)) $adresse2="";	
-	if(!isset($adresse3)) $adresse3="";		
-	if(!isset($cpostal)) $cpostal="";	
-	if(!isset($ville)) $ville="";	
-	if(!isset($pays)) $pays="";		
-	if(!isset($telfixe)) $telfixe="";	
-	if(!isset($telport)) $telport="";	
-	if(!isset($tel)) $tel="";	
-	if(!isset($email1)) $email1="";	
-	if(!isset($email2)) $email2="";	
-	if(!isset($id)) $id="";	
-	if(!isset($sajax)) $sajax="";	
-	if(!isset($parsephp)) $parsephp="";	
+	if(!isset($reset)) $reset=0;
+	if(!isset($transport)) $transport=0;
+	if(!isset($obligetelfixe)) $obligetelfixe=0;
+	if(!isset($obligetelport)) $obligetelport=0;
+	if(!isset($pagesess)) $pagesess=0;
+
+
+	if(!isset($_REQUEST['action'])) $action=""; else $action=$_REQUEST['action'];
+	if(!isset($_REQUEST['append'])) $append=0; else $append=$_REQUEST['append'];
+	if(!isset($_REQUEST['id'])) $id="";	else $id=$_REQUEST['id'];
+	if(!isset($_REQUEST['id_parrain'])) $id_parrain=""; else $id_parrain=$_REQUEST['id_parrain'];	
+	if(!isset($_REQUEST['nouveau'])) $nouveau=""; else $nouveau=$_REQUEST['nouveau'];	
+	if(!isset($_REQUEST['ref'])) $ref=""; else $ref=$_REQUEST['ref'];	
+	if(!isset($_REQUEST['quantite'])) $quantite=""; else $quantite=$_REQUEST['quantite'];	
+	if(!isset($_REQUEST['article'])) $article=""; else $article=$_REQUEST['article'];	
+	if(!isset($_REQUEST['type_paiement'])) $type_paiement=""; else $type_paiement=$_REQUEST['type_paiement'];	
+	if(!isset($_REQUEST['code'])) $code=""; else $code=$_REQUEST['code'];	
+
+	if(!isset($_REQUEST['entreprise'])) $entreprise=""; else $entreprise=$_REQUEST['entreprise'];	
+	if(!isset($_REQUEST['siret'])) $siret=""; else $siret=$_REQUEST['siret'];
+	if(!isset($_REQUEST['parrain'])) $parrain=""; else $parrain=$_REQUEST['parrain'];
+	if(!isset($_REQUEST['motdepasse1'])) $motdepasse1=""; else $motdepasse1=$_REQUEST['motdepasse1'];	
+	if(!isset($_REQUEST['motdepasse2'])) $motdepasse2=""; else $motdepasse2=$_REQUEST['motdepasse2'];
+	if(!isset($_REQUEST['raison'])) $raison=""; else $raison=$_REQUEST['raison'];	
+	if(!isset($_REQUEST['prenom'])) $prenom=""; else $prenom=$_REQUEST['prenom'];	
+	if(!isset($_REQUEST['libelle'])) $libelle=""; else $libelle=$_REQUEST['libelle'];		
+	if(!isset($_REQUEST['nom'])) $nom=""; else $nom=$_REQUEST['nom'];		
+	if(!isset($_REQUEST['adresse1'])) $adresse1=""; else $adresse1=$_REQUEST['adresse1'];	
+	if(!isset($_REQUEST['adresse2'])) $adresse2=""; else $adresse2=$_REQUEST['adresse2'];	
+	if(!isset($_REQUEST['adresse3'])) $adresse3=""; else $adresse3=$_REQUEST['adresse3'];
+	if(!isset($_REQUEST['cpostal'])) $cpostal=""; else $cpostal=$_REQUEST['cpostal'];
+	if(!isset($_REQUEST['ville'])) $ville=""; else $ville=$_REQUEST['ville'];	
+	if(!isset($_REQUEST['pays'])) $pays=""; else $pays=$_REQUEST['pays'];		
+	if(!isset($_REQUEST['telfixe'])) $telfixe=""; else $telfixe=$_REQUEST['telfixe'];	
+	if(!isset($_REQUEST['telport'])) $telport=""; else $telport=$_REQUEST['telport'];	
+	if(!isset($_REQUEST['tel'])) $tel=""; else $tel=$_REQUEST['tel'];	
+	if(!isset($_REQUEST['email1'])) $email1=""; else $email1=$_REQUEST['email1'];	
+	if(!isset($_REQUEST['email2'])) $email2=""; else $email2=$_REQUEST['email2'];	
+	if(!isset($_REQUEST['email'])) $email=""; else $email=$_REQUEST['email'];	
+	if(!isset($_REQUEST['motdepasse'])) $motdepasse=""; else $motdepasse=$_REQUEST['motdepasse'];	
+	if(!isset($_REQUEST['adresse'])) $adresse=""; else $adresse=$_REQUEST['adresse'];	
+	if(!isset($_REQUEST['id_rubrique'])) $id_rubrique=""; else $id_rubrique=$_REQUEST['id_rubrique'];	
+	if(!isset($_REQUEST['page'])) $page=""; else $page=$_REQUEST['page'];	
+	if(!isset($_REQUEST['totbloc'])) $totbloc=""; else $totbloc=$_REQUEST['totbloc'];	
+	if(!isset($_REQUEST['id_contenu'])) $id_contenu=""; else $id_contenu=$_REQUEST['id_contenu'];	
+	if(!isset($_REQUEST['caracdisp'])) $caracdisp=""; else $caracdisp=$_REQUEST['caracdisp'];	
+	if(!isset($_REQUEST['rt75'])) $rt75=""; else $rt75=$_REQUEST['rt75'];	
+	if(!isset($_REQUEST['reforig'])) $reforig=""; else $reforig=$_REQUEST['reforig'];	
+	if(!isset($_REQUEST['motcle'])) $motcle=""; else $motcle=$_REQUEST['motcle'];	
+	if(!isset($_REQUEST['id_produit'])) $id_produit=""; else $id_produit=$_REQUEST['id_produit'];	
+	if(!isset($_REQUEST['classement'])) $classement=""; else $classement=$_REQUEST['classement'];	
+	if(!isset($_REQUEST['prixmin'])) $prixmin=""; else $prixmin=$_REQUEST['prixmin'];	
+	if(!isset($_REQUEST['prixmax'])) $prixmax=""; else $prixmax=$_REQUEST['prixmax'];	
+	if(!isset($_REQUEST['id_image'])) $id_image=""; else $id_image=$_REQUEST['id_image'];	
+	if(!isset($_REQUEST['declinaison'])) $declinaison=""; else $declinaison=$_REQUEST['declinaison'];	
+	if(!isset($_REQUEST['declidisp'])) $declidisp=""; else $declidisp=$_REQUEST['declidisp'];	
+	if(!isset($_REQUEST['declival'])) $declival=""; else $declival=$_REQUEST['declival'];	
+	if(!isset($_REQUEST['declistock'])) $declistock=""; else $declistock=$_REQUEST['declistock'];	
+	if(!isset($_REQUEST['commande'])) $commande=""; else $commande=$_REQUEST['commande'];	
+	if(!isset($_REQUEST['caracteristique'])) $caracteristique=""; else $caracteristique=$_REQUEST['caracteristique'];	
+	if(!isset($_REQUEST['caracval'])) $caracval=""; else $caracval=$_REQUEST['caracval'];	
+	
+	
+	
+	
 	
 	// création de la session si non existante
 	
@@ -171,7 +208,7 @@ function analyse($res){
 	// Actions
 
 	switch($action){
-		case 'ajouter' : ajouter($ref, $append); break;
+		case 'ajouter' : ajouter($ref, $quantite, $append, $nouveau); break;
 		case 'supprimer' : supprimer($article); break;
 		case 'modifier' : modifier($article, $quantite); break;
 		case 'connexion' : connexion($email,$motdepasse); break;	
@@ -181,7 +218,7 @@ function analyse($res){
 		case 'creercompte' : creercompte($raison, $entreprise, $siret, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2, $parrain); break;	
 		case 'modifiercompte' : modifiercompte($raison, $entreprise, $siret, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2); break;	
 		case 'creerlivraison' : creerlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $tel, $pays); break;
-                case 'supprimerlivraison' : supprimerlivraison($id);
+        case 'supprimerlivraison' : supprimerlivraison($id);
 		case 'modifierlivraison' : modifierlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $tel, $pays); break;
 		case 'modadresse' : modadresse($adresse); break;
 		case 'codepromo' : codepromo($code); break;

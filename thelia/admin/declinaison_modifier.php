@@ -501,7 +501,7 @@
                         $resul2 = mysql_query($query2);
                         while($row2 = mysql_fetch_object($resul2)){
                                 $declidispdesc->charger($row2->id, 1);
-                                $declidispdesclang->charger_declidisp($row2->id, $lang);
+                                $declidispdesclang->charger_declidisp($row2->declidisp, $lang);
 
              ?>
                             <tr class="titre_cellule">
@@ -543,6 +543,15 @@
 
         </table>
   </form>
+  <table width="710" border="0" cellpadding="5" cellspacing="0">
+    <tr>
+      <td height="30" colspan="2" class="titre_cellule_tres_sombre">Informations sur la d&eacute;clinaison </td>
+    </tr>
+	<tr>
+      <td width="246" height="30" class="titre_cellule">ID : </td>
+      <td width="444" class="titre_cellule"><?php echo($declinaison->id); ?></td>
+	</tr>
+  </table>
 </div>
 </body>
 </html>

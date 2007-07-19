@@ -26,11 +26,11 @@
 <?php
 
 	// ajout panier
-	function ajouter($ref, $append=0){
-		
-	
-		if(!isset($quantite)) $quantite=1;
+	function ajouter($ref, $quantite=1, $append=0, $nouveau=0){
 
+		if($quantite =="" || $quantite == 0)
+			$quantite = 1;
+					
 		$perso = array();
 		
 		$i = 0;
@@ -47,11 +47,9 @@
 			}
 		}
 
-		$_SESSION['navig']->panier->ajouter($ref, $quantite, $perso, $append);	
+		$_SESSION['navig']->panier->ajouter($ref, $quantite, $perso, $append, $nouveau);	
 		
 		$cache = new Cache();
-		$cache->vider_session(session_id(), "PANIER", "%");
-		$cache->vider_session(session_id(), "QUANTITE", "%");
 		
 	}
 	
@@ -82,25 +80,20 @@
 		$promo->charger($code);
 		$_SESSION['navig']->promo = $promo;	
 		$cache = new Cache();
-		$cache->vider_session(session_id(), "PANIER", "%");
+
 	}
 		
 	// suppression d'un article du panier	
 	function supprimer($article){
 			$cache = new Cache();
 			$_SESSION['navig']->panier->supprimer($article);
-			
-			$cache->vider_session(session_id(), "PANIER", "%");
-			$cache->vider_session(session_id(), "QUANTITE", "%");
+
 	}
 	
 	// modification de la quantité d'un article
 	function modifier($article, $quantite){
-		$cache = new Cache();
 		$_SESSION['navig']->panier->modifier($article, $quantite);
 		
-		$cache->vider_session(session_id(), "PANIER", "%");
-		$cache->vider_session(session_id(), "QUANTITE", "%");		
 	}
 	
 	// connexion du client	
@@ -113,9 +106,6 @@
 			$_SESSION['navig']->client = $client;
 			$_SESSION['navig']->connecte = 1; 
 			$cache = new Cache();
-			$cache->vider_session(session_id(), "PANIER", "%");
-			$cache->vider_session(session_id(), "QUANTITE", "%");
-			$cache->vider_session(session_id(), "TRANSPORT", "%");
 			if($_SESSION['navig']->urlpageret) redirige($_SESSION['navig']->urlpageret);
 			else redirige("index.php");
 		}
@@ -129,10 +119,7 @@
 
 		$_SESSION['navig']->client= new Client();
 		$_SESSION['navig']->connecte = 0;	
-		$cache = new Cache();
-		$cache->vider_session(session_id(), "PANIER", "%");
-		$cache->vider_session(session_id(), "QUANTITE", "%");
-		$cache->vider_session(session_id(), "TRANSPORT", "%");	
+
 	}
 
 	// modification de l'adresse en cours	
@@ -142,7 +129,6 @@
 		$cache->vider_session(session_id(), "ADRESSE", "%");
 		$cache->vider_session(session_id(), "PAYS", "%");
 		$cache->vider_session(session_id(), "CLIENT", "%");
-		$cache->vider_session(session_id(), "TRANSPORT", "%");
 	}
 	
 	// procédure de paiement
@@ -319,10 +305,7 @@
 		$cache->vider("COMMANDE", "%");
 		$cache->vider("STOCK", "%");
 		$cache->vider("CLIENT", "%");
-		
-		$cache->vider_session(session_id(), "PANIER", "%");
-	
-		
+				
 		$nomclass=$modules->nom;
 		$nomclass[0] = strtoupper($nomclass[0]);
 

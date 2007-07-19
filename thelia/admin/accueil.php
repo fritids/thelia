@@ -27,16 +27,18 @@
 		include_once("pre.php");
 	    include_once("../classes/Administrateur.class.php");
         include_once("../classes/Variable.class.php");
-		include_once("pre.php");
-		        
+
         session_start();
-        
+
 		if(!isset($action)) $action="";
 		if(!isset($_SESSION["util"])) $_SESSION["util"]="";
 
+		$utilisateur = str_replace(" ", "", $_POST['identifiant']);
+		$motdepasse = str_replace(" ", "", $_POST['motdepasse']);
+
         if($action == "identifier") {
                 $admin = new Administrateur();
-                if(! $admin->charger($_POST['identifiant'], $_POST['motdepasse'])) header("Location: index.php");
+                if(! $admin->charger($identifiant, $motdepasse)) header("Location: index.php");
                 else{
                         $_SESSION["util"] = new Administrateur();
                         $_SESSION["util"] = $admin;

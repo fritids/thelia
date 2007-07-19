@@ -78,7 +78,7 @@
     	include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php");
     	$tmpobj = new $nomclass();
 
-    	 if(get_parent_class($tmpobj) != "PluginsPaiements") continue;
+    	 if(strtolower(get_parent_class($tmpobj)) != "pluginspaiements") continue;
 
 		 	if(! $modules->id){
 				$tmpobj->init();
