@@ -1,6 +1,7 @@
 1.3.2
 	correction problème code promo (date expiration)
 	correction substitution dossier
+	ajout de #PANIER_POIDS pour avoir le poids total du panier
 	
 1.3.1
 	amélioration de la fonction recherche par prixmin/prixmax

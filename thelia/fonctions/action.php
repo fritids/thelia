@@ -195,7 +195,7 @@
 			$declinaison = new Declinaison();
 			$declinaisondesc = new Declinaisondesc();
 		
-			$dectexte = "";
+			$dectexte = "\n";
 
 			$produit = new Produit();
 
@@ -219,10 +219,10 @@
 				if($declinaison->isDeclidisp($tperso->declinaison)){
 					$declidisp->charger($tperso->valeur);
 					$declidispdesc->charger_declidisp($declidisp->id);
-					$dectexte .= " - " . $declinaisondesc->titre . " " . $declidispdesc->titre . " ";
+					$dectexte .= "- " . $declinaisondesc->titre . " : " . $declidispdesc->titre . "\n";
 				}
 				
-				else $dectexte .= " - " . $declinaisondesc->titre . " " . $tperso->valeur . " ";
+				else $dectexte .= "- " . $declinaisondesc->titre . " : " . $tperso->valeur . "\n";
 				
 			}			
 
