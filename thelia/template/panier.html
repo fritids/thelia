@@ -55,10 +55,10 @@
 					<td width="365" class="ligneTableau">#REF #TITRE </td>
 					<td width="95" class="ligneTableau">#PRIXU &euro; </td>
     				<td width="95" class="ligneTableau">
-					<form action="#URLPANIER" method="post" name="formpanier#PRODUIT" id="formpanier#PRODUIT">
+					<form action="#URLPANIER" method="post" name="formpanier#ARTICLE" id="formpanier#ARTICLE">
                 	<input type="hidden" name="article" value="#ARTICLE" />
                 	<input type="hidden" name="action" value="modifier" />
-                	<select name="quantite" size="1" class="zoneDeSaisie" onchange="document.formpanier#PRODUIT.submit()">
+                	<select name="quantite" size="1" class="zoneDeSaisie" onchange="document.formpanier#ARTICLE.submit()">
                 	<THELIA_quantite type="QUANTITE" article="#ARTICLE" max="50">
 					<option value="#NUM" #SELECTED>#NUM</option>
 					</THELIA_quantite>

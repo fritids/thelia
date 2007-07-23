@@ -133,7 +133,7 @@ foreach ($items as $item) {
     	<div id="coordonnees"> 
 		  <p class="geneva11Reg_A3ADB8">    <span class="geneva11Reg_BAC2CA">Thelia<br />
 			est une application <br />
-			d&eacute;velopp&eacute; par : </span><br />
+			d&eacute;velopp&eacute;e par : </span><br />
 			<a href="http://www.octolys.fr" class="lien02">http://www.octolys.fr</a></p>
 		  <p class="geneva11Reg_BAC2CA">
 		  	17 rue du Pr&eacute; la Reine<br />

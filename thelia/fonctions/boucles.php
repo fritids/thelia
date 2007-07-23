@@ -942,6 +942,7 @@
 			$temp = str_replace("#PRIX2", "$prix2", $temp);					
 			$temp = str_replace("#PRIX", "$prix", $temp);	
 			$temp = str_replace("#ECOTAXE", "$row->ecotaxe", $temp);	
+			$temp = str_replace("#STOCK", "$row->stock", $temp);	
 			$temp = str_replace("#POURCENTAGE", "$pourcentage", $temp);	
 			$temp = str_replace("#RUBRIQUE", "$row->rubrique", $temp);			
 			$temp = str_replace("#PERSO", "$row->perso", $temp);			
