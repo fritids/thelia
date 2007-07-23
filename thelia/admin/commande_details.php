@@ -156,7 +156,6 @@
   		  	
   ?>     
      
-     
      <tr>
        <td height="30" class="<?php echo($fond); ?>"><?php echo($titrerub); ?> - <?php echo(str_replace("\n", "<br />", $venteprod->titre)); ?></td>
        <td class="<?php echo($fond); ?>"><?php echo(round($venteprod->prixu, 2)); ?></td>
