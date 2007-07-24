@@ -1121,7 +1121,7 @@
 			$temp = str_replace("#STRIPDESCRIPTION", strip_tags($contenudesc->description), $temp);	
 			$temp = str_replace("#URL", "contenu.php?id_contenu=" . "$row->id", $temp);	
 			$temp = str_replace("#REWRITEURL", rewrite_cont("$row->id"), $temp);			
-			$temp = str_replace("#RUBTITRE", "$dossierdesc->titre", $temp);
+			$temp = str_replace("#DOSTITRE", "$dossierdesc->titre", $temp);
 			$temp = str_replace("#PRODUIT", "$produit", $temp);
 			$temp = str_replace("#RUBRIQUE", "$rubrique", $temp);			
 			

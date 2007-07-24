@@ -1,4 +1,8 @@
 <?php
+foreach ($_POST as $key => $value) $$key = $value;
+foreach ($_GET as $key => $value) $$key = $value;
+?>
+<?php
 
 	include_once("../../../classes/Commande.class.php");	
 	include_once("../../../fonctions/divers.php");	
