@@ -114,7 +114,6 @@ function analyse($res){
 	if(!isset($parsephp)) $parsephp="";
 	if(!isset($securise)) $securise=0;
 	if(!isset($panier)) $panier=0;
-	if(!isset($vpaiement)) $vpaiement=0;	
 	if(!isset($pageret)) $pageret=0;	
 	if(!isset($reset)) $reset=0;
 	if(!isset($transport)) $transport=0;
@@ -236,9 +235,6 @@ function analyse($res){
 	// Vérif panier
 	if($panier && ! $_SESSION["navig"]->panier->nbart) { header("Location: index.php"); exit; } 
 	
-    // Paiement
-	if($vpaiement && ! strstr( $_SESSION["navig"]->urlprec, "paiement.php")) header("Location: index.php");
-
 	// chargement du squelette	
 	$lect = file($fond);
 	if(!file_exists($fond)) { echo "Impossible d'ouvrir $fond"; exit; }

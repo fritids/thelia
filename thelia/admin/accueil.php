@@ -31,11 +31,13 @@
         session_start();
 
 		if(!isset($action)) $action="";
-		if(!isset($_SESSION["util"])) $_SESSION["util"]="";
-
-		$utilisateur = str_replace(" ", "", $_POST['identifiant']);
-		$motdepasse = str_replace(" ", "", $_POST['motdepasse']);
-
+		if(!isset($_SESSION["util"])) $_SESSION["util"]=new Administrateur();
+		
+		if(isset($_POST['identifiant']) && isset($_POST['motdepasse'])){
+			$utilisateur = str_replace(" ", "", $_POST['identifiant']);
+			$motdepasse = str_replace(" ", "", $_POST['motdepasse']);
+		}
+		
         if($action == "identifier") {
                 $admin = new Administrateur();
                 if(! $admin->charger($identifiant, $motdepasse)) header("Location: index.php");
@@ -46,7 +48,7 @@
                 }
         }
 
-	else if($_SESSION["util"] == "") header("Location: index.php");
+	else if($_SESSION["util"]->id == "") header("Location: index.php");
 ?>
 <?php
 	$rsscmd = new Variable();
