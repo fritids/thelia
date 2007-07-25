@@ -4,6 +4,7 @@
 	ajout de #PANIER_POIDS pour avoir le poids total du panier
 	amélioration de l'affichage des déclinaisons dans le détail commande
 	modification légère du template de base
+	ajout du plugin Paypal dans l'archive
 	
 1.3.1
 	amélioration de la fonction recherche par prixmin/prixmax
