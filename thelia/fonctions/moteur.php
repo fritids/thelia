@@ -268,9 +268,12 @@ function analyse($res){
     	$res = eval($res);
 	}
 	
-    echo filtres($res);
+    $res = filtres($res);
 
-
+	// inclusions des plugins filtres
+	modules_fonction("filtre");
+	
+	echo $res;
 	
 	// Reset de la commande
 	if($reset){

@@ -24,11 +24,19 @@
 /*************************************************************************************/
 ?>
 <?php
+			
+function filtrevide($texte){
+
+	 ereg("#FILTRE_vide\(([^\|]*)\|\|([^\)]*)\)", "$texte", $cut);
 	
-		
-	function filtrevide($texte){
-	
-		return $texte;
-	}
+	if(trim($cut[2]) != "")
+		$texte = ereg_replace("#FILTRE_vide\(". $cut[1] . "\|\|" . $cut[2] . "\)", $cut[1], $texte);
+	else
+		$texte = ereg_replace("#FILTRE_vide\(". $cut[1] . "\|\|" . $cut[2] . "\)", "", $texte);
+
+    if(strstr($texte, "#FILTRE_vide")) return filtrevide($texte);
+    else return $texte;
+
+}
 	
 ?>

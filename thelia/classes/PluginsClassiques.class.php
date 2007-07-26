@@ -38,11 +38,16 @@
 			
 		}
 		
-		function action($res){
+		function action(){
 			
 			
 		}
-		
+
+		function filtre(){
+			
+			
+		}
+				
 		function statut($commande){
 			
 		}
