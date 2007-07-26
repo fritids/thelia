@@ -610,6 +610,7 @@
 			$rubrique = lireTag($args, "rubrique");
 			$deb = lireTag($args, "deb");
 			$num = lireTag($args, "num");
+			$passage = lireTag($args, "passage");
 			$bloc = lireTag($args, "bloc");
 			$nouveaute = lireTag($args, "nouveaute");
 			$promo = lireTag($args, "promo");
@@ -622,8 +623,6 @@
 			$aleatoire = lireTag($args, "aleatoire");
 			$prixmin = lireTag($args, "prixmin");
 			$prixmax = lireTag($args, "prixmax");
-			$nbmensualite = lireTag($args, "nbmensualite");
-			$taux = lireTag($args, "taux");
 			$caracteristique = lireTag($args, "caracteristique");
 			$caracdisp = lireTag($args, "caracdisp");
 			$caracval = lireTag($args, "caracval");
@@ -646,10 +645,7 @@
 			
 			if(!$totbloc) $totbloc=1;
 			if($page) $deb = ($page-1)*$totbloc*$num+$deb; 
-
-			if(!$taux) $taux=1;
-			if(!$nbmensualite) $nbmensualite=1;
-			
+	
 			// initialisation de variables
 			$search = "";
 			$order = "";
@@ -868,20 +864,10 @@
 		$countRes = mysql_result($saveRes, 0, "totcount") . " ";
 	
 		while( $row = mysql_fetch_object($resul) ){
-			
-			if(!$promo){
-				 $prixd3 = round($row->prix/3, 2);	
-				 $prixd6 = round($row->prix/6, 2);
-			}
-        		else {
-				$prixd3 = round($row->prix2/3, 2);
-				$prixd6 = round($row->prix2/6, 2);
-			}
 
 
-			$prixtotcred = round($row->prix2 * $taux / 100 + $row->prix2, 2);
-			$coutcredit = round($prixtotcred-$row->prix2, 2);
-			$mensualite = round($prixtotcred/$nbmensualite, 2);
+			if($passage != "" && $comptbloc>$passage-1)
+			      break;
 			
 			if($num>0) 
 				if($comptbloc>=ceil($countRes/$num) && $bloc!="") continue;
@@ -889,9 +875,7 @@
 			if($comptbloc == 0) $debcourant=0;
 			else $debcourant = $num * ($comptbloc);
 			$comptbloc++;
-			
-			
-		
+						
 			$rubriquedesc = new Rubriquedesc();
 			$rubriquedesc->charger($row->rubrique, $_SESSION['navig']->lang);
 		
@@ -934,11 +918,6 @@
 			$temp = str_replace("#HEURE", substr($row->datemodif, 11), $temp);
 			$temp = str_replace("#DEBCOURANT", "$debcourant", $temp);
 			$temp = str_replace("#ID", "$row->id", $temp);		
-            $temp = str_replace("#PRIXD3", "$prixd3", $temp);
-            $temp = str_replace("#PRIXD6", "$prixd6", $temp);
- 			$temp = str_replace("#PRIXTOTCRED", "$prixtotcred", $temp);
-            $temp = str_replace("#COUTCREDIT", "$coutcredit", $temp);
-            $temp = str_replace("#MENSUALITE", "$mensualite", $temp);               
 			$temp = str_replace("#PRIX2", "$prix2", $temp);					
 			$temp = str_replace("#PRIX", "$prix", $temp);	
 			$temp = str_replace("#ECOTAXE", "$row->ecotaxe", $temp);	
@@ -1613,6 +1592,9 @@
 		$etcaracteristique = lireTag($args, "etcaracteristique");		
 		$etcaracdisp = lireTag($args, "etcaracdisp");	
 		$id = lireTag($args, "caracdisp");
+		if($id == "")
+			$id = lireTag($args, "id");
+			
 		$classement = lireTag($args, "classement");
 		
 		$idsave = $id;
