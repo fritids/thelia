@@ -25,7 +25,7 @@
 ?>
 <?php
 
-	/* Subsitutions de type caracteristique */
+	/* Substitutions de type caracteristique */
 		
 	function substitcaracteristique($texte){
 		global $caracteristique, $caracdisp, $caracval;

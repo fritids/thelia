@@ -28,7 +28,7 @@
 	include_once("classes/Produit.class.php");
 	include_once("classes/Produitdesc.class.php");
 	
-	/* Subsitutions de type produits */
+	/* Substitutions de type produits */
 		
 	function substitproduits($texte){
 		global $ref, $reforig, $motcle, $id_produit, $classement, $prixmin, $prixmax;

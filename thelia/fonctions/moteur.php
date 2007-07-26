@@ -162,7 +162,6 @@ function analyse($res){
 	if(!isset($_REQUEST['totbloc'])) $totbloc=""; else $totbloc=$_REQUEST['totbloc'];	
 	if(!isset($_REQUEST['id_contenu'])) $id_contenu=""; else $id_contenu=$_REQUEST['id_contenu'];	
 	if(!isset($_REQUEST['caracdisp'])) $caracdisp=""; else $caracdisp=$_REQUEST['caracdisp'];	
-	if(!isset($_REQUEST['rt75'])) $rt75=""; else $rt75=$_REQUEST['rt75'];	
 	if(!isset($_REQUEST['reforig'])) $reforig=""; else $reforig=$_REQUEST['reforig'];	
 	if(!isset($_REQUEST['motcle'])) $motcle=""; else $motcle=$_REQUEST['motcle'];	
 	if(!isset($_REQUEST['id_produit'])) $id_produit=""; else $id_produit=$_REQUEST['id_produit'];	

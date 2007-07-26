@@ -27,7 +27,7 @@
 	include_once("classes/Rubrique.class.php");
 	include_once("classes/Rubriquedesc.class.php");
 	
-	/* Subsitutions de type rubrique */
+	/* Substitutions de type rubrique */
 		
 	function substitrubriques($texte){
 		global $id_rubrique;

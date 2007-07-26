@@ -26,7 +26,7 @@
 <?php
 	include_once("classes/Commande.class.php");
 	
-	/* Subsitutions de type commande */
+	/* Substitutions de type commande */
 		
 	function substitcommande($texte){
 		global $commande;

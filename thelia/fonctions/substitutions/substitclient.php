@@ -25,7 +25,7 @@
 ?>
 <?php
 	
-	/* Subsitutions de type panier */
+	/* Substitutions de type panier */
 		
 	function substitclient($texte){
 

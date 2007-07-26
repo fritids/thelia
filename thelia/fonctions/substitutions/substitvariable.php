@@ -26,7 +26,7 @@
 <?php
 	include_once("classes/Variable.class.php");
 
-	/* Subsitutions de type variable */
+	/* Substitutions de type variable */
 
 	function substitvariable($texte){
 

@@ -27,7 +27,7 @@
 	include_once("classes/Dossier.class.php");
 	include_once("classes/Dossierdesc.class.php");
 	
-	/* Subsitutions de type dossier */
+	/* Substitutions de type dossier */
 		
 	function substitdossier($texte){
 		global $id_dossier;

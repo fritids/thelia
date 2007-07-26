@@ -25,7 +25,7 @@
 ?>
 <?php
 	
-	/* Subsitutions de type declinaison */
+	/* Substitutions de type declinaison */
 		
 	function substitdeclinaison($texte){
 		global $declinaison, $declidisp, $declival, $declistock;

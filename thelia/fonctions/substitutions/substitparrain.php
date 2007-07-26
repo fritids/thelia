@@ -26,7 +26,7 @@
 <?php
 	include_once("classes/Client.class.php");
 	
-	/* Subsitutions de type parrain */
+	/* Substitutions de type parrain */
 		
 	function substitparrain($texte){
 		global $id_parrain;

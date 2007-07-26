@@ -27,7 +27,7 @@
 	include_once("classes/Message.class.php");
 	include_once("classes/Messagedesc.class.php");
 	
-	/* Subsitutions de type message */
+	/* Substitutions de type message */
 		
 	function substitmessage($texte){
 				

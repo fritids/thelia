@@ -27,7 +27,7 @@
 	include_once("classes/Rubrique.class.php");
 	include_once("classes/Rubriquedesc.class.php");
 	
-	/* Subsitutions de type image */
+	/* Substitutions de type image */
 		
 	function substitimage($texte){
 		global $id_image;

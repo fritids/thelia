@@ -24,23 +24,10 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("classes/Adresse.class.php");
 	
-	/* Substitutions de type adresse */
 		
-	function substitadresse($texte){
-		global $adresse;
-		
-		$tadresse = new Adresse();
+	function filtrevide($texte){
 	
-		$query = "select * from $tadresse->table where id='$adresse'";
-		$resul = mysql_query($query, $tadresse->link);
-		$row = mysql_fetch_object($resul);
-		
-		if($row )
-			$texte = str_replace("#ADRESSE_ID", "$row->id", $texte);
-		$texte = str_replace("#ADRESSE_ACTIVE", "" . $_SESSION['navig']->adresse . "", $texte);
-		
 		return $texte;
 	}
 	

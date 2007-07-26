@@ -27,7 +27,7 @@
 
 	/* Subsitutions simples */
 	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitrubriques.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitutions/substitproduits.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitproduits.php");
 	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitpanier.php");
 	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitclient.php");
 	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitpage.php");
@@ -43,8 +43,6 @@
 	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitparrain.php");
 						 
 	function substitutions($texte){
-		
-		global $rt75;
 		
 		$texte = str_replace("#URLPREC",  $_SESSION['navig']->urlprec, $texte);
 		$texte = str_replace("#URLPAGERET",  $_SESSION['navig']->urlpageret, $texte);
@@ -65,7 +63,6 @@
 		$texte = str_replace("#URLSOMMAIRE",  "index.php", $texte);
 		$texte = str_replace("#URLCOMPTE",  "compte.php", $texte);
 		$texte = str_replace("#LANG",  $_SESSION['navig']->lang, $texte);
-		$texte = str_replace("#RT75",  "$rt75", $texte);
 
 		if(strstr($texte, "#VARIABLE")) $texte = substitvariable($texte);				
 		

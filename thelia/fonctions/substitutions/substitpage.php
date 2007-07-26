@@ -25,7 +25,7 @@
 ?>
 <?php
 
-	/* Subsitutions de type page */
+	/* Substitutions de type page */
 		
 	function substitpage($texte){
 		global $page;

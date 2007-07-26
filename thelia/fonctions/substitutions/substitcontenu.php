@@ -28,7 +28,7 @@
 	include_once("classes/Contenu.class.php");
 	include_once("classes/Contenudesc.class.php");
 	
-	/* Subsitutions de type contenu */
+	/* Substitutions de type contenu */
 		
 	function substitcontenu($texte){
 		global $motcle, $id_contenu;
