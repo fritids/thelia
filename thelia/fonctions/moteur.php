@@ -34,6 +34,7 @@
 
 	include_once("fonctions/boucles.php");
 	include_once("fonctions/substitutions.php");
+	include_once("fonctions/filtres.php");
 	include_once("fonctions/action.php");
 	include_once("fonctions/divers.php");
 	include_once("classes/Client.class.php");
@@ -267,7 +268,7 @@ function analyse($res){
     	$res = eval($res);
 	}
 	
-    echo $res;
+    echo filtres($res);
 
 
 	
