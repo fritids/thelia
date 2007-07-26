@@ -26,21 +26,21 @@
 <?php
 
 	/* Subsitutions simples */
-	include_once(realpath(dirname(__FILE__)) . "/substitrubriques.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitproduits.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitpanier.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitclient.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitpage.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitadresse.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitcommande.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitmessage.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitvariable.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitcaracteristique.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitdeclinaison.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitimage.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitdossier.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitcontenu.php");
-	include_once(realpath(dirname(__FILE__)) . "/substitparrain.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitrubriques.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitutions/substitproduits.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitpanier.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitclient.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitpage.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitadresse.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitcommande.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitmessage.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitvariable.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitcaracteristique.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitdeclinaison.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitimage.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitdossier.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitcontenu.php");
+	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitparrain.php");
 						 
 	function substitutions($texte){
 		

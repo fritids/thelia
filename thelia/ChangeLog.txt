@@ -6,6 +6,7 @@
 	modification légère du template de base
 	ajout du plugin Paypal dans l'archive
 	ajout de l'argument passage dans la boucle produit pour forcer l'arrêt de la boucle
+	réorganisation du répertoire fonction
 	
 1.3.1
 	amélioration de la fonction recherche par prixmin/prixmax
