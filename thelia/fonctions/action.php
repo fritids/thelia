@@ -256,7 +256,6 @@
 		 	$corps2 .= $venteprod->ref . " " . $venteprod->titre . " " . $venteprod->prixu . " euro * " .  $venteprod->quantite . "\n";
 		}	
  
- 
  			
 			$pays = new Pays();
 			$pays->charger($_SESSION['navig']->client->pays);
