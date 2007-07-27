@@ -235,6 +235,9 @@ function analyse($res){
 	// Vérif panier
 	if($panier && ! $_SESSION["navig"]->panier->nbart) { header("Location: index.php"); exit; } 
 	
+	// fonctions à éxecuter avant le moteur
+	modules_fonction("pre");
+	
 	// chargement du squelette	
 	$lect = file($fond);
 	if(!file_exists($fond)) { echo "Impossible d'ouvrir $fond"; exit; }
@@ -271,7 +274,7 @@ function analyse($res){
     $res = filtres($res);
 
 	// inclusions des plugins filtres
-	modules_fonction("filtre");
+	modules_fonction("post");
 	
 	echo $res;
 	

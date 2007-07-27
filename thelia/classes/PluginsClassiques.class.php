@@ -33,6 +33,10 @@
 			$this->Plugins($nom);			
 		}
 		
+		function pre(){
+			
+			
+		}
 		
 		function boucle($texte, $args){
 			
@@ -43,7 +47,7 @@
 			
 		}
 
-		function filtre(){
+		function post(){
 			
 			
 		}
