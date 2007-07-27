@@ -140,7 +140,7 @@ function supprimer_rubrique(id, parent){
     <td width="21%" height="30">
       <div align="left"><a href="rubrique_modifier.php?id=<?php echo($rubriquedesc->rubrique); ?>" class="txt_vert_11">Modifier  </a><a href="rubrique_modifier.php?id=<?php echo($rubriquedesc->rubrique); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
     </td> 
-	 <td width="15%" height="30" align="left"><a href="javascript:supprimer_rubrique('<?php echo $rubriquedesc->rubrique ?>','<?php echo($parent); ?>')" class="txt_vert_11">Supprimer</a> <a href="rubrique_modifier.php?id=<?php echo($rubriquedesc->rubrique); ?>&action=supprimer&parent=<?php echo($parent); ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a> </td>
+	 <td width="15%" height="30" align="left"><a href="javascript:supprimer_rubrique('<?php echo $rubriquedesc->rubrique ?>','<?php echo($parent); ?>')" class="txt_vert_11">Supprimer</a> <a href="javascript:supprimer_rubrique('<?php echo $rubriquedesc->rubrique ?>','<?php echo($parent); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a> </td>
 	  <td width="6%" height="30">   
 	    <div align="center"><a href="rubrique_modifier.php?id=<?php echo($rubriquedesc->rubrique); ?>&action=modclassement&parent=<?php echo($parent); ?>&type=M"><img src="gfx/up.gif" width="12" height="9" border="0" /></a></div>
 	  </td>
@@ -213,7 +213,7 @@ $resul = mysql_query($query, $produit->link);
     <td width="21%" height="30">
       <div align="left"><a href="produit_modifier.php?ref=<?php echo($produit->ref); ?>&rubrique=<?php echo($produit->rubrique); ?>" class="txt_vert_11">Modifier </a><a href="produit_modifier.php?ref=<?php echo($produit->ref); ?>&rubrique=<?php echo($produit->rubrique); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
     </td>
-	<td width="15%" height="30"  align="left"><a href="javascript:supprimer_produit('<?php echo $produit->ref ?>','<?php echo($parent); ?>')" class="txt_vert_11">Supprimer</a> <a href="produit_modifier.php?ref=<?php echo($produit->ref); ?>&action=supprimer&parent=<?php echo($parent); ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a> </td>
+	<td width="15%" height="30"  align="left"><a href="javascript:supprimer_produit('<?php echo $produit->ref ?>','<?php echo($parent); ?>')" class="txt_vert_11">Supprimer</a> <a href="javascript:supprimer_produit('<?php echo $produit->ref ?>','<?php echo($parent); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a> </td>
 		<td width="6%" height="30">
 		  <div align="center"><a href="produit_modifier.php?ref=<?php echo($produit->ref ); ?>&action=modclassement&parent=<?php echo($parent); ?>&type=M"><img src="gfx/up.gif" width="12" height="9" border="0" /></a></div>
 		</td>
