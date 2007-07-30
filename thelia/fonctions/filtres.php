@@ -25,7 +25,6 @@
 ?>
 <?php
 
-
 	include_once(realpath(dirname(__FILE__)) . "/filtres/filtrevide.php");
 	include_once(realpath(dirname(__FILE__)) . "/filtres/filtrefonction.php");
 	
