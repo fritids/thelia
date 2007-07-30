@@ -31,6 +31,8 @@
 	if(!isset($parent)) $parent="0";
 	if(!isset($lang)) $lang="1";
 	if(!isset($id)) $id="";
+	if(!isset($ligne)) $ligne="";
+	
 ?>
 <?php
 

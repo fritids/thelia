@@ -11,6 +11,7 @@
 	possibilité de gérer via des plugins des actions à exécuter avant le moteur (méthode pre())
 	correction de redimlive (gif,png)
 	correction du format d'affichage des prix (transport,conversion)
+	ajout de l'argument stockmini à la boucle PRODUIT
 	
 1.3.1
 	amélioration de la fonction recherche par prixmin/prixmax

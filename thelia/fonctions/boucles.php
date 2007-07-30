@@ -641,6 +641,7 @@
 			$declinaison = lireTag($args, "declinaison");			
 			$declidisp = lireTag($args, "declidisp");
 			$declival = lireTag($args, "declival");
+			$stockmini = lireTag($args, "stockmini");
 			$declistockmini = lireTag($args, "declistockmini");
 			$courant = lireTag($args, "courant");
 			$profondeur = lireTag($args, "profondeur");		
@@ -700,6 +701,7 @@
 			if($prixmin!="") $search .= " and ((prix2>=\"$prixmin\" and promo=\"1\") or (prix>=\"$prixmin\" and promo=\"0\"))";
 			if($prixmax!="") $search .= " and ((prix2<=\"$prixmax\" and promo=\"1\") or (prix<=\"$prixmax\" and promo=\"0\"))";
 			if($poids!="") $search .= " and poids<=\"$poids\"";
+			if($stockmini!="") $search .= " and stock>=\"$stockmini\"";
 						
 			if($refp!="") $search .= " and ref=\"$refp\"";
 

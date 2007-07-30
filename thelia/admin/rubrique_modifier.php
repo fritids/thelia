@@ -32,6 +32,8 @@
 	if(!isset($parent)) $parent="";
 	if(!isset($page)) $page="";
 	if(!isset($id)) $id="";
+	if(!isset($ligne)) $ligne="";
+	
 ?>
 <?php
 	include_once("../classes/Rubrique.class.php");
