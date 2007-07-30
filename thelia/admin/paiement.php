@@ -82,7 +82,7 @@
       
     </td>
     <td width="16%" height="30">
-      <div align="left"><a href="modepay.php" class="txt_vert_11">Poursuivre </a><a href="modepay.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+      <div align="left"><a href="plugins.php" class="txt_vert_11">Poursuivre </a><a href="plugins.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
     </td>
   </tr>
  

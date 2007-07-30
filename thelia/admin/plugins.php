@@ -87,17 +87,25 @@
 			include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php");
 			$tmpobj = new $nomclass();
 	
-			if(strtolower(get_parent_class($tmpobj)) != "pluginsclassiques") continue;
+			$type=0;
+			if(strtolower(get_parent_class($tmpobj)) == "pluginsclassiques") $type="3";
+			if(strtolower(get_parent_class($tmpobj)) == "pluginspaiements") $type="1";
+			if(strtolower(get_parent_class($tmpobj)) == "pluginstransports") $type="2";
 			
-		 	if(! $modules->id){
+			if($type){
 			
-				$modules = new Modules();
-				$modules->nom = $entry;
-				$modules->type="3";
-				$modules->actif=0;
-				$modules->add();
+		 		if(! $modules->id){
 			
-		 	}
+					$modules = new Modules();
+					$modules->nom = $entry;
+					$modules->type="3";
+					$modules->actif=0;
+					$modules->add();
+			
+		 		}
+		
+		
+			}
 		}
 	
 	}
