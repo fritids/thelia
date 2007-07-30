@@ -49,37 +49,6 @@
                    
                 $tab = array();
    
-
-				$d = dir("../client/plugins");
-
-				while (false !== ($entry = $d->read())) {
-
-				if( substr($entry, 0, 1) == ".") continue;
-					 $modules = new Modules();
-					 $modules->charger($entry);
-					
-					$nomclass = $entry;
-					$nomclass[0] = strtoupper($nomclass[0]);
-
-					if(file_exists(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php")){
-							
-						include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $entry . "/" . $nomclass . ".class.php");
-						$tmpobj = new $nomclass();
-
-						if(strtolower(get_parent_class($tmpobj)) != "pluginstransports") continue;
-					 	if(! $modules->id){
-							$tmpobj->init();
-							$modules = new Modules();
-							$modules->nom = $entry;
-							$modules->type="2";
-							$modules->actif=1;
-							$modules->add();
-
-					 	}
-
-					}
-				}
-				
 				$modules = new Modules();
 				$query = "select * from $modules->table where type='2' and actif='1'";
 				$resul = mysql_query($query, $modules->link);

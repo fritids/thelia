@@ -2022,7 +2022,7 @@
 		
 		$modules = new Modules();
 	
-		$query = "select * from $modules->table where type='2'";
+		$query = "select * from $modules->table where type='2' and actif='1'";
 
 		$resul = mysql_query($query, $modules->link);
 		$nbres = mysql_numrows($resul);

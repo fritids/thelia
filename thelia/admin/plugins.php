@@ -98,7 +98,7 @@
 			
 					$modules = new Modules();
 					$modules->nom = $entry;
-					$modules->type="3";
+					$modules->type=$type;
 					$modules->actif=0;
 					$modules->add();
 			
