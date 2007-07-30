@@ -8,6 +8,7 @@
 	ajout de l'argument passage dans la boucle produit pour forcer l'arrêt de la boucle
 	réorganisation du répertoire fonctions
 	ajout d'un système de filtre et possibilité d'en ajouter via des plugins (méthode post())
+	filtre vide, min, maj, sanstags
 	possibilité de gérer via des plugins des actions à exécuter avant le moteur (méthode pre())
 	correction de redimlive (gif,png)
 	correction du format d'affichage des prix (transport,conversion)

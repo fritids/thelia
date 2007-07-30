@@ -50,12 +50,6 @@
    <p class="titre_rubrique">Gestion des plugins du site public</p>
    <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="configuration.php" class="lien04">Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="plugins.php" class="lien04">Gestion des plugins</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Plugins du site public</a>             
     </p>
-     <table width="710" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES PLUGINS</td>
-     </tr>
-   </table>
-
 
 <?php
 	if(isset($_FILES['plugin'])){
@@ -109,8 +103,137 @@
 	}
 
   	$d->close();
-	
+?>
+
+     <table width="710" border="0" cellpadding="5" cellspacing="0">
+     <tr>
+       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES PLUGINS CLASSIQUES</td>
+     </tr>
+   </table>
+
+<?php	
 	$query = "select * from $modules->table where type='3'";
+	$resul = mysql_query($query, $modules->link);
+	
+	while($row = mysql_fetch_object($resul)){
+			
+		 $i++;
+	
+		if(!($i%2)) $fond="cellule_sombre";
+  		else $fond="cellule_claire";
+	
+?>
+
+   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+
+  <tr class="<?php echo $fond; ?>">
+    <td width="21%" height="30"><?php echo $row->nom; ?></td>
+    <td width="69%" height="30">
+      
+    </td>
+    <td width="16%" height="30">
+      <div align="left">
+	<?php 
+		if($row->actif){
+	?>
+		<a href="plugins_modifier.php?nom=<?php echo $row->nom ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
+	<?php
+		} else {
+	?>
+
+		<a href="plugins_modifier.php?nom=<?php echo $row->nom ?>&actif=1" class="txt_vert_11">Activer </a>
+		
+	<?php
+			
+		}
+	?>
+	   </div>
+    </td>
+  
+</tr>
+
+ 
+  </table>
+
+<?php 
+
+	}
+	
+
+ 
+?>
+
+<br />
+
+    <table width="710" border="0" cellpadding="5" cellspacing="0">
+     <tr>
+       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES PLUGINS PAIEMENTS</td>
+     </tr>
+   </table>
+
+<?php	
+	$query = "select * from $modules->table where type='1'";
+	$resul = mysql_query($query, $modules->link);
+	
+	while($row = mysql_fetch_object($resul)){
+			
+		 $i++;
+	
+		if(!($i%2)) $fond="cellule_sombre";
+  		else $fond="cellule_claire";
+	
+?>
+
+   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+
+  <tr class="<?php echo $fond; ?>">
+    <td width="21%" height="30"><?php echo $row->nom; ?></td>
+    <td width="69%" height="30">
+      
+    </td>
+    <td width="16%" height="30">
+      <div align="left">
+	<?php 
+		if($row->actif){
+	?>
+		<a href="plugins_modifier.php?nom=<?php echo $row->nom ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
+	<?php
+		} else {
+	?>
+
+		<a href="plugins_modifier.php?nom=<?php echo $row->nom ?>&actif=1" class="txt_vert_11">Activer </a>
+		
+	<?php
+			
+		}
+	?>
+	   </div>
+    </td>
+  
+</tr>
+
+ 
+  </table>
+
+<?php 
+
+	}
+	
+
+ 
+?>
+
+<br />
+
+
+    <table width="710" border="0" cellpadding="5" cellspacing="0">
+     <tr>
+       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES PLUGINS TRANSPORTS</td>
+     </tr>
+   </table>
+
+<?php	
+	$query = "select * from $modules->table where type='2'";
 	$resul = mysql_query($query, $modules->link);
 	
 	while($row = mysql_fetch_object($resul)){
