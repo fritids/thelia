@@ -169,12 +169,12 @@
 		<?php if($menu != "plugins") { ?>
 
 	          <tr>
-	            <td height="18" align="left" valign="middle"><a href="module_liste.php" class="lien04">Plugins</a></td>
+	            <td height="18" align="left" valign="middle"><a href="module_liste.php" class="lien04">Modules d'administration</a></td>
 	          </tr>
 	    <?php } else { ?>      
 
 	        <tr>
-	          <td height="18" align="left" valign="middle" class="selection_menu"><a href="module_liste.php" class="selection_menul">Plugins</a></td>
+	          <td height="18" align="left" valign="middle" class="selection_menu"><a href="module_liste.php" class="selection_menul">Modules d'administration</a></td>
 	        </tr>          
 	    <?php } ?>    
 <!--------------------------------------------------------------------------------------------------------------------------------->
