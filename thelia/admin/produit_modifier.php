@@ -300,7 +300,10 @@
 	 $produit = new Produit();
 	 $produit->charger($ref);
 	 
-   	 if($produit->id) return;
+   	 if($produit->id){
+		header("Location: produit_modifier.php?rubrique=$rubrique&existe=1");
+  	 	exit;
+     }
    	 
 	 $produit = new Produit();
 
@@ -531,6 +534,17 @@
 </script>
 
 <?php include_once("tinymce.php"); ?>
+
+<?php
+	if(isset($existe) && $existe == "1"){
+?>
+	<script type="text/javascript">
+		alert("La reference est deja utilisee");
+	</script>
+<?php
+		
+	}
+?>
 
 </head>
 

@@ -29,7 +29,6 @@
 ?>
 <?php
 
-
 	include_once("../classes/Commande.class.php");
 	include_once("../classes/Client.class.php");
 	include_once("../classes/Venteprod.class.php");
