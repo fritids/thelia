@@ -1,0 +1,5 @@
+La documentation est disponible en ligne à l'adresse suivante : http://wiki.thelia.fr
+
+Un blog vous permet de suivre l'évolution de Thelia : http://blog.thelia.fr
+
+Si vous souhaitez des renseignements complémentaires, un forum est à votre disposition : http://forum.thelia.fr
