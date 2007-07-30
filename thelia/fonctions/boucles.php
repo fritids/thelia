@@ -91,11 +91,15 @@
 		$rubriquedesc = new Rubriquedesc();
 		
 		// preparation de la requete
+		
+		if($ligne == "") $ligne="1";
+		
+		$search.=" and $rubrique->table.ligne=\"$ligne\"";
+		
 		if($id!="")  $search.=" and $rubrique->table.id in ($id)";
 		if($parent!="") $search.=" and $rubrique->table.parent=\"$parent\"";
 		if($courante == "1") $search .=" and $rubrique->table.id='$id_rubrique'";
 		else if($courante == "0") $search .=" and $rubrique->table.id!='$id_rubrique'";
-		if($ligne!="") $search.=" and $rubrique->table.ligne=\"$ligne\"";
 		if($num!="") $limit .= " limit $deb,$num";
 		if($exclusion!="") $search .= " and $rubrique->table.id not in($exclusion)";
 		
@@ -185,12 +189,14 @@
 		
 		if(!$deb) $deb=0;
 		
+		if($ligne == "") $ligne="1";
+		
 		// preparation de la requete
+		$search .=" and ligne='$ligne'";
 		if($id!="")  $search.=" and id=\"$id\"";
 		if($parent!="") $search.=" and parent=\"$parent\"";
 		if($courant == "1") $search .=" and id='$id_dossier'";
 		else if($courant == "0") $search .=" and id!='$id_dossier'";
-		if($ligne != "") $search .=" and ligne='$ligne'";
 		if($num!="") $limit .= " limit $deb,$num";
 		if($exclusion!="") $search .= " and id not in($exclusion)";
 		
@@ -484,15 +490,20 @@
 	
 		$nbres = mysql_numrows($resul);
 		if(!$nbres) return "";
-		
+			
 		while( $row = mysql_fetch_object($resul)){
 			$devise->charger($row->id);
 			$prix = round($prod->prix * $devise->taux, 2);
 			$prix2 = round($prod->prix2 * $devise->taux, 2);
 			$convert = round($somme * $devise->taux, 2);
 			$total = round( $_SESSION['navig']->panier->total() * $devise->taux, 2);
+		
+			$prix = number_format($prix, 2, ".", ""); 
+			$prix2 = number_format($prix2, 2, ".", ""); 
+			$total = number_format($total, 2, ".", ""); 
+			$convert = number_format($convert, 2, ".", ""); 
+		
 			$temp = str_replace("#PRIX2",  "$prix2", $texte);	
-			
 			$temp = str_replace("#PRIX", "$prix", $temp);
 			$temp = str_replace("#TOTAL", "$total", $temp);
 			$temp = str_replace("#CONVERT", "$convert", $temp);
@@ -611,6 +622,7 @@
 			$deb = lireTag($args, "deb");
 			$num = lireTag($args, "num");
 			$passage = lireTag($args, "passage");
+			$ligne = lireTag($args, "ligne");
 			$bloc = lireTag($args, "bloc");
 			$nouveaute = lireTag($args, "nouveaute");
 			$promo = lireTag($args, "promo");
@@ -677,8 +689,9 @@
 				 $search .= " and rubrique in($srub)";
 			}
 			
-			$search .= " and ligne=\"1\"";
+			if($ligne == "") $ligne="1";
 
+			$search .= " and ligne=\"$ligne\"";
 			if($id!="") $search .= " and id=\"$id\"";				 
 			if($nouveaute!="") $search .= " and nouveaute=\"$nouveaute\"";
 			if($promo!="") $search .= " and promo=\"$promo\"";
@@ -846,8 +859,8 @@
 				}
 			
 				$liste = substr($liste, 0, strlen($liste) - 2);
-				$query = "select * from $produit->table where id in ($liste) and ligne=1 $limit";
-				$saveReq = "select * from $produit->table where id in ($liste) and ligne=1";
+				$query = "select * from $produit->table where id in ($liste) and ligne=\"$ligne\" $limit";
+				$saveReq = "select * from $produit->table where id in ($liste) and ligne=\"$ligne\"";
 			}
 			
 		else $query = "select * from $produit->table where 1 $search $order $limit";
@@ -956,6 +969,7 @@
 			
 			// récupération des arguments
 			$dossier = lireTag($args, "dossier");
+			$ligne = lireTag($args, "ligne");
 			$deb = lireTag($args, "deb");
 			$num = lireTag($args, "num");
 			$bloc = lireTag($args, "bloc");
@@ -990,7 +1004,9 @@
 				 $search .= " and dossier in('$dossier'$virg$rec)";
 			}
 			
-			$search .= " and ligne=\"1\"";
+			if($ligne == "") $ligne="1";
+			
+			$search .= " and ligne=\"$ligne\"";
 
 			if($id!="") $search .= " and id=\"$id\"";				 
 			if($courant == "1") $search .=" and id='$id_contenu'";
@@ -1054,8 +1070,8 @@
 				}
 			
 				$liste = substr($liste, 0, strlen($liste) - 2);
-				$query = "select * from $contenu->table where id in ($liste) and ligne=1 $limit";
-				$saveReq = "select * from $contenu->table where id in ($liste) and ligne=1";
+				$query = "select * from $contenu->table where id in ($liste) and ligne=\"$ligne\" $limit";
+				$saveReq = "select * from $contenu->table where id in ($liste) and ligne=\"$ligne\"";
 			}
 			
 		else $query = "select * from $contenu->table where 1 $search $order $limit";
@@ -2041,6 +2057,8 @@
 			$chapo = $tmpobj->getChapo();
 			$description = $tmpobj->getDescription();
 	
+			$port = number_format($port, 2, ".", ""); 
+			
 			$temp = str_replace("#TITRE", "$titre", $texte);
 			$temp = str_replace("#CHAPO", "$chapo", $temp);
 			$temp = str_replace("#DESCRIPTION", "$description", $temp);
