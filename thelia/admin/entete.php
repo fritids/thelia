@@ -23,9 +23,11 @@
 /*                                                                                   */
 /*************************************************************************************/
 ?>
+
 <div id="entete">
-	<img src="gfx/logo_thelia.gif" width="305" height="57" align="left" lowsrc="THELIA" />
-</div> 
+	<img src="gfx/logo_thelia.gif" width="271" height="57" align="left" lowsrc="THELIA" />
+	<h1>V 1.3.2</h1>
+</div>
   
 <div id="telecommande"> 
   <table width="248" border="0" cellspacing="0" cellpadding="0">

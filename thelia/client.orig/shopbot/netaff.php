@@ -26,23 +26,9 @@
 <?php header("Content-type: text/plain; charset=iso-8859-1");?>
 <?php echo"<?php xml version=\"1.0\" encoding=\"iso-8859-1\"?>";?> 
 <?php
-	function calculport($poids){
-
-	if($poids==0) return 0;
-     else if($poids<10) return 25;
-	 else if($poids>=10 && $poids<20) return 30;
-	 else if($poids>=20 && $poids<30) return 35;
-	 else if($poids>=30 && $poids<40) return 40;
-	 else if($poids>=40 && $poids<50) return 45;
-	 else if($poids>=50 && $poids<60) return 50;
-	 else if($poids>=60 && $poids<70) return 55;
-	 else if($poids>=70 && $poids<80) return 60;
-	 else if($poids>=80 && $poids<90) return 65;
-	 else if($poids>=90 && $poids<100) return 70;
-	 else if($poids>=100) return ceil($poids/100)* 70;
-
-
-    }
+        function calculport($poids){
+ 			return 0;
+    	}
 
 ?>
 <?php 
@@ -54,7 +40,10 @@
 	include("../../classes/Produit.class.php");
 	include("../../classes/Image.class.php");
 	include("../../classes/Rubrique.class.php");
-	include("../../classes/Caracval.class.php");
+	include("../../classes/Variable.class.php");
+	
+	$variable = new Variable();
+	$variable->charger("urlsite");
 	
 	$i=0;
 	
@@ -65,7 +54,7 @@
 
 	$image = new Image();
 	 
-	$query = "select * from $produit->table where ligne='1' and reappro='0'";
+	$query = "select * from $produit->table where ligne='1'";
 	$resul = mysql_query($query, $produit->link);
 
 	while($row = mysql_fetch_object($resul)){
@@ -77,9 +66,14 @@
 		$row2 = mysql_fetch_object($resul2);
 		$i++;
 
-		$description = ereg_replace("&nbsp;", "", strip_tags($produitdesc->description));
-		$description = ereg_replace("\r\n", " ", $description);
-		$description = ereg_replace("Caractéristiques :", "", $description);
+        $description = str_replace("\r\n", " ", $produitdesc->description);	
+		$description = str_replace("\n", " ", $description);	
+   		$description = str_replace("<br>", "<br />", $description);	
+   		$description = str_replace("<BR>", "<br />", $description);	
+   		$description = str_replace("\n", " ", $description);	
+		$description = str_replace("<br />", " ", $description);	
+        $description = strip_tags($description);
+	
 		$description = trim($description);
 
 		$rubriquedesc->charger($row->rubrique);		
@@ -93,8 +87,8 @@
 		<description><![CDATA[ <?php echo($description); ?> ]]></description>
 		<brand></brand>
 		<price><?php echo($row->prix2); ?></price>
-		<url><![CDATA[ http://www.site.com/produit.php?ref=<?php echo($row->ref); ?>&rt75=53&wx=108]]></url>
-		<img><![CDATA[ http://www.site.com/fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo($row2->fichier); ?>&width=70&height=70]]></img>
+		<url><![CDATA[ http://<?php echo $variable->valeur; ?>/produit.php?ref=<?php echo($row->ref); ?>]]></url>
+		<img><![CDATA[ http://<?php echo $variable->valeur; ?>/fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo($row2->fichier); ?>&width=70&height=70]]></img>
 	</product>
 	
 	

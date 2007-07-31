@@ -13,6 +13,7 @@
 	correction de redimlive (gif,png)
 	correction du format d'affichage des prix (transport,conversion)
 	ajout de l'argument stockmini à la boucle PRODUIT
+	unification de l'interface de gestion des plugins
 	
 1.3.1
 	amélioration de la fonction recherche par prixmin/prixmax
