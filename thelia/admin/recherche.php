@@ -51,6 +51,16 @@ function supprimer(id){
 
 }
 
+function supprimer_produit(ref, parent){
+	if(confirm("Voulez-vous vraiment supprimer ce produit ?")) location="produit_modifier.php?ref=" + ref + "&action=supprimer&parent=" + parent;
+
+}
+
+function supprimer_rubrique(id, parent){
+	if(confirm("Voulez-vous vraiment supprimer cette rubrique ? Vous devez d'abord vider celle-ci")) location="rubrique_modifier.php?id=" + id + "&action=supprimer&parent=" + parent;
+
+}
+
 </script>
 
 <body>
@@ -263,7 +273,7 @@ function supprimer(id){
        <td class="<?php echo($fond); ?>"><span class="geneva11bol_3B4B5B"><?php echo($produitdesc->titre); ?></span></td>
        <td class="<?php echo($fond); ?>"><span class="geneva11bol_3B4B5B"><?php echo($row->prix); ?></span></td>
        <td class="<?php echo($fond); ?>">
-         <div align="center"><a href="produit_modifier.php?ref=<?php echo($row->ref); ?>&action=supprimer&parent=<?php echo($row->rubrique); ?>" class="txt_vert_11"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
+         <div align="center"><a href="javascript:supprimer_produit('<?php echo $row->ref ?>','<?php echo($row->rubrique); ?>')" class="txt_vert_11"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
        </td>
       </tr>
 

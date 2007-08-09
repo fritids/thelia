@@ -59,7 +59,7 @@
 
 		$pays = new Pays();
         
-        if($_SESSION['navig']->adresse != ""){
+        if($_SESSION['navig']->adresse != "" && $_SESSION['navig']->adresse != "0"){
             $adr = new Adresse();
             $adr->charger($_SESSION['navig']->adresse);
             $pays->charger($adr->pays);
@@ -432,7 +432,7 @@
 
 			}
 			
-				else redirige("compte_modifiererr.php");
+				else redirige("compte_modifiererr.php?errform=1");
 	
 			}
 		
@@ -448,7 +448,7 @@
 			}
 			else  {
 				$_SESSION['navig']->formcli->motdepasse = "";
-				redirige("compte_modifiererr.php");
+				redirige("compte_modifiererr.php?errform=1");
 			}	
 			
 
@@ -499,6 +499,8 @@
          $adresse->charger($id);
          $adresse->delete();
 
+		 $_SESSION['navig']->adresse = "";
+		
 		 $cache = new Cache();
 		 $cache->vider("ADRESSE", $_SESSION['navig']->client->id . "%");
     }

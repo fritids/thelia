@@ -37,7 +37,11 @@
 
 		function Requete(){
 			$this->Cnx();
-
+			
+			$this->host="";
+			$this->login_mysql="";
+			$this->password_mysql="";
+			$this->db="";
 		}
 
 		function charger(){

@@ -63,7 +63,7 @@ if(!isset($miroir)) $miroir="";
  		else if(strstr($nomorig, "client/gfx/photos/dossier")) $type = "dossier";
  		else if(strstr($nomorig, "client/gfx/photos/contenu")) $type = "contenu";
   		
-		ereg("/([^\/]*.(jpg|gif|png))", $nomorig, $nsimple);
+		eregi("/([^\/]*.(jpg|gif|png))", $nomorig, $nsimple);
  		
   		$nomcache = "client/cache/" . $type . "/" . $width . "_" . $height . "_" . $opacite . "_" . $nb . "_" . $miroir . "_" . $nsimple[1];
  		

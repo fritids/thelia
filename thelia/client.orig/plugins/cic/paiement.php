@@ -278,6 +278,8 @@ $Formulaire_Paiement = CreerFormulaireHmac($CMCIC_Tpe,
 //   (http://commerce.e-i.com/news/ mailto:centrecom@e-i.com).
 //   All rights reserved. -
 ?>
-
+	<script type="text/javascript">
+	        document.forms['PaymentRequest'].submit();
+	</script>
 </BODY>
 </HTML>

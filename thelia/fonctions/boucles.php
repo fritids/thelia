@@ -316,6 +316,11 @@
 			$imagedesc->charger($image->id);
 			$temp = $texte;
 			
+			$temp = str_replace("#FGRANDE", "#FICHIER", $temp);
+			$temp = str_replace("#FPETITE", "#FICHIER", $temp);
+			$temp = str_replace("#GRANDE", "#IMAGE", $temp);
+			$temp = str_replace("#PETITE", "#IMAGE", $temp);
+			
 			if($image->produit != 0){
 					$pr->charger_id($image->produit);
 					$prdesc->charger($image->produit);
@@ -1404,38 +1409,42 @@
 		
 		$i =  0;
 		
-		if(! $trubrique->parent)
-			return "";
-			
- 		do {
-			$trubrique->charger("$trubrique->parent");	
-			$rubtab[$i++] = $trubrique;
-				
-			
-		} while($trubrique->parent != 0);
-	
-		$i--;
-		
-		do {
-		if(($i == $niveau-1 && $niveau != "") || $niveau == "") {
-				$trubriquedesc->charger($rubtab[$i]->id, $_SESSION['navig']->lang);
-				$temp = str_replace("#ID", $rubtab[$i]->id, $texte);
-				$temp = str_replace("#TITRE", "$trubriquedesc->titre", $temp);	
-				$temp = str_replace("#URL", "rubrique.php?id_rubrique=" . $rubtab[$i]->id, $temp);	
-		
-		
-			if(trim($temp) !="") $res .= $temp;
-		}	
-			if($i >= $profondeur && $profondeur != "") break;
-		} while($i--);
-	
+        if(! $trubrique->parent)
+                return "";
 
+        $rubtab = "";
+        $tmp = new Rubrique();
+        $tmp->charger($trubrique->parent);
+        $rubtab[$i] = new Rubrique();
+        $rubtab[$i++] = $tmp;
+
+        while($tmp->parent != 0) {
+                $tmp = new Rubrique();
+                $tmp->charger($rubtab[$i-1]->parent);
+
+                $rubtab[$i] = new Rubrique();
+                $rubtab[$i++] = $tmp;
+        }
+
+        $compt = 0;
+        
+        for($i=count($rubtab)-1; $i>=0; $i--){
+                        if($profondeur != "" && $compt==$profondeur) break;
+                        if($niveau != "" && $niveau != $compt +1 ) { $compt++; continue; }          
+                        $trubriquedesc->charger($rubtab[$i]->id, $_SESSION['navig']->lang);
+                        $temp = str_replace("#ID", $rubtab[$i]->id, $texte);
+                        $temp = str_replace("#TITRE", "$trubriquedesc->titre", $temp);
+                        $temp = str_replace("#URL", "rubrique.php?id_rubrique=" . $rubtab[$i]->id, $temp);
+
+                        $compt++;
+                        
+                        $res .= $temp;
+        }
 	
 		return $res;
-		
-	
 	
 	}	
+
 	
 	function bouclePaiement($texte, $args){
 
@@ -2229,9 +2238,10 @@
 							
 		if($classement != ""){
 			$liste2="";
-			$query = "select * from $tdeclidispdesc->table where declidisp in ($liste) and lang='" . $_SESSION['navig']->lang . "' $order";
-			$resul = mysql_query($query, $tdeclidispdesc->link);
-					
+			if($liste != ""){
+				$query = "select * from $tdeclidispdesc->table where declidisp in ($liste) and lang='" . $_SESSION['navig']->lang . "' $order";
+				$resul = mysql_query($query, $tdeclidispdesc->link);
+			}		
 		
 		
 			$i=0;

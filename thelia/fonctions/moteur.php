@@ -122,7 +122,7 @@ function analyse($res){
 	if(!isset($obligetelport)) $obligetelport=0;
 	if(!isset($pagesess)) $pagesess=0;
 
-
+	if(!isset($_REQUEST['lang'])) $action=""; else $action=$_REQUEST['lang'];
 	if(!isset($_REQUEST['action'])) $action=""; else $action=$_REQUEST['action'];
 	if(!isset($_REQUEST['append'])) $append=0; else $append=$_REQUEST['append'];
 	if(!isset($_REQUEST['id'])) $id="";	else $id=$_REQUEST['id'];
