@@ -276,7 +276,8 @@
 		$chaine = str_replace("&", "-", $chaine);
 		$chaine = str_replace("?", "", $chaine);	
 		$chaine = str_replace(".", "", $chaine);	
-		$chaine = str_replace("!", "", $chaine);			
+		$chaine = str_replace("!", "", $chaine);	
+		$chaine = str_replace("+", "-", $chaine);			
 		$chaine = preg_replace('/-+/', '-', $chaine);	
 		
 		return $chaine;

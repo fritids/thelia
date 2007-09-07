@@ -18,6 +18,9 @@
 	correction du passage de la lang en GET
 	dans redimlive utilisation de eregi au lieu de ereg (évite les soucis de casse)
 	correction de la boucle CHEMIN
+	correction boucle DOCUMENT
+	correction de la gestion des promos (si pas d'expiration)
+	maj du template de base (pour empêcher le bypass de la page transport)
 	
 1.3.1
 	amélioration de la fonction recherche par prixmin/prixmax

@@ -571,9 +571,9 @@
 			$document->charger($row->id);
 			$documentdesc->charger($document->id);
 			$temp = str_replace("#TITRE", "$documentdesc->titre", $texte);
-			$temp = str_replace("#CHAPO", "$documentdesc->chapo", $texte);
-			$temp = str_replace("#DESCRIPTION", "$documentdesc->description", $texte);
-			$temp = str_replace("#FICHIER", "client/document/" . $document->fichier, $texte);
+			$temp = str_replace("#CHAPO", "$documentdesc->chapo", $temp);
+			$temp = str_replace("#DESCRIPTION", "$documentdesc->description", $temp);
+			$temp = str_replace("#FICHIER", "client/document/" . $document->fichier, $temp);
 
 			$res .= $temp;
 		}
@@ -588,14 +588,17 @@
 
 		// récupération des arguments
 		$produit = lireTag($args, "produit");
+		$deb = lireTag($args, "deb");
 		$num = lireTag($args, "num");
 		$aleatoire = lireTag($args, "aleatoire");
 		
 		$search="";
-			
-		if($produit) $search .= " and produit=\"$produit\"";
 		
-		if($num!="") $limit .= " limit 0,$num";
+		if(!$deb) $deb=0;	
+		if(!$num) $num = "999999999";
+		
+		if($produit) $search .= " and produit=\"$produit\"";
+		$limit .= " limit $deb,$num";
 
 		if($aleatoire) $order = "order by "  . " RAND()";		
 		
@@ -940,6 +943,7 @@
 			$temp = str_replace("#ID", "$row->id", $temp);		
 			$temp = str_replace("#PRIX2", "$prix2", $temp);					
 			$temp = str_replace("#PRIX", "$prix", $temp);	
+			$temp = str_replace("#TVA", "$row->tva", $temp);	
 			$temp = str_replace("#ECOTAXE", "$row->ecotaxe", $temp);	
 			$temp = str_replace("#STOCK", "$row->stock", $temp);	
 			$temp = str_replace("#POURCENTAGE", "$pourcentage", $temp);	
@@ -2009,6 +2013,7 @@
 			$temp = str_replace("#DESCRIPTION", "$row->description", $temp);
 			$temp = str_replace("#QUANTITE", "$row->quantite", $temp);
 			$temp = str_replace("#PRIXU", "$row->prixu", $temp);
+			$temp = str_replace("#TVA", "$row->tva", $temp);	
 			$temp = str_replace("#TOTALPROD", "$totalprod", $temp);
 
 			$res .= $temp;
