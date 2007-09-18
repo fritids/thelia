@@ -64,10 +64,11 @@
 		if($_SESSION['navig']->promo->type == "1" && $_SESSION['navig']->promo->mini <= $total) $remise = $_SESSION['navig']->promo->valeur;
 		else if($_SESSION['navig']->promo->type == "2") $remise = $total * $_SESSION['navig']->promo->valeur / 100;
 		
+        $totcmdport -= $remise;
+
+	    if($totcmdport<$port)
+		    $totcmdport = $port;
 		
-		
-		$totcmdport -= $remise;
-		 
 		$totalht = round($total/1.196, 2);
 		
 		
