@@ -43,6 +43,7 @@
 	include_once("../classes/Cache.class.php");	
 ?>
 <?php
+
 	switch($action){
 		case 'modclassement' : modclassement($id, $type); break;
 		case 'modifier' : modifier($id, $lang, $titre, $chapo, $description, $tabdisp); break;
@@ -105,41 +106,11 @@
 	 		
 		$json = new Services_JSON();
 
-		$tabdisp = stripslashes($tabdisp);
-		$tabdisp = $json->decode($tabdisp);
-		
 		if(!$lang) $lang=1;
 
 		$declidisp = new Declidisp();
 		$declidispdesc = new Declidispdesc();
-		
-		$query = "select * from $declidisp->table where declinaison='$id'";
-		$resul = mysql_query($query, $declidisp->link);
-		while($row = mysql_fetch_object($resul)){
-		
-			$declidisp->charger($row->id);
-			$query2 = "delete from $declidispdesc->table where declidisp='$declidisp->id' and lang='$lang'";
-			$resul2 = mysql_query($query2, $declidispdesc->link);
-		}
-		
-		
-	for($i=0; $i<count($tabdisp); $i++){
 
-		$declidisp = new Declidisp();
-		$declidisp->id = $tabdisp[$i]->value;
-		
-		$declidisp->declinaison = $id;
-		$lastidc = $declidisp->add();
-
-		$declidispdesc = new Declidispdesc();
-		if($tabdisp[$i]->value != "") $declidispdesc->declidisp = $tabdisp[$i]->value;
-		else $declidispdesc->declidisp = $lastidc;
-		$declidispdesc->lang = $lang;
-		$declidispdesc->titre = $tabdisp[$i]->texte;
-		$declidispdesc->add();
-
-	}
-		
 		$declinaison = new Declinaison();
 		$declinaisondesc = new Declinaisondesc();
 		$declinaison->charger($id);
@@ -155,12 +126,12 @@
 		}
 			
 			                 
-		 $declinaisondesc->chapo = $chapo;
-		 $declinaisondesc->description = $description;
-		 $declinaisondesc->titre = $titre;
+	    $declinaisondesc->chapo = $chapo;
+	    $declinaisondesc->description = $description;
+	    $declinaisondesc->titre = $titre;
 	 	 
-	 	 $declinaisondesc->chapo = ereg_replace("\n", "<br/>", $declinaisondesc->chapo);
-		 $declinaisondesc->description = ereg_replace("\n", "<br/>", $declinaisondesc->description);
+        $declinaisondesc->chapo = ereg_replace("\n", "<br/>", $declinaisondesc->chapo);
+   	    $declinaisondesc->description = ereg_replace("\n", "<br/>", $declinaisondesc->description);
 										
 		$declinaison->maj();
 		$declinaisondesc->maj();

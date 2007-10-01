@@ -155,6 +155,13 @@
 		 $produit->prix = $prix; 
 		 $produit->prix2 = $prix2;
 		 $produit->ecotaxe = $ecotaxe;
+			
+		if($produit->rubrique != $rubrique){
+			$query = "select max(classement) as maxClassement from $produit->table where rubrique='" . $rubrique . "'";
+			$resul = mysql_query($query, $produit->link);
+			$produit->classement =  mysql_result($resul, 0, "maxClassement") + 1;
+		}
+		
 		 $produit->rubrique = $rubrique; 
 	 	 if($promo == "on") $produit->promo = 1; else $produit->promo = 0;
 	 	 if($reappro == "on") $produit->reappro = 1; else $produit->reappro = 0;	 	 

@@ -646,6 +646,7 @@
 			$caracteristique = lireTag($args, "caracteristique");
 			$caracdisp = lireTag($args, "caracdisp");
 			$caracval = lireTag($args, "caracval");
+			$typech = lireTag($args, "typech");
 			$declinaison = lireTag($args, "declinaison");			
 			$declidisp = lireTag($args, "declidisp");
 			$declival = lireTag($args, "declival");
@@ -748,7 +749,7 @@
 				else $query = "select * from $tcaracval->table where caracteristique='$caracteristique' and caracdisp='$caracdisp'";
 
 				$resul = mysql_query($query);
-				if(!mysql_numrows($resul)) break;
+				if(!mysql_numrows($resul)) return;
 				
 				$liste="";
 				
@@ -776,7 +777,7 @@
 
 				if($caracval == "*") $query = "select * from $tcaracval->table where caracteristique='$caracteristique' and valeur<>''";
 				else if($caracval == "-") $query = "select * from $tcaracval->table where caracteristique='$caracteristique' and valeur=''";
-	
+				else if($typech == "like") $query = "select * from $tcaracval->table where caracteristique='$caracteristique' and valeur like '$caracval'";
 				else $query = "select * from $tcaracval->table where caracteristique='$caracteristique' and valeur ='$caracval'";
 
 				$resul = mysql_query($query);
@@ -1562,10 +1563,13 @@
 
 	function boucleCaracteristique($texte, $args){
 
+		global $caracteristique;
+		
 		$id = lireTag($args, "id");		
 		$rubrique = lireTag($args, "rubrique");		
 		$affiche = lireTag($args, "affiche");		
 		$produit = lireTag($args, "produit");	
+		$courante = lireTag($args, "courante");	
 				
 		$search ="";
 		$res="";
@@ -1583,29 +1587,37 @@
 		
 		
 		$rubcaracteristique = new Rubcaracteristique();
-		$caracteristique = new Caracteristique();
-		$caracteristiquedesc = new Caracteristiquedesc();
+		$tmpcaracteristique = new Caracteristique();
+		$tmpcaracteristiquedesc = new Caracteristiquedesc();
 		
 		
 		$query = "select DISTINCT(caracteristique) from $rubcaracteristique->table where 1 $search";
-		if($id != "") $query = "select * from $caracteristique->table where 1 $search";
+		if($id != "") $query = "select * from $tmpcaracteristique->table where 1 $search";
 		$resul = mysql_query($query, $rubcaracteristique->link);
 	
 		$nbres = mysql_numrows($resul);
 		if(!$nbres) return "";
 
 		while( $row = mysql_fetch_object($resul)){
-			
-			if($id != "") $caracteristiquedesc->charger($row->id, $_SESSION['navig']->lang);
-			else $caracteristiquedesc->charger($row->caracteristique, $_SESSION['navig']->lang);
+
+			if($courante == "1" && ($id  != $caracteristique && ! strstr($caracteristique, $id . "-")))
+			   continue;
+
+			else if($courante == "0" && ($id  == $caracteristique || strstr($caracteristique, $id . "-")))
+				 continue;
+							
+			if($id != "") $tmpcaracteristiquedesc->charger($row->id, $_SESSION['navig']->lang);
+			else $tmpcaracteristiquedesc->charger($row->caracteristique, $_SESSION['navig']->lang);
 			if($id != "") $temp = str_replace("#ID", "$row->id", $texte);
 			else $temp = str_replace("#ID", "$row->caracteristique", $texte);
 
-			if($caracteristique->affiche == "0" && $affiche == "1") continue;
+			$tmpcaracteristique->charger($tmpcaracteristiquedesc->caracteristique);
+			
+			if($tmpcaracteristique->affiche == "0" && $affiche == "1") continue;
 
-			$temp = str_replace("#TITRE", "$caracteristiquedesc->titre", $temp);
-			$temp = str_replace("#CHAPO", "$caracteristiquedesc->chapo", $temp);
-			$temp = str_replace("#DESCRIPTION", "$caracteristiquedesc->description", $temp);		
+			$temp = str_replace("#TITRE", "$tmpcaracteristiquedesc->titre", $temp);
+			$temp = str_replace("#CHAPO", "$tmpcaracteristiquedesc->chapo", $temp);
+			$temp = str_replace("#DESCRIPTION", "$tmpcaracteristiquedesc->description", $temp);		
 			$temp = str_replace("#PRODUIT", "$produit", $temp);	
 			
 			$res .= $temp;
@@ -1622,6 +1634,9 @@
 		$caracteristique = lireTag($args, "caracteristique");		
 		$etcaracteristique = lireTag($args, "etcaracteristique");		
 		$etcaracdisp = lireTag($args, "etcaracdisp");	
+		$stockmini = lireTag($args, "stockmini");
+		$courante = lireTag($args, "courante");
+		
 		$id = lireTag($args, "caracdisp");
 		if($id == "")
 			$id = lireTag($args, "id");
@@ -1686,6 +1701,19 @@
 		if($classement != "" && isset($tabliste2)) $tabliste = $tabliste2;
 		
 		for($i=0; $i<count($tabliste); $i++){
+			
+			if($courante == "1" && ($id  != $caracdisp && ! strstr($caracdisp, "-" . $id )))
+			   continue;
+			
+			else if($courante == "0" && ($id  == $caracdisp || strstr($caracdisp, "-" . $id)))
+				 continue;
+				
+            if($stockmini != ""){
+                  $caracvalch = new Caracval();
+                  $querych = "select count(*) as nb from $caracvalch->table where caracdisp='" . $tabliste[$i] . "'";
+                  $resulch = mysql_query($querych, $caracvalch->link);
+                  if(mysql_result($resulch, 0, "nb")<$stockmini) continue;
+            }
 			$tcaracdispdesc->charger_caracdisp($tabliste[$i], $_SESSION['navig']->lang);
 			$tcaracdisp->charger($tabliste[$i]);
 			
@@ -1695,8 +1723,10 @@
 			if($caracteristique == "$tcaracdisp->caracteristique" . "-" && $caracdisp == $tabliste[$i] . "-") 
 				$selected = "selected=\"selected\""; else $selected = "";
 				
-			$temp = str_replace("#ID", $id . $etcaracdisp, $texte);
-			$temp = str_replace("#CARACTERISTIQUE", $caracteristique . $etcaracteristique, $temp);
+			$temp = str_replace("#ID", $tcaracdisp->id, $texte);
+			$temp = str_replace("#CARACTERISTIQUE", $tcaracdisp->caracteristique, $temp);			
+			$temp = str_replace("#IDC", $id . $etcaracdisp, $temp);
+			$temp = str_replace("#CARACTERISTIQUEC", $caracteristique . $etcaracteristique, $temp);
 			$temp = str_replace("#TITRE", "$tcaracdispdesc->titre", $temp);
 			$temp = str_replace("#SELECTED", "$selected", $temp);
 			
@@ -2154,9 +2184,12 @@
 	
 	function boucleDeclinaison($texte, $args){
 
+		global $declinaison;
+
 		$id = lireTag($args, "id");		
 		$rubrique = lireTag($args, "rubrique");		
 		$produit = lireTag($args, "produit");		
+		$courante = lireTag($args, "courante");	
 		
 		$search ="";
 		$res="";
@@ -2166,26 +2199,33 @@
 		if($id!="")  $search.=" and id=\"$id\"";
 			
 		$rubdeclinaison = new Rubdeclinaison();
-		$declinaison = new Declinaison();
-		$declinaisondesc = new Declinaisondesc();
+		$tmpdeclinaison = new Declinaison();
+		$tmpdeclinaisondesc = new Declinaisondesc();
 		
 		
 		$query = "select DISTINCT(declinaison) from $rubdeclinaison->table where 1 $search";
-		if($id != "") $query = "select * from $declinaison->table where 1 $search";
+		if($id != "") $query = "select * from $tmpdeclinaison->table where 1 $search";
 		$resul = mysql_query($query, $rubdeclinaison->link);
 
 		$nbres = mysql_numrows($resul);
 		if(!$nbres) return "";
 
 		while( $row = mysql_fetch_object($resul)){
-			if($id != "") $declinaisondesc->charger($row->id, $_SESSION['navig']->lang);
-			else $declinaisondesc->charger($row->declinaison, $_SESSION['navig']->lang);
+			
+			if($courante == "1" && ($row->id  != $declinaison))
+			   continue;
+			
+			else if($courante == "0" && ($row->id  == $declinaison))
+			   continue;
+						
+			if($id != "") $tmpdeclinaisondesc->charger($row->id, $_SESSION['navig']->lang);
+			else $tmpdeclinaisondesc->charger($row->declinaison, $_SESSION['navig']->lang);
 			if($id != "") $temp = str_replace("#ID", "$row->id", $texte);
 			else $temp = str_replace("#ID", "$row->declinaison", $texte);
 
-			$temp = str_replace("#TITRE", "$declinaisondesc->titre", $temp);
-			$temp = str_replace("#CHAPO", "$declinaisondesc->chapo", $temp);
-			$temp = str_replace("#DESCRIPTION", "$declinaisondesc->description", $temp);	
+			$temp = str_replace("#TITRE", "$tmpdeclinaisondesc->titre", $temp);
+			$temp = str_replace("#CHAPO", "$tmpdeclinaisondesc->chapo", $temp);
+			$temp = str_replace("#DESCRIPTION", "$tmpdeclinaisondesc->description", $temp);	
 			$temp = str_replace("#PRODUIT", "$produit", $temp);
 	
 			$res .= $temp;
@@ -2197,11 +2237,15 @@
 
 	function boucleDeclidisp($texte, $args){
 
+		global $declidisp;
+		
 		$declinaison = lireTag($args, "declinaison");		
 		$id = lireTag($args, "id");
 		$produit = lireTag($args, "produit");
 		$classement = lireTag($args, "classement");
 		$stockmini = lireTag($args, "stockmini");
+		$courante = lireTag($args, "courante");
+		
 		$search ="";
 		$liste="";
 		$tabliste[0]="";
@@ -2265,12 +2309,22 @@
 	
 		for($i=0; $i<count($tabliste); $i++){
 		
+			if($courante == "1" && ($tabliste[$i]  != $declidisp))
+			   continue;
+			
+			else if($courante == "0" && ($tabliste[$i]  == $declidisp))
+			   continue;
+				
 			if($exdecprod->charger($produit, $tabliste[$i])) continue;		
 			
+			$tdeclidisp = new Declidisp();
+			$tdeclidisp->charger($tabliste[$i]); 
+			
+			$tdeclidispdesc = new Declidispdesc();
 			$tdeclidispdesc->charger_declidisp($tabliste[$i], $_SESSION['navig']->lang);
 			if(! $tdeclidispdesc->titre) $tdeclidispdesc->charger_declidisp($tabliste[$i]);
 			$temp = str_replace("#ID", $tdeclidispdesc->declidisp, $texte);
-			$temp = str_replace("#DECLINAISON", $declinaison, $temp);
+			$temp = str_replace("#DECLINAISON", $tdeclidisp->declinaison, $temp);
 			$temp = str_replace("#TITRE", "$tdeclidispdesc->titre", $temp);
 			$temp = str_replace("#PRODUIT", "$produit", $temp);
 

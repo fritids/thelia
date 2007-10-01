@@ -21,6 +21,14 @@
 	correction boucle DOCUMENT
 	correction de la gestion des promos (si pas d'expiration)
 	maj du template de base (pour empêcher le bypass de la page transport)
+	correction de la boucle CARACTERISTIQUE (argument affiche)
+	correction passage de la langue en paramètre
+	possibilité de n'afficher que les caracdisp (valeur des caractéristiques) qui possèdent un produit relié
+	ajout de courante sur les boucles CARACTERISTIQUE CARACDISP DECLINAISON DECLIDISP
+	ajout de la méthode inclusion() aux plugins. Cette méthode est appelée juste avant les inclusions
+	correction d'un bug de classement lors du déplacement d'un produit de rubrique.
+	correction d'un bug lors de la modification des infos du déclinaison (perte des valeurs associées)
+	correction de getDescription() dans les plugins qui retournait le chapo
 	
 1.3.1
 	amélioration de la fonction recherche par prixmin/prixmax

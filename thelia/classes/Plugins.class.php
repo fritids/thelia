@@ -79,7 +79,7 @@
 			$modulesdesc = new Modulesdesc();
 			$modulesdesc->charger($this->nom_plugin);
 			
-			return $modulesdesc->chapo;		
+			return $modulesdesc->description;		
 		}
 
 		function ajout_desc($titre, $chapo, $description, $lang=1, $devise=""){
