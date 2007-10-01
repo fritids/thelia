@@ -4,7 +4,6 @@
 	$pageret=1;
 	$panier=1;
 	$transport=1;
-	
-	include("fonctions/moteur.php");
 
+	include("fonctions/moteur.php");
 ?>
