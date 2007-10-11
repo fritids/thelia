@@ -7,6 +7,7 @@
 	ajout du param d'entrée asso à la boucle CONTENU. Il permet de rechercher tous les produits/rubriques associés à un contenu
 	ajout des substitutions #PRODUIT_PROMO et #PRODUIT_NOUVEAUTE permettant de récupérer les paramètres promo et nouveaute passées 			 	
 	dans l'url
+	modification de la boucle QUANTITE
 	
 1.3.2
 	correction problème code promo (date expiration)

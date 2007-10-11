@@ -1399,7 +1399,7 @@
 			
 		$j = 0;
 		
-		for($i=1; $i<$max; $i++){
+		for($i=1; $i<=$max; $i++){
 			if($i==$_SESSION['navig']->panier->tabarticle[$article]->quantite) $selected="selected=\"selected\"";
 			else $selected="";
 		
