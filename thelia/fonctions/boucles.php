@@ -125,6 +125,7 @@
 			
 			if($pasvide != ""){
 						$rec = arbreBoucle($rubrique->id);
+						if(substr($rec, strlen($rec)-1) == ",") $rec = substr($rec, 0, strlen($rec)-1);
 						if($rec) $virg=",";
 						else $virg="";
 						
@@ -591,6 +592,7 @@
 		$deb = lireTag($args, "deb");
 		$num = lireTag($args, "num");
 		$aleatoire = lireTag($args, "aleatoire");
+		$classement = lireTag($args, "classement");
 		
 		$search="";
 		
@@ -600,7 +602,8 @@
 		if($produit) $search .= " and produit=\"$produit\"";
 		$limit .= " limit $deb,$num";
 
-		if($aleatoire) $order = "order by "  . " RAND()";		
+		if($classement == "manuel") $order = "order by classement";		
+		else if($aleatoire) $order = "order by "  . " RAND()";		
 		
 		
 		$accessoire = new Accessoire();
@@ -691,6 +694,7 @@
 				$tabrub = explode(",", $rubrique);
 				for($compt = 0; $compt<count($tabrub); $compt++){
 					$rec = arbreBoucle($tabrub[$compt], $profondeur);
+					if(substr($rec, strlen($rec)-1) == ",") $rec = substr($rec, 0, strlen($rec)-1);
 					if($rec) $virg=",";
 					$srub .= $tabrub[$compt] . $virg . $rec . $virg;
 				}
@@ -991,6 +995,7 @@
 			$aleatoire = lireTag($args, "aleatoire");
 			$produit = lireTag($args, "produit");
 			$rubrique = lireTag($args, "rubrique");
+			$asso = lireTag($args, "asso");
 			$profondeur = lireTag($args, "profondeur");		
 			$courant = lireTag($args, "courant");			
 			$exclusion = lireTag($args, "exclusion");	
@@ -1011,6 +1016,7 @@
 			if($dossier!=""){
 				if($profondeur == "") $profondeur=0;
 				$rec = arbreBoucle_dos($dossier, $profondeur);
+				if(substr($rec, strlen($rec)-1) == ",") $rec = substr($rec, 0, strlen($rec)-1);
 				if($rec) $virg=",";
 				
 				 $search .= " and dossier in('$dossier'$virg$rec)";
@@ -1056,6 +1062,19 @@
 				$type="";
 			}
 
+			if($asso != ""){
+				$contenuassoc = new Contenuassoc();
+				$query = "select * from $contenuassoc->table where contenu=\"" . $asso . "\"";
+				$resul = mysql_query($query, $contenuassoc->link);
+				while($row = mysql_fetch_object($resul)) 
+					$liste .= "'" . $row->contenu . "',"; 
+					
+					
+				$liste = substr($liste, 0, strlen($liste)-1);
+				if($liste != "") $search .= " and id in ($liste)";	
+				else $search .= " and id in ('')";				
+				
+			}
 			
 			 if($aleatoire) $order = "order by "  . " RAND()";
 			else if($classement == "manuel") $order = "order by classement";
@@ -1486,7 +1505,7 @@
 			$description = $tmpobj->getDescription();
 										
 			$temp = str_replace("#ID", "$row->id", $texte);
-			$temp = str_replace("#URLPAYER", "paiement.php?action=paiement&amp;type_paiement=" . $row->id, $temp);
+			$temp = str_replace("#URLPAYER", "commande.php?action=paiement&amp;type_paiement=" . $row->id, $temp);
 			$temp = str_replace("#LOGO", "client/plugins/" . "$row->nom" . "/logo.jpg", $temp);
 			$temp = str_replace("#TITRE", $titre, $temp);
 			$temp = str_replace("#CHAPO", $chapo, $temp);
@@ -1869,7 +1888,7 @@
 				$temp = str_replace("#VILLE", "$row->ville", $temp);
 				$temp = str_replace("#TEL", "$row->tel", $temp);
 				$temp = str_replace("#SUPPRURL", "livraison_adresse.php?action=supprimerlivraison&amp;id=$row->id", $temp);
-				$temp = str_replace("#URL", "paiement.php?action=modadresse&amp;adresse=$row->id", $temp);
+				$temp = str_replace("#URL", "commande.php?action=modadresse&amp;adresse=$row->id", $temp);
 
 				$res .= $temp;
 			}
@@ -2309,10 +2328,10 @@
 	
 		for($i=0; $i<count($tabliste); $i++){
 		
-			if($courante == "1" && ($tabliste[$i]  != $declidisp))
+			if($courante == "1" && ($tabliste[$i] . "-"  != $declidisp))
 			   continue;
 			
-			else if($courante == "0" && ($tabliste[$i]  == $declidisp))
+			else if($courante == "0" && ($tabliste[$i] ."-"  == $declidisp))
 			   continue;
 				
 			if($exdecprod->charger($produit, $tabliste[$i])) continue;		

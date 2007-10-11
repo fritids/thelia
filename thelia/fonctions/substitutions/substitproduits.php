@@ -31,7 +31,7 @@
 	/* Substitutions de type produits */
 		
 	function substitproduits($texte){
-		global $ref, $reforig, $motcle, $id_produit, $classement, $prixmin, $prixmax;
+		global $ref, $reforig, $motcle, $id_produit, $classement, $prixmin, $prixmax, $nouveaute, $promo;
 
 		
 		$tproduit = new Produit();
@@ -51,7 +51,8 @@
 		$texte = str_replace("#PRODUIT_CLASSEMENT", "$classement", $texte);
 		$texte = str_replace("#PRODUIT_PRIXMIN", "$prixmin", $texte);
 		$texte = str_replace("#PRODUIT_PRIXMAX", "$prixmax", $texte);
-
+		$texte = str_replace("#PRODUIT_NOUVEAUTE", "$nouveaute", $texte);
+		$texte = str_replace("#PRODUIT_PROMO", "$promo", $texte);
 		$texte = str_replace("#PRODUIT_MOTCLE", "$motcle", $texte);
    	 	$texte = str_replace("#PRODUIT_REFORIG", "$reforig", $texte);
 		$texte = str_replace("#PRODUIT_REF", "$ref", $texte);

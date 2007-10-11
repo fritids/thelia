@@ -299,8 +299,6 @@
 			
 		}
 		
-		if(substr($rec, strlen($rec)-1) == ",") $rec = substr($rec, 0, strlen($rec)-1);
-		
 		return $rec;
 	}
 
@@ -350,8 +348,6 @@
 			$rec .= arbreBoucle_dos($row->id, $profondeur,$i);
 			
 		}
-		
-		if(substr($rec, strlen($rec)-1) == ",") $rec = substr($rec, 0, strlen($rec)-1);
 		
 		return $rec;
 	}

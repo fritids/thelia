@@ -159,6 +159,8 @@ function analyse($res){
 	if(!isset($_REQUEST['adresse'])) $adresse=""; else $adresse=$_REQUEST['adresse'];	
 	if(!isset($_REQUEST['id_rubrique'])) $id_rubrique=""; else $id_rubrique=$_REQUEST['id_rubrique'];	
 	if(!isset($_REQUEST['id_dossier'])) $id_dossier=""; else $id_dossier=$_REQUEST['id_dossier'];	
+	if(!isset($_REQUEST['nouveaute'])) $nouveaute=""; else $nouveaute=$_REQUEST['nouveaute'];	
+	if(!isset($_REQUEST['promo'])) $promo=""; else $promo=$_REQUEST['promo'];	
 	if(!isset($_REQUEST['page'])) $page=""; else $page=$_REQUEST['page'];	
 	if(!isset($_REQUEST['totbloc'])) $totbloc=""; else $totbloc=$_REQUEST['totbloc'];	
 	if(!isset($_REQUEST['id_contenu'])) $id_contenu=""; else $id_contenu=$_REQUEST['id_contenu'];	
@@ -267,18 +269,18 @@ function analyse($res){
 	// Résultat envoyé au navigateur
 
 	$res =  analyse($res);
-	
+
+    $res = filtres($res);
+
+	// inclusions des plugins filtres
+	modules_fonction("post");
+
 	if($parsephp == 1){
     	$res=str_replace('<'.'?php','<'.'?',$res);
     	$res='?'.'>'.trim($res).'<'.'?';
     	$res = eval($res);
 	}
-	
-    $res = filtres($res);
-
-	// inclusions des plugins filtres
-	modules_fonction("post");
-	
+		
 	echo $res;
 	
 	// Reset de la commande

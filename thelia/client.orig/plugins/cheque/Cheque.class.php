@@ -40,7 +40,7 @@
 		}
 	
 		function paiement($commande){
-			
+			modules_fonction("confirmation", $commande);		
 			$urlsite = new Variable();
 			$urlsite->charger("urlsite");
 
