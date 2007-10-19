@@ -50,14 +50,9 @@
 	include_once("classes/Cache.class.php");
 	include_once("classes/PluginsClassiques.class.php");
 	include_once("fonctions/parseur.php");
-	include_once("fonctions/fonctsajax.php");
-	include_once("lib/Sajax.php");
-	
-    if(isset($sajax) && $sajax == "1")
-	        include_once("lib/JSON.php");
     
 function analyse($res){
-	global $formulaire, $formconnex, $sajax;
+	global $formulaire, $formconnex;
 
 	// substition simples
 	$res = substitutions($res);	
@@ -68,9 +63,6 @@ function analyse($res){
 
 	// traitement dans le cas d'un formulaire
 	if(isset($_GET['errform']) && $_GET['errform'] == "1") $res = traitement_formulaire($res);
-		
-	// si on a un squelette comportant de l'Ajax il faut charger les div
-	if($sajax == 1) $res = chargerDiv(explode("\n", $res));
 
 	// effectue le nombre de passe nécessaire afin de traiter toutes les boucles et sous boucles
 
@@ -99,19 +91,10 @@ function analyse($res){
 	return $res;
 
 }
-		
-	  //$sajax_debug_mode = 1;
-	sajax_init(); 
-	sajax_export("gosaj");
-	sajax_export("ajoutsaj");
-	sajax_export("modifpasssaj");
-	sajax_export("modifcoordsaj");
-	sajax_handle_client_request();
 
 	// initialisation des variables du couple php/html
 	if(!isset($lang)) $lang="";
 	if(!isset($affilie)) $affilie="";
-	if(!isset($sajax)) $sajax="";	
 	if(!isset($parsephp)) $parsephp="";
 	if(!isset($securise)) $securise=0;
 	if(!isset($panier)) $panier=0;
@@ -244,17 +227,6 @@ function analyse($res){
 	$lect = file($fond);
 	if(!file_exists($fond)) { echo "Impossible d'ouvrir $fond"; exit; }
 	$res = file_get_contents($fond);
-
-	// initialisation de l'ajax
-	if($sajax == 1){
-		$sajaxjs = sajax_get_javascript();
-		if(!file_exists($fond)) { echo "Impossible d'ouvrir fonctions/fonctsajax.js"; exit; }
-		$sajaxjs .= file_get_contents("fonctions/fonctsajax.js");
-		$jsf = fopen("fonctsajaxgen.js", "w");
-		fputs($jsf, $sajaxjs);
-		fclose($jsf);
-        $res = str_replace("#SAJAX", "<script>" . $sajaxjs . "</script>" . "\n<script type=\"text/javascript\" src=\"fonctions/json.js\"></script>", $res);
-	}
 	
 	// fonctions à éxecuter avant les inclusions
 	modules_fonction("inclusion");

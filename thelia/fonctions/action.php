@@ -280,7 +280,6 @@
 			$_SESSION['navig']->promo = new Promo();
 		} 
 
-
 		$commande->port = port();	
 		if($commande->port == "" || $commande->port<0) $commande->port = 0; 	
 		

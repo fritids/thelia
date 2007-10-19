@@ -27,16 +27,33 @@
 			
 function filtrevide($texte){
 
-	 ereg("#FILTRE_vide\(([^\|]*)\|\|([^\)]*)\)", "$texte", $cut);
-	
-	if(trim($cut[2]) != "")
-		$texte = ereg_replace("#FILTRE_vide\(". $cut[1] . "\|\|" . $cut[2] . "\)", $cut[1], $texte);
-	else
-		$texte = ereg_replace("#FILTRE_vide\(". $cut[1] . "\|\|" . $cut[2] . "\)", "", $texte);
+	preg_match_all("`\#FILTRE_vide\(([^\|]+)\|\|([^\)]+)\)`", $texte, $cut);
 
-    if(strstr($texte, "#FILTRE_vide")) return filtrevide($texte);
-    else return $texte;
+	$tab1 = "";
+	$tab2 = "";
 
+	for($i=0; $i<count($cut[2]); $i++){
+	        if(trim($cut[1][$i]) != ""){
+	                $tab1[$i] = "#FILTRE_vide(" . $cut[1][$i] . "||" . $cut[2][$i] . ")";
+	                $tab2[$i] = $cut[2][$i];
+
+	        }
+
+	}
+
+	$i++;
+
+	preg_match_all("`\#FILTRE_vide\(\|([^\)]+)\)`", $texte, $cut);
+
+	for($j=0;$j<count($cut[1]);$j++){
+	        $tab1[$i] = "#FILTRE_vide(|" . $cut[1][$j] . ")";
+	        $tab2[$i] = "";
+
+	        $i++;
+	}
+	$texte = str_replace($tab1, $tab2, $texte);
+
+	return $texte;
 }
 	
 ?>

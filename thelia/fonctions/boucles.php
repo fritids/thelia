@@ -333,7 +333,7 @@
 					
 					if(!$largeur && !$hauteur) 
 						$temp = str_replace("#IMAGE", "client/gfx/photos/produit/" . $image->fichier, $temp);
-					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
+					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
 					
 					$temp = str_replace("#FICHIER",  "client/gfx/photos/produit/" . $image->fichier, $temp);
 
@@ -347,7 +347,7 @@
 			
 					if(!$largeur && !$hauteur) 
 						$temp = str_replace("#IMAGE", "client/gfx/photos/rubrique/" . $image->fichier, $temp);
-					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
+					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
 				
 					$temp = str_replace("#FICHIER",  "client/gfx/photos/rubrique/" . $image->fichier, $temp);
 
@@ -361,7 +361,7 @@
 			
 					if(!$largeur && !$hauteur) 
 						$temp = str_replace("#IMAGE", "client/gfx/photos/dossier/" . $image->fichier, $temp);
-					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
+					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
 					
 					$temp = str_replace("#FICHIER",  "client/gfx/photos/dossier/" . $image->fichier, $temp);
 
@@ -375,7 +375,7 @@
 					
 					if(!$largeur && !$hauteur) 
 						$temp = str_replace("#IMAGE", "client/gfx/photos/contenu/" . $image->fichier, $temp);
-					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur". "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp; miroir=" . "$miroir", $temp);
+					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur". "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
 					
 						$temp = str_replace("#FICHIER",  "client/gfx/photos/contenu/" . $image->fichier, $temp);
 

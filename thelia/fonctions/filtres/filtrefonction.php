@@ -26,15 +26,21 @@
 <?php
 		
 function filtre_fonction($texte, $nom, $fonction){
-	
-	ereg("#FILTRE_$nom\(([^\)]*)\)", "$texte", $cut);
-    
-    $modif = $fonction($cut[1]);
 
-    $texte = ereg_replace("#FILTRE_$nom\(". $cut[1] . "\)", $modif, $texte);
+    preg_match_all("`\#FILTRE_$nom\(([^\)]+)\)`", $texte, $cut);
 
-	if(strstr($texte, "#FILTRE_$nom")) return filtretexte($texte, $nom, $fonction);
-    else return $texte;
+    $tab1 = "";
+    $tab2 = "";
+
+    for($i=0; $i<count($cut[1]); $i++){
+                    $tab1[$i] = "#FILTRE_$nom(" . $cut[1][$i] . ")";
+                    $tab2[$i] = $fonction($cut[1][$i]);
+    }
+
+
+    $texte = str_replace($tab1, $tab2, $texte);
+    return $texte;
+
 }
 
 	

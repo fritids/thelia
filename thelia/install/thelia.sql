@@ -897,7 +897,8 @@ INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES
 (264, 0, 10, 0, 0),
 (265, 0, 11, 0, 0),
 (266, 0, 11, 0, 0),
-(267, 0, 11, 0, 0);
+(267, 0, 11, 0, 0),
+(268, 0, 11, 0, 0);
 -- --------------------------------------------------------
 
 -- 
@@ -1708,6 +1709,9 @@ INSERT INTO `paysdesc` VALUES (831, 266, 3, 'Polynésie française', '', '');
 INSERT INTO `paysdesc` VALUES (832, 267, 1, 'Wallis-et-Futuna', '', '');
 INSERT INTO `paysdesc` VALUES (833, 267, 2, 'Wallis-et-Futuna', '', '');
 INSERT INTO `paysdesc` VALUES (834, 267, 3, 'Wallis-et-Futuna', '', '');
+INSERT INTO `paysdesc` VALUES (835, 268, 1, 'USA - Alabama', '', '');
+INSERT INTO `paysdesc` VALUES (836, 268, 2, 'USA - Alabama', '', '');
+INSERT INTO `paysdesc` VALUES (837, 268, 3, 'USA - Alabama', '', '');
 
 -- --------------------------------------------------------
 

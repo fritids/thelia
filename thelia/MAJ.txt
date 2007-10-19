@@ -13,3 +13,5 @@ Soyez donc prudent avec votre fichier classes/Cnx.class.php lorsque vous écrasez
 Sauvegardez-le préalablement.
 
 Avant une mise à jour, il est de toutes façons toujours conseillé de procéder à une sauvegarde.
+
+Copiez le répertoire client.orig/gfx/utilisateur dans votre répertoire client/gfx
