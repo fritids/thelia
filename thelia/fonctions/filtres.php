@@ -27,6 +27,7 @@
 
 	include_once(realpath(dirname(__FILE__)) . "/filtres/filtrevide.php");
 	include_once(realpath(dirname(__FILE__)) . "/filtres/filtrefonction.php");
+	include_once(realpath(dirname(__FILE__)) . "/filtres/filtrevraifaux.php");
 	
 						 
 	function filtres($texte){
@@ -35,6 +36,8 @@
 		if(strstr($texte, "#FILTRE_min")) $texte = filtre_fonction($texte, "min", "strtolower");	
 		if(strstr($texte, "#FILTRE_maj")) $texte = filtre_fonction($texte, "maj", "strtoupper");			
 		if(strstr($texte, "#FILTRE_sanstags")) $texte = filtre_fonction($texte, "sanstags", "strip_tags");			
+		if(strstr($texte, "#FILTRE_vrai")) $texte = filtrevrai($texte);				
+		if(strstr($texte, "#FILTRE_faux")) $texte = filtrefaux($texte);				
 	
 			
 		return $texte;

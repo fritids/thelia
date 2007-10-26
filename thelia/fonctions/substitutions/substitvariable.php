@@ -30,14 +30,22 @@
 
 	function substitvariable($texte){
 
-		 ereg("#VARIABLE\(([^\)]*)\)", "$texte", $cut);
+	    preg_match_all("`\#VARIABLE\(([^\)]+)\)`", $texte, $cut);
 
-        $variable = new Variable();
-        $variable->charger($cut[1]);
+	    $tab1 = "";
+	    $tab2 = "";
 
-        $texte = ereg_replace("#VARIABLE\(" . $cut[1] . "\)", "$variable->valeur", $texte);
-        if(strstr($texte, "#VARIABLE")) return substitvariable($texte);
-        else return $texte;
+	    for($i=0; $i<count($cut[1]); $i++){
+
+	        $variable = new Variable();
+	        $variable->charger($cut[1][$i]);
+	        $tab1[$i] = "#VARIABLE(" . $cut[1][$i] . ")";
+	        $tab2[$i] = $variable->valeur;
+	    }
+
+	    $texte = str_replace($tab1, $tab2, $texte);
+	    return $texte;
+
 	}
 
 ?>

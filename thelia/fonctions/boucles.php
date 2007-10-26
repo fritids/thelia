@@ -1475,17 +1475,33 @@
 		$res="";
 		
 		$id = lireTag($args, "id");		
+		$nom = lireTag($args, "nom");		
+		$exclusion = lireTag($args, "exclusion");		
+
 		$search ="";
 	
 		// preparation de la requete
 		if($id!="")  $search.=" and id=\"$id\"";
-	
-		$modules = new Modules();
+		if($nom!="")  $search.=" and nom=\"$nom\"";
+		
+		if($exclusion!=""){
+			$liste="";
+			$tabexcl = explode(",", $exclusion);
+			for($i=0;$i<count($tabexcl);$i++)
+				$liste .= "'" . $tabexcl[$i] . "'" . ",";
+			if(substr($liste, strlen($liste)-1) == ",")
+				$liste = substr($liste, 0, strlen($liste)-1);
+				
+			$search.=" and nom not in ($liste)";
+		} 
+		
+		
+ 		$modules = new Modules();
 		
 		$query = "select * from $modules->table where type='1' and actif='1' $search order by classement";
 		$resul = mysql_query($query, $modules->link);
-	
 		$nbres = mysql_numrows($resul);
+	
 		if(!$nbres) return "";
 		
 
@@ -2283,7 +2299,6 @@
 
 		$query = "select * from $tdeclidisp->table where 1 $search";
 		$resul = mysql_query($query, $tdeclidisp->link);
-		
 		
 		$i=0;
 				

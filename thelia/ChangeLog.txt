@@ -12,7 +12,10 @@
 	remplacement de tinymce par tinymcpuk (gestionnaire de fichiers en plus pour les images). Pensez à lire le fichier maj.txt
 	corrections du template de base
 	Suppression de la partie sajax, choix d'utiliser des librairies adaptées à la place. Plus simple pour le débogage
-	
+	Correction des méthodes getTitre, getChapo, getDescription (classe Plugin)
+	Ajout des attributs exclusion, nom sur la boucle PAIEMENT
+	La langue est parametrable dans le fichier php ($lang=2 par ex)
+
 1.3.2
 	correction problème code promo (date expiration)
 	correction substitution dossier

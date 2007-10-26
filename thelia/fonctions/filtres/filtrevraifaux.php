@@ -24,83 +24,54 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/Cache.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/Modulesdesc.class.php");
+			
+function filtrevrai($texte){
+
+	preg_match_all("`\#FILTRE_vrai\(([^\|]+)\|\|([^\)]+)\)`", $texte, $cut);
+
+	$tab1 = "";
+	$tab2 = "";
+
+	for($i=0; $i<count($cut[2]); $i++){
+	        if(trim($cut[1][$i]) == "1"){
+	                $tab1[$i] = "#FILTRE_vrai(" . $cut[1][$i] . "||" . $cut[2][$i] . ")";
+	                $tab2[$i] = $cut[2][$i];
+	        }
 	
-	class Plugins extends Baseobj{
-		
-		var $nom_plugin;
+			else{
+                $tab1[$i] = "#FILTRE_vrai(" . $cut[1][$i] . "||" . $cut[2][$i] . ")";
+                $tab2[$i] = "";
+			}
 
-		function Plugins($nom=""){
-			$this->Baseobj();	
-			$this->nom_plugin = $nom;			
-		}
-		
-		function init(){
-			
-		}
-
-		function destroy(){
-			
-		}		
-		
-		function getTitre(){
-			
-			if($_SESSION['navig']->lang == "")
-				$lang="1";
-			else $lang=$_SESSION['navig']->lang;
-
-			$modulesdesc = new Modulesdesc();
-			$modulesdesc->charger($this->nom_plugin, $lang);
-			
-			return $modulesdesc->titre;
-			
-		}
-				
-		function getChapo(){
-
-			if($_SESSION['navig']->lang == "")
-					$lang="1";
-				else $lang=$_SESSION['navig']->lang;
-		
-				$modulesdesc = new Modulesdesc();
-				$modulesdesc->charger($this->nom_plugin, $lang);
-
-				return $modulesdesc->chapo;
-		}
-		
-		function getDescription(){
-
-			if($_SESSION['navig']->lang == "")
-				$lang="1";
-			else $lang=$_SESSION['navig']->lang;
-			
-			$modulesdesc = new Modulesdesc();
-			$modulesdesc->charger($this->nom_plugin, $lang);
-			
-			return $modulesdesc->description;		
-		}
-
-		function ajout_desc($titre, $chapo, $description, $lang=1, $devise=""){
-					
-			$modulesdesc = new Modulesdesc();
-			$res = $modulesdesc->verif($this->nom_plugin, $lang);
-			
-			$modulesdesc->plugin = $this->nom_plugin;
-			$modulesdesc->titre = $titre;
-			$modulesdesc->chapo = $chapo;
-			$modulesdesc->description = $description;
-			$modulesdesc->lang = $lang;
-			$modulesdesc->devise = $devise;
-			
-			if($res)
-				$modulesdesc->maj();
-			else $modulesdesc->add();
-			
-			
-		}
-		
 	}
 
+	$texte = str_replace($tab1, $tab2, $texte);
+
+	return $texte;
+}
+
+function filtrefaux($texte){
+
+	preg_match_all("`\#FILTRE_faux\(([^\|]+)\|\|([^\)]+)\)`", $texte, $cut);
+
+	$tab1 = "";
+	$tab2 = "";
+
+	for($i=0; $i<count($cut[2]); $i++){
+	        if(trim($cut[1][$i]) == "0"){
+	                $tab1[$i] = "#FILTRE_faux(" . $cut[1][$i] . "||" . $cut[2][$i] . ")";
+	                $tab2[$i] = $cut[2][$i];
+	        }
+
+			else{
+                $tab1[$i] = "#FILTRE_faux(" . $cut[1][$i] . "||" . $cut[2][$i] . ")";
+                $tab2[$i] = "";
+			}
+	}
+
+	$texte = str_replace($tab1, $tab2, $texte);
+
+	return $texte;
+}
+	
 ?>
