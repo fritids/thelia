@@ -995,7 +995,6 @@
 			$aleatoire = lireTag($args, "aleatoire");
 			$produit = lireTag($args, "produit");
 			$rubrique = lireTag($args, "rubrique");
-			$asso = lireTag($args, "asso");
 			$profondeur = lireTag($args, "profondeur");		
 			$courant = lireTag($args, "courant");			
 			$exclusion = lireTag($args, "exclusion");	
@@ -1062,21 +1061,8 @@
 				$type="";
 			}
 
-			if($asso != ""){
-				$contenuassoc = new Contenuassoc();
-				$query = "select * from $contenuassoc->table where contenu=\"" . $asso . "\"";
-				$resul = mysql_query($query, $contenuassoc->link);
-				while($row = mysql_fetch_object($resul)) 
-					$liste .= "'" . $row->contenu . "',"; 
-					
-					
-				$liste = substr($liste, 0, strlen($liste)-1);
-				if($liste != "") $search .= " and id in ($liste)";	
-				else $search .= " and id in ('')";				
-				
-			}
-			
-			 if($aleatoire) $order = "order by "  . " RAND()";
+		
+			if($aleatoire) $order = "order by "  . " RAND()";
 			else if($classement == "manuel") $order = "order by classement";
 			else if($classement == "inverse") $order = "order by classement desc";
 			
@@ -1161,6 +1147,51 @@
 	}
 
 
+	function boucleContenuassoc($texte, $args){
+        $objet = lireTag($args, "objet");
+        $typeobj = lireTag($args, "typeobj");
+        $contenu = lireTag($args, "contenu");
+        $classement = lireTag($args, "contenu");
+        $num = lireTag($args, "num");
+      	$deb = lireTag($args, "deb");
+
+		$search = "";
+
+		if($objet != "")
+        	$search .= " and objet=\"$objet\"";
+
+		if($typeobj != "")
+        	$search .= " and type=\"$typeobj\"";
+
+		if($contenu != "")
+        	$search .= " and contenu=\"$contenu\"";
+
+		$order="";
+		$limit="";
+		
+		if($classement == "manuel")
+			$order = "order by classement";
+		
+		$contenuassoc = new Contenuassoc();
+		$query = "select * from $contenuassoc->table where 1 $search";
+		$resul = mysql_query($query, $contenuassoc->link);
+		
+		if(! mysql_numrows($resul))
+			return "";
+			
+		while($row = mysql_fetch_object($resul)){
+              $temp = str_replace("#OBJET", $row->objet, $texte);
+              $temp = str_replace("#TYPE", $row->type, $temp);
+              $temp = str_replace("#CONTENU", $row->contenu, $temp);
+
+              $res .= $temp;
+
+        }
+
+              return $res;
+		
+	}
+	
 	function bouclePage($texte, $args){
 			global $page, $id_rubrique;
 			
@@ -2426,6 +2457,7 @@
 
 			$temp = str_replace("#DECLITITRE", "$declinaisondesc->titre", $texte);
 			$temp = str_replace("#VALEUR", "$valeur", $temp);	
+			$temp = str_replace("#DECLIDISP", "$declidispdesc->declidisp", $temp);	
 			
 			$res .= $temp;				
 		}		

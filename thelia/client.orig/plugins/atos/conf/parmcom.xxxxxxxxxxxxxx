@@ -17,11 +17,11 @@ AUTO_RESPONSE_URL!http://www.monsite.com/client/plugins/atos/call_autoresponse.p
 
 # URL de retour suite a paiement refuse
 
-CANCEL_URL!http://www.monsite.com/index.php!
+CANCEL_URL!http://www.monsite.com/regret.php!
 
 # URL de retour suite a paiement accepte
 
-RETURN_URL!http://www.monsite.com/redir.php!
+RETURN_URL!http://www.monsite.com/merci.php!
 
 
 # END OF FILE

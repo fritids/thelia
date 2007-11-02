@@ -77,10 +77,41 @@ if(!isset($miroir)) $miroir="";
     // Cacul des nouvelles dimensions
          list($width_orig, $height_orig) = getimagesize($nomorig);
 
-         if($width!="" && $width_orig>$width) $height = ($width * $height_orig) / $width_orig;
+/*
+		 if($width!="" && $width_orig>$width) $height = ($width * $height_orig) / $width_orig;
 		 else $width="";
 		 if($height!="" && $height_orig>$height) $width = ($height * $width_orig) / $height_orig;
 		 else $height="";
+*/
+		 // si l'image est plus grande
+		$image_p_largeur = "";
+		$image_p_hauteur = "";
+		if ( ($width_orig > $width) || ($height_orig > $height) )
+		{
+			if (($width_orig > $width) && $width!="")
+			{
+				# Calcul 1 : la largeur
+				$facteur_div = $width_orig / $width ;
+		
+				$image_p_largeur = $width ; /* Nouvelle largeur */
+				$image_p_hauteur = $height_orig / $facteur_div ; /* Nouvelle hauteur */
+			}
+			else {
+				$image_p_largeur = $width_orig ; /* Nouvelle largeur */
+				$image_p_hauteur = $height_orig ; /* Nouvelle hauteur */
+			}
+			
+			if (($image_p_hauteur > $height) && $height!="")
+			{
+				# Calcul 2 : la hauteur
+				$facteur_div = $image_p_hauteur / $height ;
+				
+				$image_p_largeur = $image_p_largeur / $facteur_div ; /* Nouvelle largeur */
+				$image_p_hauteur = $height ; /* Nouvelle hauteur */			
+			}
+			$width = $image_p_largeur ;
+			$height = $image_p_hauteur ;
+		}
 		
 		if($width=="") $width=$width_orig;
 		if($height=="") $height=$height_orig;
@@ -96,8 +127,10 @@ if(!isset($miroir)) $miroir="";
    else if(strtolower($extension) == "jpg" || strtolower($extension) == "png"){
        
         if(strtolower($extension) == "jpg") $image_orig = imagecreatefromjpeg($nomorig);
-		else if(strtolower($extension) == "png") $image_orig = imagecreatefrompng($nomorig);
-
+		else if(strtolower($extension) == "png") {
+			$image_orig = imagecreatefrompng($nomorig);
+			imageSaveAlpha($image_orig, true);
+		}
 
    
      // Cacul des nouvelles dimensions
@@ -115,12 +148,36 @@ if(!isset($miroir)) $miroir="";
 		}
 
 
-
+		 // si l'image est plus grande
+		$image_p_largeur = "";
+		$image_p_hauteur = "";
 		
-         if($width!="" && $width_orig>$width) $height = ($width * $height_orig) / $width_orig;
-		 else $width="";
-		 if($height!="" && $height_orig>$height) $width = ($height * $width_orig) / $height_orig;
-		 else $height="";
+		if ( ($width_orig > $width) || ($height_orig > $height) )
+		{
+			if (($width_orig > $width) && $width!="")
+			{
+				# Calcul 1 : la largeur
+				$facteur_div = $width_orig / $width ;
+		
+				$image_p_largeur = $width ; /* Nouvelle largeur */
+				$image_p_hauteur = $height_orig / $facteur_div ; /* Nouvelle hauteur */
+			}
+			else {
+				$image_p_largeur = $width_orig ; /* Nouvelle largeur */
+				$image_p_hauteur = $height_orig ; /* Nouvelle hauteur */
+			}
+			
+			if (($image_p_hauteur > $height) && $height!="")
+			{
+				# Calcul 2 : la hauteur
+				$facteur_div = $image_p_hauteur / $height ;
+				
+				$image_p_largeur = $image_p_largeur / $facteur_div ; /* Nouvelle largeur */
+				$image_p_hauteur = $height ; /* Nouvelle hauteur */			
+			}
+			$width = $image_p_largeur ;
+			$height = $image_p_hauteur ;
+		}
 		
 		if($width=="") $width=$width_orig;
 		if($height=="") $height=$height_orig;
@@ -132,7 +189,6 @@ if(!isset($miroir)) $miroir="";
 
 
   // Redimensionnement
-
   imagecopyresampled($image_new, $image_orig, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
 
 	// Noir et blanc
@@ -187,8 +243,8 @@ if(!isset($miroir)) $miroir="";
      }            
 
         else if(strtolower($extension) == "png"){
-           		 imagepng($image_new, "../$nomcache", 100);
-                 imagepng($image_new, null, 100);
+           		 imagepng($image_new, "../$nomcache");
+                 imagepng($image_new);
      }   
      
   }

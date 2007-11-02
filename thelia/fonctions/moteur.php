@@ -189,7 +189,10 @@ function analyse($res){
 	
 	// Affiliation
 	if($affilie != "") $_SESSION["navig"]->affilie = $affilie;
-	
+
+	// fonctions à éxecuter avant le moteur
+	modules_fonction("demarrage");
+		
 	// Actions
 
 	switch($action){

@@ -344,6 +344,7 @@
 			 	 case 'RUBRIQUE' : $res .= boucleRubrique($texte, $args); break;
 			 	 case 'DOSSIER' : $res .= boucleDossier($texte, $args); break;
 			 	 case 'CONTENU' : $res .= boucleContenu($texte, $args); break;
+			 	 case 'CONTENUASSOC' : $res .= boucleContenuassoc($texte, $args); break;	
 			 	 case 'PRODUIT' : $res .= boucleProduit($texte, $args); break;
 			 	 case 'PAGE' : $res .= bouclePage($texte, $args); break;
 			 	 case 'PANIER' : $res .= bouclePanier($texte, $args); break;			 	 
