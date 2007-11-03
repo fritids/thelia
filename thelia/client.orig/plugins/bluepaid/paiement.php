@@ -45,7 +45,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <title>
-  Paiement PayPal
+  Paiement Bluepaid
 </title>
 </head>
 <body onload="document.getElementById('formbluepaid').submit();">
