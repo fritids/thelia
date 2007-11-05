@@ -1,0 +1,7 @@
+Ce plugin PAYBOX permet de gérer un nombre important de paiement sécurisé bancaire.
+
+
+INSTALLATION
+============
+
+Editez le fichier config.php et remplacez les valeurs par les valeurs fournies par paybox.
