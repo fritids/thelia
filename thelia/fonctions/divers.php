@@ -331,6 +331,37 @@
 		return $rec;
 	}
 
+	function arbreOptionRub($depart, $niveau, $prubrique){
+
+		$rec="";
+		$espace="";
+		
+		$niveau++;
+		$trubrique = new Rubrique();
+		$trubriquedesc = new Rubriquedesc();
+		
+		$query = "select * from $trubrique->table where parent=\"$depart\"";
+		$resul = mysql_query($query, $trubrique->link);
+		
+		for($i=0; $i<$niveau; $i++) $espace .="&nbsp;&nbsp;&nbsp;";
+
+		while($row=mysql_fetch_object($resul)){
+			$trubriquedesc->charger($row->id);
+			$courante = new Rubrique();
+			$courante->charger($prubrique);
+			if($courante->parent == $trubriquedesc->rubrique) $selected="selected"; else $selected="";
+			
+			if($courante->id != $row->id)
+				$rec .= "<option value=\"$row->id\" $selected>" . $espace . $trubriquedesc->titre . "</option>";
+			
+			$rec .= arbreOptionRub($row->id, $niveau, $prubrique);
+			
+		}
+		
+		
+		return $rec;
+	}
+
 	// hiérarchie des dossiers
 	function arbreBoucle_dos($depart, $profondeur=0, $i=0){
 

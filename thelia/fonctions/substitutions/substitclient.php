@@ -52,7 +52,8 @@
 		
 		if($_SESSION['navig']->client->id != "") $idclient = $_SESSION['navig']->client->id;
 		else $idclient="0";
-		
+
+		$texte = str_replace("#CLIENT_IDPAYS", $_SESSION['navig']->client->pays, $texte);		
 		$texte = str_replace("#CLIENT_ID", $idclient, $texte);
 		$texte = str_replace("#CLIENT_REF", $_SESSION['navig']->client->ref, $texte);
 		if(isset($raison[$_SESSION['navig']->client->raison])) $texte = str_replace("#CLIENT_RAISON", $raison[$_SESSION['navig']->client->raison], $texte);
@@ -65,7 +66,6 @@
 		$texte = str_replace("#CLIENT_ADRESSE3", $_SESSION['navig']->client->adresse3, $texte);
 		$texte = str_replace("#CLIENT_CPOSTAL", $_SESSION['navig']->client->cpostal, $texte);
 		$texte = str_replace("#CLIENT_VILLE", strtoupper($_SESSION['navig']->client->ville), $texte);
-		$texte = str_replace("#CLIENT_IDPAYS", $_SESSION['navig']->client->pays, $texte);
 		$texte = str_replace("#CLIENT_PAYS", $paysdesc->titre, $texte);
 		$texte = str_replace("#CLIENT_EMAIL", $_SESSION['navig']->client->email, $texte);
 		$texte = str_replace("#CLIENT_TELFIXE", $_SESSION['navig']->client->telfixe, $texte);

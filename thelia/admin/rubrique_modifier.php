@@ -50,7 +50,7 @@
 	
 	switch($action){
 		case 'modclassement' : modclassement($id, $parent, $type); break;
-		case 'modifier' : modifier($id, $lang, $titre, $chapo, $description, $lien, $ligne); break;
+		case 'modifier' : modifier($id, $parent, $lang, $titre, $chapo, $description, $lien, $ligne); break;
 		case 'ajouter' : ajouter($parent, $lang, $titre, $chapo, $description, $lien, $ligne); break;
 		case 'supprimer' : supprimer($id, $parent);
 		case 'supprimg': supprimg($id);
@@ -115,7 +115,7 @@
 
 	}
 	
-	function modifier($id, $lang, $titre, $chapo, $description, $lien, $ligne){
+	function modifier($id, $parent, $lang, $titre, $chapo, $description, $lien, $ligne){
 
 		$rubrique = new Rubrique();
 		$rubriquedesc = new Rubriquedesc();
@@ -131,7 +131,15 @@
 		
 		}
 		
+		if($parent != $rubrique->parent){
+			$query = "select max(classement) as maxClassement from $rubrique->table where parent='$parent'";
+			$resul = mysql_query($query, $rubrique->link);
+			$max = mysql_result($resul, 0, "maxClassement");
+			$rubrique->classement = $max+1;
+		}
+		
 		$rubrique->lien = $lien;
+		$rubrique->parent = $parent;
 		$rubriquedesc->titre = $titre;
 		$rubriquedesc->chapo = $chapo;
 		$rubriquedesc->description = $description;
@@ -395,7 +403,6 @@
   </table>
   <form action="<?php echo($_SERVER['PHP_SELF']); ?>" id="formulaire" method="post" ENCTYPE="multipart/form-data">
   <input type="hidden" name="action" value="<?php if(!$id) { ?>ajouter<?php } else { ?>modifier<?php } ?>" />
-	<input type="hidden" name="parent" value="<?php echo($parent); ?>" />
 	<input type="hidden" name="id" value="<?php echo($id); ?>" />
 	<input type="hidden" name="lang" value="<?php echo($lang); ?>" />
 	<table width="710" border="0" cellpadding="5" cellspacing="0">
@@ -423,6 +430,31 @@
         <input name="lien" type="texte" class="form" value="<?php echo($rubrique->lien); ?>"/>
       </td>
     </tr>
+
+   <?php
+	if($id != ""){
+   ?>
+	 <tr>
+      <td height="30" class="titre_cellule">APPARTENANCE (rubrique p&egrave;re) </td>
+      <td class="cellule_sombre">
+        <select name="parent" class="form">    
+    	 <option value="0">-- Racine --</option>
+         <?php 
+          echo arbreOptionRub(0, 1, $id); 
+		 ?>
+          </select>
+        </span></td>
+    </tr>
+  <?
+	} else {
+		
+   ?>
+	<input type="hidden" name="parent" value="<?php echo($parent); ?>" />
+
+  <?php
+	}
+  ?>
+	
 	 <tr>
       <td width="250" height="30" class="titre_cellule">CONTENUS ASSOCIES :</td>
       <td width="440" class="cellule_claire">

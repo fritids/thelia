@@ -78,7 +78,7 @@
 			
 				<?php 
 					$err=0;
-					$liste = array("../", "../classes", "../client.orig", "../client.orig/cache", "../client.orig/commande", "../client.orig/document",  "../client.orig/plugins", "../client.orig/gfx", "../client.orig/gfx/photos", "../client.orig/gfx/photos/produit", "../client.orig/gfx/photos/rubrique", "../client.orig/gfx/photos/contenu", "../client.orig/gfx/photos/dossier");
+					$liste = array("../", "../classes", "../client.orig", "../client.orig/cache", "../client.orig/commande", "../client.orig/document",  "../client.orig/plugins", "../client.orig/gfx", "../client.orig/gfx/photos", "../client.orig/gfx/photos/produit", "../client.orig/gfx/photos/rubrique", "../client.orig/gfx/photos/contenu", "../client.orig/gfx/photos/dossier", "../client.orig/gfx/Image", "../client.orig/gfx/utilisateur/Flash");
 				?>
 				
 				<?php 

@@ -40,6 +40,7 @@
     include_once("../classes/Lang.class.php");  
 	include_once("../classes/Declidisp.class.php");
 	include_once("../classes/Rubdeclinaison.class.php");
+	include_once("../classes/Rubrique.class.php");
 	include_once("../classes/Cache.class.php");	
 ?>
 <?php
@@ -199,6 +200,17 @@
 
 	}
 
+	 $rubrique = new Rubrique();
+	 $query = "select * from $rubrique->table";
+	 $resul = mysql_query($query, $rubrique->link);
+	 
+	 while($row = mysql_fetch_object($resul)){
+		$rubdeclinaison = new Rubdeclinaison();
+		$rubdeclinaison->rubrique = $row->id;
+		$rubdeclinaison->declinaison = $lastid;
+		$rubdeclinaison->add();
+	 }
+		
 	$cache = new Cache();
 	$cache->vider("DECLINAISON", "%");		
 	$cache->vider("DECLIDISP", "%");

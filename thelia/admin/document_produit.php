@@ -239,7 +239,6 @@ body {
 				$documentdesc->charger($row->id);
         ?>
                 
-	 <tr>
 	<tr>
     <td colspan="2" height="1" class="fond_CDCDCD"></td>
     </tr>
@@ -248,7 +247,6 @@ body {
 		<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 		<input type="hidden" name="action" value="modifier" />
 		<input type="hidden" name="id" value="<?php echo $row->id; ?>" />
-		<input type="hidden" name="contid" value="<?php echo $contid; ?>" />
 	    <input type="hidden" name="ref" value="<?php echo($ref); ?>" />
 
 			Titre : <br />

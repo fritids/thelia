@@ -40,6 +40,7 @@
 	switch($action){
 		case 'modclassement' : modclassement($id, $rubid, $type); break;		
 		case 'ajouter' : ajouter($rubrique, $_FILES['doc']['tmp_name'], $_FILES['doc']['name']); break;
+		case 'modifier' : modifier($id, $titre, $chapo, $description); break;
 		case 'supprimer' : supprimer($id);
 
 	}
@@ -121,6 +122,29 @@
 		$cache->vider("RUBRIQUE", "%");
 	}
 
+	function modifier($id, $titre, $chapo, $description){
+	
+		$documentdesc = new Documentdesc();
+		$documentdesc->document = $id;
+		$documentdesc->lang = "1";
+	
+		$documentdesc->charger($id);
+		
+		$documentdesc->titre = $titre;
+		$documentdesc->chapo = $chapo;
+		$documentdesc->description = $description;
+	
+		if(!$documentdesc->id)
+			$documentdesc->add();
+		else 
+			$documentdesc->maj();
+
+		$cache = new Cache();
+		$cache->vider("DOCUMENT", "%");		
+		$cache->vider("PRODUIT", "%");
+		$cache->vider("RUBRIQUE", "%");		
+	}
+
 
 	function supprimer($id){
 		
@@ -191,7 +215,6 @@ body {
   <table width="100%"  border="0" cellpadding="0" cellspacing="2" class="fond_F0F0F0">
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" ENCTYPE="multipart/form-data">
 	<input type="hidden" name="action" value="ajouter" />
-	<input type="hidden" name="id" value="<?php echo($id); ?>" /> 
  	<input type="hidden" name="rubid" value="<?php echo($rubid); ?>" /> 
     <tr>
       <td  width="40%" align="left" valign="middle" class="arial11_bold_626262">Ajouter un document:</td>
@@ -214,17 +237,35 @@ body {
 			while($row = mysql_fetch_object($resul)){
 				$documentdesc->charger($row->id);
         ?>
-                
-	 <tr>
-      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php echo($row->fichier); ?></a></td>
-      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><div align="center"><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&action=modclassement&type=M&rubid=".$rubrique->id; ?>"><img src="gfx/bt_flecheh.gif" border="0"></a><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&action=modclassement&type=D&rubid=".$rubrique->id; ?>"><img src="gfx/bt_flecheb.gif" border="0"></a></div></td>      
-      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?id=<?php echo($row->id); ?>&rubid=<?php echo($rubrique->id); ?>&action=supprimer"  class="txt_vert_11">Supprimer</a></td>
+   
+			<tr>
+		    <td colspan="2" height="1" class="fond_CDCDCD"></td>
+		    </tr>
+		      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php echo($row->fichier); ?></a></td>
+		  	  <td width="20%">
+				<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+				<input type="hidden" name="action" value="modifier" />
+				<input type="hidden" name="id" value="<?php echo $row->id; ?>" />
+				<input type="hidden" name="rubid" value="<?php echo $rubid; ?>" />
 
-      <td width="60%">&nbsp;</td>
-	 </tr>
-	<tr>
-    <td colspan="2" height="1" class="fond_CDCDCD"></td>
-    </tr>
+
+					Titre : <br />
+					<input type="text" name="titre" size="35" value="<?php echo $documentdesc->titre ?>" /> <br /><br />
+					Chapo : <br />
+					<textarea name="chapo" rows="3" cols="40"><?php echo $documentdesc->chapo ?></textarea>
+					Description : <br />
+					<textarea name="description" rows="10" cols="40"><?php echo $documentdesc->description ?></textarea>
+					<input type="submit" value="Enregistrer" />
+				</form>
+			  </td>	
+		      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><div align="center"><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&ref=$ref&action=modclassement&type=M&produit=".$produit->id; ?>"><img src="gfx/bt_flecheh.gif" border="0"></a><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&ref=$ref&action=modclassement&type=D&produit=".$produit->id; ?>"><img src="gfx/bt_flecheb.gif" border="0"></a></div></td>      
+		      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?id=<?php echo($row->id); ?>&ref=<?php echo($ref); ?>&action=supprimer"  class="txt_vert_11">Supprimer</a></td>
+
+		      <td width="60%">&nbsp;</td>
+			 </tr>
+			<tr>
+		    <td colspan="2" height="1" class="fond_CDCDCD"></td>
+		    </tr>
                 
                
    <?php

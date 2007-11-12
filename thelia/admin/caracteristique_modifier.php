@@ -35,6 +35,7 @@
 	include_once("../classes/Lang.class.php");  
 	include_once("../classes/Caracdisp.class.php");
 	include_once("../classes/Rubcaracteristique.class.php");
+	include_once("../classes/Rubrique.class.php");
 
  	include_once("../classes/Cache.class.php");
 
@@ -181,13 +182,24 @@
 	 
 	 $caracteristiquedesc->add();
 
-		$cache = new Cache();
-		$cache->vider("CARACTERISTIQUE", "%");		
-		$cache->vider("CARACDISP", "%");
-		$cache->vider("CARACVAL", "%");
-		$cache->vider("PRODUIT", "%");
+	 $rubrique = new Rubrique();
+	 $query = "select * from $rubrique->table";
+	 $resul = mysql_query($query, $rubrique->link);
+	 
+	 while($row = mysql_fetch_object($resul)){
+		$rubcaracteristique = new Rubcaracteristique();
+		$rubcaracteristique->rubrique = $row->id;
+		$rubcaracteristique->caracteristique = $lastid;
+		$rubcaracteristique->add();
+	 }
+	
+	 $cache = new Cache();
+  	 $cache->vider("CARACTERISTIQUE", "%");		
+	 $cache->vider("CARACDISP", "%");
+	 $cache->vider("CARACVAL", "%");
+	 $cache->vider("PRODUIT", "%");
 		
-	   header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
+	 header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
 
 	}
 	

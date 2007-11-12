@@ -25,7 +25,7 @@
 ?>
 <?php
 include_once("pre.php");
-if( isset($_SESSION['navig']) && (($_SESSION['navig']->client->id != $commande->client) || ($commande->statut<2)) && !$_SESSION["util"]->id)   exit;
+if((($_SESSION['navig']->client->id != $commande->client) || ($commande->statut<2)) && !$_SESSION["util"]->id)   exit;
 
 ?>
 <?php

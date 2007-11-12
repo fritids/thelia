@@ -737,6 +737,9 @@
 			/* Demande de caracteristiques */
 			if($caracdisp != ""){
 			
+			if(! strstr($caracteristique, "-")) $caracteristique .= "-";
+			if(! strstr($caracdisp, "-")) $caracdisp .= "-";
+			
 			$lcaracteristique = explode("-", $caracteristique);
 			$lcaracdisp = explode("-", $caracdisp);
 			
@@ -803,6 +806,10 @@
 			/* Demande de declinaisons */
 			if($declidisp != ""){
 
+			if(! strstr($declinaison, "-")) $declinaison .= "-";
+			if(! strstr($declidisp, "-")) $declidisp .= "-";
+			if(! strstr($ldeclistockmini, "-")) $ldeclistockmini .= "-";
+				
 			$ldeclinaison = explode("-", $declinaison);
 			$ldeclidisp = explode("-", $declidisp);
 			$ldeclistockmini = explode("-", $declistockmini);
