@@ -1841,7 +1841,7 @@
 				$temp = str_replace("#CARACDISP", $row->caracdisp, $temp);
 				if($row->caracdisp != 0){
 					$caracdispdesc = new Caracdispdesc();
-					$caracdispdesc->charger_caracdisp($row->caracdisp);
+					$caracdispdesc->charger_caracdisp($row->caracdisp, $_SESSION['navig']->lang);
 					if($valeur != "" && (($different == 0 && $caracdispdesc->caracdisp != $valeur) || ($different == 1 && $caracdispdesc->caracdisp == $valeur))) continue;
 					$temp = str_replace("#VALEUR", $caracdispdesc->titre, $temp);
 					
@@ -1992,19 +1992,18 @@
 	
 	
 		// récupération des arguments
-
+		$commande_id = lireTag($args, "id");		
 		$commande_ref = lireTag($args, "ref");		
 		$client_id = lireTag($args, "client");
 		$statut = lireTag($args, "statut");
 		$classement = lireTag($args, "classement");
 		
-		if($commande_ref == "" && $client_id == "") return;
-
 		$search ="";
 		$order="";
 		$res="";
 		
 		// preparation de la requete
+		if($commande_id!="")  $search.=" and id=\"$commande_id\"";		
 		if($commande_ref!="")  $search.=" and ref=\"$commande_ref\"";
 		if($client_id!="")  $search.=" and client=\"$client_id\"";
 		if($statut!="" && $statut!="paye")  $search.=" and statut=\"$statut\"";
@@ -2032,7 +2031,14 @@
   			$heure = substr($row->date, 11, 2);
   			$minute = substr($row->date, 14, 2);
   			$seconde = substr($row->date, 17, 2);
-  		
+
+			$jour_livraison = substr($row->datelivraison, 8, 2);
+			$mois_livraison = substr($row->datelivraison, 5, 2);
+			$annee_livraison = substr($row->datelivraison, 0, 4);
+	
+			$datelivraison = $jour_livraison . "/" . $mois_livraison . "/" . $annee_livraison;
+	
+			  		
   			$query2 = "SELECT sum(prixu*quantite) as total FROM $venteprod->table where commande='$row->id'"; 
   			$resul2 = mysql_query($query2, $venteprod->link);
   			$total = round(mysql_result($resul2, 0, "total"), 2);
@@ -2045,11 +2051,11 @@
 
 			$temp = str_replace("#ID", "$row->id", $texte);
 			$temp = str_replace("#ADRESSE", "$row->adresse", $temp);
+			$temp = str_replace("#DATELIVRAISON", "$datelivraison", $temp);
 			$temp = str_replace("#DATE", $jour . "/" . $mois . "/" . $annee, $temp);
 			$temp = str_replace("#REF", "$row->ref", $temp);
 			$temp = str_replace("#LIVRAISON", "$row->livraison", $temp);
 			$temp = str_replace("#FACTURE", "$row->facture", $temp);
-			$temp = str_replace("#DATELIVRAISON", "$row->datelivraison", $temp);
 			$temp = str_replace("#PAIEMENT", "$row->paiement", $temp);
 			$temp = str_replace("#REMISE", "$row->remise", $temp);
 			$temp = str_replace("#STATUT", "$statutdesc->titre", $temp);

@@ -90,7 +90,7 @@ function supprimer_rubrique(id, parent){
 
     <?php
   	$client = new Client();
-  	$search="and nom like '%$motcle%' or prenom like '%$motcle%' or ville like '%$motcle%'";
+ 	$search="and nom like '%$motcle%' or prenom like '%$motcle%' or ville like '%$motcle%' or email like '%$motcle%'";
   	
  	$query = "select * from $client->table where 1 $search";
   	$cliresul = mysql_query($query, $client->link);

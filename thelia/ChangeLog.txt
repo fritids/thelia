@@ -16,6 +16,9 @@
 	La langue est parametrable dans le fichier php ($lang=2 par ex)
 	ajout de la méthode "demarrage" sur les plugins. Elle est appelée avant les actions
 	maj du module paybox
+	Correction de client/rss/cmd.php
+	Correction de filtrefonction.php
+	Modification du moteur de recherche dans l'interface d'admin
 	
 1.3.2
 	correction problème code promo (date expiration)
@@ -49,6 +52,9 @@
 	correction d'un bug lors de la modification des infos du déclinaison (perte des valeurs associées)
 	correction de getDescription() dans les plugins qui retournait le chapo
 	simplification du template de base
+	correction de la traduction des declidispdesc
+	correction boucle commande (datelivraison)
+	maj de la boucle COMMANDE
 	
 1.3.1
 	amélioration de la fonction recherche par prixmin/prixmax

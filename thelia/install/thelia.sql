@@ -1902,7 +1902,7 @@ CREATE TABLE `statutdesc` (
   `chapo` text NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=28 ;
+) TYPE=MyISAM AUTO_INCREMENT=33 ;
 
 -- 
 -- Contenu de la table `statutdesc`
@@ -1913,6 +1913,11 @@ INSERT INTO `statutdesc` VALUES (24, 2, 1, 'payé', '', '');
 INSERT INTO `statutdesc` VALUES (25, 3, 1, 'Traitement', '', '');
 INSERT INTO `statutdesc` VALUES (26, 4, 1, 'Envoyé', '', '');
 INSERT INTO `statutdesc` VALUES (27, 5, 1, 'Annulé', '', '');
+INSERT INTO `statutdesc` VALUES (28, 1, 2, 'Not paid', '', '');
+INSERT INTO `statutdesc` VALUES (29, 2, 2, 'Paid', '', '');
+INSERT INTO `statutdesc` VALUES (30, 3, 2, 'Processed', '', '');
+INSERT INTO `statutdesc` VALUES (31, 4, 2, 'Sent', '', '');
+INSERT INTO `statutdesc` VALUES (32, 5, 2, 'Canceled', '', '');
 
 -- --------------------------------------------------------
 
@@ -2094,9 +2099,9 @@ CREATE TABLE `cache` (
   PRIMARY KEY  (`id`)
 )  AUTO_INCREMENT=1 ;
 
----
---- Structure de la table `histostock`
----
+--
+-- Structure de la table `histostock`
+--
 
 CREATE TABLE `histostock` (
   `id` int(11) NOT NULL auto_increment,

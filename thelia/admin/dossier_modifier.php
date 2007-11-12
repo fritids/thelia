@@ -313,7 +313,7 @@
     <tr>
       <td height="30" class="titre_cellule">DESCRIPTION DU DOSSIER</td>
       <td class="cellule_claire">
-                 <textarea name="description" cols="40" rows="4" class="form"><?php echo($dossierdesc->description); ?></textarea>
+                 <textarea name="description" cols="40" rows="7" class="form"><?php echo($dossierdesc->description); ?></textarea>
        </span></td>
     </tr>
     

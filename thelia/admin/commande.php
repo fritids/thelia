@@ -153,7 +153,6 @@ function supprimer(id){
 		$port = $row->port;
 		$total -= $row->remise;
 		$total += $port;
-		if($total<0) $total = 0;
 		
   		$jour = substr($row->date, 8, 2);
   		$mois = substr($row->date, 5, 2);

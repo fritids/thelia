@@ -92,7 +92,7 @@ function TesterHmac($CMCIC_Tpe, $CMCIC_bruteVars )
 // Begin Main : Retrieve Variables posted by CMCIC Payment Server 
 //              Recevoir les variables postées par le serveur bancaire
 
-$CMCIC_reqMethod  = $HTTP_SERVER_VARS["REQUEST_METHOD"];
+$CMCIC_reqMethod  = $_SERVER["REQUEST_METHOD"];
 if (($CMCIC_reqMethod == "GET") or ($CMCIC_reqMethod == "POST")) {
     $wCMCIC_bruteVars = "HTTP_".$CMCIC_reqMethod."_VARS";
     $CMCIC_bruteVars  = ${$wCMCIC_bruteVars};

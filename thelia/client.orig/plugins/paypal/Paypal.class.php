@@ -40,7 +40,7 @@
 		
 	
 		function paiement($commande){
-
+			modules_fonction("confirmation", $commande);
 			header("Location: " . "client/plugins/paypal/paiement.php");			
 		}
 	

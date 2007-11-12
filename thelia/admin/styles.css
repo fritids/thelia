@@ -164,7 +164,7 @@ background: #FFFFFF;
 	border-right-color: #2F8927;
 	border-bottom-color: #D7E9C8;
 	border-left-color: #D7E9C8;
-	overflow:hidden; zoom:1;
+	overflow:auto;
 }
 .selection_menu {
 	color: #FFFFFF;
