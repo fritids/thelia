@@ -101,6 +101,33 @@
 			
 		}
 		
+		function pre(){
+			
+			
+		}
+		
+		function action(){
+			
+			
+		}
+
+		function post(){
+			
+			
+		}
+				
+		function statut($commande){
+			
+		}
+		
+		function confirmation($commande){
+			
+		}
+		
+		function modprod($ref){
+			
+		}
+				
 	}
 
 ?>

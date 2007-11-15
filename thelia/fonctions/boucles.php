@@ -659,6 +659,7 @@
 			$profondeur = lireTag($args, "profondeur");		
 			$exclusion = lireTag($args, "exclusion");	
 			$poids = lireTag($args, "poids");
+			$stockvide = lireTag($args, "stockvide");
 						
 			if($bloc) $totbloc=$bloc;
 			if(!$deb) $deb=0;
@@ -715,7 +716,12 @@
 			if($prixmax!="") $search .= " and ((prix2<=\"$prixmax\" and promo=\"1\") or (prix<=\"$prixmax\" and promo=\"0\"))";
 			if($poids!="") $search .= " and poids<=\"$poids\"";
 			if($stockmini!="") $search .= " and stock>=\"$stockmini\"";
-						
+
+			if (""!=$stockvide) {
+				if (0 < $stockvide) { $search .= " and stock<=\"0\""; }
+				elseif (0 >= $stockvide) { $search .= " and stock>\"0\""; }
+			}
+									
 			if($refp!="") $search .= " and ref=\"$refp\"";
 
 			if($bloc == "-1") $bloc = "999999999";
@@ -2311,7 +2317,6 @@
 		}
 
 		return $res;
-	
 	}	
 
 	function boucleDeclidisp($texte, $args){

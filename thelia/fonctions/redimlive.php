@@ -77,12 +77,6 @@ if(!isset($miroir)) $miroir="";
     // Cacul des nouvelles dimensions
          list($width_orig, $height_orig) = getimagesize($nomorig);
 
-/*
-		 if($width!="" && $width_orig>$width) $height = ($width * $height_orig) / $width_orig;
-		 else $width="";
-		 if($height!="" && $height_orig>$height) $width = ($height * $width_orig) / $height_orig;
-		 else $height="";
-*/
 		 // si l'image est plus grande
 		$image_p_largeur = "";
 		$image_p_hauteur = "";
@@ -112,7 +106,13 @@ if(!isset($miroir)) $miroir="";
 			$width = $image_p_largeur ;
 			$height = $image_p_hauteur ;
 		}
-		
+
+		else
+		{
+			$width = "";
+			$height = "";
+		}
+				
 		if($width=="") $width=$width_orig;
 		if($height=="") $height=$height_orig;
 		
@@ -126,13 +126,12 @@ if(!isset($miroir)) $miroir="";
    }
    else if(strtolower($extension) == "jpg" || strtolower($extension) == "png"){
        
-        if(strtolower($extension) == "jpg") $image_orig = imagecreatefromjpeg($nomorig);
-		else if(strtolower($extension) == "png") {
+        if(strtolower($extension) == "jpg") 
+			$image_orig = imagecreatefromjpeg($nomorig);
+		else if(strtolower($extension) == "png") 
 			$image_orig = imagecreatefrompng($nomorig);
-			imageSaveAlpha($image_orig, true);
-		}
-
-   
+		
+  
      // Cacul des nouvelles dimensions
       list($width_orig, $height_orig) = getimagesize($nomorig);
 		
@@ -178,11 +177,18 @@ if(!isset($miroir)) $miroir="";
 			$width = $image_p_largeur ;
 			$height = $image_p_hauteur ;
 		}
-		
+
+		else
+		{
+			$width = "";
+			$height = "";
+		}
+				
 		if($width=="") $width=$width_orig;
 		if($height=="") $height=$height_orig;
 		
          $image_new = imagecreatetruecolor($width, $height);
+		ImageColorTransparent($image_new, ImageColorAllocate($image_new, 0, 0, 0));
 
 
    }
@@ -242,9 +248,22 @@ if(!isset($miroir)) $miroir="";
                  imagejpeg($image_new, null, 100);
      }            
 
-        else if(strtolower($extension) == "png"){
-           		 imagepng($image_new, "../$nomcache");
-                 imagepng($image_new);
+  	  else if(strtolower($extension) == "png"){
+	
+			$trnprt_indx = imagecolortransparent($image_orig);
+	 		if ($trnprt_indx >= 0) {
+	    	$trnprt_color    = imagecolorsforindex($image_orig, $trnprt_indx);
+	     	$trnprt_indx    = imagecolorallocate($image_new, $trnprt_color['red'], $trnprt_color['green'], $trnprt_color['blue']);
+	     	imagefill($image_new, 0, 0, $trnprt_indx);
+	     	imagecolortransparent($image_new, $trnprt_indx);
+	 	} else {
+	     	imagealphablending($image_new, false);
+	     	$color = imagecolorallocatealpha($image_new, 0, 0, 0, 127);
+	     	imagefill($image_new, 0, 0, $color);
+	     	imagesavealpha($image_new, true);
+	 	}
+         imagepng($image_new, "../$nomcache");
+         imagepng($image_new);
      }   
      
   }

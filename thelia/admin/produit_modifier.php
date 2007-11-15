@@ -287,7 +287,8 @@
 	$cache->vider("STOCK", "%");
 	$cache->vider("CHEMIN", "%");
 
-		
+	modules_fonction("modprod", $produit->ref);
+	
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
 	}
 

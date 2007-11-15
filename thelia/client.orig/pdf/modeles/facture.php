@@ -124,31 +124,32 @@
 			$recy = $pdf->getY();
 			$pdf->SetFont('Arial','',8);
 
-            $pdf->SetXY(107,$hauteursave);
+            $pdf->SetXY(167,$hauteursave);
             if($istva)
 				$pdf->write(5,round($venteprod->tva, 2));		
 			else 
 				$pdf->write(5,"N/A");
 			
-			$pdf->SetXY(127,$hauteursave);
+			$pdf->SetXY(125,$hauteursave);
 			if($istva)	
 	 	    	$pdf->write(5,round($venteprod->prixu/($venteprod->tva/100+1), 2)); 
 				
 			else
-				$pdf->write(5,"N/A"); 
+				$pdf->write(5,round($venteprod->prixu, 2)); 
 				
-			$pdf->SetXY(149,$hauteursave);		
-		    $pdf->write(5,$venteprod->prixu); 
+			$pdf->SetXY(148,$hauteursave);	
+			if($istva)	
+		   		$pdf->write(5,round($venteprod->prixu/($venteprod->tva/100+1), 2) * $venteprod->quantite); 
+			else
+				$pdf->write(5,round($venteprod->prixu * $venteprod->quantite, 2)); 
 			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(170,$hauteursave);		
+			$pdf->SetXY(110,$hauteursave);		
             $pdf->write(5,$venteprod->quantite); 
 			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(183,$hauteursave);	
+			$pdf->SetXY(184,$hauteursave);	
 			
-			if($istva)		
-    	    	$pdf->write(5, round(($venteprod->quantite*$venteprod->prixu) /($venteprod->tva/100+1), 2)); 
-			else
-				$pdf->write(5, "N/A"); 
+    	    $pdf->write(5, round($venteprod->quantite*$venteprod->prixu, 2)); 
+
 			
 			$hauteur=$recy + 5;
 
@@ -176,10 +177,14 @@
 		$modules = new Modules();
 		$modules->charger_id($commande->paiement);
 
+		$pourcremise = $commande->remise / $total * 100;
+		
 		$total += $commande->port;
 	
 		$total = round($total, 2);
 	
+
+		
 		/* 19, 6 % */
                 $query2 = "SELECT sum(prixu*quantite) as total FROM $venteprod->table where commande='$commande->id' and tva like '19.6'";
                 $resul2 = mysql_query($query2, $venteprod->link);
@@ -187,16 +192,16 @@
 				$tva19=$total19*19.6/100;
 		
                 $pdf->SetFont('Arial','',8);
-                $pdf->SetXY(179,232.5);
+                $pdf->SetXY(179,237.5);
                 if($istva)
-                	$pdf->write(10, round($total19,2));
+                	$pdf->write(10, round($total19 - $total19 * $pourcremise / 100,2));
  	  			else
 					$pdf->write(10, "N/A");
 					
                 $pdf->SetFont('Arial','',8);
-                $pdf->SetXY(179,238);
+                $pdf->SetXY(179,242.5);
                 if($istva)
-					$pdf->write(10, round($tva19, 2));
+					$pdf->write(10, round($tva19 - $tva19 * $pourcremise / 100, 2));
 				else
 					$pdf->write(10, "N/A");
 					
@@ -207,17 +212,17 @@
                 $tva5=$total5*5.5/100;
 
                 $pdf->SetFont('Arial','',8);
-                $pdf->SetXY(179,242.5);
+                $pdf->SetXY(179,247.5);
                 
  				if($istva)
-					$pdf->write(10, round($total5,2));
+					$pdf->write(10, round($total5 - $total5 * $pourcremise / 100,2));
 				else
 					$pdf->write(10, "N/A");
 					
                 $pdf->SetFont('Arial','',8);
-                $pdf->SetXY(179,247.5);
+                $pdf->SetXY(179,252.5);
                 if($istva)
-					$pdf->write(10, round($tva5, 2));
+					$pdf->write(10, round($tva5 - $tva5 * $pourcremise / 100, 2));
 				else
 					$pdf->write(10, "N/A");
 					
@@ -228,23 +233,23 @@
                 $tva2=$total2*2.1/100;
 
                 $pdf->SetFont('Arial','',8);
-                $pdf->SetXY(179,252.5);
+                $pdf->SetXY(179,257.5);
                 if($istva)
-                	$pdf->write(10, round($total2,2));
+                	$pdf->write(10, round($total2 - $total2 * $pourcremise / 100,2));
 				else
 					$pdf->write(10, "N/A");
 					
                 $pdf->SetFont('Arial','',8);
-                $pdf->SetXY(179,257.5);
+                $pdf->SetXY(179,262.5);
                 if($istva)
-                	$pdf->write(10, round($tva2, 2));
+                	$pdf->write(10, round($tva2 - $tva2 * $pourcremise/100, 2));
 				else
 					$pdf->write(10, "N/A");
 
-	
+
 		$pdf->SetFont('Arial','',8);
-		$pdf->SetXY(179,262);	  			
-		$pdf->write(10, $commande->remise);
+		$pdf->SetXY(179,232.5);	  			
+		$pdf->write(10, round($pourcremise, 2) . " %");
 
 		$mht = round($mht, 2);
 

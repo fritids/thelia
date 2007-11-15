@@ -32,33 +32,11 @@
 		function PluginsClassiques($nom=""){
 			$this->Plugins($nom);			
 		}
-		
-		function pre(){
-			
-			
-		}
-		
+				
 		function boucle($texte, $args){
 			
 		}
-		
-		function action(){
-			
-			
-		}
 
-		function post(){
-			
-			
-		}
-				
-		function statut($commande){
-			
-		}
-		
-		function confirmation($commande){
-			
-		}
 		
 	}
 

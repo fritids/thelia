@@ -176,7 +176,7 @@ function supprimer(id){
        <td class="<?php echo($fond); ?>"><?php echo(round($total, 2)); ?></td>
        <td class="<?php echo($fond); ?>"><?php echo($statutdesc->titre); ?></td>
        <td class="<?php echo($fond); ?>"><a href="commande_details.php?ref=<?php echo($row->ref); ?>" class="txt_vert_11">En savoir plus </a> <a href="commande_details.php?ref=<?php echo($row->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
-       <td class="<?php echo($fond); ?>_vide"> <a href="#" onClick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></td>
+       <td class="<?php echo($fond); ?>_vide"><?php if($row->statut == "5"){ ?> <a href="#" onClick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a><?php } ?></td>
      </tr>
 
 <?php
