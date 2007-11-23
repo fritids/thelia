@@ -445,7 +445,7 @@
           </select>
         </span></td>
     </tr>
-  <?
+  <?php
 	} else {
 		
    ?>

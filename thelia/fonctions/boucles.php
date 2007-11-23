@@ -904,9 +904,12 @@
 		$saveRes = mysql_query($saveReq);
 		$countRes = mysql_result($saveRes, 0, "totcount") . " ";
 	
+		$compt = 0;
+		
 		while( $row = mysql_fetch_object($resul) ){
-
-
+			
+			$compt++;
+			
 			if($passage != "" && $comptbloc>$passage-1)
 			      break;
 			
@@ -955,6 +958,7 @@
 			if($deb != "" && !$page) $debcourant+=$deb-1;
 
 			$temp = str_replace("#REF", "$row->ref", $temp);
+			$temp = str_replace("#COMPT", "$compt", $temp);
 			$temp = str_replace("#DATE", substr($row->datemodif, 0, 10), $temp);
 			$temp = str_replace("#HEURE", substr($row->datemodif, 11), $temp);
 			$temp = str_replace("#DEBCOURANT", "$debcourant", $temp);
