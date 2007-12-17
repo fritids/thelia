@@ -85,7 +85,9 @@
 
     if(isset($colis) && $colis != ""){
 		$commande->colis = $colis;
+		$commande->statut = "4";
 		$commande->maj();
+		modules_fonction("statut", $commande);
 		
 		$cache->vider("COMMANDE", "%");		
 	}
@@ -277,7 +279,7 @@
                   <select name="statutch" class="arial11_bold_626262" onChange="formchange.submit()">
                     <?php
                 	$statut = new Statut();
-                	$query = "select * from $statut->table";
+                	$query = "select * from $statut->table where id<>5";
                 	$resul = mysql_query($query);
                 	while($row = mysql_fetch_object($resul)){
                 		$statutcurdes = new Statutdesc();

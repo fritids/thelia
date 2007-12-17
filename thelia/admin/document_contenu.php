@@ -42,7 +42,7 @@
 		case 'modclassement' : modclassement($id, $contenu, $id, $type); break;		
 		case 'ajouter' : ajouter($contid, $_FILES['doc']['tmp_name'], $_FILES['doc']['name']); break;
 		case 'modifier' : modifier($id, $titre, $chapo, $description); break;
-		case 'supprimer' : supprimer($contid);
+		case 'supprimer' : supprimer($id);
 
 	}
 	
@@ -229,6 +229,7 @@ body {
       <input type="file" name="doc" class="form"><br/>
       <input type="submit" value="Ajouter"></td>
     </tr>
+</form>
         <?php
 			$document = new Document();
 			$documentdesc = new Documentdesc();
@@ -237,6 +238,9 @@ body {
 			$resul = mysql_query($query, $document->link);
 
 			while($row = mysql_fetch_object($resul)){
+				$document = new Document();
+				$documentdesc = new Documentdesc();
+				
 				$documentdesc->charger($row->id);
         ?>
                 

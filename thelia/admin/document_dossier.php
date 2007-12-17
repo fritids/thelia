@@ -39,7 +39,7 @@
 <?php
 	switch($action){
 		case 'modclassement' : modclassement($id, $dosid, $type); break;		
-		case 'ajouter' : ajouter($dossier, $_FILES['doc']['tmp_name'], $_FILES['doc']['name']); break;
+		case 'ajouter' : ajouter($dosid, $_FILES['doc']['tmp_name'], $_FILES['doc']['name']); break;
 		case 'modifier' : modifier($id, $titre, $chapo, $description); break;
 		case 'supprimer' : supprimer($id);
 
@@ -92,7 +92,7 @@
 	
 	}	
 	
-	function ajouter($dossier, $doc, $doc_name){
+	function ajouter($dosid, $doc, $doc_name){
 
 		if($doc != ""){
 
@@ -102,22 +102,22 @@
 			$document = new Document();
 			$documentdesc = new Documentdesc();
 
-		 	$query = "select max(classement) as maxClassement from $document->table where dossier='" . $dossier . "'";
+		 	$query = "select max(classement) as maxClassement from $document->table where dossier='" . $dosid . "'";
 
 	 		$resul = mysql_query($query, $document->link);
      		$maxClassement = mysql_result($resul, 0, "maxClassement");
      					
-			$document->dossier = $dossier;
+			$document->dossier = $dosid;
 			$document->classement = $maxClassement+1;
 
 			
 			$lastid = $document->add();
 			$document->charger($lastid);
 			$fich = eregfic($fich);
-			$document->fichier = $fich . "_" . $dossier . "." . $ext;
+			$document->fichier = $fich . "_" . $dosid . "." . $ext;
 			$document->maj();
 					
-			copy("$doc", "../client/document/" . $fich . "_" . $dossier . "." . $ext);
+			copy("$doc", "../client/document/" . $fich . "_" . $dosid . "." . $ext);
 		}
 
 		$cache = new Cache();
@@ -127,7 +127,6 @@
 	}
 
 	function modifier($id, $titre, $chapo, $description){
-	
 		$documentdesc = new Documentdesc();
 		$documentdesc->document = $id;
 		$documentdesc->lang = "1";
@@ -217,16 +216,15 @@ body {
   <table width="100%"  border="0" cellpadding="0" cellspacing="2" class="fond_F0F0F0">
 <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" ENCTYPE="multipart/form-data">
 	<input type="hidden" name="action" value="ajouter" />
-	<input type="hidden" name="id" value="<?php echo($id); ?>" /> 
  	<input type="hidden" name="dosid" value="<?php echo($dosid); ?>" /> 
     <tr>
       <td  width="40%" align="left" valign="middle" class="arial11_bold_626262">Ajouter un document:</td>
       <td>
       <input type="hidden" name="action" value="ajouter">
-      <input type="hidden" name="dossier" value="<?php echo($dossier->id); ?>">
       <input type="file" name="doc" class="form"><br/>
       <input type="submit" value="Ajouter"></td>
     </tr>
+</form>
         <?php
 			$document = new Document();
 			$documentdesc = new Documentdesc();
@@ -235,6 +233,9 @@ body {
 			$resul = mysql_query($query, $document->link);
 
 			while($row = mysql_fetch_object($resul)){
+				$document = new Document();
+				$documentdesc = new DocumentDesc();
+				
 				$documentdesc->charger($row->id);
         ?>
                 

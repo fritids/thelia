@@ -218,7 +218,7 @@ function analyse($res){
 	if($securise && ! $_SESSION["navig"]->connecte) { header("Location: connexion.php"); exit; }
 
 	// Vérif transport 
-	if($transport && ! $_SESSION["navig"]->commande->transport) { header("Location: transport.php"); exit; }
+	if($transport && ! $_SESSION["navig"]->commande->transport) { header("Location: commande.php"); exit; }
 	
 	// Vérif panier
 	if($panier && ! $_SESSION["navig"]->panier->nbart) { header("Location: index.php"); exit; } 

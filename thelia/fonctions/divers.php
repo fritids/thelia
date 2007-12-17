@@ -640,16 +640,19 @@ $reply\nFrom:$from\n".$mail_mime);
  
 	function modules_fonction($fonc, $args = ""){
 		$modules = new Modules();	
-		$query = "select * from $modules->table where type='3' and actif='1'";
+		$query = "select * from $modules->table where actif='1'";
 		$resul = mysql_query($query, $modules->link);
 		
 		while($row = mysql_fetch_object($resul)){
 			$nomclass = $row->nom;
 			$nomclass[0] = strtoupper($nomclass[0]);
 			
+			if(! file_exists(realpath(dirname(__FILE__)) . "/../client/plugins/" . $row->nom . "/" . $nomclass . ".class.php"))
+				return;
+				
 			include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $row->nom . "/" . $nomclass . ".class.php");
 			$tmpobj = new $nomclass();
-			if(strtolower(get_parent_class($tmpobj)) != "pluginsclassiques") return "";
+			if(strtolower(get_parent_class($tmpobj)) != "pluginsclassiques" && strtolower(get_parent_class($tmpobj)) != "pluginspaiements" && strtolower(get_parent_class($tmpobj)) != "pluginstransports") return "";
 		
 			if(method_exists($tmpobj, $fonc))
 				$tmpobj->$fonc($args);

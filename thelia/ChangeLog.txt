@@ -26,9 +26,12 @@
 	affectation automatique des caractéristiques et des déclinaisons aux rubriques à la création
 	Modification template de base
 	Gestion des titres/chapos/descriptions dans les documents
-	Suppression d'une commande non annulée impossible
 	Modification du modèle de facture
 	Ajout d'un point d'entré statut() confirmation() modprod() au niveau des plugins
+	Correction document_dossier.php, document_contenu.php dans l'admin
+	Plus de suppression de commande --> passage en annulation afin d'éviter de supprimer par erreur.
+	Si on entre un n° de colis --> statut envoyé
+	Mise à jour de sécurité
 	
 1.3.2
 	correction problème code promo (date expiration)

@@ -62,7 +62,7 @@
 			return $this->getVars("select * from $this->table where email=\"$email\" and motdepasse=PASSWORD('$motdepasse')");
 
 		}
-
+		
 		function charger_mail($email){
 			return $this->getVars("select * from $this->table where email=\"$email\"");
 		}	

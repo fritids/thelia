@@ -320,22 +320,22 @@
 		global $obligetelfixe, $obligetelport;
 
 		$client = New Client();
-		$client->raison = $raison;
-		$client->nom = $nom;
-		$client->entreprise = $entreprise;
-		$client->ref = date("ymdHis") . strtoupper(substr($prenom,0, 3));
-		$client->prenom = $prenom;
-		$client->telfixe = $telfixe;
-		$client->telport =$telport; 
+		$client->raison = strip_tags($raison);
+		$client->nom = strip_tags($nom);
+		$client->entreprise = strip_tags($entreprise);
+		$client->ref = date("ymdHis") . strtoupper(substr(strip_tags($prenom),0, 3));
+		$client->prenom = strip_tags($prenom);
+		$client->telfixe = strip_tags($telfixe);
+		$client->telport =strip_tags($telport); 
 		if( preg_match("/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z.]+$/","$email1") 
-			&& $email1==$email2) $client->email = $email1;
-		$client->adresse1 = $adresse1;
-		$client->adresse2 = $adresse2;
-		$client->adresse3 = $adresse3;
-		$client->cpostal = $cpostal;
-		$client->ville = $ville;
-		$client->siret = $siret;
-		$client->pays = $pays;
+			&& $email1==$email2) $client->email = strip_tags($email1);
+		$client->adresse1 = strip_tags($adresse1);
+		$client->adresse2 = strip_tags($adresse2);
+		$client->adresse3 = strip_tags($adresse3);
+		$client->cpostal = strip_tags($cpostal);
+		$client->ville = strip_tags($ville);
+		$client->siret = strip_tags($siret);
+		$client->pays = strip_tags($pays);
 		$client->type = "0";
 		
 		$testcli = new Client();
@@ -346,7 +346,7 @@
 
 		if($testcli->id != "") $client->parrain=$testcli->id;
 		
-		if($motdepasse1 == $motdepasse2 && strlen($motdepasse1)>5 ) $client->motdepasse = $motdepasse1;
+		if($motdepasse1 == $motdepasse2 && strlen($motdepasse1)>5 ) $client->motdepasse = strip_tags($motdepasse1);
 		
 		$_SESSION['navig']->formcli = $client;	
 		
@@ -394,21 +394,21 @@
 		$client->charger_id($_SESSION['navig']->client->id);
 		if( $motdepasse1 == "" ){
 			$client->id = $_SESSION['navig']->client->id;
-			$client->raison = $raison;
-			$client->siret = $siret;
-			$client->entreprise = $entreprise;
-			$client->nom = $nom;
-			$client->prenom = $prenom;
-			$client->telfixe = $telfixe;
-			$client->telport =$telport; 
+			$client->raison = strip_tags($raison);
+			$client->siret = strip_tags($siret);
+			$client->entreprise = strip_tags($entreprise);
+			$client->nom = strip_tags($nom);
+			$client->prenom = strip_tags($prenom);
+			$client->telfixe = strip_tags($telfixe);
+			$client->telport =strip_tags($telport); 
 			if( preg_match("/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z.]+$/","$email1") 
-				&& $email1==$email2 ) $client->email = $email1;
-			$client->adresse1 = $adresse1;
-			$client->adresse2 = $adresse2;
-			$client->adresse3 = $adresse3;
-			$client->cpostal = $cpostal;
-			$client->ville = $ville;
-			$client->pays = $pays;
+				&& $email1==$email2 ) $client->email = strip_tags($email1);
+			$client->adresse1 = strip_tags($adresse1);
+			$client->adresse2 = strip_tags($adresse2);
+			$client->adresse3 = strip_tags($adresse3);
+			$client->cpostal = strip_tags($cpostal);
+			$client->ville = strip_tags($ville);
+			$client->pays = strip_tags($pays);
 			$client->motdepasse = $_SESSION['navig']->client->motdepasse;
 			
 			$_SESSION['navig']->formcli = $client;
@@ -439,7 +439,7 @@
 		else{
 
 			if(  $motdepasse1 == $motdepasse2 && strlen($motdepasse1)>5 ) {		
-				$client->motdepasse = $motdepasse1;
+				$client->motdepasse = strip_tags($motdepasse1);
 				$client->crypter();
 		    	$client->maj();
 				$_SESSION['navig']->client = $client;	
@@ -466,17 +466,17 @@
 			 && $cpostal != "" && $ville != "" && $pays != ""){
 		
 			$adresse = new Adresse();
-			$adresse->libelle = $libelle;
-			$adresse->raison = $raison;
-			$adresse->prenom = $prenom;
-			$adresse->nom = $nom;
-			$adresse->adresse1 = $adresse1;
-			$adresse->adresse2 = $adresse2;
-			$adresse->adresse3 = $adresse3;
-			$adresse->cpostal = $cpostal;
-			$adresse->ville = $ville;
-			$adresse->tel = $tel;
-			$adresse->pays = $pays;
+			$adresse->libelle = strip_tags($libelle);
+			$adresse->raison = strip_tags($raison);
+			$adresse->prenom = strip_tags($prenom);
+			$adresse->nom = strip_tags($nom);
+			$adresse->adresse1 = strip_tags($adresse1);
+			$adresse->adresse2 = strip_tags($adresse2);
+			$adresse->adresse3 = strip_tags($adresse3);
+			$adresse->cpostal = strip_tags($cpostal);
+			$adresse->ville = strip_tags($ville);
+			$adresse->tel = strip_tags($tel);
+			$adresse->pays = strip_tags($pays);
 			$adresse->client = $_SESSION['navig']->client->id;
 			$lastid = $adresse->add();
 			
@@ -517,17 +517,17 @@
 			 && $cpostal != "" && $ville != "" && $pays != ""){
 			 		
 			$adresse->id = $id;
-			$adresse->libelle = $libelle;
-			$adresse->raison = $raison;
-			$adresse->prenom = $prenom;
-			$adresse->nom = $nom;
-			$adresse->adresse1 = $adresse1;
-			$adresse->adresse2 = $adresse2;
-			$adresse->adresse3 = $adresse3;
-			$adresse->cpostal = $cpostal;
-			$adresse->ville = $ville;
-			$adresse->tel = $tel;
-			$adresse->pays = $pays;
+			$adresse->libelle = strip_tags($libelle);
+			$adresse->raison = strip_tags($raison);
+			$adresse->prenom = strip_tags($prenom);
+			$adresse->nom = strip_tags($nom);
+			$adresse->adresse1 = strip_tags($adresse1);
+			$adresse->adresse2 = strip_tags($adresse2);
+			$adresse->adresse3 = strip_tags($adresse3);
+			$adresse->cpostal = strip_tags($cpostal);
+			$adresse->ville = strip_tags($ville);
+			$adresse->tel = strip_tags($tel);
+			$adresse->pays = strip_tags($pays);
 			$adresse->maj();
 		}
 		

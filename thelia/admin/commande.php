@@ -55,8 +55,9 @@
 		$tempcmd = new Commande();
 		$tempcmd->charger($id);
 		
-		$tempcmd->supprimer();
-
+		$tempcmd->statut = "5";
+		$tempcmd->maj();
+		
 		$cache = new Cache();
 		$cache->vider("COMMANDE", "%");		
 		$cache->vider("VENTEPROD", "%");		
@@ -66,8 +67,11 @@
 ?>
 
 <?php
-  	$search="";
-  	
+	if($voir_annule)
+  		$search="and statut=5";
+  	else
+		 $search="and statut<>5";
+		
   	if($client != "") $search .= " and client=\"$client\"";
   	$commande = new Commande();
   	if($page=="") $page=1;
@@ -95,7 +99,7 @@
 <script type="text/JavaScript">
 
 function supprimer(id){
-	if(confirm("Voulez-vous vraiment supprimer cette commande ?")) location="commande.php?action=supprimer&id=" + id;
+	if(confirm("Voulez-vous vraiment annuler cette commande ?")) location="commande.php?action=supprimer&id=" + id;
 
 }
 
@@ -115,7 +119,8 @@ function supprimer(id){
     </p>
    <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES COMMANDES </td>
+       <td width="450" height="30" class="titre_cellule_tres_sombre"><a href="commande.php" class="lien07">LISTE DES COMMANDES</a></td>
+       <td width="150" height="30" class="titre_cellule_tres_sombre"><a href="commande.php?voir_annule=1" class="lien07">Commandes annulées</a></td>
      </tr>
    </table>
    <table width="710" border="0" cellpadding="5" cellspacing="0">
@@ -176,7 +181,7 @@ function supprimer(id){
        <td class="<?php echo($fond); ?>"><?php echo(round($total, 2)); ?></td>
        <td class="<?php echo($fond); ?>"><?php echo($statutdesc->titre); ?></td>
        <td class="<?php echo($fond); ?>"><a href="commande_details.php?ref=<?php echo($row->ref); ?>" class="txt_vert_11">En savoir plus </a> <a href="commande_details.php?ref=<?php echo($row->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
-       <td class="<?php echo($fond); ?>_vide"><?php if($row->statut == "5"){ ?> <a href="#" onClick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a><?php } ?></td>
+       <td class="<?php echo($fond); ?>_vide"><a href="#" onClick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></td>
      </tr>
 
 <?php

@@ -533,6 +533,36 @@ a.lien06:hover {
 	background-repeat: no-repeat;
 	background-position: 5px;
 }
+
+a.lien07:link {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	font-style: italic;
+	text-decoration: none;
+}
+a.lien07:visited {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	font-style: italic;
+	text-decoration: none;
+}
+a.lien07:active {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	font-style: italic;
+	text-decoration: none;
+}
+a.lien07:hover {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	font-style: italic;
+	text-decoration: underline;	
+}
+
 .sous_titre_rubrique {
 	font-family: Geneva, Arial, Helvetica, sans-serif;
 	font-size: 14px;

@@ -1171,7 +1171,9 @@
         $classement = lireTag($args, "contenu");
         $num = lireTag($args, "num");
       	$deb = lireTag($args, "deb");
-
+		
+		if(!$deb) $deb=0;
+		
 		$search = "";
 
 		if($objet != "")
@@ -1186,11 +1188,13 @@
 		$order="";
 		$limit="";
 		
+		if($num!="") $limit .= " limit $deb,$num";
+		
 		if($classement == "manuel")
 			$order = "order by classement";
 		
 		$contenuassoc = new Contenuassoc();
-		$query = "select * from $contenuassoc->table where 1 $search";
+		$query = "select * from $contenuassoc->table where 1 $search $limit";
 		$resul = mysql_query($query, $contenuassoc->link);
 		
 		if(! mysql_numrows($resul))
@@ -2155,7 +2159,7 @@
 		
 		$modules = new Modules();
 	
-		$query = "select * from $modules->table where type='2' and actif='1'";
+		$query = "select * from $modules->table where type='2' and actif='1' order by classement";
 
 		$resul = mysql_query($query, $modules->link);
 		$nbres = mysql_numrows($resul);

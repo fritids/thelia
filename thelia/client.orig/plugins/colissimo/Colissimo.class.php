@@ -26,7 +26,7 @@
 <?php
 
 	include_once(realpath(dirname(__FILE__)) . "/../../../classes/PluginsTransports.class.php");
-	
+
 	class Colissimo extends PluginsTransports{
 
 
@@ -36,7 +36,6 @@
 		
 		function init(){
 			$this->ajout_desc("Colissimo", "Colissimo", "", 1);
-			
 		}
 		
 		function calcule(){
@@ -52,7 +51,6 @@
 			else if($this->poids>30) return 20;
 		
 		}
-
 	
 	}
 
