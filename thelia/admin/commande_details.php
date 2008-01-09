@@ -85,7 +85,6 @@
 
     if(isset($colis) && $colis != ""){
 		$commande->colis = $colis;
-		$commande->statut = "4";
 		$commande->maj();
 		modules_fonction("statut", $commande);
 		

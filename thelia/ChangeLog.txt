@@ -1,3 +1,16 @@
+1.3.4
+	vérification mail lors de la modification de compte
+	correction Declidisp.class.php (ligne doublée)
+	ajout de #TRANSPORT dans la boucle COMMANDE
+	ajout du paramètre id à la boucle TRANSPORT
+	Si on entre un n° de colis --> plus de passage automatique au statut envoyé qui ne convient pas à tout le monde
+	Si suppression de la commande via client_visualiser.php --> statut annulé
+	Ajout de #NOMCACHE dans la boucle image afin de sortir de le nom de l'image en cache et affichage de l'image en cache directement
+	si elle existe
+	Correction pages suivantes, précédentes dans commande.php si statut annulé dans l'admin
+	Ajout de 2 méthodes pour les plugins apresclient() qui s'execute après la création d'un client. aprescommande() qui s'execute 			
+	juste avant le paiement
+	
 1.3.3
 	correction arbreBoucle, arbreBoucle_dos
 	correction de #URLCOURANTEPARAM

@@ -321,7 +321,7 @@
 			$temp = str_replace("#FPETITE", "#FICHIER", $temp);
 			$temp = str_replace("#GRANDE", "#IMAGE", $temp);
 			$temp = str_replace("#PETITE", "#IMAGE", $temp);
-			
+						
 			if($image->produit != 0){
 					$pr->charger_id($image->produit);
 					$prdesc->charger($image->produit);
@@ -330,55 +330,80 @@
 					$temp = str_replace("#PRODREF", $pr->ref, $temp);
 					$temp = str_replace("#RUBRIQUE", $pr->rubrique, $temp);
 					
+			  		$nomcache = "client/cache/" . "produit" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
 					
 					if(!$largeur && !$hauteur) 
-						$temp = str_replace("#IMAGE", "client/gfx/photos/produit/" . $image->fichier, $temp);
-					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
+							$temp = str_replace("#IMAGE", "client/gfx/photos/produit/" . $image->fichier, $temp);
+						else 
+							if(file_exists($nomcache))
+								$temp = str_replace("#IMAGE", $nomcache, $temp);
+
+						else 
+							$temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
 					
 					$temp = str_replace("#FICHIER",  "client/gfx/photos/produit/" . $image->fichier, $temp);
 
 			}
 			
 			else if($image->rubrique != 0){
+
+		  		$nomcache = "client/cache/" . "rubrique" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
 				
 				$rudesc->charger($image->rubrique);
 				$temp = str_replace("#RUBRIQUE", $image->rubrique, $temp);
 				$temp = str_replace("#RUBTITRE", $rudesc->titre, $temp);
 			
-					if(!$largeur && !$hauteur) 
+				if(!$largeur && !$hauteur) 
 						$temp = str_replace("#IMAGE", "client/gfx/photos/rubrique/" . $image->fichier, $temp);
-					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
+					else 
+						if(file_exists($nomcache))
+							$temp = str_replace("#IMAGE", $nomcache, $temp);
+
+					else 
+						$temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
 				
-					$temp = str_replace("#FICHIER",  "client/gfx/photos/rubrique/" . $image->fichier, $temp);
+				$temp = str_replace("#FICHIER",  "client/gfx/photos/rubrique/" . $image->fichier, $temp);
 
 			}
 	
 			else if($image->dossier != 0){
+
+		  		$nomcache = "client/cache/" . "dossier" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
 				
 				$rudesc->charger($image->dossier);
 				$temp = str_replace("#RUBRIQUE", $image->dossier, $temp);
 				$temp = str_replace("#RUBTITRE", $rudesc->titre, $temp);
 			
-					if(!$largeur && !$hauteur) 
+				if(!$largeur && !$hauteur) 
 						$temp = str_replace("#IMAGE", "client/gfx/photos/dossier/" . $image->fichier, $temp);
-					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
-					
-					$temp = str_replace("#FICHIER",  "client/gfx/photos/dossier/" . $image->fichier, $temp);
+					else 
+						if(file_exists($nomcache))
+							$temp = str_replace("#IMAGE", $nomcache, $temp);
 
+					else 
+						$temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
+				
+				$temp = str_replace("#FICHIER",  "client/gfx/photos/dossier/" . $image->fichier, $temp);
 			}	
 	
 			else if($image->contenu != 0){
 			
+		  			$nomcache = "client/cache/" . "contenu" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
+
 					$prdesc->charger($image->contenu);
 					$temp = str_replace("#PRODTITRE", $prdesc->titre, $temp);
 					$temp = str_replace("#PRODUIT", $image->contenu, $temp);
 					
 					if(!$largeur && !$hauteur) 
-						$temp = str_replace("#IMAGE", "client/gfx/photos/contenu/" . $image->fichier, $temp);
-					else $temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur". "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
-					
-						$temp = str_replace("#FICHIER",  "client/gfx/photos/contenu/" . $image->fichier, $temp);
+							$temp = str_replace("#IMAGE", "client/gfx/photos/contenu/" . $image->fichier, $temp);
+						else 
+							if(file_exists($nomcache))
+								$temp = str_replace("#IMAGE", $nomcache, $temp);
 
+						else 
+							$temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
+					
+					$temp = str_replace("#FICHIER",  "client/gfx/photos/contenu/" . $image->fichier, $temp);
 			}	
 	
 				$temp = str_replace("#ID",  $image->id, $temp);	
@@ -386,6 +411,7 @@
 				$temp = str_replace("#CHAPO",  $imagedesc->chapo, $temp);	
 				$temp = str_replace("#DESCRIPTION",  $imagedesc->description, $temp);	
 				$temp = str_replace("#COMPT", "$compt", $temp);
+				$temp = str_replace("#NOMCACHE", "$nomcache", $temp);
 				
 			$compt++;
 				
@@ -943,9 +969,9 @@
 			$zone->charger($pays->zone);
 			
 			if($_SESSION['navig']->client->type == "1"){
-				$prix = $prix/1.196;
-				$prix2 = $prix2/1.196;
-				$ecotaxe = $row->ecotaxe/1.196;
+				$prix = $prix/$row->tva;
+				$prix2 = $prix2/$row->tva;
+				$ecotaxe = $row->ecotaxe/$row->tva;
 				
 			}
 			
@@ -1344,6 +1370,8 @@
 			if($moins == 0) $moins++;
 			
 			$quantite =  $_SESSION['navig']->panier->tabarticle[$i]->quantite;
+			$tva = $_SESSION['navig']->panier->tabarticle[$i]->produit->tva;
+			
 			if( ! $_SESSION['navig']->panier->tabarticle[$i]->produit->promo)
 				$prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix - ($_SESSION['navig']->panier->tabarticle[$i]->produit->prix * $_SESSION['navig']->client->pourcentage / 100);
 			else $prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 - ($_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 * $_SESSION['navig']->client->pourcentage / 100);	
@@ -1363,11 +1391,11 @@
 			$zone->charger($pays->zone);
 						
 			if($_SESSION['navig']->client->type) {
-				$prix = round($prix/1.196, 2);
-				$total = round($total/1.196, 2);
-				$port = round($port/1.196, 2);
-				$totcmdport = round($totcmdport/1.196, 2);
-				$totsansport = round($totsansport/1.196, 2);
+				$prix = round($prix/$tva, 2);
+				$total = round($total/$tva, 2);
+				$port = round($port/$tva, 2);
+				$totcmdport = round($totcmdport/$tva, 2);
+				$totsansport = round($totsansport/$tva, 2);
 			}
 			
 			$produitdesc = new Produitdesc();
@@ -2084,6 +2112,7 @@
 			$temp = str_replace("#PORT", "$port", $temp);
 			$temp = str_replace("#TOTCMDPORT", "$totcmdport", $temp);
 			$temp = str_replace("#COLIS", "$row->colis", $temp);
+			$temp = str_replace("#TRANSPORT", "$row->transport", $temp);
 			$temp = str_replace("#FICHIER", "client/pdf/visudoc.php?ref=" . $row->ref, $temp);
 
 			$res .= $temp;
@@ -2154,12 +2183,16 @@
 
 		$id = lireTag($args, "id");		
 
-	
+		
+		$search="";
 		$res="";
 		
+		if($id != "")
+			$search . "and id=\"$id\"";
+			
 		$modules = new Modules();
 	
-		$query = "select * from $modules->table where type='2' and actif='1' order by classement";
+		$query = "select * from $modules->table where type='2' and actif='1' $search order by classement";
 
 		$resul = mysql_query($query, $modules->link);
 		$nbres = mysql_numrows($resul);

@@ -75,11 +75,11 @@
 ?>
 
 	<product place="<?php echo($i); ?>">
-		<merchant_category><![CDATA[  <?php echo($rubriquedesc->titre); ?>  ]]></merchant_category>
+		<merchant_category><![CDATA[  <?php echo(htmlentities($rubriquedesc->titre)); ?>  ]]></merchant_category>
 		<offer_id><![CDATA[ <?php echo($row->ref); ?>  ]]></offer_id>
-		<name><![CDATA[ <?php echo($produitdesc->titre); ?> ]]></name>
+		<name><![CDATA[ <?php echo(htmlentities($produitdesc->titre)); ?> ]]></name>
 		<description>
-			<![CDATA[ <?php echo($description); ?>  ]]>
+			<![CDATA[ <?php echo(htmlentities($description)); ?>  ]]>
 		</description>
 		<regular_price currency="EUR" tax_included="1" tax_value="19.6"><?php echo($row->prix2); ?></regular_price>
 		<product_url><![CDATA[ <?php echo $variable->valeur; ?>/produit.php?ref=<?php echo($row->ref); ?> ]]></product_url>

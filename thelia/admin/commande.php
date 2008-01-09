@@ -71,7 +71,7 @@
   		$search="and statut=5";
   	else
 		 $search="and statut<>5";
-		
+			
   	if($client != "") $search .= " and client=\"$client\"";
   	$commande = new Commande();
   	if($page=="") $page=1;
@@ -187,12 +187,15 @@ function supprimer(id){
 <?php
 	}
 ?>
-
+<?php
+	if($voir_annule != "")
+		$lien_voirannule = "&voir_annule=1";
+?>
    </table>
-   <p align="center" class="geneva11Reg_3B4B5B"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pageprec); ?>" class="txt_vert_11">Page pr&eacute;c&eacute;dente</a> |
+   <p align="center" class="geneva11Reg_3B4B5B"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pageprec); ?><?php echo $lien_voirannule; ?>" class="txt_vert_11">Page pr&eacute;c&eacute;dente</a> |
      <?php for($i=0; $i<$nbpage; $i++){ ?>
     	 <?php if($page != $i+1){ ?>
-  	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>&classement=<?php echo($classement); ?>" class="txt_vert_11"><?php echo($i+1); ?></a> |
+  	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>&classement=<?php echo($classement); ?><?php echo $lien_voirannule; ?>" class="txt_vert_11"><?php echo($i+1); ?></a> |
     	 <?php } else {?>
     		 <?php echo($i+1); ?>
     		 <span class="txt_vert_11">|</span>
@@ -201,7 +204,7 @@ function supprimer(id){
      
 
                     
-     <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pagesuiv); ?>" class="txt_vert_11">Page suivante</a></p>
+     <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pagesuiv); ?><?php echo $lien_voirannule; ?>" class="txt_vert_11">Page suivante</a></p>
 </div> 
 
 </body>

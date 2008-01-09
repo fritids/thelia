@@ -112,8 +112,9 @@
 		$tempcmd = new Commande();
 		$tempcmd->charger($id);
 		
-		$tempcmd->supprimer();
-		
+		$tempcmd->statut = "5";
+		$tempcmd->maj();
+				
 		$cache = new Cache();
 		$cache->vider("CLIENT", "%");
 		$cache->vider("COMMANDE", "%");

@@ -61,13 +61,9 @@
 		function supprimer(){
 			$declidispdesc =  new Declidispdesc();
 			$declidisp =  new Declidisp();
-		//	$declival = new Declival();
 			
 			$this->delete("delete from $declidispdesc->table where declidisp=\"$this->id\"");	
 			$this->delete("delete from $this->table where id=\"$this->id\"");	
-		//	$this->delete("delete from $declival->table where declidisp=\"$this->id\"");
-			$this->delete("delete from $this->table where id=\"$this->id\"");
-
 			
 			return 1;
 		

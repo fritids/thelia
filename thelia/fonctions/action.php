@@ -36,7 +36,7 @@
 		$i = 0;
 		
 		// vérification si un produit avec la même déclinaison est déjà présent
-		foreach ($_POST as $key => $valeur) {
+		foreach ($_REQUEST as $key => $valeur) {
 			
 			if(strstr($key, "declinaison")){
 				$perso[$i] = new Perso();
@@ -119,7 +119,7 @@
 
 		$_SESSION['navig']->client= new Client();
 		$_SESSION['navig']->connecte = 0;	
-
+		$_SESSION['navig']->adresse = 0;
 	}
 
 	// modification de l'adresse en cours	
@@ -288,7 +288,7 @@
 		
 		$commande->maj();		
 
-
+		modules_fonction("aprescommande", $commande);
 		
 		$emailcontact = new Variable();
 		$emailcontact->charger("emailcontact");	
@@ -363,6 +363,8 @@
 			$client->crypter();
 			
 			$client->add();
+
+			modules_fonction("apresclient", $client);
 			
                		 $rec = $client->charger_mail($client->email);
 
@@ -401,6 +403,13 @@
 			$client->prenom = strip_tags($prenom);
 			$client->telfixe = strip_tags($telfixe);
 			$client->telport =strip_tags($telport); 
+			
+			if($email1 != $client->email){
+				$test = new Client();
+				if($test->existe($email1))
+					return "";				
+			}
+			
 			if( preg_match("/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z.]+$/","$email1") 
 				&& $email1==$email2 ) $client->email = strip_tags($email1);
 			$client->adresse1 = strip_tags($adresse1);

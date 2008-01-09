@@ -284,7 +284,7 @@
 		$type_fonction = strtolower($type_boucle);
 
 		$modules = new Modules();	
-		$query = "select * from $modules->table where type='3' and nom='$type_fonction' and actif='1'";
+		$query = "select * from $modules->table where nom='$type_fonction' and actif='1'";
 		$resul = mysql_query($query, $modules->link);
 		if(! mysql_numrows($resul))
 	   		return "";

@@ -65,7 +65,6 @@ function supprimer_rubrique(id, parent){
 	
 	if(!isset($parent)) $parent="";
 	if(!isset($lang)) $lang="";
-	if(!isset($parent)) $parent="";
 	if(!isset($id)) $id="";
 	if(!isset($classement)) $classement="";
 
