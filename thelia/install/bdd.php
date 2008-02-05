@@ -47,7 +47,7 @@
 			<h2>Connexion &agrave; la base de données</h2>
 		
 				<br />
-				Nous allons installé les informations nécessaires en base de donneés.<br /><br />
+				Nous allons installer les informations nécessaires en base de donneés.<br /><br />
 				
 				Nous allons pour cela vous demander différentes informations. <br /><br />
 				

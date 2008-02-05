@@ -24,45 +24,48 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("classes/Message.class.php");
-	include_once("classes/Messagedesc.class.php");
+	include_once("pre.php");
+	include_once("auth.php");
 	
-	/* Substitutions de type message */
+	if(!isset($action)) $action="";
+	
+?>
+<?php
+	include_once("../classes/Administrateur.class.php");
+
+	if($action == "modifier"){
+
+		$administrateur = new Administrateur();
+
+ 		$administrateur->charger_id($id);
+ 		$administrateur->valeur = $valeur;	
+		$administrateur->identifiant = $identifiant;
+		$motdepasse1 = trim($motdepasse1);
+		$motdepasse2 = trim($motdepasse2);
 		
-	function substitmessage($texte){
-
-
-	    preg_match_all("`\#MESSAGE_([^\(]+)\(([^\)]+)\)`", $texte, $cut);
-
-	    $tab1 = "";
-	    $tab2 = "";
-
-	    for($i=0; $i<count($cut[1]); $i++){
-			$message = new Message();
-			$message->charger($cut[2][$i]);
-			$messagedesc = new Messagedesc();
-			$messagedesc->charger($message->id, $_SESSION['navig']->lang);
-
-			if($cut[1][$i] == "TITRE") {
-				$tab1[$i] = "#MESSAGE_" . $cut[1][$i] . "(" . $cut[2][$i] . ")";
-		        $tab2[$i] = $messagedesc->titre;			
-			}
-	
-			else if($cut[1][$i] == "CHAPO") {
-				$tab1[$i] = "#MESSAGE_" . $cut[1][$i] . "(" . $cut[2][$i] . ")";
-		        $tab2[$i] = $messagedesc->chapo;			
-			}
-			
-			else if($cut[1][$i] == "DESCRIPTION") {
-				$tab1[$i] = "#MESSAGE_" . $cut[1][$i] . "(" . $cut[2][$i] . ")";
-		        $tab2[$i] = $messagedesc->description;			
-			}
-
-	    }
-
-	    $texte = str_replace($tab1, $tab2, $texte);
-	    return $texte;
-	
-
+		if($motdepasse1 != ""){
+			$administrateur->motdepasse = $motdepasse1;
+			$administrateur->crypter();
+		}	
+		$administrateur->nom = $nom;
+		$administrateur->prenom = $prenom;
+		$administrateur->niveau = "1";
+		$administrateur->maj();
+		
+		if(trim($motdepasse1) != ""){
+?>
+<script type="text/javascript">
+	alert("Mot de passe change avec succes");
+	location = "gestadm.php";
+</script>
+<?php
+	} else {
+		header("Location: gestadm.php");
+		
 	}
+?>
+<?php
+	
+	}		
+
 ?>

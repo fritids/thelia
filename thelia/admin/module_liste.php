@@ -57,7 +57,7 @@
 
 	include_once("../classes/Modules.class.php");
 	$modules = new Modules();	
-	$query = "select * from $modules->table where type='3' and actif='1'";
+	$query = "select * from $modules->table where actif='1'";
 	$resul = mysql_query($query, $modules->link);
 	
 	$i=0;

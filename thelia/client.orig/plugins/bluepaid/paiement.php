@@ -25,6 +25,9 @@
 ?>
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Navigation.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Pays.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Adresse.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../../client/plugins/bluepaid/Bluepaid.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/config.php");
 		
 	session_start();
@@ -37,6 +40,17 @@
 
 	$transaction = urlencode($_SESSION['navig']->commande->transaction);
 
+	$bluepaid = new Bluepaid();
+
+	if($_SESSION['navig']->adresse != "" && $_SESSION['navig']->adresse != 0){
+		$adresse = new Adresse();
+		$adresse->charger($_SESSION['navig']->adresse);
+		$bluepaid->charger($adresse->pays);
+	}
+	
+	else
+		$bluepaid->charger($_SESSION['navig']->client->pays);
+		
 ?>
 
 <html>
@@ -45,7 +59,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <title>
-  Paiement Bluepaid
+  Paiement PayPal
 </title>
 </head>
 <body onload="document.getElementById('formbluepaid').submit();">
@@ -64,6 +78,7 @@
  		<input type="hidden" name="devise" value="<?php echo $Devise; ?>">
  		<input type="hidden" name="langue" value="<?php echo $Code_Langue; ?>"> 
 		<input type="hidden" name="email_client" value="<?php echo $_SESSION['navig']->client->email; ?>"> 
+		<input type="hidden" name="pays_liv" value="<?php echo $bluepaid->alpha3; ?>"> 
 		<input type="image" src="<?php echo $urlsite->valeur . "/client/plugins/bluepaid/logo.jpg" ?>" />
 	</form>
 	

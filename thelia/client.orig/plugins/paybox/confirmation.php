@@ -5,8 +5,8 @@
 		
 	$commande = new Commande();
 
-	$commande->charger_trans($ref);
-	if($erreur=="00000" && $auto!="XXXXXX"){
+	$commande->charger_trans($_REQUEST['ref']);
+	if($_REQUEST['erreur']=="00000" && $_REQUEST['auto']!="XXXXXX"){
 	 $commande->statut = 2;
 	 $commande->genfact();
 	}

@@ -87,12 +87,25 @@
     </td>
   </tr>
 
- 
   </table>
 
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
   <tr class="cellule_sombre">
+    <td width="21%" height="30">Gestion des administrateurs</td>
+    <td width="63%" height="30">
+      
+    </td>
+    <td width="16%" height="30">
+      <div align="left"><a href="gestadm.php" class="txt_vert_11">Poursuivre </a><a href="gestadm.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    </td>
+  </tr>
+
+  </table>
+
+   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+
+  <tr class="cellule_claire">
     <td width="21%" height="30">Gestion des plugins</td>
     <td width="63%" height="30">
       
@@ -106,7 +119,7 @@
 
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
-  <tr class="cellule_claire">
+  <tr class="cellule_sombre">
     <td width="21%" height="30">Vider le cache</td>
     <td width="63%" height="30">
       

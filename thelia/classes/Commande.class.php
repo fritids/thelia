@@ -65,8 +65,8 @@
 		}
 
 		function charger_trans($transaction){
-		
-			return $this->getVars("select * from $this->table where transaction=\"$transaction\"");
+	        $hier = date("Y-m-d H:i:s", mktime()-86400);
+			return $this->getVars("select * from $this->table where transaction=\"$transaction\" and date>\"$hier\"");
 
 		}
 		

@@ -10,6 +10,10 @@
 	Correction pages suivantes, précédentes dans commande.php si statut annulé dans l'admin
 	Ajout de 2 méthodes pour les plugins apresclient() qui s'execute après la création d'un client. aprescommande() qui s'execute 			
 	juste avant le paiement
+	Possibilité d'ajouter via un plugin du code au niveau de admin/commande_details.php et admin/client_visualiser.php
+	Correction de substitmessage.php
+	Maj Bluepaid
+	Correction boucleCommande
 	
 1.3.3
 	correction arbreBoucle, arbreBoucle_dos

@@ -245,6 +245,9 @@ function supprimer(id){
      </tr>     
    </table>
    <br />
+<?php
+	admin_inclure("clientvisualiser");		
+?>
    <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="client_modifier.php?ref=<?php echo($client->ref); ?>" class="txt_vert_11">Modifier les coordonn&eacute;es du client </a></span> <a href="client_modifier.php?ref=<?php echo($client->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>

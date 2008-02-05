@@ -227,9 +227,10 @@ function analyse($res){
 	modules_fonction("pre");
 	
 	// chargement du squelette	
-	$lect = file($fond);
-	if(!file_exists($fond)) { echo "Impossible d'ouvrir $fond"; exit; }
-	$res = file_get_contents($fond);
+	if($res == ""){
+		if(!file_exists($fond)) { echo "Impossible d'ouvrir $fond"; exit; }
+		$res = file_get_contents($fond);
+	}
 	
 	// fonctions à éxecuter avant les inclusions
 	modules_fonction("inclusion");

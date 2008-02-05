@@ -2047,6 +2047,8 @@
 		$statut = lireTag($args, "statut");
 		$classement = lireTag($args, "classement");
 		
+		if($commande_ref == "" && $client_id == "") return;
+		
 		$search ="";
 		$order="";
 		$res="";
