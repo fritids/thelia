@@ -638,9 +638,15 @@ $reply\nFrom:$from\n".$mail_mime);
  	return true;
 	}
  
-	function modules_fonction($fonc, $args = ""){
+	function modules_fonction($fonc, $args = "", $nom = ""){
+		
+		$search = "";
+		
+		if($nom != "")
+			$search .= "and nom='$nom'";
+			
 		$modules = new Modules();	
-		$query = "select * from $modules->table where actif='1'";
+		$query = "select * from $modules->table where actif='1' $search";
 		$resul = mysql_query($query, $modules->link);
 		
 		while($row = mysql_fetch_object($resul)){

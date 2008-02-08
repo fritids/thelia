@@ -92,7 +92,8 @@
 	
 	// modification de la quantité d'un article
 	function modifier($article, $quantite){
-		$_SESSION['navig']->panier->modifier($article, $quantite);
+		if($quantite != "")
+			$_SESSION['navig']->panier->modifier($article, $quantite);
 		
 	}
 	
@@ -165,29 +166,6 @@
 		$commande->charger($idcmd);
 		$venteprod = new Venteprod();
 
-		$sujet=""; 
-		$corps="";
-		
-		$msg = new Message();
-		$msg->charger("sujetcommande");
-		$msgdesc = new Messagedesc();
-
-		$msgdesc->charger($msg->id);
-	
-		$sujet = $msgdesc->description . " " . $commande->ref;
-
-		$msg->charger("corpscommande1");
-		$msgdesc = new Messagedesc();                
-		$msgdesc->charger($msg->id);
-
-		$corps = $msgdesc->description;
-
-                $msg->charger("corpscommande2");
-                $msgdesc = new Messagedesc();
-                $msgdesc->charger($msg->id);
-
-                $corps2 = "";
-
 		for($i=0; $i<$_SESSION['navig']->panier->nbart; $i++){
 		
 			$declidisp = new Declidisp();
@@ -253,7 +231,6 @@
 		 	$nbart++;
 		 	$poids+= $_SESSION['navig']->panier->tabarticle[$i]->produit->poids;
 	 	
-		 	$corps2 .= $venteprod->ref . " " . $venteprod->titre . " " . $venteprod->prixu . " euro * " .  $venteprod->quantite . "\n";
 		}	
  
  			
@@ -289,12 +266,7 @@
 		$commande->maj();		
 
 		modules_fonction("aprescommande", $commande);
-		
-		$emailcontact = new Variable();
-		$emailcontact->charger("emailcontact");	
 
-		mail($_SESSION['navig']->client->email , "$sujet", "$corps", "From: $emailcontact->valeur");	
-		mail($emailcontact->valeur , "$sujet", "$corps2", "From: $emailcontact->valeur");
 			 		
 		$cache = new Cache();
 		$cache->vider("RUBRIQUE", "%");
@@ -309,6 +281,8 @@
 
 		include_once("client/plugins/" . $modules->nom . "/" . $nomclass . ".class.php");
 		
+ 		modules_fonction("mail", $commande, $modules->nom);
+				
 		$tmpobj = new $nomclass();
 		$tmpobj->paiement($commande);
 
@@ -567,7 +541,7 @@
 			$emailcontact = new Variable();
             $emailcontact->charger("emailcontact");
                 
-                        $corps = $msgdesc->description;     
+            $corps = $msgdesc->description;     
 			mail("$tclient->email", "$sujet", "$corps $pass", "From: $emailcontact->valeur");
                         
  			$msg->charger("mdpmodif");
