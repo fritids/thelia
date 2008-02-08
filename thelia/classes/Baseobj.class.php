@@ -66,7 +66,9 @@
 		
 		
 		function getVars($query){
-			$resul = mysql_query($query, $this->link);
+            if(! $resul = mysql_query($query, $this->link))
+                    return 0;
+
 			$row = mysql_fetch_object($resul);
 			if($row){
 				for($i=0; $i<count($this->bddvars); $i++){
