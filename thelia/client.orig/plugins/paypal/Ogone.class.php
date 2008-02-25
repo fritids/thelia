@@ -25,61 +25,25 @@
 ?>
 <?php
 
+	include_once(realpath(dirname(__FILE__)) . "/../../../classes/PluginsPaiements.class.php");
 	
-	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Navigation.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/config.php");
+	class Ogone extends PluginsPaiements{
+
+		function init(){
+			$this->ajout_desc("CB", "CB", "", 1);
+	
+		}
+
+		function Ogone(){
+			$this->PluginsPaiements("ogone");
+		}
 		
-	session_start();
-
-	$total = 0;
-
-	$total = $_SESSION['navig']->panier->total() + $_SESSION['navig']->commande->port;
-	$total -= $_SESSION['navig']->commande->remise;
-	$total = round($total, 2);
-
-<<<<<<< .mine
-	$total *= 100;
 	
-	$transaction = urlencode($_SESSION['navig']->commande->transaction);
+		function paiement($commande){
 
-=======
-	if($total<$_SESSION['navig']->commande->port)
-		$total = $_SESSION['navig']->commande->port;
->>>>>>> .r396
+			header("Location: " . "client/plugins/ogone/paiement.php");			
+		}
+	
+	}
+
 ?>
-
-<html>
-<head>
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="-1">
-<title>
-  Paiement Ogone
-</title>
-</head>
-	
-	
-<body onload="document.getElementById('formogone').submit();">
-
-<form action="<?php echo $serveur; ?>" id="formogone" action="post">
-        <INPUT type="hidden" NAME="PSPID" value="<?php echo $pspid; ?>">
-        <INPUT type="hidden" NAME="orderID" VALUE="<?php echo $_SESSION['navig']->commande->transaction; ?>">
-        <INPUT type="hidden" NAME="amount" VALUE="<?php echo $total; ?>">
-        <INPUT type="hidden" NAME="currency" VALUE="<?php echo $devise; ?>">
-        <INPUT type="hidden" NAME="language" VALUE="<?php echo $langue; ?>">
-
-        <INPUT type="hidden" NAME="TITLE" VALUE="<?php echo $nomsite->valeur; ?>">
-
-        <INPUT type="hidden" NAME="LOGO" VALUE="logo.jpg">
-
-        <INPUT type="hidden" NAME="accepturl" VALUE="<?php echo $retourok;?>">
-        <INPUT type="hidden" NAME="declineurl" VALUE="<?php echo $retourko;?>">
-        <INPUT type="hidden" NAME="exceptionurl" VALUE="<?php echo $retourko;?>">
-        <INPUT type="hidden" NAME="cancelurl" VALUE="<?php echo $retourok;?>">
-
-<input type="submit" value="Acces au Paiement" id="envoyer" name="Envoyer">
-        </form>
-
-	
-</body>
-</html>

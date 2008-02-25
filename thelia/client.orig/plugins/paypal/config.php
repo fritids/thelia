@@ -2,12 +2,9 @@
 
 	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Variable.class.php");
 
-	// Modifier la valeur ci-dessous avec l'e-mail de vote compte PayPal
-	$compte_paypal = 'mail@domaine.com';
 
-	$Devise        = "EUR";
-	$Code_Langue   = "FR";
-
+	// Modifier la valeur ci-dessous avec l'id de votre boutique fourni par Ogone (identique à votre login d'accès client)
+	$pspid = 'VOTRE_PSPID';
 
 
 	$urlsite = new Variable();
