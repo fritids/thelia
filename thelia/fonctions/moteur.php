@@ -93,6 +93,7 @@ function analyse($res){
 }
 
 	// initialisation des variables du couple php/html
+	if(!isset($res)) $res="";
 	if(!isset($lang)) $lang="";
 	if(!isset($affilie)) $affilie="";
 	if(!isset($parsephp)) $parsephp="";

@@ -15,6 +15,7 @@
 	Maj Bluepaid
 	Correction boucleCommande
 	Mail de confirmation personnalisable (voir wiki)
+	Maj du plugin Colissimo --> envoi de mail auto, si vous utilisez le plugin Colissimo désactivez-le puis réactivez-le
 	
 1.3.3
 	correction arbreBoucle, arbreBoucle_dos

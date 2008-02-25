@@ -602,7 +602,7 @@
 			 <?php if( $ref) { ?>
 			 
 			<a href="#" class="lien04"><?php echo($produitdesc->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />&nbsp;
-           Ajouter<?php } else { ?> Modifier <?php } ?> </p>	                         
+           Modifier<?php } else { ?> Ajouter <?php } ?> </p>	                         
    <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" id="formulaire" ENCTYPE="multipart/form-data">
 	<input type="hidden" name="action" value="<?php if(!$ref) { ?>ajouter<?php } else { ?>modifier<?php } ?>" />
 	<input type="hidden" name="ref" value="<?php echo($ref); ?>" /> 

@@ -45,7 +45,7 @@
 	switch($action){
 		case 'modifier' : modifier($raison, $entreprise, $nom, $prenom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email, $pourcentage, $ref, $type); break;
 
-		case 'supprimer' : supprimer($ref);
+		case 'supprimer' : supprimer($ref);brek;
 		case 'supprcmd' : supprcmd($id);
 
 	}

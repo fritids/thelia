@@ -67,7 +67,7 @@
 ?>
 
 <?php
-	if($voir_annule)
+	if(isset($voir_annule))
   		$search="and statut=5";
   	else
 		 $search="and statut<>5";

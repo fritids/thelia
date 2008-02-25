@@ -101,6 +101,16 @@
 			
 		}
 		
+		function demarrage(){
+			
+			
+		}
+
+		function inclusion(){
+			
+			
+		}
+		
 		function pre(){
 			
 			
