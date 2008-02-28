@@ -498,7 +498,7 @@
   		} 
   
   		return $key_g; 
-}
+	}
  
  	// génération de code
 	function gencode($size){ 

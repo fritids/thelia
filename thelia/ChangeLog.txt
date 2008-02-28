@@ -16,7 +16,7 @@
 	Correction boucleCommande
 	Mail de confirmation personnalisable (voir wiki)
 	Maj du plugin Colissimo --> envoi de mail auto, si vous utilisez le plugin Colissimo désactivez-le puis réactivez-le
-	ajout des modes de paiement ogone, wexpay
+	ajout des modes de paiement ogone, wexpay, payline
 	
 1.3.3
 	correction arbreBoucle, arbreBoucle_dos
