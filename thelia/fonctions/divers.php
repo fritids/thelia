@@ -671,8 +671,6 @@ $reply\nFrom:$from\n".$mail_mime);
 		$query = "select * from $modules->table where actif='1'";
 		$resul = mysql_query($query, $modules->link);
 
-		$i=0;
-
 		while($row = mysql_fetch_object($resul))
 
 			if(file_exists("../client/plugins/" .$row->nom . "/" . $row->nom. "_admin_$type.php"))

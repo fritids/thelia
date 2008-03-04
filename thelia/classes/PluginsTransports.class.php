@@ -41,7 +41,6 @@
 			$this->PluginsClassiques($nom);			
 		}
 		
-
 		function calcule(){
 			
 		}

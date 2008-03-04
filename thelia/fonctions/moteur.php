@@ -24,14 +24,23 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("classes/Navigation.class.php");
-
-	session_start();
 
 	/* Moteur */
 	
-	/* Le fichier html associé au php ( fond ) est parsé afin de subsituer les informations au bon endroit */
+	include_once("classes/Navigation.class.php");
+	include_once("classes/Modules.class.php");
 
+	/* Inclusions nécessaires avant ouverture de la session */
+	$modules = new Modules();	
+	$query = "select * from $modules->table where actif='1'";
+	$resul = mysql_query($query, $modules->link);
+
+	while($row = mysql_fetch_object($resul))
+		if(file_exists("client/plugins/" . $row->nom . "/inclure_session.php"))
+			include_once("client/plugins/" . $row->nom . "/inclure_session.php");
+				
+	session_start();
+	
 	include_once("fonctions/boucles.php");
 	include_once("fonctions/substitutions.php");
 	include_once("fonctions/filtres.php");

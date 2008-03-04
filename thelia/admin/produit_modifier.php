@@ -564,7 +564,7 @@
 ?>
 <div id="contenu_int">
   <p class="titre_rubrique">Description g&eacute;n&eacute;rale du produit</p>
-  <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a><a href="catalogue.php" class="lien04">Gestion</a><a href="catalogue.php" class="lien04">du catalogue</a>               
+  <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a><a href="catalogue.php" class="lien04">Gestion du catalogue</a>               
    
     <?php
                     $parentdesc = new Rubriquedesc();
@@ -917,7 +917,11 @@
     
     <?php } ?>
   </table>
- 
+
+ <?php 
+	admin_inclure("produitmodifier"); 
+ ?>
+
 	<?php
 		$jour = substr($produit->datemodif, 8, 2);
 		$mois = substr($produit->datemodif, 5, 2);

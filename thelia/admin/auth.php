@@ -24,9 +24,9 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("pre.php");
-	include_once("../classes/Administrateur.class.php");
-	include_once("../classes/Navigation.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/pre.php");
+	include_once(realpath(dirname(__FILE__)) . "/../classes/Administrateur.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../classes/Navigation.class.php");
 		
 	session_start();
 	if( ! isset($_SESSION["util"]->id) ) header("Location: index.php");
