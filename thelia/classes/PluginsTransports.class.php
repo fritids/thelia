@@ -24,9 +24,9 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Plugins.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/PluginsClassiques.class.php");
 	
-	class PluginsTransports extends Plugins{
+	class PluginsTransports extends PluginsClassiques{
 
 
 		var $poids;
@@ -38,7 +38,7 @@
 		var $cpostal;
 				
 		function PluginsTransports($nom=""){
-			$this->Plugins($nom);			
+			$this->PluginsClassiques($nom);			
 		}
 		
 

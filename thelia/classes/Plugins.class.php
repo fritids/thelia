@@ -120,6 +120,10 @@
 			
 			
 		}
+		
+		function boucle($texte, $args){
+			
+		}		
 
 		function post(){
 			

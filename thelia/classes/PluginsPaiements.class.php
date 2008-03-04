@@ -24,7 +24,7 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Plugins.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/PluginsClassiques.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Variable.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Paysdesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Client.class.php");
@@ -35,11 +35,11 @@
 	include_once(realpath(dirname(__FILE__)) . "/Adresse.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Produitdesc.class.php");
 	
-	class PluginsPaiements extends Plugins{
+	class PluginsPaiements extends PluginsClassiques{
 
 		
 		function PluginsPaiements($nom=""){
-			$this->Plugins($nom);			
+			$this->PluginsClassiques($nom);			
 		}
 		
 
