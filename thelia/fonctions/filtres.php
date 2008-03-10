@@ -28,6 +28,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/filtres/filtrevide.php");
 	include_once(realpath(dirname(__FILE__)) . "/filtres/filtrefonction.php");
 	include_once(realpath(dirname(__FILE__)) . "/filtres/filtrevraifaux.php");
+	include_once(realpath(dirname(__FILE__)) . "/filtres/filtreegalite.php");
 	
 						 
 	function filtres($texte){
@@ -38,6 +39,8 @@
 		if(strstr($texte, "#FILTRE_sanstags")) $texte = filtre_fonction($texte, "sanstags", "strip_tags");			
 		if(strstr($texte, "#FILTRE_vrai")) $texte = filtrevrai($texte);				
 		if(strstr($texte, "#FILTRE_faux")) $texte = filtrefaux($texte);				
+		if(strstr($texte, "#FILTRE_egalite")) $texte = filtreegalite($texte);				
+		if(strstr($texte, "#FILTRE_different")) $texte = filtredifferent($texte);				
 	
 			
 		return $texte;

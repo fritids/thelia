@@ -1,16 +1,43 @@
-Ce plugin SPPLUS permet de gÃ©rer les paiements avec la Caisse d'Epargne.
+Plugin SPPLUS
+=============
+
+Le plugin SPPLUS permet de gérer les paiements en ligne avec la Caisse d'Epargne.
 
 
-INSTALLATION
+
+Installation
 ============
 
-- vous devez compiler le module spplus sur votre serveur web.
+1- Uploadez le fichier php_spplus.so fourni par SPPLUS dans le répertoire /client/plugins/spplus de votre boutique Thelia.
 
-- editez le fichier config.php et donnez des valeurs Ã  $cle, $siret.
-  Elles vous seront fournies par votre banque.
+2- Editez le fichier config.php avec les valeurs de clé et de siret fournis de façon cryptée par e-mail par SPPLUS.
 
-Concernant les adresses Ã  appeler lors d'une erreur de paiement ou d'un succÃ¨s, vous devez les fournir Ã  spplus.
 
-Vous devez aussi leur fournir l'adresse de confirmation de commande.
+Configuration
+=============
 
-Ex : http://www.monsite.com/client/paiement/spplus/confirmation.php
+1- Dans l'administration SPPLUS, renseignez l'URL de retour paiement Internaute avec l'adresse : http://www.votre-boutique.com/client/plugins/spplus/redir.php
+
+2- Toujours dans l'administration SPPLUS, activez la Notification complémentaire.
+
+3- Sur la ligne Méthode d'envoi, sélectionnez Get
+
+4- Renseignez l'URL 1 pour la notification complémentaire avec l'adresse : http://www.votre-boutique.com/client/plugins/spplus/confirmation.php
+
+
+
+Activation
+==========
+
+1- Dans l'administration Thelia, activez le plugin SPPLUS.
+
+
+Notes
+=====
+
+SPPLUS, pour la mise en production, demande et vérifie que le logo SPPLUS soit présent. Par défaut sur la page paiement.php c'est logo.jpg (visuel CB) qui est appelé. A vous de faire la modification du fichier logo.gif en jpg avec la couleur de fond de votre choix pour que le logo SPPLUS soit correctement affiché.
+
+Les serveurs SPPLUS attendent que la page confirmation.php renvoi spcheckok d'où la présence de la ligne : echo spcheckok; . Il est impératif de la laisser sous peine d'avoir un dysfonctionnement lors du passage en production.
+
+Il ne vous reste plus qu'à personnaliser vos pages merci.html et regret.html avec vos messages.
+

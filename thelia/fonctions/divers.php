@@ -646,7 +646,7 @@ $reply\nFrom:$from\n".$mail_mime);
 			$search .= "and nom='$nom'";
 			
 		$modules = new Modules();	
-		$query = "select * from $modules->table where actif='1' $search";
+		$query = "select * from $modules->table where actif='1' $search order by classement";
 		$resul = mysql_query($query, $modules->link);
 		
 		while($row = mysql_fetch_object($resul)){
@@ -668,7 +668,7 @@ $reply\nFrom:$from\n".$mail_mime);
 	
 	function admin_inclure($type){
 		$modules = new Modules();	
-		$query = "select * from $modules->table where actif='1'";
+		$query = "select * from $modules->table where actif='1' order by classement";
 		$resul = mysql_query($query, $modules->link);
 
 		while($row = mysql_fetch_object($resul))

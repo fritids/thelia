@@ -679,8 +679,8 @@
 			$declinaison = lireTag($args, "declinaison");			
 			$declidisp = lireTag($args, "declidisp");
 			$declival = lireTag($args, "declival");
-			$stockmini = lireTag($args, "stockmini");
 			$declistockmini = lireTag($args, "declistockmini");
+			$stockmini = lireTag($args, "stockmini");
 			$courant = lireTag($args, "courant");
 			$profondeur = lireTag($args, "profondeur");		
 			$exclusion = lireTag($args, "exclusion");	
@@ -741,7 +741,7 @@
 			if($prixmin!="") $search .= " and ((prix2>=\"$prixmin\" and promo=\"1\") or (prix>=\"$prixmin\" and promo=\"0\"))";
 			if($prixmax!="") $search .= " and ((prix2<=\"$prixmax\" and promo=\"1\") or (prix<=\"$prixmax\" and promo=\"0\"))";
 			if($poids!="") $search .= " and poids<=\"$poids\"";
-			if($stockmini!="") $search .= " and stock>=\"$stockmini\"";
+			if($stockmini!="" && $declistockmini == "") $search .= " and stock>=\"$stockmini\"";
 
 			if (""!=$stockvide) {
 				if (0 < $stockvide) { $search .= " and stock<=\"0\""; }
@@ -2281,27 +2281,27 @@
                     $author = $item['dc']['creator'];
                     $link = $item['link']; 
 					$dateh = $item['dc']['date'];
-			$jour = substr($dateh, 8,2);
-			$mois = substr($dateh, 5, 2);
-			$annee = substr($dateh, 0, 4);
+					$jour = substr($dateh, 8,2);
+					$mois = substr($dateh, 5, 2);
+					$annee = substr($dateh, 0, 4);
 
-			$heure = substr($dateh, 11, 2);
-			$minute = substr($dateh, 14, 2);
-			$seconde = substr($dateh, 17, 2);
+					$heure = substr($dateh, 11, 2);
+					$minute = substr($dateh, 14, 2);
+					$seconde = substr($dateh, 17, 2);
 				
-			$temp =  str_replace("#SALON", "$chantitle", $texte);
-			$temp = str_replace("#WEB", "$chanlink", $temp);			
-			$temp = str_replace("#TITRE", "$title", $temp);
-			$temp = str_replace("#LIEN", "$link", $temp);
-			$temp = str_replace("#DESCRIPTION", "$description", $temp);
-            $temp = str_replace("#AUTEUR", "$author", $temp);
-			$temp = str_replace("#DATE", "$jour/$mois/$annee", $temp);
-			$temp = str_replace("#HEURE", "$heure:$minute:$seconde", $temp);
+					$temp =  str_replace("#SALON", "$chantitle", $texte);
+					$temp = str_replace("#WEB", "$chanlink", $temp);			
+					$temp = str_replace("#TITRE", "$title", $temp);
+					$temp = str_replace("#LIEN", "$link", $temp);
+					$temp = str_replace("#DESCRIPTION", "$description", $temp);
+            		$temp = str_replace("#AUTEUR", "$author", $temp);
+					$temp = str_replace("#DATE", "$jour/$mois/$annee", $temp);
+					$temp = str_replace("#HEURE", "$heure:$minute:$seconde", $temp);
 			
-			$i++;
+					$i++;
 
-			$res .= $temp;
-			if($i == $nb) return $res;
+					$res .= $temp;
+					if($i == $nb) return $res;
                 }
 
                 return $res;
@@ -2393,20 +2393,24 @@
 		$resul = mysql_query($query, $tdeclidisp->link);
 		
 		$i=0;
-				
+
+		$stockok = 0;
+						
 		while($row = mysql_fetch_object($resul)){
 			
 				if($stockmini && $produit){
 					$stock = new Stock();
 					$stock->charger($row->id, $produit);
 					if($stock->valeur<$stockmini) continue;
-					
+					$stockok = 1;
 				}
 			
 				$liste .= "'" . $row->id . "',";
 				$tabliste[$i++] = $row->id;
 		}
-			
+		
+		if($stockmini && !$stockok) return "";
+		
 		$liste = substr($liste, 0, strlen($liste) - 1);	
 
 						

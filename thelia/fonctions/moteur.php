@@ -233,7 +233,7 @@ function analyse($res){
 	// Vérif panier
 	if($panier && ! $_SESSION["navig"]->panier->nbart) { header("Location: index.php"); exit; } 
 	
-	// fonctions à éxecuter avant le moteur
+	// fonctions à éxecuter avant ouverture du template
 	modules_fonction("pre");
 	
 	// chargement du squelette	

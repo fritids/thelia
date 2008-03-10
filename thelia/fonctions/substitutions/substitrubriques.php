@@ -40,11 +40,18 @@
 			$trubriquedesc->charger($trubrique->id, $_SESSION['navig']->lang);
 		}
 
+		$racine = new Rubrique();
+		$racine->charger($trubrique->id);
+		
+		while($racine->parent)
+			$racine->charger($racine->parent);
 		
 		$texte = str_replace("#RUBRIQUE_CHAPO", "$trubriquedesc->chapo", $texte);
 		$texte = str_replace("#RUBRIQUE_ID", "$trubrique->id", $texte);
+		$texte = str_replace("#RUBRIQUE_LIEN", "$trubrique->lien", $texte);
 		$texte = str_replace("#RUBRIQUE_NOM", "$trubriquedesc->titre", $texte);
 		$texte = str_replace("#RUBRIQUE_PARENT", "$trubrique->parent", $texte);
+		$texte = str_replace("#RUBRIQUE_RACINE", "$racine->id", $texte);
 		
 		if($id_rubrique)
 			$texte = str_replace("#RUBRIQUE_REWRITEURL", rewrite_rub("$trubrique->id"), $texte);	

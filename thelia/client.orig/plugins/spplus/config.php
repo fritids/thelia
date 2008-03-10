@@ -1,4 +1,4 @@
 <?php
-	$cle = "xxxxxxx";
-	$siret = "xxxxxxx";
+	$cle = "xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx";
+	$siret = "xxxxxxxxxxxxxx-xxx";
 ?>

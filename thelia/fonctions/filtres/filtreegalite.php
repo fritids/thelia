@@ -24,36 +24,54 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+			
+function filtreegalite($texte){
 
-	class Modules extends Baseobj{
+	preg_match_all("`\#FILTRE_egalite\(([^\|]+)\|\|([^\)]+)\|\|([^\)]+)\)`", $texte, $cut);
 
-		var $id;
-		var $nom;
-		var $type;
-		var $actif;
-		var $classement;
+	$tab1 = "";
+	$tab2 = "";
 
-		var $table="modules";
-		var $bddvars = array("id", "nom", "type", "actif", "classement");
+	for($i=0; $i<count($cut[2]); $i++){
+	        if(trim($cut[1][$i]) == trim($cut[2][$i])){
+	                $tab1[$i] = "#FILTRE_egalite(" . $cut[1][$i] . "||" . $cut[2][$i] . "||" . $cut[3][$i] . ")";
+	                $tab2[$i] = $cut[3][$i];
+	        }
+	
+			else{
+                $tab1[$i] = "#FILTRE_egalite(" . $cut[1][$i] . "||" . $cut[2][$i] . "||" . $cut[3][$i] . ")";
+                $tab2[$i] = "";
+			}
 
-		function Modules(){
-			$this->Baseobj();	
-		}
-		
-		function charger($nom){
-		
-			return $this->getVars("select * from $this->table where nom=\"$nom\"");
-
-		}
-
-		function charger_id($id){
-		
-			return $this->getVars("select * from $this->table where id=\"$id\"");
-
-		}	
-				
 	}
 
+	$texte = str_replace($tab1, $tab2, $texte);
 
+	return $texte;
+}
+
+function filtredifferent($texte){
+
+	preg_match_all("`\#FILTRE_different\(([^\|]+)\|\|([^\)]+)\|\|([^\)]+)\)`", $texte, $cut);
+
+	$tab1 = "";
+	$tab2 = "";
+
+	for($i=0; $i<count($cut[2]); $i++){
+	        if(trim($cut[1][$i]) != trim($cut[2][$i])){
+	                $tab1[$i] = "#FILTRE_different(" . $cut[1][$i] . "||" . $cut[2][$i] . "||" . $cut[3][$i] . ")";
+	                $tab2[$i] = $cut[3][$i];
+	        }
+	
+			else{
+                $tab1[$i] = "#FILTRE_different(" . $cut[1][$i] . "||" . $cut[2][$i] . "||" . $cut[3][$i] . ")";
+                $tab2[$i] = "";
+			}
+
+	}
+
+	$texte = str_replace($tab1, $tab2, $texte);
+
+	return $texte;
+}
 ?>
