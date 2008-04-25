@@ -31,7 +31,6 @@
 	include_once("../classes/Contenu.class.php");
 	include_once("../classes/Contenuassoc.class.php");
 	include_once("../classes/Dossier.class.php");
-	include_once("../classes/Cache.class.php");
 	
 	if(!isset($action)) $action="";
 
@@ -86,9 +85,6 @@
 		
 		$contenuassoc->maj();
 
-		$cache = new Cache();
-		$cache->vider("CONTENU", "%");		
-		$cache->vider("DOSSIER", "%");	
 	}	
 	
 	function ajouter($objet, $type, $contenu){
@@ -107,10 +103,6 @@
 		$contenuassoc->type = $type;
 		$contenuassoc->contenu = $contenu;
 		$contenuassoc->add();
-		
-		$cache = new Cache();
-		$cache->vider("CONTENU", "%");		
-		$cache->vider("DOSSIER", "%");		
 
 	}
 
@@ -120,9 +112,6 @@
 		$contenuassoc = new Contenuassoc();
 		$contenuassoc->charger($id);
 		$contenuassoc->delete();
-		$cache = new Cache();
-		$cache->vider("CONTENU", "%");		
-		$cache->vider("DOSSIER", "%");		
 		
 	}	
 	

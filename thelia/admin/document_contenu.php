@@ -34,7 +34,6 @@
 	include_once("../fonctions/divers.php");
 	include_once("../classes/Document.class.php");  
 	include_once("../classes/Contenu.class.php");
-	include_once("../classes/Cache.class.php");
 ?>
 <?php
 	
@@ -85,11 +84,6 @@
 		
 		$document->maj();
 
-		$cache = new Cache();
-		$cache->vider("DOCUMENT", "%");		
-		$cache->vider("DOSSIER", "%");
-		$cache->vider("CONTENU", "%");			
-
 	}	
 	
 	function ajouter($contenu, $doc, $doc_name){
@@ -118,13 +112,7 @@
 					
 			copy("$doc", "../client/document/" . $fich . "_" . $contenu . "." . $ext);
 		}
-
-		$cache = new Cache();
-		$cache->vider("DOCUMENT", "%");		
-		$cache->vider("DOSSIER", "%");
-		$cache->vider("CONTENU", "%");			
-
-		
+	
 	}
 
 	function modifier($id, $titre, $chapo, $description){
@@ -144,10 +132,6 @@
 		else 
 			$documentdesc->maj();
 
-		$cache = new Cache();
-		$cache->vider("DOCUMENT", "%");		
-		$cache->vider("DOSSIER", "%");
-		$cache->vider("CONTENU", "%");		
 	}
 
 
@@ -162,11 +146,6 @@
 			
 			$document->supprimer();
 			
-			$cache = new Cache();
-			$cache->vider("DOCUMENT", "%");		
-			$cache->vider("DOSSIER", "%");
-			$cache->vider("CONTENU", "%");			
-					
 	}	
 	
 ?>

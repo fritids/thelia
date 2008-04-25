@@ -33,7 +33,6 @@
 ?>
 <?php
 	 include_once("../classes/Variable.class.php");  
-  	 include_once("../classes/Cache.class.php");
 ?>
 <?php
 	include_once("../classes/Dossier.class.php");
@@ -92,10 +91,6 @@
 		
 		$contenu->maj();
 		
-		$cache = new Cache();
-		$cache->vider("CONTENU", "%");		
-		$cache->vider("DOSSIER", "%");
-		
 	    header("Location: listdos.php?parent=" . $parent);
 		exit;
 	}
@@ -119,10 +114,6 @@
 			$temp->lang=$lang;
 			$temp->add();
 			$contenudesc->charger($contenu->id, $lang);
-			
-			$cache = new Cache();
-			$cache->vider("CONTENU", "%");		
-			$cache->vider("DOSSIER", "%");	
 		}
 
 		 $contenu->datemodif = date("Y-m-d H:i:s");		
@@ -138,10 +129,6 @@
 		$contenu->maj();
 		$contenudesc->maj();
 
-		$cache = new Cache();
-		$cache->vider("CONTENU", "%");		
-		$cache->vider("DOSSIER", "%");
-	   
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $contenu->id . "&dossier=" . $contenu->dossier);
 		exit;
 	}
@@ -182,10 +169,6 @@
 	 
 	 $contenudesc->add();
 
-		$cache = new Cache();
-		$cache->vider("CONTENU", "%");		
-		$cache->vider("DOSSIER", "%");
-				
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid . "&dossier=" . $contenu->dossier);
 		exit;
 

@@ -62,8 +62,6 @@
     include_once("../classes/Declinaison.class.php");  
     include_once("../classes/Exdecprod.class.php");  
     include_once("../classes/Stock.class.php");  
- 	include_once("../classes/Cache.class.php");
-
 ?>
 <?php
 
@@ -115,20 +113,6 @@
 		$produit->maj();
 
 	    header("Location: parcourir.php?parent=" . $parent);
-
-		$cache = new Cache();
-		$cache->vider("RUBRIQUE", "%");
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("PAGE", "%");
-		$cache->vider("QUANTITE", "%");
-		$cache->vider("CARACTERISTIQUE", "%");
-		$cache->vider("CARACDISP", "%");
-		$cache->vider("CARACVAL", "%");
-		$cache->vider("DECLINAISON", "%");
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("STOCK", "%");
-		$cache->vider("CHEMIN", "%");	
 	}
 	
 	function modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
@@ -273,20 +257,6 @@
 	}
 
 
-	$cache = new Cache();
-	$cache->vider("RUBRIQUE", "%");
-	$cache->vider("PRODUIT", "%");
-	$cache->vider("PAGE", "%");
-	$cache->vider("QUANTITE", "%");
-	$cache->vider("CARACTERISTIQUE", "%");
-	$cache->vider("CARACDISP", "%");
-	$cache->vider("CARACVAL", "%");
-	$cache->vider("DECLINAISON", "%");
-	$cache->vider("DECLIDISP", "%");
-	$cache->vider("DECVAL", "%");
-	$cache->vider("STOCK", "%");
-	$cache->vider("CHEMIN", "%");
-
 	modules_fonction("modprod", $produit->ref);
 	
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
@@ -427,22 +397,7 @@
 
 	}
 
-
-	$cache = new Cache();
-	$cache->vider("RUBRIQUE", "%");
-	$cache->vider("PRODUIT", "%");
-	$cache->vider("PAGE", "%");
-	$cache->vider("QUANTITE", "%");
-	$cache->vider("CARACTERISTIQUE", "%");
-	$cache->vider("CARACDISP", "%");
-	$cache->vider("CARACVAL", "%");
-	$cache->vider("DECLINAISON", "%");
-	$cache->vider("DECLIDISP", "%");
-	$cache->vider("DECVAL", "%");
-	$cache->vider("STOCK", "%");
-	$cache->vider("CHEMIN", "%");
-	
-    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
+  header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
 
 	}
 
@@ -463,19 +418,6 @@
 			
 		}
 
-		$cache = new Cache();
-		$cache->vider("RUBRIQUE", "%");
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("PAGE", "%");
-		$cache->vider("QUANTITE", "%");
-		$cache->vider("CARACTERISTIQUE", "%");
-		$cache->vider("CARACDISP", "%");
-		$cache->vider("CARACVAL", "%");
-		$cache->vider("DECLINAISON", "%");
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("STOCK", "%");
-		$cache->vider("CHEMIN", "%");
 				
 	}
 	
@@ -488,20 +430,6 @@
 		$stock = new Stock();
 		$query = "delete from $stock->table where produit='" . $produit->id . "'"; 
 		$resul = mysql_query($query, $stock->link);
-
-		$cache = new Cache();
-		$cache->vider("RUBRIQUE", "%");
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("PAGE", "%");
-		$cache->vider("QUANTITE", "%");
-		$cache->vider("CARACTERISTIQUE", "%");
-		$cache->vider("CARACDISP", "%");
-		$cache->vider("CARACVAL", "%");
-		$cache->vider("DECLINAISON", "%");
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("STOCK", "%");
-		$cache->vider("CHEMIN", "%");
 				
 	    header("Location: parcourir.php?parent=" . $parent);
 
@@ -585,7 +513,7 @@
 			<?php	
 				}
 				while($tot --){
-			?><a href="parcourir.php?parent=<?php echo($res[$tot+1]->id); ?>" class="lien04"><?php echo($res[$tot+1]->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />                             
+			?><a href="parcourir.php?parent=<?php echo($res[$tot+1]->rubrique); ?>" class="lien04"><?php echo($res[$tot+1]->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />                             
             <?php
             	}
             

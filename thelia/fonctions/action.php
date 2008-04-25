@@ -48,9 +48,7 @@
 		}
 
 		$_SESSION['navig']->panier->ajouter($ref, $quantite, $perso, $append, $nouveau);	
-		
-		$cache = new Cache();
-		
+				
 	}
 	
 	// changement de transport
@@ -79,13 +77,10 @@
 		$promo = new Promo();
 		$promo->charger($code);
 		$_SESSION['navig']->promo = $promo;	
-		$cache = new Cache();
-
 	}
 		
 	// suppression d'un article du panier	
 	function supprimer($article){
-			$cache = new Cache();
 			$_SESSION['navig']->panier->supprimer($article);
 
 	}
@@ -106,7 +101,7 @@
 		if($rec) {
 			$_SESSION['navig']->client = $client;
 			$_SESSION['navig']->connecte = 1; 
-			$cache = new Cache();
+
 			if($_SESSION['navig']->urlpageret) redirige($_SESSION['navig']->urlpageret);
 			else redirige("index.php");
 		}
@@ -126,10 +121,6 @@
 	// modification de l'adresse en cours	
 	function modadresse($adresse){
 		$_SESSION['navig']->adresse=$adresse;
-		$cache = new Cache();
-		$cache->vider_session(session_id(), "ADRESSE", "%");
-		$cache->vider_session(session_id(), "PAYS", "%");
-		$cache->vider_session(session_id(), "CLIENT", "%");
 	}
 	
 	// procédure de paiement
@@ -266,15 +257,6 @@
 		$commande->maj();		
 
 		modules_fonction("aprescommande", $commande);
-
-			 		
-		$cache = new Cache();
-		$cache->vider("RUBRIQUE", "%");
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("VENTEPROD", "%");
-		$cache->vider("COMMANDE", "%");
-		$cache->vider("STOCK", "%");
-		$cache->vider("CLIENT", "%");
 				
 		$nomclass=$modules->nom;
 		$nomclass[0] = strtoupper($nomclass[0]);
@@ -347,15 +329,12 @@
                         	$_SESSION['navig']->connecte = 1;
 	                }
 			
-			$cache = new Cache();
-			$cache->vider("CLIENT", "%");
 			
 			redirige("nouveau.php");
 		}	
 		
 		else {
-				$cache = new Cache();
-				$cache->vider_session(session_id(), "PAYS", "%");
+
 				redirige("formulerr.php?errform=1");
 		}		
 	}
@@ -405,11 +384,7 @@
 			&& $client->email && $client->adresse1 !="" && $client->cpostal!="" && $client->ville !="" && $client->pays !="" && $obligeok){
 				$client->maj();
 		 		$_SESSION['navig']->client = $client;	
-		
-			$cache = new Cache();
-			$cache->vider("CLIENT", "%");
-			$cache->vider("PAYS", "%");
-				
+						
 		 	redirige($_SESSION['navig']->urlpageret);	
 
 			}
@@ -464,9 +439,6 @@
 			$lastid = $adresse->add();
 			
 			$_SESSION['navig']->adresse=$lastid;
-
-			$cache = new Cache();
-			$cache->vider("ADRESSE", $_SESSION['navig']->client->id . "%");
 						
 			redirige($_SESSION['navig']->urlpageret);	
 		
@@ -479,12 +451,13 @@
 		
          $adresse = new Adresse();
          $adresse->charger($id);
+
+		 if($adresse->client != $_SESSION['navig']->client->id) return;
+		
          $adresse->delete();
 
 		 $_SESSION['navig']->adresse = "";
 		
-		 $cache = new Cache();
-		 $cache->vider("ADRESSE", $_SESSION['navig']->client->id . "%");
     }
 
 	// modification d'une adresse de livraison
@@ -514,8 +487,6 @@
 			$adresse->maj();
 		}
 		
-		$cache = new Cache();
-		$cache->vider("ADRESSE", $_SESSION['navig']->client->id . "%");
 	}
 
 	// changement du mot de passe

@@ -56,7 +56,6 @@
 	include_once("classes/Promo.class.php");
 	include_once("classes/Perso.class.php");
 	include_once("classes/Smtp.class.php");
-	include_once("classes/Cache.class.php");
 	include_once("classes/PluginsClassiques.class.php");
 	include_once("fonctions/parseur.php");
     
@@ -268,6 +267,9 @@ function analyse($res){
 	}
 		
 	echo $res;
+
+	// fonctions à éxecuter apres l'affichage du template
+	modules_fonction("apres");
 	
 	// Reset de la commande
 	if($reset){

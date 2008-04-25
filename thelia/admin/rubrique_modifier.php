@@ -43,8 +43,6 @@
     include_once("../classes/Rubcaracteristique.class.php");
     include_once("../classes/Caracteristique.class.php");
     include_once("../classes/Image.class.php");
-	include_once("../classes/Cache.class.php");
-   
 ?>
 <?php
 	
@@ -98,18 +96,6 @@
 		}
 		
 		$rubrique->maj();
-
-
-		$cache = new Cache();
-		$cache->vider("RUBRIQUE", "%");
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("CARACTERISTIQUE", "%");
-		$cache->vider("CARACDISP", "%");
-		$cache->vider("CARACVAL", "%");
-		$cache->vider("DECLINAISON", "%");
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");	
-		$cache->vider("CHEMIN", "%");
 		
 	    header("Location: parcourir.php?parent=$parent");
 
@@ -149,17 +135,6 @@
     											
 		$rubrique->maj();
 		$rubriquedesc->maj();
-
-		$cache = new Cache();
-		$cache->vider("RUBRIQUE", "%");
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("CARACTERISTIQUE", "%");
-		$cache->vider("CARACDISP", "%");
-		$cache->vider("CARACVAL", "%");
-		$cache->vider("DECLINAISON", "%");
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("CHEMIN", "%");
 		
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $rubrique->id);
 
@@ -213,17 +188,7 @@
 	 		$rubcaracteristique->add();
 	 	}
 
-		$cache = new Cache();
-		$cache->vider("RUBRIQUE", "%");
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("CARACTERISTIQUE", "%");
-		$cache->vider("CARACDISP", "%");
-		$cache->vider("CARACVAL", "%");
-		$cache->vider("DECLINAISON", "%");
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");	 
-	 	$cache->vider("CHEMIN", "%");
-			
+
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
 
 	}
@@ -236,17 +201,6 @@
 		$rubrique = new Rubrique();		
 		$rubrique->charger($id);
 		$rubrique->supprimer();
-
-		$cache = new Cache();
-		$cache->vider("RUBRIQUE", "%");
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("CARACTERISTIQUE", "%");
-		$cache->vider("CARACDISP", "%");
-		$cache->vider("CARACVAL", "%");
-		$cache->vider("DECLINAISON", "%");
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("CHEMIN", "%");
 		
 	    header("Location: parcourir.php?parent=" . $parent);
 		exit;
@@ -258,18 +212,6 @@
 		$rubrique->image=0;
 		if(file_exists("../client/gfx/photos/rubrique/" . $rubrique->id . ".jpg")) unlink("../client/gfx/photos/rubrique/" . $rubrique->id . ".jpg");
 		$rubrique->maj();
-
-		$cache = new Cache();
-		$cache->vider("RUBRIQUE", "%");
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("CARACTERISTIQUE", "%");
-		$cache->vider("CARACDISP", "%");
-		$cache->vider("CARACVAL", "%");
-		$cache->vider("DECLINAISON", "%");
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("CHEMIN", "%");
-		
 	}	
 ?>
 

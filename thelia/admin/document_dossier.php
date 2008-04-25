@@ -34,7 +34,6 @@
 	include_once("../fonctions/divers.php");
 	include_once("../classes/Document.class.php");  
 	include_once("../classes/Dossier.class.php");
- 	include_once("../classes/Cache.class.php");
 ?>
 <?php
 	switch($action){
@@ -83,12 +82,6 @@
 		}
 		
 		$document->maj();
-		
-		$cache = new Cache();
-		$cache->vider("DOCUMENT", "%");		
-		$cache->vider("DOSSIER", "%");
-		$cache->vider("CONTENU", "%");			
-
 	
 	}	
 	
@@ -120,10 +113,7 @@
 			copy("$doc", "../client/document/" . $fich . "_" . $dosid . "." . $ext);
 		}
 
-		$cache = new Cache();
-		$cache->vider("DOCUMENT", "%");		
-		$cache->vider("DOSSIER", "%");
-		$cache->vider("CONTENU", "%");
+
 	}
 
 	function modifier($id, $titre, $chapo, $description){
@@ -141,11 +131,7 @@
 			$documentdesc->add();
 		else 
 			$documentdesc->maj();
-
-		$cache = new Cache();
-		$cache->vider("DOCUMENT", "%");		
-		$cache->vider("DOSSIER", "%");
-		$cache->vider("CONTENU", "%");		
+	
 	}
 
 
@@ -158,12 +144,7 @@
 				 unlink("../client/document/$document->fichier");
 			}
 			
-			$document->supprimer();
-			
-			$cache = new Cache();
-			$cache->vider("DOCUMENT", "%");		
-			$cache->vider("DOSSIER", "%");
-			$cache->vider("CONTENU", "%");			
+			$document->supprimer();		
 		
 	}	
 	

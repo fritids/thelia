@@ -593,14 +593,18 @@
 	
 		$nbres = mysql_numrows($resul);
 		if(!$nbres) return "";
-
+		
 		while( $row = mysql_fetch_object($resul)){
 			$document->charger($row->id);
 			$documentdesc->charger($document->id);
+
+			$ext = substr($document->fichier, strlen($document->fichier)-3);
+
 			$temp = str_replace("#TITRE", "$documentdesc->titre", $texte);
 			$temp = str_replace("#CHAPO", "$documentdesc->chapo", $temp);
 			$temp = str_replace("#DESCRIPTION", "$documentdesc->description", $temp);
 			$temp = str_replace("#FICHIER", "client/document/" . $document->fichier, $temp);
+			$temp = str_replace("#EXTENSION", "$ext", $temp);
 
 			$res .= $temp;
 		}
@@ -913,11 +917,11 @@
 				}
 			
 				$liste = substr($liste, 0, strlen($liste) - 2);
-				$query = "select * from $produit->table where id in ($liste) and ligne=\"$ligne\" $limit";
-				$saveReq = "select * from $produit->table where id in ($liste) and ligne=\"$ligne\"";
+				$search .= "and id in ($liste)";
+			
 			}
 			
-		else $query = "select * from $produit->table where 1 $search $order $limit";
+		$query = "select * from $produit->table where 1 $search $order $limit";
 		$resul = mysql_query($query, $produit->link);
 		$nbres = mysql_numrows($resul);
 		$saveReq = "select * from $produit->table where 1 $search $order ";
@@ -956,7 +960,7 @@
 			if( $row->promo == "1" ) $temp = ereg_replace("#PROMO\[([^]]*)\]\[([^]]*)\]", "\\1", $temp);
 	 		else $temp = ereg_replace("#PROMO\[([^]]*)\]\[([^]]*)\]", "\\2", $temp);
 	 		
-			if( $row->promo == "1" ) $pourcentage =  ceil((100 * ($row->prix - $row->prix2)/$row->prix));
+			if( $row->promo == "1" && $row->prix) $pourcentage =  ceil((100 * ($row->prix - $row->prix2)/$row->prix));
 
 			$prix = $row->prix - ($row->prix * $_SESSION['navig']->client->pourcentage / 100);
 			$prix2 = $row->prix2 - ($row->prix2 * $_SESSION['navig']->client->pourcentage / 100);
@@ -1814,7 +1818,10 @@
 		
 	
 		if($classement != "" && isset($tabliste2)) $tabliste = $tabliste2;
-		
+
+		if(! count($tabliste))
+			return "";
+					
 		for($i=0; $i<count($tabliste); $i++){
 			
 			if($courante == "1" && ($id  != $caracdisp && ! strstr($caracdisp, "-" . $id )))
@@ -2250,9 +2257,6 @@
 
 
         function boucleRSS($texte, $args){
-
-		$cache = new Cache();
-		$cache->vider("RSS", "%");
 			
 		@ini_set('default_socket_timeout', 5);
                 
@@ -2436,6 +2440,8 @@
 	
 		if($classement != "" && isset($tabliste2)) $tabliste = $tabliste2;
 		
+		if(! count($tabliste))
+			return "";
 	
 		for($i=0; $i<count($tabliste); $i++){
 		

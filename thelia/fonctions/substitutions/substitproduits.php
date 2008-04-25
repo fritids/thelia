@@ -47,6 +47,7 @@
 			
 		$texte = str_replace("#PRODUIT_ID", $tproduitdesc->produit, $texte);
 		$texte = str_replace("#PRODUIT_NOM", $tproduitdesc->titre, $texte);
+		$texte = str_replace("#PRODUIT_CHAPO", $tproduitdesc->chapo, $texte);
 		$texte = str_replace("#PRODUIT_RUBRIQUE", $tproduit->rubrique, $texte);
 		$texte = str_replace("#PRODUIT_CLASSEMENT", "$classement", $texte);
 		$texte = str_replace("#PRODUIT_PRIXMIN", "$prixmin", $texte);

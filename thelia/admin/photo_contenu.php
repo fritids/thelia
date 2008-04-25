@@ -30,7 +30,6 @@
 	include_once("../classes/Image.class.php");
 	include_once("../classes/Contenu.class.php");
 	include_once("../classes/Variable.class.php");
-	include_once("../classes/Cache.class.php");
 
 	if(!isset($action)) $action="";
 	
@@ -55,7 +54,7 @@
 		$image = new Image();
 		$image->charger($id);
 
-	 	$query = "select max(classement) as maxClassement from $image->table where contenu='" . $contenu . "'";
+	 	$query = "select max(classement) as maxClassement from $image->table where contenu='" . $contid . "'";
 
 		$resul = mysql_query($query, $image->link);
         $maxClassement = mysql_result($resul, 0, "maxClassement");
@@ -64,7 +63,7 @@
 
 			if($image->classement == 1)  return; 
 
-			$query = "update $image->table set classement=" . $image->classement . " where classement=" . ($image->classement-1) . " and contenu='" . $contenu . "'";
+			$query = "update $image->table set classement=" . $image->classement . " where classement=" . ($image->classement-1) . " and contenu='" . $contid . "'";
 
 			$resul = mysql_query($query, $image->link);
 			 $image->classement--;
@@ -75,17 +74,13 @@
 			if($image->classement == $maxClassement) return; 
 
 			
-			$query = "update $image->table set classement=" . $image->classement . " where classement=" . ($image->classement+1) . " and contenu='" . $contenu . "'";
+			$query = "update $image->table set classement=" . $image->classement . " where classement=" . ($image->classement+1) . " and contenu='" . $contid . "'";
 			$resul = mysql_query($query, $image->link);
 			
 			 $image->classement++;
 		}
 		
 		$image->maj();
-
-		$cache = new Cache();
-		$cache->vider("IMAGE", "%");		
-		$cache->vider("CONTENU", "%");
 	}
 	
 	
@@ -128,9 +123,7 @@
 		}
 	 }
 	
-		$cache = new Cache();
-		$cache->vider("IMAGE", "%");		
-		$cache->vider("CONTENU", "%");
+
 	}
 
 	function modifier($id, $titre, $chapo, $description){
@@ -149,9 +142,6 @@
 		else 
 			$imagedesc->maj();
 
-		$cache = new Cache();
-		$cache->vider("IMAGE", "%");		
-		$cache->vider("CONTENU", "%");		
 	}
 	
 	function supprimer($id){
@@ -170,9 +160,6 @@
 			$image->supprimer();
 			$imagedesc->delete();
 			
-			$cache = new Cache();
-			$cache->vider("IMAGE", "%");		
-			$cache->vider("CONTENU", "%");			
 	}	
 	
 ?>

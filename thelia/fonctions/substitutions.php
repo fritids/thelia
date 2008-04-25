@@ -57,7 +57,13 @@
 
 		$texte = str_replace("#URLRECHERCHE", "recherche.php", $texte);
 		$texte = str_replace("#URLCOURANTEPARAM", $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'], $texte);
-		$texte = str_replace("#URLCOURANTE", $_SERVER['PHP_SELF'], $texte);		
+		if($_SERVER['QUERY_STRING'] != ""){
+			$param = str_replace("action=deconnexion", "", $_SERVER['QUERY_STRING']);
+			$texte = str_replace("#URLCOURANTE", $_SERVER['PHP_SELF'] . "?" . $param, $texte);
+		}
+		else
+			$texte = str_replace("#URLCOURANTE", $_SERVER['PHP_SELF'], $texte);
+			
 		$texte = str_replace("#URLADRESSE",  "adresse.php", $texte);
 		$texte = str_replace("#URLPAIEMENT",  "commande.php", $texte);
 		$texte = str_replace("#URLSOMMAIRE",  "index.php", $texte);

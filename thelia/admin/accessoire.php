@@ -32,7 +32,6 @@
 	include_once("../fonctions/divers.php");
 	include_once("../classes/Accessoire.class.php");
 	include_once("../classes/Produit.class.php");	
-	include_once("../classes/Cache.class.php");	
 
 	if(!isset($action)) $action="";
 ?>
@@ -118,10 +117,6 @@
 		
 		$accessoire->maj();
 
-		$cache = new Cache();
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("ACCESSOIRE", "%");
-	
 	}
 	
 	function ajouter($id, $courant){
@@ -146,10 +141,7 @@
 			
 		}
 
-		$cache = new Cache();
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("ACCESSOIRE", "%");
-				
+
 		return afficher($courant);
 
 	}
@@ -199,10 +191,6 @@ $res .= "	 <tr>"
 
 			$accessoire->supprimer();
 
-			$cache = new Cache();
-			$cache->vider("PRODUIT", "%");
-			$cache->vider("ACCESSOIRE", "%");
-					
 			return afficher($courant);
 
 	}	

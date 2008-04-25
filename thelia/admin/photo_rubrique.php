@@ -30,7 +30,6 @@
 	include_once("../classes/Image.class.php");
 	include_once("../classes/Rubrique.class.php");
 	include_once("../classes/Variable.class.php");
-	include_once("../classes/Cache.class.php");
 	
 	if(!isset($action)) $action="";
 	
@@ -84,9 +83,6 @@
 		
 		$image->maj();
 
-		$cache = new Cache();
-		$cache->vider("IMAGE", "%");		
-		$cache->vider("RUBRIQUE", "%");	
 	}	
 
 	function modifier($id, $titre, $chapo, $description){
@@ -105,9 +101,6 @@
 		else 
 			$imagedesc->maj();
 
-		$cache = new Cache();
-		$cache->vider("IMAGE", "%");		
-		$cache->vider("RUBRIQUE", "%");		
 	}
 		
 	function ajouter($id){
@@ -152,9 +145,6 @@
 		}
 	 }
 
-		$cache = new Cache();
-		$cache->vider("IMAGE", "%");		
-		$cache->vider("RUBRIQUE", "%");
 	}
 
 
@@ -171,10 +161,6 @@
 		
 			$image->supprimer();
 			$imagedesc->delete();
-			
-			$cache = new Cache();
-			$cache->vider("IMAGE", "%");		
-			$cache->vider("RUBRIQUE", "%");			
 			
 	}	
 	

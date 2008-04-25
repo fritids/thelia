@@ -41,7 +41,6 @@
 	include_once("../classes/Statut.class.php");
 	include_once("../classes/Modules.class.php");
 	include_once("../classes/Rubrique.class.php");
-	include_once("../classes/Cache.class.php");
 	include_once("../fonctions/divers.php");
 	
 	if(!isset($action)) $action="";
@@ -65,7 +64,6 @@
 ?>
 
 <?php
-		$cache = new Cache();
 		
         if($statutch){
                 $commande->statut = $statutch;
@@ -77,10 +75,7 @@
                 $commande->maj();
 
 				modules_fonction("statut", $commande);
-				
-				
-				$cache->vider("COMMANDE", "%");		
-				$cache->vider("CLIENT", "%");
+
         }
 
     if(isset($colis) && $colis != ""){

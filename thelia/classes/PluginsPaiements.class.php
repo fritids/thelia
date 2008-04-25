@@ -34,6 +34,13 @@
 	include_once(realpath(dirname(__FILE__)) . "/Modulesdesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Adresse.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Produitdesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Declinaison.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Declinaisondesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Declidisp.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Declidispdesc.class.php");
+	
+	
+	
 	
 	class PluginsPaiements extends PluginsClassiques{
 
@@ -85,7 +92,7 @@
 		
 			$emailcontact = new Variable();
 			$emailcontact->charger("emailcontact");	
-			$corp2 = $this->substitmail($corps2, $commande);
+			$corps2 = $this->substitmail($corps2, $commande);
 
 			mail($_SESSION['navig']->client->email , "$sujet", "$corps", "From: $emailcontact->valeur");	
 			mail($emailcontact->valeur , "$sujet", "$corps2", "From: $emailcontact->valeur");	
@@ -164,8 +171,9 @@
 			$corps = str_replace("__COMMANDE_TRANSACTION__", $commande->transaction, $corps);
 			$corps = str_replace("__COMMANDE_PAIEMENT__", $paiementdesc->titre, $corps);
 			$corps = str_replace("__COMMANDE_TOTALPORT__", $totcmdport, $corps);
-			$corps = str_replace("__COMMANDE_TOTAL__", $total, $corps);
+			$corps = str_replace("__COMMANDE_TOTAL__", $total-$commande->remise, $corps);
 			$corps = str_replace("__COMMANDE_PORT__", $commande->port, $corps);
+			$corps = str_replace("__COMMANDE_REMISE__", $commande->remise, $corps);
 			$corps = str_replace("__COMMANDE_TRANSPORT__", $transportdesc->titre, $corps);
 			$corps = str_replace("__COMMANDE_LIVRRAISON__", $raison, $corps);
 			$corps = str_replace("__COMMANDE_LIVRNOM__",$nom, $corps);
@@ -211,6 +219,28 @@
 			
 			for($i=0; $i<$_SESSION['navig']->panier->nbart; $i++){
 
+				for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
+					$declinaison = new Declinaison();
+					$declinaisondesc = new Declinaisondesc();
+					$declidisp = new Declidisp();
+					$declidispdesc = new Declidispdesc();
+					
+					$dectexte = "";
+				
+					$tperso = $_SESSION['navig']->panier->tabarticle[$i]->perso[$compt];
+					$declinaison->charger($tperso->declinaison);
+					$declinaisondesc->charger($declinaison->id);
+					// recup valeur declidisp ou string
+					if($declinaison->isDeclidisp($tperso->declinaison)){
+						$declidisp->charger($tperso->valeur);
+						$declidispdesc->charger_declidisp($declidisp->id);
+						$dectexte .= "- " . $declinaisondesc->titre . " : " . $declidispdesc->titre . "\n";
+					}
+
+					else $dectexte .= "- " . $declinaisondesc->titre . " : " . $tperso->valeur . "\n";
+
+				}
+
 				$produitdesc = new Produitdesc();
 				$produitdesc->charger($_SESSION['navig']->panier->tabarticle[$i]->produit->id);
 
@@ -218,13 +248,16 @@
 					$prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix - ($_SESSION['navig']->panier->tabarticle[$i]->produit->prix * $_SESSION['navig']->client->pourcentage / 100);
 				else $prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 - ($_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 * $_SESSION['navig']->client->pourcentage / 100);	
 
-				$temp = str_replace("__VENTEPROD_TITRE__", $produitdesc->titre, $cut[1]);
+				$temp = str_replace("__VENTEPROD_TITRE__", $produitdesc->titre . " " . $dectexte, $cut[1]);
+                $temp =  str_replace("__VENTEPROD_REF__", $_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $temp);
 				$temp =  str_replace("__VENTEPROD_QUANTITE__", $_SESSION['navig']->panier->tabarticle[$i]->quantite, $temp);
 				$temp =  str_replace("__VENTEPROD_PRIXU__", $prix, $temp);
 				$res .= $temp;
 			
 			}
 			$corps = str_replace($cut[1], $res, $corps);
+			$corps = str_replace("\n", "", $corps);
+			
 			return $corps;
 			
 		}

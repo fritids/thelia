@@ -34,9 +34,7 @@
         include_once("../classes/Rubdeclinaison.class.php");
         include_once("../classes/Declinaison.class.php");
         include_once("../classes/Rubrique.class.php");
-        include_once("../classes/Lang.class.php");
-		include_once("../classes/Cache.class.php");
-	 	
+        include_once("../classes/Lang.class.php");	 	
       
 		include_once("../lib/JSON.php");
 	
@@ -103,12 +101,6 @@
 	 				$rubdeclinaison->add();
 	 			}
 
-				$cache = new Cache();
-				$cache->vider("RUBRIQUE", "%");
-				$cache->vider("DECLINAISON", "%");
-				$cache->vider("DECLIDISP", "%");
-				$cache->vider("DECVAL", "%");
-				$cache->vider("PRODUIT", "%");
 
 	}
 

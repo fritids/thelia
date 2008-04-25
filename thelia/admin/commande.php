@@ -40,7 +40,6 @@
 	include_once("../classes/Client.class.php");
 	include_once("../classes/Venteprod.class.php");
 	include_once("../classes/Statutdesc.class.php");
-	include_once("../classes/Cache.class.php");
 
 	if(!isset($action)) $action="";
 	if(!isset($client)) $client="";
@@ -58,10 +57,6 @@
 		$tempcmd->statut = "5";
 		$tempcmd->maj();
 		
-		$cache = new Cache();
-		$cache->vider("COMMANDE", "%");		
-		$cache->vider("VENTEPROD", "%");		
-		$cache->vider("CLIENT", "%");		
 	}
 	
 ?>
@@ -70,7 +65,10 @@
 	if(isset($voir_annule))
   		$search="and statut=5";
   	else
-		 $search="and statut<>5";
+		if(isset($voir_envoye))
+  			$search="and statut=4";		
+	else
+		 $search="and statut not in (5,4)";
 			
   	if($client != "") $search .= " and client=\"$client\"";
   	$commande = new Commande();
@@ -121,6 +119,7 @@ function supprimer(id){
      <tr>
        <td width="450" height="30" class="titre_cellule_tres_sombre"><a href="commande.php" class="lien07">LISTE DES COMMANDES</a></td>
        <td width="150" height="30" class="titre_cellule_tres_sombre"><a href="commande.php?voir_annule=1" class="lien07">Commandes annulées</a></td>
+       <td width="150" height="30" class="titre_cellule_tres_sombre"><a href="commande.php?voir_envoye=1" class="lien07">Commandes envoyées</a></td>
      </tr>
    </table>
    <table width="710" border="0" cellpadding="5" cellspacing="0">

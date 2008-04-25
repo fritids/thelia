@@ -34,7 +34,6 @@
 	include_once("../fonctions/divers.php");
 	include_once("../classes/Document.class.php");  
 	include_once("../classes/Rubrique.class.php");
-	include_once("../classes/Cache.class.php");
 ?>
 <?php
 	switch($action){
@@ -84,10 +83,6 @@
 		
 		$document->maj();
 
-		$cache = new Cache();
-		$cache->vider("DOCUMENT", "%");		
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("RUBRIQUE", "%");	
 	}	
 	
 	function ajouter($rubrique, $doc, $doc_name){
@@ -116,10 +111,6 @@
 			copy("$doc", "../client/document/" . $fich . "_" . $rubrique . "." . $ext);	
 		}
 
-		$cache = new Cache();
-		$cache->vider("DOCUMENT", "%");		
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("RUBRIQUE", "%");
 	}
 
 	function modifier($id, $titre, $chapo, $description){
@@ -138,11 +129,7 @@
 			$documentdesc->add();
 		else 
 			$documentdesc->maj();
-
-		$cache = new Cache();
-		$cache->vider("DOCUMENT", "%");		
-		$cache->vider("PRODUIT", "%");
-		$cache->vider("RUBRIQUE", "%");		
+	
 	}
 
 
@@ -156,11 +143,7 @@
 			}
 			
 			$document->supprimer();
-			
-			$cache = new Cache();
-			$cache->vider("DOCUMENT", "%");		
-			$cache->vider("PRODUIT", "%");
-			$cache->vider("RUBRIQUE", "%");			
+		
 					
 	}	
 	

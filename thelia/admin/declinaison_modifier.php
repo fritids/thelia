@@ -41,7 +41,6 @@
 	include_once("../classes/Declidisp.class.php");
 	include_once("../classes/Rubdeclinaison.class.php");
 	include_once("../classes/Rubrique.class.php");
-	include_once("../classes/Cache.class.php");	
 ?>
 <?php
 
@@ -92,12 +91,6 @@
 		}
 		
 		$declinaison->maj();
-
-		$cache = new Cache();
-		$cache->vider("DECLINAISON", "%");		
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("PRODUIT", "%");
 		
 	    header("Location: declinaison.php");
 
@@ -137,12 +130,6 @@
 		$declinaison->maj();
 		$declinaisondesc->maj();
 
-		$cache = new Cache();
-		$cache->vider("DECLINAISON", "%");		
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("PRODUIT", "%");
-			   
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $declinaison->id);
 	}
 
@@ -211,12 +198,6 @@
 		$rubdeclinaison->add();
 	 }
 		
-	$cache = new Cache();
-	$cache->vider("DECLINAISON", "%");		
-	$cache->vider("DECLIDISP", "%");
-	$cache->vider("DECVAL", "%");
-	$cache->vider("PRODUIT", "%");
-		
 	header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
 
 	}
@@ -241,12 +222,6 @@
 		$declinaison->charger($id);
 		$declinaison->supprimer();
 
-		$cache = new Cache();
-		$cache->vider("DECLINAISON", "%");		
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("PRODUIT", "%");
-		
 	    header("Location: declinaison.php");
 
 	}
@@ -256,11 +231,6 @@
 		$tdeclidisp->charger($declidisp);
 		$tdeclidisp->supprimer();
 		
-		$cache = new Cache();
-		$cache->vider("DECLINAISON", "%");		
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("PRODUIT", "%");
 	}
 
 	function ajdeclidisp($id, $declidisp, $lang){
@@ -277,13 +247,6 @@
 		$tdeclidispdesc->titre = $declidisp;
 		
 		$tdeclidispdesc->add();
-
-		$cache = new Cache();
-		$cache->vider("DECLINAISON", "%");		
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("PRODUIT", "%");
-		
 	}
 	
 	function majdeclidisp($id, $lang){
@@ -312,13 +275,6 @@
 			
 			
 		}	
-
-		$cache = new Cache();
-		$cache->vider("DECLINAISON", "%");		
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("PRODUIT", "%");		
-		
 	}	
 ?>
 <?php

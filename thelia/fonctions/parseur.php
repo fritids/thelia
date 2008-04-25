@@ -81,61 +81,6 @@
 	}
 	
 
-	// charger Div
-	function chargerDiv($lect){
-		
-		$res="";
-		
-		$i =0;
-		$compt = -1;
-		
-		while($i<count($lect)) {
-
-			$rec = $lect[$i];
-
-			if(strstr($rec, "<STHELIA")){
-				$compt++;
-				$deb=1;
-				
-				// récupère le nom de la boucle
-				ereg("_([^ ]*) ", "$rec", $cut);
-				$nomboucle = $cut[1];
-
-				$args = $rec;
-	
-				$texte = "";
-				
-				$i++;
-
-				// récupère le contenue de la boucle
-				while( ! strstr($lect[$i], "/STHELIA_$nomboucle") && $i<count($lect)){
-					
-		  			$texte .= $lect[$i++] . "\n";
-		  			
-		  		} 
-
-	  			if( strstr($lect[$i], "/STHELIA_$nomboucle") ) $deb=0;
-	  			else { echo "La boucle $nomboucle n'est pas ferm&eacute;e correctement !"; exit; }
-	  			
-	  			$res .= "<div id=\"thelia" . $nomboucle . "\">&nbsp;</div>";
-		  	
-		  		$_SESSION['navig']->tabDiv[$nomboucle] = $rec . $texte . $lect[$i];
-
-
-			}
-		
-
-			else  $res .= $rec . "\n"; 
-		
-		 	
-			$i++;
-		
-		}
-
-		return $res; 
-	}
-		
-
 	// filtre si connecte
 	function filtre_connecte($lect){
 
@@ -298,19 +243,6 @@
 		else return "";
 	}
 
-	function cache_exec($type_boucle, $args, $texte, $variables){
-	
-		$iscache = 0;
-		$cache = new Cache();
-		
-		$iscache = $cache->charger(md5($texte), md5($args), $variables, $type_boucle);
-		
-		if($iscache)
-			return $cache->res;
-			
-		else return 0;
-		
-	}
 	
 	function boucle_exec($type_boucle, $args, $texte){
 		
@@ -319,27 +251,6 @@
 		$variables="";
 		$res = "";
 		
-		if(strstr("$args", "cache=\"1\"") && !$_SESSION['navig']->connecte)
-			$cache=1; 
-		else $cache=0;
-		
-		if($cache){
-		
-			if(! $_SESSION['navig']->client->id)
-				$client = 0;
-			else $client = $_SESSION['navig']->client->id;
-		
-			if($page) $pagevar = $page;
-			else $pagevar = 1;
-		
-			$variables = $_SESSION['navig']->lang . $pagevar;
-			
-			$rescache = cache_exec($type_boucle, $args, $texte, $variables);
-			
-			if($rescache != "0")
-				return $rescache;
-		}
-
 			switch($type_boucle){
 			 	 case 'RUBRIQUE' : $res .= boucleRubrique($texte, $args); break;
 			 	 case 'DOSSIER' : $res .= boucleDossier($texte, $args); break;
@@ -371,19 +282,6 @@
 	 			 case 'STOCK' : $res .= boucleStock($texte, $args); break;	 
 	 			 default: $res.= moduleBoucle($type_boucle, $texte, $args); break;
 			 }
-			 
-			
-			if($cache){
-				$cache = new Cache();
-
-				$cache->texte = md5($texte);
-				$cache->args = md5($args);
-				$cache->type_boucle = $type_boucle;
-				$cache->res = $res;
-				$cache->variables = $variables;
-				$cache->date = date("Y-m-d H:i:s");
-				$cache->add();
-			}
 			
 			return $res;
 			 
