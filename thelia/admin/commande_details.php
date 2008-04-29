@@ -83,7 +83,6 @@
 		$commande->maj();
 		modules_fonction("statut", $commande);
 		
-		$cache->vider("COMMANDE", "%");		
 	}
 		
 	if($fichier) copy("$fichier", "../client/commande/" . $ref . ".pdf");

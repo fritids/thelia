@@ -40,6 +40,7 @@
 	include_once("../classes/Client.class.php");
 	include_once("../classes/Venteprod.class.php");
 	include_once("../classes/Statutdesc.class.php");
+	include_once("../fonctions/divers.php");
 
 	if(!isset($action)) $action="";
 	if(!isset($client)) $client="";
@@ -56,6 +57,8 @@
 		
 		$tempcmd->statut = "5";
 		$tempcmd->maj();
+
+		modules_fonction("statut", $commande);
 		
 	}
 	

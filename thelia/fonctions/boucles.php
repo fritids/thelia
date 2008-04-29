@@ -995,6 +995,7 @@
 			$temp = str_replace("#ID", "$row->id", $temp);		
 			$temp = str_replace("#PRIX2", "$prix2", $temp);					
 			$temp = str_replace("#PRIX", "$prix", $temp);	
+			$temp = str_replace("#PROMO", "$row->promo", $temp);	
 			$temp = str_replace("#TVA", "$row->tva", $temp);	
 			$temp = str_replace("#ECOTAXE", "$row->ecotaxe", $temp);	
 			$temp = str_replace("#STOCK", "$row->stock", $temp);	
