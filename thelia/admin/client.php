@@ -72,7 +72,7 @@
   		 
 	$query = "select * from $client->table";
   	$resul = mysql_query($query, $client->link);
-  	$num = mysql_numrows($resul);
+  	$num = mysql_num_rows($resul);
   	
   	$nbpage = ceil($num/20);
   	

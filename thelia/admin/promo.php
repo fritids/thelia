@@ -43,7 +43,7 @@
   		 
 	$query = "select * from $promo->table";
   	$resul = mysql_query($query, $promo->link);
-  	$num = mysql_numrows($resul);
+  	$num = mysql_num_rows($resul);
   	
   	$nbpage = ceil($num/20);
   	

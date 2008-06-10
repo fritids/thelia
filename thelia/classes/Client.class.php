@@ -74,7 +74,7 @@
 		function existe($email){
 			$query = "select * from $this->table where email=\"$email\"";
 			$resul = mysql_query($query, $this->link);
-			return mysql_numrows($resul);
+			return mysql_num_rows($resul);
 		
 		}
 		
@@ -93,7 +93,7 @@
 			$commande = new Commande();
 			$query = "select * from $commande->table where statut>1 and client=\"" . $this->id . "\"";
 			$resul = mysql_query($query, $commande->link);
-			if(mysql_numrows($resul)) 
+			if(mysql_num_rows($resul)) 
 				return 1;
 			else 
 				return 0;
@@ -104,7 +104,7 @@
 			$commande = new Commande();
 			$query = "select * from $commande->table where statut>1 and client=\"" . $this->id . "\"";
 			$resul = mysql_query($query, $commande->link);
-			return mysql_numrows($resul);
+			return mysql_num_rows($resul);
 		}		
 		
 	}

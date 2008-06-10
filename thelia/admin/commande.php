@@ -58,7 +58,7 @@
 		$tempcmd->statut = "5";
 		$tempcmd->maj();
 
-		modules_fonction("statut", $commande);
+		modules_fonction("statut", $tempcmd);
 		
 	}
 	
@@ -79,7 +79,7 @@
   		 
    	$query = "select * from $commande->table where 1 $search";
   	$resul = mysql_query($query, $commande->link);
-  	$num = mysql_numrows($resul);
+  	$num = mysql_num_rows($resul);
   	
   	$nbpage = ceil($num/30);
   	
@@ -190,14 +190,18 @@ function supprimer(id){
 	}
 ?>
 <?php
+	$lien_voir = "";
+	
 	if($voir_annule != "")
-		$lien_voirannule = "&voir_annule=1";
+		$lien_voir .= "&voir_annule=1";
+	if($voir_envoye != "")
+		$lien_voir .= "&voir_envoye=1";
 ?>
    </table>
-   <p align="center" class="geneva11Reg_3B4B5B"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pageprec); ?><?php echo $lien_voirannule; ?>" class="txt_vert_11">Page pr&eacute;c&eacute;dente</a> |
+   <p align="center" class="geneva11Reg_3B4B5B"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pageprec); ?><?php echo $lien_voir; ?>" class="txt_vert_11">Page pr&eacute;c&eacute;dente</a> |
      <?php for($i=0; $i<$nbpage; $i++){ ?>
     	 <?php if($page != $i+1){ ?>
-  	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>&classement=<?php echo($classement); ?><?php echo $lien_voirannule; ?>" class="txt_vert_11"><?php echo($i+1); ?></a> |
+  	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>&classement=<?php echo($classement); ?><?php echo $lien_voir; ?>" class="txt_vert_11"><?php echo($i+1); ?></a> |
     	 <?php } else {?>
     		 <?php echo($i+1); ?>
     		 <span class="txt_vert_11">|</span>
@@ -206,7 +210,7 @@ function supprimer(id){
      
 
                     
-     <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pagesuiv); ?><?php echo $lien_voirannule; ?>" class="txt_vert_11">Page suivante</a></p>
+     <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pagesuiv); ?><?php echo $lien_voir; ?>" class="txt_vert_11">Page suivante</a></p>
 </div> 
 
 </body>

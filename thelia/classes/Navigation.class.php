@@ -46,7 +46,6 @@
 		var $commande;
 		var $promo;
 		var $page;
-		var $affilie;
 		var $lang;
 		
 		var $tabDiv;

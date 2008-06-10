@@ -82,7 +82,7 @@
 			
 			else return 0;
 				
-			return mysql_numrows($resul);
+			return mysql_num_rows($resul);
 		}
 	
 		function serialise_js(){

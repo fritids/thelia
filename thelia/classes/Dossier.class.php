@@ -66,7 +66,7 @@
 			
 			
 			
-			if( ! mysql_numrows($resul) && ! mysql_numrows($resul2)){
+			if( ! mysql_num_rows($resul) && ! mysql_num_rows($resul2)){
 				$this->delete("delete from $this->table where id=\"$this->id\"");	
 				$this->delete("delete from $dossierdesc->table where dossier=\"$this->id\"");	
 

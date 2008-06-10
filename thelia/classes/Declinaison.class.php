@@ -52,7 +52,7 @@
 			$query = "select * from $declidisp->table where declinaison=\"" . $this->id . "\"";
 			$resul = mysql_query($query);
 			
-			return mysql_numrows($resul);
+			return mysql_num_rows($resul);
 			 
 		}
 		

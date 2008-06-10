@@ -72,6 +72,9 @@
                 if($statutch == 2 && $commande->facture == 0) 
                 	$commande->genfact();
 
+				else if($statutch == 4 && $commande->datelivraison == "0000-00-00")
+					$commande->datelivraison = date("Y-m-d");
+
                 $commande->maj();
 
 				modules_fonction("statut", $commande);

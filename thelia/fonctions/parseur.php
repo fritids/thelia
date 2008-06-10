@@ -231,7 +231,7 @@
 		$modules = new Modules();	
 		$query = "select * from $modules->table where nom='$type_fonction' and actif='1'";
 		$resul = mysql_query($query, $modules->link);
-		if(! mysql_numrows($resul))
+		if(! mysql_num_rows($resul))
 	   		return "";
 
 		$type_fonction[0] = strtoupper($type_fonction[0]);

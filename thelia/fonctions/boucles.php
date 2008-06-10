@@ -116,7 +116,7 @@
 	
 		$compt = 1;
 
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 		
 		while( $row = mysql_fetch_object($resul)){
@@ -140,7 +140,7 @@
 			
 			$query3 = "select * from $rubrique->table where 1 and parent=\"$rubrique->id\"";
 			$resul3 = mysql_query($query3, $rubrique->link);	
-			if($resul3) $nbenfant = mysql_numrows($resul3);
+			if($resul3) $nbenfant = mysql_num_rows($resul3);
 
 			$temp = str_replace("#TITRE", "$rubriquedesc->titre", $texte);
 			$temp = str_replace("#STRIPTITRE", strip_tags($rubriquedesc->titre), $temp);	
@@ -213,7 +213,7 @@
 		
 		$compt = 1;
 
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 		
 		while( $row = mysql_fetch_object($resul)){
@@ -222,7 +222,7 @@
 			
 			$query3 = "select * from $dossier->table where 1 and parent=\"$row->id\"";
 			$resul3 = mysql_query($query3, $dossier->link);	
-			if($resul3) $nbenfant = mysql_numrows($resul3);
+			if($resul3) $nbenfant = mysql_num_rows($resul3);
 
 			$temp = str_replace("#TITRE", "$dossierdesc->titre", $texte);
 			$temp = str_replace("#STRIPTITRE", strip_tags($dossierdesc->titre), $temp);	
@@ -293,7 +293,7 @@
 
         $query = "select * from $image->table where 1 $search";
         $resul = mysql_query($query, $image->link);
-        $nbres = mysql_numrows($resul);
+        $nbres = mysql_num_rows($resul);
         if($debut!="" && $num=="") $num=$nbres;
                 		
 		if($debut!="" || $num!="") $limit .= " limit $debut,$num";
@@ -303,7 +303,7 @@
 		$query = "select * from $image->table where 1 $search $order $limit";
 		$resul = mysql_query($query, $image->link);
 	
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 
 		$pr = new Produit();
@@ -458,7 +458,7 @@
 		
 		$query = "select * from $client->table where 1 $search $order";
 		$resul = mysql_query($query, $client->link);
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 		
 		while( $row = mysql_fetch_object($resul)){
@@ -520,7 +520,7 @@
  		
 		$resul = mysql_query($query, $devise->link);
 	
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 			
 		while( $row = mysql_fetch_object($resul)){
@@ -581,7 +581,7 @@
 
         $query = "select * from $document->table where 1 $search";
         $resul = mysql_query($query, $document->link);
-        $nbres = mysql_numrows($resul);
+        $nbres = mysql_num_rows($resul);
         if($debut!="" && $num=="") $num=$nbres;
                 		
 		if($num!="") $limit .= " limit $debut,$num";
@@ -591,7 +591,7 @@
  		
 		$resul = mysql_query($query, $document->link);
 	
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 		
 		while( $row = mysql_fetch_object($resul)){
@@ -641,12 +641,17 @@
 		$query = "select * from $accessoire->table where 1 $search $order $limit";
 		$resul = mysql_query($query, $accessoire->link);
 	
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 
 		while( $row = mysql_fetch_object($resul)){
+			$prod = new Produit();
+			$prod->charger_id($produit);
+			
 			$accessoire->charger($row->id);
 			$temp = str_replace("#ACCESSOIRE", "$accessoire->accessoire", $texte);
+			$temp = str_replace("#PRODID", "$produit", $temp);
+			$temp = str_replace("#PRODREF", $prod->ref, $temp);
 
 			$res .= $temp;
 		}
@@ -690,6 +695,7 @@
 			$exclusion = lireTag($args, "exclusion");	
 			$poids = lireTag($args, "poids");
 			$stockvide = lireTag($args, "stockvide");
+			$forcepage = lireTag($args, "forcepage");
 						
 			if($bloc) $totbloc=$bloc;
 			if(!$deb) $deb=0;
@@ -698,6 +704,8 @@
 			if($pagesess == 1) $page =  $_SESSION['navig']->page;
 			
 			if(!$page ||  $page==1 ) $page=0; 
+
+			if($forcepage != "") $page = $forcepage;
 			
 			if(!$totbloc) $totbloc=1;
 			if($page) $deb = ($page-1)*$totbloc*$num+$deb; 
@@ -758,13 +766,15 @@
 			if($bloc!="" && $num!="") $limit .= " limit $deb,$bloc";
 			else if($num!="") $limit .= " limit $deb,$num";
 			
-			if($classement == "prixmin") $order = "order by "  . " prix";
+			if($aleatoire) $order = "order by "  . " RAND()";
+			else if($classement == "prixmin") $order = "order by "  . " prix";
 			else if($classement == "prixmax") $order = "order by "  . " prix desc";
 			else if($classement == "rubrique") $order = "order by "  . " rubrique";
-			else if($aleatoire) $order = "order by "  . " RAND()";
 			else if($classement == "manuel") $order = "order by classement";
 			else if($classement == "inverse") $order = "order by classement desc";
 			else if($classement == "date") $order = "order by datemodif desc";
+			else if($classement == "titre") $order = "order by titre";
+            
 			else $order = "order by classement";
 			
 		
@@ -792,7 +802,7 @@
 				else $query = "select * from $tcaracval->table where caracteristique='$caracteristique' and caracdisp='$caracdisp'";
 
 				$resul = mysql_query($query);
-				if(!mysql_numrows($resul)) return;
+				if(!mysql_num_rows($resul)) return;
 				
 				$liste="";
 				
@@ -864,7 +874,7 @@
 		 		$query = "select * from $exdecprod->table where declidisp='$declidisp'";
 				$resul = mysql_query($query);
 		
-				if(mysql_numrows($resul)) 
+				if(mysql_num_rows($resul)) 
 						while($row = mysql_fetch_object($resul))
 							$liste .= "'$row->produit', ";
 	
@@ -879,7 +889,7 @@
 					$query = "select * from $stock->table where declidisp='$declidisp' and valeur>='$declistockmini'";
 					$resul = mysql_query($query);
 
-					if(mysql_numrows($resul)) 
+					if(mysql_num_rows($resul)) 
 							while($row = mysql_fetch_object($resul))
 								$liste .= "'$row->produit', ";
 
@@ -906,7 +916,7 @@
   				$query = "select * from $produitdesc->table  LEFT JOIN $produit->table ON $produit->table.id=$produitdesc->table.produit WHERE $produit->table.ref='$motcle' or titre like '% $motcle%' or titre like '%$motcle %' OR titre='$motcle' OR chapo like '% $motcle%' OR chapo like '%$motcle %' OR description like '% $motcle%' OR description like '%$motcle %'";
 			
 			    $resul = mysql_query($query, $produitdesc->link);
-				$nbres = mysql_numrows($resul);
+				$nbres = mysql_num_rows($resul);
 
 			
 				if(!$nbres) return "";
@@ -920,10 +930,15 @@
 				$search .= "and id in ($liste)";
 			
 			}
-			
-		$query = "select * from $produit->table where 1 $search $order $limit";
+		
+		if($classement != "titre")
+			$query = "select * from $produit->table where 1 $search $order $limit";
+	
+		else
+			$query = "select * from $produit->table, $produitdesc->table where $produit->table.id=$produitdesc->table.id $search $order $limit";
+            
 		$resul = mysql_query($query, $produit->link);
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		$saveReq = "select * from $produit->table where 1 $search $order ";
 
 		if(!$nbres) return "";
@@ -1047,10 +1062,17 @@
 			$courant = lireTag($args, "courant");			
 			$exclusion = lireTag($args, "exclusion");	
 			
-			if($bloc) $totbloc=$bloc;	
+			if($bloc) $totbloc=$bloc;
 			if(!$deb) $deb=0;
-		
+
+			if($page) $_SESSION['navig']->page = $page;
+			if($pagesess == 1) $page =  $_SESSION['navig']->page;
+
+			if(!$page ||  $page==1 ) $page=0; 
+
 			if(!$totbloc) $totbloc=1;
+			if($page) $deb = ($page-1)*$totbloc*$num+$deb;
+
 			// initialisation de variables
 			$search = "";
 			$order = "";
@@ -1086,17 +1108,17 @@
 			
 			if($rubrique != "" || $produit !=""){
 				if($rubrique){
-					$type = 0; 
+					$type_obj = 0; 
 					$objet = $rubrique;
 				}
 				
 				else{
-					 $type = 1;
+					 $type_obj = 1;
 					 $objet = $produit;
 				}
 				
 				$contenuassoc = new Contenuassoc();
-				$query = "select * from $contenuassoc->table where objet=\"" . $objet . "\" and type=\"" . $type . "\"";
+				$query = "select * from $contenuassoc->table where objet=\"" . $objet . "\" and type=\"" . $type_obj . "\"";
 				$resul = mysql_query($query, $contenuassoc->link);
 				while($row = mysql_fetch_object($resul)) 
 					$liste .= "'" . $row->contenu . "',"; 
@@ -1106,7 +1128,7 @@
 				if($liste != "") $search .= " and id in ($liste)";	
 				else $search .= " and id in ('')";
 				
-				$type="";
+				$type_obj="";
 			}
 
 		
@@ -1124,7 +1146,7 @@
 				$query = "select * from $contenudesc->table  LEFT JOIN $contenu->table ON $contenu->table.id=$contenudesc->table.id WHERE titre like '%$motcle%' OR chapo like '%$motcle%' OR description like '%$motcle%'";
 			
 			    $resul = mysql_query($query, $contenudesc->link);
-				$nbres = mysql_numrows($resul);
+				$nbres = mysql_num_rows($resul);
 
 			
 				if(!$nbres) return "";
@@ -1143,7 +1165,7 @@
 		$saveReq = "select * from $contenu->table where 1 $search";
 		
 		$resul = mysql_query($query, $contenu->link);
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 		// substitutions
 		if($type) return $query;
@@ -1228,7 +1250,7 @@
 		$query = "select * from $contenuassoc->table where 1 $search $limit";
 		$resul = mysql_query($query, $contenuassoc->link);
 		
-		if(! mysql_numrows($resul))
+		if(! mysql_num_rows($resul))
 			return "";
 			
 		while($row = mysql_fetch_object($resul)){
@@ -1256,6 +1278,7 @@
 			$max = lireTag($args, "max");
 			$affmin = lireTag($args, "affmin");
             $avance = lireTag($args, "avance");
+			$type_page = lireTag($args, "type_page");
 			
 			$i="";
 			
@@ -1263,16 +1286,18 @@
 			$bpage=$page;
 			$res="";
 				
-				$produit = new Produit();
+				$cnx = new Cnx();
+				if(!$type_page)
+			    	$query = boucleProduit($texte, str_replace("num", "null", $args), 1);
+				else
+			    	$query = boucleContenu($texte, str_replace("num", "null", $args), 1);
 				
-				 $query = boucleProduit($texte, str_replace("num", "null", $args), 1);
-
 				if($query != ""){ 
 					$pos = strpos($query, "limit");
 					if($pos>0) $query = substr($query, 0, $pos);
 	
-					$resul = mysql_query($query, $produit->link);
-					$nbres = mysql_numrows($resul);
+					$resul = mysql_query($query, $cnx->link);
+					$nbres = mysql_num_rows($resul);
 				}
 				
 				else $nbres = 0;
@@ -1585,7 +1610,7 @@
 		
 		$query = "select * from $modules->table where type='1' and actif='1' $search order by classement";
 		$resul = mysql_query($query, $modules->link);
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 	
 		if(!$nbres) return "";
 		
@@ -1657,7 +1682,7 @@
         $query = "select * from $paysdesc->table where pays in ($liste) and lang='$lang' order by titre";
 
 		$resul = mysql_query($query, $paysdesc->link);
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 
 		while( $row = mysql_fetch_object($resul)){
@@ -1715,7 +1740,7 @@
 		if($id != "") $query = "select * from $tmpcaracteristique->table where 1 $search";
 		$resul = mysql_query($query, $rubcaracteristique->link);
 	
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 
 		while( $row = mysql_fetch_object($resul)){
@@ -1833,8 +1858,9 @@
 				
             if($stockmini != ""){
                   $caracvalch = new Caracval();
-                  $querych = "select count(*) as nb from $caracvalch->table where caracdisp='" . $tabliste[$i] . "'";
-                  $resulch = mysql_query($querych, $caracvalch->link);
+				  $prod = new Produit();
+				  $querych = "select count(*) as nb from $prod->table,$caracvalch->table where $prod->table.id=$caracvalch->table.produit and $prod->table.ligne=1 and $caracvalch->table.caracdisp='" . $tabliste[$i] . "'";                  
+				  $resulch = mysql_query($querych, $caracvalch->link);
                   if(mysql_result($resulch, 0, "nb")<$stockmini) continue;
             }
 			$tcaracdispdesc->charger_caracdisp($tabliste[$i], $_SESSION['navig']->lang);
@@ -1888,7 +1914,7 @@
 		$query = "select * from $caracval->table where 1 $search";
 		$resul = mysql_query($query, $caracval->link);
 
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 
 	
@@ -1960,7 +1986,7 @@
 			$query = "select * from $adresse->table where 1 $search";
 			$resul = mysql_query($query, $adresse->link);
 	
-			$nbres = mysql_numrows($resul);
+			$nbres = mysql_num_rows($resul);
 			if(!$nbres) return "";
 			
 
@@ -2054,6 +2080,7 @@
 		$client_id = lireTag($args, "client");
 		$statut = lireTag($args, "statut");
 		$classement = lireTag($args, "classement");
+		$statutexcl = lireTag($args, "statutexcl");
 		
 		if($commande_ref == "" && $client_id == "") return;
 		
@@ -2065,6 +2092,7 @@
 		if($commande_id!="")  $search.=" and id=\"$commande_id\"";		
 		if($commande_ref!="")  $search.=" and ref=\"$commande_ref\"";
 		if($client_id!="")  $search.=" and client=\"$client_id\"";
+		if($statutexcl!="")  $search.=" and statut not in ($statutexcl)";
 		if($statut!="" && $statut!="paye")  $search.=" and statut=\"$statut\"";
 		else if($statut=="paye")  $search.=" and statut>\"1\"";
 
@@ -2074,7 +2102,7 @@
 	
 		$query = "select * from $commande->table where 1 $search $order";
 		$resul = mysql_query($query, $commande->link);
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 		
 		
@@ -2110,7 +2138,10 @@
 
 			$temp = str_replace("#ID", "$row->id", $texte);
 			$temp = str_replace("#ADRESSE", "$row->adresse", $temp);
-			$temp = str_replace("#DATELIVRAISON", "$datelivraison", $temp);
+			if($jour_livraison !="00")
+				$temp = str_replace("#DATELIVRAISON", $jour_livraison . "/" . $mois_livraison . "/" . $annee_livraison, $temp);
+			else
+				$temp = str_replace("#DATELIVRAISON", "", $temp);
 			$temp = str_replace("#DATE", $jour . "/" . $mois . "/" . $annee, $temp);
 			$temp = str_replace("#REF", "$row->ref", $temp);
 			$temp = str_replace("#LIVRAISON", "$row->livraison", $temp);
@@ -2139,8 +2170,7 @@
 		// récupération des arguments
 		$commande_id = lireTag($args, "commande");		
 		$produit = lireTag($args, "produit");
-		$stat = lireTag($args, "stat");
-		
+				
 		$search ="";
 		$res="";
 		
@@ -2153,7 +2183,7 @@
 		$query = "select * from $venteprod->table where 1 $search";
 		$resul = mysql_query($query, $venteprod->link);
 
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 		
 		
@@ -2205,7 +2235,7 @@
 		$query = "select * from $modules->table where type='2' and actif='1' $search order by classement";
 
 		$resul = mysql_query($query, $modules->link);
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 
 		$pays = new Pays();
@@ -2340,7 +2370,7 @@
 		if($id != "") $query = "select * from $tmpdeclinaison->table where 1 $search";
 		$resul = mysql_query($query, $rubdeclinaison->link);
 
-		$nbres = mysql_numrows($resul);
+		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 
 		while( $row = mysql_fetch_object($resul)){
@@ -2479,16 +2509,33 @@
 	
 		$declidisp = lireTag($args, "declidisp");
 		$produit = lireTag($args, "produit");
+		$article = lireTag($args, "article");
+		$declinaison = lireTag($args, "declinaison");
 		
-		if($declidisp == "" || $produit == "") return "";
+		if($declinaison)
+			for($i=0; $i<count($_SESSION['navig']->panier->tabarticle[$article]->perso); $i++)
+				if($_SESSION['navig']->panier->tabarticle[$article]->perso[$i]->declinaison == $declinaison)
+					$declidisp = $_SESSION['navig']->panier->tabarticle[$article]->perso[$i]->valeur;
+												
+		if($produit == "") return "";
 		
-		$stock = new Stock();		
-		$stock->charger($declidisp, $produit);
-				
+		if($declidisp != ""){
+			$stock = new Stock();		
+			$stock->charger($declidisp, $produit);
+			$stock_dispo = $stock->valeur;
+		}
+		else {
+			$tmpprod = new Produit();
+			$tmpprod->charger_id($produit);
+			$stock_dispo = $tmpprod->stock;
+		}
+		
+			
 		$temp = str_replace("#ID", "$stock->id", $texte);
 		$temp = str_replace("#DECLIDISP", "$declidisp", $temp);	
 		$temp = str_replace("#PRODUIT", "$produit", $temp);
-		$temp = str_replace("#VALEUR", "$stock->valeur", $temp);	
+		$temp = str_replace("#VALEUR", "$stock_dispo", $temp);	
+		$temp = str_replace("#ARTICLE", "$article", $temp);	
 			
 			
 		$compt ++;
@@ -2499,37 +2546,42 @@
 		
 	
 	}
-
 	function boucleDecval($texte, $args){
 
 	
 		$article = lireTag($args, "article");
+		$declinaison = lireTag($args, "declinaison");
 		
 		if($article == "") return "";
 		
 		$res = "";
 		
-		$declinaison = new Declinaison();
-		$declinaisondesc = new Declinaisondesc();
-		$declidisp = new Declidisp();
-		$declidispdesc = new Declidispdesc();
+		$tdeclinaison = new Declinaison();
+		$tdeclinaisondesc = new Declinaisondesc();
+		$tdeclidisp = new Declidisp();
+		$tdeclidispdesc = new Declidispdesc();
 		
 		for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$article]->perso); $compt++){
+
 		   	$tperso = $_SESSION['navig']->panier->tabarticle[$article]->perso[$compt];
-			$declinaison->charger($tperso->declinaison);
-			$declinaisondesc->charger($declinaison->id, $_SESSION['navig']->lang);
+
+			if($declinaison != "" && $declinaison != $tperso->declinaison)
+				continue;
+
+			$tdeclinaison->charger($tperso->declinaison);
+			$tdeclinaisondesc->charger($tdeclinaison->id, $_SESSION['navig']->lang);
 			// recup valeur declidisp ou string
-			if($declinaison->isDeclidisp($tperso->declinaison)){
-				$declidisp->charger($tperso->valeur);
-				$declidispdesc->charger_declidisp($declidisp->id, $_SESSION['navig']->lang);
-				$valeur = $declidispdesc->titre;
+			if($tdeclinaison->isDeclidisp($tperso->declinaison)){
+				$tdeclidisp->charger($tperso->valeur);
+				$tdeclidispdesc->charger_declidisp($tdeclidisp->id, $_SESSION['navig']->lang);
+				$valeur = $tdeclidispdesc->titre;
 			}
 				
 			else $valeur = $tperso->valeur;
 
-			$temp = str_replace("#DECLITITRE", "$declinaisondesc->titre", $texte);
+			$temp = str_replace("#DECLITITRE", "$tdeclinaisondesc->titre", $texte);
 			$temp = str_replace("#VALEUR", "$valeur", $temp);	
-			$temp = str_replace("#DECLIDISP", "$declidispdesc->declidisp", $temp);	
+			$temp = str_replace("#DECLIDISP", "$tdeclidispdesc->declidisp", $temp);	
 			
 			$res .= $temp;				
 		}		

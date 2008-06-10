@@ -103,7 +103,6 @@ function analyse($res){
 	// initialisation des variables du couple php/html
 	if(!isset($res)) $res="";
 	if(!isset($lang)) $lang="";
-	if(!isset($affilie)) $affilie="";
 	if(!isset($parsephp)) $parsephp="";
 	if(!isset($securise)) $securise=0;
 	if(!isset($panier)) $panier=0;
@@ -195,9 +194,6 @@ function analyse($res){
 	// Langue
 	if($lang) $_SESSION["navig"]->lang = $lang;
 	else if(!$_SESSION["navig"]->lang) $_SESSION["navig"]->lang=1;
-	
-	// Affiliation
-	if($affilie != "") $_SESSION["navig"]->affilie = $affilie;
 
 	// fonctions à éxecuter avant le moteur
 	modules_fonction("demarrage");

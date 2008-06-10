@@ -138,12 +138,10 @@
 		$commande->transport = $_SESSION['navig']->commande->transport;
 		$commande->client = $_SESSION['navig']->client->id;
 		$commande->adresse = $_SESSION['navig']->adresse;
-		$commande->affilie = $_SESSION['navig']->affilie;
 		$commande->date = date("Y-m-d H:i:s");
 		$commande->ref = "C" . date("ymdHis") . strtoupper(substr($_SESSION['navig']->client->prenom,0, 3));
 		$commande->livraison = "L" . date("ymdHis") . strtoupper(substr($_SESSION['navig']->client->prenom,0, 3));
 		$commande->transaction = date("His");
-		$commande->affilie = $_SESSION['navig']->affilie;
 		$commande->remise = 0;
 
 		$adr = new Adresse();

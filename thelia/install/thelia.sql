@@ -226,7 +226,6 @@ CREATE TABLE `commande` (
   `facture` text NOT NULL,
   `transport` int(11) NOT NULL default '0',
   `port` float NOT NULL default '0',
-  `affilie` int(11) NOT NULL default '0',
   `datelivraison` date NOT NULL default '0000-00-00',
   `remise` float NOT NULL default '0',
   `colis` text NOT NULL,
@@ -983,7 +982,7 @@ INSERT INTO `paysdesc` VALUES (582, 198, 1, 'USA - Arkansas', '', '');
 INSERT INTO `paysdesc` VALUES (61, 61, 1, 'Éthiopie', '', '');
 INSERT INTO `paysdesc` VALUES (62, 62, 1, 'Fidji', '', '');
 INSERT INTO `paysdesc` VALUES (63, 63, 1, 'Finlande', '', '');
-INSERT INTO `paysdesc` VALUES (64, 64, 1, 'France', '', '');
+INSERT INTO `paysdesc` VALUES (64, 64, 1, 'France métropolitaine', '', '');
 INSERT INTO `paysdesc` VALUES (65, 65, 1, 'Gabon', '', '');
 INSERT INTO `paysdesc` VALUES (66, 66, 1, 'Gambie', '', '');
 INSERT INTO `paysdesc` VALUES (67, 67, 1, 'Géorgie', '', '');
@@ -1175,7 +1174,7 @@ INSERT INTO `paysdesc` VALUES (581, 197, 1, 'USA - Arizona', '', '');
 INSERT INTO `paysdesc` VALUES (254, 61, 2, 'Ethiopia', '', '');
 INSERT INTO `paysdesc` VALUES (255, 62, 2, 'Fiji', '', '');
 INSERT INTO `paysdesc` VALUES (256, 63, 2, 'Finland', '', '');
-INSERT INTO `paysdesc` VALUES (257, 64, 2, 'France', '', '');
+INSERT INTO `paysdesc` VALUES (257, 64, 2, 'France metropolitan', '', '');
 INSERT INTO `paysdesc` VALUES (258, 65, 2, 'Gabon', '', '');
 INSERT INTO `paysdesc` VALUES (259, 66, 2, 'Gambia', '', '');
 INSERT INTO `paysdesc` VALUES (260, 67, 2, 'Georgia', '', '');

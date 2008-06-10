@@ -231,8 +231,10 @@
    		
    		$query2 = "select * from $declidisp->table where declinaison='$row->declinaison'";
    		$resul2 = mysql_query($query2);
-   		$nbres = mysql_numrows($resul2);
+   		$nbres = mysql_num_rows($resul2);
   
+		$nb = 0;
+		
           while($row2 = mysql_fetch_object($resul2)){
                	$var="stock" . $row2->id;
           		global $$var;
@@ -244,11 +246,13 @@
              		 $stock->produit=$produit->id;
              		 $stock->valeur=$$var; 
                		 $stock->add();
+					$nb += $stock->valeur;
                    } 
                    
                    else {
                    		$stock->valeur=$$var; 
                    		$stock->maj();	
+						$nb += $stock->valeur;
                    	}
                 
                 }
@@ -256,7 +260,9 @@
 
 	}
 
-
+	$produit->stock = $nb;
+	$produit->maj();
+	
 	modules_fonction("modprod", $produit->ref);
 	
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
@@ -384,7 +390,7 @@
    		
    		$query2 = "select * from $declidisp->table where declinaison='$row->declinaison'";
    		$resul2 = mysql_query($query2);
-   		$nbres = mysql_numrows($resul2);
+   		$nbres = mysql_num_rows($resul2);
   
           while($row2 = mysql_fetch_object($resul2)){
      		 	$stock = new Stock();
@@ -683,7 +689,7 @@
    		
    		$query2 = "select * from $caracdisp->table where caracteristique='$row->caracteristique'";
    		$resul2 = mysql_query($query2);
-   		$nbres = mysql_numrows($resul2);
+   		$nbres = mysql_num_rows($resul2);
    ?>
         
 	 <tr>
@@ -733,7 +739,7 @@
    		
    		$query2 = "select * from $declidisp->table where declinaison='$row->declinaison'";
    		$resul2 = mysql_query($query2);
-   		$nbres = mysql_numrows($resul2);
+   		$nbres = mysql_num_rows($resul2);
    ?>
 
       

@@ -198,7 +198,7 @@
 
 	$query = "select * from $dossier->table where parent=\"$parent\"";
 	$resul = mysql_query($query, $dossier->link);
-	$nbres = mysql_numrows($resul);
+	$nbres = mysql_num_rows($resul);
 		
 	
 ?>

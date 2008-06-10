@@ -49,6 +49,7 @@
 		$texte = str_replace("#CONTENU_ID", "$id_contenu", $texte);
 		$texte = str_replace("#CONTENU_MOTCLE", "$motcle", $texte);
 		$texte = str_replace("#CONTENU_NOM", $tcontenudesc->titre, $texte);
+		$texte = str_replace("#CONTENU_CHAPO", $tcontenudesc->chapo, $texte);
 
 		return $texte;
 	

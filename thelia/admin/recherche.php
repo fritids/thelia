@@ -240,7 +240,7 @@ function supprimer_rubrique(id, parent){
   		
    	$query = "select * from $produitdesc->table where 1 $search";
   	$resul = mysql_query($query, $produitdesc->link);
-	if(mysql_numrows($resul) && $prodlist!="") $prodlist .= ",";
+	if(mysql_num_rows($resul) && $prodlist!="") $prodlist .= ",";
 	
   	$produitdesc = new Produitdesc();
  

@@ -38,7 +38,7 @@
 <?php
 	
 	switch($action){
-		case 'modclassement' : modclassement($id, $contenu, $id, $type); break;		
+		case 'modclassement' : modclassement($id, $contenu, $type); break;		
 		case 'ajouter' : ajouter($contid, $_FILES['doc']['tmp_name'], $_FILES['doc']['name']); break;
 		case 'modifier' : modifier($id, $titre, $chapo, $description); break;
 		case 'supprimer' : supprimer($id);
@@ -52,7 +52,7 @@
 <?php
 	
 
-	function modclassement($id, $contenu, $id, $type){
+	function modclassement($id, $contenu, $type){
 
 		$document = new document();
 		$document->charger($id);

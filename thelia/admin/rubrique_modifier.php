@@ -227,7 +227,7 @@
 	
 	$query = "select * from $rubrique->table where parent=\"$parent\"";
 	$resul = mysql_query($query, $rubrique->link);
-	$nbres = mysql_numrows($resul);
+	$nbres = mysql_num_rows($resul);
 		
 	
 ?>
@@ -253,7 +253,7 @@
   		 
 	$query = "select * from $client->table";
   	$resul = mysql_query($query, $client->link);
-  	$num = mysql_numrows($resul);
+  	$num = mysql_num_rows($resul);
   	
   	$nbpage = ceil($num/20);
   	

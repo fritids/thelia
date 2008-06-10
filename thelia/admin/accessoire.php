@@ -46,7 +46,7 @@
 		$query = "select * from $produitdesc->table  LEFT JOIN $produit->table ON $produit->table.id=$produitdesc->table.id WHERE $produit->table.ref like '%$motcle%' or titre like '%$motcle%' OR chapo like '%$motcle%' OR description like '%$motcle%'";	
 		$resul = mysql_query($query);
 		
-		$num = mysql_numrows($resul);
+		$num = mysql_num_rows($resul);
 		
 		
 		while($row = mysql_fetch_object($resul)){
