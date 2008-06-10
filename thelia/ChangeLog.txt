@@ -5,6 +5,7 @@
 	Simplification du template de base (filtres)
 	Ajout de l'argument declinaison à la boucle DECVAL
 	Nouvel argument pour la boucle PAGE type_page (0 pour produit, 1 pour contenu, produit par défaut)
+	Ajout de l'argument forcepage à la boucle PRODUIT
 	
 1.3.5
 	Possibilité d'ajouter via un plugin du code au niveau de admin/produit_modifier.php
