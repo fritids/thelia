@@ -704,12 +704,19 @@
 			if($pagesess == 1) $page =  $_SESSION['navig']->page;
 			
 			if(!$page ||  $page==1 ) $page=0; 
-
-			if($forcepage != "") $page = $forcepage;
 			
 			if(!$totbloc) $totbloc=1;
 			if($page) $deb = ($page-1)*$totbloc*$num+$deb; 
-	
+
+			if($forcepage != "") {
+				if($forcepage == 1){
+					$forcepage = 0;
+					$deb = 0;
+				}	
+				
+				if($forcepage) $deb = ($forcepage-1)*$totbloc*$num+$deb;
+			}
+				
 			// initialisation de variables
 			$search = "";
 			$order = "";
