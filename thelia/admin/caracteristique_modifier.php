@@ -216,6 +216,7 @@
 	function ajcaracdisp($id, $caracdisp, $lang){
 	
      	if(!$lang) $lang=1;
+
      	
 		$tcaracdisp = new Caracdisp();
 		$tcaracdisp->caracteristique = $id;
@@ -246,6 +247,7 @@
 			$existe = $caracdispdesc->charger_caracdisp($row->id, $lang);
 			
 			$caracdispdesc->caracdisp = $row->id;
+			
 			$caracdispdesc->lang = $lang;
 			$caracdispdesc->titre = $$var;
 
@@ -440,13 +442,14 @@
                               <td height="30" class="cellule_claire_vide" >
 							  <table width="100%" border="0">
   <tr>
-    <td width="30%"><span class="geneva11bol_3B4B5B"><?php echo($caracdispdesc->titre); ?></span></td>
-    <td width="31%">
     <?php if($lang == "1") { ?>
+			<td width="30%"><span class="geneva11bol_3B4B5B"><input type="text" name="<?php echo($lang); ?>_<?php echo($row->id); ?>" value="<?php echo($caracdispdesc->titre); ?>" class="form" /></span></td>
+		    <td width="31%">
   			  <a href="#" onclick="suppr('<?php echo($row->id); ?>')" class="txt_vert_11">Supprimer <img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a><a href="#" onClick="suppr('<?php echo($row->id); ?>')"></a>
     
     <?php } else { ?>
-    
+    	<td width="30%"><span class="geneva11bol_3B4B5B"><?php echo($caracdispdesc->titre); ?></span></td>
+	    <td width="31%">
     <input type="text" name="<?php echo($lang); ?>_<?php echo($row->id); ?>" value="<?php echo($caracdispdesclang->titre); ?>" />
     
     <?php
@@ -456,7 +459,9 @@
     	
     	
   </tr>
+	
 </table>
+
 
 	  						  </td>
                             </tr>
@@ -467,6 +472,17 @@
 <?php
 }
 ?>
+	<tr class="cellule_sombre2">
+      <td height="30" >&nbsp;</td>
+      <td height="30" >
+      
+<?php if($lang == "1") { ?>
+      <a href="#" onClick="maj()" class="txt_vert_11">Mettre à jour <img src="gfx/suivant.gif" width="12" height="9" border="0" /></a>
+<?php } ?>      
+      
+      <br />
+</td>
+    </tr>
         </table>
   </form>
   <table width="710" border="0" cellpadding="5" cellspacing="0">
