@@ -41,6 +41,7 @@
 	include_once("../classes/Declidisp.class.php");
 	include_once("../classes/Rubdeclinaison.class.php");
 	include_once("../classes/Rubrique.class.php");
+	include_once("../classes/Cache.class.php");	
 ?>
 <?php
 
@@ -91,6 +92,12 @@
 		}
 		
 		$declinaison->maj();
+
+		$cache = new Cache();
+		$cache->vider("DECLINAISON", "%");		
+		$cache->vider("DECLIDISP", "%");
+		$cache->vider("DECVAL", "%");
+		$cache->vider("PRODUIT", "%");
 		
 	    header("Location: declinaison.php");
 
@@ -130,6 +137,12 @@
 		$declinaison->maj();
 		$declinaisondesc->maj();
 
+		$cache = new Cache();
+		$cache->vider("DECLINAISON", "%");		
+		$cache->vider("DECLIDISP", "%");
+		$cache->vider("DECVAL", "%");
+		$cache->vider("PRODUIT", "%");
+			   
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $declinaison->id);
 	}
 
@@ -198,6 +211,12 @@
 		$rubdeclinaison->add();
 	 }
 		
+	$cache = new Cache();
+	$cache->vider("DECLINAISON", "%");		
+	$cache->vider("DECLIDISP", "%");
+	$cache->vider("DECVAL", "%");
+	$cache->vider("PRODUIT", "%");
+		
 	header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
 
 	}
@@ -222,6 +241,12 @@
 		$declinaison->charger($id);
 		$declinaison->supprimer();
 
+		$cache = new Cache();
+		$cache->vider("DECLINAISON", "%");		
+		$cache->vider("DECLIDISP", "%");
+		$cache->vider("DECVAL", "%");
+		$cache->vider("PRODUIT", "%");
+		
 	    header("Location: declinaison.php");
 
 	}
@@ -231,6 +256,11 @@
 		$tdeclidisp->charger($declidisp);
 		$tdeclidisp->supprimer();
 		
+		$cache = new Cache();
+		$cache->vider("DECLINAISON", "%");		
+		$cache->vider("DECLIDISP", "%");
+		$cache->vider("DECVAL", "%");
+		$cache->vider("PRODUIT", "%");
 	}
 
 	function ajdeclidisp($id, $declidisp, $lang){
@@ -247,6 +277,13 @@
 		$tdeclidispdesc->titre = $declidisp;
 		
 		$tdeclidispdesc->add();
+
+		$cache = new Cache();
+		$cache->vider("DECLINAISON", "%");		
+		$cache->vider("DECLIDISP", "%");
+		$cache->vider("DECVAL", "%");
+		$cache->vider("PRODUIT", "%");
+		
 	}
 	
 	function majdeclidisp($id, $lang){
@@ -275,6 +312,13 @@
 			
 			
 		}	
+
+		$cache = new Cache();
+		$cache->vider("DECLINAISON", "%");		
+		$cache->vider("DECLIDISP", "%");
+		$cache->vider("DECVAL", "%");
+		$cache->vider("PRODUIT", "%");		
+		
 	}	
 ?>
 <?php
@@ -448,14 +492,15 @@
                               <td height="30" class="cellule_claire_vide" >
 							  <table width="100%" border="0">
   <tr>
-    <td width="30%"><span class="geneva11bol_3B4B5B"><?php echo($declidispdesc->titre); ?></span></td>
-    <td width="31%">
     
     <?php if($lang == "1") { ?>
+				<td width="30%"><span class="geneva11bol_3B4B5B"><input type="text" name="<?php echo($lang); ?>_<?php echo($row->id); ?>" value="<?php echo($declidispdesc->titre); ?>" class="form" /></span></td>
+			    <td width="31%">
   			  <a href="#" onclick="suppr('<?php echo($row->id); ?>')" class="txt_vert_11">Supprimer <img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a><a href="#" onClick="suppr('<?php echo($row->id); ?>')"></a>
     
     <?php } else { ?>
-    
+    	<td width="30%"><span class="geneva11bol_3B4B5B"><?php echo($declidispdesc->titre); ?></span></td>
+	    <td width="31%">
     <input type="text" name="<?php echo($lang); ?>_<?php echo($row->id); ?>" value="<?php echo($declidispdesclang->titre); ?>" />
     
     <?php
@@ -478,7 +523,18 @@
                         
 <?php
 }
-?>                     
+?>
+<tr class="cellule_sombre2">
+  <td height="30" >&nbsp;</td>
+  <td height="30" >
+  
+<?php if($lang == "1") { ?>
+  <a href="#" onClick="maj()" class="txt_vert_11">Mettre à jour <img src="gfx/suivant.gif" width="12" height="9" border="0" /></a>
+<?php } ?>      
+  
+  <br />
+</td>
+</tr>                     
 
         </table>
   </form>
