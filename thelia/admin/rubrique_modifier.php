@@ -432,7 +432,7 @@
 		while($row = mysql_fetch_object($resul)){
 			$imagedesc->charger($row->id);
 	?>
-        &nbsp;<img src="../client/gfx/photos/rubrique/<?php echo($row->fichier); ?>" border="0" />       
+        &nbsp;<img src="../fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/<?php echo($row->fichier); ?>&width=150&height=&opacite=" border="0" />  
          <br />
     <?php
 		}
