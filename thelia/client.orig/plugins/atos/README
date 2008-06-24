@@ -1,21 +1,17 @@
-Ce plugin ATOS permet de gÃ©rer un nombre important de paiement sÃ©curisÃ© bancaire.
+Ce plugin ATOS permet de gérer un nombre important de paiement sécurisé bancaire.
 
 
 INSTALLATION
 ============
 
-- copiez les binaires fournis par ATOS dans le rÃ©pertoire bin/
+- copiez les binaires fournis par ATOS dans le répertoire bin/
   il s'agit de request et response
 
 - renommez les fichier conf/certif.fr.xxxxxxxxxxxxxxx et conf/parcom.xxxxxxxxxxxxxxx
-   remplacez tout simplement les xxxxxxxxxxxxxxx par votre nÂ° de marchand
+   remplacez tout simplement les xxxxxxxxxxxxxxx par votre n° de marchand
 
 - copier le contenu du certificat fourni par votre banque dans conf/certif.fr.xxxxxxxxxxxxxxx
 
 - editez le fichier conf/parcom.xxxxxxxxxxxxxxx et indiquez les bonnes url
 
-- renommez conf/parmcom.NOM comme le fichier fourni par votre banque (ex : parmcom.cyberplus)
-
-- editez conf/pathfile et remplacez parcom.NOM de la mÃªme faÃ§on
-
-- editez le fichier config.php et inscrivez votre nÂ° de marchand.
+- editez le fichier config.php et inscrivez votre n° de marchand.

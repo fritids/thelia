@@ -170,8 +170,8 @@
 			$corps = str_replace("__COMMANDE_DATE__", $jour . "/" . $mois . "/" . $annee . " " . $heure . ":" . $minute, $corps);
 			$corps = str_replace("__COMMANDE_TRANSACTION__", $commande->transaction, $corps);
 			$corps = str_replace("__COMMANDE_PAIEMENT__", $paiementdesc->titre, $corps);
-			$corps = str_replace("__COMMANDE_TOTALPORT__", $totcmdport, $corps);
-			$corps = str_replace("__COMMANDE_TOTAL__", $total-$commande->remise, $corps);
+			$corps = str_replace("__COMMANDE_TOTALPORT__", $totcmdport-$commande->remise, $corps);
+			$corps = str_replace("__COMMANDE_TOTAL__", $total, $corps);
 			$corps = str_replace("__COMMANDE_PORT__", $commande->port, $corps);
 			$corps = str_replace("__COMMANDE_REMISE__", $commande->remise, $corps);
 			$corps = str_replace("__COMMANDE_TRANSPORT__", $transportdesc->titre, $corps);
@@ -218,15 +218,15 @@
 
 			
 			for($i=0; $i<$_SESSION['navig']->panier->nbart; $i++){
-
+				
+				$dectexte = "";
+				
 				for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
 					$declinaison = new Declinaison();
 					$declinaisondesc = new Declinaisondesc();
 					$declidisp = new Declidisp();
 					$declidispdesc = new Declidispdesc();
 					
-					$dectexte = "";
-				
 					$tperso = $_SESSION['navig']->panier->tabarticle[$i]->perso[$compt];
 					$declinaison->charger($tperso->declinaison);
 					$declinaisondesc->charger($declinaison->id);

@@ -25,7 +25,7 @@ F_PARAM!conf/parmcom!
 #
 # fichier des  paramètres ATOS
 #
-F_DEFAULT!conf/parmcom.NOM!
+F_DEFAULT!conf/parmcom.atos!
 #
 # --------------------------------------------------------------------------
 # 	end of file
