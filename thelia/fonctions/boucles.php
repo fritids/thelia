@@ -393,7 +393,8 @@
 					$prdesc->charger($image->contenu);
 					$temp = str_replace("#PRODTITRE", $prdesc->titre, $temp);
 					$temp = str_replace("#PRODUIT", $image->contenu, $temp);
-					
+					$temp = str_replace("#CONTTITRE", $prdesc->titre, $temp);
+					$temp = str_replace("#CONTENU", $image->contenu, $temp);					
 					if(!$largeur && !$hauteur) 
 							$temp = str_replace("#IMAGE", "client/gfx/photos/contenu/" . $image->fichier, $temp);
 						else 
@@ -625,7 +626,10 @@
 		$classement = lireTag($args, "classement");
 		
 		$search="";
-		
+		$order = "";
+		$limit="";
+		$res="";
+				
 		if(!$deb) $deb=0;	
 		if(!$num) $num = "999999999";
 		
@@ -1428,11 +1432,11 @@
 			$zone->charger($pays->zone);
 						
 			if($_SESSION['navig']->client->type) {
-				$prix = round($prix/$tva, 2);
-				$total = round($total/$tva, 2);
-				$port = round($port/$tva, 2);
-				$totcmdport = round($totcmdport/$tva, 2);
-				$totsansport = round($totsansport/$tva, 2);
+				$prix = round($prix*100/(100+$tva), 2);
+				$total = round($total*100/(100+$tva), 2);
+				$port = round($port*100/(100+$tva), 2);
+				$totcmdport = round($totcmdport*100/(100+$tva), 2);
+				$totsansport = round($totsansport*100/(100+$tva), 2);
 			}
 			
 			$produitdesc = new Produitdesc();
@@ -1878,10 +1882,10 @@
 			
 			if($caracteristique == "$tcaracdisp->caracteristique" . "-" && $caracdisp == $tabliste[$i] . "-") 
 				$selected = "selected=\"selected\""; else $selected = "";
-				
-			$temp = str_replace("#ID", $tcaracdisp->id, $texte);
+
+			$temp = str_replace("#IDC", $id . $etcaracdisp, $texte);
+			$temp = str_replace("#ID", $tcaracdisp->id, $temp);
 			$temp = str_replace("#CARACTERISTIQUE", $tcaracdisp->caracteristique, $temp);			
-			$temp = str_replace("#IDC", $id . $etcaracdisp, $temp);
 			$temp = str_replace("#CARACTERISTIQUEC", $caracteristique . $etcaracteristique, $temp);
 			$temp = str_replace("#TITRE", "$tcaracdispdesc->titre", $temp);
 			$temp = str_replace("#SELECTED", "$selected", $temp);

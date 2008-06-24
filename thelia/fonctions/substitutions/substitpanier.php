@@ -48,15 +48,16 @@
 			$nb_article += $_SESSION['navig']->panier->tabarticle[$i]->quantite;
 		}
 		
+		$tva = $_SESSION['navig']->panier->tabarticle[$i]->produit->tva;
 		
 		$total = round($total, 2);
 		$port = port();
 		$totcmdport = $total + $port;
 			
 		if($_SESSION['navig']->client->type) {
-			$total = round($total/1.196, 2);
-			$port = round($port/1.196, 2);
-			$totcmdport = round($totcmdport/1.196, 2);
+			$total = round($total*100/(100+$tva), 2);
+			$port = round($port*100/(100+$tva), 2);
+			$totcmdport = round($totcmdport*100/(100+$tva), 2);
 		}
 
 		$remise=0;
@@ -69,7 +70,7 @@
 	    if($totcmdport<$port)
 		    $totcmdport = $port;
 		
-		$totalht = round($total/1.196, 2);
+		$totalht = round($total*100/(100+$tva), 2);
 		
 		
 		$totalht = number_format($totalht, 2, ".", "");

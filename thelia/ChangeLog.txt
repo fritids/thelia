@@ -8,7 +8,10 @@
 	Ajout de l'argument forcepage à la boucle PRODUIT
 	Modification des caracdisp possible directement depuis le BO
 	Modification des declidisp possible directement depuis le BO
-	
+	Correction de la boucle PANIER (tva pour les clients de type 1)
+	Idem pour les substitutions PANIER
+	Date de livraison modifiée lors du passage à l'état envoyé
+		
 1.3.5
 	Possibilité d'ajouter via un plugin du code au niveau de admin/produit_modifier.php
 	Les plugins peuvent inclure du code avant l'ouverture de session (stockage d'objet en session par ex)

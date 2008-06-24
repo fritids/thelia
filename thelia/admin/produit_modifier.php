@@ -161,8 +161,8 @@
 		 $produitdesc->description = $description;
 		 $produitdesc->titre = $titre;
 	 	 
-	 	 $produitdesc->chapo = ereg_replace("\n", "<br/>", $produitdesc->chapo);
-	//	 $produitdesc->description = ereg_replace("\n", "<br/>", $produitdesc->description);
+	 	 $produitdesc->chapo = ereg_replace("\n", "<br />", $produitdesc->chapo);
+	//	 $produitdesc->description = ereg_replace("\n", "<br />", $produitdesc->description);
 			
 	
 		$rubcaracteristique = new Rubcaracteristique();
@@ -325,8 +325,8 @@
 	 $produitdesc->lang = 1;
 	 $produitdesc->titre = $titre;
 
-	 $produitdesc->chapo = ereg_replace("\n", "<br/>", $produitdesc->chapo);
-     $produitdesc->description = ereg_replace("\n", "<br/>", $produitdesc->description);		
+	 $produitdesc->chapo = ereg_replace("\n", "<br />", $produitdesc->chapo);
+     $produitdesc->description = ereg_replace("\n", "<br />", $produitdesc->description);		
 	 
 	 $produitdesc->add();
 	
@@ -449,8 +449,8 @@
 	$produit->charger($ref);
 	$produitdesc->charger($produit->id, $lang);
 
-	$produitdesc->chapo = ereg_replace("<br/>", "\n", $produitdesc->chapo);
-	$produitdesc->description = ereg_replace("<br/>", "\n", $produitdesc->description);
+	$produitdesc->chapo = ereg_replace("<br />", "\n", $produitdesc->chapo);
+	$produitdesc->description = ereg_replace("<br />", "\n", $produitdesc->description);
 	
 	if($produit->tva == ""){
 		$tvar = new Variable();
@@ -781,7 +781,7 @@
       <td class="cellule_sombre"><span class="arial11_bold_626262">
 
         <a href="#" class="lien04" onclick="window.open('photo_produit.php?ref=<?php echo($produit->ref); ?>', 'gestion', 'scrollbars=yes, resizable=yes, width=800, height=800');"> G&eacute;rer les photos</a>
-        <br/>
+        <br />
         
         <?php 
 		$image = new Image();
