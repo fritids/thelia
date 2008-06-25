@@ -98,17 +98,22 @@
 				$hauteursave = $hauteur;
 		
 
-       			$pdf->SetFont('Arial','',8);
-       			$pdf->SetXY(42,$hauteursave);
-				$pdf->write(5,$venteprod->titre);
-	
+        	    $chapo = $venteprod->titre;
+		
+				$chapo = ereg_replace("<br />", "\n", $chapo);
+	     
+	     	    $pdf->SetXY(42,$hauteursave);
+				$pdf->MultiCell(60, 5, $chapo, 0, "L");
+				$recy = $pdf->getY();
+				$pdf->SetFont('Arial','',8);
+				$pdf->SetXY(127,$hauteursave);		
 				$pdf->SetFont('Arial','',8);
 				$pdf->SetXY(192,$hauteursave);		
-       			$pdf->write(5,$venteprod->quantite); 
-				$pdf->SetFont('Arial','',8);
+         	    $pdf->write(5,$venteprod->quantite); 
+	
+			$hauteur=$recy + 5;
 			
-				$hauteur+=5;
-
+       			
    			}
                   	
  
