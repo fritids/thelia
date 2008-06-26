@@ -25,24 +25,19 @@
 ?>
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/Declidispdesc.class.php");
 
-	// Classe Activite
-
-	// id --> identifiant activite
-	// desc --> nom de l'activité
-	
-	class Declidisp extends Baseobj{
+	class Ventedeclidisp extends Baseobj{
 
 		var $id;
-		var $declinaison;
+		var $venteprod;
+		var $declidisp;
 
 
 				
-		var $table="declidisp";
-		var $bddvars = array("id", "declinaison");
+		var $table="ventedeclidisp";
+		var $bddvars = array("id", "venteprod", "declidisp");
 
-		function Declidisp(){
+		function Ventedeclidisp(){
 			$this->Baseobj();
 		}
 
@@ -50,23 +45,6 @@
 		
 			return $this->getVars("select * from $this->table where id=\"$id\"");
 
-		}
-
-		function delete($requete){
-			
-				$resul = mysql_query($requete);	
-		}
-			
-			
-		function supprimer(){
-			$declidispdesc =  new Declidispdesc();
-			$declidisp =  new Declidisp();
-			
-			$this->delete("delete from $declidispdesc->table where declidisp=\"$this->id\"");	
-			$this->delete("delete from $this->table where id=\"$this->id\"");	
-			
-			return 1;
-		
 		}
 
 	}
