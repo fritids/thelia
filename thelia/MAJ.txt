@@ -14,4 +14,4 @@ Sauvegardez-le préalablement.
 
 Avant une mise à jour, il est de toutes façons toujours conseillé de procéder à une sauvegarde.
 
-Copiez le répertoire client.orig/gfx/utilisateur dans votre répertoire client/gfx
+Pour terminer connectez-vous à l'adresse suivante http://www.votrethelia.com/install/

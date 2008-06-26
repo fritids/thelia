@@ -258,7 +258,7 @@ body {
 			<textarea name="description" rows="10" cols="40"><?php echo $imagedesc->description ?></textarea>
 			<input type="submit" value="Enregistrer" />
 		</form>	   </td>	
-       <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><div align="center"><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&action=modclassement&type=M&rubid=".$rubrique->id; ?>"><img src="gfx/bt_flecheh.gif" border="0"></a><a href="<?php echo v . "?id=".$row->id."&action=modclassement&type=D&rubid=".$rubrique->id; ?>"><img src="gfx/bt_flecheb.gif" border="0"></a></div></td>
+       <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><div align="center"><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&action=modclassement&type=M&rubid=".$rubrique->id; ?>"><img src="gfx/bt_flecheh.gif" border="0"></a><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&action=modclassement&type=D&rubid=".$rubrique->id; ?>"><img src="gfx/bt_flecheb.gif" border="0"></a></div></td>
        <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?id=<?php echo($row->id); ?>&rubid=<?php echo($rubrique->id); ?>&action=supprimer"  class="txt_vert_11">Supprimer</a></td>
 	 </tr>
 	<tr>

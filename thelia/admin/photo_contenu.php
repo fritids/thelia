@@ -37,7 +37,7 @@
 <?php
 	
 	switch($action){
-		case 'modclassement' : modclassement($id, $contid, $id, $type); break;	
+		case 'modclassement' : modclassement($id, $contid, $type); break;	
 		case 'ajouter' : ajouter($contid); break;
 		case 'modifier' : modifier($id, $titre, $chapo, $description); break;
 		case 'supprimer' : supprimer($id);
@@ -49,7 +49,7 @@
 
 <?php
 
-	function modclassement($id, $contid, $id, $type){
+	function modclassement($id, $contid, $type){
 
 		$image = new Image();
 		$image->charger($id);

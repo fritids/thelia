@@ -75,8 +75,6 @@
 
 ?>     
    
-
-
     
   <tr class="<?php echo($fond); ?>">
     <td width="21%" height="30"><?php echo($row->nom); ?></td>

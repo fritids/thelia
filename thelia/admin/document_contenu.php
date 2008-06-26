@@ -38,7 +38,7 @@
 <?php
 	
 	switch($action){
-		case 'modclassement' : modclassement($id, $contenu, $type); break;		
+		case 'modclassement' : modclassement($id, $contid, $type); break;		
 		case 'ajouter' : ajouter($contid, $_FILES['doc']['tmp_name'], $_FILES['doc']['name']); break;
 		case 'modifier' : modifier($id, $titre, $chapo, $description); break;
 		case 'supprimer' : supprimer($id);
@@ -52,12 +52,12 @@
 <?php
 	
 
-	function modclassement($id, $contenu, $type){
+	function modclassement($id, $contid, $type){
 
 		$document = new document();
 		$document->charger($id);
 
-	 	$query = "select max(classement) as maxClassement from $document->table where contenu='" . $contenu . "'";
+	 	$query = "select max(classement) as maxClassement from $document->table where contenu='" . $contid . "'";
 
 		$resul = mysql_query($query, $document->link);
         $maxClassement = mysql_result($resul, 0, "maxClassement");
@@ -66,7 +66,7 @@
 
 			if($document->classement == 1)  return; 
 
-			$query = "update $document->table set classement=" . $document->classement . " where classement=" . ($document->classement-1) . " and contenu='" . $contenu . "'";
+			$query = "update $document->table set classement=" . $document->classement . " where classement=" . ($document->classement-1) . " and contenu='" . $contid . "'";
 			$resul = mysql_query($query, $document->link);
 			 $document->classement--;
 		}
@@ -76,7 +76,7 @@
 			if($document->classement == $maxClassement) return; 
 
 			
-			$query = "update $document->table set classement=" . $document->classement . " where classement=" . ($document->classement+1) . " and contenu='" . $contenu . "'";
+			$query = "update $document->table set classement=" . $document->classement . " where classement=" . ($document->classement+1) . " and contenu='" . $contid . "'";
 			$resul = mysql_query($query, $document->link);
 			
 			 $document->classement++;
@@ -243,8 +243,8 @@ body {
 					<input type="submit" value="Enregistrer" />
 				</form>
 			  </td>	
-		      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><div align="center"><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&ref=$ref&action=modclassement&type=M&produit=".$produit->id; ?>"><img src="gfx/bt_flecheh.gif" border="0"></a><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&ref=$ref&action=modclassement&type=D&produit=".$produit->id; ?>"><img src="gfx/bt_flecheb.gif" border="0"></a></div></td>      
-		      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?id=<?php echo($row->id); ?>&ref=<?php echo($ref); ?>&action=supprimer"  class="txt_vert_11">Supprimer</a></td>
+		      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><div align="center"><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&contid=$contid&action=modclassement&type=M"; ?>"><img src="gfx/bt_flecheh.gif" border="0"></a><a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&contid=$contid&action=modclassement&type=D"; ?>"><img src="gfx/bt_flecheb.gif" border="0"></a></div></td>      
+		      <td  width="20%" align="left" valign="middle" class="arial11_bold_626262"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?id=<?php echo($row->id); ?>&contid=<?php echo($contid); ?>&action=supprimer"  class="txt_vert_11">Supprimer</a></td>
 
 		      <td width="60%">&nbsp;</td>
 			 </tr>
