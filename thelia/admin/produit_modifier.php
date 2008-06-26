@@ -260,7 +260,9 @@
 
 	}
 
-	$produit->stock = $nb;
+	if($nb)
+		$produit->stock = $nb;
+			
 	$produit->maj();
 	
 	modules_fonction("modprod", $produit->ref);

@@ -58,6 +58,18 @@
 		$tempcmd->statut = "5";
 		$tempcmd->maj();
 
+
+   		$venteprod = new Venteprod();
+   		$query = "select * from $venteprod->table where commande='" . $id . "'";
+   		$resul = mysql_query($query, $venteprod->link);
+
+		while($row = mysql_fetch_object($resul)){
+    		$produit = new Produit();   
+			$produit->charger($row->ref);
+			$produit->stock = $produit->stock + $row->quantite;
+    		$produit->maj();
+		}
+
 		modules_fonction("statut", $tempcmd);
 		
 	}
