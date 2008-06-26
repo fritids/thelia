@@ -13,7 +13,7 @@
 	Date de livraison modifiée lors du passage à l'état envoyé
 	Ajout de quelques plugins d'administration + filtres. Il suffit de les activer au besoin
 	Ajout d'un système de mise à jour de la base de données de THELIA (lors des changement de version)
-	Ajout d'un système de réincrémentation de stock lors d'une annulation de commande.
+	Ajout d'un système de réincrémentation de stock lors d'une annulation de commande. (Si vous utilisez le plugin histostock, pensez à le désactiver sinon double réincrémentation)
 	Correction de client/pdf/modele/livraison.php (pensez à mettre à jour)
 	
 1.3.5

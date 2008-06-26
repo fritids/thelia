@@ -223,6 +223,7 @@
    	$query = "select * from $rubdeclinaison->table where rubrique='" . $rubrique . "'";
    	$resul = mysql_query($query);
 
+	$nb = 0;
   	
    	while($row = mysql_fetch_object($resul)){
 
@@ -232,8 +233,6 @@
    		$query2 = "select * from $declidisp->table where declinaison='$row->declinaison'";
    		$resul2 = mysql_query($query2);
    		$nbres = mysql_num_rows($resul2);
-  
-		$nb = 0;
 		
           while($row2 = mysql_fetch_object($resul2)){
                	$var="stock" . $row2->id;
@@ -751,7 +750,18 @@
 :</span></td>
       <td class="cellule_sombre">
     
-    
+		<table>
+			<tr>
+          <td width="200">&nbsp;</td>
+          
+          <td width="200">Stock</td>
+          
+          
+           <td width="200">&nbsp;</td>
+        
+			</tr>
+		</table>
+		    
         <input type="hidden" name="typedeclit<?php echo($row->declinaison); ?>" value="c" />
           <?php while($row2 = mysql_fetch_object($resul2)){ 
      		 	$declidispdesc->charger_declidisp($row2->id);
@@ -764,14 +774,22 @@
 			$res = $exdecprod->charger($produit->id, $row2->id); 
 		?>  	
         
-            <?php echo($declidispdesc->titre); ?>
+		<table>
+			<tr>
+            <td width="200"><?php echo($declidispdesc->titre); ?></td>
+            
+            <td width="200"><input type="text" name="stock<?php echo($row2->id); ?>" value="<?php echo($stock->valeur); ?>" size="4" /></td>
             
             
-            <input type="text" name="stock<?php echo($row2->id); ?>" value="<?php echo($stock->valeur); ?>" size="4" />
-            
-            
-             <?php if($res) { ?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&produit=<?php echo($produitdesc->produit); ?>&rubrique=<?php echo($rubrique); ?>&action=acdec&id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">Activer</a> <?php } else {?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&produit=<?php echo($produitdesc->produit); ?>&rubrique=<?php echo($rubrique); ?>&action=desdec&id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">D&eacute;sactiver</a> <?php } ?> <br />
-          <?php } ?></td>
+             <td width="200"><?php if($res) { ?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&produit=<?php echo($produitdesc->produit); ?>&rubrique=<?php echo($rubrique); ?>&action=acdec&id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">Activer</a> <?php } else {?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&produit=<?php echo($produitdesc->produit); ?>&rubrique=<?php echo($rubrique); ?>&action=desdec&id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">D&eacute;sactiver</a> <?php } ?></td>
+          
+			</tr>
+		</table>
+				
+			<?php } ?>
+
+
+		</td>
     </tr>
     
          <?php } ?>        
