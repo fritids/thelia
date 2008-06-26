@@ -39,6 +39,8 @@
 	include_once("../classes/Commande.class.php");
 	include_once("../classes/Client.class.php");
 	include_once("../classes/Venteprod.class.php");
+	include_once("../classes/Ventedeclidisp.class.php");
+	include_once("../classes/Stock.class.php");
 	include_once("../classes/Statutdesc.class.php");
 	include_once("../fonctions/divers.php");
 
@@ -64,10 +66,28 @@
    		$resul = mysql_query($query, $venteprod->link);
 
 		while($row = mysql_fetch_object($resul)){
+			// incrémentation du stock général
     		$produit = new Produit();   
 			$produit->charger($row->ref);
 			$produit->stock = $produit->stock + $row->quantite;
     		$produit->maj();
+
+			$vdec = new Ventedeclidisp();
+			
+			$query2 = "select * from $vdec->table where venteprod='" . $row->id . "'";
+			$resul2 = mysql_query($query2, $vdec->link);
+			
+			
+			while($row2 = mysql_fetch_object($resul2)){
+				$stock = new Stock();
+				if($stock->charger($row2->declidisp, $produit->id)){
+					$stock->valeur = $stock->valeur + $row->quantite;
+					$stock->maj();					
+				}
+				
+				
+			}
+			
 		}
 
 		modules_fonction("statut", $tempcmd);

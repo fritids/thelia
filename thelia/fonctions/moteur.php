@@ -49,6 +49,7 @@
 	include_once("classes/Client.class.php");
 	include_once("classes/Commande.class.php");
 	include_once("classes/Venteprod.class.php");
+	include_once("classes/Ventedeclidisp.class.php");
     include_once("classes/Message.class.php");
 	include_once("classes/Messagedesc.class.php");
 	include_once("classes/Transzone.class.php");

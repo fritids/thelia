@@ -215,7 +215,23 @@
 		 	$venteprod->tva =  $_SESSION['navig']->panier->tabarticle[$i]->produit->tva;	
 		 	
 			$venteprod->commande = $idcmd;
-		 	$venteprod->add();
+		 	$idvprod = $venteprod->add();
+
+			// ajout dans ventedeclisp des declidisp associées au venteprod
+			for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
+				$tperso = $_SESSION['navig']->panier->tabarticle[$i]->perso[$compt];
+				$declinaison->charger($tperso->declinaison);
+
+				// si declidisp (pas un champs libre)
+				if($declinaison->isDeclidisp($tperso->declinaison)){
+					$vdec = new Ventedeclidisp();
+					$vdec->venteprod = $idvprod;
+					$vdec->declidisp = $tperso->valeur;
+					$vdec->add();
+				}
+			}
+		
+		
 		 	$total += $venteprod->prixu * $venteprod->quantite;
 		 	$nbart++;
 		 	$poids+= $_SESSION['navig']->panier->tabarticle[$i]->produit->poids;
