@@ -52,6 +52,11 @@
 		<div id="colonneDeGauche"style="overflow:hidden;zoom: 1">
 		
 			<div id="chapeau"style="overflow:hidden;zoom: 1">
+		
+		<?php
+		
+			if(! file_exists("../classes/Cnx.class.php")) {
+		?>
 			<h2>installation de Thelia</h2>
 		
 				<br />
@@ -62,7 +67,23 @@
 				<form action="bdd.php" method="post">
 					<input type="submit" value="Continuer" />
 				</form>
+		<?php
+			} else {
+		?>
+
+			<h2>Mise à jour de Thelia</h2>
+		
+				<br />
 				
+				Bienvenue au sein du programme de mise à jour de Thelia.<br /><br />
+			
+				<form action="maj.php" method="post">
+					<input type="submit" value="Continuer" />
+				</form>
+						
+		<?php
+			}
+		?>
 
 			</div>
 			

@@ -151,7 +151,7 @@
 	<div id="planDuSite"style="overflow:hidden;zoom: 1">
 		<div id="contenuPlanDuSite"style="overflow:hidden;zoom: 1">
 		R&eacute;alisation <a href="http://www.octolys.fr">Octolys</a> <br />
-		Charte graphique <a href="http://www.amplitude-thiers.com">Amplitude </a></div>
+		Charte graphique <a href="http://www.scopika.com">Scopika </a></div>
 		<div id="footerPlanDuSite"style="overflow:hidden;zoom: 1">
 		</div>
 	</div>

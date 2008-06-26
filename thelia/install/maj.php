@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	$_SESSION['serveur']="";
+	$_SESSION['utilisateur']="";
+	$_SESSION['motdepasse']="";
+	$_SESSION['choixbase']="";
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -21,7 +29,7 @@
 		<!-- Entête -->
 		
 	<div id="entete"style="overflow:hidden;zoom: 1">
-		<h1><span>Thélia</span></h1>
+		<h1><span>Thelia</span></h1>
 	</div>
 	
 		<!-- Menu -->
@@ -30,7 +38,7 @@
 		
 		<div id="menuHorizontal">
 		<dl>
-			<dt><a href="#">ETAPE 2</a></dt>
+			<dt><a href="#">Mise à jour</a></dt>
 		</dl>
 		
 		</div>
@@ -44,36 +52,52 @@
 		<div id="colonneDeGauche"style="overflow:hidden;zoom: 1">
 		
 			<div id="chapeau"style="overflow:hidden;zoom: 1">
-			<h2>Connexion &agrave; la base de données</h2>
+		
+	
+			<h2>installation de Thelia</h2>
 		
 				<br />
-				Nous allons installer les informations nécessaires en base de donneés.<br /><br />
 				
-				Nous allons pour cela vous demander différentes informations. <br /><br />
+				Mise à jour en cours ...<br /><br />
 				
-				<?php if(isset($_GET['err']) && $_GET['err']) { ?>
-					<span class="erreur">Erreur ! Veuillez vérifier vos informations de connexion</span>
-				<?php } ?>
-				<form action="choixbase.php" method="post">
+				<?php
+					include_once("../admin/config.php");
+					include_once("../classes/Variable.class.php");
+
+					$var = new Variable();
+					if($var->charger("version"))
+						$vcur = $var->valeur;
+					else
+						$vcur="135";
+						
+					$vnew = $version;
+
+					while($vcur != $vnew){
+						$vcur ++;
+						$patch = substr($vcur, 0, 1) . "." . substr($vcur, 1, 1) . "." . substr($vcur, 2, 1);
+						
+						if(file_exists("patch/") . $patch){
+							include_once("patch/" . $patch . ".php");
+				?>
 				
-				<div class="col">Serveur MySQL :</div>
-				<div class="col"><input type="text" name="serveur" size="30" /></div> 
-				<div class="col">Nom d'utilisateur :</div> 
-				<div class="col"><input type="text" name="utilisateur" size="30" /></div>
-				<div class="col">Mot de passe :</div> 
-				<div class="col"><input type="password" name="motdepasse" size="30" /></div> 
-			
-				<div class="col">&nbsp;</div>
+				Mise à jour vers <?php echo $patch; ?> .............................. OK <br />
+				<?php
+						}
+						
+					}
+
+
+				?>
 				
-				<br /><br />
+				<br />
 				
-				<input style="clear: both; float: left;" type="submit" value="Continuer" /></a>
+				Mise à jour terminée.<br /><br />
 				
-				</form>
+				N'oubliez pas de supprimer le répertoire install
 				
 
 			</div>
-
+			
 		</div>
 		
 
@@ -84,11 +108,12 @@
 	<div id="planDuSite"style="overflow:hidden;zoom: 1">
 		<div id="contenuPlanDuSite"style="overflow:hidden;zoom: 1">
 		R&eacute;alisation <a href="http://www.octolys.fr">Octolys</a> <br />
-			Charte graphique <a href="http://www.scopika.com">Scopika </a></div>
+		Charte graphique <a href="http://www.scopika.com">Scopika </a></div>
 		<div id="footerPlanDuSite"style="overflow:hidden;zoom: 1">
 		</div>
 	</div>
 </div>
+
 
 </body>
 

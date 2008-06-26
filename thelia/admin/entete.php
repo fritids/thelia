@@ -23,10 +23,12 @@
 /*                                                                                   */
 /*************************************************************************************/
 ?>
-
+<?php
+	include_once("config.php");
+?>
 <div id="entete">
 	<img src="gfx/logo_thelia.gif" width="271" height="57" align="left" lowsrc="THELIA" />
-	<h1>V 1.3.6</h1>
+	<h1>V <?php echo substr($version, 0, 1) . "." . substr($version, 1, 1) . "." . substr($version, 2, 1) ?></h1>
 </div>
   
 <div id="telecommande"> 

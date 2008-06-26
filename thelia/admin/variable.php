@@ -67,7 +67,7 @@
   	
 	$variable = new Variable();
 
- 	$query = "select * from $variable->table";
+ 	$query = "select * from $variable->table where cache='0'";
   	$resul = mysql_query($query, $variable->link);
   	
   	while($row = mysql_fetch_object($resul)){
