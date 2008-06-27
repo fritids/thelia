@@ -62,7 +62,7 @@
 
 <div id="contenu_int"> 
    <p class="titre_rubrique">Gestion des administrateurs</p>
-   <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="variable.php" class="lien04">Gestion des administrateurs</a>    </p>
+   <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil</a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="configuration.php" class="lien04">Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="variable.php" class="lien04">Gestion des administrateurs</a>    </p>
    <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES ADMINISTRATEURS</td>

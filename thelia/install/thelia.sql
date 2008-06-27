@@ -1977,13 +1977,15 @@ CREATE TABLE `variable` (
 -- Contenu de la table `variable`
 -- 
 
-INSERT INTO `variable` VALUES (1, 'emailcontact', 'commande@monsite.com', '0');
-INSERT INTO `variable` VALUES (2, 'nomsite', 'Mon Site', '0');
-INSERT INTO `variable` VALUES (3, 'urlsite', 'http://www.monsite.com', '0');
-INSERT INTO `variable` VALUES (4, 'tva', '19.6', '0');
-INSERT INTO `variable` VALUES (5, 'style_chem', '/style_editeur.css', '0');
-INSERT INTO `variable` VALUES (6, 'rsspass', '', '0');
-INSERT INTO `variable` VALUES (7, 'rssadmin', 'http://www.octolys.fr/rss.php', '0');
+INSERT INTO `variable` VALUES (1, 'emailcontact', 'commande@monsite.com', '0', '0');
+INSERT INTO `variable` VALUES (2, 'nomsite', 'Mon Site', '0', '0');
+INSERT INTO `variable` VALUES (3, 'urlsite', 'http://www.monsite.com', '0', '0');
+INSERT INTO `variable` VALUES (4, 'tva', '19.6', '0', '0');
+INSERT INTO `variable` VALUES (5, 'style_chem', '/style_editeur.css', '0', '0');
+INSERT INTO `variable` VALUES (6, 'rsspass', '', '0', '0');
+INSERT INTO `variable` VALUES (7, 'rssadmin', 'http://www.octolys.fr/rss.php', '0', '0');
+INSERT INTO `variable` VALUES (7, 'version', '136', '1', '1');
+
 -- --------------------------------------------------------
 
 -- 

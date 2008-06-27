@@ -385,10 +385,10 @@
 
 <div id="contenu_int"> 
    <p class="titre_rubrique">Gestion des declinaisons</p>
-   <p align="right" class="geneva11Reg_3B4B5B"><span class="lien04"><a href="accueil.php" class="lien04">Accueil</a></span> <a href="#" onclick="document.getElementById('form_modif').submit()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a><a href="declinaison.php" class="lien04"> Gestion des declinaisons </a><img src="gfx/suivant.gif" width="12" height="9" border="0" />  <?php if( !$id) { ?>Ajouter<?php } else { ?> Modifier <?php } ?> 	                          </p>
+   <p align="right" class="geneva11Reg_3B4B5B"><span class="lien04"><a href="accueil.php" class="lien04">Accueil</a></span>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="catalogue.php" class="lien04">Gestion du catalogue</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="declinaison.php" class="lien04"> Gestion des declinaisons </a><img src="gfx/suivant.gif" width="12" height="9" border="0" />  <?php if( !$id) { ?>Ajouter<?php } else { ?> Modifier <?php } ?> 	                          </p>
     <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">MODIFICATIONS DES DECLINAISONS 
+       <td width="600" height="30" class="titre_cellule_tres_sombre">MODIFICATION DES DECLINAISONS 
 	   <?php
 								$langl = new Lang();
 								$query = "select * from $langl->table";
