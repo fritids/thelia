@@ -25,30 +25,45 @@
 ?>
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	
+	class Contrib extends Baseobj{
 
-	class Ventedeclidisp extends Baseobj{
-
-		var $id;
-		var $venteprod;
-		var $declidisp;
-
-
-				
-		var $table="ventedeclidisp";
-		var $bddvars = array("id", "venteprod", "declidisp");
-
-		function Ventedeclidisp(){
-			$this->Baseobj();
+	
+		function Contrib(){
+			$this->Baseobj();	
 		}
 
-		function charger($id){
-			return $this->getVars("select * from $this->table where id=\"$id\"");
+
+		function charger_tous(){
+
+			@ini_set('default_socket_timeout', 5);
+
+			$rss = @fetch_rss("http://contrib.thelia.fr/spip.php?page=contrib");
+			if(!$rss) return "";
+
+			$chantitle = $rss->channel['title'];
+			$chanlink = $rss->channel['link'];
+
+			$items = array_slice($rss->items, 0);
+
+			foreach ($items as $item) {
+				$title = strip_tags($item['title']);
+				$description = strip_tags($item['description']);
+				$author = $item['dc']['creator'];
+				$nomplugin = $item['dc']['nomplugin'];
+
+				$link = $item['link']; 
+				$dateh = $item['dc']['date'];
+				$jour = substr($dateh, 8,2);
+				$mois = substr($dateh, 5, 2);
+				$annee = substr($dateh, 2, 2);
+
+				$heure = substr($dateh, 11, 2);
+				$minute = substr($dateh, 14, 2);
+				$seconde = substr($dateh, 17, 2);
+			}	
 		}
 
-		function charger_vdec($venteprod, $declidisp){
-			return $this->getVars("select * from $this->table where venteprod=\"$venteprod\" and declidisp=\"$declidisp\"");
-		}
-
+		
 	}
-
 ?>
