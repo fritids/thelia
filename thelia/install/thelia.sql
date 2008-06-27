@@ -1971,7 +1971,7 @@ CREATE TABLE `variable` (
   `protege` smallint(6) NOT NULL,
   `cache` smallint(6) NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=10 ;
+) TYPE=MyISAM AUTO_INCREMENT=9 ;
 
 -- 
 -- Contenu de la table `variable`
@@ -1984,7 +1984,7 @@ INSERT INTO `variable` VALUES (4, 'tva', '19.6', '0', '0');
 INSERT INTO `variable` VALUES (5, 'style_chem', '/style_editeur.css', '0', '0');
 INSERT INTO `variable` VALUES (6, 'rsspass', '', '0', '0');
 INSERT INTO `variable` VALUES (7, 'rssadmin', 'http://www.octolys.fr/rss.php', '0', '0');
-INSERT INTO `variable` VALUES (7, 'version', '136', '1', '1');
+INSERT INTO `variable` VALUES (8, 'version', '137', '1', '1');
 
 -- --------------------------------------------------------
 

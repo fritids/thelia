@@ -1,4 +1,4 @@
-Pour mettre à jour votre version de THELIA 1.3.x, il suffit d'écraser vos répertoires :
+Pour mettre à jour votre version de THELIA, il suffit d'écraser vos répertoires :
 
 - admin
 - classes
