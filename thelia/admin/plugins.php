@@ -27,6 +27,10 @@
 	include_once("pre.php");
 	include_once("auth.php");
 	include_once("../lib/pclzip.lib.php");
+	
+	include("../classes/Contrib.class.php");
+	include("../classes/Racmodule.class.php");	
+		
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -52,6 +56,10 @@
     </p>
 
 <?php
+
+	$contrib = new Contrib();
+	$tab = $contrib->charger_tous();
+
 	if(isset($_FILES['plugin'])){
 		$plugin = $_FILES['plugin']['tmp_name']; 
 		$plugin_name = $_FILES['plugin']['name'];
@@ -129,22 +137,42 @@
 	
 		if(!($i%2)) $fond="cellule_sombre";
   		else $fond="cellule_claire";
+
+		$res = $contrib->chercher($row->nom, $tab);
+
+		if($res)
+			$titre = $res->titre;
+		
+		else
+			$titre = $row->nom;
+		
 	
 ?>
 
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
   <tr class="<?php echo $fond; ?>">
-    <td width="21%" height="30"><?php echo $row->nom; ?></td>
-    <td width="69%" height="30">
+    <td width="21%" height="30"><?php echo $titre; ?></td>
+    <td width="68%" height="30">
       
     </td>
-    <td width="16%" height="30">
+    <td width="17%" height="30">
       <div align="left">
 	<?php 
 		if($row->actif){
+
+			if(file_exists("../client/plugins/" .$row->nom . "/" . $row->nom. "_admin.php")){
+				
+				$rac = new Racmodule();
+				$rac->charger($row->nom);
 	?>
+		<a href="plugins_modifier.php?nom=<?php echo $row->nom ?>&rac=1" class="txt_vert_11">+</a>
+		
+	<?php			
+			}
+	?>	
 		<a href="plugins_modifier.php?nom=<?php echo $row->nom ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
+
 	<?php
 		} else {
 	?>
@@ -189,13 +217,21 @@
 	
 		if(!($i%2)) $fond="cellule_sombre";
   		else $fond="cellule_claire";
+
+		$res = $contrib->chercher($row->nom, $tab);
+
+		if($res)
+			$titre = $res->titre;
+		
+		else
+			$titre = $row->nom;
 	
 ?>
 
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
   <tr class="<?php echo $fond; ?>">
-    <td width="21%" height="30"><?php echo $row->nom; ?></td>
+    <td width="21%" height="30"><?php echo $titre; ?></td>
     <td width="69%" height="30">
       
     </td>
@@ -251,12 +287,20 @@
 		if(!($i%2)) $fond="cellule_sombre";
   		else $fond="cellule_claire";
 	
+		$res = $contrib->chercher($row->nom, $tab);
+
+		if($res)
+			$titre = $res->titre;
+		
+		else
+			$titre = $row->nom;
+	
 ?>
 
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
   <tr class="<?php echo $fond; ?>">
-    <td width="21%" height="30"><?php echo $row->nom; ?></td>
+    <td width="21%" height="30"><?php echo $titre; ?></td>
     <td width="69%" height="30">
       
     </td>

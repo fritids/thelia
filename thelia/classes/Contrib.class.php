@@ -28,21 +28,43 @@
 	
 	class Contrib extends Baseobj{
 
+		var $titre;
+		var $description;
+		var $auteur;
+		var $nomplugin;
+		var $lien;
 	
 		function Contrib(){
 			$this->Baseobj();	
 		}
 
 
-		function charger_tous(){
+		function recuperer($nomplugin){
+			$tab = $this->charger_tous();
+			return $this->chercher($nomplugin, $tab);
+			
+		}
+		
+		function chercher($nomplugin, $tab){
 
+			for($i = 0; $i<count($tab); $i++){
+				if($tab[$i]->nomplugin == $nomplugin)
+					return $tab[$i];
+			}
+			return "";
+			
+		}
+
+		function charger_tous(){
+			include_once(realpath(dirname(__FILE__)) . "/../lib/magpierss/rss_fetch.inc");
+			
 			@ini_set('default_socket_timeout', 5);
 
+			$tab = "";
+			$i = 0;
+			
 			$rss = @fetch_rss("http://contrib.thelia.fr/spip.php?page=contrib");
 			if(!$rss) return "";
-
-			$chantitle = $rss->channel['title'];
-			$chanlink = $rss->channel['link'];
 
 			$items = array_slice($rss->items, 0);
 
@@ -51,17 +73,19 @@
 				$description = strip_tags($item['description']);
 				$author = $item['dc']['creator'];
 				$nomplugin = $item['dc']['nomplugin'];
-
 				$link = $item['link']; 
-				$dateh = $item['dc']['date'];
-				$jour = substr($dateh, 8,2);
-				$mois = substr($dateh, 5, 2);
-				$annee = substr($dateh, 2, 2);
-
-				$heure = substr($dateh, 11, 2);
-				$minute = substr($dateh, 14, 2);
-				$seconde = substr($dateh, 17, 2);
+				
+				$tab[$i] = new Contrib();
+				$tab[$i]->titre = $title;
+				$tab[$i]->description = $description;
+				$tab[$i]->auteur = $author;
+				$tab[$i]->nomplugin = $nomplugin;
+				$tab[$i]->lien = $link;	
+				
+				$i++;			
 			}	
+			
+			return $tab;
 		}
 
 		

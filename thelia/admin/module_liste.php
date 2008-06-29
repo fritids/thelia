@@ -26,6 +26,8 @@
 <?php
 	include_once("pre.php");
 	include_once("auth.php");
+	
+	include("../classes/Contrib.class.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -62,6 +64,10 @@
 	
 	$i=0;
 	
+	$contrib = new Contrib();
+	$tab = $contrib->charger_tous();
+	
+	
 	while($row = mysql_fetch_object($resul)){
 	
 		if(!($i%2)) $fond="cellule_sombre";
@@ -72,12 +78,19 @@
 				$nom_module = $row->nom;
 				$nom_module[0] = strtoupper($nom_module[0]);
 				
+				$res = $contrib->chercher($row->nom, $tab);
 
+				if($res)
+					$titre = $res->titre;
+				
+				else
+					$titre = $row->nom;
+					
 ?>     
    
     
   <tr class="<?php echo($fond); ?>">
-    <td width="21%" height="30"><?php echo($row->nom); ?></td>
+    <td width="21%" height="30"><?php echo $titre; ?></td>
     <td width="63%" height="30">
       
     </td>

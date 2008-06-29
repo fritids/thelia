@@ -2108,3 +2108,8 @@ CREATE TABLE `ventedeclidisp` (
 `venteprod` INT NOT NULL ,
 `declidisp` INT NOT NULL
 ) ;
+
+CREATE TABLE `racmodule` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`module` TEXT NOT NULL
+) ;

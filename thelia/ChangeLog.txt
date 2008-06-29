@@ -1,5 +1,6 @@
 1.3.7
-
+	Récupération des informations sur les plugins depuis contrib.thelia.fr (affichage de "vrais" titre dans l'administration)
+	
 1.3.6
 	Ajout de la gestion du statut en plugin pour l'annulation d'une commande
 	Ajout de #PROMO dans la boucle PRODUIT
