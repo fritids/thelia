@@ -325,6 +325,7 @@
 		if($obligetelfixe && $client->telfixe=="") $obligeok=0;
 		if($obligetelport && $client->telport=="") $obligeok=0;
 			
+		modules_fonction("avantclient");
 			
 		if($client->raison!="" && $client->prenom!="" && $client->nom!="" && $client->email!="" && $client->motdepasse!="" 
 			&& $client->email && ! $client->existe($email1) && $client->adresse1 !="" && $client->cpostal!="" && $client->ville !="" && $client->pays !="" && $obligeok){

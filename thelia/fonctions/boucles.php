@@ -1013,13 +1013,16 @@
 			
 			if($deb != "" && !$page) $debcourant+=$deb-1;
 
+			$prixht = round($prix/(1+(intval($row->tva)/100)),2);
+			
 			$temp = str_replace("#REF", "$row->ref", $temp);
 			$temp = str_replace("#COMPT", "$compt", $temp);
 			$temp = str_replace("#DATE", substr($row->datemodif, 0, 10), $temp);
 			$temp = str_replace("#HEURE", substr($row->datemodif, 11), $temp);
 			$temp = str_replace("#DEBCOURANT", "$debcourant", $temp);
 			$temp = str_replace("#ID", "$row->id", $temp);		
-			$temp = str_replace("#PRIX2", "$prix2", $temp);					
+			$temp = str_replace("#PRIX2", "$prix2", $temp);	
+			$temp = str_replace("#PRIXHT", "$prixht", $temp);				
 			$temp = str_replace("#PRIX", "$prix", $temp);	
 			$temp = str_replace("#PROMO", "$row->promo", $temp);	
 			$temp = str_replace("#TVA", "$row->tva", $temp);	
@@ -1416,6 +1419,9 @@
 			if( ! $_SESSION['navig']->panier->tabarticle[$i]->produit->promo)
 				$prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix - ($_SESSION['navig']->panier->tabarticle[$i]->produit->prix * $_SESSION['navig']->client->pourcentage / 100);
 			else $prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 - ($_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 * $_SESSION['navig']->client->pourcentage / 100);	
+
+            $prixht=round($prix/(1+($tva/100)),2);
+            $totalht = $prixht*$quantite;
 			
 			$total=round($prix*$quantite, 2);
 			$prix = round($prix, 2);
@@ -1483,6 +1489,9 @@
 			$temp = str_replace("#QUANTITE", "$quantite", $temp);
 			$temp = str_replace("#PRODUIT", $produitdesc->produit, $temp);
 			$temp = str_replace("#PRIXU", "$prix", $temp);
+			$temp = str_replace("#TOTALHT", "$totalht", $temp);
+            $temp = str_replace("#PRIXHT", "$prixht", $temp);
+            $temp = str_replace("#TVA", "$tva", $temp);
 			$temp = str_replace("#TOTAL", "$total", $temp);			
 			$temp = str_replace("#ID", $_SESSION['navig']->panier->tabarticle[$i]->produit->id, $temp);
 			$temp = str_replace("#ARTICLE", "$i", $temp);

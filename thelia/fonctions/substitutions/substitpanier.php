@@ -30,6 +30,7 @@
 	function substitpanier($texte){
 
 		$total = 0;
+        $totalht = 0;
 
 		$nb_article = 0;
 		
@@ -40,24 +41,27 @@
 				$prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix - ($_SESSION['navig']->panier->tabarticle[$i]->produit->prix * $_SESSION['navig']->client->pourcentage / 100);
 			else $prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 - ($_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 * $_SESSION['navig']->client->pourcentage / 100);
 			
-					
+			$prixht = $prix/(1+($_SESSION['navig']->panier->tabarticle[$i]->produit->tva/100)); 
+	           	
 				$quantite = $_SESSION['navig']->panier->tabarticle[$i]->quantite;
 	
 			$total += $prix * $quantite;
-		
+			$totalht += $prixht * $quantite;
+			
 			$nb_article += $_SESSION['navig']->panier->tabarticle[$i]->quantite;
 		}
 		
-		$tva = $_SESSION['navig']->panier->tabarticle[$i]->produit->tva;
+		//$tva = $_SESSION['navig']->panier->tabarticle[$i]->produit->tva;
 		
 		$total = round($total, 2);
 		$port = port();
 		$totcmdport = $total + $port;
 			
 		if($_SESSION['navig']->client->type) {
-			$total = round($total*100/(100+$tva), 2);
-			$port = round($port*100/(100+$tva), 2);
-			$totcmdport = round($totcmdport*100/(100+$tva), 2);
+//			$total = round($total*100/(100+$tva), 2);
+ 			$total = $totalht;
+           	$port = round($port*100/(100+$tva), 2);
+          	$totcmdport = round($totcmdport*100/(100+$tva), 2);
 		}
 
 		$remise=0;
@@ -70,7 +74,7 @@
 	    if($totcmdport<$port)
 		    $totcmdport = $port;
 		
-		$totalht = round($total*100/(100+$tva), 2);
+	//	$totalht = round($total*100/(100+$tva), 2);
 		
 		
 		$totalht = number_format($totalht, 2, ".", "");

@@ -40,7 +40,7 @@
 		
         if($action == "identifier") {
                 $admin = new Administrateur();
-                if(! $admin->charger($identifiant, $motdepasse)) header("Location: index.php");
+                if(! $admin->charger($identifiant, $motdepasse)) {header("Location: index.php");exit;}
                 else{
                         $_SESSION["util"] = new Administrateur();
                         $_SESSION["util"] = $admin;
@@ -48,7 +48,7 @@
                 }
         }
 
-	else if($_SESSION["util"]->id == "") header("Location: index.php");
+	else if($_SESSION["util"]->id == "") {header("Location: index.php");exit;}
 ?>
 <?php
 	$rsscmd = new Variable();

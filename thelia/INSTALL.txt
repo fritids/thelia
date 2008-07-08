@@ -1,10 +1,12 @@
-THELIA est Ã©crit en PHP.
+THELIA est écrit en PHP.
 
-Pour installer Thelia, il suffit de pointer votre navigateur WEB Ã  l'adresse suivante :
+Pour installer Thelia, il suffit de pointer votre navigateur WEB à l'adresse suivante :
 http://votreserveurweb/thelia/install/
 
-Remplacez "thelia" par votre rÃ©pertoire d'installation bien sÃ»r.
+Remplacez "thelia" par votre répertoire d'installation bien sûr.
 
-une fois l'installation terminÃ©e, supprimez le rÃ©pertoire install.
+une fois l'installation terminée, supprimez le répertoire install.
 
-Copiez ensuite les fichiers du rÃ©pertoire template Ã  la racine de votre installation si vous souhaitez dÃ©couvrir le template de base.
+Copiez ensuite les fichiers du répertoire template à la racine de votre installation si vous souhaitez découvrir le template de base.
+
+Par sécurité, renommez le répertoire admin en lui donnant un nom personnalisé
