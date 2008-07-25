@@ -172,12 +172,13 @@
 			
 												
 			for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
-				
-				// diminution des stocks de déclinaison
-				$stock->charger($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur, $_SESSION['navig']->panier->tabarticle[$i]->produit->id);
-                $stock->valeur-=$_SESSION['navig']->panier->tabarticle[$i]->quantite;
-                $stock->maj();
-
+				if(is_numeric($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur)){
+                
+					// diminution des stocks de déclinaison
+					$stock->charger($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur, $_SESSION['navig']->panier->tabarticle[$i]->produit->id);
+                	$stock->valeur-=$_SESSION['navig']->panier->tabarticle[$i]->quantite;
+                	$stock->maj();
+				}
 				
 		   		$tperso = $_SESSION['navig']->panier->tabarticle[$i]->perso[$compt];
 				$declinaison->charger($tperso->declinaison);

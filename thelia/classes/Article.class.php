@@ -28,6 +28,8 @@
 	include_once(realpath(dirname(__FILE__)) . "/Produit.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Produitdesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Perso.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Stock.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Declinaison.class.php");
 
 	// Déniniftion de l'article
 
@@ -48,6 +50,19 @@
 				$this->produitdesc->charger($this->produit->id);	
 			    $this->quantite = $quantite;
 			    $this->perso = $perso;
+			
+				for($i=0;$i<count($perso); $i++){
+					$declinaison = new Declinaison();
+					$declinaison->charger($perso[$i]->declinaison);
+					
+					if($declinaison->isDeclidisp()){
+						$stock = new Stock();
+						$stock->charger($perso[$i]->valeur, $this->produit->id);
+						if($stock->surplus != 0)
+							$this->produit->prix += $stock->surplus;
+					}
+					
+				}
 		}
 
 	}

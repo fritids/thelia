@@ -236,7 +236,8 @@
 		
           while($row2 = mysql_fetch_object($resul2)){
                	$var="stock" . $row2->id;
-          		global $$var;
+				$var2="surplus" . $row2->id;
+          		global $$var, $$var2;
           		
                    $stock = new Stock();
                    
@@ -244,12 +245,14 @@
                      $stock->declidisp=$row2->id;
              		 $stock->produit=$produit->id;
              		 $stock->valeur=$$var; 
+             		 $stock->surplus=$$var2; 
                		 $stock->add();
 					$nb += $stock->valeur;
                    } 
                    
                    else {
                    		$stock->valeur=$$var; 
+						$stock->surplus=$$var2; 
                    		$stock->maj();	
 						$nb += $stock->valeur;
                    	}
@@ -398,6 +401,7 @@
      		 	$stock->declidisp=$row2->id;
 				$stock ->produit=$lastid;
 				$stock->valeur=0;
+				$stock->surplus=0;
     			$stock->add();
 			}
 		
@@ -755,6 +759,7 @@
           <td width="200">&nbsp;</td>
           
           <td width="200">Stock</td>
+          <td width="200">Surplus</td>
           
           
            <td width="200">&nbsp;</td>
@@ -780,8 +785,9 @@
             
             <td width="200"><input type="text" name="stock<?php echo($row2->id); ?>" value="<?php echo($stock->valeur); ?>" size="4" /></td>
             
+            <td width="200"><input type="text" name="surplus<?php echo($row2->id); ?>" value="<?php echo($stock->surplus); ?>" size="4" /></td>
             
-             <td width="200"><?php if($res) { ?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&produit=<?php echo($produitdesc->produit); ?>&rubrique=<?php echo($rubrique); ?>&action=acdec&id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">Activer</a> <?php } else {?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&produit=<?php echo($produitdesc->produit); ?>&rubrique=<?php echo($rubrique); ?>&action=desdec&id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">D&eacute;sactiver</a> <?php } ?></td>
+            <td width="200"><?php if($res) { ?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&produit=<?php echo($produitdesc->produit); ?>&rubrique=<?php echo($rubrique); ?>&action=acdec&id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">Activer</a> <?php } else {?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&produit=<?php echo($produitdesc->produit); ?>&rubrique=<?php echo($rubrique); ?>&action=desdec&id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">D&eacute;sactiver</a> <?php } ?></td>
           
 			</tr>
 		</table>

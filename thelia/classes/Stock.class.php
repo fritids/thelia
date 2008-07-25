@@ -32,9 +32,10 @@
 		var $declidisp;
 		var $produit;
 		var $valeur;
+		var $surplus;
 		
 		var $table="stock";
-		var $bddvars=array("id", "declidisp", "produit", "valeur");
+		var $bddvars=array("id", "declidisp", "produit", "valeur", "surplus");
 		
 		function Stock(){
 			$this->Baseobj();	
