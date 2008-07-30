@@ -354,14 +354,21 @@
 		$res = str_replace("#PARRAIN", $tmpparrain->email, $res);
 		$res = str_replace("#SIRET", $_SESSION['navig']->formcli->siret, $res);
 		
-		if($_SESSION['navig']->formcli->raison == "")
+		if($_SESSION['navig']->formcli->raison == ""){
 		     $res = str_replace(array("#RAISON0","#RAISON1","#RAISON2","#RAISON3"),array("selected=\"selected\"","","",""), $res);
-		else if($_SESSION['navig']->formcli->raison == "1")
+		}
+		else if($_SESSION['navig']->formcli->raison == "1"){
 		     $res = str_replace(array("#RAISON0","#RAISON1","#RAISON2","#RAISON3"),array("","selected=\"selected\"","",""), $res);
-		else if($_SESSION['navig']->formcli->raison == "2")
+			 $res = str_replace(array("#CHECK1","#CHECK2","#CHECK3"),array("checked","",""), $res);
+		}
+		else if($_SESSION['navig']->formcli->raison == "2"){
 		     $res = str_replace(array("#RAISON0","#RAISON1","#RAISON2","#RAISON3"),array("","","selected=\"selected\"",""), $res);
-		else if($_SESSION['navig']->formcli->raison == "3")
+			 $res = str_replace(array("#CHECK1","#CHECK2","#CHECK3"),array("","checked",""), $res);
+		}
+		else if($_SESSION['navig']->formcli->raison == "3"){
 		     $res = str_replace(array("#RAISON0","#RAISON1","#RAISON2","#RAISON3"),array("","","","selected=\"selected\""), $res);
+			 $res = str_replace(array("#CHECK1","#CHECK2","#CHECK3"),array("","","checked"), $res);
+		}
 	
 		$res = ereg_replace("#EXISTE\[[^]]*\]", "", $res);
 				
