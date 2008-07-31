@@ -47,6 +47,8 @@
 			$racine->charger($racine->parent);
 		
 		$texte = str_replace("#RUBRIQUE_CHAPO", "$trubriquedesc->chapo", $texte);
+		$texte = str_replace("#RUBRIQUE_DESCRIPTION", "$trubriquedesc->description", $texte);
+		$texte = str_replace("#RUBRIQUE_POSTSCRIPTUM", "$trubriquedesc->postscriptum", $texte);
 		$texte = str_replace("#RUBRIQUE_ID", "$trubrique->id", $texte);
 		$texte = str_replace("#RUBRIQUE_LIEN", "$trubrique->lien", $texte);
 		$texte = str_replace("#RUBRIQUE_NOM", "$trubriquedesc->titre", $texte);

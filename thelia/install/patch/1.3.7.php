@@ -13,6 +13,18 @@
 	$query_cnx = "ALTER TABLE `stock` ADD `surplus` FLOAT NOT NULL ;";
 	$resul_cnx = mysql_query($query_cnx, $var->link);	
 
+	$query_cnx = "ALTER TABLE `contenudesc` ADD `postscriptum` TEXT NOT NULL AFTER `description` ;";
+	$resul_cnx = mysql_query($query_cnx, $var->link);	
+
+	$query_cnx = "ALTER TABLE `dossierdesc` ADD `postscriptum` TEXT NOT NULL AFTER `description` ;";
+	$resul_cnx = mysql_query($query_cnx, $var->link);
+	
+	$query_cnx = "ALTER TABLE `rubriquedesc` ADD `postscriptum` TEXT NOT NULL AFTER `description` ;";
+	$resul_cnx = mysql_query($query_cnx, $var->link);
+	
+	$query_cnx = "ALTER TABLE `produitdesc` ADD `postscriptum` TEXT NOT NULL AFTER `description` ;";
+	$resul_cnx = mysql_query($query_cnx, $var->link);
+	
 	$version = new Variable();
 	$version->charger("version");
 	$version->valeur = "137";

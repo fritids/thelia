@@ -33,10 +33,11 @@
 		var $titre;
 		var $chapo;
 		var $description;
+		var $postscriptum;
 		var $lang;
 				
 		var $table="produitdesc";
-		var $bddvars=array("id", "produit", "titre", "chapo", "description", "lang");
+		var $bddvars=array("id", "produit", "titre", "chapo", "description", "lang", "postscriptum");
 	
 		function Produitdesc(){
 			$this->Baseobj();

@@ -50,6 +50,8 @@
 		$texte = str_replace("#CONTENU_MOTCLE", "$motcle", $texte);
 		$texte = str_replace("#CONTENU_NOM", $tcontenudesc->titre, $texte);
 		$texte = str_replace("#CONTENU_CHAPO", $tcontenudesc->chapo, $texte);
+		$texte = str_replace("#CONTENU_DESCRIPTION", $tcontenudesc->description, $texte);
+		$texte = str_replace("#CONTENU_POSTSCRIPTUM", $tcontenudesc->postscriptum, $texte);
 
 		return $texte;
 	

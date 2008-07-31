@@ -67,8 +67,8 @@
 
 	switch($action){
 		case 'modclassement' : modclassement($ref, $parent, $type); break;
-		case 'modifier' : modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
-		case 'ajouter' : ajouter($lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description); break;
+		case 'modifier' : modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description, $postscriptum); break;
+		case 'ajouter' : ajouter($lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description, $postscriptum); break;
 		case 'acdec' : moddecli($produit, $id, 1); break;
 		case 'desdec' : moddecli($produit, $id, 0); break;
 		case 'supprimer' : supprimer($ref, $parent);
@@ -115,7 +115,7 @@
 	    header("Location: parcourir.php?parent=" . $parent);
 	}
 	
-	function modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
+	function modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description, $postscriptum){
 
      
 		if(!$lang) $lang=1;
@@ -159,10 +159,10 @@
 		 $produit->tva = ereg_replace(",", ".", $tva);
 		 $produitdesc->chapo = $chapo;
 		 $produitdesc->description = $description;
+		 $produitdesc->postscriptum = $postscriptum;
 		 $produitdesc->titre = $titre;
 	 	 
 	 	 $produitdesc->chapo = ereg_replace("\n", "<br />", $produitdesc->chapo);
-	//	 $produitdesc->description = ereg_replace("\n", "<br />", $produitdesc->description);
 			
 	
 		$rubcaracteristique = new Rubcaracteristique();
@@ -272,7 +272,7 @@
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
 	}
 
-	function ajouter($lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description){
+	function ajouter($lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description, $postscriptum){
   
 
 	 $ref = ereg_replace(" ", "", $ref);
@@ -325,12 +325,12 @@
 
 	 $produitdesc->chapo = $chapo;
 	 $produitdesc->description = $description;
+	 $produitdesc->postscriptum = $postscriptum;	
 	 $produitdesc->produit = $lastid;
 	 $produitdesc->lang = 1;
 	 $produitdesc->titre = $titre;
 
 	 $produitdesc->chapo = ereg_replace("\n", "<br />", $produitdesc->chapo);
-     $produitdesc->description = ereg_replace("\n", "<br />", $produitdesc->description);		
 	 
 	 $produitdesc->add();
 	
@@ -455,7 +455,6 @@
 	$produitdesc->charger($produit->id, $lang);
 
 	$produitdesc->chapo = ereg_replace("<br />", "\n", $produitdesc->chapo);
-	$produitdesc->description = ereg_replace("<br />", "\n", $produitdesc->description);
 	
 	if($produit->tva == ""){
 		$tvar = new Variable();
@@ -575,21 +574,27 @@
         <input type="text" name="ref" id="ref_c" class="form" value="<?php echo($produit->ref); ?>" <?php if($ref) echo "disabled";?>>      </td>
     </tr>
     <tr>
-      <td height="30" class="titre_cellule">TITRE DU PRODUIT </td>
+      <td height="30" class="titre_cellule">TITRE</td>
       <td class="cellule_claire"><input name="titre" type="text" class="form" value="<?php echo($produitdesc->titre); ?>">      </td>
     </tr>
     <tr>
-      <td height="30" class="titre_cellule">CHAPO (resumé de la description)</td>
+      <td height="30" class="titre_cellule">CHAPO</td>
       <td class="cellule_sombre">
         <textarea name="chapo" cols="40" rows="2" class="form"><?php echo($produitdesc->chapo); ?></textarea>      </td>
     </tr>
     <tr>
-      <td height="30" class="titre_cellule">DESCRIPTION DU PRODUIT</td>
+      <td height="30" class="titre_cellule">DESCRIPTION</td>
       <td class="cellule_claire">
 
 			<textarea name="description" rows="18" cols="50" style="width: 100%"><?php echo($produitdesc->description); ?></textarea>
 
         </span></td>
+    </tr>
+    <tr>
+      <td height="30" class="titre_cellule">POSTSCRIPTUM</td>
+      <td class="cellule_claire">
+        <textarea name="postscriptum" cols="40" rows="2" class="form"><?php echo($produitdesc->postscriptum); ?></textarea>
+      </td>
     </tr>
 	 <tr>
       <td height="30" colspan="2" class="titre_cellule_tres_sombre">Caractéristiques du produit </span></td>

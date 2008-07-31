@@ -147,6 +147,7 @@
 			$temp = str_replace("#CHAPO", "$rubriquedesc->chapo", $temp);
 			$temp = str_replace("#STRIPCHAPO", strip_tags($rubriquedesc->chapo), $temp);	
 			$temp = str_replace("#DESCRIPTION", "$rubriquedesc->description", $temp);
+			$temp = str_replace("#POSTSCRIPTUM", "$rubriquedesc->postscriptum", $temp);	
 			$temp = str_replace("#PARENT", "$rubrique->parent", $temp);
 			$temp = str_replace("#ID", "$rubrique->id", $temp);		
 			$temp = str_replace("#URL", "rubrique.php?id_rubrique=" . "$rubrique->id", $temp);	
@@ -229,6 +230,7 @@
 			$temp = str_replace("#CHAPO", "$dossierdesc->chapo", $temp);
 			$temp = str_replace("#STRIPCHAPO", strip_tags($dossierdesc->chapo), $temp);	
 			$temp = str_replace("#DESCRIPTION", "$dossierdesc->description", $temp);
+			$temp = str_replace("#POSTSCRIPTUM", "$dossierdesc->postscriptum", $temp);				
 			$temp = str_replace("#PARENT", "$row->parent", $temp);
 			$temp = str_replace("#ID", "$row->id", $temp);		
 			$temp = str_replace("#URL", "dossier.php?id_dossier=" . "$row->id", $temp);
@@ -999,9 +1001,9 @@
 			$zone->charger($pays->zone);
 			
 			if($_SESSION['navig']->client->type == "1"){
-				$prix = $prix/$row->tva;
-				$prix2 = $prix2/$row->tva;
-				$ecotaxe = $row->ecotaxe/$row->tva;
+				$prix = $prix/(1+$row->tva/100);
+				$prix2 = $prix2/(1+$row->tva/100);
+				$ecotaxe = $row->ecotaxe/(1+$row->tva/100);
 				
 			}
 			
@@ -1038,6 +1040,7 @@
 			$temp = str_replace("#CHAPO", "$produitdesc->chapo", $temp);	
 			$temp = str_replace("#STRIPCHAPO", strip_tags($produitdesc->chapo), $temp);	
 			$temp = str_replace("#DESCRIPTION", "$produitdesc->description", $temp);
+			$temp = str_replace("#POSTSCRIPTUM", "$produitdesc->postscriptum", $temp);	
 			$temp = str_replace("#STRIPDESCRIPTION", strip_tags($produitdesc->description), $temp);	
 			$temp = str_replace("#URL", "produit.php?ref=" . "$row->ref" . "&amp;id_rubrique=" . "$row->rubrique", $temp);	
 			$temp = str_replace("#REWRITEURL", rewrite_prod("$row->ref"), $temp);	
@@ -1214,6 +1217,7 @@
 			$temp = str_replace("#CHAPO", "$contenudesc->chapo", $temp);	
 			$temp = str_replace("#STRIPCHAPO", strip_tags($contenudesc->chapo), $temp);	
 			$temp = str_replace("#DESCRIPTION", "$contenudesc->description", $temp);
+			$temp = str_replace("#POSTSCRIPTUM", "$contenudesc->postscriptum", $temp);	
 			$temp = str_replace("#STRIPDESCRIPTION", strip_tags($contenudesc->description), $temp);	
 			$temp = str_replace("#URL", "contenu.php?id_contenu=" . "$row->id", $temp);	
 			$temp = str_replace("#REWRITEURL", rewrite_cont("$row->id"), $temp);			
@@ -2373,6 +2377,7 @@
 		$rubrique = lireTag($args, "rubrique");		
 		$produit = lireTag($args, "produit");		
 		$courante = lireTag($args, "courante");	
+		$exclusion = lireTag($args, "exclusion");
 		
 		$search ="";
 		$res="";
@@ -2380,6 +2385,7 @@
 		// preparation de la requete
 		if($rubrique!="")  $search.=" and rubrique=\"$rubrique\"";
 		if($id!="")  $search.=" and id=\"$id\"";
+		if($exclusion!="") $search .= " and id not in ($exclusion)";
 			
 		$rubdeclinaison = new Rubdeclinaison();
 		$tmpdeclinaison = new Declinaison();
@@ -2550,8 +2556,13 @@
 			$stock_dispo = $tmpprod->stock;
 		}
 		
-			
+		$tmpprod = new Produit();
+		$tmpprod->charger_id($produit);
+		$prix = $tmpprod->prix + $stock->surplus;
+		
 		$temp = str_replace("#ID", "$stock->id", $texte);
+		$temp = str_replace("#PRIX", "$prix", $temp);
+		$temp = str_replace("#SURPLUS", "$stock->surplus", $temp);
 		$temp = str_replace("#DECLIDISP", "$declidisp", $temp);	
 		$temp = str_replace("#PRODUIT", "$produit", $temp);
 		$temp = str_replace("#VALEUR", "$stock_dispo", $temp);	

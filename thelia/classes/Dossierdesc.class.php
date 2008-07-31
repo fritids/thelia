@@ -34,10 +34,11 @@
 		var $titre;
 		var $chapo;
 		var $description;
+		var $postscriptum;
 
 				
 		var $table="dossierdesc";
-		var $bddvars = array("id", "dossier", "lang", "titre", "chapo", "description");
+		var $bddvars = array("id", "dossier", "lang", "titre", "chapo", "description", "postscriptum");
 
 		function Dossierdesc(){
 			$this->Baseobj();

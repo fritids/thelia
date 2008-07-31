@@ -41,6 +41,8 @@
 		}
 
 		$texte = str_replace("#DOSSIER_CHAPO", "$tdossierdesc->chapo", $texte);
+		$texte = str_replace("#DOSSIER_DESCRIPTION", "$tdossierdesc->description", $texte);
+		$texte = str_replace("#DOSSIER_POSTSCRIPTUM", "$tdossierdesc->postscriptum", $texte);
 		$texte = str_replace("#DOSSIER_ID", "$tdossier->id", $texte);
 		$texte = str_replace("#DOSSIER_NOM", "$tdossierdesc->titre", $texte);
 		$texte = str_replace("#DOSSIER_PARENT", "$tdossier->parent", $texte);

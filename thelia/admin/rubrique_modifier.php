@@ -48,8 +48,8 @@
 	
 	switch($action){
 		case 'modclassement' : modclassement($id, $parent, $type); break;
-		case 'modifier' : modifier($id, $parent, $lang, $titre, $chapo, $description, $lien, $ligne); break;
-		case 'ajouter' : ajouter($parent, $lang, $titre, $chapo, $description, $lien, $ligne); break;
+		case 'modifier' : modifier($id, $parent, $lang, $titre, $chapo, $description, $postscriptum, $lien, $ligne); break;
+		case 'ajouter' : ajouter($parent, $lang, $titre, $chapo, $description, $postscriptum, $lien, $ligne); break;
 		case 'supprimer' : supprimer($id, $parent);
 		case 'supprimg': supprimg($id);
 	
@@ -101,7 +101,7 @@
 
 	}
 	
-	function modifier($id, $parent, $lang, $titre, $chapo, $description, $lien, $ligne){
+	function modifier($id, $parent, $lang, $titre, $chapo, $description, $postscriptum, $lien, $ligne){
 
 		$rubrique = new Rubrique();
 		$rubriquedesc = new Rubriquedesc();
@@ -129,6 +129,7 @@
 		$rubriquedesc->titre = $titre;
 		$rubriquedesc->chapo = $chapo;
 		$rubriquedesc->description = $description;
+		$rubriquedesc->postscriptum = $postscriptum;
 		
 		if($ligne!="") $rubrique->ligne = 1;
 		else $rubrique->ligne = 0;
@@ -141,7 +142,7 @@
 
 	}
 
-	function ajouter($parent, $lang, $titre, $chapo, $description, $lien, $ligne){
+	function ajouter($parent, $lang, $titre, $chapo, $description, $postscriptum, $lien, $ligne){
 	
 		$rubrique = new Rubrique();
 		$rubrique->parent=$parent;
@@ -172,6 +173,7 @@
 		$rubriquedesc->titre = $titre;
 		$rubriquedesc->chapo = $chapo;
 		$rubriquedesc->description = $description;
+		$rubriquedesc->postscriptum = $postscriptum;
 		
 		$rubriquedesc->add();
 
@@ -349,21 +351,27 @@
 	<input type="hidden" name="lang" value="<?php echo($lang); ?>" />
 	<table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr>
-      <td height="30" class="titre_cellule">TITRE :</td>
+      <td height="30" class="titre_cellule">TITRE</td>
       <td class="cellule_sombre">
         <input name="titre" type="texte" class="form" value="<?php echo($rubriquedesc->titre); ?>"/>
       </td>
     </tr>
     <tr>
-      <td height="30" class="titre_cellule">CHAPO (resum&eacute; de la description) : </td>
+      <td height="30" class="titre_cellule">CHAPO</td>
       <td class="cellule_claire">
         <textarea name="chapo" cols="40" rows="2" class="form"><?php echo($rubriquedesc->chapo); ?></textarea>
       </td>
     </tr>
     <tr>
-      <td height="30" class="titre_cellule">DESCRIPTION : </td>
+      <td height="30" class="titre_cellule">DESCRIPTION</td>
       <td class="cellule_claire">
         <textarea name="description" cols="40" rows="7" class="form"><?php echo($rubriquedesc->description); ?></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td height="30" class="titre_cellule">POSTSCRIPTUM</td>
+      <td class="cellule_claire">
+        <textarea name="postscriptum" cols="40" rows="2" class="form"><?php echo($rubriquedesc->postscriptum); ?></textarea>
       </td>
     </tr>
 	 <tr>

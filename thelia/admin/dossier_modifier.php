@@ -45,8 +45,8 @@
 
 	switch($action){
 		case 'modclassement' : modclassement($id, $parent, $type); break;
-		case 'modifier' : modifier($id, $lang, $titre, $chapo, $description, $ligne); break;
-		case 'ajouter' : ajouter($parent, $lang, $titre, $chapo, $description, $ligne); break;
+		case 'modifier' : modifier($id, $lang, $titre, $chapo, $description, $postscriptum, $ligne); break;
+		case 'ajouter' : ajouter($parent, $lang, $titre, $chapo, $description, $postscriptum, $ligne); break;
 		case 'supprimer' : supprimer($id, $parent);
 		case 'supprimg': supprimg($id);
 	
@@ -98,7 +98,7 @@
 		exit;
 	}
 	
-	function modifier($id, $lang, $titre, $chapo, $description, $ligne){
+	function modifier($id, $lang, $titre, $chapo, $description, $postscriptum, $ligne){
 	
 		$dossier = new Dossier();
 		$dossierdesc = new Dossierdesc();
@@ -117,6 +117,7 @@
 		$dossierdesc->titre = $titre;
 		$dossierdesc->chapo = $chapo;
 		$dossierdesc->description = $description;
+		$dossierdesc->postscriptum = $postscriptum;
 
 		if($ligne!="") $dossier->ligne = 1;
 		else $dossier->ligne = 0;
@@ -129,7 +130,7 @@
 
 	}
 
-	function ajouter($parent, $lang, $titre, $chapo, $description, $ligne){
+	function ajouter($parent, $lang, $titre, $chapo, $description, $postscriptum, $ligne){
   		
 		$dossier = new Dossier();
 		$dossier->parent=$parent;
@@ -157,6 +158,9 @@
 		$dossierdesc->dossier = $lastid;
 		$dossierdesc->lang = 1;
 		$dossierdesc->titre = $titre;
+		$dossierdesc->chapo = $chapo;
+		$dossierdesc->description = $description;
+		$dossierdesc->postscriptum = $postscriptum;
 		
 		$dossierdesc->add();
 	
@@ -278,24 +282,29 @@
   </table>
   <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr>
-      <td height="30" class="titre_cellule">TITRE DU DOSSIER </td>
+      <td height="30" class="titre_cellule">TITRE</td>
       <td class="cellule_claire"><input name="titre" type="text" class="form" value="<?php echo($dossierdesc->titre); ?>">
       </td>
     </tr>
     <tr>
-      <td height="30" class="titre_cellule">CHAPO (resumé de la description)</td>
+      <td height="30" class="titre_cellule">CHAPO</td>
       <td class="cellule_sombre">
         <textarea name="chapo" cols="40" rows="2" class="form"><?php echo($dossierdesc->chapo); ?></textarea>
         
       </td>
     </tr>
     <tr>
-      <td height="30" class="titre_cellule">DESCRIPTION DU DOSSIER</td>
+      <td height="30" class="titre_cellule">DESCRIPTION</td>
       <td class="cellule_claire">
                  <textarea name="description" cols="40" rows="7" class="form"><?php echo($dossierdesc->description); ?></textarea>
        </span></td>
     </tr>
-    
+    <tr>
+      <td height="30" class="titre_cellule">POSTSCRIPTUM</td>
+      <td class="cellule_claire">
+        <textarea name="postscriptum" cols="40" rows="2" class="form"><?php echo($dossierdesc->postscriptum); ?></textarea>
+      </td>
+    </tr>    
 	 <tr>
       <td width="250" height="30" class="titre_cellule">En ligne :</td>
       <td width="440" class="cellule_claire">

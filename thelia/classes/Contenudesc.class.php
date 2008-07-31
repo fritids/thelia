@@ -34,9 +34,10 @@
 		var $chapo;
 		var $description;
 		var $lang;
+		var $postscriptum;
 				
 		var $table="contenudesc";
-		var $bddvars=array("id", "contenu", "titre", "chapo", "description", "lang");
+		var $bddvars=array("id", "contenu", "titre", "chapo", "description", "lang", "postscriptum");
 	
 		function Contenudesc(){
 			$this->Baseobj();

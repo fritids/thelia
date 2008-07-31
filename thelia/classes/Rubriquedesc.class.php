@@ -34,10 +34,11 @@
 		var $titre;
 		var $chapo;
 		var $description;
+		var $postscriptum;
 
 				
 		var $table="rubriquedesc";
-		var $bddvars = array("id", "rubrique", "lang", "titre", "chapo", "description");
+		var $bddvars = array("id", "rubrique", "lang", "titre", "chapo", "description", "postscriptum");
 
 		function Rubriquedesc(){
 			$this->Baseobj();

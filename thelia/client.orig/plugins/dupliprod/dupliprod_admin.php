@@ -6,6 +6,10 @@
 		if(! $test->charger($_REQUEST['nouvelle_ref'])){
 			$produit = new Produit();
 			if($produit->charger($_REQUEST['courante_ref'])){
+		
+				$query_dup = "select max(classement) as maxclassement from $produit->table where rubrique=\"" . $produit->rubrique . "\"";
+				$resul_dup = mysql_query($query_dup, $produit->link);
+				$classement = mysql_result($resul_dup, 0, "maxclassement");
 				
 				$produitdesc = new Produitdesc();
 				$produitdesc->charger($produit->id);
@@ -16,6 +20,7 @@
 				$newproduit = $produit;
 				$newproduit->id = "";
 				$newproduit->ref = $_REQUEST['nouvelle_ref'];
+				$newproduit->classement = $classement + 1;
 				
 				$lastid = $newproduit->add();
 				

@@ -48,8 +48,8 @@
 	
 	switch($action){
 		case 'modclassement' : modclassement($id, $parent, $type); break;
-		case 'modifier' : modifier($id, $lang, $dossier, $ligne, $titre, $chapo, $description); break;
-		case 'ajouter' : ajouter($lang, $dossier, $ligne, $titre, $chapo, $description); break;
+		case 'modifier' : modifier($id, $lang, $dossier, $ligne, $titre, $chapo, $description, $postscriptum); break;
+		case 'ajouter' : ajouter($lang, $dossier, $ligne, $titre, $chapo, $description, $postscriptum); break;
 		case 'supprimer' : supprimer($id, $parent);
 
 	}
@@ -96,7 +96,7 @@
 	}
 	
 	
-	function modifier($id, $lang, $dossier, $ligne, $titre, $chapo, $description){
+	function modifier($id, $lang, $dossier, $ligne, $titre, $chapo, $description, $postscriptum){
 
 	 if(!isset($id)) $id="";
 
@@ -121,10 +121,10 @@
 	 	 if($ligne == "on") $contenu->ligne = 1; else $contenu->ligne = 0;
 		 $contenudesc->chapo = $chapo;
 		 $contenudesc->description = $description;
+		 $contenudesc->postscriptum = $postscriptum;
 		 $contenudesc->titre = $titre;
 	 	 
 	 	 $contenudesc->chapo = ereg_replace("\n", "<br/>", $contenudesc->chapo);
-	//	 $contenudesc->description = ereg_replace("\n", "<br/>", $contenudesc->description);
 											
 		$contenu->maj();
 		$contenudesc->maj();
@@ -133,7 +133,7 @@
 		exit;
 	}
 
-	function ajouter($lang, $dossier, $ligne, $titre, $chapo, $description){
+	function ajouter($lang, $dossier, $ligne, $titre, $chapo, $description, $postscriptum){
 
  	 if(!isset($id)) $id="";
 	 
@@ -160,12 +160,13 @@
 
 	 $contenudesc->chapo = $chapo;
 	 $contenudesc->description = $description;
+	 $contenudesc->postscriptum = $postscriptum;
 	 $contenudesc->contenu = $lastid;
 	 $contenudesc->lang = 1;
 	 $contenudesc->titre = $titre;
 
 	 $contenudesc->chapo = ereg_replace("\n", "<br/>", $contenudesc->chapo);
-     $contenudesc->description = ereg_replace("\n", "<br/>", $contenudesc->description);		
+     $contenudesc->postscriptum = ereg_replace("\n", "<br/>", $contenudesc->postscriptum);		
 	 
 	 $contenudesc->add();
 
@@ -196,7 +197,7 @@
 	$contenudesc->charger($contenu->id, $lang);
 	
 	$contenudesc->chapo = ereg_replace("<br/>", "\n", $contenudesc->chapo);
-	$contenudesc->description = ereg_replace("<br/>", "\n", $contenudesc->description);
+	$contenudesc->postscriptum = ereg_replace("<br/>", "\n", $contenudesc->postscriptum);
 
 
 ?>
@@ -297,29 +298,31 @@
   </table>  
   <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr>
-      <td height="30" class="titre_cellule">TITRE DU CONTENU </td>
+      <td height="30" class="titre_cellule">TITRE</td>
       <td class="cellule_claire"><input name="titre" type="text" class="form" value="<?php echo($contenudesc->titre); ?>">
       </td>
     </tr>
     <tr>
-      <td height="30" class="titre_cellule">CHAPO (resumé de la description)</td>
+      <td height="30" class="titre_cellule">CHAPO</td>
       <td class="cellule_sombre">
         <textarea name="chapo" cols="40" rows="2" class="form"><?php echo($contenudesc->chapo); ?></textarea>
       </td>
     </tr>
     <tr>
-      <td height="30" class="titre_cellule">DESCRIPTION DU CONTENU </td>
+      <td height="30" class="titre_cellule">DESCRIPTION</td>
       <td class="cellule_claire">
-
 			<textarea name="description" rows="18" cols="50" style="width: 100%"><?php echo($contenudesc->description); ?></textarea>
-		
-
         </span></td>
     </tr>
-    
+    <tr>
+      <td height="30" class="titre_cellule">POSTSCRIPTUM</td>
+      <td class="cellule_claire">
+        <textarea name="postscriptum" cols="40" rows="2" class="form"><?php echo($contenudesc->postscriptum); ?></textarea>
+      </td>
+    </tr>    
         
     <tr>
-      <td height="30" class="titre_cellule">En ligne </td>
+      <td height="30" class="titre_cellule">En ligne</td>
       <td class="cellule_claire">
     <input type="checkbox" name="ligne" <?php if($contenu->ligne) echo "checked"; ?>>
         </span></td>
@@ -373,6 +376,11 @@
       <td height="30" class="cellule_sombre2"><span class="sous_titre_dossier"><span class="geneva11Reg_3B4B5B"><a href="#" onClick="document.getElementById('boutoncache').click()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onClick="document.getElementById('boutoncache').click()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
     </tr>
   </table>
+
+ <?php 
+	admin_inclure("contenumodifier"); 
+ ?>
+
    </form>
 
 <?php if($id != ""){ ?>

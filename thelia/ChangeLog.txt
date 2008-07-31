@@ -1,6 +1,7 @@
 1.3.7
 	Récupération des informations sur les plugins depuis contrib.thelia.fr (affichage de "vrais" titre dans l'administration)
 	Possibilité d'ajouter via un plugin du code au niveau de admin/pre.php
+	Ajout du POSTSCRIPTUM en plus du TITRE, CHAPO, DESCRIPTION
 	
 1.3.6
 	Ajout de la gestion du statut en plugin pour l'annulation d'une commande

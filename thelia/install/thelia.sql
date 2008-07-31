@@ -291,6 +291,7 @@ CREATE TABLE `contenudesc` (
   `titre` text NOT NULL,
   `chapo` text NOT NULL,
   `description` text NOT NULL,
+  `postscriptum` text NOT NULL,
   `lang` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM AUTO_INCREMENT=1 ;
@@ -472,6 +473,7 @@ CREATE TABLE `dossierdesc` (
   `titre` text NOT NULL,
   `chapo` text NOT NULL,
   `description` text NOT NULL,
+  `postscriptum` text NOT NULL,
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM AUTO_INCREMENT=1 ;
 
@@ -1759,6 +1761,7 @@ CREATE TABLE `produitdesc` (
   `titre` text NOT NULL,
   `chapo` text NOT NULL,
   `description` text NOT NULL,
+  `postscriptum` text NOT NULL,
   `lang` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM AUTO_INCREMENT=1 ;
@@ -1860,6 +1863,7 @@ CREATE TABLE `rubriquedesc` (
   `titre` text NOT NULL,
   `chapo` text NOT NULL,
   `description` text NOT NULL,
+  `postscriptum` text NOT NULL,
   PRIMARY KEY  (`id`)
 ) TYPE=MyISAM AUTO_INCREMENT=1 ;
 
