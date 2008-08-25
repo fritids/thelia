@@ -30,4 +30,7 @@
 		
 	session_start();
 	if( ! isset($_SESSION["util"]->id) ) {header("Location: index.php");exit;}
+	
+	admin_inclure("pre");		
+	
 ?>

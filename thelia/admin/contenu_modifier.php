@@ -299,39 +299,39 @@
   <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="30" class="titre_cellule">TITRE</td>
-      <td class="cellule_claire"><input name="titre" type="text" class="form" value="<?php echo($contenudesc->titre); ?>">
+      <td class="cellule_claire"><input name="titre" id="titre" type="text" class="form" value="<?php echo($contenudesc->titre); ?>">
       </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">CHAPO</td>
       <td class="cellule_sombre">
-        <textarea name="chapo" cols="40" rows="2" class="form"><?php echo($contenudesc->chapo); ?></textarea>
+        <textarea name="chapo" id="chapo" cols="40" rows="2" class="form"><?php echo($contenudesc->chapo); ?></textarea>
       </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">DESCRIPTION</td>
       <td class="cellule_claire">
-			<textarea name="description" rows="18" cols="50" style="width: 100%"><?php echo($contenudesc->description); ?></textarea>
+			<textarea name="description" id="description" rows="18" cols="50" style="width: 100%"><?php echo($contenudesc->description); ?></textarea>
         </span></td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">POSTSCRIPTUM</td>
       <td class="cellule_claire">
-        <textarea name="postscriptum" cols="40" rows="2" class="form"><?php echo($contenudesc->postscriptum); ?></textarea>
+        <textarea name="postscriptum" id="postscriptum" cols="40" rows="2" class="form"><?php echo($contenudesc->postscriptum); ?></textarea>
       </td>
     </tr>    
         
     <tr>
       <td height="30" class="titre_cellule">En ligne</td>
       <td class="cellule_claire">
-    <input type="checkbox" name="ligne" <?php if($contenu->ligne) echo "checked"; ?>>
+    <input type="checkbox" name="ligne" id="ligne" <?php if($contenu->ligne) echo "checked"; ?>>
         </span></td>
     </tr>   
          
     <tr>
       <td height="30" class="titre_cellule">Appartenance ( dossier père )</td>
       <td class="cellule_claire">
-    <select name="dossier">
+    <select name="dossier" id="dossier">
       <?php if($id) echo arbreOption_dos(0, 1, $contenu->dossier); else echo arbreOption_dos(0, 1, $dossier); ?>
       </select>
         </span></td>

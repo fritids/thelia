@@ -353,31 +353,31 @@
     <tr>
       <td height="30" class="titre_cellule">TITRE</td>
       <td class="cellule_sombre">
-        <input name="titre" type="texte" class="form" value="<?php echo($rubriquedesc->titre); ?>"/>
+        <input name="titre" id="titre" type="texte" class="form" value="<?php echo($rubriquedesc->titre); ?>"/>
       </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">CHAPO</td>
       <td class="cellule_claire">
-        <textarea name="chapo" cols="40" rows="2" class="form"><?php echo($rubriquedesc->chapo); ?></textarea>
+        <textarea name="chapo" id="chapo" cols="40" rows="2" class="form"><?php echo($rubriquedesc->chapo); ?></textarea>
       </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">DESCRIPTION</td>
       <td class="cellule_claire">
-        <textarea name="description" cols="40" rows="7" class="form"><?php echo($rubriquedesc->description); ?></textarea>
+        <textarea name="description" id="description" cols="40" rows="7" class="form"><?php echo($rubriquedesc->description); ?></textarea>
       </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">POSTSCRIPTUM</td>
       <td class="cellule_claire">
-        <textarea name="postscriptum" cols="40" rows="2" class="form"><?php echo($rubriquedesc->postscriptum); ?></textarea>
+        <textarea name="postscriptum" id="postscriptum" cols="40" rows="2" class="form"><?php echo($rubriquedesc->postscriptum); ?></textarea>
       </td>
     </tr>
 	 <tr>
       <td width="250" height="30" class="titre_cellule">LIEN :</td>
       <td width="440" class="cellule_claire">
-        <input name="lien" type="texte" class="form" value="<?php echo($rubrique->lien); ?>"/>
+        <input name="lien" id="lien" type="texte" class="form" value="<?php echo($rubrique->lien); ?>"/>
       </td>
     </tr>
 
@@ -387,7 +387,7 @@
 	 <tr>
       <td height="30" class="titre_cellule">APPARTENANCE (rubrique p&egrave;re) </td>
       <td class="cellule_sombre">
-        <select name="parent" class="form">    
+        <select name="parent" id="parent" class="form">    
     	 <option value="0">-- Racine --</option>
          <?php 
           echo arbreOptionRub(0, 1, $id); 
@@ -399,7 +399,7 @@
 	} else {
 		
    ?>
-	<input type="hidden" name="parent" value="<?php echo($parent); ?>" />
+	<input type="hidden" name="parent" id="parent" value="<?php echo($parent); ?>" />
 
   <?php
 	}
@@ -415,7 +415,7 @@
 	 <tr>
       <td width="250" height="30" class="titre_cellule">En ligne :</td>
       <td width="440" class="cellule_claire">
-         <input name="ligne" type="checkbox" class="form" <?php if($rubrique->ligne || $id == "" ) { ?> checked="cheked" <?php } ?>/>
+         <input name="ligne" id="ligne" type="checkbox" class="form" <?php if($rubrique->ligne || $id == "" ) { ?> checked="cheked" <?php } ?>/>
       </td>
     </tr>    
     

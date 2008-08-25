@@ -283,32 +283,32 @@
   <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="30" class="titre_cellule">TITRE</td>
-      <td class="cellule_claire"><input name="titre" type="text" class="form" value="<?php echo($dossierdesc->titre); ?>">
+      <td class="cellule_claire"><input name="titre" id="titre" type="text" class="form" value="<?php echo($dossierdesc->titre); ?>">
       </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">CHAPO</td>
       <td class="cellule_sombre">
-        <textarea name="chapo" cols="40" rows="2" class="form"><?php echo($dossierdesc->chapo); ?></textarea>
+        <textarea name="chapo" id="chapo" cols="40" rows="2" class="form"><?php echo($dossierdesc->chapo); ?></textarea>
         
       </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">DESCRIPTION</td>
       <td class="cellule_claire">
-                 <textarea name="description" cols="40" rows="7" class="form"><?php echo($dossierdesc->description); ?></textarea>
+                 <textarea name="description" id="description" cols="40" rows="7" class="form"><?php echo($dossierdesc->description); ?></textarea>
        </span></td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">POSTSCRIPTUM</td>
       <td class="cellule_claire">
-        <textarea name="postscriptum" cols="40" rows="2" class="form"><?php echo($dossierdesc->postscriptum); ?></textarea>
+        <textarea name="postscriptum" id="postscriptum" cols="40" rows="2" class="form"><?php echo($dossierdesc->postscriptum); ?></textarea>
       </td>
     </tr>    
 	 <tr>
       <td width="250" height="30" class="titre_cellule">En ligne :</td>
       <td width="440" class="cellule_claire">
-         <input name="ligne" type="checkbox" class="form" <?php if($dossier->ligne || $id == "" ) { ?> checked="cheked" <?php } ?>/>
+         <input name="ligne" id="ligne" type="checkbox" class="form" <?php if($dossier->ligne || $id == "" ) { ?> checked="cheked" <?php } ?>/>
       </td>
     </tr>           
          

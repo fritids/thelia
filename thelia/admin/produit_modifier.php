@@ -575,25 +575,25 @@
     </tr>
     <tr>
       <td height="30" class="titre_cellule">TITRE</td>
-      <td class="cellule_claire"><input name="titre" type="text" class="form" value="<?php echo($produitdesc->titre); ?>">      </td>
+      <td class="cellule_claire"><input name="titre" id="titre" type="text" class="form" value="<?php echo($produitdesc->titre); ?>">      </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">CHAPO</td>
       <td class="cellule_sombre">
-        <textarea name="chapo" cols="40" rows="2" class="form"><?php echo($produitdesc->chapo); ?></textarea>      </td>
+        <textarea name="chapo" id="chapo" cols="40" rows="2" class="form"><?php echo($produitdesc->chapo); ?></textarea>      </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">DESCRIPTION</td>
       <td class="cellule_claire">
 
-			<textarea name="description" rows="18" cols="50" style="width: 100%"><?php echo($produitdesc->description); ?></textarea>
+			<textarea name="description" id="description" rows="18" cols="50" style="width: 100%"><?php echo($produitdesc->description); ?></textarea>
 
         </span></td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">POSTSCRIPTUM</td>
       <td class="cellule_claire">
-        <textarea name="postscriptum" cols="40" rows="2" class="form"><?php echo($produitdesc->postscriptum); ?></textarea>
+        <textarea name="postscriptum" id="postscriptum" cols="40" rows="2" class="form"><?php echo($produitdesc->postscriptum); ?></textarea>
       </td>
     </tr>
 	 <tr>
@@ -602,61 +602,61 @@
     <tr>
       <td width="250" height="30" class="titre_cellule">PRIX</td>
       <td width="440" class="cellule_sombre">
-        <input name="prix" type="text" class="form" value="<?php echo($produit->prix); ?>" />
+        <input name="prix" id="prix" type="text" class="form" value="<?php echo($produit->prix); ?>" />
         </span></td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">PRIX PROMOTIONNE </td>
       <td class="cellule_claire">
-        <input name="prix2" type="text" class="form" value="<?php echo($produit->prix2); ?>" />
+        <input name="prix2" id="prix2" type="text" class="form" value="<?php echo($produit->prix2); ?>" />
         </span></td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">TVA </td>
       <td class="cellule_claire">
-        <input name="tva" type="text" class="form" value="<?php echo($tva); ?>" />
+        <input name="tva" id="tva" type="text" class="form" value="<?php echo($tva); ?>" />
         </span></td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">Eco-taxe </td>
       <td class="cellule_claire">
-        <input name="ecotaxe" type="text" class="form" value="<?php echo($produit->ecotaxe); ?>" />
+        <input name="ecotaxe" id="ecotaxe" type="text" class="form" value="<?php echo($produit->ecotaxe); ?>" />
         </span></td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">NOUVEAUTE</td>
       <td class="cellule_sombre">
-        <input name="nouveaute" type="checkbox" class="form" <?php if($produit->nouveaute) echo "checked"; ?> />
+        <input name="nouveaute" id="nouveaute" type="checkbox" class="form" <?php if($produit->nouveaute) echo "checked"; ?> />
         </span></td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">GARANTIE</td>
       <td class="cellule_claire">
-        <input name="garantie" type="text" class="form" value="<?php echo($produit->garantie); ?>" />
+        <input name="garantie" id="garantie" type="text" class="form" value="<?php echo($produit->garantie); ?>" />
         </span></td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">EN PROMO </td>
       <td class="cellule_sombre">
-        <input name="promo" type="checkbox" class="form" <?php if($produit->promo) echo "checked"; ?> />
+        <input name="promo" id="promo" type="checkbox" class="form" <?php if($produit->promo) echo "checked"; ?> />
         </span></td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">EN REAPROVISIONNEMENT </td>
       <td class="cellule_claire">
-        <input name="reappro" type="checkbox" class="form" <?php if($produit->reappro) echo "checked"; ?> />
+        <input name="reappro" id="reappro" type="checkbox" class="form" <?php if($produit->reappro) echo "checked"; ?> />
         </span></td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">EN LIGNE </td>
       <td class="cellule_sombre">
-        <input name="ligne" type="checkbox" class="form" <?php if($produit->ligne) echo "checked"; ?> />
+        <input name="ligne" id="ligne" type="checkbox" class="form" <?php if($produit->ligne) echo "checked"; ?> />
         </span></td>
     </tr>
 	 <tr>
       <td height="30" class="titre_cellule">APPARTENANCE (rubrique p&egrave;re) </td>
       <td class="cellule_sombre">
-        <select name="rubrique" class="form">
+        <select name="rubrique" id="rubrique" class="form">
           <?php if($ref) echo arbreOption(0, 1, $produit->rubrique); else {  ?>
           	<option value="">&nbsp;</option>
           
@@ -668,14 +668,14 @@
 	 <tr>
       <td height="30" class="titre_cellule">POIDS</td>
       <td class="cellule_sombre">
-        <input type="text" name="poids" value="<?php echo($produit->poids); ?>" />
+        <input type="text" name="poids" id="poids" value="<?php echo($produit->poids); ?>" />
         </span></td>
     </tr>
     
 	 <tr>
       <td height="30" class="titre_cellule">STOCK </td>
       <td class="cellule_sombre">
-        <input type="text" name="stock" value="<?php echo($produit->stock); ?>" />
+        <input type="text" name="stock" id="stock" value="<?php echo($produit->stock); ?>" />
         </span></td>
     </tr>        
    
@@ -708,11 +708,11 @@
 :</span></td>
       <td class="cellule_sombre">
         <?php if(! $nbres) { ?>
-        <input type="hidden" name="typecaract<?php echo($row->caracteristique); ?>" value="v" />
-        <input type="text" name="caract<?php echo($row->caracteristique); ?>" value="<?php echo($caracval->valeur); ?>" />
+        <input type="hidden" name="typecaract<?php echo($row->caracteristique); ?>" id="typecaract<?php echo($row->caracteristique); ?>" value="v" />
+        <input type="text" name="caract<?php echo($row->caracteristique); ?>" id="caract<?php echo($row->caracteristique); ?>" value="<?php echo($caracval->valeur); ?>" />
         <?php } else {?>
-        <input type="hidden" name="typecaract<?php echo($row->caracteristique); ?>" value="c" />
-        <select name="caract<?php echo($row->caracteristique); ?>[]" size="5" multiple="multiple">
+        <input type="hidden" name="typecaract<?php echo($row->caracteristique); ?>" id="typecaract<?php echo($row->caracteristique); ?>" value="c" />
+        <select name="caract<?php echo($row->caracteristique); ?>[]" id="caract<?php echo($row->caracteristique); ?>" size="5" multiple="multiple">
           <?php while($row2 = mysql_fetch_object($resul2)){ 
      		 	$caracdispdesc->charger_caracdisp($row2->id);
           		$caracval->charger_caracdisp($produit->id, $row2->caracteristique, $caracdispdesc->caracdisp);

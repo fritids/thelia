@@ -29,6 +29,5 @@
 
 	include_once("../fonctions/divers.php");
 	
-	admin_inclure("pre");		
 
 ?>

@@ -1,8 +1,13 @@
 1.3.7
 	Récupération des informations sur les plugins depuis contrib.thelia.fr (affichage de "vrais" titre dans l'administration)
 	Possibilité d'ajouter via un plugin du code au niveau de admin/pre.php
+	Ajout d'un point d'entré dans admin/contenu_modifier.php pour les plugins
 	Ajout du POSTSCRIPTUM en plus du TITRE, CHAPO, DESCRIPTION
-	
+	Possibilité d'ajout un surplus de coût au niveau d'une valeur de déclinaison
+
+	Cette mise à jour contient une modification de la base de donnée. Après remplacement des fichiers, connectez-vous à
+	http://www.votrethelia.com/install/
+		
 1.3.6
 	Ajout de la gestion du statut en plugin pour l'annulation d'une commande
 	Ajout de #PROMO dans la boucle PRODUIT
