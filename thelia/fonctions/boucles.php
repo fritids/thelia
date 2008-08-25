@@ -787,12 +787,12 @@
 			else if($classement == "inverse") $order = "order by classement desc";
 			else if($classement == "date") $order = "order by datemodif desc";
 			else if($classement == "titre") $order = "order by titre";
-            
+            else if($classement == "titreinverse") $order = "order by titre desc";
 			else $order = "order by classement";
 			
 		
 			
-			
+			$produit = new Produit();
 			/* Demande de caracteristiques */
 			if($caracdisp != ""){
 			
@@ -826,7 +826,7 @@
 				
 				$i++;
 				
-				if($liste!="") $search .= " and id in($liste)";	
+				if($liste!="") $search .= " and $produit->table.id in($liste)";	
 				else return "";
 			}
 
@@ -857,7 +857,7 @@
 				$i++;
 			
 			
-			if($liste!="") $search .= " and id in($liste)";	
+			if($liste!="") $search .= " and $produit->table.id in($liste)";	
 			else return "";
 		}	
 
@@ -893,7 +893,7 @@
 	
 				if($liste!="") {
 						$liste = substr($liste, 0, strlen($liste) - 2);
-						$search .= " and id not in($liste)";
+						$search .= " and $produit->table.id not in($liste)";
 				}	
 		
 				$liste="";
@@ -908,7 +908,7 @@
 
 					if($liste!="") {
 								$liste = substr($liste, 0, strlen($liste) - 2);
-								$search .= " and id in($liste)";
+								$search .= " and $produit->table.id in($liste)";
 					}
 					else return "";
 				}	
@@ -940,11 +940,11 @@
 				}
 			
 				$liste = substr($liste, 0, strlen($liste) - 2);
-				$search .= "and id in ($liste)";
+				$search .= "and $produit->table.id in ($liste)";
 			
 			}
 		
-		if($classement != "titre")
+		if($classement != "titre" && $classement != "titreinverse")
 			$query = "select * from $produit->table where 1 $search $order $limit";
 	
 		else
