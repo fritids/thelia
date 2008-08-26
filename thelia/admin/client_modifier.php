@@ -89,6 +89,12 @@
          <input name="entreprise" type="text" class="form" value="<?php echo($client->entreprise); ?>" size="40" />
       </td>
      </tr>
+      <tr>
+       <td height="30" class="titre_cellule">SIRET</td>
+       <td class="cellule_sombre">
+         <input name="siret" type="text" class="form" value="<?php echo($client->siret); ?>" size="40" />
+      </td>
+     </tr>
      <tr>
        <td height="30" class="titre_cellule">CIVILIT&Eacute;</td>
        <td class="cellule_claire">

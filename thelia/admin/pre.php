@@ -27,7 +27,7 @@
 	foreach ($_POST as $key => $value) $$key = $value;
 	foreach ($_GET as $key => $value) $$key = $value;
 
-	include_once("../fonctions/divers.php");
+	include_once(realpath(dirname(__FILE__)) . "/../fonctions/divers.php");
 	
 
 ?>
