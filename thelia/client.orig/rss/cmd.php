@@ -46,10 +46,10 @@
 	<language>fr</language>
 
 <?php
-	include("../../classes/Commande.class.php");
-	include("../../classes/Venteprod.class.php");
-	include("../../classes/Statutdesc.class.php");
-	include("../../classes/Client.class.php");
+	include_once("../../classes/Commande.class.php");
+	include_once("../../classes/Venteprod.class.php");
+	include_once("../../classes/Statutdesc.class.php");
+	include_once("../../classes/Client.class.php");
 
 	$commande = new Commande();
 	$venteprod = new Venteprod();

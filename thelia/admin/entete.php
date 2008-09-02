@@ -25,6 +25,7 @@
 ?>
 <?php
 	include_once("config.php");
+	include_once("../classes/Racmodule.class.php");
 ?>
 <div id="entete">
 	<img src="gfx/logo_thelia.gif" width="271" height="57" align="left" lowsrc="THELIA" />
@@ -168,6 +169,34 @@
         </tr>          
     <?php } ?>    
 
+
+<?php 
+	$menu_rac = new Racmodule();
+	$query_menu = "select * from $menu_rac->table";
+	$resul_menu = mysql_query($query_menu, $menu_rac->link);
+	while($row_menu = mysql_fetch_object($resul_menu)){
+?>
+<!---------------------------------------------------------------------------------------------------------------------------->
+	<?php if($_GET['nom'] != $row_menu->module) { ?>
+	
+          <tr>
+            <td height="18" align="left" valign="middle"><a href="module.php?nom=<?php echo $row_menu->module; ?>" class="lien04"><?php echo $row_menu->module; ?></a></td>
+          </tr>
+    <?php } else {
+			$menu = "";
+	 ?>      
+
+        <tr>
+          <td height="18" align="left" valign="middle" class="selection_menu"><a href="module.php?nom=<?php echo $row_menu->module; ?>" class="selection_menul"><?php echo $row_menu->module; ?></a></td>
+        </tr>          
+    <?php } ?>    
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------->
+
+<?php
+	}
+?>
 
 <!--------------------------------------------------------------------------------------------------------------------------------->
 		<?php if($menu != "plugins") { ?>

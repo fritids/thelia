@@ -1502,7 +1502,7 @@
 			$temp = str_replace("#PLUSURL", "panier.php?action=" . "modifier" . "&amp;" . "article=" . $i . "&amp;" . "quantite=" . $plus, $temp);			
 			$temp = str_replace("#MOINSURL", "panier.php?action=" . "modifier" . "&amp;" . "article=" . $i . "&amp;" . "quantite=" . $moins, $temp);
 			$temp = str_replace("#SUPPRURL", "panier.php?action=" . "supprimer" . "&amp;" . "article=" . $i, $temp);			
-			$temp = str_replace("#PRODURL", "produit.php?ref=".$_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $temp);		
+			$temp = str_replace("#PRODURL", "produit.php?ref=".$_SESSION['navig']->panier->tabarticle[$i]->produit->ref . "&amp;" . "id_rubrique=" . $_SESSION['navig']->panier->tabarticle[$i]->produit->rubrique, $temp);		
 			$temp = str_replace("#TOTSANSPORT", "$totsansport", $temp);
 			$temp = str_replace("#PORT", "$port", $temp);
 			$temp = str_replace("#TOTPORT", "$totcmdport", $temp);
@@ -2105,11 +2105,13 @@
 		$statut = lireTag($args, "statut");
 		$classement = lireTag($args, "classement");
 		$statutexcl = lireTag($args, "statutexcl");
+		$num = lireTag($args, "num");
 		
 		if($commande_ref == "" && $client_id == "") return;
 		
 		$search ="";
 		$order="";
+		$limit="";
 		$res="";
 		
 		// preparation de la requete
@@ -2120,11 +2122,13 @@
 		if($statut!="" && $statut!="paye")  $search.=" and statut=\"$statut\"";
 		else if($statut=="paye")  $search.=" and statut>\"1\"";
 
+		if($num != "") $limit = "limit 0,$num";
+		
 		if($classement == "inverse")
 			$order = "order by date";
 		else $order = "order by date desc";
 	
-		$query = "select * from $commande->table where 1 $search $order";
+		$query = "select * from $commande->table where 1 $search $order $limit";
 		$resul = mysql_query($query, $commande->link);
 		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";

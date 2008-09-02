@@ -50,11 +50,6 @@
 	//
 	
 	$parm="$parm transaction_id=" . $_SESSION['navig']->commande->transaction;
-
-
-	$_SESSION['navig']->panier = new Panier();
-	$_SESSION['navig']->commande = new Commande();
-	
 	
 	$path_bin = "bin/request";
 

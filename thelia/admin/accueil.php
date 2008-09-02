@@ -168,6 +168,10 @@
        <td height="30" align="left" valign="middle" class="cellule_sombre">Chiffre d'affaires  : <span class="geneva11bol_3B4B5B"><?php echo(round($ca, 2)); ?> &euro;</span> </td>
      </tr>
    </table>
+
+ <?php 
+	admin_inclure("accueil"); 
+ ?>
    <br />
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
      <tr>

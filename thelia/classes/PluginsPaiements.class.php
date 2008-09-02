@@ -25,6 +25,8 @@
 ?>
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/PluginsClassiques.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Commande.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Venteprod.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Variable.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Paysdesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Client.class.php");
@@ -38,8 +40,6 @@
 	include_once(realpath(dirname(__FILE__)) . "/Declinaisondesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Declidisp.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Declidispdesc.class.php");
-	
-	
 	
 	
 	class PluginsPaiements extends PluginsClassiques{
@@ -94,7 +94,10 @@
 			$emailcontact->charger("emailcontact");	
 			$corps2 = $this->substitmail($corps2, $commande);
 
-			mail($_SESSION['navig']->client->email , "$sujet", "$corps", "From: $emailcontact->valeur");	
+			$client = new Client();
+			$client->charger_id($commande->client);
+			
+			mail($client->email , "$sujet", "$corps", "From: $emailcontact->valeur");	
 			mail($emailcontact->valeur , "$sujet", "$corps2", "From: $emailcontact->valeur");	
 			
 		}
@@ -123,7 +126,7 @@
 			$transportdesc->charger($transport->nom, $_SESSION['navig']->lang);
 
 
-			$total = $_SESSION['navig']->panier->total();
+			$total = $commande->total();
 			$totcmdport = $commande->port + $total;
 			
 			if($commande->adresse){
@@ -210,48 +213,25 @@
 			$corps = str_replace("__CLIENT_PAYS__", $pays->titre, $corps);
 			$corps = str_replace("__CLIENT_EMAIL__", $client->email, $corps);
 			
-			preg_match("`<VENTEPROD>([^<]+)</VENTEPROD>`", $corps, $cut);
+			ereg("<VENTEPROD>(.*)</VENTEPROD>", $corps, $cut);
 			$corps = str_replace("<VENTEPROD>", "", $corps);
 			$corps = str_replace("</VENTEPROD>", "", $corps);
 			
 			$res="";
 
 			
-			for($i=0; $i<$_SESSION['navig']->panier->nbart; $i++){
+			$venteprod = new Venteprod();
+			
+			$query = "select * from $venteprod->table where commande=\"" . $commande->id . "\"";
+			$resul = mysql_query($query, $venteprod->link);
+
+			
+			while($row = mysql_fetch_object($resul)){
 				
-				$dectexte = "";
-				
-				for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
-					$declinaison = new Declinaison();
-					$declinaisondesc = new Declinaisondesc();
-					$declidisp = new Declidisp();
-					$declidispdesc = new Declidispdesc();
-					
-					$tperso = $_SESSION['navig']->panier->tabarticle[$i]->perso[$compt];
-					$declinaison->charger($tperso->declinaison);
-					$declinaisondesc->charger($declinaison->id);
-					// recup valeur declidisp ou string
-					if($declinaison->isDeclidisp($tperso->declinaison)){
-						$declidisp->charger($tperso->valeur);
-						$declidispdesc->charger_declidisp($declidisp->id);
-						$dectexte .= "- " . $declinaisondesc->titre . " : " . $declidispdesc->titre . "\n";
-					}
-
-					else $dectexte .= "- " . $declinaisondesc->titre . " : " . $tperso->valeur . "\n";
-
-				}
-
-				$produitdesc = new Produitdesc();
-				$produitdesc->charger($_SESSION['navig']->panier->tabarticle[$i]->produit->id);
-
-				if( ! $_SESSION['navig']->panier->tabarticle[$i]->produit->promo)
-					$prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix - ($_SESSION['navig']->panier->tabarticle[$i]->produit->prix * $_SESSION['navig']->client->pourcentage / 100);
-				else $prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 - ($_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 * $_SESSION['navig']->client->pourcentage / 100);	
-
-				$temp = str_replace("__VENTEPROD_TITRE__", $produitdesc->titre . " " . $dectexte, $cut[1]);
-                $temp =  str_replace("__VENTEPROD_REF__", $_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $temp);
-				$temp =  str_replace("__VENTEPROD_QUANTITE__", $_SESSION['navig']->panier->tabarticle[$i]->quantite, $temp);
-				$temp =  str_replace("__VENTEPROD_PRIXU__", $prix, $temp);
+				$temp = str_replace("__VENTEPROD_TITRE__", $row->titre, $cut[1]);
+                $temp =  str_replace("__VENTEPROD_REF__", $row->ref, $temp);
+				$temp =  str_replace("__VENTEPROD_QUANTITE__", $row->quantite, $temp);
+				$temp =  str_replace("__VENTEPROD_PRIXU__", $row->prixu, $temp);
 				$res .= $temp;
 			
 			}

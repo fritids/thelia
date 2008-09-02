@@ -25,6 +25,7 @@
 ?>
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Venteprod.class.php");
 
 	class Commande extends Baseobj{
 
@@ -89,6 +90,22 @@
 			if(mysql_result($resul, 0, "mfact")>0) $this->facture = mysql_result($resul, 0, "mfact") + 1;
 			else $this->facture = 1000;			
 		
+		}
+		
+		function total(){
+			
+			$venteprod = new Venteprod();
+			
+			$query = "select * from $venteprod->table where commande=\"" . $this->id . "\"";
+			$resul = mysql_query($query, $venteprod->link);
+			
+			$total = 0;
+		
+			while($row = mysql_fetch_object($resul))
+				$total+=round($row->prixu*$row->quantite, 2);		
+		
+			return $total;			
+			
 		}
 		
 		
