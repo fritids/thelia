@@ -948,7 +948,7 @@
 			$query = "select * from $produit->table where 1 $search $order $limit";
 	
 		else
-			$query = "select * from $produit->table, $produitdesc->table where $produit->table.id=$produitdesc->table.id $search $order $limit";
+			$query = "select * from $produit->table, $produitdesc->table where $produit->table.id=$produitdesc->table.produit and $produitdesc->table.lang=\"" . $_SESSION['navig']->lang . "\" $search $order $limit";
             
 		$resul = mysql_query($query, $produit->link);
 		$nbres = mysql_num_rows($resul);
@@ -990,8 +990,12 @@
 	 		
 			if( $row->promo == "1" && $row->prix) $pourcentage =  ceil((100 * ($row->prix - $row->prix2)/$row->prix));
 
+			$prixorig = $row->prix;
+			$prix2orig = $row->prix2;
+			
 			$prix = $row->prix - ($row->prix * $_SESSION['navig']->client->pourcentage / 100);
 			$prix2 = $row->prix2 - ($row->prix2 * $_SESSION['navig']->client->pourcentage / 100);
+			
 			$ecotaxe = $row->ecotaxe;
 			
 			$pays = new Pays();
@@ -1000,34 +1004,51 @@
 			$zone = new Zone();
 			$zone->charger($pays->zone);
 			
-			if($_SESSION['navig']->client->type == "1"){
-				$prix = $prix/(1+$row->tva/100);
-				$prix2 = $prix2/(1+$row->tva/100);
-				$ecotaxe = $row->ecotaxe/(1+$row->tva/100);
+			$prixht = $prix/(1+$row->tva/100);
+			$prix2ht = $prix2/(1+$row->tva/100);
+			$prixoright = $prixorig/(1+$row->tva/100);
+			$prix2oright = $prix2orig/(1+$row->tva/100);			
+			
+			$ecotaxeht = $row->ecotaxe/(1+$row->tva/100);
 				
-			}
 			
 			$prix = round($prix, 2);
 			$prix2 = round($prix2, 2);
-		
+			$prixht = round($prixht, 2);
+			$prix2ht = round($prix2ht, 2);
+			$prixorig = round($prixorig, 2);
+			$prix2orig = round($prix2orig, 2);
+			$prixoright = round($prixoright, 2);
+			$prix2oright = round($prix2oright, 2);
+								
 			$prix = number_format($prix, 2, ".", ""); 
 			$prix2 = number_format($prix2, 2, ".", ""); 
+			$prixht = number_format($prixht, 2, ".", ""); 
+			$prix2ht = number_format($prix2ht, 2, ".", ""); 
+			$prixorig = number_format($prixorig, 2, ".", ""); 
+			$prix2orig = number_format($prix2orig, 2, ".", ""); 
+			$prixoright = number_format($prixoright, 2, ".", ""); 
+			$prix2oright = number_format($prix2oright, 2, ".", "");
 			
 			if($deb != "" && !$page) $debcourant+=$deb-1;
-
-			$prixht = round($prix/(1+(intval($row->tva)/100)),2);
 			
 			$temp = str_replace("#REF", "$row->ref", $temp);
 			$temp = str_replace("#COMPT", "$compt", $temp);
 			$temp = str_replace("#DATE", substr($row->datemodif, 0, 10), $temp);
 			$temp = str_replace("#HEURE", substr($row->datemodif, 11), $temp);
 			$temp = str_replace("#DEBCOURANT", "$debcourant", $temp);
-			$temp = str_replace("#ID", "$row->id", $temp);		
+			$temp = str_replace("#ID", "$row->id", $temp);	
+			$temp = str_replace("#PRIX2ORIGHT", "$prix2oright", $temp);	
+			$temp = str_replace("#PRIX2ORIG", "$prix2orig", $temp);	
+			$temp = str_replace("#PRIXORIGHT", "$prixoright", $temp);				
+			$temp = str_replace("#PRIXORIG", "$prixorig", $temp);
+			$temp = str_replace("#PRIX2HT", "$prix2ht", $temp);	
 			$temp = str_replace("#PRIX2", "$prix2", $temp);	
 			$temp = str_replace("#PRIXHT", "$prixht", $temp);				
-			$temp = str_replace("#PRIX", "$prix", $temp);	
+			$temp = str_replace("#PRIX", "$prix", $temp);
 			$temp = str_replace("#PROMO", "$row->promo", $temp);	
 			$temp = str_replace("#TVA", "$row->tva", $temp);	
+			$temp = str_replace("#ECOTAXE", "$row->ecotaxeht", $temp);	
 			$temp = str_replace("#ECOTAXE", "$row->ecotaxe", $temp);	
 			$temp = str_replace("#STOCK", "$row->stock", $temp);	
 			$temp = str_replace("#POURCENTAGE", "$pourcentage", $temp);	
@@ -1400,6 +1421,7 @@
 		$deb = lireTag($args, "deb");
 		$fin = lireTag($args, "fin");
 		$dernier = lireTag($args, "dernier");
+		$ref = lireTag($args, "ref");
 		
 		if(!$deb) $deb=0;
 		if(!$fin) $fin=$_SESSION['navig']->panier->nbart;
@@ -1412,6 +1434,10 @@
 		if(! $_SESSION['navig']->panier->nbart) return;
 		
 		for($i=$deb; $i<$fin; $i++){
+			
+			if($ref != "" && $_SESSION['navig']->panier->tabarticle[$i]->produit->ref != $ref)
+				continue;
+				
 			$plus = $_SESSION['navig']->panier->tabarticle[$i]->quantite+1;
 			$moins = $_SESSION['navig']->panier->tabarticle[$i]->quantite-1;
 			
@@ -1441,14 +1467,10 @@
 			$zone = new Zone();
 			$zone->charger($pays->zone);
 						
-			if($_SESSION['navig']->client->type) {
-				$prix = round($prix*100/(100+$tva), 2);
-				$total = round($total*100/(100+$tva), 2);
-				$port = round($port*100/(100+$tva), 2);
-				$totcmdport = round($totcmdport*100/(100+$tva), 2);
-				$totsansport = round($totsansport*100/(100+$tva), 2);
-			}
-			
+			$portht = round($port*100/(100+$tva), 2);
+			$totcmdportht = round($totcmdport*100/(100+$tva), 2);
+			$totsansportht = round($totsansport*100/(100+$tva), 2);
+		
 			$produitdesc = new Produitdesc();
 			$produitdesc->charger($_SESSION['navig']->panier->tabarticle[$i]->produit->id,  $_SESSION['navig']->lang);
 
@@ -1492,9 +1514,11 @@
 			$temp = str_replace("#TITRE", $produitdesc->titre, $temp);
 			$temp = str_replace("#QUANTITE", "$quantite", $temp);
 			$temp = str_replace("#PRODUIT", $produitdesc->produit, $temp);
-			$temp = str_replace("#PRIXU", "$prix", $temp);
-			$temp = str_replace("#TOTALHT", "$totalht", $temp);
             $temp = str_replace("#PRIXHT", "$prixht", $temp);
+            $temp = str_replace("#PRIXUHT", "$prixht", $temp);
+			$temp = str_replace("#TOTALHT", "$totalht", $temp);	
+			$temp = str_replace("#PRIX", "$prix", $temp);
+			$temp = str_replace("#PRIXU", "$prix", $temp);
             $temp = str_replace("#TVA", "$tva", $temp);
 			$temp = str_replace("#TOTAL", "$total", $temp);			
 			$temp = str_replace("#ID", $_SESSION['navig']->panier->tabarticle[$i]->produit->id, $temp);
@@ -1503,6 +1527,9 @@
 			$temp = str_replace("#MOINSURL", "panier.php?action=" . "modifier" . "&amp;" . "article=" . $i . "&amp;" . "quantite=" . $moins, $temp);
 			$temp = str_replace("#SUPPRURL", "panier.php?action=" . "supprimer" . "&amp;" . "article=" . $i, $temp);			
 			$temp = str_replace("#PRODURL", "produit.php?ref=".$_SESSION['navig']->panier->tabarticle[$i]->produit->ref . "&amp;" . "id_rubrique=" . $_SESSION['navig']->panier->tabarticle[$i]->produit->rubrique, $temp);		
+			$temp = str_replace("#TOTSANSPORTHT", "$totsansportht", $temp);
+			$temp = str_replace("#PORTHT", "$portht", $temp);
+			$temp = str_replace("#TOTPORTHT", "$totcmdportht", $temp);
 			$temp = str_replace("#TOTSANSPORT", "$totsansport", $temp);
 			$temp = str_replace("#PORT", "$port", $temp);
 			$temp = str_replace("#TOTPORT", "$totcmdport", $temp);

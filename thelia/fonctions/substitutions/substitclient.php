@@ -70,6 +70,7 @@
 		$texte = str_replace("#CLIENT_EMAIL", $_SESSION['navig']->client->email, $texte);
 		$texte = str_replace("#CLIENT_TELFIXE", $_SESSION['navig']->client->telfixe, $texte);
 		$texte = str_replace("#CLIENT_TELPORT", $_SESSION['navig']->client->telport, $texte);
+		$texte = str_replace("#CLIENT_TYPE", $_SESSION['navig']->client->type, $texte);
 
 		return $texte;
 	

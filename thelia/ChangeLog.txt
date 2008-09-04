@@ -6,7 +6,7 @@
 	Possibilité d'ajout un surplus de coût au niveau d'une valeur de déclinaison
 	Possibilité d'ajouter dans le menu de gauche un raccourci vers un module d'administration.
 	Ajout d'un point d'entrée pour les plugins sur accueil.php (admin)
-	
+	Modification des boucles PRODUIT et PANIER pour les revendeurs, tout sera en TTC, il suffira d'utiliser PRIXHT par exemple pour 	avoir le prix ht
 	Si vous utilisez les flux RSS des commandes, n'oubliez pas de mettre à jour client/rss/cmd.php
 	
 	Cette mise à jour contient une modification de la base de donnée. Après remplacement des fichiers, connectez-vous à
