@@ -185,6 +185,7 @@ CREATE TABLE `client` (
   `raison` smallint(6) NOT NULL default '0',
   `entreprise` text NOT NULL,
   `siret` text NOT NULL,
+  `intracom` text NOT NULL,
   `nom` text NOT NULL,
   `prenom` text NOT NULL,
   `adresse1` varchar(40) NOT NULL default '',
@@ -642,7 +643,7 @@ INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES
 (3, 0, 7, 0, 0),
 (4, 0, 7, 0, 0),
 (5, 0, 2, 0, 1),
-(6, 0, 1, 0, 1),
+(6, 0, 1, 0, 0),
 (7, 0, 8, 0, 0),
 (8, 0, 9, 0, 0),
 (9, 0, 8, 0, 0),
@@ -667,7 +668,7 @@ INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES
 (28, 0, 8, 0, 0),
 (29, 0, 9, 0, 0),
 (30, 0, 9, 0, 0),
-(31, 0, 7, 0, 0),
+(31, 0, 7, 0, 1),
 (32, 0, 8, 0, 0),
 (33, 0, 8, 0, 0),
 (34, 0, 9, 0, 0),
@@ -695,7 +696,7 @@ INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES
 (56, 0, 9, 0, 0),
 (57, 0, 8, 0, 0),
 (58, 0, 3, 0, 1),
-(59, 0, 7, 0, 0),
+(59, 0, 7, 0, 1),
 (195, 1, -1, 0, 0),
 (61, 0, 8, 0, 0),
 (62, 0, 9, 0, 0),
@@ -733,12 +734,12 @@ INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES
 (94, 0, 8, 0, 0),
 (95, 0, 9, 0, 0),
 (96, 0, 8, 0, 0),
-(97, 0, 7, 0, 0),
+(97, 0, 7, 0, 1),
 (98, 0, 8, 0, 0),
 (99, 0, 8, 0, 0),
 (100, 0, 8, 0, 0),
 (101, 0, 6, 0, 0),
-(102, 0, 7, 0, 0),
+(102, 0, 7, 0, 1),
 (103, 0, 2, 0, 1),
 (104, 0, 7, 0, 0),
 (105, 0, 8, 0, 0),
@@ -754,7 +755,7 @@ INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES
 (115, 0, 9, 0, 0),
 (116, 0, 9, 0, 0),
 (117, 0, 7, 0, 0),
-(118, 0, 1, 0, 0),
+(118, 0, 1, 0, 1),
 (119, 0, 9, 0, 0),
 (120, 0, 8, 0, 0),
 (121, 0, 8, 0, 0),
@@ -781,8 +782,8 @@ INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES
 (142, 0, 8, 0, 0),
 (143, 0, 8, 0, 0),
 (144, 0, 9, 0, 0),
-(145, 0, 6, 0, 0),
-(146, 0, 7, 0, 0),
+(145, 0, 6, 0, 1),
+(146, 0, 7, 0, 1),
 (147, 0, 3, 0, 1),
 (148, 0, 7, 0, 0),
 (149, 0, 8, 0, 0),
@@ -798,8 +799,8 @@ INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES
 (159, 0, 9, 0, 0),
 (160, 0, 8, 0, 0),
 (161, 0, 9, 0, 0),
-(162, 0, 6, 0, 0),
-(163, 0, 6, 0, 0),
+(162, 0, 6, 0, 1),
+(163, 0, 6, 0, 1),
 (164, 0, 8, 0, 0),
 (165, 0, 8, 0, 0),
 (166, 0, 9, 0, 0),
@@ -902,6 +903,7 @@ INSERT INTO `pays` (`id`, `lang`, `zone`, `default`, `tva`) VALUES
 (266, 0, 11, 0, 0),
 (267, 0, 11, 0, 0),
 (268, 0, 11, 0, 0);
+
 -- --------------------------------------------------------
 
 -- 
@@ -1931,11 +1933,12 @@ INSERT INTO `statutdesc` VALUES (32, 5, 2, 'Canceled', '', '');
 -- 
 
 CREATE TABLE `stock` (
-  `id` int(11) NOT NULL auto_increment,
-  `declidisp` int(11) NOT NULL default '0',
-  `produit` int(11) NOT NULL default '0',
-  `valeur` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
+	`id` int(11) NOT NULL auto_increment,
+	`declidisp` int(11) NOT NULL default '0',
+	`produit` int(11) NOT NULL default '0',
+	`valeur` int(11) NOT NULL default '0',
+	`surplus` float NOT NULL,
+	 PRIMARY KEY  (`id`)
 ) TYPE=MyISAM AUTO_INCREMENT=1 ;
 
 -- 

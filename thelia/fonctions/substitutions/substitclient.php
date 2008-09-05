@@ -59,6 +59,7 @@
 		if(isset($raison[$_SESSION['navig']->client->raison])) $texte = str_replace("#CLIENT_RAISON", $raison[$_SESSION['navig']->client->raison], $texte);
 		$texte = str_replace("#CLIENT_ENTREPRISE", $_SESSION['navig']->client->entreprise, $texte);
 		$texte = str_replace("#CLIENT_SIRET", $_SESSION['navig']->client->siret, $texte);
+		$texte = str_replace("#CLIENT_INTRACOM", $_SESSION['navig']->client->intracom, $texte);
 		$texte = str_replace("#CLIENT_NOM", $_SESSION['navig']->client->nom, $texte);
 		$texte = str_replace("#CLIENT_PRENOM", $_SESSION['navig']->client->prenom, $texte);
 		$texte = str_replace("#CLIENT_ADRESSE1", $_SESSION['navig']->client->adresse1, $texte);

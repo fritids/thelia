@@ -24,54 +24,25 @@
 /*************************************************************************************/
 ?>
 <?php
-	
-	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Navigation.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/config.php");
-		
-	session_start();
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 
-	$total = 0;
+	class Racmodule extends Baseobj{
 
-    $total = $_SESSION['navig']->panier->total(1,$_SESSION['navig']->commande->remise) + $_SESSION['navig']->commande->port;
+		var $id;
+		var $module;
+				
+		var $table="racmodule";
+		var $bddvars = array("id", "module");
 
-	$total *= 100;
-	
-	$transaction = urlencode($_SESSION['navig']->commande->transaction);
+		function Racmodule(){
+			$this->Baseobj();
+		}
+
+		function charger($module){
+			return $this->getVars("select * from $this->table where module=\"$module\"");
+		}
+
+
+	}
 
 ?>
-
-<html>
-<head>
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="-1">
-<title>
-  Paiement Ogone
-</title>
-</head>
-	
-	
-<body onload="document.getElementById('formogone').submit();">
-
-<form action="<?php echo $serveur; ?>" id="formogone" action="post">
-        <INPUT type="hidden" NAME="PSPID" value="<?php echo $pspid; ?>">
-        <INPUT type="hidden" NAME="orderID" VALUE="<?php echo $_SESSION['navig']->commande->transaction; ?>">
-        <INPUT type="hidden" NAME="amount" VALUE="<?php echo $total; ?>">
-        <INPUT type="hidden" NAME="currency" VALUE="<?php echo $devise; ?>">
-        <INPUT type="hidden" NAME="language" VALUE="<?php echo $langue; ?>">
-
-        <INPUT type="hidden" NAME="TITLE" VALUE="<?php echo $nomsite->valeur; ?>">
-
-        <INPUT type="hidden" NAME="LOGO" VALUE="logo.jpg">
-
-        <INPUT type="hidden" NAME="accepturl" VALUE="<?php echo $retourok;?>">
-        <INPUT type="hidden" NAME="declineurl" VALUE="<?php echo $retourko;?>">
-        <INPUT type="hidden" NAME="exceptionurl" VALUE="<?php echo $retourko;?>">
-        <INPUT type="hidden" NAME="cancelurl" VALUE="<?php echo $retourok;?>">
-
-<input type="submit" value="Acces au Paiement" id="envoyer" name="Envoyer">
-        </form>
-
-	
-</body>
-</html>

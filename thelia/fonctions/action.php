@@ -286,7 +286,7 @@
 	}
 	
 	// création d'un compte
-	function creercompte($raison, $entreprise, $siret, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2, $parrain){
+	function creercompte($raison, $entreprise, $siret, $intracom, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2, $parrain){
 
 		global $obligetelfixe, $obligetelport;
 
@@ -306,6 +306,7 @@
 		$client->cpostal = strip_tags($cpostal);
 		$client->ville = strip_tags($ville);
 		$client->siret = strip_tags($siret);
+		$client->intracom = strip_tags($intracom);
 		$client->pays = strip_tags($pays);
 		$client->type = "0";
 		
@@ -356,7 +357,7 @@
 	}
 	
 	// modification de compte	
-	function modifiercompte($raison, $entreprise, $siret, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2){
+	function modifiercompte($raison, $entreprise, $siret, $intracom, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2){
 
 		global $obligetelfixe, $obligetelport;
 
@@ -367,6 +368,7 @@
 			$client->id = $_SESSION['navig']->client->id;
 			$client->raison = strip_tags($raison);
 			$client->siret = strip_tags($siret);
+			$client->intracom = strip_tags($intracom);
 			$client->entreprise = strip_tags($entreprise);
 			$client->nom = strip_tags($nom);
 			$client->prenom = strip_tags($prenom);

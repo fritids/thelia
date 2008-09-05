@@ -30,9 +30,8 @@
 
 	$total = 0;
 
-	$total = $_SESSION['navig']->panier->total() + $_SESSION['navig']->commande->port;
-	$total -= $_SESSION['navig']->commande->remise;
-	$total = round($total, 2);
+    $total = $_SESSION['navig']->panier->total(1,$_SESSION['navig']->commande->remise) + $_SESSION['navig']->commande->port;
+
 
 ?>
 

@@ -95,6 +95,12 @@
          <input name="siret" type="text" class="form" value="<?php echo($client->siret); ?>" size="40" />
       </td>
      </tr>
+      <tr>
+       <td height="30" class="titre_cellule">N° INTRACOMMUNAUTAIRE</td>
+       <td class="cellule_sombre">
+         <input name="intracom" type="text" class="form" value="<?php echo($client->intracom); ?>" size="40" />
+      </td>
+     </tr>
      <tr>
        <td height="30" class="titre_cellule">CIVILIT&Eacute;</td>
        <td class="cellule_claire">

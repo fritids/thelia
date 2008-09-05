@@ -172,6 +172,10 @@ function supprimer(id){
        <td class="cellule_sombre"><?php echo($client->siret); ?></td>
      </tr>
      <tr>
+       <td height="30" class="titre_cellule">N° INTRACOMMUNAUTRAIRE</td>
+       <td class="cellule_sombre"><?php echo($client->intracom); ?></td>
+     </tr>
+     <tr>
        <td height="30" class="titre_cellule">CIVILIT&Eacute;</td>
        <td class="cellule_claire"><?php echo($civilite); ?></td>
      </tr>

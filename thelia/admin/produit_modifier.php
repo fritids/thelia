@@ -600,13 +600,13 @@
       <td height="30" colspan="2" class="titre_cellule_tres_sombre">Caractéristiques du produit </span></td>
       </tr>
     <tr>
-      <td width="250" height="30" class="titre_cellule">PRIX</td>
+      <td width="250" height="30" class="titre_cellule">PRIX TTC</td>
       <td width="440" class="cellule_sombre">
         <input name="prix" id="prix" type="text" class="form" value="<?php echo($produit->prix); ?>" />
         </span></td>
     </tr>
     <tr>
-      <td height="30" class="titre_cellule">PRIX PROMOTIONNE </td>
+      <td height="30" class="titre_cellule">PRIX PROMOTIONNE TTC</td>
       <td class="cellule_claire">
         <input name="prix2" id="prix2" type="text" class="form" value="<?php echo($produit->prix2); ?>" />
         </span></td>

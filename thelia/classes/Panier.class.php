@@ -26,6 +26,7 @@
 <?php
 
 	include_once(realpath(dirname(__FILE__)) . "/Article.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Pays.class.php");
 
 	// Déninition du panier
 	
@@ -88,21 +89,34 @@
 		}
 		
 		
-		function total(){
+		function total($tva=0, $remise=0){
 			$total = 0;
-		
+			$taxe = 0;
+			
 			for($i=0; $i<$this->nbart; $i++){
 			
 				$quantite =  $this->tabarticle[$i]->quantite;
 				if( ! $this->tabarticle[$i]->produit->promo)
 				$prix = $this->tabarticle[$i]->produit->prix;
-				else $prix = $this->tabarticle[$i]->produit->prix2;	
-			
-				$total+=round($prix*$quantite, 2);		
+				else $prix = $this->tabarticle[$i]->produit->prix2;
+				
+				$taxe += $prix * $tva/100;	
+				$total += $prix*$quantite;		
 			
 			}
-		
-			return $total;
+						
+			if($remise) 
+				$remise = $remise / $total * 100;
+				
+			$pays = new Pays();
+			$pays->charger($_SESSION['navig']->client->pays);
+
+			if($tva && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != "")))
+				$total -= $taxe;
+			
+			$total -= $total * $remise / 100;
+								
+			return round($total, 2);
 		}	
 
 		function poids(){

@@ -471,6 +471,7 @@
 				$temp = str_replace("#RAISON", "$row->raison", $temp);		
 				$temp = str_replace("#ENTREPRISE", "$row->entreprise", $temp);
 				$temp = str_replace("#SIRET", "$row->siret", $temp);					
+				$temp = str_replace("#INTRACOM", "$row->intracom", $temp);					
 				$temp = str_replace("#NOM", "$row->nom", $temp);					
 				$temp = str_replace("#PRENOM", "$row->prenom", $temp);					
 				$temp = str_replace("#TELFIXE", "$row->telfixe", $temp);	
@@ -1550,13 +1551,20 @@
 		$res="";
 	
 		$article = lireTag($args, "article");
+		$ref = lireTag($args, "ref");		
 		$max = lireTag($args, "max");
 		
 		$prodtemp = new Produit();
-		$prodtemp->charger($_SESSION['navig']->panier->tabarticle[$article]->produit->ref);
-
+		if($article != "")
+			$prodtemp->charger($_SESSION['navig']->panier->tabarticle[$article]->produit->ref);
+		else if($ref != "")
+			$prodtemp->charger($ref);
+			
 		if($max == "") 
-			$max = 10;
+			$max = $prodtemp->stock;
+	
+		if($max == "")
+			return;
 			
 		$j = 0;
 		
@@ -2613,6 +2621,8 @@
 	
 		$article = lireTag($args, "article");
 		$declinaison = lireTag($args, "declinaison");
+		$ref = lireTag($args, "ref");
+		$article = lireTag($args, "article");
 		
 		if($article == "") return "";
 		
@@ -2642,6 +2652,8 @@
 			else $valeur = $tperso->valeur;
 
 			$temp = str_replace("#DECLITITRE", "$tdeclinaisondesc->titre", $texte);
+			$temp = str_replace("#REF", "$ref", $temp);	
+			$temp = str_replace("#ARTICLE", "$article", $temp);	
 			$temp = str_replace("#VALEUR", "$valeur", $temp);	
 			$temp = str_replace("#DECLIDISP", "$tdeclidispdesc->declidisp", $temp);	
 			
