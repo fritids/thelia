@@ -10,7 +10,7 @@ foreach ($_GET as $key => $value) $$key = $value;
 	$commande = new Commande();
 	
 	// Récupération de la variable cryptée DATA
-
+	$DATA = escapeshellcmd($_POST["DATA"]);
 	$message="message=$DATA";
 
 	// Initialisation du chemin du fichier pathfile (à modifier)

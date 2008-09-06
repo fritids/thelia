@@ -20,7 +20,7 @@
 	print ("<center><H1>Test de l'API plug-in ATOS</H1></center><br><br>");
 
 	// Récupération de la variable cryptée DATA
-
+	$DATA = escapeshellcmd($_POST["DATA"]);
 	$message="message=$DATA";
 
 	// Initialisation du chemin du fichier pathfile (à modifier)
