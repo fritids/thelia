@@ -10,6 +10,7 @@ foreach ($_GET as $key => $value) $$key = $value;
 	$commande = new Commande();
 	
 	// Récupération de la variable cryptée DATA
+
 	$DATA = escapeshellcmd($_POST["DATA"]);
 	$message="message=$DATA";
 
@@ -23,7 +24,7 @@ foreach ($_GET as $key => $value) $$key = $value;
 
 	$pathfile="pathfile=conf/pathfile";
 
-//Initialisation du chemin de l'executable response (à modifier)
+	//Initialisation du chemin de l'executable response (à modifier)
 	//ex :
 	//-> Windows : $path_bin = "c:\\repertoire\\bin\\response"
 	//-> Unix    : $path_bin = "/home/repertoire/bin/response"
