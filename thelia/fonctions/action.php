@@ -116,6 +116,7 @@
 		$_SESSION['navig']->client= new Client();
 		$_SESSION['navig']->connecte = 0;	
 		$_SESSION['navig']->adresse = 0;
+		$_SESSION['navig']->urlpageret = str_replace("action=deconnexion","",$_SESSION['navig']->urlpageret);
 	}
 
 	// modification de l'adresse en cours	
