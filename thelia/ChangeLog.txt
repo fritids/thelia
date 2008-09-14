@@ -10,9 +10,12 @@
 	Si vous utilisez les flux RSS des commandes, n'oubliez pas de mettre à jour client/rss/cmd.php
 	Mise à jour de la boucle DECVAL, PANIER (ajout d'arguments)
 	Ajout des arguments deb et num à la boucle CARACDISP
+	Sauvegarde de la langue utilisée lors de la commande dans la table commande
 	
 	Cette mise à jour contient une modification de la base de donnée. Après remplacement des fichiers, connectez-vous à
 	http://www.votrethelia.com/install/
+	
+	Si vous mettez à jour une 1.3.7-pre1, editez l'enregistrement version de la table variable et donnez lui la valeur 136
 		
 1.3.6
 	Ajout de la gestion du statut en plugin pour l'annulation d'une commande

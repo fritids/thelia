@@ -34,6 +34,26 @@
 	$query_cnx = "update pays set tva=1 where id in (5,13,20,31,40,51,58,59,63,64,118,69,78,83,86,97,102,103,110,137,140,141,145,146,147,162,163,167);";
 	$resul_cnx = mysql_query($query_cnx, $var->link);
 
+	$query_cnx = "ALTER TABLE `commande` ADD `lang` INT NOT NULL ;";
+	$resul_cnx = mysql_query($query_cnx, $var->link);
+
+	$query_cnx = "CREATE TABLE `venteadr` (
+	  `id` int(11) NOT NULL auto_increment,
+	  `commande` int(11) NOT NULL,
+	  `type` smallint(6) NOT NULL,
+	  `raison` smallint(6) NOT NULL default '0',
+	  `nom` text NOT NULL,
+	  `prenom` text NOT NULL,
+	  `adresse1` varchar(40) NOT NULL default '',
+	  `adresse2` varchar(40) NOT NULL default '',
+	  `adresse3` varchar(40) NOT NULL default '',
+	  `cpostal` varchar(10) NOT NULL default '',
+	  `ville` varchar(30) NOT NULL default '',
+	  `tel` text NOT NULL,
+	  `pays` int(11) NOT NULL default '0',
+	  PRIMARY KEY  (`id`)
+	)AUTO_INCREMENT=1 ;";
+	$resul_cnx = mysql_query($query_cnx, $var->link);
 
 	$version = new Variable();
 	$version->charger("version");

@@ -22,7 +22,7 @@ CREATE TABLE `accessoire` (
   `accessoire` int(11) NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `accessoire`
@@ -43,7 +43,7 @@ CREATE TABLE `administrateur` (
   `nom` text NOT NULL,
   `niveau` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=2 ;
+)  AUTO_INCREMENT=2 ;
 
 -- 
 -- Contenu de la table `administrateur`
@@ -72,7 +72,7 @@ CREATE TABLE `adresse` (
   `tel` text NOT NULL,
   `pays` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `adresse`
@@ -88,7 +88,7 @@ CREATE TABLE `caracdisp` (
   `id` int(11) NOT NULL auto_increment,
   `caracteristique` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `caracdisp`
@@ -107,7 +107,7 @@ CREATE TABLE `caracdispdesc` (
   `lang` int(11) NOT NULL default '0',
   `titre` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `caracdispdesc`
@@ -125,7 +125,7 @@ CREATE TABLE `caracteristique` (
   `affiche` int(11) NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `caracteristique`
@@ -146,7 +146,7 @@ CREATE TABLE `caracteristiquedesc` (
   `chapo` text NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `caracteristiquedesc`
@@ -166,7 +166,7 @@ CREATE TABLE `caracval` (
   `caracdisp` int(11) NOT NULL default '0',
   `valeur` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `caracval`
@@ -202,7 +202,7 @@ CREATE TABLE `client` (
   `type` smallint(6) NOT NULL default '0',
   `pourcentage` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `client`
@@ -232,8 +232,9 @@ CREATE TABLE `commande` (
   `colis` text NOT NULL,
   `paiement` int(11) NOT NULL default '0',
   `statut` smallint(6) NOT NULL default '0',
+  `lang` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `commande`
@@ -253,7 +254,7 @@ CREATE TABLE `contenu` (
   `ligne` smallint(6) NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `contenu`
@@ -273,7 +274,7 @@ CREATE TABLE `contenuassoc` (
   `contenu` int(11) NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `contenuassoc`
@@ -295,7 +296,7 @@ CREATE TABLE `contenudesc` (
   `postscriptum` text NOT NULL,
   `lang` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `contenudesc`
@@ -312,7 +313,7 @@ CREATE TABLE `declidisp` (
   `id` int(11) NOT NULL auto_increment,
   `declinaison` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `declidisp`
@@ -331,7 +332,7 @@ CREATE TABLE `declidispdesc` (
   `lang` int(11) NOT NULL default '0',
   `titre` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `declidispdesc`
@@ -348,7 +349,7 @@ CREATE TABLE `declinaison` (
   `id` int(11) NOT NULL auto_increment,
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `declinaison`
@@ -369,7 +370,7 @@ CREATE TABLE `declinaisondesc` (
   `chapo` text NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `declinaisondesc`
@@ -389,7 +390,7 @@ CREATE TABLE `devise` (
   `symbole` text NOT NULL,
   `taux` float NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=3 ;
+)  AUTO_INCREMENT=3 ;
 
 -- 
 -- Contenu de la table `devise`
@@ -413,7 +414,7 @@ CREATE TABLE `document` (
   `fichier` text NOT NULL,
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `document`
@@ -434,7 +435,7 @@ CREATE TABLE `documentdesc` (
   `chapo` text NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `documentdesc`
@@ -454,7 +455,7 @@ CREATE TABLE `dossier` (
   `ligne` smallint(6) NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `dossier`
@@ -476,7 +477,7 @@ CREATE TABLE `dossierdesc` (
   `description` text NOT NULL,
   `postscriptum` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `dossierdesc`
@@ -494,7 +495,7 @@ CREATE TABLE `exdecprod` (
   `produit` int(11) NOT NULL default '0',
   `declidisp` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `exdecprod`
@@ -516,7 +517,7 @@ CREATE TABLE `image` (
   `fichier` text NOT NULL,
   `classement` int(6) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `image`
@@ -537,7 +538,7 @@ CREATE TABLE `imagedesc` (
   `chapo` text NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `imagedesc`
@@ -554,7 +555,7 @@ CREATE TABLE `lang` (
   `id` int(11) NOT NULL auto_increment,
   `description` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=4 ;
+)  AUTO_INCREMENT=4 ;
 
 -- 
 -- Contenu de la table `lang`
@@ -575,7 +576,7 @@ CREATE TABLE `message` (
   `nom` text NOT NULL,
   `protege` smallint(6) NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=8 ;
+)  AUTO_INCREMENT=8 ;
 
 -- 
 -- Contenu de la table `message`
@@ -604,7 +605,7 @@ CREATE TABLE `messagedesc` (
   `chapo` text NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=9 ;
+)  AUTO_INCREMENT=9 ;
 
 -- 
 -- Contenu de la table `messagedesc`
@@ -918,7 +919,7 @@ CREATE TABLE `paysdesc` (
   `chapo` text NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=835 ;
+)  AUTO_INCREMENT=835 ;
 
 -- 
 -- Contenu de la table `paysdesc`
@@ -1744,7 +1745,7 @@ CREATE TABLE `produit` (
   `tva` float NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `produit`
@@ -1766,7 +1767,7 @@ CREATE TABLE `produitdesc` (
   `postscriptum` text NOT NULL,
   `lang` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `produitdesc`
@@ -1789,7 +1790,7 @@ CREATE TABLE `promo` (
   `illimite` smallint(6) NOT NULL default '0',
   `datefin` datetime NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `promo`
@@ -1807,7 +1808,7 @@ CREATE TABLE `rubcaracteristique` (
   `rubrique` int(11) NOT NULL default '0',
   `caracteristique` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `rubcaracteristique`
@@ -1825,7 +1826,7 @@ CREATE TABLE `rubdeclinaison` (
   `rubrique` int(11) NOT NULL default '0',
   `declinaison` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `rubdeclinaison`
@@ -1845,7 +1846,7 @@ CREATE TABLE `rubrique` (
   `ligne` smallint(6) NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `rubrique`
@@ -1867,7 +1868,7 @@ CREATE TABLE `rubriquedesc` (
   `description` text NOT NULL,
   `postscriptum` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `rubriquedesc`
@@ -1883,7 +1884,7 @@ CREATE TABLE `rubriquedesc` (
 CREATE TABLE `statut` (
   `id` int(11) NOT NULL auto_increment,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=6 ;
+)  AUTO_INCREMENT=6 ;
 
 -- 
 -- Contenu de la table `statut`
@@ -1909,7 +1910,7 @@ CREATE TABLE `statutdesc` (
   `chapo` text NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=33 ;
+)  AUTO_INCREMENT=33 ;
 
 -- 
 -- Contenu de la table `statutdesc`
@@ -1939,7 +1940,7 @@ CREATE TABLE `stock` (
 	`valeur` int(11) NOT NULL default '0',
 	`surplus` float NOT NULL,
 	 PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `stock`
@@ -1957,7 +1958,7 @@ CREATE TABLE `transzone` (
   `transport` int(11) NOT NULL default '0',
   `zone` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `transzone`
@@ -1978,7 +1979,7 @@ CREATE TABLE `variable` (
   `protege` smallint(6) NOT NULL,
   `cache` smallint(6) NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=9 ;
+)  AUTO_INCREMENT=9 ;
 
 -- 
 -- Contenu de la table `variable`
@@ -2010,11 +2011,29 @@ CREATE TABLE `venteprod` (
   `tva` float NOT NULL default '0',
   `commande` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=1 ;
+)  AUTO_INCREMENT=1 ;
 
 -- 
 -- Contenu de la table `venteprod`
 -- 
+
+CREATE TABLE `venteadr` (
+  `id` int(11) NOT NULL auto_increment,
+  `commande` int(11) NOT NULL,
+  `type` smallint(6) NOT NULL,
+  `raison` smallint(6) NOT NULL default '0',
+  `nom` text NOT NULL,
+  `prenom` text NOT NULL,
+  `adresse1` varchar(40) NOT NULL default '',
+  `adresse2` varchar(40) NOT NULL default '',
+  `adresse3` varchar(40) NOT NULL default '',
+  `cpostal` varchar(10) NOT NULL default '',
+  `ville` varchar(30) NOT NULL default '',
+  `tel` text NOT NULL,
+  `pays` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+)AUTO_INCREMENT=1 ;
+
 
 
 -- --------------------------------------------------------
@@ -2028,7 +2047,7 @@ CREATE TABLE `zone` (
   `nom` text NOT NULL,
   `unite` float NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM AUTO_INCREMENT=12 ;
+)  AUTO_INCREMENT=12 ;
 
 -- 
 -- Contenu de la table `zone`

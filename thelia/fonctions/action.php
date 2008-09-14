@@ -155,6 +155,9 @@
 		
 		$commande->statut="1";
 		$commande->paiement = $type_paiement;
+		
+		$commande->lang = $_SESSION['navig']->lang;
+		
 		$idcmd = $commande->add();
 		$commande->charger($idcmd);
 		$venteprod = new Venteprod();
