@@ -564,18 +564,18 @@
   </table>
   <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr>
-      <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" onClick="envoyer()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onclick="envoyer()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
+      <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" onclick="envoyer()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onclick="envoyer()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
     </tr>
   </table>  
   <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="30" class="titre_cellule">REFERENCE :</td>
       <td class="cellule_sombre">
-        <input type="text" name="ref" id="ref_c" class="form" value="<?php echo($produit->ref); ?>" <?php if($ref) echo "disabled";?>>      </td>
+        <input type="text" name="ref" id="ref_c" class="form_long" value="<?php echo($produit->ref); ?>" <?php if($ref) echo "disabled";?>>      </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">TITRE</td>
-      <td class="cellule_claire"><input name="titre" id="titre" type="text" class="form" value="<?php echo($produitdesc->titre); ?>">      </td>
+      <td class="cellule_claire"><input name="titre" id="titre" type="text" class="form_long" value="<?php echo($produitdesc->titre); ?>">      </td>
     </tr>
     <tr>
       <td height="30" class="titre_cellule">CHAPO</td>
@@ -630,21 +630,9 @@
         </span></td>
     </tr>
     <tr>
-      <td height="30" class="titre_cellule">GARANTIE</td>
-      <td class="cellule_claire">
-        <input name="garantie" id="garantie" type="text" class="form" value="<?php echo($produit->garantie); ?>" />
-        </span></td>
-    </tr>
-    <tr>
       <td height="30" class="titre_cellule">EN PROMO </td>
       <td class="cellule_sombre">
         <input name="promo" id="promo" type="checkbox" class="form" <?php if($produit->promo) echo "checked"; ?> />
-        </span></td>
-    </tr>
-    <tr>
-      <td height="30" class="titre_cellule">EN REAPROVISIONNEMENT </td>
-      <td class="cellule_claire">
-        <input name="reappro" id="reappro" type="checkbox" class="form" <?php if($produit->reappro) echo "checked"; ?> />
         </span></td>
     </tr>
     <tr>
@@ -898,7 +886,7 @@
 	  
   <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr><input type="submit" id="boutoncache" style="display: none">
-      <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" onClick="envoyer()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onclick="envoyer()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
+      <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" onclick="envoyer()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onclick="envoyer()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
     </tr>
   </table>
    </form>

@@ -462,9 +462,9 @@
                                                           <td height="30" >
                               
                       <?php if($lang == "1") { ?>
-                              <a href="#" onClick="ajout()" class="txt_vert_11">Ajouter une valeur <img src="gfx/suivant.gif" width="12" height="9" border="0" /></a>
+                              <a href="#" onclick="ajout()" class="txt_vert_11">Ajouter une valeur <img src="gfx/suivant.gif" width="12" height="9" border="0" /></a>
                       <?php } else { ?>
-                      		  <a href="#" onClick="maj()" class="txt_vert_11">Mettre à jour <img src="gfx/suivant.gif" width="12" height="9" border="0" /></a>
+                      		  <a href="#" onclick="maj()" class="txt_vert_11">Mettre à jour <img src="gfx/suivant.gif" width="12" height="9" border="0" /></a>
                       
                       <?php } ?>        
                               
@@ -496,7 +496,7 @@
     <?php if($lang == "1") { ?>
 				<td width="30%"><span class="geneva11bol_3B4B5B"><input type="text" name="<?php echo($lang); ?>_<?php echo($row->id); ?>" value="<?php echo($declidispdesc->titre); ?>" class="form" /></span></td>
 			    <td width="31%">
-  			  <a href="#" onclick="suppr('<?php echo($row->id); ?>')" class="txt_vert_11">Supprimer <img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a><a href="#" onClick="suppr('<?php echo($row->id); ?>')"></a>
+  			  <a href="#" onclick="suppr('<?php echo($row->id); ?>')" class="txt_vert_11">Supprimer <img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a><a href="#" onclick="suppr('<?php echo($row->id); ?>')"></a>
     
     <?php } else { ?>
     	<td width="30%"><span class="geneva11bol_3B4B5B"><?php echo($declidispdesc->titre); ?></span></td>
@@ -529,7 +529,7 @@
   <td height="30" >
   
 <?php if($lang == "1") { ?>
-  <a href="#" onClick="maj()" class="txt_vert_11">Mettre à jour <img src="gfx/suivant.gif" width="12" height="9" border="0" /></a>
+  <a href="#" onclick="maj()" class="txt_vert_11">Mettre à jour <img src="gfx/suivant.gif" width="12" height="9" border="0" /></a>
 <?php } ?>      
   
   <br />

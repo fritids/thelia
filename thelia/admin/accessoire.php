@@ -50,7 +50,7 @@
 		
 		
 		while($row = mysql_fetch_object($resul)){
-			$res .= "<a href=\"#\" onClick=\"do_ajouter($row->produit, $courant)\">" . $row->titre . "</a>" . "<br />";
+			$res .= "<a href=\"#\" onclick=\"do_ajouter($row->produit, $courant)\">" . $row->titre . "</a>" . "<br />";
 		}
 
 		
@@ -165,7 +165,7 @@
 $res .= "	 <tr>"
 ."      <td  width=\"60%\" align=\"left\" valign=\"middle\" class=\"arial11_bold_626262\">$prodtempdesc->titre </td>"
 ."      <td  width=\"20%\" align=\"left\" valign=\"middle\" class=\"arial11_bold_626262\"><a href=\"" . $_SERVER['PHP_SELF'] . "?id=".$row->id."&action=modclassement&type=M&produit=".$accessoire->produit . "\"><img src=\"gfx/bt_flecheh.gif\" border=\"0\"></a><a href=\"" . $_SERVER['PHP_SELF'] . "?id=".$row->id. "&action=modclassement&type=D&produit=".$accessoire->produit . "\"><img src=\"gfx/bt_flecheb.gif\" border=\"0\"></a></td>"
-."      <td  width=\"20%\" align=\"left\" valign=\"middle\" class=\"arial11_bold_626262\"><a href=\"#\" onClick=\"do_supprimer($row->id, $courant)\">Supprimer</a></td>"
+."      <td  width=\"20%\" align=\"left\" valign=\"middle\" class=\"arial11_bold_626262\"><a href=\"#\" onclick=\"do_supprimer($row->id, $courant)\">Supprimer</a></td>"
 ."      <td width=\"60%\">&nbsp;</td>"
 ."	 </tr>"
 ."	<tr>"

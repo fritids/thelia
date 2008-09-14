@@ -81,7 +81,7 @@
        <td class="cellule_sombre">
          <input name="taux" type="text" class="form" value="<?php echo($row->taux); ?>" size="10" />
        </td>
-       <td class="cellule_sombre"><a href="#" class="txt_vert_11" onClick="document.getElementById('formdevise<?php echo($row->id); ?>').submit();">Modifier</a> <a href="#"><img src="gfx/suivant.gif" onClick="document.getElementById('formdevise<?php echo($row->id); ?>').submit();" width="12" height="9" border="0" /></a></span></span></td>
+       <td class="cellule_sombre"><a href="#" class="txt_vert_11" onclick="document.getElementById('formdevise<?php echo($row->id); ?>').submit();">Modifier</a> <a href="#"><img src="gfx/suivant.gif" onclick="document.getElementById('formdevise<?php echo($row->id); ?>').submit();" width="12" height="9" border="0" /></a></span></span></td>
        <td align="center" valign="middle" class="cellule_sombre"><a href="devise_modifier.php?action=supprimer&id=<?php echo $row->id ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></td>
      </tr>
    
@@ -124,7 +124,7 @@
   <tr>
       <td width="710" height="30" class="titre_cellule_tres_sombre2">
       <input type="hidden" name="action" value="ajouter" />
-      <a href="#" onClick="document.getElementById('formajouter').submit()" class="lien_titre_cellule">AJOUTER UNE DEVISE </a></td>
+      <a href="#" onclick="document.getElementById('formajouter').submit()" class="lien_titre_cellule">AJOUTER UNE DEVISE </a></td>
     </tr>  
    
   

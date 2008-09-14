@@ -237,7 +237,7 @@
 	<tr>
       <td height="20" align="center" valign="middle" background="gfx/telecommande/fond_telecommande.gif">
 	  <form action="recherche.php" method="post">
-	  <input type="text"  class="form" name="motcle" value="Rechercher ..." onClick="this.value=''"/>
+	  <input type="text"  class="form" name="motcle" value="Rechercher ..." onclick="this.value=''"/>
 	  </form>
 	  </td>
     </tr>

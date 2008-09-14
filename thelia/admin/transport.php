@@ -349,8 +349,8 @@
       </div>
     </td>
     <td width="39%" height="30"> <div align="center">
-                            <input name="Submit" type="button" onClick="ajoutzone('m')" class="geneva11bol_3B4B5B" value="Ajouter une zone &gt;&gt; ">
-                            <br /><input name="Submit" type="button" onClick="supprzone('m')" class="geneva11bol_3B4B5B" value="&lt;&lt; Supprimer une zone">
+                            <input name="Submit" type="button" onclick="ajoutzone('m')" class="geneva11bol_3B4B5B" value="Ajouter une zone &gt;&gt; ">
+                            <br /><input name="Submit" type="button" onclick="supprzone('m')" class="geneva11bol_3B4B5B" value="&lt;&lt; Supprimer une zone">
     </div></td>
                           <td><div align="center">
                             <select name="select2" size="5" multiple="multiple" class="form" id="selectszonedm">
@@ -363,7 +363,7 @@
    <td height="30" class="cellule_claire_vide">&nbsp;</td>
    <td height="30" class="cellule_claire_vide"></td>
    <td class="cellule_claire_vide"> 
-     <input name="Submit" type="button" onClick="valide();" class="geneva11bol_3B4B5B" value="Valider">
+     <input name="Submit" type="button" onclick="valide();" class="geneva11bol_3B4B5B" value="Valider">
    </td>
  </tr>
   </table>

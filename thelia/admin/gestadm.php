@@ -97,10 +97,10 @@
    	   <td height="30" class="cellule_sombre"><input name="prenom" type="text" class="form" value="<?php echo($row->prenom); ?>" size="12" /></td>
    	   <td height="30" class="cellule_sombre"><input name="nom" type="text" class="form" value="<?php echo($row->nom); ?>" size="12" /></td>
 
-       <td class="cellule_sombre"><input name="motdepasse1" id="motdepasse1<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="12" onClick="this.value='';" /></td>
-	   <td class="cellule_sombre"><input name="motdepasse2" id="motdepasse2<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="12" onClick="this.value='';" /></td>
+       <td class="cellule_sombre"><input name="motdepasse1" id="motdepasse1<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="12" onclick="this.value='';" /></td>
+	   <td class="cellule_sombre"><input name="motdepasse2" id="motdepasse2<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="12" onclick="this.value='';" /></td>
 
-       <td class="cellule_sombre"><a href="#" class="txt_vert_11" onClick="valid('<?php echo $row->id; ?>');">Modifier</a> <a href="#"><img src="gfx/suivant.gif" onClick="valid('<?php echo $row->id; ?>');" width="12" height="9" border="0" /></a></span></span></td>
+       <td class="cellule_sombre"><a href="#" class="txt_vert_11" onclick="valid('<?php echo $row->id; ?>');">Modifier</a> <a href="#"><img src="gfx/suivant.gif" onclick="valid('<?php echo $row->id; ?>');" width="12" height="9" border="0" /></a></span></span></td>
        <td align="center" valign="middle" class="cellule_sombre">&nbsp;</td>
      </tr>
    

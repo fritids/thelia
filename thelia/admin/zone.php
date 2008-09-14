@@ -231,11 +231,11 @@
 			contenu=contenu + "</span>";
 
 			contenu=contenu + "<span style=' width: 50px;margin-left: 400px;'>";
-			contenu=contenu + "<a href='#' onClick=\"chargerz('" + i + "')\"><img src='gfx/b_edit.png' width='16' height='16' border='0'></a>";
+			contenu=contenu + "<a href='#' onclick=\"chargerz('" + i + "')\"><img src='gfx/b_edit.png' width='16' height='16' border='0'></a>";
 			contenu=contenu + "</span>";
 
 			contenu=contenu + "<span style='width: 50px;margin-left: 50px;'>";
-			contenu=contenu + "<a href='#' onClick=\"supprz('" + i + "')\"><img src='gfx/b_drop.png' width='16' height='16' border='0'></a>";
+			contenu=contenu + "<a href='#' onclick=\"supprz('" + i + "')\"><img src='gfx/b_drop.png' width='16' height='16' border='0'></a>";
 			contenu=contenu + "</span>";
 
 			contenu=contenu + "</div>";
@@ -441,8 +441,8 @@
       </div>
     </td>
     <td width="39%" height="30"> <div align="center">
-                            <input name="Submit" type="button" onClick="ajoutpays('m')" class="geneva11bol_3B4B5B" value="Ajouter un pays &gt;&gt; ">
-                            <br /><input name="Submit" type="button" onClick="supprpays('m')" class="geneva11bol_3B4B5B" value="&lt;&lt; Supprimer un pays">
+                            <input name="Submit" type="button" onclick="ajoutpays('m')" class="geneva11bol_3B4B5B" value="Ajouter un pays &gt;&gt; ">
+                            <br /><input name="Submit" type="button" onclick="supprpays('m')" class="geneva11bol_3B4B5B" value="&lt;&lt; Supprimer un pays">
     </div></td>
                           <td><div align="center">
                             <select size="5" multiple class="form" id="selectspaysdm">
@@ -462,7 +462,7 @@
    <td height="30" class="cellule_claire_vide">&nbsp;</td>
    <td height="30" class="cellule_claire_vide"></td>
    <td class="cellule_claire_vide"> 
-     <input name="Submit" type="button" onClick="validem();" class="geneva11bol_3B4B5B" value="Valider">
+     <input name="Submit" type="button" onclick="validem();" class="geneva11bol_3B4B5B" value="Valider">
    </td>
  </tr>
   </table>
@@ -478,7 +478,7 @@
  
   <tr class="cellule_sombre_vide">
     <td width="34%" height="30" class="cellule_sombre_vide"><span class="arial11_bold_626262">
-       <input id="nzonea" type="text" class="form" onClick="this.value=''" value="Nom de la zone">
+       <input id="nzonea" type="text" class="form" onclick="this.value=''" value="Nom de la zone">
     </span></td>
     <td  height="30">    </td>
     <td width="27%"></td>
@@ -491,9 +491,9 @@
         </div>
     </td>
     <td width="39%" height="30"> <div align="center">
-                          <input name="Submit" type="button" onClick="ajoutpays('a');" class="geneva11bol_3B4B5B" value="Ajouter un pays &gt;&gt; ">
+                          <input name="Submit" type="button" onclick="ajoutpays('a');" class="geneva11bol_3B4B5B" value="Ajouter un pays &gt;&gt; ">
                           <br />
-                          <input name="Submit" type="button" onClick="supprpays('a');" class="geneva11bol_3B4B5B" value="&lt;&lt; Supprimer un pays">
+                          <input name="Submit" type="button" onclick="supprpays('a');" class="geneva11bol_3B4B5B" value="&lt;&lt; Supprimer un pays">
                       </div></td>
                           <td><div align="center">
                             <select name="select2" size="5" multiple="multiple" class="form" id="selectspaysda">
@@ -512,7 +512,7 @@
    <td height="30" class="cellule_claire_vide">&nbsp;</td>
    <td height="30" class="cellule_claire_vide"></td>
    <td class="cellule_claire_vide">
-    <input name="Submit" type="button" onClick="validea();" class="geneva11bol_3B4B5B" value="Ajouter">
+    <input name="Submit" type="button" onclick="validea();" class="geneva11bol_3B4B5B" value="Ajouter">
    </td>
  </tr>
   </table>

@@ -293,8 +293,8 @@
     </td>
     <td width="33%">
 	  <div align="center">
-	    <input type="button" value="Ajouter&gt;&gt;" onClick="ajout()" />&nbsp;
-	    <input type="button" value="&lt;&lt;Supprimer" onClick="suppr()"  />
+	    <input type="button" value="Ajouter&gt;&gt;" onclick="ajout()" />&nbsp;
+	    <input type="button" value="&lt;&lt;Supprimer" onclick="suppr()"  />
 	      </div>
     </td>
     <td width="33%" height="30">
@@ -308,7 +308,7 @@
   </table>
    <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr>
-      <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" onClick="valide(<?php echo($id); ?>)" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onClick="valide(<?php echo($id); ?>)"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
+      <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" onclick="valide(<?php echo($id); ?>)" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onclick="valide(<?php echo($id); ?>)"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
     </tr>
   </table>
 </div>

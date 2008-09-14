@@ -160,7 +160,7 @@
 
      <tr>
        <td height="30" class="cellule_sombre">&nbsp;</td>
-       <td class="cellule_sombre"><a href="#" class="txt_vert_11" onClick="document.getElementById('formulaire').submit();">Modifier</a> <a href="#"><img src="gfx/suivant.gif" onClick="document.getElementById('formulaire').submit();" width="12" height="9" border="0" /></a></span></span></td>
+       <td class="cellule_sombre"><a href="#" class="txt_vert_11" onclick="document.getElementById('formulaire').submit();">Modifier</a> <a href="#"><img src="gfx/suivant.gif" onclick="document.getElementById('formulaire').submit();" width="12" height="9" border="0" /></a></span></span></td>
        <td class="cellule_sombre">&nbsp;</td>
        <td align="center" valign="middle" class="cellule_sombre">&nbsp;</td>
      </tr>

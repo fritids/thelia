@@ -9,6 +9,7 @@
 	Modification des boucles PRODUIT et PANIER pour les revendeurs, tout sera en TTC, il suffira d'utiliser PRIXHT par exemple pour 	avoir le prix ht
 	Si vous utilisez les flux RSS des commandes, n'oubliez pas de mettre à jour client/rss/cmd.php
 	Mise à jour de la boucle DECVAL, PANIER (ajout d'arguments)
+	Ajout des arguments deb et num à la boucle CARACDISP
 	
 	Cette mise à jour contient une modification de la base de donnée. Après remplacement des fichiers, connectez-vous à
 	http://www.votrethelia.com/install/

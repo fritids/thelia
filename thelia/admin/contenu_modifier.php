@@ -293,7 +293,7 @@
   </table>
   <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr><input type="submit" id="boutoncache" style="display: none">
-      <td height="30" class="cellule_sombre2"><span class="sous_titre_dossier"><span class="geneva11Reg_3B4B5B"><a href="#" onClick="document.getElementById('boutoncache').click()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onClick="document.getElementById('boutoncache').click()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
+      <td height="30" class="cellule_sombre2"><span class="sous_titre_dossier"><span class="geneva11Reg_3B4B5B"><a href="#" onclick="document.getElementById('boutoncache').click()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onclick="document.getElementById('boutoncache').click()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
     </tr>
   </table>  
   <table width="710" border="0" cellpadding="5" cellspacing="0">
@@ -373,7 +373,7 @@
    
   <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr><input type="submit" id="boutoncache" style="display: none">
-      <td height="30" class="cellule_sombre2"><span class="sous_titre_dossier"><span class="geneva11Reg_3B4B5B"><a href="#" onClick="document.getElementById('boutoncache').click()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onClick="document.getElementById('boutoncache').click()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
+      <td height="30" class="cellule_sombre2"><span class="sous_titre_dossier"><span class="geneva11Reg_3B4B5B"><a href="#" onclick="document.getElementById('boutoncache').click()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onclick="document.getElementById('boutoncache').click()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
     </tr>
   </table>
 

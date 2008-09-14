@@ -80,7 +80,7 @@
        <td class="cellule_sombre">
          <input name="valeur" type="text" class="form" value="<?php echo($row->valeur); ?>" size="50" />
        </td>
-       <td class="cellule_sombre"><a href="#" class="txt_vert_11" onClick="document.getElementById('formvariable<?php echo($row->id); ?>').submit();">Modifier</a> <a href="#"><img src="gfx/suivant.gif" onClick="document.getElementById('formvariable<?php echo($row->id); ?>').submit();" width="12" height="9" border="0" /></a></span></span></td>
+       <td class="cellule_sombre"><a href="#" class="txt_vert_11" onclick="document.getElementById('formvariable<?php echo($row->id); ?>').submit();">Modifier</a> <a href="#"><img src="gfx/suivant.gif" onclick="document.getElementById('formvariable<?php echo($row->id); ?>').submit();" width="12" height="9" border="0" /></a></span></span></td>
        <td align="center" valign="middle" class="cellule_sombre">&nbsp;</td>
      </tr>
    

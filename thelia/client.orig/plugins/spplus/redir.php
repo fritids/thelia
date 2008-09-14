@@ -9,7 +9,7 @@
 // pour utilisation de la fonction redirige()
 // on charge divers.php
 include_once("../../../fonctions/divers.php");
-include_once("../../../classes/Variable.php");
+include_once("../../../classes/Variable.class.php");
 
 $urlsite = new Variable();
 $urlsite->charger("urlsite");

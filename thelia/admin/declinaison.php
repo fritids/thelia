@@ -110,7 +110,7 @@
 	    <form action="declinaison_modifier.php" id="form_ajout" method="post">
 	 				      <input type="hidden" name="parent" value="<?php echo($parent); ?>" />
 						  <input type="hidden" name="id" value="<?php echo($id); ?>" />
-	  <a href="#" onClick="document.getElementById('form_ajout').submit()" class="lien_titre_cellule">AJOUTER UNE NOUVELLE DECLINAISON</a>
+	  <a href="#" onclick="document.getElementById('form_ajout').submit()" class="lien_titre_cellule">AJOUTER UNE NOUVELLE DECLINAISON</a>
 	  </form>
 	  </td>
     </tr>

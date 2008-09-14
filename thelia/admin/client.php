@@ -136,7 +136,7 @@
     <td height="30"><?php echo($row->prenom); ?> <?php echo($row->nom); ?></td>
     <td height="30"><a href="mailto:<?php echo($row->email); ?>" class="txt_vert_11"><?php echo($row->email); ?></a></td>
     <td height="30"><a href="client_visualiser.php?ref=<?php echo($row->ref); ?>" class="txt_vert_11">Poursuivre</a> <a href="client_visualiser.php?ref=<?php echo($row->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
-    <td height="30"><a href="#" onClick="confirmSupp('<?php echo($row->ref); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></td>
+    <td height="30"><a href="#" onclick="confirmSupp('<?php echo($row->ref); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></td>
   </tr>
  
 <?php } ?>  

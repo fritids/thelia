@@ -166,6 +166,27 @@ background: #FFFFFF;
 	border-left-color: #D7E9C8;
 	overflow:auto;
 }
+
+.form_long {
+	width: 260px;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	background-color: #5FB134;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #2F8927;
+	border-right-color: #2F8927;
+	border-bottom-color: #D7E9C8;
+	border-left-color: #D7E9C8;
+}
+
 .selection_menu {
 	color: #FFFFFF;
 	font-family: Geneva, Arial, Helvetica, sans-serif;

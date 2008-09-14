@@ -58,8 +58,11 @@
 					if($declinaison->isDeclidisp()){
 						$stock = new Stock();
 						$stock->charger($perso[$i]->valeur, $this->produit->id);
-						if($stock->surplus != 0)
+						if($stock->surplus != 0){
 							$this->produit->prix += $stock->surplus;
+							$this->produit->prix2 += $stock->surplus;
+							
+						}
 					}
 					
 				}

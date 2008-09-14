@@ -127,6 +127,9 @@
 	// procédure de paiement
 	function paiement($type_paiement){
 	
+		if(! $_SESSION['navig']->client->id)
+			header("Location: index.php");
+			
 		$total = 0;
 		$nbart = 0;
 		$poids = 0;

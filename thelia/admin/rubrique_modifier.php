@@ -426,7 +426,7 @@
     
     <tr>
       <td width="250" height="30" class="titre_cellule">IMAGE : </td>
-      <td width="440" class="cellule_claire"> <a href="#" class="lien04" onClick="window.open('photo_rubrique.php?rubid=<?php echo($rubrique->id); ?>', 'gestion', 'scrollbars=yes, resizable=yes, width=800, height=300');"> G&eacute;rer les photos</a>
+      <td width="440" class="cellule_claire"> <a href="#" class="lien04" onclick="window.open('photo_rubrique.php?rubid=<?php echo($rubrique->id); ?>', 'gestion', 'scrollbars=yes, resizable=yes, width=800, height=300');"> G&eacute;rer les photos</a>
       
         <br/>
         
@@ -449,7 +449,7 @@
     </tr>
     <tr>
       <td height="30" class="titre_cellule">DOCUMENT : </td>
-      <td class="cellule_claire"> <a href="#" class="lien04" onClick="window.open('document_rubrique.php?rubid=<?php echo($rubrique->id); ?>', 'gestion', 'scrollbars=yes, resizable=yes, width=800, height=300');"> G&eacute;rer les documents</a></td>
+      <td class="cellule_claire"> <a href="#" class="lien04" onclick="window.open('document_rubrique.php?rubid=<?php echo($rubrique->id); ?>', 'gestion', 'scrollbars=yes, resizable=yes, width=800, height=300');"> G&eacute;rer les documents</a></td>
     </tr>
     
    <?php
@@ -459,7 +459,7 @@
   </table>
   <table width="710" border="0" cellpadding="5" cellspacing="0">
     <tr>
-      <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" onClick="document.getElementById('formulaire').submit()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onClick="document.getElementById('formulaire').submit()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
+      <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" onclick="document.getElementById('formulaire').submit()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onclick="document.getElementById('formulaire').submit()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
     </tr>
   </table>
   </form>

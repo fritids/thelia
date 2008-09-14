@@ -1241,7 +1241,7 @@
 			$temp = str_replace("#DESCRIPTION", "$contenudesc->description", $temp);
 			$temp = str_replace("#POSTSCRIPTUM", "$contenudesc->postscriptum", $temp);	
 			$temp = str_replace("#STRIPDESCRIPTION", strip_tags($contenudesc->description), $temp);	
-			$temp = str_replace("#URL", "contenu.php?id_contenu=" . "$row->id", $temp);	
+			$temp = str_replace("#URL", "contenu.php?id_contenu=" . "$row->id&amp;id_dossier=" . $row->dossier, $temp);	
 			$temp = str_replace("#REWRITEURL", rewrite_cont("$row->id"), $temp);			
 			$temp = str_replace("#DOSTITRE", "$dossierdesc->titre", $temp);
 			$temp = str_replace("#PRODUIT", "$produit", $temp);
@@ -1515,11 +1515,11 @@
 			$temp = str_replace("#TITRE", $produitdesc->titre, $temp);
 			$temp = str_replace("#QUANTITE", "$quantite", $temp);
 			$temp = str_replace("#PRODUIT", $produitdesc->produit, $temp);
+			$temp = str_replace("#PRIXUHT", "$prixht", $temp);
             $temp = str_replace("#PRIXHT", "$prixht", $temp);
-            $temp = str_replace("#PRIXUHT", "$prixht", $temp);
 			$temp = str_replace("#TOTALHT", "$totalht", $temp);	
-			$temp = str_replace("#PRIX", "$prix", $temp);
 			$temp = str_replace("#PRIXU", "$prix", $temp);
+			$temp = str_replace("#PRIX", "$prix", $temp);
             $temp = str_replace("#TVA", "$tva", $temp);
 			$temp = str_replace("#TOTAL", "$total", $temp);			
 			$temp = str_replace("#ID", $_SESSION['navig']->panier->tabarticle[$i]->produit->id, $temp);
@@ -1840,6 +1840,10 @@
 		$etcaracdisp = lireTag($args, "etcaracdisp");	
 		$stockmini = lireTag($args, "stockmini");
 		$courante = lireTag($args, "courante");
+		$rubrique = lireTag($args, "rubrique");
+		
+		$deb = lireTag($args, "deb");
+		$num = lireTag($args, "num");
 		
 		$id = lireTag($args, "caracdisp");
 		if($id == "")
@@ -1859,18 +1863,25 @@
 		
 		
 		$search ="";
+		$limit="";
 		
 		// preparation de la requete
 		if($caracteristique!="")  $search.=" and caracteristique=\"$caracteristique\"";
 		if($id !="") $search.=" and id=\"$id\"";
 		if($classement == "alpha") $order="order by titre";
 		else if($classement == "alphainv") $order="order by titre desc";
+
+		if($debut =="")
+			$debut = 0;
 		
+		if($num != "")
+			$limit = "limit $deb,$num";
+			
 		$tcaracdisp = new Caracdisp();
 		$tcaracdispdesc = new Caracdispdesc();
 		
 		
-		$query = "select * from $tcaracdisp->table where 1 $search";
+		$query = "select * from $tcaracdisp->table where 1 $search $limit";
 		$resul = mysql_query($query, $tcaracdisp->link);
 
 		$i=0;
@@ -1933,6 +1944,7 @@
 
 			$temp = str_replace("#IDC", $id . $etcaracdisp, $texte);
 			$temp = str_replace("#ID", $tcaracdisp->id, $temp);
+			$temp = str_replace("#RUBRIQUE", "$rubrique", $temp);
 			$temp = str_replace("#CARACTERISTIQUE", $tcaracdisp->caracteristique, $temp);			
 			$temp = str_replace("#CARACTERISTIQUEC", $caracteristique . $etcaracteristique, $temp);
 			$temp = str_replace("#TITRE", "$tcaracdispdesc->titre", $temp);
@@ -2598,8 +2610,10 @@
 		$tmpprod = new Produit();
 		$tmpprod->charger_id($produit);
 		$prix = $tmpprod->prix + $stock->surplus;
+		$prix2 = $tmpprod->prix2 + $stock->surplus;
 		
 		$temp = str_replace("#ID", "$stock->id", $texte);
+		$temp = str_replace("#PRIX2", "$prix2", $temp);
 		$temp = str_replace("#PRIX", "$prix", $temp);
 		$temp = str_replace("#SURPLUS", "$stock->surplus", $temp);
 		$temp = str_replace("#DECLIDISP", "$declidisp", $temp);	

@@ -189,7 +189,7 @@ function supprimer_rubrique(id, parent){
        <td class="<?php echo($fond); ?>"><span class="geneva11bol_3B4B5B"><?php echo($total); ?></span></td>
        <td class="<?php echo($fond); ?>"> <span class="geneva11bol_3B4B5B"><?php echo($statutdesc->titre); ?></span></td>
        <td class="<?php echo($fond); ?>">
-         <div align="center"><a href="#" onClick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
+         <div align="center"><a href="#" onclick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
        </td>
       </tr>
 

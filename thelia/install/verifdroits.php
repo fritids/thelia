@@ -131,7 +131,7 @@
 					} else {
 				?>
 					
-					<input type="button" value="Rafraichir" onClick="location='verifdroits.php'" />
+					<input type="button" value="Rafraichir" onclick="location='verifdroits.php'" />
 				
 				<?php
 					}
