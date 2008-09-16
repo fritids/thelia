@@ -79,38 +79,10 @@
 ?>
 <?php
 	function modclassement($ref, $parent, $type){
+        $prod = new Produit();
+        $prod->charger($ref);
+        $prod->changer_classement($ref, $type);
 
-		$produit = new Produit();
-		$produit->charger($ref);
-
-	 	$query = "select max(classement) as maxClassement from $produit->table where rubrique='" . $parent . "'";
-
-		$resul = mysql_query($query, $produit->link);
-        $maxClassement = mysql_result($resul, 0, "maxClassement");
-
-
-		if($type=="M"){
-			if($produit->classement == 1) { header("Location: parcourir.php?parent=" . $parent); return; }
-
-			$query = "update $produit->table set classement=" . $produit->classement . " where classement=" . ($produit->classement-1) . " and rubrique='" . $parent . "'";
-
-			$resul = mysql_query($query, $produit->link);
-			
-			 $produit->classement--;
-		}
-		
-		else if($type=="D"){
-
-			if($produit->classement == $maxClassement) { header("Location: parcourir.php?parent=" . $parent); return; }
-
-			
-			$query = "update $produit->table set classement=" . $produit->classement . " where classement=" . ($produit->classement+1) . " and rubrique='" . $parent . "'";
-			$resul = mysql_query($query, $produit->link);
-			
-			 $produit->classement++;
-		}
-		
-		$produit->maj();
 
 	    header("Location: parcourir.php?parent=" . $parent);
 	}

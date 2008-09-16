@@ -218,7 +218,8 @@ CREATE TABLE `client` (
 CREATE TABLE `commande` (
   `id` int(11) NOT NULL auto_increment,
   `client` int(11) NOT NULL default '0',
-  `adresse` int(11) NOT NULL default '0',
+  `adrfact` int(11) NOT NULL,
+  `adrlivr` int(11) NOT NULL default '0',
   `date` datetime NOT NULL default '0000-00-00 00:00:00',
   `datefact` date NOT NULL default '0000-00-00',
   `ref` text NOT NULL,
@@ -2019,8 +2020,6 @@ CREATE TABLE `venteprod` (
 
 CREATE TABLE `venteadr` (
   `id` int(11) NOT NULL auto_increment,
-  `commande` int(11) NOT NULL,
-  `type` smallint(6) NOT NULL,
   `raison` smallint(6) NOT NULL default '0',
   `nom` text NOT NULL,
   `prenom` text NOT NULL,

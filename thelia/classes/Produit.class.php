@@ -68,6 +68,30 @@
 
 		}
 
+		function changer_classement($ref, $type){
+			
+			$this->charger($ref);
+			$remplace = new Produit();
+			
+			if($type == "M")
+				$res = $remplace->getVars("select * from $this->table where rubrique=\"" . $this->rubrique. "\" and classement<" . $this->classement . " order by classement desc limit 0,1");
+			
+			else if($type == "D")
+				$res  = $remplace->getVars("select * from $this->table where rubrique=\"" . $this->rubrique. "\" and classement>" . $this->classement . " order by classement limit 0,1");
+		
+			if(! $res)
+				return "";
+				
+			$sauv = $remplace->classement;
+			
+			$remplace->classement = $this->classement;
+			$this->classement = $sauv;
+
+            $remplace->maj();
+            $this->maj();
+
+		}
+		
 		function delete($requete){
 			
 				$resul = mysql_query($requete);	

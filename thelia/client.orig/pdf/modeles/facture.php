@@ -35,7 +35,7 @@
 	include_once("../../classes/Venteprod.class.php");
 	include_once("../../classes/Produit.class.php");
 	include_once("../../classes/Modules.class.php");
-	include_once("../../classes/Adresse.class.php");
+	include_once("../../classes/Venteadr.class.php");
 	include_once("../../classes/Modules.class.php");
 	include_once("../../classes/Zone.class.php");
 	include_once("../../classes/Pays.class.php");
@@ -300,23 +300,25 @@
 	
 		$dateaff = substr($commande->datefact, 8, 2) . "/" . substr($commande->datefact, 5, 2) . "/" . substr($commande->datefact, 0, 4);
 
+		$adrfact = new Venteadr();
+		$adrfact->charger($commande->adrfact);
 		
 		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(122,$hauteur);	
-  		$pdf->write(10, $client->prenom . " " . $client->nom);
+  		$pdf->write(10, $adrfact->prenom . " " . $adrfact->nom);
 
 		$hauteur+=3;
 	
 		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(122,$hauteur);	
-  		$pdf->write(10, $client->adresse1);
+  		$pdf->write(10, $adrfact->adresse1);
 
 		if($client->adresse2) {
 			$hauteur+=3;
 	
 			$pdf->SetFont('Arial','',8);
 			$pdf->SetXY(122,$hauteur);	
- 			$pdf->write(10, $client->adresse2);
+ 			$pdf->write(10, $adrfact->adresse2);
 	
 		}
 
@@ -325,17 +327,17 @@
 	
 			$pdf->SetFont('Arial','',8);
 			$pdf->SetXY(122,$hauteur);	
-  			$pdf->write(10, $client->adresse3);
+  			$pdf->write(10, $adrfact->adresse3);
 		}
 	
 		$hauteur+=3;
 	
 		$paysdesc = new Paysdesc();
-		$paysdesc->charger($client->pays);
+		$paysdesc->charger($adrfact->pays);
 		
 		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(122,$hauteur);	
- 	 	$pdf->write(10, $client->cpostal . " " .  $client->ville);
+ 	 	$pdf->write(10, $adrfact->cpostal . " " .  $adrfact->ville);
 
 		$hauteur += 3;
 		$pdf->SetXY(122,$hauteur);	
@@ -343,19 +345,8 @@
 		
 
 	
-		$adressecl = new Adresse();
-		if($commande->adresse) $adressecl->charger($commande->adresse);
-		else {
-			$adressecl->nom = $client->nom;
-			$adressecl->prenom = $client->prenom;
-			$adressecl->adresse1 = $client->adresse1;
-			$adressecl->adresse2 = $client->adresse2;
-			$adressecl->adresse3 = $client->adresse3;
-			$adressecl->cpostal = $client->cpostal;
-			$adressecl->ville = $client->ville;
-			$adressecl->pays = $client->pays;	
-		}
-		
+		$adressecl = new Venteadr();
+		$adressecl->charger($commande->adrlivr);
 		
 		$paysdesc = new Paysdesc();
 		$paysdesc->charger($adressecl->pays);

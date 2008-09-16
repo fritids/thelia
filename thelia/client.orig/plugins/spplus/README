@@ -22,7 +22,9 @@ Configuration
 
 3- Sur la ligne Méthode d'envoi, sélectionnez Get
 
-4- Renseignez l'URL 1 pour la notification complémentaire avec l'adresse : http://www.votre-boutique.com/client/plugins/spplus/confirmation.php
+4- Renommez confirmation.php en personnalisant le nom du fichier (sécurité)
+
+5- Renseignez l'URL 1 pour la notification complémentaire avec l'adresse : http://www.votre-boutique.com/client/plugins/spplus/confirmation_blabla.php
 
 
 
@@ -41,3 +43,11 @@ Les serveurs SPPLUS attendent que la page confirmation.php renvoi spcheckok d'où
 
 Il ne vous reste plus qu'à personnaliser vos pages merci.html et regret.html avec vos messages.
 
+Information
+============
+
+Le retour de paiement n'est pas une information suffisante. Vérifiez toujours sur l'interface de votre banque qu'un paiement est bien passé en paiement
+avant de le considérer réellement comme "payé"
+
+Vérifier que les répertoires de votre site ne sont pas listable (ex http://www.votresite.com/client/plugins/).
+Si tel est le cas veuillez ajouter un fichier htaccess afin de sécuriser le tout.

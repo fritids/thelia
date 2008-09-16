@@ -31,7 +31,8 @@
 
 		var $id;
 		var $client;
-		var $adresse;
+		var $adrfact;
+		var $adrlivr;	
 		var $date;
 		var $datefact;
 		var $ref;
@@ -47,7 +48,7 @@
 		var $statut;
 		var $lang;
 		var $table="commande";
-		var $bddvars = array("id", "client", "adresse", "date", "datefact", "ref", "transaction", "livraison", "facture", "transport", "port", "datelivraison", "remise", "colis", "paiement", "statut", "lang");
+		var $bddvars = array("id", "client", "adrfact", "adrlivr", "date", "datefact", "ref", "transaction", "livraison", "facture", "transport", "port", "datelivraison", "remise", "colis", "paiement", "statut", "lang");
 
 		function Commande(){
 			$this->Baseobj();

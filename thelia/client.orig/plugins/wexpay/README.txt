@@ -38,6 +38,17 @@ https://parternaires.wexpay.com
 
 Renseignez les champs suivant
 
+Renommez confirmation.php en personnalisant le nom du fichier (sécurité)
+
 1) url de retour http://www.votreboutique.com/merci.php
-2) url de retour caché http://www.votreboutique.com/client/plugins/wexpay/confirmation.php
+2) url de retour caché http://www.votreboutique.com/client/plugins/wexpay/confirmation_blabla.php
 3) url de la page d'erreur http://www.votreboutique.com/regret.php
+
+Information
+============
+
+Le retour de paiement n'est pas une information suffisante. Vérifiez toujours sur l'interface de votre banque qu'un paiement est bien passé en paiement
+avant de le considérer réellement comme "payé"
+
+Vérifier que les répertoires de votre site ne sont pas listable (ex http://www.votresite.com/client/plugins/).
+Si tel est le cas veuillez ajouter un fichier htaccess afin de sécuriser le tout.

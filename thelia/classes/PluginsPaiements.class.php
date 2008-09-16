@@ -34,7 +34,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/Paysdesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Modules.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Modulesdesc.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/Adresse.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Venteadr.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Produitdesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Declinaison.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Declinaisondesc.class.php");
@@ -128,44 +128,26 @@
 
 			$total = $commande->total();
 			$totcmdport = $commande->port + $total;
-			
-			if($commande->adresse){
-				$adresse = new Adresse();
-				$adresse->charger($commande->adresse);
-				if($adresse->raison == "1")
-					$raison = "Madame";
-				else if($adresse->raison == "2")
-					$raison = "Mademoiselle";
-				else $raison = "Monsieur";
-				$nom = $adresse->nom;
-				$prenom = $adresse->prenom;
-				$adresse1 = $adresse->adresse1;
-				$adresse2 = $adresse->adresse2;
-				$adresse3 =  $adresse->adresse3;
-				$cpostal =  $adresse->cpostal;
-				$ville = $adresse->ville; 
-				$pays = new Paysdesc();
-				$pays->charger($adresse->pays);
-			}
-			
-			else{
-				if($client->raison == "1")
-					$raison = "Madame";
-				else if($client->raison == "2")
-					$raison = "Mademoiselle";
-				else $raison = "Monsieur";
-				$nom = $client->nom;
-				$prenom = $client->prenom;
-				$adresse1 = $client->adresse1;
-				$adresse2 = $client->adresse2;
-				$adresse3 =  $client->adresse3;
-				$cpostal =  $client->cpostal;
-				$ville = $client->ville; 
-				$pays = new Paysdesc();
-				$pays->charger($client->pays);				
-				
-			}
-			
+	
+			$adresse = new Venteadr();
+			$adresse->charger($commande->adrlivr);
+		
+			if($adresse->raison == "1")
+				$raison = "Madame";
+			else if($adresse->raison == "2")
+				$raison = "Mademoiselle";
+			else 
+				$raison = "Monsieur";
+			$nom = $adresse->nom;
+			$prenom = $adresse->prenom;
+			$adresse1 = $adresse->adresse1;
+			$adresse2 = $adresse->adresse2;
+			$adresse3 =  $adresse->adresse3;
+			$cpostal =  $adresse->cpostal;
+			$ville = $adresse->ville; 
+			$pays = new Paysdesc();
+			$pays->charger($adresse->pays);
+					
 			$urlsite = new Variable();
 			$urlsite->charger("urlsite");
 			
@@ -190,26 +172,29 @@
 
 			$corps = str_replace("__URLSITE__", $urlsite->valeur, $corps);
 
-			
-			if($client->raison == "1")
+
+			$adresse = new Venteadr();
+			$adresse->charger($commande->adrfact);
+						
+			if($adresse->raison == "1")
 				$raison = "Madame";
-			else if($client->raison == "2")
+			else if($adresse->raison == "2")
 				$raison = "Mademoiselle";
 			else $raison = "Monsieur";
 			$pays = new Paysdesc();
-			$pays->charger($client->pays);
+			$pays->charger($adresse->pays);
 									
-			$corps = str_replace("__CLIENT_REF__", $client->ref, $corps);
+			$corps = str_replace("__CLIENT_REF__", $adresse->ref, $corps);
 			$corps = str_replace("__CLIENT_RAISON__",$raison, $corps);
-			$corps = str_replace("__CLIENT_ENTREPRISE__", $client->entreprise, $corps);
-			$corps = str_replace("__CLIENT_SIRET__", $client->siret, $corps);
-			$corps = str_replace("__CLIENT_FACTNOM__", $client->nom, $corps);
-			$corps = str_replace("__CLIENT_FACTPRENOM__", $client->prenom, $corps);
-			$corps = str_replace("__CLIENT_ADRESSE1__", $client->adresse1, $corps);
-			$corps = str_replace("__CLIENT_ADRESSE2__", $client->adresse2, $corps);
-			$corps = str_replace("__CLIENT_ADRESSE3__", $client->adresse3, $corps);
-			$corps = str_replace("__CLIENT_CPOSTAL__", $client->cpostal, $corps);
-			$corps = str_replace("__CLIENT_VILLE__", $client->ville, $corps);
+			$corps = str_replace("__CLIENT_ENTREPRISE__", $adresse->entreprise, $corps);
+			$corps = str_replace("__CLIENT_SIRET__", $adresse->siret, $corps);
+			$corps = str_replace("__CLIENT_FACTNOM__", $adresse->nom, $corps);
+			$corps = str_replace("__CLIENT_FACTPRENOM__", $adresse->prenom, $corps);
+			$corps = str_replace("__CLIENT_ADRESSE1__", $adresse->adresse1, $corps);
+			$corps = str_replace("__CLIENT_ADRESSE2__", $adresse->adresse2, $corps);
+			$corps = str_replace("__CLIENT_ADRESSE3__", $adresse->adresse3, $corps);
+			$corps = str_replace("__CLIENT_CPOSTAL__", $adresse->cpostal, $corps);
+			$corps = str_replace("__CLIENT_VILLE__", $adresse->ville, $corps);
 			$corps = str_replace("__CLIENT_PAYS__", $pays->titre, $corps);
 			$corps = str_replace("__CLIENT_EMAIL__", $client->email, $corps);
 			

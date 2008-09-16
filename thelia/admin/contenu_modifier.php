@@ -59,40 +59,11 @@
 
 	function modclassement($id, $parent, $type){
 
-		$contenu = new Contenu();
-		$contenu->charger($id);
-
-	 	$query = "select max(classement) as maxClassement from $contenu->table where dossier='" . $parent . "'";
-
-		$resul = mysql_query($query, $contenu->link);
-        $maxClassement = mysql_result($resul, 0, "maxClassement");
-
-	 
-		if($type=="M"){
-			if($contenu->classement == 1) { header("Location: listedos.php?parent=" . $parent); exit; }
-
-			$query = "update $contenu->table set classement=" . $contenu->classement . " where classement=" . ($contenu->classement-1) . " and dossier='" . $parent . "'";
-
-			$resul = mysql_query($query, $contenu->link);
-			
-			 $contenu->classement--;
-		}
-		
-		else if($type=="D"){
-
-			if($contenu->classement == $maxClassement) { header("Location: listdos.php?parent=" . $parent); exit; }
-
-			
-			$query = "update $contenu->table set classement=" . $contenu->classement . " where classement=" . ($contenu->classement+1) . " and dossier='" . $parent . "'";
-			$resul = mysql_query($query, $contenu->link);
-			
-			 $contenu->classement++;
-		}
-		
-		$contenu->maj();
+      	$cont = new Contenu();
+        $cont->charger($id);
+        $cont->changer_classement($id, $type);
 		
 	    header("Location: listdos.php?parent=" . $parent);
-		exit;
 	}
 	
 	

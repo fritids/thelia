@@ -63,39 +63,12 @@
 
 		if($parent == 0) $parent=0;
 		
-		$dossier = new Dossier();
-		$dossier->charger($id);
+        $dos = new Dossier();
+        $dos->charger($id);
+        $dos->changer_classement($id, $type);
 
-	 	$query = "select max(classement) as maxClassement from $dossier->table where parent='" . $parent . "'";
-
-		$resul = mysql_query($query, $dossier->link);
-        $maxClassement = mysql_result($resul, 0, "maxClassement");
-
-		if($type=="M"){
-			if($dossier->classement == 1) { header("Location: listdos.php?parent=$parent"); return; }
-
-			$query = "update $dossier->table set classement=" . $dossier->classement . " where classement=" . ($dossier->classement-1) . " and parent='" . $parent . "'";
-
-			$resul = mysql_query($query, $dossier->link);
-			
-			 $dossier->classement--;
-		}
 		
-		else if($type=="D"){
-
-			if($dossier->classement == $maxClassement) { header("Location: listdos.php?parent=$parent"); return; }
-
-			
-			$query = "update $dossier->table set classement=" . $dossier->classement . " where classement=" . ($dossier->classement+1) . " and parent='" . $parent . "'";
-			$resul = mysql_query($query, $dossier->link);
-			
-			 $dossier->classement++;
-		}
-		
-		$dossier->maj();
-
 	    header("Location: listdos.php?parent=$parent");
-		exit;
 	}
 	
 	function modifier($id, $lang, $titre, $chapo, $description, $postscriptum, $ligne){

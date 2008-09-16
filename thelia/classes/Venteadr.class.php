@@ -30,8 +30,6 @@
 	class Venteadr extends Baseobj{
 
 		var $id;
-		var $commande;
-		var $type;
 		var $raison;
 		var $nom;
 		var $prenom;
@@ -44,7 +42,7 @@
 		var $pays;	
 	
 		var $table="venteadr";
-		var $bddvars = array("id", "commande", "type", "raison", "nom", "prenom", "adresse1", "adresse2", "adresse3", "cpostal", "ville", "tel", "pays");
+		var $bddvars = array("id", "raison", "nom", "prenom", "adresse1", "adresse2", "adresse3", "cpostal", "ville", "tel", "pays");
 
 		function Venteadr(){
 			$this->Baseobj();
@@ -53,12 +51,6 @@
 		function charger($id){
 		
 			return $this->getVars("select * from $this->table where id=\"$id\"");
-
-		}
-
-		function charger_commande($commande, $type){
-		
-			return $this->getVars("select * from $this->table where commande=\"$commande\" and type=\"$type\"");
 
 		}
 

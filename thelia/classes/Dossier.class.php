@@ -49,6 +49,30 @@
 
 		}
 
+		function changer_classement($id, $type){
+			
+			$this->charger($id);
+			$remplace = new Dossier();
+			
+			if($type == "M")
+				$res = $remplace->getVars("select * from $this->table where parent=\"" . $this->parent. "\" and classement<" . $this->classement . " order by classement desc limit 0,1");
+			
+			else if($type == "D")
+				$res = $remplace->getVars("select * from $this->table where parent=\"" . $this->parent. "\" and classement>" . $this->classement . " order by classement limit 0,1");
+		
+			if(! $res)
+				return "";
+				
+			$sauv = $remplace->classement;
+			
+			$remplace->classement = $this->classement;
+			$this->classement = $sauv;
+
+            $remplace->maj();
+            $this->maj();
+
+		}
+
 		function delete($requete){
 			
 				$resul = mysql_query($requete);	

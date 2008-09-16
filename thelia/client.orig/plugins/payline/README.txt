@@ -32,3 +32,14 @@ Remplacez les XXXXXXXX par les valeurs Payline.
 
 
 Le plugin nécessite php soap sur le serveur WEB.
+
+Renommez confirmation.php en personnalisant le nom du fichier (sécurité)
+
+Information
+============
+
+Le retour de paiement n'est pas une information suffisante. Vérifiez toujours sur l'interface de votre banque qu'un paiement est bien passé en paiement
+avant de le considérer réellement comme "payé"
+
+Vérifier que les répertoires de votre site ne sont pas listable (ex http://www.votresite.com/client/plugins/).
+Si tel est le cas veuillez ajouter un fichier htaccess afin de sécuriser le tout.

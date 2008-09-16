@@ -64,38 +64,12 @@
 
 	function modclassement($id, $parent, $type){
 
-		if($parent == 0) $parent=0;
-		
-		$rubrique = new Rubrique();
-		$rubrique->charger($id);
+        if($parent == 0) $parent=0;
 
-	 	$query = "select max(classement) as maxClassement from $rubrique->table where parent='" . $parent . "'";
+        $rub = new Rubrique();
+        $rub->charger($id);
+        $rub->changer_classement($id, $type);
 
-		$resul = mysql_query($query, $rubrique->link);
-        $maxClassement = mysql_result($resul, 0, "maxClassement");
-
-		if($type=="M"){
-			if($rubrique->classement == 1) { header("Location: parcourir.php?parent=$parent"); return; }
-
-			$query = "update $rubrique->table set classement=" . $rubrique->classement . " where classement=" . ($rubrique->classement-1) . " and parent='" . $parent . "'";
-
-			$resul = mysql_query($query, $rubrique->link);
-			
-			 $rubrique->classement--;
-		}
-		
-		else if($type=="D"){
-
-			if($rubrique->classement == $maxClassement) { header("Location: parcourir.php?parent=$parent"); return; }
-
-			
-			$query = "update $rubrique->table set classement=" . $rubrique->classement . " where classement=" . ($rubrique->classement+1) . " and parent='" . $parent . "'";
-			$resul = mysql_query($query, $rubrique->link);
-			
-			 $rubrique->classement++;
-		}
-		
-		$rubrique->maj();
 		
 	    header("Location: parcourir.php?parent=$parent");
 

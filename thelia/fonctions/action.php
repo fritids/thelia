@@ -141,15 +141,62 @@
 		$commande = new Commande();
 		$commande->transport = $_SESSION['navig']->commande->transport;
 		$commande->client = $_SESSION['navig']->client->id;
-		$commande->adresse = $_SESSION['navig']->adresse;
 		$commande->date = date("Y-m-d H:i:s");
 		$commande->ref = "C" . date("ymdHis") . strtoupper(substr($_SESSION['navig']->client->prenom,0, 3));
 		$commande->livraison = "L" . date("ymdHis") . strtoupper(substr($_SESSION['navig']->client->prenom,0, 3));
 		$commande->transaction = date("His");
 		$commande->remise = 0;
 
-		$adr = new Adresse();
-		if($adr->charger($commande->adresse)) $chadr=1; else $chadr=0;
+
+		$client = New Client();
+		$client->charger_id($_SESSION['navig']->client->id);
+		
+		$adr = new Venteadr();
+		$adr->raison = $client->raison;
+		$adr->nom = $client->nom;
+		$adr->prenom = $client->prenom;
+		$adr->adresse1 = $client->adresse1;
+		$adr->adresse2 = $client->adresse2;
+		$adr->adresse3 = $client->adresse3;
+		$adr->cpostal = $client->cpostal;		
+		$adr->ville = $client->ville;		
+		$adr->tel = $client->telfixe . "  " . $client->telport;		
+		$adr->pays = $client->pays;
+		$adrcli = $adr->add();
+		$commande->adrfact = $adrcli;
+		
+		$adr = new Venteadr();
+		$livraison = new Adresse();
+		
+		if($livraison->charger($_SESSION['navig']->adresse)){
+			
+			$adr->raison = $livraison->raison;
+			$adr->nom = $livraison->nom;
+			$adr->prenom = $livraison->prenom;
+			$adr->adresse1 = $livraison->adresse1;
+			$adr->adresse2 = $livraison->adresse2;
+			$adr->adresse3 = $livraison->adresse3;
+			$adr->cpostal = $livraison->cpostal;		
+			$adr->ville = $livraison->ville;		
+			$adr->tel = $livraison->tel;		
+			$adr->pays = $livraison->pays;
+			
+		}
+		else {
+			$adr->raison = $client->raison;
+			$adr->nom = $client->nom;
+			$adr->prenom = $client->prenom;
+			$adr->adresse1 = $client->adresse1;
+			$adr->adresse2 = $client->adresse2;
+			$adr->adresse3 = $client->adresse3;
+			$adr->cpostal = $client->cpostal;		
+			$adr->ville = $client->ville;		
+			$adr->tel = $client->telfixe . "  " . $client->telport;		
+			$adr->pays = $client->pays;			
+		}
+		
+		$adrlivr = $adr->add();
+		$commande->adrlivr = $adrlivr;			
 		
 		$commande->facture = 0;
 		

@@ -37,6 +37,7 @@
 	include_once("classes/Produitdesc.class.php");
 	include_once("classes/Modules.class.php");
 	include_once("classes/Adresse.class.php");
+	include_once("classes/Venteadr.class.php");
 	include_once("classes/Commande.class.php");
 	include_once("classes/Venteprod.class.php");
 	include_once("classes/Statutdesc.class.php");
@@ -2219,6 +2220,8 @@
 				$temp = str_replace("#DATELIVRAISON", "", $temp);
 			$temp = str_replace("#DATE", $jour . "/" . $mois . "/" . $annee, $temp);
 			$temp = str_replace("#REF", "$row->ref", $temp);
+			$temp = str_replace("#ADRFACT", "$row->adrfact", $temp);
+			$temp = str_replace("#ADRLIVR", "$row->adrlivr", $temp);
 			$temp = str_replace("#LIVRAISON", "$row->livraison", $temp);
 			$temp = str_replace("#FACTURE", "$row->facture", $temp);
 			$temp = str_replace("#PAIEMENT", "$row->paiement", $temp);
