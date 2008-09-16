@@ -59,45 +59,10 @@
 <?php
 
 	function modclassement($id, $type){
+      	$dec = new Declinaison();
+        $dec->charger($id);
+        $dec->changer_classement($id, $type);
 
-		$declinaison = new Declinaison();
-		$declinaison->charger($id);
-
-	 	$query = "select max(classement) as maxClassement from $declinaison->table";
-
-		$resul = mysql_query($query, $declinaison->link);
-	
-        $maxClassement = mysql_result($resul, 0, "maxClassement");
-
-
-		if($type=="M"){
-			if($declinaison->classement == 1) { header("Location: declinaison.php"); return; }
-
-			$query = "update $declinaison->table set classement=" . $declinaison->classement . " where classement=" . ($declinaison->classement-1);
-
-			$resul = mysql_query($query, $declinaison->link);
-			
-			 $declinaison->classement--;
-		}
-		
-		else if($type=="D"){
-
-			if($declinaison->classement == $maxClassement) { header("Location: declinaison.php"); ;return; }
-
-			
-			$query = "update $declinaison->table set classement=" . $declinaison->classement . " where classement=" . ($declinaison->classement+1);
-			$resul = mysql_query($query, $declinaison->link);
-			
-			 $declinaison->classement++;
-		}
-		
-		$declinaison->maj();
-
-		$cache = new Cache();
-		$cache->vider("DECLINAISON", "%");		
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("PRODUIT", "%");
 		
 	    header("Location: declinaison.php");
 

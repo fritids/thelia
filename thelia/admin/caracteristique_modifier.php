@@ -59,38 +59,9 @@
 <?php
 	function modclassement($id, $type){
 
-		$caracteristique = new Caracteristique();
-		$caracteristique->charger($id);
-
-	 	$query = "select max(classement) as maxClassement from $caracteristique->table";
-
-		$resul = mysql_query($query, $caracteristique->link);
-	
-        $maxClassement = mysql_result($resul, 0, "maxClassement");
-
-
-		if($type=="M"){
-			if($caracteristique->classement == 1) { header("Location: caracteristique.php"); return; }
-
-			$query = "update $caracteristique->table set classement=" . $caracteristique->classement . " where classement=" . ($caracteristique->classement-1);
-
-			$resul = mysql_query($query, $caracteristique->link);
-			
-			 $caracteristique->classement--;
-		}
-		
-		else if($type=="D"){
-
-			if($caracteristique->classement == $maxClassement) { header("Location: caracteristique.php"); ;return; }
-
-			
-			$query = "update $caracteristique->table set classement=" . $caracteristique->classement . " where classement=" . ($caracteristique->classement+1);
-			$resul = mysql_query($query, $caracteristique->link);
-			
-			 $caracteristique->classement++;
-		}
-		
-		$caracteristique->maj();
+      	$car = new Caracteristique();
+        $car->charger($id);
+        $car->changer_classement($id, $type);
 
 	    header("Location: caracteristique.php");
 

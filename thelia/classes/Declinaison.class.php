@@ -47,6 +47,30 @@
 
 		}
 
+		function changer_classement($id, $type){
+			
+			$this->charger($id);
+			$remplace = new Declinaison();
+			
+			if($type == "M")
+				$res = $remplace->getVars("select * from $this->table where classement<" . $this->classement . " order by classement desc limit 0,1");
+			
+			else if($type == "D")
+				$res  = $remplace->getVars("select * from $this->table where classement>" . $this->classement . " order by classement limit 0,1");
+		
+			if(! $res)
+				return "";
+				
+			$sauv = $remplace->classement;
+			
+			$remplace->classement = $this->classement;
+			$this->classement = $sauv;
+
+            $remplace->maj();
+            $this->maj();
+
+		}
+		
 		function isDeclidisp(){
 			$declidisp = new Declidisp();
 			$query = "select * from $declidisp->table where declinaison=\"" . $this->id . "\"";
