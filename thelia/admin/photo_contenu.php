@@ -50,37 +50,9 @@
 <?php
 
 	function modclassement($id, $contid, $type){
-
-		$image = new Image();
-		$image->charger($id);
-
-	 	$query = "select max(classement) as maxClassement from $image->table where contenu='" . $contid . "'";
-
-		$resul = mysql_query($query, $image->link);
-        $maxClassement = mysql_result($resul, 0, "maxClassement");
-	 
-		if($type=="M"){
-
-			if($image->classement == 1)  return; 
-
-			$query = "update $image->table set classement=" . $image->classement . " where classement=" . ($image->classement-1) . " and contenu='" . $contid . "'";
-
-			$resul = mysql_query($query, $image->link);
-			 $image->classement--;
-		}
-		
-		else if($type=="D"){
-
-			if($image->classement == $maxClassement) return; 
-
-			
-			$query = "update $image->table set classement=" . $image->classement . " where classement=" . ($image->classement+1) . " and contenu='" . $contid . "'";
-			$resul = mysql_query($query, $image->link);
-			
-			 $image->classement++;
-		}
-		
-		$image->maj();
+      	$img = new Image();
+        $img->charger($id);
+        $img->changer_classement($id, $type);
 	}
 	
 	

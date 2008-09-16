@@ -53,38 +53,9 @@
 	
 
 	function modclassement($id, $produit, $ref, $type){
-
-		$document = new document();
-		$document->charger($id);
-
-	 	$query = "select max(classement) as maxClassement from $document->table where produit='" . $produit . "'";
-
-		$resul = mysql_query($query, $document->link);
-        $maxClassement = mysql_result($resul, 0, "maxClassement");
-
-		if($type=="M"){
-
-			if($document->classement == 1)  return; 
-
-			$query = "update $document->table set classement=" . $document->classement . " where classement=" . ($document->classement-1) . " and produit='" . $produit . "'";
-			$resul = mysql_query($query, $document->link);
-			 $document->classement--;
-		}
-		
-		else if($type=="D"){
-
-			if($document->classement == $maxClassement) return; 
-
-			
-			$query = "update $document->table set classement=" . $document->classement . " where classement=" . ($document->classement+1) . " and produit='" . $produit . "'";
-			$resul = mysql_query($query, $document->link);
-			
-			 $document->classement++;
-		}
-		
-		$document->maj();
-
-	
+      	$doc = new Document();
+        $doc->charger($id);
+        $doc->changer_classement($id, $type);	
 	}	
 	
 	function ajouter($produit, $doc, $doc_name){

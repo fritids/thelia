@@ -54,36 +54,9 @@
 
 	function modclassement($id, $contid, $type){
 
-		$document = new document();
-		$document->charger($id);
-
-	 	$query = "select max(classement) as maxClassement from $document->table where contenu='" . $contid . "'";
-
-		$resul = mysql_query($query, $document->link);
-        $maxClassement = mysql_result($resul, 0, "maxClassement");
-
-		if($type=="M"){
-
-			if($document->classement == 1)  return; 
-
-			$query = "update $document->table set classement=" . $document->classement . " where classement=" . ($document->classement-1) . " and contenu='" . $contid . "'";
-			$resul = mysql_query($query, $document->link);
-			 $document->classement--;
-		}
-		
-		else if($type=="D"){
-
-			if($document->classement == $maxClassement) return; 
-
-			
-			$query = "update $document->table set classement=" . $document->classement . " where classement=" . ($document->classement+1) . " and contenu='" . $contid . "'";
-			$resul = mysql_query($query, $document->link);
-			
-			 $document->classement++;
-		}
-		
-		$document->maj();
-
+      	$doc = new Document();
+        $doc->charger($id);
+        $doc->changer_classement($id, $type);
 	}	
 	
 	function ajouter($contenu, $doc, $doc_name){
