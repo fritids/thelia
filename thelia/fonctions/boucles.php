@@ -2153,6 +2153,7 @@
 		$statut = lireTag($args, "statut");
 		$classement = lireTag($args, "classement");
 		$statutexcl = lireTag($args, "statutexcl");
+		$deb = lireTag($args, "deb");
 		$num = lireTag($args, "num");
 		
 		if($commande_ref == "" && $client_id == "") return;
@@ -2170,7 +2171,9 @@
 		if($statut!="" && $statut!="paye")  $search.=" and statut=\"$statut\"";
 		else if($statut=="paye")  $search.=" and statut>\"1\"";
 
-		if($num != "") $limit = "limit 0,$num";
+		if($deb == "") $deb = 0;
+		
+		if($num != "") $limit = "limit $deb,$num";
 		
 		if($classement == "inverse")
 			$order = "order by date";
