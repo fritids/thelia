@@ -263,6 +263,7 @@
 		$num = lireTag($args, "num");
 		$nb = lireTag($args, "nb");
 		$debut = lireTag($args, "debut");
+		$deb = lireTag($args, "deb");
 		$rubrique = lireTag($args, "rubrique");
 		$largeur = lireTag($args, "largeur");
 		$hauteur = lireTag($args, "hauteur");
@@ -277,6 +278,8 @@
 		$search="";
 		$res="";
 		$limit="";
+
+		if($deb != "") $debut = $deb;
 		
 		if($aleatoire) $order = "order by "  . " RAND()";
 		else $order=" order by classement";	
@@ -562,6 +565,7 @@
 		$rubrique = lireTag($args, "rubrique");
 		$nb = lireTag($args, "nb");
 		$debut = lireTag($args, "debut");
+		$deb = lireTag($args, "deb");
 		$num = lireTag($args, "num");
 		$dossier = lireTag($args, "dossier");
 		$contenu = lireTag($args, "contenu");
@@ -571,6 +575,8 @@
 		$order="";
 		$limit="";
 		$res="";
+
+		if($deb != "") $debut = $deb;
 			
 		if($produit) $search .= " and produit=\"$produit\"";
 		if($rubrique != "") $search .= " and rubrique=\"$rubrique\"";
@@ -1050,7 +1056,7 @@
 			$temp = str_replace("#PRIX", "$prix", $temp);
 			$temp = str_replace("#PROMO", "$row->promo", $temp);	
 			$temp = str_replace("#TVA", "$row->tva", $temp);	
-			$temp = str_replace("#ECOTAXE", "$row->ecotaxeht", $temp);	
+			$temp = str_replace("#ECOTAXEHT", "$row->ecotaxeht", $temp);	
 			$temp = str_replace("#ECOTAXE", "$row->ecotaxe", $temp);	
 			$temp = str_replace("#STOCK", "$row->stock", $temp);	
 			$temp = str_replace("#POURCENTAGE", "$pourcentage", $temp);	
@@ -1872,8 +1878,8 @@
 		if($classement == "alpha") $order="order by titre";
 		else if($classement == "alphainv") $order="order by titre desc";
 
-		if($debut =="")
-			$debut = 0;
+		if($deb =="")
+			$deb = 0;
 		
 		if($num != "")
 			$limit = "limit $deb,$num";

@@ -432,11 +432,14 @@
 			if($email1 != $client->email){
 				$test = new Client();
 				if($test->existe($email1))
-					return "";				
+                    redirige("compte_modifiererr.php?errform=1");          
 			}
 			
-			if( preg_match("/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z.]+$/","$email1") 
-				&& $email1==$email2 ) $client->email = strip_tags($email1);
+            if( preg_match("/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z.]+$/","$email1")
+                    && $email1==$email2 && $email1 != "") $client->email = strip_tags($email1);
+            else
+                    $client->email = "";
+
 			$client->adresse1 = strip_tags($adresse1);
 			$client->adresse2 = strip_tags($adresse2);
 			$client->adresse3 = strip_tags($adresse3);
