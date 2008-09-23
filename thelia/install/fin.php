@@ -28,22 +28,6 @@
 	$var->charger("urlsite");
 	$var->valeur=$_POST['urlsite'];
 	$var->maj();
-		
-	$var->charger("tva");
-	$var->valeur=$_POST['tva'];
-	$var->maj();
-			
-	$var->charger("style_chem");
-	$var->valeur=$_POST['style_chem'];
-	$var->maj();
-			
-	$var->charger("rsspass");
-	$var->valeur=genpass(40);
-	$var->maj();
-			
-	$var->charger("rssadmin");
-	$var->valeur=$_POST['rssadmin'];
-	$var->maj();	
 
 	$_SESSION['serveur']="";
 	$_SESSION['utilisateur']="";

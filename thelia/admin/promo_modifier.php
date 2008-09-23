@@ -120,7 +120,7 @@ pourcentage
 	       <input name="mini" type="text" class="form" value="<?php echo($promo->mini); ?>" size="10" />       </td>
 	     </tr>
      <tr>
-       <td height="30" class="titre_cellule">UTILISE</td>
+       <td height="30" class="titre_cellule">ACTIF</td>
        <td class="cellule_claire">
          Oui <input name="utilise" type="radio" class="form" value="1" <?php echo($utiliseo); ?> /> &nbsp; Non <input name="utilise" type="radio" class="form" value="0" <?php echo($utilisen); ?> />
        </span></td>

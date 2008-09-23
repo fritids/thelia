@@ -1,7 +1,18 @@
 1.3.8
 	Correction de l'affichage de l'écotaxe (#ECOTAXEHT et #ECOTAXE)
 	Correction de la boucle CARACDISP (soucis si on passe num mais pas deb)
-	
+	Ajout de l'argument exclurub dans la boucle PRODUIT (exclure une ou des rubriques)
+	Simplification du template de base
+	Obligation du mot de passe à 4 caractères minimum au lieu de 6 (simplification pour l'acheteur)
+	Ajout de la substitution #FOND globale qui retourne le fond utilisé
+	Modification de la page promo (admin) afin de simplifier le vocabulaire
+	Modification de la page commande_details (admin), ajout de l'adresse de facturation + livraison
+	Les messages corpscommande1 et corpscommande2 deviennent mailconfirmcli et mailconfirmadm
+	Ajout d'un intitulé au niveau des messages
+
+	Cette mise à jour contient une modification de la base de donnée. Après remplacement des fichiers, connectez-vous à
+	http://www.votrethelia.com/install/
+			
 1.3.7
 	Récupération des informations sur les plugins depuis contrib.thelia.fr (affichage de "vrais" titre dans l'administration)
 	Possibilité d'ajouter via un plugin du code au niveau de admin/pre.php

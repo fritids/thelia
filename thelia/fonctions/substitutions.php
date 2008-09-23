@@ -43,6 +43,9 @@
 	include_once(realpath(dirname(__FILE__)) . "/substitutions/substitparrain.php");
 						 
 	function substitutions($texte){
+		global $fond;
+
+		$texte = str_replace("#FOND",  $fond, $texte);
 		
 		$texte = str_replace("#URLPREC",  $_SESSION['navig']->urlprec, $texte);
 		$texte = str_replace("#URLPAGERET",  $_SESSION['navig']->urlpageret, $texte);

@@ -52,7 +52,7 @@
 				    <td width="565" class="ligneTableau">
 					<select name="raison" size="1"  class="zoneDeSaisie">
     				<option value="" selected="selected">Choisissez ...</option>
-   					<option value="1">Madame</option>
+   					<option value="1" selected="selected">Madame</option>
    					<option value="2">Mademoiselle</option>
     				<option value="3">Monsieur</option>
     				</select>
@@ -71,12 +71,8 @@
 					<td class="ligneTableau"><input type="text" name="adresse1" class="zoneDeSaisie" /></td>
 				</tr>
 				<tr>
-					<td class="ligneTableau">Adresse (suite) </td>
+					<td class="ligneTableau">Compl&eacute;ment d'adresse</td>
 					<td class="ligneTableau"><input type="text" name="adresse2" class="zoneDeSaisie" /></td>
-				</tr>
-				<tr>
-					<td class="ligneTableau">Compl&eacute;ment d'adresse </td>
-					<td class="ligneTableau"><input type="text" name="adresse3" class="zoneDeSaisie" /></td>
 				</tr>
 				<tr>
 					<td class="ligneTableau">Code postal*</td>
@@ -90,20 +86,16 @@
 					<td class="ligneTableau">Pays*</td>
 					<td class="ligneTableau">
 					<select name="pays" size="1"  class="zoneDeSaisie">
-					<option value="" selected="selected">Choisissez ...</option>
+					<option value="">Choisissez ...</option>
 					<THELIA_pays type="PAYS" zdefinie="1">           
-					<option value="#ID">#TITRE</option>
+					<option value="#ID" #SELECTED>#TITRE</option>
 					</THELIA_pays>
     				</select>
 					</td>
 				</tr>
 				<tr>
-    				<td class="ligneTableau">T&eacute;l&eacute;phone fixe* </td>
+    				<td class="ligneTableau">T&eacute;l&eacute;phone * </td>
     				<td class="ligneTableau"><input type="text" name="telfixe" class="zoneDeSaisie" /></td>
-				</tr>
-				<tr>
-    				<td class="ligneTableau">T&eacute;l&eacute;phone portable </td>
-    				<td class="ligneTableau"><input type="text" name="telport" class="zoneDeSaisie" /></td>
 				</tr>
 				<tr>
     				<td class="ligneTableau">Email*</td>

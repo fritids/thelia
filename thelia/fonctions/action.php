@@ -310,7 +310,8 @@
 			$commande->maj();
 			$temppromo = new Promo();
 			$temppromo->charger_id($_SESSION['navig']->promo->id);
-			$temppromo->utilise="1";
+			if(! $temppromo->illimite)
+				$temppromo->utilise="1";
 			$temppromo->maj();
 
 			
@@ -372,7 +373,7 @@
 
 		if($testcli->id != "") $client->parrain=$testcli->id;
 		
-		if($motdepasse1 == $motdepasse2 && strlen($motdepasse1)>5 ) $client->motdepasse = strip_tags($motdepasse1);
+		if($motdepasse1 == $motdepasse2 && strlen($motdepasse1)>3 ) $client->motdepasse = strip_tags($motdepasse1);
 		
 		$_SESSION['navig']->formcli = $client;	
 		
@@ -471,7 +472,7 @@
 
 		else{
 
-			if(  $motdepasse1 == $motdepasse2 && strlen($motdepasse1)>5 ) {		
+			if(  $motdepasse1 == $motdepasse2 && strlen($motdepasse1)>3 ) {		
 				$client->motdepasse = strip_tags($motdepasse1);
 				$client->crypter();
 		    	$client->maj();
@@ -575,14 +576,11 @@
 			$tclient->motdepasse = $pass;
 			$tclient->crypter();
 			$tclient->maj();
-		
-                        $msg->charger("nouveaumdp1");
-                        $msgdesc->charger($msg->id);
-	
-			$sujet = $msgdesc->description;	
-                        
-			$msg->charger("nouveaumdp2");
+        
+			$msg->charger("changepass");
 			$msgdesc->charger($msg->id);
+
+			$sujet = $msgdesc->titre;	
 
 			$emailcontact = new Variable();
             $emailcontact->charger("emailcontact");
@@ -590,23 +588,9 @@
             $corps = $msgdesc->description;     
 			mail("$tclient->email", "$sujet", "$corps $pass", "From: $emailcontact->valeur");
                         
- 			$msg->charger("mdpmodif");
-                        $msgdesc->charger($msg->id);
-			echo "<script language=\"javascript\">";                                        
-			echo "alert(\"$msgdesc->description\");";
-                        echo "location='index.php'";
-                        echo "</script>"; 
+ 		
 		}
 
-		else {
 
-                        $msg->charger("mdpnonvalide");
-                        $msgdesc->charger($msg->id);
-
-			echo "<script language=\"javascript\">";
-			echo "alert(\"$msgdesc->description\");";
-			echo "location='index.php'";	
-			echo "</script>";
-		}		
 	}
 ?>

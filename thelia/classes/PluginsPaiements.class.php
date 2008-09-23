@@ -74,31 +74,31 @@
 
 			/* Message client */
 			$msg = new Message();
-			$msg->charger("sujetcommande");
-			$msgdesc = new Messagedesc();
-			$msgdesc->charger($msg->id);
-			$sujet = $msgdesc->description . " " . $commande->ref;
-			$msg->charger("corpscommande1");
+			
+			$msg->charger("mailconfirmcli");
 			$msgdesc = new Messagedesc();                
 			$msgdesc->charger($msg->id);
+			$sujet = $this->substitmail($msgdesc->titre, $commande);
+			
 			$corps = $msgdesc->description;
 			$corps = $this->substitmail($corps, $commande);
 
 			/* Message admin */
-        	$msg->charger("corpscommande2");
+        	$msg->charger("mailconfirmadm");
         	$msgdesc = new Messagedesc();
         	$msgdesc->charger($msg->id);
 			$corps2 = $msgdesc->description;
 		
 			$emailcontact = new Variable();
 			$emailcontact->charger("emailcontact");	
+			$sujet2 = $this->substitmail($msgdesc->titre, $commande);
 			$corps2 = $this->substitmail($corps2, $commande);
 
 			$client = new Client();
 			$client->charger_id($commande->client);
 			
 			mail($client->email , "$sujet", "$corps", "From: $emailcontact->valeur");	
-			mail($emailcontact->valeur , "$sujet", "$corps2", "From: $emailcontact->valeur");	
+			mail($emailcontact->valeur , "$sujet2", "$corps2", "From: $emailcontact->valeur");	
 			
 		}
 		

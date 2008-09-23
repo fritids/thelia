@@ -27,6 +27,8 @@
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Dossierdesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Contenu.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Image.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Document.class.php");
 	
 	class Dossier extends Baseobj{
 
@@ -91,6 +93,28 @@
 			
 			
 			if( ! mysql_num_rows($resul) && ! mysql_num_rows($resul2)){
+				
+				$image = new Image();
+
+				$query = "select * from $image->table where produit=\"" . $this->id . "\"";
+				$resul = mysql_query($query, $image->link);
+				while($row = mysql_fetch_object($resul)){
+					$tmp = new Image();
+					$tmp->charger($row->id);
+					$tmp->supprimer();
+
+				}
+
+				$document = new Document();
+
+				$query = "select * from $document->table where produit=\"" . $this->id . "\"";
+				$resul = mysql_query($query, $document->link);
+				while($row = mysql_fetch_object($resul)){
+					$tmp = new Document();
+					$tmp->charger($row->id);
+					$tmp->supprimer();
+
+				}				
 				$this->delete("delete from $this->table where id=\"$this->id\"");	
 				$this->delete("delete from $dossierdesc->table where dossier=\"$this->id\"");	
 

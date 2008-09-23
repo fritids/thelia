@@ -101,13 +101,7 @@
 										
 		$declinaison->maj();
 		$declinaisondesc->maj();
-
-		$cache = new Cache();
-		$cache->vider("DECLINAISON", "%");		
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("PRODUIT", "%");
-			   
+	   
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $declinaison->id);
 	}
 
@@ -176,12 +170,7 @@
 		$rubdeclinaison->add();
 	 }
 		
-	$cache = new Cache();
-	$cache->vider("DECLINAISON", "%");		
-	$cache->vider("DECLIDISP", "%");
-	$cache->vider("DECVAL", "%");
-	$cache->vider("PRODUIT", "%");
-		
+
 	header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $lastid);
 
 	}
@@ -206,12 +195,6 @@
 		$declinaison->charger($id);
 		$declinaison->supprimer();
 
-		$cache = new Cache();
-		$cache->vider("DECLINAISON", "%");		
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("PRODUIT", "%");
-		
 	    header("Location: declinaison.php");
 
 	}
@@ -220,12 +203,7 @@
                 $tdeclidisp = new Declidisp();	
 		$tdeclidisp->charger($declidisp);
 		$tdeclidisp->supprimer();
-		
-		$cache = new Cache();
-		$cache->vider("DECLINAISON", "%");		
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("PRODUIT", "%");
+
 	}
 
 	function ajdeclidisp($id, $declidisp, $lang){
@@ -242,12 +220,6 @@
 		$tdeclidispdesc->titre = $declidisp;
 		
 		$tdeclidispdesc->add();
-
-		$cache = new Cache();
-		$cache->vider("DECLINAISON", "%");		
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("PRODUIT", "%");
 		
 	}
 	
@@ -276,13 +248,7 @@
 			else $declidispdesc->maj();
 			
 			
-		}	
-
-		$cache = new Cache();
-		$cache->vider("DECLINAISON", "%");		
-		$cache->vider("DECLIDISP", "%");
-		$cache->vider("DECVAL", "%");
-		$cache->vider("PRODUIT", "%");		
+		}			
 		
 	}	
 ?>

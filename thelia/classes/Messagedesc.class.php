@@ -36,12 +36,13 @@
 		var $id;
 		var $message;
 		var $lang;
+		var $intitule;
 		var $titre;
 		var $chapo;
 		var $description;
 				
 		var $table="messagedesc";
-		var $bddvars = array("id", "message", "lang", "titre", "chapo", "description");
+		var $bddvars = array("id", "message", "lang", "intitule", "titre", "chapo", "description");
 
 		function Messagedesc(){
 			$this->Baseobj();

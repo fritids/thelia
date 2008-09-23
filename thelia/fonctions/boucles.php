@@ -706,7 +706,8 @@
 			$stockmini = lireTag($args, "stockmini");
 			$courant = lireTag($args, "courant");
 			$profondeur = lireTag($args, "profondeur");		
-			$exclusion = lireTag($args, "exclusion");	
+			$exclusion = lireTag($args, "exclusion");
+			$exclurub = lireTag($args, "exclurub");			
 			$poids = lireTag($args, "poids");
 			$stockvide = lireTag($args, "stockvide");
 			$forcepage = lireTag($args, "forcepage");
@@ -746,6 +747,7 @@
 			else if($courant == "0") $search .= " and ref!=\"$ref\"";
 			
 			if($exclusion!="") $search .= " and id not in($exclusion)";
+			if($exclurub!="") $search .= " and rubrique not in($exclurub)";
 			
 			if($rubrique!=""){
 				$srub = "";
@@ -2648,7 +2650,6 @@
 		$article = lireTag($args, "article");
 		$declinaison = lireTag($args, "declinaison");
 		$ref = lireTag($args, "ref");
-		$article = lireTag($args, "article");
 		
 		if($article == "") return "";
 		

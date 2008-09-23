@@ -583,14 +583,10 @@ CREATE TABLE `message` (
 -- Contenu de la table `message`
 -- 
 
-INSERT INTO `message` VALUES (1, 'mdpmodif', '0');
-INSERT INTO `message` VALUES (2, 'mdpnonvalide', '0');
-INSERT INTO `message` VALUES (3, 'nouveaumdp1', '0');
-INSERT INTO `message` VALUES (4, 'nouveaumdp2', '0');
-INSERT INTO `message` VALUES (5, 'sujetcommande', '0');
-INSERT INTO `message` VALUES (6, 'corpscommande1', '0');
-INSERT INTO `message` VALUES (7, 'corpscommande2', '0');
-INSERT INTO `message` VALUES (8, 'colissimo', '0');
+INSERT INTO `message` VALUES (1, 'changepass', '0');
+INSERT INTO `message` VALUES (2, 'mailconfirmcli', '0');
+INSERT INTO `message` VALUES (3, 'mailconfirmadm', '0');
+INSERT INTO `message` VALUES (4, 'colissimo', '0');
 
 -- --------------------------------------------------------
 
@@ -602,6 +598,7 @@ CREATE TABLE `messagedesc` (
   `id` int(11) NOT NULL auto_increment,
   `message` int(11) NOT NULL default '0',
   `lang` int(11) NOT NULL default '0',
+  `intitule` text NOT NULL,
   `titre` text NOT NULL,
   `chapo` text NOT NULL,
   `description` text NOT NULL,
@@ -612,15 +609,11 @@ CREATE TABLE `messagedesc` (
 -- Contenu de la table `messagedesc`
 -- 
 
-INSERT INTO `messagedesc` VALUES (1, 1, 1, 'Mot de passe modifié', '', 'Vous allez recevoir votre mot de passe par email.');
-INSERT INTO `messagedesc` VALUES (2, 2, 1, 'Adresse E-Mail non valide', '', 'Cette adresse E-Mail n''existe pas');
-INSERT INTO `messagedesc` VALUES (3, 3, 1, 'Nouveau mot de passe', '', 'Votre nouveau mot de passe');
-INSERT INTO `messagedesc` VALUES (4, 4, 1, 'Nouveau mot de passe', '', 'Votre nouveau mot de passe est : ');
-INSERT INTO `messagedesc` VALUES (5, 5, 1, 'Sujet Commande', '', 'Commande : ');
-INSERT INTO `messagedesc` VALUES (6, 6, 1, 'Corps commande', '', '__CLIENT_REF__ __CLIENT_FACTPRENOM__ __CLIENT_FACTNOM__\r\n__CLIENT_ADRESSE1__ __CLIENT_ADRESSE2__ __CLIENT_ADRESSE3__\r\n__CLIENT_CPOSTAL__ __CLIENT_VILLE__\r\n__CLIENT_PAYS__\r\n\r\nConfirmation de commande __COMMANDE_REF__ du __COMMANDE_DATE__\r\n\r\nLes articles commandés:\r\n<VENTEPROD>\r\nArticle : __VENTEPROD_TITRE__\r\nQuantité : __VENTEPROD_QUANTITE__\r\nPrix unitaire TTC  : __VENTEPROD_PRIXU__ EUR\r\n</VENTEPROD>\r\n-----------------------------------------\r\nMontant total TTC :    __COMMANDE_TOTAL__ EUR \r\nFrais de port TTC :    __COMMANDE_PORT__ EUR \r\nSomme totale:            __COMMANDE_TOTALPORT__ EUR \r\n==================================\r\n\r\nVotre facture est disponible dans la rubrique mon compte sur __URLSITE__');
-INSERT INTO `messagedesc` VALUES (7, 7, 1, 'Nouvelle commande', '', 'Nouvelle commande\r\n\r\n__CLIENT_REF__ __CLIENT_FACTPRENOM__ __CLIENT_FACTNOM__\r\n__CLIENT_ADRESSE1__ __CLIENT_ADRESSE2__ __CLIENT_ADRESSE3__\r\n__CLIENT_CPOSTAL__ __CLIENT_VILLE__\r\n__CLIENT_PAYS__\r\n\r\nConfirmation de commande __COMMANDE_REF__ du __COMMANDE_DATE__\r\n\r\nLes articles commandés:\r\n<VENTEPROD>\r\nArticle : __VENTEPROD_TITRE__\r\nQuantité : __VENTEPROD_QUANTITE__\r\nPrix unitaire TTC  : __VENTEPROD_PRIXU__ EUR\r\n</VENTEPROD>\r\n-----------------------------------------\r\nMontant total TTC :    __COMMANDE_TOTAL__ EUR \r\nFrais de port TTC :    __COMMANDE_PORT__ EUR \r\nSomme totale:            __COMMANDE_TOTALPORT__ EUR \r\n==================================\r\n');
-INSERT INTO `messagedesc` VALUES (8, 1, 2, 'Password modified', '', 'Vous allez recevoir votre mot de passe par email.');
-INSERT INTO `messagedesc` VALUES (9, 8, 1, 'Colissimo', '', '__RAISON__ __NOM__ __PRENOM__,\n\nNous vous remercions de votre commande sur notre site __URLSITE__\n\nUn colis concernant votre commande __COMMANDE__ du __DATE__ __HEURE__ a quitté nos entrepôts pour être pris en charge par La Poste le 16/08/2007.\n\nSon numéro de suivi est le suivant : __COLIS__\nIl vous permet de suivre votre colis en ligne sur le site de La Poste : www.coliposte.net\nIl vous sera, par ailleurs, très utile si vous étiez absent au moment de la livraison de votre colis : en fournissant ce numéro de Colissimo Suivi, vous pourrez retirer votre colis dans le bureau de Poste le plus proche.\n\nATTENTION ! Si vous ne trouvez pas l''avis de passage normalement déposé dans votre boîte aux lettres au bout de 48 Heures jours ouvrables, n''hésitez pas à aller le réclamer à votre bureau de Poste, muni de votre numéro de Colissimo Suivi.\n\nNous restons à votre disposition pour toute information complémentaire.\nCordialement');
+INSERT INTO `messagedesc` (`id`, `message`, `lang`, `intitule`, `titre`, `chapo`, `description`) VALUES 
+(1, 1, 1, 'Mail de changement de mot de passe', 'Votre nouveau mot de passe', '', 'Votre nouveau mot de passe est : '),
+(2, 2, 1, 'Mail de confirmation client', 'Commande : __COMMANDE_REF__', '', '__CLIENT_REF__ __CLIENT_FACTPRENOM__ __CLIENT_FACTNOM__\r\n__CLIENT_ADRESSE1__ __CLIENT_ADRESSE2__ __CLIENT_ADRESSE3__\r\n__CLIENT_CPOSTAL__ __CLIENT_VILLE__\r\n__CLIENT_PAYS__\r\n\r\nConfirmation de commande __COMMANDE_REF__ du __COMMANDE_DATE__\r\n\r\nLes articles commandés:\r\n<VENTEPROD>\r\nArticle : __VENTEPROD_TITRE__\r\nQuantité : __VENTEPROD_QUANTITE__\r\nPrix unitaire TTC  : __VENTEPROD_PRIXU__ EUR\r\n</VENTEPROD>\r\n-----------------------------------------\r\nMontant total TTC :    __COMMANDE_TOTAL__ EUR \r\nFrais de port TTC :    __COMMANDE_PORT__ EUR \r\nSomme totale:            __COMMANDE_TOTALPORT__ EUR \r\n==================================\r\n\r\nVotre facture est disponible dans la rubrique mon compte sur __URLSITE__'),
+(3, 3, 1, 'Mail de confirmation administrateur', 'Nouvelle commande', '', 'Nouvelle commande\r\n\r\n__CLIENT_REF__ __CLIENT_FACTPRENOM__ __CLIENT_FACTNOM__\r\n__CLIENT_ADRESSE1__ __CLIENT_ADRESSE2__ __CLIENT_ADRESSE3__\r\n__CLIENT_CPOSTAL__ __CLIENT_VILLE__\r\n__CLIENT_PAYS__\r\n\r\nConfirmation de commande __COMMANDE_REF__ du __COMMANDE_DATE__\r\n\r\nLes articles commandés:\r\n<VENTEPROD>\r\nArticle : __VENTEPROD_TITRE__\r\nQuantité : __VENTEPROD_QUANTITE__\r\nPrix unitaire TTC  : __VENTEPROD_PRIXU__ EUR\r\n</VENTEPROD>\r\n-----------------------------------------\r\nMontant total TTC :    __COMMANDE_TOTAL__ EUR \r\nFrais de port TTC :    __COMMANDE_PORT__ EUR \r\nSomme totale:            __COMMANDE_TOTALPORT__ EUR \r\n==================================\r\n'),
+(4, 4, 1, 'Mail de confirmation d''envoi colissimo', 'Colissimo', '', '__RAISON__ __NOM__ __PRENOM__,\n\nNous vous remercions de votre commande sur notre site __URLSITE__\n\nUn colis concernant votre commande __COMMANDE__ du __DATE__ __HEURE__ a quitté nos entrepôts pour être pris en charge par La Poste le 16/08/2007.\n\nSon numéro de suivi est le suivant : __COLIS__\nIl vous permet de suivre votre colis en ligne sur le site de La Poste : www.coliposte.net\nIl vous sera, par ailleurs, très utile si vous étiez absent au moment de la livraison de votre colis : en fournissant ce numéro de Colissimo Suivi, vous pourrez retirer votre colis dans le bureau de Poste le plus proche.\n\nATTENTION ! Si vous ne trouvez pas l''avis de passage normalement déposé dans votre boîte aux lettres au bout de 48 Heures jours ouvrables, n''hésitez pas à aller le réclamer à votre bureau de Poste, muni de votre numéro de Colissimo Suivi.\n\nNous restons à votre disposition pour toute information complémentaire.\nCordialement');
 
 -- --------------------------------------------------------
 

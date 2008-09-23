@@ -141,7 +141,7 @@
     <td height="30" class="titre_cellule">TYPE</td>
     <td height="30" class="titre_cellule">VALEUR</td>
     <td height="30" class="titre_cellule">MINI</td>
-    <td height="30" class="titre_cellule">UTILISE</td>
+    <td height="30" class="titre_cellule">ACTIF</td>
     <td height="30" class="titre_cellule">ILLIMITE</td>
 	<td height="30" class="titre_cellule">DATE EXP</td>
 	<td height="30" class="titre_cellule">&nbsp;</td>

@@ -409,10 +409,6 @@
 		$produit = new Produit();		
 		$produit->charger($ref);
 		$produit->supprimer();
-	
-		$stock = new Stock();
-		$query = "delete from $stock->table where produit='" . $produit->id . "'"; 
-		$resul = mysql_query($query, $stock->link);
 				
 	    header("Location: parcourir.php?parent=" . $parent);
 

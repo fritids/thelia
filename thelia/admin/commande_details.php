@@ -37,7 +37,9 @@
 <?php
 	include_once("../classes/Commande.class.php");
 	include_once("../classes/Client.class.php");
+	include_once("../classes/Paysdesc.class.php");
 	include_once("../classes/Venteprod.class.php");
+	include_once("../classes/Venteadr.class.php");
 	include_once("../classes/Statut.class.php");
 	include_once("../classes/Modules.class.php");
 	include_once("../classes/Rubrique.class.php");
@@ -45,13 +47,6 @@
 	
 	if(!isset($action)) $action="";
 	if(!isset($statutch)) $statutch="";
-	
-	if(isset($_FILES['fichier'])){
-		$fichier = $_FILES['fichier']['tmp_name']; 
-		$fichier_name = $_FILES['fichier']['name'];
-	}
-		
-	if(!isset($fichier)) $fichier="";
 
 ?>
 
@@ -88,9 +83,6 @@
 		
 	}
 		
-	if($fichier) copy("$fichier", "../client/commande/" . $ref . ".pdf");
-
-	if($action == "supprfic") unlink("../client/commande/" . $ref . ".pdf");
 ?>
 
 </head>
@@ -294,47 +286,129 @@
                 </form></td>
      </tr>
    </table>
+
+<br />
+
+<?php
+	$adr = new Venteadr();
+	$adr->charger($commande->adrfact);
+	
+	$nompays = new Paysdesc();
+	$nompays->charger($adr->pays);
+?>
+
+	<table width="710" border="0" cellpadding="5" cellspacing="0">
+	  <tr>
+	    <td width="600" height="30" class="titre_cellule_tres_sombre">N&deg; de colis</td>
+	  </tr>
+	</table>
+	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+	  <tr>
+	    <td height="30" align="left" valign="middle" class="titre_cellule"><form action="<?php echo($_SERVER['PHP_SELF']); ?>" name="formcolis" method="post">
+	               <input type="hidden" name="ref" value="<?php echo($ref); ?>">
+					<input type="text" name="colis" value="<?php echo $commande->colis ?>" /> <input type="submit" value="Valider" />
+
+	             </form></td>
+	  </tr>
+	</table>
+	
+	<br />
+	
+  <table width="710" border="0" cellpadding="5" cellspacing="0">
+     <tr>
+       <td width="600" height="30" class="titre_cellule_tres_sombre">ADRESSE DE FACTURATION</td>
+     </tr>
+   </table>
+   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+     <tr>
+       <td height="30" align="left" valign="middle" class="cellule_claire" width="300">Pr&eacute;nom</td>
+       <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->prenom; ?></td>
+     </tr>
+     <tr>
+       <td height="30" align="left" valign="middle" class="cellule_sombre" width="300">Nom</td>
+       <td height="30" align="left" valign="middle" class="cellule_sombre"><?php echo $adr->nom; ?></td>
+     </tr>   
+      <tr>
+       <td height="30" align="left" valign="middle" class="cellule_claire" width="300">Adresse</td>
+       <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->adresse1 . " " . $adr->adresse2 . " " . $adr->adresse3; ?></td>
+     </tr>    
+      <tr>
+      <td height="30" align="left" valign="middle" class="cellule_sombre" width="300">Code postal</td>
+       <td height="30" align="left" valign="middle" class="cellule_sombre"><?php echo $adr->cpostal; ?></td>
+     </tr>     
+     <tr>
+       <td height="30" align="left" valign="middle" class="cellule_claire" width="300">Ville</td>
+       <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->ville; ?></td>
+     </tr>
+     <tr>
+        <td height="30" align="left" valign="middle" class="cellule_sombre" width="300">Pays</td>
+        <td height="30" align="left" valign="middle" class="cellule_sombre"><?php echo $nompays->titre; ?></td>
+      </tr>
+      <tr>
+      	<td height="30" align="left" valign="middle" class="cellule_claire" width="300">T&eacute;l&eacute;phone</td>
+        <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->tel; ?></td>
+
+     </tr>
+
+   </table>
+
+<br />
+
+<?php
+
+	$adr = new Venteadr();
+	$adr->charger($commande->adrlivr);
+
+	$nompays = new Paysdesc();
+	$nompays->charger($adr->pays);
+?>
+
+  <table width="710" border="0" cellpadding="5" cellspacing="0">
+     <tr>
+       <td width="600" height="30" class="titre_cellule_tres_sombre">ADRESSE DE LIVRAISON</td>
+     </tr>
+   </table>
+   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+     <tr>
+       <td height="30" align="left" valign="middle" class="cellule_claire" width="300">Pr&eacute;nom</td>
+       <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->prenom; ?></td>
+     </tr>
+     <tr>
+       <td height="30" align="left" valign="middle" class="cellule_sombre" width="300">Nom</td>
+       <td height="30" align="left" valign="middle" class="cellule_sombre"><?php echo $adr->nom; ?></td>
+     </tr>   
+      <tr>
+       <td height="30" align="left" valign="middle" class="cellule_claire" width="300">Adresse</td>
+       <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->adresse1 . " " . $adr->adresse2 . " " . $adr->adresse3; ?></td>
+     </tr>    
+      <tr>
+      <td height="30" align="left" valign="middle" class="cellule_sombre" width="300">Code postal</td>
+       <td height="30" align="left" valign="middle" class="cellule_sombre"><?php echo $adr->cpostal; ?></td>
+     </tr>     
+     <tr>
+       <td height="30" align="left" valign="middle" class="cellule_claire" width="300">Ville</td>
+       <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->ville; ?></td>
+     </tr>
+     <tr>
+        <td height="30" align="left" valign="middle" class="cellule_sombre" width="300">Pays</td>
+        <td height="30" align="left" valign="middle" class="cellule_sombre"><?php echo $nompays->titre; ?></td>
+      </tr>
+      <tr>
+      	<td height="30" align="left" valign="middle" class="cellule_claire" width="300">T&eacute;l&eacute;phone</td>
+        <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->tel; ?></td>
+
+     </tr>
+
+   </table>
+
+
    <br />
 
 <?php
 	admin_inclure("commandedetails");		
 ?>     
 
-<table width="710" border="0" cellpadding="5" cellspacing="0">
-  <tr>
-    <td width="600" height="30" class="titre_cellule_tres_sombre">N&deg; de colis</td>
-  </tr>
-</table>
-<table width="100%"  border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td height="30" align="left" valign="middle" class="titre_cellule"><form action="<?php echo($_SERVER['PHP_SELF']); ?>" name="formcolis" method="post">
-               <input type="hidden" name="ref" value="<?php echo($ref); ?>">
-				<input type="text" name="colis" value="<?php echo $commande->colis ?>" /> <input type="submit" value="Valider" />
 
-             </form></td>
-  </tr>
-</table>
-<br />
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">FICHIER JOINT </td>
-     </tr>
-   </table>
-   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-     <tr>
-       <td height="30" align="left" valign="middle" class="titre_cellule">
-       <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" ENCTYPE="multipart/form-data">
-                  <input type="hidden" name="ref" value="<?php echo($ref); ?>">
-                  <input type="file" name="fichier" />
-                  <input type="submit" value="Valider" />
-                  
-                  <br /><br />
-                  <?php if(file_exists("../client/commande/" . $ref . ".pdf")) { ?>
-               	   <a href="<?php echo($_SERVER['PHP_SELF']); ?>?action=supprfic&ref=<?php echo($ref); ?>" class="lien04">Supprimer le fichier joint</a>
-   				  <?php } ?>
-       </form></td>
-     </tr>
-   </table>
 <br />   
    <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>

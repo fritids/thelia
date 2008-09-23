@@ -39,6 +39,7 @@
 
 <?php
 	include_once("../classes/Message.class.php");
+	include_once("../classes/Messagedesc.class.php");
 ?>
 <?php
 	$menu="configuration";
@@ -69,13 +70,16 @@
 		
 		if(!($i%2)) $fond="cellule_sombre";
   		else $fond="cellule_claire";
+
+		$messagedesc = new Messagedesc();
+		$messagedesc->charger($row->id);
 ?>
 
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
   <tr class="<?php echo $fond; ?>">
-    <td width="21%" height="30"><?php echo $row->nom; ?></td>
-    <td width="63%" height="30">
+    <td width="41%" height="30"><?php if($messagedesc->intitule != "") echo $messagedesc->intitule; else echo $row->nom; ?></td>
+    <td width="43%" height="30">
       
     </td>
     <td width="16%" height="30">

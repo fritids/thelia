@@ -125,29 +125,6 @@
 				<div class="col">Adresse du site :</div>
 				<div class="col"><input type="text" name="urlsite" value="http://<?php echo $_SERVER['SERVER_NAME'] ?>" size="30" /></div> 
 			
-				<?php										
-					$var = new Variable();
-					$var->charger("tva");
-				?>
-				
-				<div class="col">TVA par défaut :</div>
-				<div class="col"><input type="text" name="tva" value="<?php echo $var->valeur ?>" size="30" /></div> 				
-				<?php										
-					$var = new Variable();
-					$var->charger("style_chem");
-				?>
-								
-				<div class="col">Feuille de style de l'éditeur :</div>
-				<div class="col"><input type="text" name="style_chem" value="<?php echo $var->valeur ?>" size="30" /></div> 		
-
-				<?php										
-					$var = new Variable();
-					$var->charger("rssadmin");
-				?>
-				
-				<div class="col">Flux RSS de la page accueil admin :</div>
-				<div class="col"><input type="text" name="rssadmin" value="<?php echo $var->valeur ?>" size="30" /></div> 			
-					
 				<div class="col">&nbsp;</div>													
 				<br /><br />
 				

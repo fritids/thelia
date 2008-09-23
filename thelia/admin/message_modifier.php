@@ -50,7 +50,8 @@
  		$message->charger($nom);
 		$messagedesc->charger($message->id, $lang);
 			
-		$messagedesc->message = $message->id;	
+		$messagedesc->message = $message->id;
+		$messagedesc->intitule = $_POST['intitule'];
 		$messagedesc->titre = $_POST['titre'];
 		$messagedesc->chapo = $_POST['chapo'];
 		$messagedesc->description = $_POST['description'];
@@ -131,6 +132,12 @@
      <td width="10"  class="cellule_sombre">&nbsp;</td>
    </tr>
 
+   <tr>
+     <td width="400" height="30" class="cellule_claire">INTITULE</td>
+     <td width="130"  class="cellule_claire"><input type="text" class="form" name="intitule" size="50" value="<?php echo $messagedesc->intitule; ?>" /></td>
+     <td width="130"  class="cellule_claire">&nbsp;</td>
+     <td width="10"  class="cellule_claire">&nbsp;</td>
+   </tr>
 
      <tr>
        <td width="400" height="30" class="cellule_claire">TITRE</td>

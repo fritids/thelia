@@ -25,6 +25,7 @@
 ?>
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Messagedesc.class.php");
 		
 	class Message extends Baseobj{
 
@@ -40,11 +41,23 @@
 		}
 		
 		function charger($nom){
-		
 			return $this->getVars("select * from $this->table where nom=\"$nom\"");
-
-
 		}
+
+		function delete($requete){	
+				$resul = mysql_query($requete);	
+		}
+		
+		function supprimer(){
+			$messagedesc =  new Messagedesc();
+			
+			$this->delete("delete from $this->table where id=\"$this->id\"");	
+			$this->delete("delete from $messagedesc->table where message=\"$this->id\"");	
+				
+			return 1;
+		
+		}
+		
 
 	}
 

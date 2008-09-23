@@ -26,7 +26,10 @@
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Produitdesc.class.php");
-	
+	include_once(realpath(dirname(__FILE__)) . "/Stock.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Image.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Document.class.php");
+		
 	class Produit extends Baseobj{
 
 		var $id;
@@ -99,8 +102,33 @@
 				
 		function supprimer(){
 
-			$produitdesc =  new Produitdesc();
+			$stock = new Stock();
+			$query = "delete from $stock->table where produit='" . $this->id . "'"; 
+			$resul = mysql_query($query, $stock->link);
 			
+			$image = new Image();
+			
+			$query = "select * from $image->table where produit=\"" . $this->id . "\"";
+			$resul = mysql_query($query, $image->link);
+			while($row = mysql_fetch_object($resul)){
+				$tmp = new Image();
+				$tmp->charger($row->id);
+				$tmp->supprimer();
+				
+			}
+
+			$document = new Document();
+
+			$query = "select * from $document->table where produit=\"" . $this->id . "\"";
+			$resul = mysql_query($query, $document->link);
+			while($row = mysql_fetch_object($resul)){
+				$tmp = new Document();
+				$tmp->charger($row->id);
+				$tmp->supprimer();
+				
+			}
+
+			$produitdesc =  new Produitdesc();
 			
 			$this->delete("delete from $this->table where id=\"$this->id\"");	
 			$this->delete("delete from $produitdesc->table where produit=\"$this->id\"");	
