@@ -56,19 +56,13 @@
  	 	$client = new Client();
   		$client->charger_id($commande->client);
   	
-  		$pays = new Pays();
-  		$pays->charger($client->pays);	
-
-  		$zone = new Zone();
-  		$zone->charger($pays->zone);
-	
 		$pdf= new fpdi();
 		$pdf->SetAutoPageBreak(false);
 		
 
-		if($pays->lang)
-			$lang=$pays->lang;
-			else $lang="1";
+		if($commande->lang)
+			$lang=$commande->lang;
+		else $lang="1";
 
 		
 		$pagecount = $pdf->setSourceFile("../pdf/doc/fpagesimple" . $lang . ".pdf");
@@ -313,7 +307,7 @@
 		$pdf->SetXY(122,$hauteur);	
   		$pdf->write(10, $adrfact->adresse1);
 
-		if($client->adresse2) {
+		if($adrfact->adresse2) {
 			$hauteur+=3;
 	
 			$pdf->SetFont('Arial','',8);
@@ -322,7 +316,7 @@
 	
 		}
 
-		if($client->adresse3) {
+		if($adrfact->adresse3) {
 			$hauteur+=3;
 	
 			$pdf->SetFont('Arial','',8);
@@ -343,7 +337,11 @@
 		$pdf->SetXY(122,$hauteur);	
  	 	$pdf->write(10, $paysdesc->titre);
 		
+        $hauteur+=3;
 
+        $pdf->SetFont('Arial','',8);
+        $pdf->SetXY(122,$hauteur);
+        $pdf->write(10, $adrfact->tel);
 	
 		$adressecl = new Venteadr();
 		$adressecl->charger($commande->adrlivr);
@@ -394,11 +392,11 @@
 		$pdf->SetXY(122,$hauteur);	
   		$pdf->write(10, $paysdesc->titre);
 
-                $hauteur+=3;
+        $hauteur+=3;
 
-                $pdf->SetFont('Arial','',8);
-                $pdf->SetXY(122,$hauteur);
-                $pdf->write(10, $client->telfixe);
+        $pdf->SetFont('Arial','',8);
+        $pdf->SetXY(122,$hauteur);
+        $pdf->write(10, $adrfact->tel);
 
 		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(52,52);	

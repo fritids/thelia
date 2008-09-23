@@ -50,17 +50,10 @@
   			$client = new Client();
   			$client->charger_id($commande->client);
 
-
-  			$pays = new Pays();
-  			$pays->charger($client->pays);	
-
-  			$zone = new Zone();
-  			$zone->charger($pays->zone);
-	
-			if($pays->lang)
-				$lang=$pays->lang;
+			if($commande->lang)
+				$lang=$commande->lang;
 			else $lang="1";
-	
+			
 			$pdf= new fpdi();
 			$pdf->SetAutoPageBreak(false);
 			$pagecount = $pdf->setSourceFile("../client/pdf/doc/" . "livraison" . $lang . ".pdf");
@@ -168,7 +161,12 @@
 			$pdf->SetXY(122,$hauteur);	
  	 		$pdf->write(10, $paysdesc->titre);
  	 	
- 	 	
+ 	        $hauteur+=3;
+
+	        $pdf->SetFont('Arial','',8);
+	        $pdf->SetXY(122,$hauteur);
+	        $pdf->write(10, $adrfact->tel);
+		 	
 			$adressecl = new Venteadr();
 			$adressecl->charger($commande->adrlivr);
 	
@@ -217,7 +215,13 @@
 			$pdf->SetFont('Arial','',8);
 			$pdf->SetXY(122,$hauteur);	
   			$pdf->write(10, $paysdesc->titre);
-  		
+ 
+	        $hauteur+=3;
+
+	        $pdf->SetFont('Arial','',8);
+	        $pdf->SetXY(122,$hauteur);
+	        $pdf->write(10, $adrfact->tel);
+	 		
 			$pdf->SetFont('Arial','',8);
 			$pdf->SetXY(74,72);	
   			$pdf->write(10,$commande->livraison);

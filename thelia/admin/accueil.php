@@ -123,6 +123,9 @@
 	
 	$urlsite = new Variable();
 	$urlsite->charger("urlsite");	
+
+	$rsspass = new Variable();
+	$rsspass->charger("rsspass");	
 	
 ?>
 <body>
@@ -175,10 +178,10 @@
    <br />
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
      <tr>
-       <td height="30" align="left" valign="middle" class="titre_cellule">CONNEXION</td>
+       <td height="30" align="left" valign="middle" class="titre_cellule">SUIVI</td>
      </tr>
      <tr>
-       <td height="30" align="left" valign="middle" class="cellule_sombre"><a href="#" class="txt_vert_11">Administration</a></td>
+       <td height="30" align="left" valign="middle" class="cellule_sombre"><a href="<?php echo($rsspass->valeur); ?>" class="txt_vert_11">Fil RSS des commandes</a></td>
      </tr>
      <tr>
        <td height="30" align="left" valign="middle" class="cellule_claire"><a href="<?php echo($urlsite->valeur); ?>" class="txt_vert_11">Site en ligne </a></td>
