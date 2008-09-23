@@ -12,6 +12,9 @@
 	Simplification de l'installation de THELIA
 	Pensez à mettre à jour les plugins expeditor, multifact (si vous les utilisez) en prenant celui fourni dans l'archive de la 1.3.8
 	Mettez à jour client/pdf/modeles/facture.php et client/pdf/modeles/livraison.php
+	Correction d'un soucis sur la récupération du N° intracommunautaire
+	Correction de l'ecotaxe HT
+	Correction des subsitutions du PluginsPaiements
 	
 	Cette mise à jour contient une modification de la base de donnée. Après remplacement des fichiers, connectez-vous à
 	http://www.votrethelia.com/install/

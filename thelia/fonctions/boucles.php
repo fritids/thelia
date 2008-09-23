@@ -1058,7 +1058,7 @@
 			$temp = str_replace("#PRIX", "$prix", $temp);
 			$temp = str_replace("#PROMO", "$row->promo", $temp);	
 			$temp = str_replace("#TVA", "$row->tva", $temp);	
-			$temp = str_replace("#ECOTAXEHT", "$row->ecotaxeht", $temp);	
+			$temp = str_replace("#ECOTAXEHT", "$ecotaxeht", $temp);	
 			$temp = str_replace("#ECOTAXE", "$row->ecotaxe", $temp);	
 			$temp = str_replace("#STOCK", "$row->stock", $temp);	
 			$temp = str_replace("#POURCENTAGE", "$pourcentage", $temp);	
@@ -1114,7 +1114,7 @@
 			if(!$deb) $deb=0;
 
 			if($page) $_SESSION['navig']->page = $page;
-			if($pagesess == 1) $page =  $_SESSION['navig']->page;
+			if(isset($pagesess) && $pagesess == 1) $page =  $_SESSION['navig']->page;
 
 			if(!$page ||  $page==1 ) $page=0; 
 
@@ -1730,6 +1730,7 @@
 		if($id!="")  $search.=" and id=\"$id\"";
 		if($zone!="")  $search.=" and zone=\"$zone\"";
 		if($zdefinie!="") $search.=" and zone!=\"-1\"";
+		if($default!="") $search.=" and default=\"1\"";
 	
 		if($_SESSION['navig']->lang == "") $lang=1; else $lang=$_SESSION['navig']->lang ;
 		
@@ -1764,7 +1765,7 @@
 				$temp = str_replace("#SELECTED", "selected=\"selected\"", $temp);
 			if($select !="" && $select == $row->pays) $temp = str_replace("#SELECTED", "selected=\"selected\"", $temp);	
 			else $temp = str_replace("#SELECTED", "", $temp);
-			if($default == "1" && $pays->default == "1") $temp = str_replace("#DEFAULT", "selected=\"selected\"", $temp);	
+			if($pays->default == "1") $temp = str_replace("#DEFAULT", "selected=\"selected\"", $temp);	
 			else $temp = str_replace("#DEFAULT", "", $temp);
 			$res .= $temp;
 		}

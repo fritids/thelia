@@ -181,7 +181,7 @@
        <td height="30" align="left" valign="middle" class="titre_cellule">SUIVI</td>
      </tr>
      <tr>
-       <td height="30" align="left" valign="middle" class="cellule_sombre"><a href="<?php echo($rsspass->valeur); ?>" class="txt_vert_11">Fil RSS des commandes</a></td>
+       <td height="30" align="left" valign="middle" class="cellule_sombre"><a href="<?php echo($urlsite->valeur); ?>/client/rss/cmd.php?rsspass=<?php echo($rsspass->valeur); ?>" class="txt_vert_11">Fil RSS des commandes</a></td>
      </tr>
      <tr>
        <td height="30" align="left" valign="middle" class="cellule_claire"><a href="<?php echo($urlsite->valeur); ?>" class="txt_vert_11">Site en ligne </a></td>

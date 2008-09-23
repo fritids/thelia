@@ -29,6 +29,10 @@
 	$var->valeur=$_POST['urlsite'];
 	$var->maj();
 
+    $var->charger("rsspass");
+    $var->valeur=genpass(40);
+    $var->maj();
+
 	$_SESSION['serveur']="";
 	$_SESSION['utilisateur']="";
 	$_SESSION['motdepasse']="";

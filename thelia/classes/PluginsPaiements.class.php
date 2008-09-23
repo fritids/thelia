@@ -184,10 +184,10 @@
 			$pays = new Paysdesc();
 			$pays->charger($adresse->pays);
 									
-			$corps = str_replace("__CLIENT_REF__", $adresse->ref, $corps);
+			$corps = str_replace("__CLIENT_REF__", $client->ref, $corps);
 			$corps = str_replace("__CLIENT_RAISON__",$raison, $corps);
-			$corps = str_replace("__CLIENT_ENTREPRISE__", $adresse->entreprise, $corps);
-			$corps = str_replace("__CLIENT_SIRET__", $adresse->siret, $corps);
+			$corps = str_replace("__CLIENT_ENTREPRISE__", $client->entreprise, $corps);
+			$corps = str_replace("__CLIENT_SIRET__", $client->siret, $corps);
 			$corps = str_replace("__CLIENT_FACTNOM__", $adresse->nom, $corps);
 			$corps = str_replace("__CLIENT_FACTPRENOM__", $adresse->prenom, $corps);
 			$corps = str_replace("__CLIENT_ADRESSE1__", $adresse->adresse1, $corps);

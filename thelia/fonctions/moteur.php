@@ -128,7 +128,7 @@ function analyse($res){
 
 	if(!isset($_REQUEST['entreprise'])) $entreprise=""; else $entreprise=$_REQUEST['entreprise'];	
 	if(!isset($_REQUEST['siret'])) $siret=""; else $siret=$_REQUEST['siret'];
-	if(!isset($_REQUEST['intracom'])) $siret=""; else $siret=$_REQUEST['intracom'];
+	if(!isset($_REQUEST['intracom'])) $intracom=""; else $intracom=$_REQUEST['intracom'];
 	if(!isset($_REQUEST['parrain'])) $parrain=""; else $parrain=$_REQUEST['parrain'];
 	if(!isset($_REQUEST['motdepasse1'])) $motdepasse1=""; else $motdepasse1=$_REQUEST['motdepasse1'];	
 	if(!isset($_REQUEST['motdepasse2'])) $motdepasse2=""; else $motdepasse2=$_REQUEST['motdepasse2'];
