@@ -1984,7 +1984,7 @@ INSERT INTO `variable` VALUES (4, 'tva', '19.6', '0', '0');
 INSERT INTO `variable` VALUES (5, 'style_chem', '/style_editeur.css', '0', '0');
 INSERT INTO `variable` VALUES (6, 'rsspass', '', '0', '0');
 INSERT INTO `variable` VALUES (7, 'rssadmin', 'http://www.octolys.fr/rss.php', '0', '0');
-INSERT INTO `variable` VALUES (8, 'version', '137', '1', '1');
+INSERT INTO `variable` VALUES (8, 'version', '138', '1', '1');
 
 -- --------------------------------------------------------
 

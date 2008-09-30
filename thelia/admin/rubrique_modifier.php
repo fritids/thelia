@@ -348,12 +348,6 @@
         <textarea name="postscriptum" id="postscriptum" cols="40" rows="2" class="form"><?php echo($rubriquedesc->postscriptum); ?></textarea>
       </td>
     </tr>
-	 <tr>
-      <td width="250" height="30" class="titre_cellule">LIEN :</td>
-      <td width="440" class="cellule_claire">
-        <input name="lien" id="lien" type="texte" class="form" value="<?php echo($rubrique->lien); ?>"/>
-      </td>
-    </tr>
 
    <?php
 	if($id != ""){
