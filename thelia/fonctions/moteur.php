@@ -27,6 +27,8 @@
 
 	/* Moteur */
 	
+	include_once("admin/config.php");
+	
 	include_once("classes/Navigation.class.php");
 	include_once("classes/Modules.class.php");
 
@@ -273,6 +275,7 @@ function analyse($res){
 	if($reset){
             $_SESSION["navig"]->commande = new Commande();
             $_SESSION["navig"]->panier = new Panier();	
+			$_SESSION['navig']->promo = new Promo();
 	}
 
 ?>

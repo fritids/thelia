@@ -48,9 +48,10 @@
 		
 		function getTitre(){
 			
-			if($_SESSION['navig']->lang == "")
-				$lang="1";
-			else $lang=$_SESSION['navig']->lang;
+            if(! isset($_SESSION['navig']->lang))
+                $lang="1";
+            else if(isset($_SESSION['navig']->lang))
+                $lang=$_SESSION['navig']->lang;
 
 			$modulesdesc = new Modulesdesc();
 			$modulesdesc->charger($this->nom_plugin, $lang);
@@ -61,9 +62,10 @@
 				
 		function getChapo(){
 
-			if($_SESSION['navig']->lang == "")
-					$lang="1";
-				else $lang=$_SESSION['navig']->lang;
+            if(! isset($_SESSION['navig']->lang))
+                $lang="1";
+            else if(isset($_SESSION['navig']->lang))
+                $lang=$_SESSION['navig']->lang;
 		
 				$modulesdesc = new Modulesdesc();
 				$modulesdesc->charger($this->nom_plugin, $lang);
@@ -73,9 +75,10 @@
 		
 		function getDescription(){
 
-			if($_SESSION['navig']->lang == "")
-				$lang="1";
-			else $lang=$_SESSION['navig']->lang;
+            if(! isset($_SESSION['navig']->lang))
+                $lang="1";
+            else if(isset($_SESSION['navig']->lang))
+                $lang=$_SESSION['navig']->lang;
 			
 			$modulesdesc = new Modulesdesc();
 			$modulesdesc->charger($this->nom_plugin, $lang);

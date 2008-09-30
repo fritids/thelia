@@ -72,7 +72,10 @@
 				$title = strip_tags($item['title']);
 				$description = strip_tags($item['description']);
 				$author = $item['dc']['creator'];
-				$nomplugin = $item['dc']['nomplugin'];
+				if(isset($item['dc']['nomplugin']))
+					$nomplugin = $item['dc']['nomplugin'];
+				else $nomplugin = "";
+				
 				$link = $item['link']; 
 				
 				$tab[$i] = new Contrib();

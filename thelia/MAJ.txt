@@ -3,6 +3,7 @@ Pour mettre à jour votre version de THELIA, il suffit d'écraser vos répertoires 
 - admin
 - classes
 - fonctions
+- install
 - lib
 
 Par ceux de cette nouvelle archive.

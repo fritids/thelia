@@ -72,9 +72,10 @@
 	
 		if(!($i%2)) $fond="cellule_sombre";
   		else $fond="cellule_claire";
-  		$i++;
 
 		if(file_exists("../client/plugins/" .$row->nom . "/" . $row->nom. "_admin.php")){
+				$i++;
+				
 				$nom_module = $row->nom;
 				$nom_module[0] = strtoupper($nom_module[0]);
 				

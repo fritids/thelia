@@ -66,10 +66,15 @@
 				 		<div class="descriptionProduit">
 						#DESCRIPTION
 						</div>
+						<div class="descriptionProduit">
+						Stock disponible : #STOCK
+						</div>
 				 		<div class="prixProduit">
 						#PRIX &euro;
 						</div>
-				 	<a href="panier.php?action=ajouter&amp;ref=#REF" class="LIEN_commander">Ajouter</a>
+						<THELIA_stock type="PRODUIT" ref="#REF" stockmini="1">
+					 		<a href="#PANIER" class="LIEN_commander">Ajouter au panier</a>
+						</THELIA_stock>
 					</div> 
 				</div>
 			</THELIA_PROD>

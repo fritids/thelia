@@ -1092,7 +1092,7 @@
 
 		
 	function boucleContenu($texte, $args, $type=0){
-			global $page, $totbloc, $id_contenu;
+			global $page, $totbloc, $id_contenu, $pagesess;
 			
 			// récupération des arguments
 			$dossier = lireTag($args, "dossier");
@@ -1805,7 +1805,9 @@
 		$tmpcaracteristiquedesc = new Caracteristiquedesc();
 		
 		
-		$query = "select DISTINCT(caracteristique) from $rubcaracteristique->table where 1 $search";
+        $order = "order by $tmpcaracteristique->table.classement";
+
+        $query = "select DISTINCT(caracteristique) from $rubcaracteristique->table,$tmpcaracteristique->table  where 1 $search and $rubcaracteristique->table.caracteristique=$tmpcaracteristique->table.id $order";
 		if($id != "") $query = "select * from $tmpcaracteristique->table where 1 $search";
 		$resul = mysql_query($query, $rubcaracteristique->link);
 	
@@ -1851,6 +1853,7 @@
 		$stockmini = lireTag($args, "stockmini");
 		$courante = lireTag($args, "courante");
 		$rubrique = lireTag($args, "rubrique");
+		$classement = lireTag($args, "classement");
 		
 		$deb = lireTag($args, "deb");
 		$num = lireTag($args, "num");
@@ -1859,7 +1862,6 @@
 		if($id == "")
 			$id = lireTag($args, "id");
 			
-		$classement = lireTag($args, "classement");
 		
 		$idsave = $id;
 		$liste="";
@@ -1880,7 +1882,7 @@
 		if($id !="") $search.=" and id=\"$id\"";
 		if($classement == "alpha") $order="order by titre";
 		else if($classement == "alphainv") $order="order by titre desc";
-
+		
 		if($deb =="")
 			$deb = 0;
 		
@@ -2225,7 +2227,10 @@
 		  	$statutdesc->charger($row->statut, $_SESSION['navig']->lang);
 
 			$temp = str_replace("#ID", "$row->id", $texte);
-			$temp = str_replace("#ADRESSE", "$row->adresse", $temp);
+			$temp = str_replace("#ADRESSE", "$row->adrfact", $temp);
+			$temp = str_replace("#ADRFACT", "$row->adrfact", $temp);
+			$temp = str_replace("#ADRLIVR", "$row->adrlivr", $temp);
+			
 			if($jour_livraison !="00")
 				$temp = str_replace("#DATELIVRAISON", $jour_livraison . "/" . $mois_livraison . "/" . $annee_livraison, $temp);
 			else

@@ -606,7 +606,7 @@
     <tr>
       <td height="30" class="titre_cellule">EN LIGNE </td>
       <td class="cellule_sombre">
-        <input name="ligne" id="ligne" type="checkbox" class="form" <?php if($produit->ligne) echo "checked"; ?> />
+        <input name="ligne" id="ligne" type="checkbox" class="form" <?php if($produit->ligne || $produit->ligne == "") echo "checked"; ?> />
         </span></td>
     </tr>
 	 <tr>
@@ -631,7 +631,7 @@
 	 <tr>
       <td height="30" class="titre_cellule">STOCK </td>
       <td class="cellule_sombre">
-        <input type="text" name="stock" id="stock" value="<?php echo($produit->stock); ?>" />
+        <input type="text" name="stock" id="stock" value="<?php if($produit->stock != "") echo($produit->stock); else echo "1"; ?>" />
         </span></td>
     </tr>        
    

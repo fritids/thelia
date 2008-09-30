@@ -122,7 +122,7 @@ pourcentage
      <tr>
        <td height="30" class="titre_cellule">ACTIF</td>
        <td class="cellule_claire">
-         Oui <input name="utilise" type="radio" class="form" value="1" <?php echo($utiliseo); ?> /> &nbsp; Non <input name="utilise" type="radio" class="form" value="0" <?php echo($utilisen); ?> />
+         Oui <input name="utilise" type="radio" class="form" value="0" <?php echo($utiliseo); ?> /> &nbsp; Non <input name="utilise" type="radio" class="form" value="1" <?php echo($utilisen); ?> />
        </span></td>
      </tr>
      <tr>

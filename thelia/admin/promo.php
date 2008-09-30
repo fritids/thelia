@@ -172,7 +172,7 @@
     <td height="30">&nbsp;<?php if($row->type == 1) { ?> S <?php } else { ?> P <?php } ?></td>
 	<td height="30">&nbsp;<?php echo($row->valeur); ?></td>
 	<td height="30">&nbsp;<?php echo($row->mini); ?></td>
-	<td height="30">&nbsp;<?php if($row-> utilise == 1) { ?> OUI <?php } else { ?> NON <?php } ?></td>
+	<td height="30">&nbsp;<?php if($row-> utilise == 0) { ?> OUI <?php } else { ?> NON <?php } ?></td>
     <td height="30">&nbsp;<?php if($row-> illimite == 1) { ?> OUI <?php } else { ?> NON <?php } ?></td>
 	<td height="30">&nbsp;<?php if($row->datefin != "0000-00-00 00:00:00") echo $jour . "/" . $mois . "/" . $annee; else echo "//"; ?></td>
     <td height="30"><a href="promo_modifier.php?id=<?php echo($row->id); ?>" class="txt_vert_11">Modifier</a> <a href="promo_modifier.php?id=<?php echo($row->id); ?>" class="txt_vert_11"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>

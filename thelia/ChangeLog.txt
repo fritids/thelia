@@ -15,6 +15,8 @@
 	Correction d'un soucis sur la récupération du N° intracommunautaire
 	Correction de l'ecotaxe HT
 	Correction des subsitutions du PluginsPaiements
+	Boucle commande : correction de la sortie #ADRESSE
+	Classement manuel pour les caractéristiques
 	
 	Cette mise à jour contient une modification de la base de donnée. Après remplacement des fichiers, connectez-vous à
 	http://www.votrethelia.com/install/

@@ -224,9 +224,9 @@ function supprimer(id){
 <?php
 	$lien_voir = "";
 	
-	if($voir_annule != "")
+	if(isset($voir_annule) && $voir_annule != "")
 		$lien_voir .= "&voir_annule=1";
-	if($voir_envoye != "")
+	if(isset($voir_envoye) && $voir_envoye != "")
 		$lien_voir .= "&voir_envoye=1";
 ?>
    </table>
