@@ -315,6 +315,8 @@
 		$pr = new Produit();
 		$prdesc = new Produitdesc();
 		$rudesc = new Rubriquedesc();
+		$contenudesc = new Contenudesc();
+		$dossierdesc = new Dossierdesc();
 		
 		$compt=1;
 		
@@ -376,9 +378,9 @@
 
 		  		$nomcache = "client/cache/" . "dossier" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
 				
-				$rudesc->charger($image->dossier);
-				$temp = str_replace("#RUBRIQUE", $image->dossier, $temp);
-				$temp = str_replace("#RUBTITRE", $rudesc->titre, $temp);
+				$dosdesc->charger($image->dossier);
+				$temp = str_replace("#DOSSIER", $image->dossier, $temp);
+				$temp = str_replace("#DOSTITRE", $dosdesc->titre, $temp);
 			
 				if(!$largeur && !$hauteur) 
 						$temp = str_replace("#IMAGE", "client/gfx/photos/dossier/" . $image->fichier, $temp);
@@ -396,10 +398,8 @@
 			
 		  			$nomcache = "client/cache/" . "contenu" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
 
-					$prdesc->charger($image->contenu);
-					$temp = str_replace("#PRODTITRE", $prdesc->titre, $temp);
-					$temp = str_replace("#PRODUIT", $image->contenu, $temp);
-					$temp = str_replace("#CONTTITRE", $prdesc->titre, $temp);
+					$ctdesc->charger($image->contenu);
+					$temp = str_replace("#CONTTITRE", $ctdesc->titre, $temp);
 					$temp = str_replace("#CONTENU", $image->contenu, $temp);					
 					if(!$largeur && !$hauteur) 
 							$temp = str_replace("#IMAGE", "client/gfx/photos/contenu/" . $image->fichier, $temp);

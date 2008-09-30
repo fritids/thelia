@@ -1,5 +1,5 @@
 <?php
-	include_once("../classes/Variable.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Variable.class.php");
 	
 	$var = new Variable();
 	

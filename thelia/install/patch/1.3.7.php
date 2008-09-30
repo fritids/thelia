@@ -1,10 +1,10 @@
 <?php
-	include_once("../classes/Cnx.class.php");
-	include_once("../classes/Variable.class.php");
-	include_once("../classes/Adresse.class.php");
-	include_once("../classes/Venteadr.class.php");
-	include_once("../classes/Commande.class.php");
-	include_once("../classes/Client.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Cnx.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Variable.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Adresse.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Venteadr.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Commande.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Client.class.php");
 	
 	$cnx = new Cnx();
 	

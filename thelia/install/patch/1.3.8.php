@@ -1,10 +1,10 @@
 <?php
-	include_once("../classes/Cnx.class.php");
-	include_once("../classes/Rubrique.class.php");
-	include_once("../classes/Produit.class.php");
-	include_once("../classes/Variable.class.php");
-	include_once("../classes/Message.class.php");
-	include_once("../classes/Messagedesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Cnx.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Rubrique.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Produit.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Variable.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Message.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Messagedesc.class.php");
 
 	$rub = new Rubrique();
 	$query_cnx = "select * from $rub->table";
