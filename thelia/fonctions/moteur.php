@@ -27,7 +27,7 @@
 
 	/* Moteur */
 	
-	include_once("admin/config.php");
+	error_reporting(E_ALL ^ E_NOTICE);
 	
 	include_once("classes/Navigation.class.php");
 	include_once("classes/Modules.class.php");

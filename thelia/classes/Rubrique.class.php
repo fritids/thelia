@@ -132,7 +132,24 @@
 		
 		}
 
+		function nbprod(){
+			$prod = new Produit();
+			$query = "select count(*) as nb from $prod->table where rubrique=\"" . $this->id . "\"";
+			$resul = mysql_query($query, $this->link);
+			
+			return mysql_result($resul, 0, "nb");
+		}
 		
+		function aenfant(){
+			
+			$query = "select count(*) as nb from $this->table where parent=\"" . $this->id . "\"";
+			$resul = mysql_query($query, $this->link);
+			if(mysql_result($resul, 0, "nb"))
+				return 1;
+			else
+				return 0;		
+		}
+	
 	}
 
 ?>

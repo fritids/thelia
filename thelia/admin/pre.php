@@ -27,6 +27,9 @@
 	foreach ($_POST as $key => $value) $$key = $value;
 	foreach ($_GET as $key => $value) $$key = $value;
 
+	error_reporting(E_ALL ^ E_NOTICE);
+
+	include_once(realpath(dirname(__FILE__)) . "/config.php");
 	include_once(realpath(dirname(__FILE__)) . "/../fonctions/divers.php");
 	
 

@@ -24,7 +24,6 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("config.php");
 	include_once("../classes/Racmodule.class.php");
 ?>
 <div id="entete">
