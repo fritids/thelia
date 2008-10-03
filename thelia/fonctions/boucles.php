@@ -2323,7 +2323,7 @@
 		$res="";
 		
 		if($id != "")
-			$search . "and id=\"$id\"";
+			$search .= "and id=\"$id\"";
 			
 		$modules = new Modules();
 	
