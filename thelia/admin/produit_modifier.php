@@ -202,7 +202,7 @@
    		$declinaisondesc->charger($row->declinaison);
 
    		
-   		$query2 = "select * from $declidisp->table where declinaison='$row->declinaison'";
+   		$query2 = "select * from $declidisp->table where declinaison='$row->declinaison' order by id";
    		$resul2 = mysql_query($query2);
    		$nbres = mysql_num_rows($resul2);
 		
