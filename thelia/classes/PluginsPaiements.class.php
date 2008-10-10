@@ -216,6 +216,7 @@
 				$temp = str_replace("__VENTEPROD_TITRE__", $row->titre, $cut[1]);
                 $temp =  str_replace("__VENTEPROD_REF__", $row->ref, $temp);
 				$temp =  str_replace("__VENTEPROD_QUANTITE__", $row->quantite, $temp);
+				$temp = str_replace("__VENTEPROD_CHAPO__", $row->chapo, $temp);
 				$temp =  str_replace("__VENTEPROD_PRIXU__", $row->prixu, $temp);
 				$res .= $temp;
 			
