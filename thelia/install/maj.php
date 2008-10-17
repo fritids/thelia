@@ -61,7 +61,7 @@
 				Mise à jour en cours ...<br /><br />
 				
 				<?php
-					include_once("../admin/config.php");
+					include_once("config.php");
 					include_once("../classes/Variable.class.php");
 
 					$var = new Variable();

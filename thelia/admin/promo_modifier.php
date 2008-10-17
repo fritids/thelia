@@ -54,7 +54,7 @@
 	$promo = new Promo();
 	$promo->charger_id($id);
 	
-	if($promo->utilise) $utiliseo = "checked=\"checked\"";
+	if(! $promo->utilise) $utiliseo = "checked=\"checked\"";
 	else $utilisen = "checked=\"checked\""; 
 
 	if($promo->illimite) $illimiteo = "checked=\"checked\"";

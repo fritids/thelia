@@ -55,6 +55,9 @@
 		
 		$total = round($total, 2);
 		$port = port();
+		if($port<0)
+			$port = 0;		
+		
 		$totcmdport = $total + $port;
 			
 		if($_SESSION['navig']->client->type) {

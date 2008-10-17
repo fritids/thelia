@@ -744,7 +744,7 @@
 			// preparation de la requete
 			
 			if($courant == "1") $search .= " and ref=\"$ref\"";
-			else if($courant == "0") $search .= " and ref!=\"$ref\"";
+			else if($courant == "0") $search .= " and ref<>\"$ref\"";
 			
 			if($exclusion!="") $search .= " and id not in($exclusion)";
 			if($exclurub!="") $search .= " and rubrique not in($exclurub)";
@@ -1467,6 +1467,9 @@
 			$prix = round($prix, 2);
 			
 			$port = port();
+			if($port<0)
+				$port = 0;
+				
 			$totcmdport = $total + $port;
 			
 			$totsansport = $_SESSION['navig']->panier->total();
@@ -1729,8 +1732,8 @@
 		// preparation de la requete
 		if($id!="")  $search.=" and id=\"$id\"";
 		if($zone!="")  $search.=" and zone=\"$zone\"";
-		if($zdefinie!="") $search.=" and zone!=\"-1\"";
-		if($default!="") $search.=" and default=\"1\"";
+		if($zdefinie!="") $search.=" and zone<>\"-1\"";
+		if($default!="") $search.=" and `default`=\"1\"";
 	
 		if($_SESSION['navig']->lang == "") $lang=1; else $lang=$_SESSION['navig']->lang ;
 		
@@ -2323,7 +2326,7 @@
 		$res="";
 		
 		if($id != "")
-			$search .= "and id=\"$id\"";
+			$search . "and id=\"$id\"";
 			
 		$modules = new Modules();
 	

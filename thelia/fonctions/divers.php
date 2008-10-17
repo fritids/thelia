@@ -102,6 +102,9 @@
 		
 		$prod = new Produit();
 		$prod->charger($ref);
+
+        $proddesc = new Produitdesc();
+        $proddesc->charger($prod->id, $_SESSION['navig']->lang);
 				
 		$rubfinal = $prod->rubrique;
 		$chem = chemin($rubfinal);
@@ -124,7 +127,7 @@
 		}
 				
 				
-		$listrub .= "_" . $prod->ref . ".html";		
+        $listrub .= $proddesc->titre . "__" . $prod->ref . ".html";             
 		
 		return eregurl($listrub); 
 
@@ -264,22 +267,25 @@
 	// remplacement des caractères spéciaux + accents
 	function ereg_caracspec($chaine){
 		
-		$avant = "àáâãäåòóôõöøèéêëçìíîïùúûüÿñÁÂÀÅÃÄÇÉÊÈËÓÔÒØÕÖÚÛÙÜ";  
-  		$apres = "aaaaaaooooooeeeeciiiiuuuuynaaaaaaceeeeoooooouuuu"; 
-		
+		$avant = "àáâãäåòóôõöøèéêëçìíîïùúûüÿñÁÂÀÅÃÄÇÉÊÈËÓÔÒØÕÖÚÛÙÜ:;,";  
+  		$apres = "aaaaaaooooooeeeeciiiiuuuuynaaaaaaceeeeoooooouuuu---"; 
+
 		$chaine = strtolower($chaine);
  		$chaine = strtr($chaine, $avant, $apres);
-  
+ 
+   		$chaine = str_replace("(", "", $chaine);
+  		$chaine = str_replace(")", "", $chaine); 
   		$chaine = str_replace("/", "-", $chaine);
 		$chaine = str_replace(" ", "-", $chaine);
 		$chaine = str_replace(chr(39), "-", $chaine);
+		$chaine = str_replace(chr(234), "e", $chaine);
 		$chaine = str_replace("'", "-", $chaine);
 		$chaine = str_replace("&", "-", $chaine);
-		$chaine = str_replace("?", "", $chaine);	
+		$chaine = str_replace("?", "", $chaine);
+		$chaine = str_replace("*", "-", $chaine);
 		$chaine = str_replace(".", "", $chaine);	
 		$chaine = str_replace("!", "", $chaine);	
 		$chaine = str_replace("+", "-", $chaine);	
-		$chaine = str_replace(",", "-", $chaine);
 		$chaine = preg_replace('/-+/', '-', $chaine);	
 		
 		return $chaine;
