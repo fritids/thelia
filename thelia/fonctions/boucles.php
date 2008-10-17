@@ -2320,7 +2320,6 @@
 		// récupération des arguments
 
 		$id = lireTag($args, "id");		
-
 		
 		$search="";
 		$res="";
