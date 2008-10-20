@@ -38,6 +38,8 @@
 </head>
 
 <body>
+<div id="wrapper">
+<div id="subwrapper">
 
 <?php
 	$menu="plugins";
@@ -48,9 +50,9 @@
    <p class="titre_rubrique">Liste des modules</p>
      <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Liste des modules</a>              
     </p>
-     <table width="710" border="0" cellpadding="5" cellspacing="0">
+     <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES MODULES </td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES MODULES </td>
      </tr>
    </table>
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
@@ -106,6 +108,8 @@
  }
 ?>  
   </table>
+</div>
+</div>
 </div>
 </body>
 </html>

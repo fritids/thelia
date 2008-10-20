@@ -27,6 +27,9 @@
 
 	include_once(realpath(dirname(__FILE__)) . "/../classes/Modules.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../classes/Rubrique.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../classes/Dossier.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../classes/Contenu.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../classes/Produit.class.php");
 
 	// lecture des arguments
 	function lireTag($ligne, $tag){

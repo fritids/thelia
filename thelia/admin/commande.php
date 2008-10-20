@@ -140,6 +140,9 @@ function supprimer(id){
 
 <body>
 
+<div id="wrapper">
+<div id="subwrapper">
+
 <?php
 	$menu="commande";
 	include_once("entete.php");
@@ -150,14 +153,14 @@ function supprimer(id){
    <p class="titre_rubrique">Gestion des commandes</p>
     <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Gestion des commandes</a>              
     </p>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="450" height="30" class="titre_cellule_tres_sombre"><a href="commande.php" class="lien07">LISTE DES COMMANDES</a></td>
        <td width="150" height="30" class="titre_cellule_tres_sombre"><a href="commande.php?voir_annule=1" class="lien07">Commandes annulées</a></td>
        <td width="150" height="30" class="titre_cellule_tres_sombre"><a href="commande.php?voir_envoye=1" class="lien07">Commandes envoyées</a></td>
      </tr>
    </table>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="110" height="30" class="titre_cellule">N&deg; DE COMMANDE </td>
        <td width="110" class="titre_cellule"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($page); ?>&classement=date" class="lien_titre_cellule">DATE &amp; HEURE</a> </td>
@@ -244,6 +247,7 @@ function supprimer(id){
                     
      <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pagesuiv); ?><?php echo $lien_voir; ?>" class="txt_vert_11">Page suivante</a></p>
 </div> 
-
+</div>
+</div>
 </body>
 </html>

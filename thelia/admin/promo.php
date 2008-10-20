@@ -113,10 +113,7 @@
 
 
 ?>
-<?php
-	$menu="paiement";
-	include_once("entete.php");
-?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -125,17 +122,23 @@
 <link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<div id="wrapper">
+<div id="subwrapper">
+<?php
+	$menu="paiement";
+	include_once("entete.php");
+?>
 
 <div id="contenu_int"> 
    <p class="titre_rubrique">Gestion des codes promos </p>
 <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="paiement.php" class="lien04">Gestion du paiement</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Gestion des promotions</a>              
     </p>
-      <table width="710" border="0" cellpadding="5" cellspacing="0">
+      <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES CODES PROMOS </td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES CODES PROMOS </td>
      </tr>
    </table>
-   <table width="710" border="0" cellpadding="0" cellspacing="0" >
+   <table width="100%" border="0" cellpadding="0" cellspacing="0" >
   <tr>
     <td height="30" class="titre_cellule">CODE</td>
     <td height="30" class="titre_cellule">TYPE</td>
@@ -186,12 +189,12 @@
   
 </table>
 
-     <table width="710" border="0" cellpadding="5" cellspacing="0">
+     <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="5"></td>
     </tr>
     <tr>
-      <td width="600" height="30" class="titre_cellule_tres_sombre2">
+      <td width="100%" height="30" class="titre_cellule_tres_sombre2">
 	   <a href="promo_modifier.php" class="lien_titre_cellule">Ajouter un code</a></td>
     </tr>
   </table>
@@ -210,6 +213,7 @@
    
     <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pagesuiv); ?>" class="txt_vert_11">Page suivante</a></p>
 </div> 
-
+</div>
+</div>
 </body>
 </html>

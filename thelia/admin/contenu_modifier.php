@@ -182,6 +182,8 @@
 </head>
 
 <body>
+<div id="wrapper">
+<div id="subwrapper">
 
 <?php
 	$menu="contenu";
@@ -246,9 +248,9 @@
 	<input type="hidden" name="id" value="<?php echo($id); ?>" /> 
  	<input type="hidden" name="lang" value="<?php echo($lang); ?>" /> 
  	<input type="hidden" name="dossier" value="<?php echo($dossier); ?>" /> 
-  <table width="710" border="0" cellpadding="5" cellspacing="0">
+  <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr>
-      <td width="600" height="30" class="titre_cellule_tres_sombre">Description g&eacute;n&eacute;rale du contenu &nbsp; 
+      <td width="100%" height="30" class="titre_cellule_tres_sombre">Description g&eacute;n&eacute;rale du contenu &nbsp; 
 							<?php
 								$langl = new Lang();
 								$query = "select * from $langl->table";
@@ -262,12 +264,12 @@
 						  <?php } ?> </td>
     </tr>
   </table>
-  <table width="710" border="0" cellpadding="5" cellspacing="0">
+  <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr><input type="submit" id="boutoncache" style="display: none">
       <td height="30" class="cellule_sombre2"><span class="sous_titre_dossier"><span class="geneva11Reg_3B4B5B"><a href="#" onclick="document.getElementById('boutoncache').click()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onclick="document.getElementById('boutoncache').click()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
     </tr>
   </table>  
-  <table width="710" border="0" cellpadding="5" cellspacing="0">
+  <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="30" class="titre_cellule">TITRE</td>
       <td class="cellule_claire"><input name="titre" id="titre" type="text" class="form" value="<?php echo($contenudesc->titre); ?>">
@@ -342,7 +344,7 @@
     <?php } ?>
   </table>
    
-  <table width="710" border="0" cellpadding="5" cellspacing="0">
+  <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr><input type="submit" id="boutoncache" style="display: none">
       <td height="30" class="cellule_sombre2"><span class="sous_titre_dossier"><span class="geneva11Reg_3B4B5B"><a href="#" onclick="document.getElementById('boutoncache').click()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onclick="document.getElementById('boutoncache').click()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
     </tr>
@@ -355,7 +357,7 @@
    </form>
 
 <?php if($id != ""){ ?>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="30" colspan="2" class="titre_cellule_tres_sombre">Informations sur le contenu </td>
     </tr>
@@ -370,6 +372,8 @@
   </table>
 <?php } ?>
 
+</div>
+</div>
 </div>
 </body>
 </html>

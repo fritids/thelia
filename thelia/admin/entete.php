@@ -27,221 +27,36 @@
 	include_once("../classes/Racmodule.class.php");
 ?>
 <div id="entete">
-	<img src="gfx/logo_thelia.gif" width="271" height="57" align="left" lowsrc="THELIA" />
+	<div id="logo">
+		<a href="accueil.php"><img src="gfx/thelia.jpg" alt="THELIA solution e-commerce" /></a>
+	
 	<h1>V <?php echo substr($version, 0, 1) . "." . substr($version, 1, 1) . "." . substr($version, 2, 1) ?></h1>
-</div>
+	</div>
   
 <div id="telecommande"> 
-  <table width="248" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td align="left" valign="top"><img src="gfx/telecommande/header_telecommande.gif" width="248" height="48" /></td>
-    </tr>
-    <tr>
-      <td align="center" valign="top" background="gfx/telecommande/fond_menu.gif"><table width="170"  border="0" align="center" cellpadding="0" cellspacing="0">
-
-<!---------------------------------------------------------------------------------------------------------------------------->
-	<?php if($menu != "accueil") { ?>
-
-          <tr>
-            <td height="18" align="left" valign="middle"><a href="accueil.php" class="lien04">Accueil</a></td>
-          </tr>
-    <?php } else { ?>             
-        <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu"> Accueil </td>
-        </tr>  
-     <?php } ?>    
-               
-<!---------------------------------------------------------------------------------------------------------------------------->
-
-
-
-<!---------------------------------------------------------------------------------------------------------------------------->
-
-	<?php if($menu != "client") { ?>
-          <tr>
-            <td height="18" align="left" valign="middle"><a href="client.php" class="lien04">Gestion des clients</a></td>
-          </tr>
-    <?php } else { ?>      
-        <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu"><a href="client.php" class="selection_menul">Gestion des clients</a></td>
-        </tr>
-    <?php } ?>    
-<!---------------------------------------------------------------------------------------------------------------------------->
-
-
-<!---------------------------------------------------------------------------------------------------------------------------->
-	<?php if($menu != "commande") { ?>
-          <tr>
-            <td height="18" align="left" valign="middle"><a href="commande.php" class="lien04">Gestion des commandes</a></td>
-          </tr>
-    <?php } else { ?>      
-        <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu"><a href="commande.php" class="selection_menul">Gestion des commandes</a></td>
-        </tr>
-    <?php } ?>    
+  
+   	<div id="menuGeneral">
+   		<ul id="menu">
+	        <li><a href="accueil.php" <?php if($menu == "accueil") { ?>class="selected"<?php } ?>>Accueil</a></li>		
+	        <li><a href="client.php" <?php if($menu == "client") { ?>class="selected"<?php } ?>>Clients</a></li>
+            <li><a href="commande.php" <?php if($menu == "commande") { ?>class="selected"<?php } ?>>Commandes</a></li>
+            <li><a href="parcourir.php" <?php if($menu == "catalogue") { ?>class="selected"<?php } ?>>Catalogue </a></li>
+            <li><a href="listdos.php" <?php if($menu == "contenu") { ?>class="selected"<?php } ?>>Contenu</a></li>
+            <li><a href="promo.php" <?php if($menu == "paiement") { ?>class="selected"<?php } ?>>Codes promos</a></li>
+            <li><a href="configuration.php" <?php if($menu == "configuration") { ?>class="selected"<?php } ?>>Configuration</a></li>
+			<li><a href="module_liste.php" <?php if($menu == "plugins") { ?>class="selected"<?php } ?>>Modules</a></li>
+            <li><a href="#"><input type="text" name="motcle" value="Rechercher ..." onClick="this.value=''" size=14" /></a></li>
+        </ul>
         
-<!---------------------------------------------------------------------------------------------------------------------------->
+        		<div id="globalSearch">
+        			<form action="recherche.php" method="post">
 
-<!---------------------------------------------------------------------------------------------------------------------------->
-<?php /*
-	<?php if($menu != "devis") { ?>
+	  				</form>
+      			</div>
 
-          <tr>
-            <td height="18" align="left" valign="middle"><a href="#" class="lien04">Gestion des devis </a></td>
-          </tr>
-    <?php } else { ?>      
-          
-        <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu">Gestion des devis </td>
-        </tr>
-    <?php } ?>    
-*/?>
-<!---------------------------------------------------------------------------------------------------------------------------->
-        
-	<?php if($menu != "catalogue") { ?>
-        
-          <tr>
-            <td height="18" align="left" valign="middle"><a href="catalogue.php" class="lien04">Gestion du catalogue </a></td>
-          </tr>
-    <?php } else { ?>      
+			</div>
+		</div>
 
-        <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu"><a href="catalogue.php" class="selection_menul">Gestion du catalogue</a></td>
-        </tr>          
-    <?php } ?>    
-
-<!---------------------------------------------------------------------------------------------------------------------------->
-<!---------------------------------------------------------------------------------------------------------------------------->
-   
-        
-	<?php if($menu != "contenu") { ?>
-        
-          <tr>
-            <td height="18" align="left" valign="middle"><a href="listdos.php" class="lien04">Gestion du contenu</a></td>
-          </tr>
-    <?php } else { ?>      
-
-        <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu"><a href="listdos.php" class="selection_menul">Gestion du contenu</a></td>
-        </tr>          
-    <?php } ?>    
-
-<!---------------------------------------------------------------------------------------------------------------------------->
-<!---------------------------------------------------------------------------------------------------------------------------->
-	<?php if($menu != "paiement") { ?>
-
-          <tr>
-            <td height="18" align="left" valign="middle"><a href="paiement.php" class="lien04">Gestion du paiement </a></td>
-          </tr>
-    <?php } else { ?>      
-
-        <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu"><a href="paiement.php" class="selection_menul">Gestion du paiement</a></td>
-        </tr>          
-    <?php } ?>    
-
-<!---------------------------------------------------------------------------------------------------------------------------->
-<!---------------------------------------------------------------------------------------------------------------------------->
-	<?php if($menu != "livraisons") { ?>
-
-          <tr>
-            <td height="18" align="left" valign="middle"><a href="gestlivraison.php" class="lien04">Gestion des livraisons </a></td>
-          </tr>
-    <?php } else { ?>      
-
-        <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu"><a href="gestlivraison.php" class="selection_menul">Gestion des livraisons</a></td>
-        </tr>          
-    <?php } ?>    
-
-<!---------------------------------------------------------------------------------------------------------------------------->
-<!---------------------------------------------------------------------------------------------------------------------------->
-	<?php if($menu != "configuration") { ?>
-	
-          <tr>
-            <td height="18" align="left" valign="middle"><a href="configuration.php" class="lien04">Configuration</a></td>
-          </tr>
-    <?php } else { ?>      
-
-        <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu"><a href="configuration.php" class="selection_menul">Configuration</a></td>
-        </tr>          
-    <?php } ?>    
-
-
-<?php 
-	$menu_rac = new Racmodule();
-	$query_menu = "select * from $menu_rac->table";
-	$resul_menu = mysql_query($query_menu, $menu_rac->link);
-	while($row_menu = mysql_fetch_object($resul_menu)){
-?>
-<!---------------------------------------------------------------------------------------------------------------------------->
-	<?php if($_GET['nom'] != $row_menu->module) { ?>
-	
-          <tr>
-            <td height="18" align="left" valign="middle"><a href="module.php?nom=<?php echo $row_menu->module; ?>" class="lien04"><?php echo $row_menu->module; ?></a></td>
-          </tr>
-    <?php } else {
-			$menu = "";
-	 ?>      
-
-        <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu"><a href="module.php?nom=<?php echo $row_menu->module; ?>" class="selection_menul"><?php echo $row_menu->module; ?></a></td>
-        </tr>          
-    <?php } ?>    
-
-
-<!--------------------------------------------------------------------------------------------------------------------------------->
-
-<?php
-	}
-?>
-
-<!--------------------------------------------------------------------------------------------------------------------------------->
-		<?php if($menu != "plugins") { ?>
-
-	          <tr>
-	            <td height="18" align="left" valign="middle"><a href="module_liste.php" class="lien04">Modules d'administration</a></td>
-	          </tr>
-	    <?php } else { ?>      
-
-	        <tr>
-	          <td height="18" align="left" valign="middle" class="selection_menu"><a href="module_liste.php" class="selection_menul">Modules d'administration</a></td>
-	        </tr>          
-	    <?php } ?>    
-<!--------------------------------------------------------------------------------------------------------------------------------->
-
-	
-
-	<?php if($menu != "fermer") { ?>
-
-          <tr>
-            <td height="18" align="left" valign="middle"><a href="index.php?action=deconnexion" class="lien04">Fermer la session </a></td>
-          </tr>
-    <?php } else { ?>      
-
-        <tr>
-          <td height="18" align="left" valign="middle" class="selection_menu">Fermer la session</td>
-        </tr>          
-    <?php } ?>    
-
-<!---------------------------------------------------------------------------------------------------------------------------->
-
-
-      </table></td>
-    </tr>
-    <tr>
-      <td align="left" valign="top"><img src="gfx/telecommande/footer_ecran_telecommande.gif" width="248" height="17" /></td>
-    </tr>
-	<tr>
-      <td height="20" align="center" valign="middle" background="gfx/telecommande/fond_telecommande.gif">
-	  <form action="recherche.php" method="post">
-	  <input type="text"  class="form" name="motcle" value="Rechercher ..." onclick="this.value=''"/>
-	  </form>
-	  </td>
-    </tr>
-    <tr>
-      <td align="left" valign="top"><img src="gfx/telecommande/footer_telecommande.gif" width="248" height="210" /></td>
-    </tr>
-  </table>
+  
 </div> 
+</div>

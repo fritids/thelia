@@ -37,6 +37,8 @@
 </head>
 
 <body>
+<div id="wrapper">
+<div id="subwrapper">
 
 <?php
 	$menu="configuration";
@@ -47,66 +49,102 @@
    <p class="titre_rubrique">Configuration </p>
      <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Configuration</a>              
     </p>
-     <table width="710" border="0" cellpadding="5" cellspacing="0">
+  
+
+   <table width="30%" class="espacetable" border="0" cellspacing="0" cellpadding="0">
+
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">VOTRE CHOIX</td>
+       <td colspan="2" height="30" class="titre_cellule_tres_sombre">INFORMATIONS PRODUITS</td>
      </tr>
-   </table>
-   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+     
+  <tr class="cellule_sombre">
+    <td width="21%" height="30">Les caractéristiques</td>
+
+    <td width="16%" height="30">
+      <div align="left"><a href="caracteristique.php" class="txt_vert_11">Poursuivre </a><a href="caracteristique.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    </td>
+  </tr>
+
+  <tr class="cellule_claire">
+    <td width="21%" height="30">Les déclinaisons</td>
+
+    <td width="16%" height="30">
+      <div align="left"><a href="declinaison.php" class="txt_vert_11">Poursuivre </a><a href="declinaison.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    </td>
+  </tr>
+</table>
+
+   <table class="espacetable" width="30%"  border="0" cellspacing="0" cellpadding="0">
+
+     <tr>
+       <td colspan="2" height="30" class="titre_cellule_tres_sombre">GESTION DU TRANSPORT</td>
+     </tr>
+     
 
   <tr class="cellule_sombre">
-    <td width="21%" height="30">Gestion des variables</td>
-    <td width="63%" height="30">
-      
-    </td>
+    <td width="31%" height="30">Gestion des transports</td>
+
     <td width="16%" height="30">
-      <div align="left"><a href="variable.php" class="txt_vert_11">Poursuivre </a><a href="variable.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+      <div align="left"><a href="transport.php" class="txt_vert_11">Poursuivre </a><a href="transport.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    </td>
+  </tr>
+
+  <tr class="cellule_claire">
+    <td width="31%" height="30">Gestion des zones</td>
+    <td width="16%" height="30">
+      <div align="left"><a href="zone.php" class="txt_vert_11">Poursuivre </a><a href="zone.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
     </td>
   </tr>
  
   </table>
-   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
 
+   <table width="30%" border="0" cellspacing="0" cellpadding="0">
+   <tr>
+      <td width="30%" colspan="2" height="30" class="titre_cellule_tres_sombre">SYSTEME</td>
+   </tr>
+     
+  <tr class="cellule_claire">
+    <td width="21%" height="30">Gestion des plugins</td>
+
+    <td width="16%" height="30">
+      <div align="left"><a href="plugins.php" class="txt_vert_11">Poursuivre </a><a href="plugins.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    </td>
+  </tr>
+
+  <tr class="cellule_sombre">
+    <td width="21%" height="30">Gestion des variables</td>
+
+    <td width="16%" height="30">
+      <div align="left"><a href="variable.php" class="txt_vert_11">Poursuivre </a><a href="variable.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    </td>
+  </tr>
+  
   <tr class="cellule_claire">
     <td width="21%" height="30">Gestion des messages</td>
-    <td width="63%" height="30">
-      
-    </td>
+
     <td width="16%" height="30">
       <div align="left"><a href="message.php" class="txt_vert_11">Poursuivre </a><a href="message.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
     </td>
   </tr>
 
-  </table>
-
-   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-
   <tr class="cellule_sombre">
     <td width="21%" height="30">Gestion des administrateurs</td>
-    <td width="63%" height="30">
-      
-    </td>
+
     <td width="16%" height="30">
       <div align="left"><a href="gestadm.php" class="txt_vert_11">Poursuivre </a><a href="gestadm.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
     </td>
-  </tr>
-
-  </table>
-
-   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-
+  </tr>  
   <tr class="cellule_claire">
-    <td width="21%" height="30">Gestion des plugins</td>
-    <td width="63%" height="30">
-      
-    </td>
-    <td width="16%" height="30">
-      <div align="left"><a href="plugins.php" class="txt_vert_11">Poursuivre </a><a href="plugins.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
-    </td>
-  </tr>
- 
-  </table>
+    <td width="31%" height="30">Gestion des devises</td>
 
+    <td width="16%" height="30">
+      <div align="left"><a href="devise.php" class="txt_vert_11">Poursuivre </a><a href="devise.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    </td>
+  </tr>    
+  </table>  
+  
+</div>
+</div>
 </div>
 </body>
 </html>

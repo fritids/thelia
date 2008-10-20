@@ -89,6 +89,8 @@
 ?>
 
 <body>
+<div id="wrapper">
+<div id="subwrapper">
 
 <?php
 	$menu="client";
@@ -100,12 +102,12 @@
       <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Gestion des clients</a>              
     </p>
 
-      <table width="710" border="0" cellpadding="5" cellspacing="0">
+      <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES CLIENTS </td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES CLIENTS </td>
      </tr>
    </table>
-   <table width="710" border="0" cellpadding="0" cellspacing="0" >
+   <table width="100%" border="0" cellpadding="0" cellspacing="0" >
   <tr>
     <td height="30" class="titre_cellule">N&deg; DU CLIENT</td>
     <td height="30" class="titre_cellule">SOCI&Eacute;T&Eacute;</td>
@@ -160,5 +162,7 @@
     <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pagesuiv); ?>" class="txt_vert_11">Page suivante</a></p>
 </div> 
 
+</div>
+</div>
 </body>
 </html>

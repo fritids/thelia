@@ -89,6 +89,9 @@
 
 <body>
 
+<div id="wrapper">
+<div id="subwrapper">
+
 <?php
 	$menu="commande";
 	include_once("entete.php");
@@ -98,12 +101,12 @@
    <p class="titre_rubrique">Gestion des commandes / D&eacute;tail de la commande n&deg;  <?php echo($commande->ref); ?></p>
     <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Gestion des commandes</a>              
     </p>   
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LA COMMANDE </td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LA COMMANDE </td>
      </tr>
    </table>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="370" height="30" class="titre_cellule">D&Eacute;SIGNATION</td>
        <td width="100" class="titre_cellule">PRIX UNITAIRE</td>
@@ -187,12 +190,12 @@
      </tr>
    </table>
    <br />
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LA FACTURE</td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LA FACTURE</td>
      </tr>
    </table>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="100" height="30" class="titre_cellule">N&deg; DE LA FACT.</td>
        <td width="120" class="titre_cellule">SOCI&Eacute;T&Eacute;</td>
@@ -209,12 +212,12 @@
      </tr>
    </table>
    <br />
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LE R&Egrave;GLEMENT </td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LE R&Egrave;GLEMENT </td>
      </tr>
    </table>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td height="30" class="titre_cellule">TYPE DE R&Egrave;GLEMENT </td>
        <td class="cellule_sombre">
@@ -255,9 +258,9 @@
      </tr>
    </table>
    <br />
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">STATUT DU R&Egrave;GLEMENT </td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">STATUT DU R&Egrave;GLEMENT </td>
      </tr>
    </table>
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
@@ -297,9 +300,9 @@
 	$nompays->charger($adr->pays);
 ?>
 
-	<table width="710" border="0" cellpadding="5" cellspacing="0">
+	<table width="100%" border="0" cellpadding="5" cellspacing="0">
 	  <tr>
-	    <td width="600" height="30" class="titre_cellule_tres_sombre">N&deg; de colis</td>
+	    <td width="100%" height="30" class="titre_cellule_tres_sombre">N&deg; de colis</td>
 	  </tr>
 	</table>
 	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
@@ -314,9 +317,9 @@
 	
 	<br />
 	
-  <table width="710" border="0" cellpadding="5" cellspacing="0">
+  <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">ADRESSE DE FACTURATION</td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">ADRESSE DE FACTURATION</td>
      </tr>
    </table>
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
@@ -363,9 +366,9 @@
 	$nompays->charger($adr->pays);
 ?>
 
-  <table width="710" border="0" cellpadding="5" cellspacing="0">
+  <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">ADRESSE DE LIVRAISON</td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">ADRESSE DE LIVRAISON</td>
      </tr>
    </table>
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
@@ -410,7 +413,7 @@
 
 
 <br />   
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="70" height="30" class="cellule_sombre2"><span class="geneva11Reg_3B4B5B"><a href="commande.php"" class="txt_vert_11">Retour </a></span><a href="commande.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
        <td width="220" class="cellule_sombre2"><span class="geneva11Reg_3B4B5B"><a href="../client/pdf/facture.php?ref=<?php echo($commande->ref); ?>" class="txt_vert_11">Visualiser la facture au format PDF </a></span><a href="facture.php?ref=<?php echo($commande->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
@@ -418,5 +421,8 @@
      </tr>
    </table>
    </div>
+</div>
+</div>  
+
 </body>
 </html>

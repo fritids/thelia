@@ -62,6 +62,9 @@
 
 <body>
 
+<div id="wrapper">
+<div id="subwrapper">
+
 <?php
 	$menu="client";
 	include_once("entete.php");
@@ -71,9 +74,9 @@
    <p class="titre_rubrique">Gestion des clients / Modification du compte client n&deg;  <?php echo($ref); ?></p>
 <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="client.php" class="lien04">Gestion des clients</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Modifier        
     </p>     
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LE CLIENT</td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LE CLIENT</td>
      </tr>
    </table>
    
@@ -82,7 +85,7 @@
 <input type="hidden" name="action" value="modifier" />
 <input type="hidden" name="ref" value="<?php echo($ref); ?>" />
     
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td height="30" class="titre_cellule">SOCI&Eacute;T&Eacute;</td>
        <td class="cellule_sombre">
@@ -210,11 +213,13 @@ Monsieur</td>
 </form>
    
    <br />
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" class="txt_vert_11" onclick="document.getElementById('formulaire').submit()">Valider les modifications </a></span> <a href="#" onclick="document.getElementById('formulaire').submit()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
      </tr>
    </table>
    </div>
+</div>
+</div>
 </body>
 </html>

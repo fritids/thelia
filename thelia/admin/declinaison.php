@@ -41,6 +41,8 @@
 </head>
 
 <body>
+<div id="wrapper">
+<div id="subwrapper">
 
 <?php
 	include_once("../classes/Declinaison.class.php");
@@ -53,9 +55,9 @@
 <div id="contenu_int"> 
    <p class="titre_rubrique">Gestion des d&eacute;clinaisons</p>
    <p align="right" class="geneva11Reg_3B4B5B"><span class="lien04"><a href="accueil.php" class="lien04">Accueil</a></span> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="catalogue.php" class="lien04">Gestion du catalogue</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="declinaison.php" class="lien04"> Gestion des declinaisons</a></p>
-    <table width="710" border="0" cellpadding="5" cellspacing="0">
+    <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES DECLINAISON </td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES DECLINAISON </td>
      </tr>
    </table>
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
@@ -101,12 +103,12 @@
 ?> 
  
   </table>
-    <table width="710" border="0" cellpadding="5" cellspacing="0">
+    <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="5"></td>
     </tr>
     <tr>
-      <td width="600" height="30" class="titre_cellule_tres_sombre2">
+      <td width="100%" height="30" class="titre_cellule_tres_sombre2">
 	    <form action="declinaison_modifier.php" id="form_ajout" method="post">
 	 				      <input type="hidden" name="parent" value="<?php echo($parent); ?>" />
 						  <input type="hidden" name="id" value="<?php echo($id); ?>" />
@@ -115,6 +117,8 @@
 	  </td>
     </tr>
   </table>
+</div>
+</div>
 </div>
 </body>
 </html>

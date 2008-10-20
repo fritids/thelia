@@ -36,9 +36,14 @@
 </head>
 
 <body>
+<div id="wrapper">
+<div id="subwrapper">
 
 <?php
 	$menu="plugins";
 	include_once("entete.php");
 	include_once("../client/plugins/$nom/$nom" . "_admin.php");
 ?>
+
+</div>
+</div>

@@ -33,8 +33,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<script src="jquery/jquery.js" type="text/javascript"></script>
+<script src="jquery/jeditable.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(function() {
+        
+
+  $(".texte_edit").editable("ajax/produit.php", { 
+      indicator : "<img src='img/load.gif'>",
+      select : true,
+      onblur: "submit",
+      cssclass : "ajaxedit"
+  });
+
+  
+  
+});
+
+</script>
+
 <title>THELIA / BACK OFFICE</title>
 <link href="styles.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <script type="text/JavaScript">
@@ -52,6 +74,9 @@ function supprimer_rubrique(id, parent){
 </script>
 
 <body>
+
+<div id="wrapper">
+<div id="subwrapper">
 
 <?php
 	include_once("../classes/Rubrique.class.php");
@@ -72,7 +97,7 @@ function supprimer_rubrique(id, parent){
 
 <div id="contenu_int"> 
    <p class="titre_rubrique">Gestion du catalogue</p>
-     <p align="right"  class="geneva11Reg_3B4B5B"><a href="accueil.php"  class="lien04">Accueil</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="catalogue.php" class="lien04">Gestion du catalogue </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="parcourir.php" class="lien04">Par rubrique</a>
+     <p align="right"  class="geneva11Reg_3B4B5B"><a href="accueil.php"  class="lien04">Accueil</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="parcourir.php" class="lien04">Gestion du catalogue</a>
                           
             <?php
                     $parentdesc = new Rubriquedesc();
@@ -108,9 +133,17 @@ function supprimer_rubrique(id, parent){
 					
 			?>
 			 <a href="parcourir.php?parent=<?php echo($parentdesc->rubrique); ?>" class="lien02"> <?php echo($parentdesc->titre); ?></a>                             
-     <table width="710" border="0" cellpadding="5" cellspacing="0">
+
+
+<?php
+	$test = new Rubrique();
+	$test->charger($parent);
+	
+	if(! $test->nbprod()){
+?>
+     <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES RUBRIQUES </td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES RUBRIQUES </td>
      </tr>
    </table>
    <table width="100%"  border="0" cellspacing="0" cellpadding="0">
@@ -159,30 +192,22 @@ function supprimer_rubrique(id, parent){
 ?>
 
   </table>
-     <table width="710" border="0" cellpadding="5" cellspacing="0">
+     <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="5"></td>
     </tr>
     <tr>
-      <td width="600" height="30" class="titre_cellule_tres_sombre2">
-	   <a href="rubrique_modifier.php?parent=<?php echo($parent); ?>" class="lien_titre_cellule">Ajouter une rubrique</a></td>
+      <td width="100%" height="30" class="titre_cellule_tres_sombre2">
+	   <a href="rubrique_modifier.php?parent=<?php echo($parent); ?>" class="lien_titre_cellule"><?php if($parent == "") { ?>Ajouter une rubrique<?php } else {?>Ajouter une sous rubrique<?php } ?></a></td>
     </tr>
   </table>
 
 <br /><br />
 
-    <table width="710" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES PRODUITS </td>
-     </tr>
-   </table>
-   
-   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<?php } ?>
 
-      
+<?php
 
-                  <?php
-	
 	$produit = new Produit();
 	$produitdesc = new Produitdesc();
 	
@@ -192,6 +217,38 @@ function supprimer_rubrique(id, parent){
 	else $query = "select * from $produit->table where rubrique=\"$parent\" order by classement";
 
 $resul = mysql_query($query, $produit->link);		
+
+$i = 0;
+
+if(mysql_numrows($resul)){
+?>
+ 
+    <table width="100%" border="0" cellpadding="5" cellspacing="0">
+     <tr>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES PRODUITS </td>
+     </tr>
+   </table>
+   
+   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+
+<tr class="cellule_claire">
+  <td>&nbsp;</td>
+  <td>Titre</td>
+  <td>Stock</td>
+  <td>Prix</td>
+  <td>Prix promo</td>
+  <td>En promo</td>
+  <td>Nouveaut&eacute;</td>
+  <td>En ligne</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+
+</tr>      
+
+<?php
+	
 
 
 	while($row = mysql_fetch_object($resul)){
@@ -204,20 +261,37 @@ $resul = mysql_query($query, $produit->link);
 
 ?>
 
+
+<?php
+
+	$image = new Image();
+	$query_image = "select * from $image->table where produit=\"" . $row->id . "\" order by classement limit 0,1";
+	$resul_image = mysql_query($query_image, $image->link);
+	$row_image = mysql_fetch_object($resul_image);
+?>
+
     
   <tr valign="middle" class="<?php echo($fond); ?>">
-    <td width="20%" height="30"  align="left"><?php echo($produit->ref); ?></td>
-    <td width="22%" height="30"  align="left"><?php echo($produitdesc->titre); ?></td>
-    <td width="10%" height="30">&nbsp;</td>
-    <td width="21%" height="30">
-      <div align="left"><a href="produit_modifier.php?ref=<?php echo($produit->ref); ?>&rubrique=<?php echo($produit->rubrique); ?>" class="txt_vert_11">Modifier </a><a href="produit_modifier.php?ref=<?php echo($produit->ref); ?>&rubrique=<?php echo($produit->rubrique); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
+    <td width="5%" height="30"  align="left"><?php if($row_image) { ?> <img src="../fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo $row_image->fichier;?>&width=60" class="imagelprod" alt="<?php echo($produit->ref); ?>" title="<?php echo($produit->ref); ?>" /><?php } else { ?><span class="imagelprod"><?php echo($row->ref); ?><?php } ?></span></td>
+    <td width="12%" height="30"  align="left"><span id="titre_<?php echo $row->ref; ?>" class="texte_edit"><?php echo($produitdesc->titre); ?></span></td>
+
+    <td width="3%" height="30"><span id="stock_<?php echo $row->ref; ?>" class="texte_edit"><?php echo($row->stock); ?></span></td>
+    <td width="4%" height="30"><span id="prix_<?php echo $row->ref; ?>" class="texte_edit"><?php echo($row->prix); ?></span></td>
+    <td width="3%" height="30"><span id="prix2_<?php echo $row->ref; ?>" class="texte_edit"><?php echo($row->prix2); ?></span></td>
+    <td width="3%" height="30"><input type="checkbox" <?php if($row->promo) { ?> checked="checked" <?php } ?>/></td>
+    <td width="3%" height="30"><input type="checkbox" <?php if($row->nouveaute) { ?> checked="checked" <?php } ?>/></td>
+    <td width="3%" height="30"><input type="checkbox" <?php if($row->ligne) { ?> checked="checked" <?php } ?>/></td>
+
+
+    <td width="2%" height="30">
+      <div align="left"><a href="produit_modifier.php?ref=<?php echo($produit->ref); ?>&rubrique=<?php echo($produit->rubrique); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></div>
     </td>
-	<td width="15%" height="30"  align="left"><a href="javascript:supprimer_produit('<?php echo $produit->ref ?>','<?php echo($parent); ?>')" class="txt_vert_11">Supprimer</a> <a href="javascript:supprimer_produit('<?php echo $produit->ref ?>','<?php echo($parent); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a> </td>
-		<td width="6%" height="30">
-		  <div align="center"><a href="produit_modifier.php?ref=<?php echo($produit->ref ); ?>&action=modclassement&parent=<?php echo($parent); ?>&type=M"><img src="gfx/up.gif" width="12" height="9" border="0" /></a></div>
+	<td width="2%" height="30"  align="left"><a href="javascript:supprimer_produit('<?php echo $produit->ref ?>','<?php echo($parent); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a> </td>
+		<td width="1%" height="30">
+		  <a href="produit_modifier.php?ref=<?php echo($produit->ref ); ?>&action=modclassement&parent=<?php echo($parent); ?>&type=M"><img src="gfx/up.gif" width="12" height="9" border="0" /></a>
 		</td>
-			<td width="6%" height="30">
-			  <div align="center"><a href="produit_modifier.php?ref=<?php echo($produit->ref ); ?>&action=modclassement&parent=<?php echo($parent); ?>&type=D"><img src="gfx/dn.gif" width="12" height="9" border="0" /></a></div>
+			<td width="1%" height="30">
+			  <a href="produit_modifier.php?ref=<?php echo($produit->ref ); ?>&action=modclassement&parent=<?php echo($parent); ?>&type=D"><img src="gfx/dn.gif" width="12" height="9" border="0" /></a>
 			</td>
   </tr>
 
@@ -232,16 +306,32 @@ $resul = mysql_query($query, $produit->link);
   		else $fond="cellule_claire";
 ?>
   </table>
+
+<?php
+	}
+?>
   
-     <table width="710" border="0" cellpadding="5" cellspacing="0">
+<?php
+	$test = new Rubrique();
+	$test->charger($parent);
+	
+	if(! $test->aenfant()){
+?> 
+     <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="5"></td>
     </tr>
     <tr>
-      <td width="600" height="30" class="titre_cellule_tres_sombre2">
+      <td width="100%" height="30" class="titre_cellule_tres_sombre2">
 	   <a href="produit_modifier.php?rubrique=<?php echo($parent); ?>" class="lien_titre_cellule">Ajouter un produit</a></td>
     </tr>
   </table>
+<?php
+	}
+?>  
+  
+</div>
+</div>
 </div>
 </body>
 </html>

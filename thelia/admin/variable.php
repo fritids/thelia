@@ -31,7 +31,6 @@
 	include_once("../classes/Variable.class.php");
 ?>
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -41,6 +40,8 @@
 </head>
 
 <body>
+<div id="wrapper">
+<div id="subwrapper">
 
 <?php
 	$menu="configuration";
@@ -50,12 +51,12 @@
 <div id="contenu_int"> 
    <p class="titre_rubrique">Gestion des variables</p>
    <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="configuration.php" class="lien04">Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="variable.php" class="lien04">Gestion des variables</a>    </p>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES VARIABLES</td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES VARIABLES</td>
      </tr>
    </table>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="400" height="30" class="titre_cellule">NOM</td>
        <td width="130" class="titre_cellule">Valeur</td>
@@ -94,6 +95,8 @@
 	 </table> 
 	</form>     
 
+</div>
+</div>
 </div>
 </body>
 </html>

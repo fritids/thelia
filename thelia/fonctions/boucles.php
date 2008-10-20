@@ -377,7 +377,7 @@
 			else if($image->dossier != 0){
 
 		  		$nomcache = "client/cache/" . "dossier" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
-				
+				$dosdesc = new Dossierdesc();
 				$dosdesc->charger($image->dossier);
 				$temp = str_replace("#DOSSIER", $image->dossier, $temp);
 				$temp = str_replace("#DOSTITRE", $dosdesc->titre, $temp);
@@ -397,7 +397,8 @@
 			else if($image->contenu != 0){
 			
 		  			$nomcache = "client/cache/" . "contenu" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
-
+				
+					$ctdesc = new Contenudesc();
 					$ctdesc->charger($image->contenu);
 					$temp = str_replace("#CONTTITRE", $ctdesc->titre, $temp);
 					$temp = str_replace("#CONTENU", $image->contenu, $temp);					

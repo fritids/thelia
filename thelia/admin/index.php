@@ -49,42 +49,40 @@
 
 <body>
 <div id="wrapper">
+<div id="subwrapper">
 <div id="entete">
-	<img src="gfx/logo_thelia.gif" width="305" height="57" align="left" lowsrc="THELIA" />
-</div> 
-
-<div id="contenu"> 
-  <div class="chapeau">
-    <p class="geneva14bold_3B4B5B">
-    Bienvenue dans votre <a href="#" class="lien01">zone administrateur </a></p>
-    <p class="geneva12Reg_3B4B5B">&nbsp; </p>
-  </div>  
-  <div class="chapeau"> 
-   <table width="559" border="0" cellspacing="0" cellpadding="0">
-     <tr>
-       <td align="left" valign="top"><img src="gfx/zone_d_identification/header.gif" width="559" height="40" /></td>
-     </tr>
-     <tr>
-       <td height="22" align="center" valign="middle" background="gfx/zone_d_identification/background.gif"><table width="501" height="22" border="0" cellpadding="0" cellspacing="0">
-       <form action="accueil.php" method="post" id="formulaire">
-         <tr align="left" valign="middle">
-           <td width="190" class="geneva11Reg_3B4B5B">Login : 
-             <input name="identifiant" type="text" class="form" size="19" /></td>
-           <td width="251" class="geneva11Reg_3B4B5B">Mot de passe : <span class="geneva11Reg_3B4B5B">
+	<div id="logo">
+		<img src="gfx/thelia.jpg" alt="THELIA solution e-commerce" />
+	</div>
+	<div id="telecommande"> 
+   		<div id="formConnex">
+       		<form action="accueil.php" method="post" id="formulaire">
+       			Login : 
+             <input name="identifiant" type="text" class="form" size="19" />
+          		Mot de passe :
              <input name="motdepasse" type="password" class="form" size="19" />
              <input name="action" type="hidden" value="identifier" />
-           </span></td>
-           <td width="60" align="left"><input type="image" src="gfx/zone_d_identification/bt_valider.gif" width="54" height="20" border="0" /></td>
-         </tr>
-         </form>   
-       </table></td>
-     </tr>
-     <tr>
-       <td align="left" valign="top"><img src="gfx/zone_d_identification/footer.gif" width="559" height="54" /></td>
-     </tr>
-   </table>
-  </div>
-  
+         	<input type="submit" value="valider"/>
+         	</form>   
+     	</div>
+	</div> 
+		<div class="bienvenue">
+      		<h2>Bienvenue dans votre <a href="#">zone administrateur </a></h2>
+      	</div>
+</div> 
+<div id="coordonnees">
+Thelia est une application d&eacute;velopp&eacute;e par : <br />
+<a href="http://www.octolys.fr">Octolys</a>
+17 rue du Pr&eacute; la Reine - 63100 Clermont-Ferrand<br />
+T&eacute;l. : 04 73 74 31 19<br />
+----------<br />
+Design de l'outil d'administration <a href="http://www.scopika.com">Scopika</a><br />
+</div>
+
+<div id="contenu_int"> 
+
+    <h3>L'actualit&eacute; THELIA</h3>
+<table> 
 
 <?php
 $rssadmin = new Variable();
@@ -114,34 +112,17 @@ foreach ($items as $item) {
 	
 ?>
 
-  
-  <div class="paragraphe"> 
-   <p>
-	<span class="geneva12Bold_3B4B5B"><?php echo($jour . "/" . $mois . "/" . $annee); ?> &bull; <?php echo($title); ?></span><br />
-    <span class="geneva11Reg_3B4B5B"><?php echo($description); ?></span><br />
-    <span class="geneva12Reg_3B4B5B"><span class="geneva11Reg_3B4B5B"><a href="<?php echo($link); ?>"><img src="gfx/bt_lireLaSuite.gif" width="78" height="11" border="0" align="right" /></a></span></span>
-    </p> 
-  </div> 
-  
+		<tr>
+			<th colspan="2"  class="left"><a href="<?php echo($link); ?>"><?php echo($jour . "/" . $mois . "/" . $annee); ?></a> &bull; <?php echo($title); ?></th>
+		</tr>
+
+
 <?php
 	}
 ?>  
-  
-
-  
-</div> 
-    	<div id="coordonnees"> 
-		  <p class="geneva11Reg_A3ADB8">    <span class="geneva11Reg_BAC2CA">Thelia<br />
-			est une application <br />
-			d&eacute;velopp&eacute;e par : </span><br />
-			<a href="http://www.octolys.fr" class="lien02">http://www.octolys.fr</a></p>
-		  <p class="geneva11Reg_BAC2CA">
-		  	17 rue du Pr&eacute; la Reine<br />
-			63100 Clermont-Ferrand<br />
-			T&eacute;l. : 04 73 74 31 19<br />
-			</p>
-  </div> 
+</table>
+</div>
+</div>
 </div>
 </body>
-
 </html>

@@ -41,6 +41,8 @@
 </head>
 
 <body>
+<div id="wrapper">
+<div id="subwrapper">
 
 <?php
 	include_once("../classes/Modules.class.php");
@@ -121,9 +123,9 @@
   	$d->close();
 ?>
 
-     <table width="710" border="0" cellpadding="5" cellspacing="0">
+     <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES PLUGINS CLASSIQUES</td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES PLUGINS CLASSIQUES</td>
      </tr>
    </table>
 
@@ -208,9 +210,9 @@
 
 <br />
 
-    <table width="710" border="0" cellpadding="5" cellspacing="0">
+    <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES PLUGINS PAIEMENTS</td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES PLUGINS PAIEMENTS</td>
      </tr>
    </table>
 
@@ -277,9 +279,9 @@
 <br />
 
 
-    <table width="710" border="0" cellpadding="5" cellspacing="0">
+    <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES PLUGINS TRANSPORTS</td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES PLUGINS TRANSPORTS</td>
      </tr>
    </table>
 
@@ -345,9 +347,9 @@
 
 <br />
 
-<table width="710" border="0" cellpadding="5" cellspacing="0">
+<table width="100%" border="0" cellpadding="5" cellspacing="0">
   <tr>
-    <td width="600" height="30" class="titre_cellule_tres_sombre">AJOUTER UN PLUGIN </td>
+    <td width="100%" height="30" class="titre_cellule_tres_sombre">AJOUTER UN PLUGIN </td>
   </tr>
 </table>
 <table width="100%"  border="0" cellspacing="0" cellpadding="0">
@@ -363,7 +365,8 @@
   </tr>
 </table>
 
-
+</div>
+</div>
 </div>
 </body>
 </html>

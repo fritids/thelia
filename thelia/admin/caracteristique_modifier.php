@@ -291,6 +291,8 @@
 </head>
 
 <body>
+<div id="wrapper">
+<div id="subwrapper">
 
 <?php
 	$menu="catalogue";
@@ -302,9 +304,9 @@
 <div id="contenu_int"> 
    <p class="titre_rubrique">Gestion des caract&eacute;ristiques</p>
    <p align="right" class="geneva11Reg_3B4B5B"><span class="lien04"><a href="accueil.php" class="lien04">Accueil</a></span> <a href="#" onclick="document.getElementById('form_modif').submit()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a><a href="catalogue.php" class="lien04"> Gestion du catalogue </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a><a href="caracteristique.php" class="lien04"> Gestion des caract&eacute;ristiques </a><img src="gfx/suivant.gif" width="12" height="9" border="0" />  <?php if( !$id) { ?>Ajouter<?php } else { ?> Modifier <?php } ?> 	                          </p>
-    <table width="710" border="0" cellpadding="5" cellspacing="0">
+    <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">MODIFICATION DES CARACTERISTIQUES 
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">MODIFICATION DES CARACTERISTIQUES 
 	   <?php
 								$langl = new Lang();
 								$query = "select * from $langl->table";
@@ -325,7 +327,7 @@
 	<input type="hidden" id="zoneid" name="id" value="<?php echo($id); ?>" /> 
  	<input type="hidden" name="lang" value="<?php echo($lang); ?>" /> 
 	
-		<table width="710" border="0" cellpadding="5" cellspacing="0">
+		<table width="100%" border="0" cellpadding="5" cellspacing="0">
                             <tr>
                               <td width="250" height="30" class="titre_cellule">TITRE DE LA CARACTERISTIQUE:</td>
                               <td width="440" class="cellule_claire_vide">
@@ -359,7 +361,7 @@
         </table>
 					
      
-	  <table width="710" border="0" cellpadding="5" cellspacing="0">
+	  <table width="100%" border="0" cellpadding="5" cellspacing="0">
 	
 <?php
 
@@ -456,7 +458,12 @@
     </tr>
         </table>
   </form>
-  <table width="710" border="0" cellpadding="5" cellspacing="0">
+
+ <?php 
+	admin_inclure("caracteristiquemodifier"); 
+ ?>
+
+  <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="30" colspan="2" class="titre_cellule_tres_sombre">Informations sur la carat&eacute;ristique </td>
     </tr>
@@ -465,6 +472,8 @@
       <td width="444" class="titre_cellule"><?php echo($caracteristique->id); ?></td>
 	</tr>
   </table>
+</div>
+</div>
 </div>
 </body>
 </html>

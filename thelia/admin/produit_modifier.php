@@ -32,10 +32,8 @@
 	if(!isset($page)) $page="";
 	if(!isset($id)) $id="";
 	if(!isset($promo)) $promo="";
-	if(!isset($reappro)) $reappro="";
 	if(!isset($nouveaute)) $nouveaute="";
 	if(!isset($perso)) $perso="";
-	if(!isset($appro)) $appro="";
 	if(!isset($ref)) $ref="";
 	if(!isset($ligne)) $ligne="";
 	
@@ -67,8 +65,8 @@
 
 	switch($action){
 		case 'modclassement' : modclassement($ref, $parent, $type); break;
-		case 'modifier' : modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description, $postscriptum); break;
-		case 'ajouter' : ajouter($lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description, $postscriptum); break;
+		case 'modifier' : modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum); break;
+		case 'ajouter' : ajouter($lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum); break;
 		case 'acdec' : moddecli($produit, $id, 1); break;
 		case 'desdec' : moddecli($produit, $id, 0); break;
 		case 'supprimer' : supprimer($ref, $parent);
@@ -87,7 +85,7 @@
 	    header("Location: parcourir.php?parent=" . $parent);
 	}
 	
-	function modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description, $postscriptum){
+	function modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum){
 
      
 		if(!$lang) $lang=1;
@@ -120,12 +118,10 @@
 		
 		 $produit->rubrique = $rubrique; 
 	 	 if($promo == "on") $produit->promo = 1; else $produit->promo = 0;
-	 	 if($reappro == "on") $produit->reappro = 1; else $produit->reappro = 0;	 	 
 	 	 if($nouveaute == "on") $produit->nouveaute = 1; else $produit->nouveaute = 0;
 	 	 if($ligne == "on") $produit->ligne = 1; else $produit->ligne = 0;
-		 $produit->garantie = $garantie;  
+
 		 $produit->perso = $perso;  
-		 $produit->appro = $appro;  
 		 $produit->poids = $poids;
 		 $produit->stock = $stock;
 		 $produit->tva = ereg_replace(",", ".", $tva);
@@ -202,7 +198,7 @@
    		$declinaisondesc->charger($row->declinaison);
 
    		
-   		$query2 = "select * from $declidisp->table where declinaison='$row->declinaison' order by id";
+   		$query2 = "select * from $declidisp->table where declinaison='$row->declinaison'";
    		$resul2 = mysql_query($query2);
    		$nbres = mysql_num_rows($resul2);
 		
@@ -244,7 +240,7 @@
 	    header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
 	}
 
-	function ajouter($lang, $ref, $prix, $ecotaxe, $promo, $reappro, $prix2, $rubrique, $nouveaute, $perso, $appro, $poids, $stock, $tva, $ligne, $garantie, $titre, $chapo, $description, $postscriptum){
+	function ajouter($lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum){
   
 
 	 $ref = ereg_replace(" ", "", $ref);
@@ -280,12 +276,9 @@
 	 $produit->ecotaxe = $ecotaxe;
 	 $produit->rubrique = $rubrique; 
 	 if($promo == "on") $produit->promo = 1; else $produit->promo = 0;
-	 if($reappro == "on") $produit->reappro = 1; else $produit->reappro = 0;
 	 if($nouveaute == "on") $produit->nouveaute = 1; else $produit->nouveaute = 0;
 	 if($ligne == "on") $produit->ligne = 1; else $produit->ligne = 0;
-	 $produit->garantie = $garantie;  
 	 $produit->perso = $perso;  
-	 $produit->appro = $appro;  
 	 $produit->poids = $poids;
 	 $produit->stock = $stock;
 	 $produit->tva = ereg_replace(",", ".", $tva);
@@ -463,6 +456,8 @@
 </head>
 
 <body>
+<div id="wrapper">
+<div id="subwrapper">
 
 <?php
 	$menu="catalogue";
@@ -470,7 +465,7 @@
 ?>
 <div id="contenu_int">
   <p class="titre_rubrique">Description g&eacute;n&eacute;rale du produit</p>
-  <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a><a href="catalogue.php" class="lien04">Gestion du catalogue</a>               
+  <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a><a href="parcourir.php" class="lien04">Gestion du catalogue</a>               
    
     <?php
                     $parentdesc = new Rubriquedesc();
@@ -514,9 +509,9 @@
 	<input type="hidden" name="ref" value="<?php echo($ref); ?>" /> 
  	<input type="hidden" name="lang" value="<?php echo($lang); ?>" /> 
  	<input type="hidden" name="rubrique" value="<?php echo($produit->rubrique); ?>" /> 
-  <table width="710" border="0" cellpadding="5" cellspacing="0">
+  <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr>
-      <td width="600" height="30" class="titre_cellule_tres_sombre">Description g&eacute;n&eacute;rale du produit &nbsp; 
+      <td width="100%" height="30" class="titre_cellule_tres_sombre">Description g&eacute;n&eacute;rale du produit &nbsp; 
 							<?php
 								$langl = new Lang();
 								$query = "select * from $langl->table";
@@ -530,12 +525,12 @@
 						  <?php } ?> </td>
     </tr>
   </table>
-  <table width="710" border="0" cellpadding="5" cellspacing="0">
+  <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" onclick="envoyer()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onclick="envoyer()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
     </tr>
   </table>  
-  <table width="710" border="0" cellpadding="5" cellspacing="0">
+  <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="30" class="titre_cellule">REFERENCE :</td>
       <td class="cellule_sombre">
@@ -852,7 +847,7 @@
 		$seconde = substr($produit->datemodif, 17, 2);  	
 	?>
 	  
-  <table width="710" border="0" cellpadding="5" cellspacing="0">
+  <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr><input type="submit" id="boutoncache" style="display: none">
       <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" onclick="envoyer()" class="txt_vert_11">Valider les modifications </a></span> <a href="#" onclick="envoyer()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
     </tr>
@@ -861,7 +856,7 @@
 
 <?php if($ref != ""){ ?>
 
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
     <tr>
       <td height="30" colspan="2" class="titre_cellule_tres_sombre">Informations sur le produit </td>
     </tr>
@@ -882,6 +877,7 @@
 <?php } ?>
 
 </div>
-
+</div>
+</div>
 </body>
 </html>

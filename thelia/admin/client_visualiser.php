@@ -148,6 +148,9 @@ function supprimer(id){
 
 <body>
 
+<div id="wrapper">
+<div id="subwrapper">
+
 <?php
 	$menu="client";
 	include_once("entete.php");
@@ -157,12 +160,12 @@ function supprimer(id){
    <p class="titre_rubrique">Gestion des clients / D&eacute;tail du compte client n&deg;  <?php echo($ref); ?></p>
 <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="client.php" class="lien04">Gestion des clients</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Visualiser</a>        
     </p>     
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LE CLIENT</td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LE CLIENT</td>
      </tr>
    </table>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td height="30" class="titre_cellule">SOCI&Eacute;T&Eacute;</td>
        <td class="cellule_sombre"><?php echo($client->entreprise); ?></td>
@@ -240,18 +243,18 @@ function supprimer(id){
 <?php
 	admin_inclure("clientvisualiser");		
 ?>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="client_modifier.php?ref=<?php echo($client->ref); ?>" class="txt_vert_11">Modifier les coordonn&eacute;es du client </a></span> <a href="client_modifier.php?ref=<?php echo($client->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
      </tr>
    </table>
    <br />
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES COMMANDES DE CE CLIENT / Toutes les sommes sont en &euro; </td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES COMMANDES DE CE CLIENT / Toutes les sommes sont en &euro; </td>
      </tr>
    </table>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="140" height="30" class="titre_cellule">N&deg; DE COMMANDE </td>
        <td width="130" class="titre_cellule">DATE &amp; HEURE </td>
@@ -328,12 +331,12 @@ function supprimer(id){
 
    <br /><br />
   
- <table width="710" border="0" cellpadding="5" cellspacing="0">
+ <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES FILLEULS DE CE CLIENT</td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES FILLEULS DE CE CLIENT</td>
      </tr>
    </table>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="140" height="30" class="titre_cellule">NOM</td>
        <td width="130" class="titre_cellule">PRENOM</td>
@@ -379,12 +382,12 @@ function supprimer(id){
 
 
    <!--
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES DEVIS DE CE CLIENT / Toutes les sommes sont en &euro; </td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES DEVIS DE CE CLIENT / Toutes les sommes sont en &euro; </td>
      </tr>
    </table>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="150" height="30" class="titre_cellule">N&deg; DU DEVIS </td>
        <td width="125" class="titre_cellule">DATE &amp; HEURE </td>
@@ -406,5 +409,7 @@ function supprimer(id){
       -->
       
    </div>
+</div>
+</div>
 </body>
 </html>

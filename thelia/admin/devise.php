@@ -42,6 +42,8 @@
 </head>
 
 <body>
+<div id="wrapper">
+<div id="subwrapper">
 
 <?php
 	$menu="paiement";
@@ -51,12 +53,12 @@
 <div id="contenu_int"> 
    <p class="titre_rubrique">Gestion des devises</p>
    <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="paiement.php" class="lien04">Gestion du paiement</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="devise.php" class="lien04">Gestion des devises</a>    </p>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="600" height="30" class="titre_cellule_tres_sombre">LISTE DES DEVISES UTILIS&Eacute;ES SUR LE SITE </td>
+       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES DEVISES UTILIS&Eacute;ES SUR LE SITE </td>
      </tr>
    </table>
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="400" height="30" class="titre_cellule">D&Eacute;SIGNATION</td>
        <td width="130" class="titre_cellule">TAUX ACTUEL EN &euro; </td>
@@ -99,7 +101,7 @@
      
 
       
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
 
       <form action="devise_modifier.php" id="formajouter" method="post">
       
@@ -119,10 +121,10 @@
 
 
 
-   <table width="710" border="0" cellpadding="5" cellspacing="0">
+   <table width="100%" border="0" cellpadding="5" cellspacing="0">
 
   <tr>
-      <td width="710" height="30" class="titre_cellule_tres_sombre2">
+      <td width="100%" height="30" class="titre_cellule_tres_sombre2">
       <input type="hidden" name="action" value="ajouter" />
       <a href="#" onclick="document.getElementById('formajouter').submit()" class="lien_titre_cellule">AJOUTER UNE DEVISE </a></td>
     </tr>  
@@ -131,7 +133,8 @@
 </table>
 
 </form>
-
+</div>
+</div>
 </div>
 </body>
 </html>
