@@ -937,7 +937,7 @@
 			if($motcle){
 				$liste="";
 				
-  				$query = "select * from $produitdesc->table  LEFT JOIN $produit->table ON $produit->table.id=$produitdesc->table.produit WHERE $produit->table.ref='$motcle' or titre like '% $motcle%' or titre like '%$motcle %' OR titre='$motcle' OR chapo like '% $motcle%' OR chapo like '%$motcle %' OR description like '% $motcle%' OR description like '%$motcle %'";
+  				$query = "select * from $produitdesc->table  LEFT JOIN $produit->table ON $produit->table.id=$produitdesc->table.produit WHERE $produit->table.ref='$motcle' or titre like '% $motcle%' or titre like '%$motcle %' OR titre='$motcle' OR chapo like '% $motcle%' OR chapo like '%$motcle %' OR description like '% $motcle%' OR description like '%$motcle %' OR postscriptum like '% $motcle%' OR postscriptum like '%$motcle %'";
 			
 			    $resul = mysql_query($query, $produitdesc->link);
 				$nbres = mysql_num_rows($resul);
@@ -1192,7 +1192,7 @@
 			if($motcle){
 				$liste="";
 				
-				$query = "select * from $contenudesc->table  LEFT JOIN $contenu->table ON $contenu->table.id=$contenudesc->table.id WHERE titre like '%$motcle%' OR chapo like '%$motcle%' OR description like '%$motcle%'";
+				$query = "select * from $contenudesc->table  LEFT JOIN $contenu->table ON $contenu->table.id=$contenudesc->table.id WHERE titre like '% $motcle%' or titre like '%$motcle %' OR titre='$motcle' OR chapo like '% $motcle%' OR chapo like '%$motcle %' OR description like '% $motcle%' OR description like '%$motcle %' OR postscriptum like '% $motcle%' OR postscriptum like '%$motcle %'";
 			
 			    $resul = mysql_query($query, $contenudesc->link);
 				$nbres = mysql_num_rows($resul);

@@ -55,7 +55,7 @@
 <div id="contenu_int"> 
    <p class="titre_rubrique">Gestion des plugins</p>
    <p align="right" class="geneva11Reg_3B4B5B"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="configuration.php" class="lien04">Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="plugins.php" class="lien04">Gestion des plugins</a>            
-    </p>
+   </p>
 
 <?php
 

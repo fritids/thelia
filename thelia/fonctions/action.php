@@ -127,13 +127,15 @@
 	// procédure de paiement
 	function paiement($type_paiement){
 	
-		if(! $_SESSION['navig']->client->id)
+		if(! $_SESSION['navig']->client->id || $_SESSION['navig']->panier->nbart < 1)
 			header("Location: index.php");
 			
 		$total = 0;
 		$nbart = 0;
 		$poids = 0;
 		$unitetr = 0;
+
+		modules_fonction("avantcommande");
 		
 		$modules = new Modules();
 		$modules->charger_id($type_paiement);
@@ -349,7 +351,7 @@
 		$client->raison = strip_tags($raison);
 		$client->nom = strip_tags($nom);
 		$client->entreprise = strip_tags($entreprise);
-		$client->ref = date("ymdHis") . strtoupper(substr(strip_tags($prenom),0, 3));
+		$client->ref = date("ymdHis") . strtoupper(ereg_caracspec(substr(strip_tags($prenom),0, 3)));
 		$client->prenom = strip_tags($prenom);
 		$client->telfixe = strip_tags($telfixe);
 		$client->telport =strip_tags($telport); 
