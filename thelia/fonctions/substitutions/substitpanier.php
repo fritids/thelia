@@ -70,7 +70,7 @@
 		$remise=0;
 		
 		if($_SESSION['navig']->promo->type == "1" && $_SESSION['navig']->promo->mini <= $total) $remise = $_SESSION['navig']->promo->valeur;
-		else if($_SESSION['navig']->promo->type == "2") $remise = $total * $_SESSION['navig']->promo->valeur / 100;
+		else if($_SESSION['navig']->promo->type == "2" && $_SESSION['navig']->promo->mini <= $total) $remise = $total * $_SESSION['navig']->promo->valeur / 100;
 		
         $totcmdport -= $remise;
 
