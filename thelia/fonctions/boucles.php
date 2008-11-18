@@ -2030,7 +2030,7 @@
 			$caractemp ->charger($row->caracteristique,  $_SESSION['navig']->lang);
 		
 			$temp = str_replace("#TITRECARAC", $caractemp->titre, $temp);
-			
+			$temp = str_replace("#PRODUIT",$prodtemp->id,$temp);
 				
 			$res .= $temp;
 		}
