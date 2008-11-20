@@ -2328,7 +2328,7 @@
 		$search="";
 		$res="";
 		
-		if($id != "") $search .= "and id in (\"$id\")";
+		if($id != "") $search .= "and id in ($id)";
 		if($nom != "") $search .= "and nom=\"$nom\"";
 		if($exclusion != "") $search .= "and nom not in ($exclusion)";
 					
