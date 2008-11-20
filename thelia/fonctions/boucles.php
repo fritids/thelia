@@ -512,7 +512,6 @@
 		$somme = lireTag($args, "somme");
 	
 		$search="";
-		$devise="";
 		$limit="";
 		$res="";
 		
@@ -521,7 +520,7 @@
 		$prod = new Produit();
 		$prod->charger_id($produit);
 
-		if($devise) $search .= " and devise=\"$devise\"";
+		if($id != "") $search .= " and id=\"$id\"";
 		
 		$devise = new Devise();
 
@@ -799,6 +798,7 @@
 			else if($classement == "date") $order = "order by datemodif desc";
 			else if($classement == "titre") $order = "order by titre";
             else if($classement == "titreinverse") $order = "order by titre desc";
+            else if($classement == "ref") $order = "order by ref";
 			else $order = "order by classement";
 			
 		
@@ -935,6 +935,7 @@
 			
 		
 			if($motcle){
+				$motcle = strip_tags($motcle);
 				$liste="";
 				
   				$query = "select * from $produitdesc->table  LEFT JOIN $produit->table ON $produit->table.id=$produitdesc->table.produit WHERE $produit->table.ref='$motcle' or titre like '% $motcle%' or titre like '%$motcle %' OR titre='$motcle' OR chapo like '% $motcle%' OR chapo like '%$motcle %' OR description like '% $motcle%' OR description like '%$motcle %' OR postscriptum like '% $motcle%' OR postscriptum like '%$motcle %'";
@@ -1510,7 +1511,7 @@
 				else $decval .= $tperso->valeur . " ";
 				
 				// recup declinaison associee
-				$declinaisondesc->charger($tperso->declinaison);
+				$declinaisondesc->charger($tperso->declinaison, $_SESSION['navig']->lang);
 				
 				$dectexte .= $declinaisondesc->titre . " " . $declidispdesc->titre . " ";
 				
@@ -2320,14 +2321,17 @@
 
 		// récupération des arguments
 
-		$id = lireTag($args, "id");		
+		$id = lireTag($args, "id");	
+		$nom = 	lireTag($args, "nom");
+		$exclusion = lireTag($args, "exclusion");		
 		
 		$search="";
 		$res="";
 		
-		if($id != "")
-			$search .= "and id=\"$id\"";
-			
+		if($id != "") $search .= "and id in (\"$id\")";
+		if($nom != "") $search .= "and nom=\"$nom\"";
+		if($exclusion != "") $search .= "and nom not in ($exclusion)";
+					
 		$modules = new Modules();
 	
 		$query = "select * from $modules->table where type='2' and actif='1' $search order by classement";
