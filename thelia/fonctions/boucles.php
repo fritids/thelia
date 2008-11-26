@@ -1884,7 +1884,7 @@
 		
 		// preparation de la requete
 		if($caracteristique!="")  $search.=" and caracteristique=\"$caracteristique\"";
-		if($id !="") $search.=" and id=\"$id\"";
+		if($id !="") $search.=" and id IN ($id)";
 		if($classement == "alpha") $order="order by titre";
 		else if($classement == "alphainv") $order="order by titre desc";
 		
