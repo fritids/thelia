@@ -152,7 +152,8 @@
 			$urlsite->charger("urlsite");
 			
 			$corps = str_replace("__COMMANDE_REF__", $commande->ref, $corps);
-			$corps = str_replace("__COMMANDE_DATE__", $jour . "/" . $mois . "/" . $annee . " " . $heure . ":" . $minute, $corps);
+			$corps = str_replace("__COMMANDE_DATE__", $jour . "/" . $mois . "/" . $annee, $corps);
+			$corps = str_replace("__COMMANDE_HEURE__", $heure . ":" . $minute, $corps);
 			$corps = str_replace("__COMMANDE_TRANSACTION__", $commande->transaction, $corps);
 			$corps = str_replace("__COMMANDE_PAIEMENT__", $paiementdesc->titre, $corps);
 			$corps = str_replace("__COMMANDE_TOTALPORT__", $totcmdport-$commande->remise, $corps);
@@ -216,14 +217,12 @@
 				$temp = str_replace("__VENTEPROD_TITRE__", $row->titre, $cut[1]);
                 $temp =  str_replace("__VENTEPROD_REF__", $row->ref, $temp);
 				$temp =  str_replace("__VENTEPROD_QUANTITE__", $row->quantite, $temp);
-				$temp = str_replace("__VENTEPROD_CHAPO__", $row->chapo, $temp);
 				$temp =  str_replace("__VENTEPROD_PRIXU__", $row->prixu, $temp);
 				$res .= $temp;
 			
 			}
 			$corps = str_replace($cut[1], $res, $corps);
-			$corps = str_replace("\n", "", $corps);
-			
+						
 			return $corps;
 			
 		}
