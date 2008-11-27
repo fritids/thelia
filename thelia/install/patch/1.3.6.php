@@ -1,6 +1,10 @@
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Variable.class.php");
 	
+	$cnx = new Cnx();
+	$query_cnx = "ALTER TABLE `message` ADD `cache` SMALLINT NOT NULL ;";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+		
 	$var = new Variable();
 	
 	$query_var = "update variable set protege='0'";

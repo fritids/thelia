@@ -101,7 +101,8 @@
 		if($rec) {
 			$_SESSION['navig']->client = $client;
 			$_SESSION['navig']->connecte = 1; 
-
+			modules_fonction("apresconnexion");
+			
 			if($_SESSION['navig']->urlpageret) redirige($_SESSION['navig']->urlpageret);
 			else redirige("index.php");
 		}

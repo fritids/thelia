@@ -33,6 +33,9 @@
 		
 		if($commande) $refs = $commande;
 		else $refs = $_SESSION['navig']->commande->ref;
+
+
+		$texte = str_replace("#COMMANDE_TRANSPORT",  $_SESSION['navig']->commande->transport, $texte);
 	
 		$tcommande = new Commande();
 	

@@ -54,9 +54,9 @@
 			
 			for($i=0; $i<count($this->bddvars); $i++){
 				$tempvar = $this->bddvars[$i];
-				$tempval = addslashes($this->$tempvar);	
-				if(strstr($tempval, "\\\\\"") || strstr($tempval, "\\\\\'")) $tempval = stripslashes($tempval); 
-				$listvals .= "\"" . $tempval . "\",";			
+				if(strstr($this->$tempvar, "\"") && ! strstr($this->$tempvar, "\\\""))
+				 $this->$tempvar = addslashes($this->$tempvar);
+				$listvals .= "\"" . $this->$tempvar . "\",";
 			}
 						
 			return substr($listvals, 0, strlen($listvals)-1);

@@ -80,7 +80,6 @@
 		if(strstr($texte, "#RUBRIQUE_")) $texte = substitrubriques($texte);
 		if(strstr($texte, "#PRODUIT_")) $texte = substitproduits($texte);	
 		if(strstr($texte, "#PANIER_")) $texte = substitpanier($texte);
-		if(strstr($texte, "#PANIER_")) $texte = substitpanier($texte);
 		if(strstr($texte, "#CLIENT_")) $texte = substitclient($texte);		
 		if(strstr($texte, "#PAGE_")) $texte = substitpage($texte);		
 		if(strstr($texte, "#ADRESSE_")) $texte = substitadresse($texte);		

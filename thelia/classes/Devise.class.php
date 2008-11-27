@@ -42,12 +42,12 @@
 		}
 		
 		function charger($id){
-		
 			return $this->getVars("select * from $this->table where id=\"$id\"");
-
-
 		}
 
+		function charger_symbole($symbole){
+			return $this->getVars("select * from $this->table where symbole=\"$symbole\"");
+		}
 	}
 
 

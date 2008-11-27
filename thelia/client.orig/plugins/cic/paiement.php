@@ -209,7 +209,7 @@ $CtlHmac   = CMCIC_CtlHmac($CMCIC_Tpe);      // TPE ok feedback
 //  commande.
 // -----------------------------------------------------------------------------
 
-$stub_method = $HTTP_SERVER_VARS["REQUEST_METHOD"];
+$stub_method = $_SERVER["REQUEST_METHOD"];
 if (($stub_method == "GET") or ($stub_method == "POST")) {
     $wstub_order  = "HTTP_" . $stub_method . "_VARS";
     $stub_order  = ${$wstub_order};

@@ -45,7 +45,7 @@
 		if( $ref || $id_produit)        
 			$tproduitdesc->charger($tproduit->id, $_SESSION['navig']->lang);
 			
-		$texte = str_replace("#PRODUIT_ID", $tproduitdesc->produit, $texte);
+		$texte = str_replace("#PRODUIT_ID", $tproduit->id, $texte);
 		$texte = str_replace("#PRODUIT_NOM", $tproduitdesc->titre, $texte);	
 		$texte = str_replace("#PRODUIT_CHAPO", $tproduitdesc->chapo, $texte);
 		$texte = str_replace("#PRODUIT_DESCRIPTION", $tproduitdesc->description, $texte);

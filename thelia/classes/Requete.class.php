@@ -72,6 +72,9 @@
 			
 			for($i=0; $i<count($this->bddvars); $i++){
 				$varn = $this->bddvars[$i];
+				if(strstr($this->$varn, "\"") && ! strstr($this->$varn, "\\\""))
+					$this->$varn = addslashes($this->$varn);
+
 				$listv.= $this->bddvars[$i] . "=\"" . $this->$varn . "\", ";
 			}
 			

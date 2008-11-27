@@ -29,7 +29,7 @@
 #currency=eur
 #update=no
 #quoted=yes
-url	title	description	price	offerid	image	category	availability	deliverycost	expiration
+url	title	description	price	offerid	image	category	availability	deliverycost
 <?php
 	        function calculport($poids){
 	 			return 0;
@@ -71,5 +71,5 @@ url	title	description	price	offerid	image	category	availability	deliverycost	exp
 	
 		$description = trim($description);
 ?>
-<?php echo $variable->valeur; ?>/produit.php?ref=<?php echo($row->ref); ?>	<?php echo($produitdesc->titre); ?>	<?php echo($description); ?>	<?php echo($row->prix2); ?>	<?php echo($row->ref); ?>	<?php echo $variable->valeur; ?>/client/gfx/photos/produit/<?php echo($row2->fichier); ?>	 CATEGORIE	En Stock	<?php echo(calculport($row->poids)); ?>	20070101
+<?php echo $variable->valeur; ?>/produit.php?ref=<?php echo($row->ref); ?>	<?php echo($produitdesc->titre); ?>	<?php echo($description); ?>	<?php echo($row->prix2); ?>	<?php echo($row->ref); ?>	<?php echo $variable->valeur; ?>/client/gfx/photos/produit/<?php echo($row2->fichier); ?>	 CATEGORIE	En Stock	<?php echo(calculport($row->poids)); ?>	
 <?php	}	?>

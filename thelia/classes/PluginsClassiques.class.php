@@ -105,46 +105,35 @@
 			
 		}
 		
-		function demarrage(){
-			
-			
-		}
+		function demarrage(){}
 
-		function inclusion(){
-			
-			
-		}
+		function inclusion(){}
 		
-		function pre(){
-			
-			
-		}
+		function pre(){}
 		
-		function action(){
-			
-			
-		}
+		function action(){}
 		
-		function boucle($texte, $args){
-			
-		}		
+		function boucle($texte, $args){}		
 
-		function post(){
-			
-			
-		}
-				
-		function statut($commande){
-			
-		}
+		function post(){}
+
+		function apres(){}
+
+		function avantcommande(){}
+
+		function aprescommande(){}
+
+		function mail(){}
 		
-		function confirmation($commande){
-			
-		}
+		function avantclient(){}
+
+		function apresclient(){}
+						
+		function statut($commande){}
 		
-		function modprod($ref){
-			
-		}
+		function confirmation($commande){}
+		
+		function modprod($ref){}
 		
 	}
 
