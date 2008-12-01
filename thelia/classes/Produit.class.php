@@ -56,7 +56,6 @@
 			$this->Baseobj();	
 		}
 
-
 		function charger($ref){
 		
 			return $this->getVars("select * from $this->table where ref=\"$ref\"");
