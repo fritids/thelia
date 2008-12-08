@@ -94,8 +94,7 @@ function TesterHmac($CMCIC_Tpe, $CMCIC_bruteVars )
 
 $CMCIC_reqMethod  = $_SERVER["REQUEST_METHOD"];
 if (($CMCIC_reqMethod == "GET") or ($CMCIC_reqMethod == "POST")) {
-    $wCMCIC_bruteVars = "HTTP_".$CMCIC_reqMethod."_VARS";
-    $CMCIC_bruteVars  = ${$wCMCIC_bruteVars};
+    $CMCIC_bruteVars  = $_REQUEST;
 }
 else
     die ('Invalid REQUEST_METHOD (not GET, not POST).');

@@ -44,7 +44,9 @@
 			$urlsite = new Variable();
 			$urlsite->charger("urlsite");
 
-			header("Location: http://" . $_SERVER['HTTP_HOST'] . "/cheque.php");
+		//	header("Location: http://" . $_SERVER['HTTP_HOST'] . "/cheque.php");
+			header("Location: " . $urlsite->valeur . "/cheque.php");
+		
 			exit;	
 		}
 	

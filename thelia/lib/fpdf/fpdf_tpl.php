@@ -17,7 +17,7 @@
 //  limitations under the License.
 //
 
-require_once("fpdf.php");
+require_once(realpath(dirname(__FILE__)) . "/fpdf.php");
 
 class fpdf_tpl extends fpdf {
     /**

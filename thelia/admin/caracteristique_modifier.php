@@ -204,13 +204,14 @@
 	
 	function majcaracdisp($id, $lang){
 		$caracdisp = new Caracdisp();
-		$caracdispdesc = new Caracdispdesc();
 		
 		$query = "select * from $caracdisp->table where caracteristique='$id'";
 		$resul = mysql_query($query, $caracdisp->link);
 		
 		while($row = mysql_fetch_object($resul)){
-			
+		
+			$caracdispdesc = new Caracdispdesc();
+		
 			$var = $lang . "_" . $row->id;
 			
 			global $$var;

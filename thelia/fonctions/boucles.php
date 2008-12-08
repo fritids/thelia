@@ -2692,6 +2692,7 @@
 			else $valeur = $tperso->valeur;
 
 			$temp = str_replace("#DECLITITRE", "$tdeclinaisondesc->titre", $texte);
+			$temp = str_replace("#DECLINAISON", "$tdeclinaisondesc->declinaison", $temp);
 			$temp = str_replace("#REF", "$ref", $temp);	
 			$temp = str_replace("#ARTICLE", "$article", $temp);	
 			$temp = str_replace("#VALEUR", "$valeur", $temp);	

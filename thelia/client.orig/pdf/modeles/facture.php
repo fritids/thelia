@@ -25,7 +25,7 @@
 ?>
 <?php
 	
-	define('FPDF_FONTPATH','font/');
+	define('FPDF_FONTPATH', realpath(dirname(__FILE__)) . '/../../../lib/fpdf/font/');
 	require('../../lib/fpdf/fpdf.php');
 	require('../../lib/fpdf/fpdi.php');
 
