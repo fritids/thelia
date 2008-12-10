@@ -956,11 +956,15 @@
 			
 			}
 		
-		if($classement != "titre" && $classement != "titreinverse")
+		if($classement != "titre" && $classement != "titreinverse"){
 			$query = "select * from $produit->table where 1 $search $order $limit";
+			$classement = "produit";
+	    }
 	
-		else
+		else {
 			$query = "select * from $produit->table, $produitdesc->table where $produit->table.id=$produitdesc->table.produit and $produitdesc->table.lang=\"" . $_SESSION['navig']->lang . "\" $search $order $limit";
+			$classement = "produitdesc";
+		}
             
 		$resul = mysql_query($query, $produit->link);
 		$nbres = mysql_num_rows($resul);
@@ -990,10 +994,15 @@
 			else $debcourant = $num * ($comptbloc);
 			$comptbloc++;
 						
+			if($classement == "produit")
+				$prodid = $row->id;
+			else 
+				$prodid = $row->produit.id;
+				
 			$rubriquedesc = new Rubriquedesc();
 			$rubriquedesc->charger($row->rubrique, $_SESSION['navig']->lang);
 		
-			$produitdesc->charger($row->produit.id, $_SESSION['navig']->lang);
+			$produitdesc->charger($prodid, $_SESSION['navig']->lang);
 				
 			$temp = $texte;
 			
@@ -1049,7 +1058,7 @@
 			$temp = str_replace("#DATE", substr($row->datemodif, 0, 10), $temp);
 			$temp = str_replace("#HEURE", substr($row->datemodif, 11), $temp);
 			$temp = str_replace("#DEBCOURANT", "$debcourant", $temp);
-			$temp = str_replace("#ID", "$row->produit.id", $temp);	
+			$temp = str_replace("#ID", "$prodid", $temp);	
 			$temp = str_replace("#PRIX2ORIGHT", "$prix2oright", $temp);	
 			$temp = str_replace("#PRIX2ORIG", "$prix2orig", $temp);	
 			$temp = str_replace("#PRIXORIGHT", "$prixoright", $temp);				
