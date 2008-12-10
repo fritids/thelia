@@ -993,7 +993,7 @@
 			$rubriquedesc = new Rubriquedesc();
 			$rubriquedesc->charger($row->rubrique, $_SESSION['navig']->lang);
 		
-			$produitdesc->charger($row->id, $_SESSION['navig']->lang);
+			$produitdesc->charger($row->produit.id, $_SESSION['navig']->lang);
 				
 			$temp = $texte;
 			
@@ -1049,7 +1049,7 @@
 			$temp = str_replace("#DATE", substr($row->datemodif, 0, 10), $temp);
 			$temp = str_replace("#HEURE", substr($row->datemodif, 11), $temp);
 			$temp = str_replace("#DEBCOURANT", "$debcourant", $temp);
-			$temp = str_replace("#ID", "$row->id", $temp);	
+			$temp = str_replace("#ID", "$row->produit.id", $temp);	
 			$temp = str_replace("#PRIX2ORIGHT", "$prix2oright", $temp);	
 			$temp = str_replace("#PRIX2ORIG", "$prix2orig", $temp);	
 			$temp = str_replace("#PRIXORIGHT", "$prixoright", $temp);				
