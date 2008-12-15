@@ -38,9 +38,9 @@ url	title	description	price	offerid	image	category	availability	deliverycost
 ?>
 <?php
 
-	include("../../classes/Produit.class.php");
-	include("../../classes/Image.class.php");
-	include("../../classes/Variable.class.php");
+	include_once("../../classes/Produit.class.php");
+	include_once("../../classes/Image.class.php");
+	include_once("../../classes/Variable.class.php");
 	
 	$variable = new Variable();
 	$variable->charger("urlsite");
