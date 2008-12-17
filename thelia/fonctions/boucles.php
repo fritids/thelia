@@ -634,6 +634,7 @@
 		$num = lireTag($args, "num");
 		$aleatoire = lireTag($args, "aleatoire");
 		$classement = lireTag($args, "classement");
+		$unique = lireTag($args, "unique");
 		
 		$search="";
 		$order = "";
@@ -652,19 +653,23 @@
 		
 		$accessoire = new Accessoire();
 
-		$query = "select * from $accessoire->table where 1 $search $order $limit";
+		if($unique == "")
+			$query = "select * from $accessoire->table where 1 $search $order $limit";
+		else
+			$query = "select DISTINCT(id) from $accessoire->table where 1 $search $order $limit";
+			
 		$resul = mysql_query($query, $accessoire->link);
 	
 		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 
 		while( $row = mysql_fetch_object($resul)){
+
 			$prod = new Produit();
-			$prod->charger_id($produit);
+			$prod->charger_id($row->produit);
 			
-			$accessoire->charger($row->id);
-			$temp = str_replace("#ACCESSOIRE", "$accessoire->accessoire", $texte);
-			$temp = str_replace("#PRODID", "$produit", $temp);
+			$temp = str_replace("#ACCESSOIRE", "$row->accessoire", $texte);
+			$temp = str_replace("#PRODID", "$row->produit", $temp);
 			$temp = str_replace("#PRODREF", $prod->ref, $temp);
 
 			$res .= $temp;
