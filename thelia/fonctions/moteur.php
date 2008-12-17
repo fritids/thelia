@@ -58,7 +58,6 @@
 	include_once("classes/Variable.class.php");	
 	include_once("classes/Promo.class.php");
 	include_once("classes/Perso.class.php");
-	include_once("classes/Smtp.class.php");
 	include_once("classes/PluginsClassiques.class.php");
 	include_once("fonctions/parseur.php");
     
