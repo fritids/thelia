@@ -35,7 +35,7 @@
 		
 		$i = 0;
 		
-		// vérification si un produit avec la même déclinaison est déjà présent
+		// vÃ©rification si un produit avec la mÃªme dÃ©clinaison est dÃ©jÃ  prÃ©sent
 		foreach ($_REQUEST as $key => $valeur) {
 			
 			if(strstr($key, "declinaison")){
@@ -85,7 +85,7 @@
 
 	}
 	
-	// modification de la quantité d'un article
+	// modification de la quantitÃ© d'un article
 	function modifier($article, $quantite){
 		if($quantite != "")
 			$_SESSION['navig']->panier->modifier($article, $quantite);
@@ -111,7 +111,7 @@
 		
 	}
 	
-	// déconnexion du client
+	// dÃ©connexion du client
 	function deconnexion(){
 
 		$_SESSION['navig']->client= new Client();
@@ -125,7 +125,7 @@
 		$_SESSION['navig']->adresse=$adresse;
 	}
 	
-	// procédure de paiement
+	// procÃ©dure de paiement
 	function paiement($type_paiement){
 	
 		if(! $_SESSION['navig']->client->id || $_SESSION['navig']->panier->nbart < 1)
@@ -231,7 +231,7 @@
 			for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
 				if(is_numeric($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur)){
                 
-					// diminution des stocks de déclinaison
+					// diminution des stocks de dÃ©clinaison
 					$stock->charger($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur, $_SESSION['navig']->panier->tabarticle[$i]->produit->id);
                 	$stock->valeur-=$_SESSION['navig']->panier->tabarticle[$i]->quantite;
                 	$stock->maj();
@@ -275,7 +275,7 @@
 			$venteprod->commande = $idcmd;
 		 	$idvprod = $venteprod->add();
 
-			// ajout dans ventedeclisp des declidisp associées au venteprod
+			// ajout dans ventedeclisp des declidisp associÃ©es au venteprod
 			for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
 				$tperso = $_SESSION['navig']->panier->tabarticle[$i]->perso[$compt];
 				$declinaison->charger($tperso->declinaison);
@@ -343,7 +343,7 @@
 
 	}
 	
-	// création d'un compte
+	// crÃ©ation d'un compte
 	function creercompte($raison, $entreprise, $siret, $intracom, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $pays, $telfixe, $telport, $email1, $email2, $motdepasse1, $motdepasse2, $parrain){
 
 		global $obligetelfixe, $obligetelport;
@@ -496,7 +496,7 @@
 
 	}
 		
-	// création d'une adresse de livraison	
+	// crÃ©ation d'une adresse de livraison	
 	function creerlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $tel, $pays){
 
 		if($libelle != "" && $raison != "" && $prenom != "" && $nom != "" && $adresse1 != ""
