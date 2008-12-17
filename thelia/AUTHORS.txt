@@ -4,6 +4,7 @@ THELIA
 Développeur :
 
 Yoan De Macedo : yoan@octolys.fr
+Manuel Raynaud : manu@octolys.fr
 
 Charte graphique :
 
