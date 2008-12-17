@@ -2520,6 +2520,7 @@
 		$classement = lireTag($args, "classement");
 		$stockmini = lireTag($args, "stockmini");
 		$courante = lireTag($args, "courante");
+		$num = lireTag($args, "num");
 		
 		$search ="";
 		$liste="";
@@ -2588,7 +2589,10 @@
 			return "";
 	
 		for($i=0; $i<count($tabliste); $i++){
-		
+
+			if($num != "" && $num == $i)
+				break ;
+						
 			if($courante == "1" && ($tabliste[$i] . "-"  != $declidisp))
 			   continue;
 			
