@@ -60,8 +60,11 @@
 
 		function charger($email, $motdepasse){
 		
-			return $this->getVars("select * from $this->table where email=\"$email\" and motdepasse=PASSWORD('$motdepasse')");
-
+			$query = sprintf("select * from $this->table where email='%s' and motdepasse=PASSWORD('%s')",
+			mysql_real_escape_string($email),
+			mysql_real_escape_string($motdepasse));
+				
+			return $this->getVars($query);
 		}
 		
 		function charger_mail($email){
