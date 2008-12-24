@@ -46,7 +46,11 @@
 
 		function charger($identifiant, $motdepasse){
 		
-			return $this->getVars("select * from $this->table where identifiant=\"$identifiant\" and motdepasse=PASSWORD('$motdepasse')");
+			$query = sprintf("select * from $this->table where identifiant='%s' and motdepasse=PASSWORD('%s')",
+			mysql_real_escape_string($identifiant),
+			mysql_real_escape_string($motdepasse));
+				
+			return $this->getVars($query);
 
 		}
 
