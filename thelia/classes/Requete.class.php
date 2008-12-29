@@ -72,9 +72,12 @@
 			
 			for($i=0; $i<count($this->bddvars); $i++){
 				$varn = $this->bddvars[$i];
-				if(strstr($this->$varn, "\"") && ! strstr($this->$varn, "\\\""))
-					$this->$varn = addslashes($this->$varn);
 
+			 if(get_magic_quotes_gpc())
+			  		$this->$varn = stripslashes($this->$varn);
+
+			 $this->$varn = mysql_real_escape_string($this->$varn, $this->link);
+			 
 				$listv.= $this->bddvars[$i] . "=\"" . $this->$varn . "\", ";
 			}
 			
