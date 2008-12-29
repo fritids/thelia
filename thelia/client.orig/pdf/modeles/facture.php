@@ -396,7 +396,7 @@
 
         $pdf->SetFont('Arial','',8);
         $pdf->SetXY(122,$hauteur);
-        $pdf->write(10, $adrfact->tel);
+        $pdf->write(10, $adressecl->tel);
 
 		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(52,52);	
