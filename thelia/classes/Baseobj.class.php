@@ -54,8 +54,12 @@
 			
 			for($i=0; $i<count($this->bddvars); $i++){
 				$tempvar = $this->bddvars[$i];
-				if(strstr($this->$tempvar, "\"") && ! strstr($this->$tempvar, "\\\""))
-				 $this->$tempvar = addslashes($this->$tempvar);
+				
+				 if(get_magic_quotes_gpc())
+			  		$this->$tempvar = stripslashes($this->$tempvar);
+				
+				$this->$tempvar = mysql_real_escape_string($this->$tempvar, $this->link);
+
 				$listvals .= "\"" . $this->$tempvar . "\",";
 			}
 						
