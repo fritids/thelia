@@ -1,9 +1,11 @@
 1.3.9
+	Mise à jour de sécurité
 	Ajout de la recherche par postscriptum (PRODUIT, CONTENU)
 	Ajout du point d'entrée avantcommande
 	URL rewriting des produits modifiés (apparition du titre). Si vous utilisez le rewriting, n'oubliez pas d'effectuer un redirect permanent sur les anciennes URL
 	Ajout de la sortie #PRODUIT dans la boucle CARACVAL (id du produit)
 	Ajout du point d'entrée rubriquemodifier dans l'admin. Utiliser plugin_admin_pre.php pour faire récupérer les opérations à effectuer
+	Correction de différents bugs mineurs
 	
 1.3.8
 	Ajout d'un point d'entré dans l'admin au niveau de caracteristique_modifier.php
