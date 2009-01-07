@@ -13,8 +13,8 @@
 <catalog lang="FR" date="<?= $ladate ?>" GMT="+1" version="1.4">
 <?
 
-	include("../../classes/Produit.class.php");
-	include("../../classes/Image.class.php");
+	include_once("../../classes/Produit.class.php");
+	include_once("../../classes/Image.class.php");
 
 	$i=0;
 

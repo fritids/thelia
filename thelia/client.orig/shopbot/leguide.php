@@ -37,10 +37,10 @@
 <catalog lang="FR" date="<?php echo($ladate); ?>" GMT="+1" version="1.4">
 <?php
 
-	include("../../classes/Produit.class.php");
-	include("../../classes/Image.class.php");
-	include("../../classes/Rubrique.class.php");
-	include("../../classes/Variable.class.php");
+	include_once("../../classes/Produit.class.php");
+	include_once("../../classes/Image.class.php");
+	include_once("../../classes/Rubrique.class.php");
+	include_once("../../classes/Variable.class.php");
 	
 	$variable = new Variable();
 	$variable->charger("urlsite");
@@ -72,6 +72,10 @@
 
 		$rubriquedesc->charger($row->rubrique);		
 		
+		if($row->promo)
+			$prix = $row->prix2;
+		else
+			$prix = $row->prix;
 ?>
 
 	<product place="<?php echo($i); ?>">
@@ -81,7 +85,7 @@
 		<description>
 			<![CDATA[ <?php echo(htmlentities($description)); ?>  ]]>
 		</description>
-		<regular_price currency="EUR" tax_included="1" tax_value="19.6"><?php echo($row->prix2); ?></regular_price>
+		<regular_price currency="EUR" tax_included="1" tax_value="19.6"><?php echo $prix; ?></regular_price>
 		<product_url><![CDATA[ <?php echo $variable->valeur; ?>/produit.php?ref=<?php echo($row->ref); ?> ]]></product_url>
 		<image_url><![CDATA[ <?php echo $variable->valeur; ?>/fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo($row2->fichier); ?>&width=70&height=70 ]]></image_url>
 		<delivery currency="EUR">

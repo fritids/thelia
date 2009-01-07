@@ -70,6 +70,12 @@ url	title	description	price	offerid	image	category	availability	deliverycost
         $description = strip_tags($description);
 	
 		$description = trim($description);
+		
+		if($row->promo)
+                $prix = $row->prix2;   
+        else                      
+  				$prix = $row->prix;
+        
 ?>
-<?php echo $variable->valeur; ?>/produit.php?ref=<?php echo($row->ref); ?>	<?php echo($produitdesc->titre); ?>	<?php echo($description); ?>	<?php echo($row->prix2); ?>	<?php echo($row->ref); ?>	<?php echo $variable->valeur; ?>/client/gfx/photos/produit/<?php echo($row2->fichier); ?>	 CATEGORIE	En Stock	<?php echo(calculport($row->poids)); ?>	
+<?php echo $variable->valeur; ?>/produit.php?ref=<?php echo($row->ref); ?>	<?php echo($produitdesc->titre); ?>	<?php echo($description); ?>	<?php echo($prix); ?>	<?php echo($row->ref); ?>	<?php echo $variable->valeur; ?>/client/gfx/photos/produit/<?php echo($row2->fichier); ?>	 CATEGORIE	En Stock	<?php echo(calculport($row->poids)); ?>	
 <?php	}	?>
