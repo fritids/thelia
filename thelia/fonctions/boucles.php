@@ -804,6 +804,7 @@
 			else if($classement == "titre") $order = "order by titre";
             else if($classement == "titreinverse") $order = "order by titre desc";
             else if($classement == "ref") $order = "order by ref";
+            else if($classement == "promo") $order = "order by promo desc";
 			else $order = "order by classement";
 			
 		
@@ -1286,7 +1287,7 @@
         $objet = lireTag($args, "objet");
         $typeobj = lireTag($args, "typeobj");
         $contenu = lireTag($args, "contenu");
-        $classement = lireTag($args, "contenu");
+        $classement = lireTag($args, "classement");
         $num = lireTag($args, "num");
       	$deb = lireTag($args, "deb");
 		
