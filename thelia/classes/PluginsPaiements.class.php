@@ -41,6 +41,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/Declinaisondesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Declidisp.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Declidispdesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../lib/phpMailer/class.phpmailer.php");
 	
 	
 	class PluginsPaiements extends PluginsClassiques{
@@ -98,8 +99,31 @@
 			$client = new Client();
 			$client->charger_id($commande->client);
 			
-			mail($client->email , "$sujet", "$corps", "From: $emailcontact->valeur");	
-			mail($emailcontact->valeur , "$sujet2", "$corps2", "From: $emailcontact->valeur");	
+			$nomsite = new Variable();
+			$nomsite->charger("nomsite");	
+			
+			
+			//envoi du mail au client
+			$mailclient = new PHPMailer();
+			$mailclient->IsMail();
+			$mailclient->FromName = $nomsite->valeur;
+			$mailclient->From = $emailcontact->valeur;
+			$mailclient->Subject = $sujet;
+			$mailclient->MsgHTML($corps);
+			$mailclient->AddAddress($client->email,$client->nom." ".$client->prenom);
+			
+			$mailclient->send();
+			
+			//envoi du mail a l'admin
+			$mail = new PHPMailer();
+			$mail->IsMail();
+			$mail->FromName = $nomsite->valeur;
+			$mail->From = $emailcontact->valeur;
+			$mail->Subject = $sujet2;
+			$mail->MsgHTML($corps2);
+			$mail->AddAddress($emailcontact->valeur,$nomsite->valeur);
+			
+			$mail->send();
 			
 		}
 		
