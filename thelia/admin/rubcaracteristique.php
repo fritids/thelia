@@ -68,7 +68,7 @@
         
         	$liste = substr($liste, 0, strlen($liste)-1);
 
-       		 $query = "select caracteristique as id  from $caracteristiquedesc->table where caracteristique in ($liste) order by titre";
+       		 $query = "select caracteristique as id  from $caracteristiquedesc->table where caracteristique in ($liste) and lang='1' order by titre";
         	 $resul = mysql_query($query, $caracteristiquedesc->link);
 
 
