@@ -59,6 +59,7 @@
 	include_once("classes/Promo.class.php");
 	include_once("classes/Perso.class.php");
 	include_once("classes/PluginsClassiques.class.php");
+	include_once("lib/phpMailer/class.phpmailer.php");
 	include_once("fonctions/parseur.php");
     
 function analyse($res){

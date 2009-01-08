@@ -587,9 +587,20 @@
 
 			$emailcontact = new Variable();
             $emailcontact->charger("emailcontact");
-                
+            
+			$nomsite = new Variable();
+			$nomsite->charger("nomsite");
+    
             $corps = $msgdesc->description;     
-			mail("$tclient->email", "$sujet", "$corps $pass", "From: $emailcontact->valeur");
+			
+			$mail = new PHPMailer();
+			$mail->IsMail();
+			$mail->From = $emailcontact->valeur;
+			$mail->FromName = $nomsite->valeur;
+			$mail->Subject = $sujet;
+			$mail->MsgHTML($corps." ".$pass);
+			$mail->AddAddress($tclient->email,$tclient->nom." ".$tclient->prenom);
+			$mail->send();
                         
  		
 		}
