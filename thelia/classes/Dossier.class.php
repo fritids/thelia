@@ -128,6 +128,24 @@
 			return 1;
 		
 		}
+		
+		function nb_dos(){
+			$contenu = new Contenu();
+			$query = "select count(*) as nbdos from $contenu->table where dossier=\"" . $this->id . "\"";
+			$res = mysql_query($query);
+			
+			return mysql_result($res,0,"nbdos");
+		}
+		
+		function aenfant(){
+			
+			$query = "select count(*) as nb from $this->table where parent=\"" . $this->id . "\"";
+			$resul = mysql_query($query, $this->link);
+			if(mysql_result($resul, 0, "nb"))
+				return 1;
+			else
+				return 0;		
+		}
 
 		
 	}
