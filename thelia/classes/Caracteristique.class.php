@@ -82,7 +82,21 @@
 			
 			
 			$this->delete("delete from $this->table where id=\"$this->id\"");	
-			$this->delete("delete from $caracteristiquedesc->table where caracteristique=\"$this->id\"");	
+			$this->delete("delete from $caracteristiquedesc->table where caracteristique=\"$this->id\"");
+			
+			$queryclass = "select * from $this->table order by classement";
+			$resclass = mysql_query($queryclass);
+			
+			if(mysql_num_rows($resclass) > 0){
+				$i=1;
+				while($rowclass = mysql_fetch_object($resclass)){
+					$carac = new Caracteristique();
+					$carac->charger($rowclass->id);
+					$carac->classement = $i;
+					$carac->maj();
+					$i++;
+				}
+			}	
 	
 			
 			return 1;
