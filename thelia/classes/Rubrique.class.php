@@ -118,7 +118,21 @@
 				}
 				
 				$this->delete("delete from $this->table where id=\"$this->id\"");	
-				$this->delete("delete from $rubriquedesc->table where rubrique=\"$this->id\"");	
+				$this->delete("delete from $rubriquedesc->table where rubrique=\"$this->id\"");
+				
+				$queryclass = "select * from $this->table where parent=$this->parent order by classement";
+				$resclass = mysql_query($queryclass);
+				
+				if(mysql_num_rows($resclass)>0){
+					$i = 1;
+					while($rowclass = mysql_fetch_object($resclass)){
+						$rub = new Rubrique();
+						$rub->charger($rowclass->id);
+						$rub->classement = $i;
+						$rub->maj();
+						$i++;
+					}
+				}	
 
 			}
 			
