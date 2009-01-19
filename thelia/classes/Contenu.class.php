@@ -110,7 +110,7 @@
 			$this->delete("delete from $this->table where id=\"$this->id\"");	
 			$this->delete("delete from $contenudesc->table where contenu=\"$this->id\"");
 			
-			$queryclass="select * from $this->admin where dossier=$this->dossier order by classement";
+			$queryclass="select * from $this->table where dossier=$this->dossier order by classement";
 			$resclass = mysql_query($queryclass);
 			
 			if(mysql_num_rows($resclass) > 0){
