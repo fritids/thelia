@@ -108,7 +108,22 @@
 			
 			
 			$this->delete("delete from $this->table where id=\"$this->id\"");	
-			$this->delete("delete from $contenudesc->table where contenu=\"$this->id\"");	
+			$this->delete("delete from $contenudesc->table where contenu=\"$this->id\"");
+			
+			$queryclass="select * from $this->admin where dossier=$this->dossier order by classement";
+			$resclass = mysql_query($queryclass);
+			
+			if(mysql_num_rows($resclass) > 0){
+				
+				$i=1;
+				while($rowclass = mysql_fetch_object($resclass)){
+					$cont = new Contenu();
+					$cont->charger($rowclass->id);
+					$cont->classement = $i;
+					$cont->maj();
+					$i++;
+				}
+			}	
 
 			
 			return 1;
