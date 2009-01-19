@@ -91,7 +91,21 @@
 			
 			
 			$this->delete("delete from $this->table where id=\"$this->id\"");	
-			$this->delete("delete from $declinaisondesc->table where declinaison=\"$this->id\"");	
+			$this->delete("delete from $declinaisondesc->table where declinaison=\"$this->id\"");
+			
+			$queryclass = "select * from $this->table order by classement";
+			$resclass = mysql_query($queryclass);
+			
+			if(mysql_num_rows($resclass) > 0){
+				$i = 1;
+				while($rowclass = mysql_fetch_object($resclass)){
+					$dec = new Declinaison();
+					$dec->charger($rowclass->id);
+					$dec->classement = $i;
+					$dec->maj();
+					$i++;
+				}
+			}	
 
 			
 			return 1;

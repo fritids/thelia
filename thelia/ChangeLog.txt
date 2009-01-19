@@ -10,6 +10,7 @@
 	Ajout du point d'entrée rubriquemodifier dans l'admin. Utiliser plugin_admin_pre.php pour faire récupérer les opérations à effectuer
 	Correction de différents bugs mineurs
 	Implémentation de la librairie phpmailer pour l'envoi des mails, donc possibilité d'envoyer des mails au format HTML. La librairie est enregistré dans le répertoire lib.
+	Jquery est intégré dans le répertoire lib à présent
 	
 1.3.8
 	Ajout d'un point d'entré dans l'admin au niveau de caracteristique_modifier.php
