@@ -28,6 +28,7 @@
   class Smtp{
 
         var $server;
+		var $port=25;
         var $from;
         var $rcpt;
         var $subject;
@@ -47,7 +48,7 @@
 
         function envoyer(){
 
-             $fp = fsockopen($this->server, "25");
+             $fp = fsockopen($this->server, $this->port);
 
              $this->ligne($fp, "helo server\r\n");
              $this->ligne($fp, "mail from: " . $this->from . "\r\n");
