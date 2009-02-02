@@ -1724,6 +1724,7 @@
 			$temp = str_replace("#TITRE", $titre, $temp);
 			$temp = str_replace("#CHAPO", $chapo, $temp);
 			$temp = str_replace("#DESCRIPTION", $description, $temp);		
+			$temp = str_replace("#NOM", $row->nom, $temp);		
 			$res .= $temp;
 		}
 	
@@ -1995,6 +1996,7 @@
 		$produit = lireTag($args, "produit");
 		$caracteristique = lireTag($args, "caracteristique");		
 		$valeur = lireTag($args, "valeur");		
+		$classement = lireTag($args, "classement");
 
 		if($produit == "" || $caracteristique == "") return "";
 		
@@ -2006,15 +2008,19 @@
 
 		$search ="";
 		$res="";
+		$order = "";
 		
 		// preparation de la requete
 		$search.=" and caracteristique=\"$caracteristique\"";
 		$search.=" and produit=\"$produit\"";
-		
+
+		if($classement == "caracdisp")
+			$order = "order by caracdisp";
+			
 		$caracval = new Caracval();
 		$prodtemp = new Produit();
 		
-		$query = "select * from $caracval->table where 1 $search";
+		$query = "select * from $caracval->table where 1 $search $order";
 		$resul = mysql_query($query, $caracval->link);
 
 		$nbres = mysql_num_rows($resul);
