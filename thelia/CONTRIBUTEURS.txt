@@ -2,6 +2,6 @@ Elodie Montel <montel.elodie@gmail.com>
 Matthieu Mallet <matthieu.mallet@gmail.com>
 David Aubel Raimbault <David.raimbault@ifrance.com>
 Abdellah TOUIL <abdellah31@yahoo.fr>
-Manuel Raynaud <manu@octolys.com>
+Manuel Raynaud <manu@octolys.fr>
 Ludovic LENNE
 Spiralliance
