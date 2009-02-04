@@ -9,6 +9,8 @@
 	$version->valeur = "140";
 	$version->maj();
 	
+	/************ RAJOUTER LE MESSAGE DANS L'INSTALL DE THELIA (thelia.sql) ***************/
+	
 	$message = new Message();
 	$message->nom = 'création client';
 	$message->add();
