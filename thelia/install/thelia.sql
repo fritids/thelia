@@ -397,8 +397,8 @@ CREATE TABLE `devise` (
 -- Contenu de la table `devise`
 -- 
 
-INSERT INTO `devise` VALUES (1, 'dollar', '&#36;', '', 24);
-INSERT INTO `devise` VALUES (2, 'livre', '&#163;', '', 1.5);
+INSERT INTO `devise` VALUES (1, 'dollar', '&#36;', 'USD', 24);
+INSERT INTO `devise` VALUES (2, 'livre', '&#163;', 'GBP', 1.5);
 
 -- --------------------------------------------------------
 
