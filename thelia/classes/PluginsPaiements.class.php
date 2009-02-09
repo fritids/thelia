@@ -84,6 +84,8 @@
 			
 			$corps = $msgdesc->description;
 			$corps = $this->substitmail($corps, $commande);
+			$corpstext = $msgdesc->descriptiontext;
+			$corpstext = $this->substitmail($corpstext,$commande);
 
 			/* Message admin */
         	$msg->charger("mailconfirmadm");
@@ -95,6 +97,8 @@
 			$emailcontact->charger("emailcontact");	
 			$sujet2 = $this->substitmail($msgdesc->titre, $commande);
 			$corps2 = $this->substitmail($corps2, $commande);
+			$corpstext2 = $msgdesc->descriptiontext;
+			$corpstext2 = $this->substitmail($corpstext2,$commande);
 
 			$client = new Client();
 			$client->charger_id($commande->client);
@@ -110,8 +114,9 @@
 			$mailclient->From = $emailcontact->valeur;
 			$mailclient->Subject = $sujet;
 			$mailclient->MsgHTML($corps);
+			$mailclient->AltBody = $corpstext;
 			$mailclient->AddAddress($client->email,$client->nom." ".$client->prenom);
-			
+
 			$mailclient->send();
 			
 			//envoi du mail a l'admin
@@ -121,8 +126,9 @@
 			$mail->From = $emailcontact->valeur;
 			$mail->Subject = $sujet2;
 			$mail->MsgHTML($corps2);
+			$mail->AltBody = $corpstext2;
 			$mail->AddAddress($emailcontact->valeur,$nomsite->valeur);
-			
+
 			$mail->send();
 			
 		}

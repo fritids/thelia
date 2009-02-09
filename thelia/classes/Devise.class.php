@@ -48,6 +48,17 @@
 		function charger_symbole($symbole){
 			return $this->getVars("select * from $this->table where symbole=\"$symbole\"");
 		}
+		
+		function refresh(){
+			$cnx = new Cnx();
+			$file_contents = file_get_contents('http://www.ecb.int/stats/eurofxref/eurofxref-daily.xml');
+			$sxe = new SimpleXMLElement($file_contents);
+			foreach ($sxe->Cube[0]->Cube[0]->Cube as $last)
+			{
+				$sql="UPDATE $this->table SET  taux='".$last["rate"]."' WHERE code='".$last["currency"]."'";
+				$req=mysql_query($sql,$cnx->link);
+			}
+		}
 	}
 
 
