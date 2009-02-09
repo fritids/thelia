@@ -587,11 +587,12 @@
 
 			$emailcontact = new Variable();
             $emailcontact->charger("emailcontact");
-            
+
 			$nomsite = new Variable();
 			$nomsite->charger("nomsite");
-    
-            $corps = $msgdesc->description;     
+                
+            $corps = $msgdesc->description;  
+  			$corpstext = $msqdesc->descriptiontext;
 			
 			$mail = new PHPMailer();
 			$mail->IsMail();
@@ -599,12 +600,14 @@
 			$mail->FromName = $nomsite->valeur;
 			$mail->Subject = $sujet;
 			$mail->MsgHTML($corps." ".$pass);
+			$mail->AltBody = $corpstext." ".$pass;
 			$mail->AddAddress($tclient->email,$tclient->nom." ".$tclient->prenom);
 			$mail->send();
-                        
  		
 		}
 
+
+	}
 
 	}
 ?>
