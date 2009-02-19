@@ -246,7 +246,7 @@ class PHPMailer {
    * Provides the ability to change the line ending
    * @var string
    */
-  public $LE              = "\r\n";
+  public $LE              = "\n";
 
   /////////////////////////////////////////////////
   // PROPERTIES, PRIVATE

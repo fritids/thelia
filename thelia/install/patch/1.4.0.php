@@ -3,6 +3,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Variable.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Message.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Messagedesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Devise.class.php");
 
 	$version = new Variable();
 	$version->charger("version");
@@ -32,6 +33,17 @@
 	/***** A RAJOUTER DANS LA CLASSE MESSAGEDESC **/
 	/***** LORS DE LA PUBLICAITON DE LA 1.4.0    **/
 	/**********************************************/
+	
+	
+	$devise = new Devise();
+	$devise->charger(1);
+	$devise->code = "USD";
+	$devise->maj();
+	
+	$devise = new Devise();
+	$devise->charger(2);
+	$devise->code = "GBP";
+	$devise->maj();
 	
 
 		
