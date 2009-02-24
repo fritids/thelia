@@ -149,7 +149,7 @@
 
 				
 		function recupArticles(){
-			return tabarticle;		
+			return $tabarticle;		
 		}
 
 	}

@@ -73,6 +73,7 @@
 		else if($_SESSION['navig']->promo->type == "2" && $_SESSION['navig']->promo->mini <= $total) $remise = $total * $_SESSION['navig']->promo->valeur / 100;
 		
         $totcmdport -= $remise;
+		$totremise = $total-$remise;
 
 	    if($totcmdport<$port)
 		    $totcmdport = $port;
@@ -85,6 +86,7 @@
 		$port = number_format($port, 2, ".", "");
 		$totcmdport = number_format($totcmdport, 2, ".", "");
 		$remise = number_format($remise, 2, ".", "");
+		$totremise = number_format($totremise,2,".","");
 		
 		$totpoids = $_SESSION['navig']->panier->poids();
 		
@@ -92,6 +94,7 @@
 		$texte = str_replace("#PANIER_TOTAL", "$total", $texte);
 		$texte = str_replace("#PANIER_PORT", "$port", $texte);
 		$texte = str_replace("#PANIER_TOTPORT", "$totcmdport", $texte);
+		$texte = str_replace("#PANIER_TOTREMISE","$totremise",$texte);
 		$texte = str_replace("#PANIER_REMISE", "$remise", $texte);
 		$texte = str_replace("#PANIER_NBART", "" . $nb_article . "", $texte);
 		$texte = str_replace("#PANIER_POIDS", "$totpoids", $texte);
