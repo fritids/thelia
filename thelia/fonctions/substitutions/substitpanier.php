@@ -80,6 +80,7 @@
 		
 	//	$totalht = round($total*100/(100+$tva), 2);
 		
+        $totcmdportht = $totalht+$port;
 		
 		$totalht = number_format($totalht, 2, ".", "");
 		$total = number_format($total, 2, ".", "");
@@ -87,12 +88,14 @@
 		$totcmdport = number_format($totcmdport, 2, ".", "");
 		$remise = number_format($remise, 2, ".", "");
 		$totremise = number_format($totremise,2,".","");
+        $totcmdportht = number_format($totcmdportht, 2, ".", "");
 		
 		$totpoids = $_SESSION['navig']->panier->poids();
 		
 		$texte = str_replace("#PANIER_TOTALHT", "$totalht", $texte);	 
 		$texte = str_replace("#PANIER_TOTAL", "$total", $texte);
 		$texte = str_replace("#PANIER_PORT", "$port", $texte);
+        $texte = str_replace("#PANIER_TOTPORTHT", "$totcmdportht", $texte);
 		$texte = str_replace("#PANIER_TOTPORT", "$totcmdport", $texte);
 		$texte = str_replace("#PANIER_TOTREMISE","$totremise",$texte);
 		$texte = str_replace("#PANIER_REMISE", "$remise", $texte);
