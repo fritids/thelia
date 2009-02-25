@@ -77,6 +77,7 @@
 
 	    if($totcmdport<$port)
 		    $totcmdport = $port;
+		VAS CHIER
 		
 	//	$totalht = round($total*100/(100+$tva), 2);
 		
