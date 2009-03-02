@@ -594,7 +594,7 @@
             $corps = $msgdesc->description;  
   			$corpstext = $msqdesc->descriptiontext;
 			
-			$mail = new PHPMailer();
+			$mail = new Mail();
 			$mail->IsMail();
 			$mail->From = $emailcontact->valeur;
 			$mail->FromName = $nomsite->valeur;
