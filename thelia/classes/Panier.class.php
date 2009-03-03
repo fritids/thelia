@@ -99,6 +99,8 @@
 				if( ! $this->tabarticle[$i]->produit->promo)
 				$prix = $this->tabarticle[$i]->produit->prix;
 				else $prix = $this->tabarticle[$i]->produit->prix2;
+
+				$tva = $this->tabarticle[$i]->produit->tva;
 				
 				$taxe += $prix * $tva/100;	
 				$total += $prix*$quantite;		
