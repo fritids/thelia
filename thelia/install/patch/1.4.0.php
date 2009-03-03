@@ -23,13 +23,18 @@
 	$messagedesc->lang=1;
 	$messagedesc->intitule = 'Création compte client';
 	$messagedesc->titre = 'Création compte client';
-	$messagedesc->description = 'Bonjour,&lt;br /&gt; Vous recevez ce mail pour vous avertir que votre compte vient d''être crée sur __NOM_SITE__.&lt;br /&gt; &lt;br /&gt; Vos identifiants sont les suivants :&lt;br /&gt; &lt;br /&gt; e-mail : __EMAIL__&lt;br /&gt; mot de passe : __MOT_DE_PASSE__&lt;br /&gt; &lt;br /&gt; Vous pouvez modifier ces informations sur le &lt;a href=&quot;__URL_SITE__&quot;&gt;site&lt;/a&gt;';
+	$messagedesc->description = 'Bonjour,<br /> Vous recevez ce mail pour vous avertir que votre compte vient d''être crée sur __NOM_SITE__.<br /> <br /> Vos identifiants sont les suivants :<br /> <br /> e-mail : __EMAIL__<br /> mot de passe : __MOT_DE_PASSE__<br /> <br /> Vous pouvez modifier ces informations sur le <a href="__URL_SITE__">site</a>';
 	$messagedesc->add();
 	
 	$cnx = new Cnx();
 	$query_cnx = "ALTER TABLE `messagedesc` ADD `descriptiontext` TEXT NOT NULL";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 
+	$devise = new Devise();
+	$devise->code = "EUR";
+	$devise->taux = 1;
+	$devise->add();
+	
 	$devise = new Devise();
 	$devise->charger(1);
 	$devise->code = "USD";
