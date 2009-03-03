@@ -29,12 +29,7 @@
 	$cnx = new Cnx();
 	$query_cnx = "ALTER TABLE `messagedesc` ADD `descriptiontext` TEXT NOT NULL";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
-	/**********************************************/
-	/***** A RAJOUTER DANS LA CLASSE MESSAGEDESC **/
-	/***** LORS DE LA PUBLICAITON DE LA 1.4.0    **/
-	/**********************************************/
-	
-	
+
 	$devise = new Devise();
 	$devise->charger(1);
 	$devise->code = "USD";
