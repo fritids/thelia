@@ -440,8 +440,10 @@
 		$ref = lireTag($args, "ref");
 		$raison = lireTag($args, "raison");
 		$nom = lireTag($args, "nom");
+		$prenom = lireTag($args, "prenom");
 		$cpostal = lireTag($args, "cpostal");
 		$ville = lireTag($args, "ville");
+		$email = lireTag($args, "email");
 		$pays = lireTag($args, "pays");
 		$parrain = lireTag($args, "parrain");
 		$revendeur = lireTag($args, "revendeur");
@@ -454,9 +456,11 @@
 		if($id!="")  $search.=" and id=\"$id\"";
 		if($ref!="")  $search.=" and ref=\"$ref\"";
 		if($raison!="")  $search.=" and raison=\"$raison\"";
+		if($prenom!="")  $search.=" and prenom=\"$prenom\"";
 		if($nom!="")  $search.=" and nom=\"$nom\"";
 		if($cpostal!="")  $search.=" and cpostal=\"$cpostal\"";
 		if($ville!="")  $search.=" and ville=\"$ville\"";
+		if($email!="")  $search.=" and email=\"$email\"";
 		if($pays!="")  $search.=" and pays=\"$pays\"";
 		if($parrain!="")  $search.=" and parrain=\"$parrain\"";
 		if($revendeur!="")  $search.=" and type=\"$revendeur\"";
@@ -974,7 +978,7 @@
             
 		$resul = mysql_query($query, $produit->link);
 		$nbres = mysql_num_rows($resul);
-		$saveReq = "select * from $produit->table where 1 $search $order ";
+		$saveReq = "select * from $produit->table where 1 $search";
 
 		if(!$nbres) return "";
 		// substitutions
@@ -1657,6 +1661,7 @@
                         $temp = str_replace("#ID", $rubtab[$i]->id, $texte);
                         $temp = str_replace("#TITRE", "$trubriquedesc->titre", $temp);
                         $temp = str_replace("#URL", "rubrique.php?id_rubrique=" . $rubtab[$i]->id, $temp);
+                        $temp = str_replace("#REWRITEURL", rewrite_rub($rubtab[$i]->id), $temp);
 
                         $compt++;
                         
@@ -2206,7 +2211,7 @@
 		if($client_id!="")  $search.=" and client=\"$client_id\"";
 		if($statutexcl!="")  $search.=" and statut not in ($statutexcl)";
 		if($statut!="" && $statut!="paye")  $search.=" and statut=\"$statut\"";
-		else if($statut=="paye")  $search.=" and statut>\"1\"";
+		else if($statut=="paye")  $search.=" and statut>\"1\" and statut<>\"5\"";
 
 		if($deb == "") $deb = 0;
 		
