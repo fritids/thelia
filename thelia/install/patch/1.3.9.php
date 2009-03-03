@@ -9,6 +9,15 @@
 	$variable->valeur = "http://blog.thelia.fr/rss.php";
 	$variable->maj();
 	
+	$var = "<Files *>
+ 			  <limit GET POST>
+ 			  order deny,allow
+ 			  deny from all
+ 			  </Limit>
+			</Files>";
+			
+	file_put_contents("../client/plugins/atos/conf/.htaccess", $var);
+			
 	$version = new Variable();
 	$version->charger("version");
 	$version->valeur = "139";

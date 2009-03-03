@@ -18,7 +18,6 @@ INSTALLATION
 
 - editez le fichier config.php et inscrivez votre n° de marchand.
 
-- renommez le fichier conf/htaccess en conf/.htaccess (très important pour la sécurité de votre installation)
 
 Information
 ============
