@@ -81,6 +81,8 @@
 		}
 				
 		function supprimer(){
+		
+			if ($this->id == 0 || $this->id == "") return;
 
 			$image = new Image();
 			
