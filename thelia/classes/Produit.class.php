@@ -99,6 +99,8 @@
 				
 		function supprimer(){
 
+			if ($this->id == 0 || $this->id == "") return;
+
 			$stock = new Stock();
 			$query = "delete from $stock->table where produit='" . $this->id . "'"; 
 			$resul = mysql_query($query, $stock->link);
