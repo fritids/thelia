@@ -81,6 +81,9 @@
 		}
 				
 		function supprimer(){
+
+			if ($this->id == 0 || $this->id == "") return;
+
 			$dossierdesc =  new Dossierdesc();
 			$contenu =  new Contenu();
 			
