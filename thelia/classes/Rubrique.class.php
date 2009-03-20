@@ -82,6 +82,9 @@
 		}
 				
 		function supprimer(){
+
+			if ($this->id == 0 || $this->id == "") return;
+
 			$rubriquedesc =  new Rubriquedesc();
 			$produit =  new Produit();
 			
