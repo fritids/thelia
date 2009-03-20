@@ -24,27 +24,22 @@
  *****************************************************************************/
 
 	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Navigation.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Venteprod.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/config.php");
 		
 	session_start();
 
 	$total = 0;
 
-    $total = $_SESSION['navig']->panier->total(1,$_SESSION['navig']->commande->remise) + $_SESSION['navig']->commande->port;
+    $total = $_SESSION['navig']->commande->total();
 
 
 ?>
 
 <html>
 <head>
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="-1">
-<title>
-  Paiement PayPal
-</title>
 </head>
-<body onload="document.getElementById('formpaypal').submit();">
+<body onload="document.getElementById('formpaypal').submit()">
 <?php
 
 // Référence
@@ -57,32 +52,54 @@ $Montant          = $total;
 
 	<br />
 	
-<table align="center">
 
-  <tr>
-
-    <td>
 	
 	<form action="<?php echo $serveur; ?>" id="formpaypal" method="post">
-		<input type="hidden" name="cmd" value="_xclick">
-		<input type="hidden" name="business" value="<?php echo $compte_paypal; ?>">
-		<input type="hidden" name="item_name" value="<?php echo $Reference_Cde; ?>">
-		<input type="hidden" name="amount" value="<?php echo $Montant; ?>">
-		<input type="hidden" name="no_shipping" value="1">
-		<input type="hidden" name="return" value="<?php echo $retourok; ?>">
-		<input type="hidden" name="cancel_return" value="<?php echo $retournok; ?>">
-		<input type="hidden" name="no_note" value="1">
-		<input type="hidden" name="currency_code" value="<?php echo $Devise; ?>">
-		<input type="hidden" name="lc" value="<?php echo $Code_Langue; ?>">
-		<input type="hidden" name="bn" value="PP-BuyNowBF">
-		<input type="hidden" name="notify_url" value="<?php echo $confirm; ?>">
-		<input type="image" src="https://www.paypal.com/fr_FR/i/btn/x-click-but02.gif" border="0" name="submit" alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et sécurisée">
-		<img alt="" border="0" src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+		
+		<input type="hidden" name="upload" value="1">
+		<input type="hidden" name="first_name" value="<?php echo $_SESSION["navig"]->client->prenom; ?>" />
+		<input type="hidden" name="last_name" value="<?php echo $_SESSION["navig"]->client->nom; ?>" />
+		<input type="hidden" name="address1" value="<?php echo $_SESSION["navig"]->client->adresse1; ?>" />
+		<?php
+		if($_SESSION["navig"]->client->adresse2 != ""){
+		?>
+		<input type="hidden" name="address2" value="<?php echo $_SESSION["navig"]->client->adresse2; ?>" />
+		<?php
+		}
+		?>
+		<input type="hidden" name="city" value="<?php echo $_SESSION["navig"]->client->ville; ?>" />
+		<input type="hidden" name="zip" value="<?php echo $_SESSION["navig"]->client->cpostal; ?>" />
+		<input type="hidden" name="amount" value="<?php echo $Montant; ?>" />
+		<input type="hidden" name="email" value="<?php echo $_SESSION["navig"]->client->email; ?>">
+		<input type="hidden" name="shipping_1" value="<?php echo $_SESSION["navig"]->commande->port; ?>" />
+		<?php
+		$venteprod = new Venteprod();
+		$query = "select * from $venteprod->table where commande=".$_SESSION["navig"]->commande->id;
+		$resul = mysql_query($query);
+		$i=0;
+		while($row = mysql_fetch_object($resul)){ 
+			$i++;
+			?>
+			<input type="hidden" name="item_name_<?php echo($i); ?>" value="<?php echo trim($row->titre); ?>" />
+			<input type="hidden" name="amount_<?php echo($i); ?>" value="<?php echo $row->prixu; ?>" />
+			<input type="hidden" name="quantity_<?php echo($i); ?>" value="<?php echo $row->quantite; ?>" />
+		
+		<?php
+			}
+		?>
+		
+		<input type="hidden" name="business" value="<?php echo $compte_paypal; ?>" />
+		<input type="hidden" name="receiver_email" value="<?php echo $compte_paypal; ?>" />
+		<input type="hidden" name="cmd" value="_cart" />
+		<input type="hidden" name="currency_code" value="<?php echo $Devise; ?>" />
+		<input type="hidden" name="payer_id" value="<?php echo $_SESSION["navig"]->client->id; ?>" />
+		<input type="hidden" name="payer_email" value="<?php echo $_SESSION["navig"]->client->email; ?>" />
+		<input type="hidden" name="return" value="<?php echo $retourok; ?>" />
+		<input type="hidden" name="return_url" value="<?php echo $confirm; ?>" />
+		
 	</form>
 	
-	</td>
-  </tr>
-</table>
+
 	
 </body>
 </html>

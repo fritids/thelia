@@ -412,8 +412,8 @@
 <br />   
    <table width="710" border="0" cellpadding="5" cellspacing="0">
      <tr>
-       <td width="70" height="30" class="cellule_sombre2"><span class="geneva11Reg_3B4B5B"><a href="commande.php"" class="txt_vert_11">Retour </a></span><a href="commande.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
-       <td width="220" class="cellule_sombre2"><span class="geneva11Reg_3B4B5B"><a href="../client/pdf/facture.php?ref=<?php echo($commande->ref); ?>" class="txt_vert_11">Visualiser la facture au format PDF </a></span><a href="facture.php?ref=<?php echo($commande->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
+       <td width="70" height="30" class="cellule_sombre2"><span class="geneva11Reg_3B4B5B"><a href="commande.php" class="txt_vert_11">Retour </a></span><a href="commande.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
+       <td width="220" class="cellule_sombre2"><span class="geneva11Reg_3B4B5B"><a href="../client/pdf/facture.php?ref=<?php echo($commande->ref); ?>" class="txt_vert_11">Visualiser la facture au format PDF </a></span><a href="../client/pdf/facture.php?ref=<?php echo($commande->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
        <td width="390" class="cellule_sombre2"><span class="geneva11Reg_3B4B5B"><a href="livraison.php?ref=<?php echo($commande->ref); ?>" class="txt_vert_11">Visualiser le bordereau de livraison au format PDF</a> </span><a href="livraison.php?ref=<?php echo($commande->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
      </tr>
    </table>
