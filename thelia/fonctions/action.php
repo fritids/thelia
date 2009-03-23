@@ -128,8 +128,10 @@
 	// procédure de paiement
 	function paiement($type_paiement){
 	
-		if(! $_SESSION['navig']->client->id || $_SESSION['navig']->panier->nbart < 1)
+		if(! $_SESSION['navig']->client->id || $_SESSION['navig']->panier->nbart < 1){
 			header("Location: index.php");
+			exit;
+		}
 			
 		$total = 0;
 		$nbart = 0;
