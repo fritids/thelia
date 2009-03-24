@@ -113,7 +113,7 @@
 			$pays = new Pays();
 			$pays->charger($_SESSION['navig']->client->pays);
 
-			if($tva && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != "")))
+			if($tva && $pays->tva != "" && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != "")))
 				$total -= $taxe;
 			
 			$total -= $total * $remise / 100;
