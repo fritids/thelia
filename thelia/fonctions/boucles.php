@@ -1586,12 +1586,14 @@
 		$article = lireTag($args, "article");
 		$ref = lireTag($args, "ref");		
 		$max = lireTag($args, "max");
+		$min = lireTag($args, "min");
 		
 		$prodtemp = new Produit();
 		if($article != "")
 			$prodtemp->charger($_SESSION['navig']->panier->tabarticle[$article]->produit->ref);
 		else if($ref != "")
 			$prodtemp->charger($ref);
+		if($min == "") $min=1;
 			
 		if($max == "") 
 			$max = $prodtemp->stock;
@@ -1599,9 +1601,11 @@
 		if($max == "")
 			return;
 			
+		if($min > $prodtemp->stock) return;
+			
 		$j = 0;
 		
-		for($i=1; $i<=$max; $i++){
+		for($i=$min; $i<=$max; $i++){
 			if($i==$_SESSION['navig']->panier->tabarticle[$article]->quantite) $selected="selected=\"selected\"";
 			else $selected="";
 		
