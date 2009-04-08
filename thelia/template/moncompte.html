@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+
+<link href="styles.css" rel="stylesheet" type="text/css" />
+	
+</head>
+<body>
+
+<!-- wrapper & subwrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+	
+	#INCLURE "entete.html"
+		
+<!-- chemin -->	
+		
+		<div id="chemin">
+		Vous &ecirc;tes ici :
+		<a href="index.php" class="LIEN_chemin">Accueil boutique</a> / 
+		Mon compte
+		</div>
+		
+<!-- contenu -->
+	
+		<div id="content">
+		
+		#INCLURE"menu.html"
+		
+			<div id="contenu">
+				<img src="_gfx/ombrecontenugauche.png" style="float:left;"/>
+			
+<!-- Titre de la rubrique -->
+			<div id="contenu_texte">
+				<div class="titrePage">
+				<h2>Mon compte </h2>
+				</div>
+
+<!-- Contenu de la page -->
+
+
+<!-- Mes coordonnées -->
+				<div id="contenu_texte" style="float:left;width:340px;">
+				<div class="sousTitrePage">
+				<h3>Mes coordonn&eacute;es </h3>
+				</div>
+
+
+ 				<p>
+					#CLIENT_RAISON #CLIENT_PRENOM #CLIENT_NOM
+  				<br />
+					#CLIENT_ADRESSE1 #CLIENT_ADRESSE3
+  				<br />
+					#CLIENT_CPOSTAL #CLIENT_VILLE #CLIENT_PAYS
+				<br />
+				<br />
+    				<label for="telfixe">T&eacute;l&eacute;phone fixe : </label>
+   					#CLIENT_TELFIXE
+  				<br />
+    				<label for="telport">T&eacute;l&eacute;phone portable : </label>
+    				#CLIENT_TELPORT
+ 				<br />
+				<br />
+    				<label for="email1">E-mail : </label>
+    				#CLIENT_EMAIL
+  				</p>
+				<a href="compte_modifier.php">Modifier mon compte et mon mot de passe</a> 
+				</div>
+<!-- Mes adresses de livraison -->				
+				<div id="contenu_texte" style="float:left;width:340px;padding-left:50px;border-left-width: 1px;border-left-style: dotted;border-left-color: #12335b;">
+					<div class="sousTitrePage">
+					<h3>Mes adresses </h3>
+					</div>
+					<p>
+					<THELIA_adrcours type="ADRESSE" adresse="#ADRESSE_ACTIVE">
+					#RAISON #PRENOM #NOM	
+					<br />
+					#ADRESSE1 #ADRESSE2 #ADRESSE3
+					<br />
+				  #CPOSTAL #VILLE 
+				  <THELIA_pays type="PAYS" id="#PAYS">
+				  #TITRE	
+				  </THELIA_pays>
+				  	<br />				  	
+					<br />
+					<a href="livraison_adresse.php">Ajouter une adresse de livraison </a><br />
+				<THELIA_adrmodcours type="ADRESSE" adresse="#ADRESSE_ACTIVE" defaut="0">
+						  <a href="livraison_modifier.php?adresse=#ID">Modifier cette adresse</a>
+				</THELIA_adrmodcours>
+
+				 </THELIA_adrcours>
+				<br />
+				<br />
+					<span class="commentaires"> S&eacute;lectionnez une autre adresse de livraison : </span><br />
+					<a href="adresse.php?action=modadresse&amp;adresse=0">Mon adresse de facturation par d&eacute;faut </a>
+					<THELIA_adr type="ADRESSE" client="#CLIENT_ID">
+					<br />
+					<a href="adresse.php?action=modadresse&amp;adresse=#ID">#LIBELLE</a>
+					</THELIA_adr>
+					<br />
+				</p>
+				</div>	
+				
+<!-- Mes commandes -->	
+				
+				<div id="contenu_texte" style="float:left;width:760px;">
+				<br />
+				<div class="sousTitrePage">
+				<h3>Visualiser mes coordonn&eacute;es  et mes commandes </h3>
+				</div>
+				
+				<T_cmd>
+				<table width="760" border="0" cellspacing="0" cellpadding="5">
+					<tr>
+						<td width="270" class="enteteTableau">N&deg; de la commande </td>
+	    				<td width="100" class="enteteTableau">Date</td>
+	    				<td width="100" class="enteteTableau">Montant</td>
+	   					<td width="100" class="enteteTableau">Statut</td>
+	   					<td width="140" class="enteteTableau">Voir la commande</td>
+	  				</tr>
+				</table>
+				<THELIA_cmd type="COMMANDE" client="#CLIENT_ID">
+				<table width="760" border="0" cellspacing="0" cellpadding="5">
+	  				<tr>
+	    				<td width="270" ><span class="TexteColonne100">#REF</span></td>
+	    				<td width="100" >#DATE</td>
+	    				<td width="100" ><span class="TexteColonne100">#TOTCMDPORT</span></td>
+	   					<td width="100" ><span class="TexteColonne100">#STATUT</span></td>
+	   					<td width="140" ><a href="commande_detail.php?commande=#REF">Voir la commande</a></td>
+	  				</tr>
+				</table>
+				</THELIA_cmd>
+				</T_cmd>
+					Vous n'avez aucune commande
+				<//T_cmd>
+			</div>
+			</div>	
+			</div>
+		#INCLURE "pied.html"
+		</div>
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>
+
+

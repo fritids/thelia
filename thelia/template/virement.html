@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+
+<link href="styles.css" rel="stylesheet" type="text/css" />
+	
+</head>
+<body>
+
+<!-- wrapper & subwrapper-->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+	
+	#INCLURE "entete.html"
+		
+<!-- chemin -->
+
+		<div id="chemin">
+		Vous &ecirc;tes ici :
+		<a href="index.php" class="LIEN_chemin">Accueil boutique</a> /Je choisis un mode de r&egrave;glement : par virement
+		</div>
+		
+<!-- contenu -->
+	
+		<div id="content">
+		
+		#INCLURE"menu.html"
+		
+			<div id="contenu">
+				<img src="_gfx/ombrecontenugauche.png" style="float:left;"/>
+			
+<!-- Titre de la rubrique -->
+
+				<div class="titrePage">
+				<h2>Je choisis un mode de r&egrave;glement : par virement  </h2>
+				</div>
+				
+<!-- contenu de la page -->
+	
+			Nous vous remercions de la confiance que vous nous accordez.<br />
+			Un email recapitulatif de votre commande vous a &eacute;t&eacute; envoy&eacute; &agrave; l'adresse: #CLIENT_EMAIL.<br />
+			Votre commande sera valid&eacute;e par nos services &agrave; r&eacute;ception de votre paiement.<br /><br />
+			Ecrire ici les infos sur le r&eacute;glement par virement ...<br /><br />
+					
+			<THELIA_cmd type="COMMANDE" ref="#COMMANDE_REF">	
+			N&deg; DE COMMANDE : #REF <br />
+			DATE : #DATE<br />
+			TOTAL : #TOTCMDPORT &euro;<br />	
+			</THELIA_cmd>
+			</div>
+		#INCLURE "pied.html"
+		</div>
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>

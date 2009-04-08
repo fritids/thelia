@@ -98,7 +98,7 @@
 		$search.=" and $rubrique->table.ligne=\"$ligne\"";
 		
 		if($id!="")  $search.=" and $rubrique->table.id in ($id)";
-		if($parent!="") $search.=" and $rubrique->table.parent=\"$parent\"";
+		if($parent!="") $search.=" and $rubrique->table.parent in ($parent)";
 		if($courante == "1") $search .=" and $rubrique->table.id='$id_rubrique'";
 		else if($courante == "0") $search .=" and $rubrique->table.id!='$id_rubrique'";
 		if($num!="") $limit .= " limit $deb,$num";

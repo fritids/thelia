@@ -1,0 +1,888 @@
+/* 
+ * Copyright (c) 2007 Copyright (c) Octolys Development
+ * Ce template a été réalisé par http://www.scopika.com & http://www.fredodo.com
+ * Il est soumis à la licence GPL
+ */
+
+/* Ce fichier définit le style visuel pour les différents éléments des pages.
+ * Dans l'ordre, vous trouverez les règles qui définissent l'apparence pour:
+ * - Eléments HTML en général
+ * - Page
+ * - Entête
+ * - Chemin
+ * - Produit petit & grand
+ * - Pied de page
+ * - Menu général
+ * - Signature
+ * - Nombre de pages
+ * - les styles particuliers pour les pages intérieures
+ */
+
+
+/* Eléments HTML en général
+-------------------------------------------------------- */
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: "Trebuchet MS", Verdana, Geneva, Arial, Helvetica, sans-serif;
+	text-align: center;
+	background-color: #f5f5f5;
+	color:#12335b;
+	font-size: 0.8em;
+}
+h1, h2, h3{
+	font-family: "Trebuchet MS", sans-serif;
+	margin: 0;
+	padding: 0;
+}
+h1{
+	font-size: 1.8em;
+}
+h2{
+	font-size: 1.5em;
+}
+h3{
+	font-size: 1.1em;
+}
+a, a:visited {
+	color: #0066cc;
+	text-decoration: none;
+}
+ a:hover  {
+	color: #0066cc;
+	text-decoration: underline;
+}
+img {
+	border: 0
+}
+
+/* Page
+-------------------------------------------------------- */
+
+#wrapper {
+	width: 990px;
+	text-align: left;
+	overflow: visible;
+	position: relative;
+	margin: 0 auto 0 auto;
+	padding: 0;
+}
+#subwrapper {
+	overflow: hidden;
+	position: relative;
+	padding: 0;
+	width: 990px;
+	background-color: #FFFFFF;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #c2c2c2;
+	border-bottom-color: #c2c2c2;
+	border-left-color: #c2c2c2;
+}
+#content {
+	padding: 0;
+	clear: both;
+	margin: 0;
+}
+#contenu {
+	float: left;
+	width:789px;
+	height:100%;
+	padding: 0 0 10px 0;
+	margin: 0 0 5px 0;
+	border-left-width: 1px;
+	border-left-style: dotted;
+	border-left-color: #0066cb;
+	background-image: url(_gfx/fondsite.jpg);
+	background-repeat: repeat-x, repeat-y;
+}
+#ombremenu {
+	float:left;
+	height: 100%;
+	overflow: hidden;
+	background-image: url(_gfx/fondsite.jpg);
+	background-repeat: repeat-x, repeat-y;
+}
+#contenu_texte {
+	float: left;
+	width:750px;
+	height:100%;
+	padding: 0 0 10px 10px;
+	margin: 0 0 5px 0;
+	background-image: url(_gfx/fondsite.jpg);
+	background-repeat: repeat-x, repeat-y;
+	text-align: justify;
+}
+.titrePage {
+	color: #006cec;
+	text-align: left;
+	font-weight: bold;
+	width: 750px;
+	padding: 5px 0 0 0;
+}
+.blocnouveaute{
+	float: left;
+	margin: 20px 10px 0px 0;
+}
+.nouveaute {
+	color: #006cec;
+	font-weight: bold;
+	width: 345px;
+	height: 20px;
+	padding: 5px 0 7px 10px;
+	background-color: #dfe1e8;
+	clear:both;
+}
+.nouveauteProd {
+	width: 355px;
+	height: 170px;
+	margin:2px 0 20px 0;
+	padding: 0;
+	background-color: #edf0f7;
+	clear:both;
+}
+.mozaiqueProd {
+	width:695px;
+	height:200px;
+	margin:2px 0 10px 0;
+	padding:4px 12px 4px 12px;
+	/height:200px;
+	background-color: #edf0f7;
+	clear:both;
+}
+.tagsProd {
+	padding:30px;
+	width:295px;
+	margin:2px 0 20px 0;	
+	height:160px;
+	text-align:justify;
+	background-color: #edf0f7;
+	clear:both;	
+}
+.sousTitrePage {
+	
+	text-align: left;
+	font-weight: bold;
+	width: 750px;
+	padding: 10px 0 10px 0;
+}
+.textePage {
+	color: #141414;
+	text-align: left;
+	font-weight: bold;
+	margin: 5px 0 0 5px;
+}
+
+/* Entête
+-------------------------------------------------------- */
+
+#entete {
+	float: left;
+	background-image: url(_gfx/fondhaut.jpg);
+	width: 990px;
+	margin: 0;
+	padding: 10px 0 10px 0;
+	color: #FFFFFF;
+	height: 65px;
+}
+.logo {
+	float: left;
+	width: 493px;
+	margin: 0;
+	padding: 0;
+	color:#FFFFFF;
+}
+a.LIEN_logo:link, a.LIEN_logo:visited, a.LIEN_logo:hover {
+	font-size: 1.5em;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-weight: bold;
+}
+a.LIEN_logo:hover {
+	font-size: 1.5em;
+	color: #FFFFFF;
+	text-decoration: underline;
+	font-weight: bold;
+}
+#monCompte {
+	float: left;
+	width: 295px;
+	margin: 0;
+	border-left-width: 1px;
+	border-left-style: dotted;
+	border-left-color: #FFFFFF;
+	padding: 0 0 0 10px;
+	height: 65px;
+	
+}
+.formMonCompte {
+	float: left;
+	padding: 5px 5px 5px 0;
+	margin: 0 0 0 0;
+}
+.blocMonCompte {
+	float: left;
+	padding:0;
+	margin: 0;
+}
+.champFormMonCompte {
+	font-size: 0.9em;
+	padding: 0;
+	margin: 0;
+	color: #000000;
+	background-color: #FFFFFF;
+	overflow: hidden;
+	border: none;
+}
+.menuMonCompte {
+	float: left;
+	color: #FFFFFF;
+	margin: 5px 0 0 0;
+	width: 100%;
+	padding: 0;
+	height: 43px;
+}
+.recherche {
+	float: left;
+	margin: 20px 0 0 10px;
+	width: 175px;
+}
+.recherchebtn {
+	margin: 5px 0 0 13px;	
+	float: right;
+
+}
+.rechercheform {
+	float: left;
+	width: 170px;
+	margin: 0 0px 0 0;
+}
+#monPanier {
+	float: left;
+	width: 180px;
+	margin: 0;
+	border-left-width: 1px;
+	border-left-style: dotted;
+	border-left-color: #FFFFFF;
+	padding: 0 0 0 10px;
+	height: 65px;
+}
+.boutonMonCompteEntete {	
+	float: left;
+	margin: 0;
+	padding: 4px 0 0 0;
+}
+a.LIEN_entete:link, a.LIEN_entete:visited  {
+	font-size: 0.8em;
+	color: #b3b3b3;
+	text-decoration: none;
+	font-weight: bold;
+}
+a.LIEN_entete:hover {
+	font-size: 0.8em;
+	color: #b3b3b3;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+
+/* Chemin
+-------------------------------------------------------- */
+
+#chemin {
+	float: left;
+	width:990px;
+	color: #363636;
+	font-size: 0.8em;
+	font-weight: bold;
+	background-image: url(_gfx/fondarianne.jpg);
+	height:22px;
+	margin: 0;
+	padding: 6px 6px 6px 15px;
+}
+a.LIEN_chemin:link, a.LIEN_chemin:visited {
+	color: #363636;
+	text-decoration: none;
+}
+a.LIEN_chemin:hover {
+	color: #363636;
+	text-decoration: underline;
+}
+
+/* Produit petit & grand
+-------------------------------------------------------- */
+
+.ListeProduitsPetits {
+	float: left;
+	width: 750px;
+	margin: 10px 5px 0 20px;
+	padding: 0;
+}
+.produitPetit {
+	float: left;
+	width: 345px;
+	height: 155px;
+	/margin: 0 0 20px 0;
+	margin: 10px 0 0 10px;
+	padding: 0;
+}
+.produitPetitRub {
+	float: left;
+	width: 335px;
+	height: 155px;
+	/margin: 0 0 20px 0;
+	margin: 5px 10px 5px 0px;
+	padding: 10px 10px 10px 10px;
+	background-color:#EDF0F7;	
+}
+.contourImageNew {
+	border: 1px solid #c2c2c2;
+	margin: 0 5px 0 0 ;
+	padding:0 ;
+	float: left;
+	height: 150px;
+	width:150px;
+	background-color: #FFFFFF;
+	overflow: hidden;	
+}
+.contourImage {
+	border: 1px solid #c2c2c2;
+	margin: 2px;
+	float: left;
+	height: 150px;
+	width:150px;
+	background-color: #FFFFFF;
+	overflow: hidden;	
+}
+.contourImage:hover {
+	border: 3px solid #006cec;
+	padding: 0;
+	margin: 0px ;
+	float: left;
+	height: 150px;
+	width: 150px;
+	background-color: #FFFFFF;
+	overflow: hidden;
+}
+.contourImageProd {
+	border: 1px solid #c2c2c2;
+	margin: 0 10px 0 0px;
+	/margin: 0;
+	/float:none;
+	float: left;
+	height: 300px;
+	width:300px;
+	background-color: #FFFFFF;
+	overflow: hidden;
+}
+.contourImageProd:hover {
+	border: 3px solid #006cec;
+	padding: 0;
+	margin: -2px 8px -2px -2px;
+	/margin: 0;
+	/float:none;
+	float: left;
+	height: 301px;
+	width:300px;
+	background-color: #FFFFFF;
+	overflow: hidden;
+}
+#docProd{
+	height: 100px;
+	width: 100px;
+	float: left;	
+}
+.contourImageMozaique {
+	border: 1px solid #c2c2c2;
+	margin: 3px 3px 0px 3px;
+	/margin: 0;
+	/float:none;
+	float: left;
+	height: 90px;
+	width:90px;
+	overflow: hidden;
+}
+.titreProduit {
+	color:#ec8000;
+	font-size:15pt;
+	font-weight: bold;
+	margin: 0;
+	padding: 0 0 5px 0;
+	width: 100%;
+	width: 170px;
+	height:20px;
+	/height:12px;
+	overflow: hidden;
+	font-size: 14px;
+}
+.chapoProduit {
+	color: #12335;
+	text-align: left;
+	font-style: italic;
+	font-size: 0.9em;
+	padding: 0 0 0 0;
+	width: 170px;
+	height:30px;
+	/height:32px;
+	overflow: hidden;
+	/width:170px;
+}
+.descriptionProduit {
+	text-align: left;
+	margin: 5px 0 5px 0;
+	height:30px;
+	overflow: hidden;
+	/width:170px;
+}
+.prixProduit {
+	color: #EC8000;
+	font-weight: bold;
+	height:30px;
+	overflow: hidden;
+	margin-top: 5px;
+	/height:32px;
+	/width:170px;
+}
+.prixProduitRub {
+	color: #EC8000;
+	font-weight: bold;
+	height:40px;
+	overflow: hidden;
+	margin-top: 5px;
+	/height:32px;
+	/width:170px;
+}
+.mettrepanier {
+	width:120px;
+	height:90px;
+	/margin: -10px 0 0 0;
+	float: left;
+	margin: 0 63px 0 0;
+}
+.etiquetteindex {
+	float:right;
+	vertical-align:top;
+	margin:-75px 0 0 0;
+}
+.ficheProduit {
+	float:left;
+	width: 350px;
+	height: 4250px;
+	margin-left: 10px;
+}
+.imagesProduit {
+	float:left;
+	width: 350px;
+	height: 420px;
+	margin: 10px 0 0 0px ;
+}
+a.LIEN_commander:link, a.LIEN_commander:visited {
+	color: #0066CC;
+	text-decoration: none;
+	font-weight: bold;	
+	
+}
+a.LIEN_commander:hover {
+	color: #0066CC;
+	text-decoration: underline;
+	font-weight: bold;
+}
+.blocVignettes {
+	float: none;	
+	padding: 0;
+	text-align: center;
+	margin: 0;
+	width: 320px;
+	height: 120px;
+}
+.vignette {
+	float: left;	
+	border: 1px solid #c2c2c2;
+	margin: -5px 10px 12px 0px;
+	_margin: 0px 20px 0 0px;
+	padding: 0;
+	text-align: center;
+	width: 92px;
+	height: 92px;
+	overflow: hidden;
+	background-color:#FFFFFF;
+}
+.vignette a {
+	float: left;	
+	margin: 5px 0px 5px 0px;
+	_margin: 0px 20px 0 0px;
+	padding: 0;
+	text-align: center;
+	width: 80px;
+}
+.vignette a:hover {
+	float: left;	
+	margin: 5px 0px 5px 0px;
+	_margin: 0px 20px 0 0px;
+	padding: 0;
+	text-align: center;
+	width: 80px;
+}
+#connexion {
+	float:left;
+	width: 300px;
+	height: 500px;
+	margin: 0 50px 0 50px;
+}
+
+/* Nombre de pages
+-------------------------------------------------------- */
+
+#pages {
+	float: left;
+	width: 775px;
+	text-align: right;
+	font-size: 0.9em;
+	padding-top: 10px 0 10px 0;
+	margin: 0;
+	
+}
+a.LIEN_pages:link, a.LIEN_pages:visited {
+	
+	text-decoration: none;
+	font-weight: bold;
+}
+a.LIEN_pages:hover {
+	
+	text-decoration: underline;
+}
+.ligneTableau{
+	width: 100px;
+}
+.zoneDeSaisie{
+	width: 150px;
+}
+
+/*Nuage de TAGS*/
+.nuage1, a.nuage1 {
+	color:#12335b;
+	font-size: 10px;
+	font-style:italic;
+}
+.nuage2,a.nuage2 {
+	color:#12335b;
+	font-size: 13px;
+	font-style:italic;
+}
+.nuage3, a.nuage3 {
+	color:#12335b;
+	font-size: 16px;
+	font-style:italic;
+}
+.nuage4, a.nuage4 {
+	color:#12335b;
+	font-size: 19px;
+	font-style:italic;
+}
+.nuage5, a.nuage5 {
+	color:#12335b;
+	font-size: 22px;
+	font-style:italic;	
+}
+.nuage6, a.nuage6 {
+	color:#12335b;
+	font-size: 25px;
+	font-style:italic;	
+}
+a.nuage1:hover {
+	color:#12335b;
+	font-size: 10px;
+	font-style:italic;
+	text-decoration:underline;
+}
+a.nuage2:hover {
+	color:#12335b;
+	font-size: 13px;
+	font-style:italic;
+	text-decoration:underline;
+}
+a.nuage3:hover {
+	color:#12335b;
+	font-size: 16px;
+	font-style:italic;
+	text-decoration:underline;
+}
+a.nuage4:hover {
+	color:#12335b;
+	font-size: 19px;
+	font-style:italic;
+	text-decoration:underline;
+}
+a.nuage5:hover {
+	color:#12335b;
+	font-size: 22px;
+	font-style:italic;
+	text-decoration:underline;	
+}
+a.nuage6:hover {
+	color:#12335b;
+	font-size: 25px;
+	font-style:italic;
+	text-decoration:underline;	
+}
+
+/* Pied de page
+-------------------------------------------------------- */
+
+#footer{
+	float: left;
+	width: 960px;
+	color: #0066CC;
+	font-size: 0.9em;
+	text-align: right;
+	border-top-width: 1px;
+	border-top-style: dotted;
+	border-top-color: #0066CC;
+	margin: 10px;
+	padding-top: 10px;
+}
+a.LIEN_footer:link, a.LIEN_footer:visited  {
+	color: #0066CC;
+	text-decoration: none;
+	font-weight: bold;
+}
+a.LIEN_footer:hover {
+	color: #0066CC;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+/* formulaire
+-------------------- */
+
+#contenu form {
+	float:left;
+	width: 96%;
+	padding: 0;
+	margin:0 0 0 10px;
+}
+.obligatoire {
+	font-size: 0.9em;
+	color: #FF0000;
+	clear:both;
+	margin:10px 0;
+}
+#contenu form p {
+	margin: 0;
+	padding: 4px 0;
+	/* Empêcher le dépassement des flottants */
+	overflow: hidden;
+	/*width: 100%;*/
+/*	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #c6cdde;*/
+	font-size: 0.9em;
+}
+#contenu form p label {
+	overflow: hidden;
+	float: left;
+	width: 250px;
+	padding:0;
+	margin: 2px 0 0 0;
+	text-align: left;
+}
+#contenu form p input {
+	float:left;
+	margin: 0 10px 0 0;
+	width: 190px;
+	padding: 3px;
+	
+	font-size: 0.9em;
+}
+#contenu form p select {
+	font-weight:normal;
+	font-size: 0.9em;
+	float:left;
+	margin: 0 10px 0 0;
+	width: 193px;
+	padding: 2px 0;
+	
+}
+#contenu form p input.radio, #contenu form p input.checkBox {
+	float:left;
+	margin: 5px 0;
+	width: 20px;
+	padding: 0;
+	background-color:transparent;
+	border: none;
+}
+#contenu form p .labelRadio, #contenu form p .labelCheckBox {
+	float:left;
+	margin: 5px 10px 0 0;
+	padding: 0;
+	background-color:transparent;
+	border: none;
+	font-weight:bold;
+}
+.enteteTableau {
+	
+	font-weight: bold;
+	background-color: #dedce6;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;
+}
+.footerTableau {
+	
+	font-weight: bold;
+	background-color: #bdbbcd;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;
+}
+.boutonMonCompteContenu {
+	font-weight: bold;
+	width: 445px;
+	text-align: right;
+	margin: 10px;
+}
+.boutonMonCompteContenuInsc {
+	font-weight: bold;
+	width: 190px;
+	text-align: right;
+	margin: 10px;
+}
+.commentaires {
+	font-size: 1em;
+	font-style: italic;
+	font-weight: bold;
+	
+}
+
+/* Menu général
+-------------------------------------------------------- */
+
+#menuGeneral {
+	float: left;
+	width:200px;
+	padding: 0;
+	margin:0;
+	height: 100%;
+	overflow:hidden;
+}
+dl, dt, dd, li {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#menu {
+	position: relative;
+	padding: 0;
+	margin: 0;
+}
+dl#menu {
+	width: 175px;
+}
+dl#menu dt {
+	cursor: pointer;
+}
+dl#menu dt a {
+	font-size: 1.4em;
+	color: #FFFFFF;
+	background-image: url(_gfx/fondmenu.jpg);
+	font-weight: bold;
+	text-decoration: none;
+	display: block;
+	margin: 15px 0 5px 10px;
+	height:19px;
+	width:180px;
+	padding: 3px 0 5px 5px;
+	overflow: hidden;
+}
+dl#menu dt  a:hover, dl#menu dt .selected {
+	color: #FFFFFF;
+	background-image: url(_gfx/fondmenu.jpg);
+}
+dl#menu li a {
+	font-size: 1em;
+	color: #1d7cee;
+	font-weight: bold;
+	text-decoration: none;
+	display: block;
+	padding: 3px 0 0 0;
+	height: 18px;
+	margin: 0 7px 3px 12px;
+	overflow: hidden;
+	width: 170px;
+}
+dl#menu li .selected, dl#menu li a:hover {
+	font-size: 1em;
+	color: #1d7cee;
+	background-color: #d2dcfc;
+	width: 100%;
+	font-weight: bold;
+	text-decoration: none;
+	display: block;
+	padding: 3px 0 0 0;
+	height: 18px;
+	margin: 0 7px 3px 12px;
+	overflow: hidden;
+	width: 170px;
+}
+.invisibleW3C {
+	width: 0; 
+	height: 0;
+	padding: 0; 
+	margin: 0;
+}
+
+/* Signature
+-------------------------------------------------------- */
+
+#signature {
+	padding: 0;
+	background-color:#676767;
+	width: 994px;
+	height: 130px;
+	color: #808185;
+	font-size: 0.8em;
+	margin-top: 10px;
+	margin-right: 0;
+	margin-bottom: 10px;
+	margin-left: 0;
+	font-weight: bold;
+	padding-top: 10px;
+}
+.signatureInfo{
+	float:left;
+	font-size:12px;
+	color:#FFFFFF;
+	margin-left: 20px;
+	width:200px;
+}
+#paiement{
+	float:left;
+	width: 225px;
+}
+.W3C {
+	width: 88px;
+	margin: 0;
+	padding: 0;
+	float: right;
+	display: none;
+}
+a.LIEN_signature:link, a.LIEN_signature:visited {
+	color: #808185;
+	text-decoration: none;
+	font-weight: bold;
+}
+a.LIEN_signature:hover {
+	color: #808185;
+	text-decoration: underline;
+	font-weight: bold;
+}

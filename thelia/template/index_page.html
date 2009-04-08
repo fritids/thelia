@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	#INCLURE "meta.html"
+
+	<link href="styles.css" rel="stylesheet" type="text/css" />	
+</head>
+<body>
+
+<!-- wrapper & subwrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+	
+		#INCLURE "entete.html"
+		
+<!-- chemin -->
+		
+		<div id="chemin">
+			Vous &ecirc;tes ici :
+			<a href="index.php" class="LIEN_chemin">Accueil boutique</a>
+		</div>
+		
+<!-- contenu-->
+
+		<div id="content">
+		
+			#INCLURE"menu.html"
+		
+			<div id="contenu">
+				<div id="ombremenu"><img src="_gfx/ombrecontenugauche.png" /></div>
+
+				<div class = "ListeProduitsPetits">
+					<img src="_gfx/imgpromo.jpg" />
+	
+<!-- Bloc Nouveauté  -->
+					
+					<div class="blocnouveaute">
+						<div class="nouveaute">
+							<h2>Nouveautés </h2>
+						</div>
+						
+						<div class="nouveauteProd" >
+							<THELIA_PRODUITSAFF type="PRODUIT" aleatoire="1" nouveaute="1" num="1">
+								<div class="produitPetit" style="/height:150px;">
+									<a href="#URL">
+										<THELIA_IMAGE type="IMAGE" num="1" produit="#ID"  largeur="200">
+										<img src="#IMAGE"  alt="#PRODTITRE  " title="#PRODTITRE  " border="0" class="contourImageNew" />
+										</THELIA_IMAGE>
+                   					</a>
+									<div class="titreProduit">#TITRE</div>
+									<div class="chapoProduit" >#FILTRE_lengthmax(#CHAPO||46)</div>
+									
+				    				<div class="mettrepanier">
+										<div class="prixProduit">
+											<T_PROMO>
+												<THELIA_PROMO type="PRODUIT" id="#ID" promo="1">
+										        	<strong>#PRIX2 &euro;</strong><br />au lieu de #PRIX &euro;
+										     	</THELIA_PROMO>
+											</T_PROMO>
+									   			<strong>#PRIX &euro;</strong>
+												<br />
+											<//T_PROMO>
+										</div>
+					    				<a href="#URL" class="LIEN_commander">En savoir +</a>
+										<br />	
+										<a href="#PANIER" class="LIEN_commander">
+											<img src="_gfx/aupanier.png" alt="mettre au panier" title="mettre au panier" style="vertical-align:top;margin-top:3px;" />
+										</a>	
+									</div>
+									<img src="_gfx/nouveaute.png"  style="float:right;vertical-align:top;margin:-82px 0 0 0;/margin:-76px 0 0 0;" />								
+								</div>
+							</THELIA_PRODUITSAFF>
+						</div>
+					</div>
+		
+<!-- Bloc Promotion -->
+					<div class = "blocnouveaute">
+						<div class="nouveaute">
+							<h2>Promotions </h2>
+						</div>
+						<div class="nouveauteProd">			
+							<THELIA_PRODUITSAFF type="PRODUIT" aleatoire="1" promo="1" num="1">
+							<div class="produitPetit" style="/height:150px;">
+								<a href="#URL">
+									<THELIA_IMAGE type="IMAGE" num="1" produit="#ID"  largeur="200">
+ 										<img src="#IMAGE"  alt="#PRODTITRE  " title="#PRODTITRE  " border="0" class="contourImageNew" />
+									</THELIA_IMAGE>
+                    			</a>
+								<div class="titreProduit">#TITRE</div>
+								<div class="chapoProduit" >#FILTRE_lengthmax(#CHAPO||46)</div>
+				    			<div class="mettrepanier">
+									<div class="prixProduit">
+										<T_PROMO>
+											<THELIA_PROMO type="PRODUIT" id="#ID" promo="1">
+										               <strong>#PRIX2 &euro;</strong><br />au lieu de #PRIX &euro;
+										     </THELIA_PROMO>
+										</T_PROMO>
+									   		<strong>#PRIX &euro;</strong><br />
+										<//T_PROMO>
+									</div>
+					    			<a href="#URL" class="LIEN_commander" >En savoir +</a>
+									<br />	
+									<a href="#PANIER" class="LIEN_commander">
+										<img src="_gfx/aupanier.png" alt="mettre au panier" title="mettre au panier" style="vertical-align:top;margin-top:3px;" />
+									</a>	
+								</div>
+								<img src="_gfx/promotion.png"  style="float:right;vertical-align:top;margin:-90px 0 0 0;/margin:-84px 0 0 0;" />								
+							</div>
+							</THELIA_PRODUITSAFF>
+						</div>
+					</div>
+					
+<!-- Bloc Produits au hasard  -->
+
+					<div class="nouveaute" style="width:710px;">
+						<h2>Produits au hasard </h2>
+					</div>
+					<div class="mozaiqueProd">			
+						<THELIA_PRODUITSAFF type="PRODUIT" aleatoire="1"  num="14" largeur="90">
+							<div class="produitPetit" style="width:95px;height:99px;margin: 0 2px 0 2px;">
+								<a href="#URL">
+									<THELIA_IMAGE type="IMAGE" num="1" produit="#ID"  largeur="90">
+	 									<img src="#IMAGE"  alt="#PRODTITRE  " title="#PRODTITRE  " border="0" class="contourImageMozaique" />
+									</THELIA_IMAGE>
+	                    		</a>
+							</div>
+						</THELIA_PRODUITSAFF>
+					</div>
+			</div>
+		</div>
+		#INCLURE "pied.html"
+		</div>
+	</div>
+	#INCLURE "signature.html"
+</div>
+
+</body>
+</html>

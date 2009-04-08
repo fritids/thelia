@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	#INCLURE "meta.html"
+
+	<link href="styles.css" rel="stylesheet" type="text/css" />	
+</head>
+<body>
+
+<!-- wrapper & subwrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+	
+		#INCLURE "entete.html"
+		
+<!-- chemin -->	
+		
+		<div id="chemin">
+			Vous &ecirc;tes ici :
+			<a href="index.php" class="LIEN_chemin">Accueil boutique</a> / 
+			Contenu de mon panier
+		</div>
+
+<!-- contenu -->
+	
+		<div id="content">
+		
+			#INCLURE"menu.html"
+		
+			<div id="contenu">
+				<div id="ombremenu"><img src="_gfx/ombrecontenugauche.png" /></div>	
+						
+<!-- Titre de la page -->
+				<div id="contenu_texte">
+					<div class="titrePage">
+						<h2>Contenu de mon panier</h2>
+						<br />
+					</div>
+				
+	<!-- Contenu du panier -->
+					<T_CONTENU_PANIER>
+						<table width="765" border="0" cellpadding="5" cellspacing="0" class="enteteTableau">
+	  						<tr>
+								<td width="130">&nbsp;</td>
+			    				<td width="200">Titre du produit</td>
+			    				<td width="100">Prix unitaire</td>
+			    				<td width="100">Quantit&eacute;</td>
+			    				<td width="100">Total TTC</td>
+			    				<td width="100" align="center">Vider</td>
+							</tr>
+						</table>
+
+						<table width="765" border="0" cellpadding="5" cellspacing="0">
+	    					<THELIA_CONTENU_PANIER type="PANIER">
+								<tr>
+									<td width="140" class="ligneTableau" style="padding-left:30px;">
+										<THELIA_IMAGE type="IMAGE" num="1" produit="#ID"  largeur="80">
+											<img src="#IMAGE"  alt="#PRODTITRE  " title="#PRODTITRE  " border="0" />
+										</THELIA_IMAGE>
+									</td>
+									<td width="200" >#TITRE </td>
+									<td width="100" >#PRIXU &euro; </td>
+	    							<td width="100" >
+										<form action="#URLPANIER" method="post" name="formpanier#ARTICLE" id="formpanier#ARTICLE">
+	                						<input type="hidden" name="article" value="#ARTICLE" />
+	                						<input type="hidden" name="action" value="modifier" />
+	                						<select name="quantite" size="1" onchange="document.formpanier#ARTICLE.submit()">
+	               								<THELIA_quantite type="QUANTITE" article="#ARTICLE">
+													<option value="#NUM" #SELECTED>#NUM</option>
+												</THELIA_quantite>
+											</select>
+										</form>
+									</td>
+									<td width="100" class="ligneTableau">#TOTAL &euro;</td>
+									<td width="100" align="center" class="ligneTableau"><a href="#SUPPRURL">Supprimer</a></td>
+								</tr>
+	  	  					</THELIA_CONTENU_PANIER>
+						</table>
+			
+						<table width="765" border="0" cellpadding="5" cellspacing="0" class="enteteTableau">
+							<tr>
+								<td width="270">&nbsp;</td>
+								<td width="200" align="right">TOTAL DU PANIER :</td>
+			    				<td width="180">#PANIER_TOTAL &euro;</td>
+			    			</tr>
+						</table>
+			
+						<div class="boutonMonCompteContenu" style="width:750px;">
+							<a href="index.php"><img src="_gfx/precedent.png" alt="page pr&eacute;c&eacute;dente" title="page pr&eacute;c&eacute;dente" /></a>
+							&nbsp;
+							<a href="adresse.php"><img src="_gfx/valider.png" alt="valider le panier" title="valider le panier"/></a>
+						</div>
+					
+					</T_CONTENU_PANIER>
+				
+					Il n'y a pas de produit dans votre panier.
+				
+					<div class="boutonMonCompteContenu"  style="width:750px;">
+						<a href="index.php"><img src="_gfx/precedent.png" alt="page pr&eacute;c&eacute;dente" title="page pr&eacute;c&eacute;dente"/></a>
+					</div>
+				
+					<//T_CONTENU_PANIER>
+				</div>
+			</div>
+		#INCLURE "pied.html"
+		</div>
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>

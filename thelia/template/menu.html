@@ -1,0 +1,24 @@
+<!-- menu général-->
+
+		<div id="menuGeneral">
+			<dl id="menu">
+			<THELIA_MENU_RUBRIQUES type="RUBRIQUE" parent="0" classement="manuel">
+				<dt><a href="#URL" #FILTRE_egalite(#RUBRIQUE_ID||#ID||class="selected")>#TITRE</a></dt>
+				<dd >
+					<ul>
+					<THELIA_BLOC_SOUS_MENU type="RUBRIQUE" parent="#ID">
+						<li><a href="#URL" #FILTRE_egalite(#RUBRIQUE_ID||#ID||class="selected")><img src="_gfx/pucemenu2.png" style="margin-left: 5px;"/>&nbsp;#TITRE</a></li>
+					</THELIA_BLOC_SOUS_MENU>
+					</ul>
+				</dd>
+			</THELIA_MENU_RUBRIQUES>
+		</dl>			
+			
+			<div class="recherche">
+				<form action="#URLRECHERCHE" method="post" name="recherche" id="recherche">
+			    	<input name="motcle" type="text" class="rechercheform" value='recherche' onclick="this.value='';"  />
+					<input type="submit" value="Valider" class="recherchebtn"/>
+				</form>
+			 </div> 
+			
+		</div>

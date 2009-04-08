@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+
+<link href="styles.css" rel="stylesheet" type="text/css" />
+	
+</head>
+<body>
+
+<!-- wrapper & subwrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+	
+	#INCLURE "entete.html"
+		
+<!-- chemin -->	
+		
+		<div id="chemin">
+		Vous &ecirc;tes ici :
+		<a href="index.php" class="LIEN_chemin">Accueil boutique</a> / 
+		Mot de passe perdu ou oubli&eacute;
+		</div>
+		
+<!-- contenu -->
+	
+		<div id="content">
+		
+		#INCLURE"menu.html"
+		
+			<div id="contenu">
+				<img src="_gfx/ombrecontenugauche.png" style="float:left;"/>
+			
+<!-- Titre de la rubrique -->
+			<div id="contenu_texte">
+				<div class="titrePage">
+				<h2>Mon compte : mot de passe perdu ou oubli&eacute; </h2>
+				</div>
+
+			
+<!-- Contenu de la page -->
+
+				<div class="sousTitrePage">
+				<h3>Inscrivez votre email pour recevoir votre mot de passe</h3>
+				</div>
+				
+			<form action="mdpoublie.php" method="post" name="formmdp" id="formmdp">
+			<input type="hidden" name="action" value="chmdp" />
+			<table width="750" border="0" cellspacing="0" cellpadding="5">
+  				<tr>
+   					<td class="ligneTableau" style="width:150px;">Votre email : </td>
+   					<td class="ligneTableau"  style="width:150px;"><input name="email" type="text" class="zoneDeSaisie"/></td>
+					<td class="ligneTableau">
+					<div class="boutonMonCompteContenu" >
+						<input type="submit" value="Valider" style="float:left;margin-top:-10px;"/>
+					</div>
+					</td>
+  				</tr>
+			</table>
+			</form>
+			</div>
+		</div>
+		</div>
+		#INCLURE"pied.html"
+	</div>
+	#INCLURE"signature.html"
+</div>
+</body>
+</html>
+

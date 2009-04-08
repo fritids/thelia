@@ -3,6 +3,9 @@
 	
 	if($_REQUEST['action'] == "modifier"){
 		$produit = new Produit();
+	  $temp = new Produit();
+	  if(! $temp->charger($_REQUEST['nouvelle_ref'])){
+		
 		if($produit->charger($_REQUEST['ancienne_ref'])){
 			$produit->ref = $_REQUEST['nouvelle_ref'];
 			$produit->maj();
@@ -26,8 +29,16 @@
 	</script>
 <?php		
 		}
+	 } else {
 		
-	}
+?>
+<script type="text/javascript">
+	alert("La ref n'est pas disponible");
+</script>
+<?php		
+		
+	}	
+  }
 ?>
 
 	<div id="contenu_int"> 

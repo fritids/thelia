@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+
+<link href="styles.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+<!-- wrapper & subwrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+	
+	#INCLURE "entete.html"
+		
+<!-- chemin -->	
+		
+		<div id="chemin">
+		Vous &ecirc;tes ici :
+		<a href="index.php" class="LIEN_chemin">Accueil boutique</a> /	
+		R&eacute;capitulatif de ma commande
+		</div>
+		
+<!-- contenu -->
+	
+		<div id="content">
+		
+		#INCLURE"menu.html"
+		
+			<div id="contenu">
+				<img src="_gfx/ombrecontenugauche.png" style="float:left;"/>
+			
+<!-- Titre de la rubrique -->`
+		
+				<div class="titrePage">
+				<img src="_gfx/etape1off.png" style="margin-left:100px;"/> <img src="_gfx/sepetape.png" /> <img src="_gfx/etape2on.png"  /> <img src="_gfx/sepetape.png" /> <img src="_gfx/etape3off.png" /> <img src="_gfx/sepetape.png" /> <img src="_gfx/etape4off.png" />
+				</div>
+				<br/>
+
+			<div id="contenu_texte" >
+				<div class="titrePage">
+				<h2>R&eacute;capitulatif de ma commande </h2>
+				<br />
+				</div>
+
+<!-- Contenu de la page -->
+	
+			<form action="commande.php" id="formulaire">
+			<input type="hidden" name="action" value="codepromo" />
+			<table width="720" border="0" cellspacing="0" cellpadding="5">
+            	<tr>
+					<td width="135" class="enteteTableau">&nbsp;</td>
+					<td width="255" class="enteteTableau">Produits</td>
+                    <td width="110" class="enteteTableau">Prix unitaire </td>
+                    <td width="110" class="enteteTableau">Quantit&eacute;</td>
+                    <td width="110" class="enteteTableau">Total</td>
+				</tr>
+			</table>
+			<THELIA_panier type="PANIER">
+			<table width="720" border="0" cellspacing="0" cellpadding="5">
+              	<tr>
+					<td width="120"  style="padding-left:10px;">
+						<THELIA_IMAGE type="IMAGE" num="1" produit="#ID"  largeur="80">
+							<img src="#IMAGE"  alt="#PRODTITRE" title="#PRODTITRE  " border="0" />
+						</THELIA_IMAGE>
+					</td>
+					<td width="255" >#TITRE - #REF</td>
+                    <td width="110" >#PRIXU &euro;</td>
+                    <td width="110">#QUANTITE</td>
+                    <td width="110" >#TOTAL &euro;</td>
+				</tr>
+			</table>
+			</THELIA_panier>
+			<table width="720" border="0" cellspacing="0" cellpadding="5">
+              	<tr>
+					<td width="525" class="enteteTableau">&nbsp;</td>
+                    <td width="110" class="enteteTableau">Frais de livraison </td>
+                    <td width="110" class="enteteTableau">#PANIER_PORT &euro;</td>
+				</tr>
+			</table>
+			<table width="720" border="0" cellspacing="0" cellpadding="5">
+              	<tr>
+					<td width="525" class="enteteTableau">&nbsp;</td>
+                    <td width="110" class="enteteTableau">Remise </td>
+                    <td width="110" class="enteteTableau">#SUP_REMISE &euro;</td>
+				</tr>
+			</table>
+			<table width="720" border="0" cellspacing="0" cellpadding="5">
+              	<tr>
+					<td width="525" class="footerTableau">&nbsp;</td>
+                    <td width="110" class="footerTableau">Total</td>
+                    <td width="110" class="footerTableau">#PANIER_TOTPORT &euro;</td>
+				</tr>
+			</table>
+			<br />
+			Saisir votre code de réduction
+			<input name="code" type="text" class="zoneDeSaisie"/><input type="submit" value="Valider" />
+			<br />
+			<br />
+			</form>
+			</div>
+			
+			<div id="contenu_texte" style="float:left;width:375px;" >
+			<!-- contenu de la page -->
+			<table  width="375" border="0" cellspacing="0" cellpadding="5" style="float:left;">
+				<div class="titrePage">
+					<h2>Je choisis un mode de paiement </h2>
+				</div>
+
+			   <THELIA_PAIEMENT type="PAIEMENT">
+			 	<tr>
+				   <td width="200" class="ligneTableau">#TITRE</td>
+	               <td width="90" style="/width:500px"><a href="#URLPAYER"><img src="_gfx/validerpaiement.png" /></a></td>
+				</tr>
+
+				</THELIA_PAIEMENT>
+			</table>
+			</div>
+				
+			<div id="contenu_texte" style="float:left;width:375px;height:200px;" >
+			<table width="375" border="0" cellspacing="0" cellpadding="5" style="float:left;">
+
+			   	  <div class="titrePage">
+					<h2>Votre adresse de livraison </h2>
+				  </div>
+				  <THELIA_adrcours type="ADRESSE" adresse="#ADRESSE_ACTIVE">
+					#RAISON #PRENOM #NOM	
+					<br />
+					#ADRESSE1 #ADRESSE2 #ADRESSE3
+					<br />
+				    #CPOSTAL #VILLE 
+				  <THELIA_pays type="PAYS" id="#PAYS">
+				    #TITRE	
+				  </THELIA_pays>
+
+				 </THELIA_adrcours>
+			</table>
+		</div>	
+		<div class="boutonMonCompteContenu" style="width:725px;">
+			<a href="#URLPREC"><img src="_gfx/precedent.png" /></a>
+
+		</div>
+		</div>
+		#INCLURE "pied.html"
+		</div>
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>
