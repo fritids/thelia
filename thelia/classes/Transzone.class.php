@@ -38,11 +38,13 @@
 		function Transzone(){
 			$this->Baseobj();	
 		}
+
+	    function charger_id($id){
+            return $this->getVars("select * from $this->table where id=\"$id\"");
+        }
 		
 		function charger($transport, $zone){
-		
 			return $this->getVars("select * from $this->table where transport=\"$transport\" and zone=\"$zone\"");
-
 		}
 		
 		
