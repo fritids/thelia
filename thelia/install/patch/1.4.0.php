@@ -45,11 +45,4 @@
 	$devise->code = "GBP";
 	$devise->maj();
 	
-
-		
-		
-		
-		
-	
-	
 ?>
