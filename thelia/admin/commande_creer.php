@@ -287,7 +287,7 @@ function valid(){
 	       	<td class="cellule_sombre">
 				<span id="nclient">
 	         	<input name="client" id="client" type="text" class="form" size="40" />
-				<input type="hidden" name="id_client" id="id_client" value=""> <a href="#TB_inline?height=500&amp;width=800&amp;inlineId=contenu_cli&amp;modal=true" class="thickbox">Cr&eacute;er un client</a>
+				<input type="hidden" name="id_client" id="id_client" value=""> <a href="#TB_inline?height=400&amp;width=800&amp;inlineId=contenu_cli&amp;modal=true" class="thickbox">Cr&eacute;er un client</a>
 				</span>
 	      	</td>
 		</tr>

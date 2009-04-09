@@ -33,8 +33,8 @@ if( ! isset($_SESSION["util"]->id) ) {header("Location: ../index.php");exit;}
 		case 'prix' : $obj->prix = $_POST['value']; echo $obj->prix; break;
 		case 'prix2' :  $obj->prix2 = $_POST['value']; echo $obj->prix2; break;
 		case 'stock' :  $obj->stock = $_POST['value']; echo $obj->stock; break;
-		case 'titreprod' :  $objdesc->titre = utf8_decode($_POST['value']); echo $objdesc->titre; break;
-		case 'titrerub' :  $objdesc->titre = utf8_decode($_POST['value']); echo $objdesc->titre; break;
+		case 'titreprod' :  $objdesc->titre = stripslashes(utf8_decode($_POST['value'])); echo $objdesc->titre; break;
+		case 'titrerub' :  $objdesc->titre = stripslashes(utf8_decode($_POST['value'])); echo $objdesc->titre; break;
 		case 'promo' : 
 			if($obj->promo) $obj->promo = 0;
 			else $obj->promo = 1;
