@@ -37,6 +37,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <?php include_once("title.php");?>
+
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+
 </head>
 
 <body>
@@ -56,7 +59,7 @@
 		<!-- entete devises -->  	
 		<div class="entete_liste_config">
 			<div class="titre">LISTE DES DEVISES UTILIS&Eacute;ES SUR LE SITE </div>
-			<div class="fonction_valider"><a href="#">AJOUTER UNE DEVISE</a></div>
+			<div class="fonction_valider"><a href="#" onclick="$('#ajout_devise').show()">AJOUTER UNE DEVISE</a></div>
 		</div>
 <ul class="Nav_bloc_description">
 		<li style="height:25px; width:89px;">D&eacute;signation</li>
@@ -82,9 +85,9 @@
 			<li style="height:25px; width:90px;"><input name="nom" type="text" class="form" value="<?php echo($row->nom); ?>" size="10" /></li>
 			<li style="height:25px; width:90px; border-left:1px solid #96A8B5;"><input name="symbole" type="text" class="form" value="<?php echo($row->symbole); ?>" size="10" /></li>
 			<li style="height:25px; width:90px; border-left:1px solid #96A8B5; "><input name="code" type="text" class="form" value="<?php echo($row->code); ?>" size="10" /></li>
-			<li style="height:25px; width:210px; border-left:1px solid #96A8B5;"><input name="taux" type="text" class="form" value="<?php echo($row->taux); ?>" size="10" /></li>
-			<li style="height:25px; width:50px; border-left:1px solid #96A8B5;"><a href="#" onclick="document.getElementById('formdevise<?php echo($row->id); ?>').submit();">&eacute;diter</a></li>
-			<li style="height:25px; width:20px; border-left:1px solid #96A8B5;"><a href="devise_modifier.php?action=supprimer&id=<?php echo $row->id ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
+			<li style="height:25px; width:205px; border-left:1px solid #96A8B5;"><input name="taux" type="text" class="form" value="<?php echo($row->taux); ?>" size="10" /></li>
+			<li style="height:25px; width:55px; border-left:1px solid #96A8B5;"><a href="#" onclick="document.getElementById('formdevise<?php echo($row->id); ?>').submit();">modifier</a></li>
+			<li style="height:25px; width:14px; border-left:1px solid #96A8B5; text-align:right;"><a href="devise_modifier.php?action=supprimer&id=<?php echo $row->id ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 		</ul>
 	<input type="hidden" name="action" value="modifier" />
    	<input type="hidden" name="id" value="<?php echo($row->id); ?>" />
@@ -92,9 +95,9 @@
 <?php } ?>
 </div>
 
+<div class="bordure_bottom" id="ajout_devise" style="display: none;">
 <form action="devise_modifier.php" id="formajouter" method="post">
 <input type="hidden" name="action" value="ajouter">
-<div class="bordure_bottom" id="ajout_devise">
 		<div class="entete_liste_config" style="margin-top:10px;">
 			<div class="titre">AJOUT D'UNE DEVISE</div>
 		</div>
@@ -111,8 +114,10 @@
 				<li style="height:25px; width:210px; border-left:1px solid #96A8B5;"><input name="ntaux" type="text" class="form" size="10" /></li>
 				<li style="height:25px; width:50px; border-left:1px solid #96A8B5;"><a href="#" onclick="document.getElementById('formajouter').submit()">ajouter</a></li>
 		</ul>
-</div>
 </form>
+</div>
+
+
 </div>
 <!-- fin du bloc de description / colonne de gauche -->
 

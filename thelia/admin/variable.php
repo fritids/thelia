@@ -75,9 +75,9 @@
      <form action="variable_modifier.php" id="formvariable<?php echo($row->id); ?>" method="post">
 
 		<ul class="<?php echo $fond; ?>">
-			<li style="width:150px;"><?php echo($row->nom); ?></li>
-			<li style="width:360px;"><input name="valeur" type="text" class="form" value="<?php echo($row->valeur); ?>" size="50" /></li>
-			<li style="width:50px;"><a href="#" onclick="document.getElementById('formvariable<?php echo($row->id); ?>').submit();">modifier</a></li>
+			<li style="width:151px;"><?php echo($row->nom); ?></li>
+			<li style="width:360px; border-left:1px solid #96A8B5;"><input name="valeur" type="text" class="form" value="<?php echo($row->valeur); ?>" size="50" /></li>
+			<li style="width:50px; border-left:1px solid #96A8B5;"><a href="#" onclick="document.getElementById('formvariable<?php echo($row->id); ?>').submit();">modifier</a></li>
 		</ul>
      
    

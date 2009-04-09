@@ -36,6 +36,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <?php include_once("title.php");?>
+
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+
 <script type="text/javascript">
 	function valid(admin){
 
@@ -82,7 +85,7 @@
 <div id="bloc_description">
 <div class="entete_liste_config">
 	<div class="titre">LISTE DES ADMINISTRATEURS</div>
-	<div class="fonction_valider"><a href="#">AJOUTER UN ADMINISTRATEUR</a></div>
+	<div class="fonction_valider"><a href="#" onclick="$('#ajout_admin').show()">AJOUTER UN ADMINISTRATEUR</a></div>
 </div>
 <ul class="Nav_bloc_description">
 		<li style="height:25px; width:94px;">Nom</li>
@@ -121,22 +124,32 @@
 </div>
 
 
+<div class="bordure_bottom" id="ajout_admin" style="display: none;">
 <form action="gestadm_modifier.php" id="formadmin" method="post" onsubmit="valid('<?php echo $row->id; ?>');return false;">
-	<table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td height="30" width="114" class="cellule_sombre"><input name="identifiant" type="text" class="form"  size="12" /></td>
-   	   <td height="30" width="114" class="cellule_sombre"><input name="prenom" type="text" class="form"  size="12" /></td>
-   	   <td height="30" width="114" class="cellule_sombre"><input name="nom" type="text" class="form" size="12" /></td>
-
-       <td class="cellule_sombre" width="114"><input name="motdepasse1" id="motdepasse1" type="password" class="form" size="12" onclick="this.value='';" /></td>
-	   <td class="cellule_sombre" width="114"><input name="motdepasse2" id="motdepasse2" type="password" class="form" size="12" onclick="this.value='';" /></td>
-
-       <td class="cellule_sombre" width="70"><a href="#" class="txt_vert_11" onclick="ajout();">Ajouter</a> <a href="#"><img src="gfx/suivant.gif" onclick="valid('<?php echo $row->id; ?>');" width="12" height="9" border="0" /></a></span></span></td>
-       <td align="center" valign="middle" class="cellule_sombre" width="70">&nbsp;</td>
-     </tr>
-   </table>
    <input type="hidden" name="action" value="ajouter" />
-   </form>     
+
+		<div class="entete_liste_config" style="margin-top:10px;">
+			<div class="titre">AJOUT D'UN ADMINISTRATEUR</div>
+		</div>
+		<ul class="Nav_bloc_description">
+			<li style="height:25px; width:94px;">Nom</li>
+			<li style="height:25px; width:92px; border-left:1px solid #96A8B5;">Pr&eacute;nom</li>
+			<li style="height:25px; width:92px; border-left:1px solid #96A8B5;">Identifiant</li>
+			<li style="height:25px; width:80px; border-left:1px solid #96A8B5;">Mot de passe</li>
+			<li style="height:25px; width:80px; border-left:1px solid #96A8B5;">Confirmation</li>
+		</ul>
+		<ul class="claire">
+			<li style="width:93px;"><input name="nom" type="text" class="form" size="11" /></li>
+			<li style="width:93px;"><input name="prenom" type="text" class="form" size="11" /></li>
+			<li style="width:95px;"><input name="identifiant" type="text" class="form" size="11" /></li>
+			<li style="width:85px;"><input name="motdepasse1" id="motdepasse1" type="password" class="form" size="6" /></li>
+			<li style="width:85px;"><input name="motdepasse2" id="motdepasse2" type="password" class="form" size="6" onclick="this.value='';" /></li>
+			<li style="width:80px;"><a href="#" onclick="valid('<?php echo $row->id; ?>');">ajouter</a></li>
+		</ul>
+</form>       
+</div>
+
+
 </div>
 <!-- fin du bloc de description / colonne de gauche -->
 
