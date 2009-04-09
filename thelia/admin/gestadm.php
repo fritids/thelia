@@ -93,6 +93,8 @@
 		<li style="height:25px; width:92px; border-left:1px solid #96A8B5;">Identifiant</li>
 		<li style="height:25px; width:80px; border-left:1px solid #96A8B5;">Mot de passe</li>
 		<li style="height:25px; width:80px; border-left:1px solid #96A8B5;">Confirmation</li>
+		<li style="height:25px; width:73px; border-left:1px solid #96A8B5;">&nbsp;</li>
+		<li style="height:25px; width:13px; border-left:1px solid #96A8B5;">&nbsp;</li>
 </ul>
 <div class="bordure_bottom">
  	<?php
@@ -110,12 +112,12 @@
     <form action="gestadm_modifier.php" id="formadmin<?php echo($row->id); ?>" method="post" onsubmit="valid('<?php echo $row->id; ?>');return false;">
 		<ul class="<?php echo $fond; ?>">
 			<li style="width:95px;"><input name="nom" type="text" class="form" value="<?php echo($row->nom); ?>" size="11" /></li>
-			<li style="width:95px;"><input name="prenom" type="text" class="form" value="<?php echo($row->prenom); ?>" size="11" /></li>
-			<li style="width:95px;"><input name="identifiant" type="text" class="form" value="<?php echo($row->identifiant); ?>" size="11" /></li>
-			<li style="width:85px;"><input name="motdepasse1" id="motdepasse1<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
-			<li style="width:80px;"><input name="motdepasse2" id="motdepasse2<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
-			<li style="width:80px;"><a href="#" onclick="document.getElementById('formvariable<?php echo($row->id); ?>').submit();">modifier</a></li>
-			<li style="width:20px;"><a href="#" onclick="supp('<?php echo $row->id; ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
+			<li style="width:94px; border-left:1px solid #96A8B5;"><input name="prenom" type="text" class="form" value="<?php echo($row->prenom); ?>" size="11" /></li>
+			<li style="width:94px; border-left:1px solid #96A8B5;"><input name="identifiant" type="text" class="form" value="<?php echo($row->identifiant); ?>" size="11" /></li>
+			<li style="width:82px; border-left:1px solid #96A8B5;"><input name="motdepasse1" id="motdepasse1<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
+			<li style="width:82px; border-left:1px solid #96A8B5;"><input name="motdepasse2" id="motdepasse2<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
+			<li style="width:75px; border-left:1px solid #96A8B5;"><a href="#" onclick="document.getElementById('formvariable<?php echo($row->id); ?>').submit();">modifier</a></li>
+			<li style="width:13px; border-left:1px solid #96A8B5; text-align:right;"><a href="#" onclick="supp('<?php echo $row->id; ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 		</ul>
  	<input type="hidden" name="action" value="modifier" />
    	<input type="hidden" name="id" value="<?php echo($row->id); ?>" />
@@ -133,18 +135,19 @@
 		</div>
 		<ul class="Nav_bloc_description">
 			<li style="height:25px; width:94px;">Nom</li>
-			<li style="height:25px; width:92px; border-left:1px solid #96A8B5;">Pr&eacute;nom</li>
-			<li style="height:25px; width:92px; border-left:1px solid #96A8B5;">Identifiant</li>
-			<li style="height:25px; width:80px; border-left:1px solid #96A8B5;">Mot de passe</li>
+			<li style="height:25px; width:94px; border-left:1px solid #96A8B5;">Pr&eacute;nom</li>
+			<li style="height:25px; width:95px; border-left:1px solid #96A8B5;">Identifiant</li>
+			<li style="height:25px; width:85px; border-left:1px solid #96A8B5;">Mot de passe</li>
 			<li style="height:25px; width:80px; border-left:1px solid #96A8B5;">Confirmation</li>
+			<li style="height:25px; width:85px; border-left:1px solid #96A8B5;">&nbsp;</li>
 		</ul>
 		<ul class="claire">
-			<li style="width:93px;"><input name="nom" type="text" class="form" size="11" /></li>
-			<li style="width:93px;"><input name="prenom" type="text" class="form" size="11" /></li>
-			<li style="width:95px;"><input name="identifiant" type="text" class="form" size="11" /></li>
-			<li style="width:85px;"><input name="motdepasse1" id="motdepasse1" type="password" class="form" size="6" /></li>
-			<li style="width:85px;"><input name="motdepasse2" id="motdepasse2" type="password" class="form" size="6" onclick="this.value='';" /></li>
-			<li style="width:80px;"><a href="#" onclick="valid('<?php echo $row->id; ?>');">ajouter</a></li>
+			<li style="width:94px;"><input name="nom" type="text" class="form" size="11" /></li>
+			<li style="width:94px; border-left:1px solid #96A8B5;"><input name="prenom" type="text" class="form" size="11" /></li>
+			<li style="width:95px; border-left:1px solid #96A8B5;"><input name="identifiant" type="text" class="form" size="11" /></li>
+			<li style="width:85px; border-left:1px solid #96A8B5;"><input name="motdepasse1" id="motdepasse1" type="password" class="form" size="6" /></li>
+			<li style="width:80px; border-left:1px solid #96A8B5;"><input name="motdepasse2" id="motdepasse2" type="password" class="form" size="6" onclick="this.value='';" /></li>
+			<li style="width:80px; border-left:1px solid #96A8B5;"><a href="#" onclick="valid('<?php echo $row->id; ?>');">ajouter</a></li>
 		</ul>
 </form>       
 </div>

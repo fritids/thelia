@@ -170,18 +170,8 @@ function supprimer(id){
 	<div class="titre">LISTE DES COMMANDES</div><div class="fonction_ajout"><a href="commande_creer.php">CREER UNE COMMANDE</a> </div>
 </div>
 <ul id="Nav">
-		<li style="height:25px; width:149px; border-left:1px solid #96A8B5;">
-		N&deg; de commande
-		</li>
-		
-		<li style="height:25px; width:111px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
-			Date &amp; Heure
-			<ul class="Menu">
-				<li style="width:118px;"><a href="#">Tri croissant</a></li>
-				<li style="width:118px;"><a href="#">Tri d&eacute;croissant</a></li>
-			</ul>
-		</li>
-
+		<li style="height:25px; width:149px; border-left:1px solid #96A8B5;">N&deg; de commande</li>
+		<li style="height:25px; width:111px; border-left:1px solid #96A8B5;">Date &amp; Heure</li>
 		<li style="height:25px; width:207px; border-left:1px solid #96A8B5;">Soci&eacute;t&eacute;</li>
 		<li style="height:25px; width:207px; border-left:1px solid #96A8B5;">Nom &amp; Pr&eacute;nom</li>	
 		<li style="height:25px; width:66px; border-left:1px solid #96A8B5;">Montant</li>

@@ -87,7 +87,7 @@
 			<li style="height:25px; width:90px; border-left:1px solid #96A8B5; "><input name="code" type="text" class="form" value="<?php echo($row->code); ?>" size="10" /></li>
 			<li style="height:25px; width:205px; border-left:1px solid #96A8B5;"><input name="taux" type="text" class="form" value="<?php echo($row->taux); ?>" size="10" /></li>
 			<li style="height:25px; width:55px; border-left:1px solid #96A8B5;"><a href="#" onclick="document.getElementById('formdevise<?php echo($row->id); ?>').submit();">modifier</a></li>
-			<li style="height:25px; width:14px; border-left:1px solid #96A8B5; text-align:right;"><a href="devise_modifier.php?action=supprimer&id=<?php echo $row->id ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
+			<li style="height:25px; width:13px; border-left:1px solid #96A8B5; text-align:right;"><a href="devise_modifier.php?action=supprimer&id=<?php echo $row->id ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 		</ul>
 	<input type="hidden" name="action" value="modifier" />
    	<input type="hidden" name="id" value="<?php echo($row->id); ?>" />
@@ -111,7 +111,7 @@
 				<li style="height:25px; width:90px;"><input name="nnom" type="text" class="form" size="10" /></li>
 				<li style="height:25px; width:90px; border-left:1px solid #96A8B5;"><input name="nsymbole" type="text" class="form" size="10" /></li>
 				<li style="height:25px; width:90px; border-left:1px solid #96A8B5;"><input name="ncode" type="text" class="form" size="10" /></li>
-				<li style="height:25px; width:210px; border-left:1px solid #96A8B5;"><input name="ntaux" type="text" class="form" size="10" /></li>
+				<li style="height:25px; width:205px; border-left:1px solid #96A8B5;"><input name="ntaux" type="text" class="form" size="10" /></li>
 				<li style="height:25px; width:50px; border-left:1px solid #96A8B5;"><a href="#" onclick="document.getElementById('formajouter').submit()">ajouter</a></li>
 		</ul>
 </form>
