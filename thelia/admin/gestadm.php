@@ -76,59 +76,52 @@
 ?>
 
 <div id="contenu_int"> 
-   <p align="left"><a href="accueil.php" class="lien04">Accueil</a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="configuration.php" class="lien04">Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="variable.php" class="lien04">Gestion des administrateurs</a>    </p>
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES ADMINISTRATEURS</td>
-     </tr>
-   </table>
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="114" height="30" class="titre_cellule">IDENTIFIANT</td>
-       <td width="114" height="30" class="titre_cellule">PRENOM</td>
-       <td width="114" height="30" class="titre_cellule">NOM</td>
-       <td width="114" class="titre_cellule">MOT DE PASSE</td>
-       <td width="114" class="titre_cellule">CONFIRMATION DU MOT DE PASSE</td>
-       <td width="70" class="titre_cellule">&nbsp;</td>
-       <td width="70" class="titre_cellule">&nbsp;</td>
-     </tr>
-	 
-  <?php
+   <p align="left"><a href="accueil.php" class="lien04">Accueil</a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="configuration.php" class="lien04">Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="variable.php" class="lien04">Gestion des administrateurs</a></p>
+
+<!-- bloc dŽclinaisons / colonne gauche -->  
+<div id="bloc_description">
+<div class="entete_liste_config">
+	<div class="titre">LISTE DES ADMINISTRATEURS</div>
+	<div class="fonction_valider"><a href="#">AJOUTER UN ADMINISTRATEUR</a></div>
+</div>
+<ul class="Nav_bloc_description">
+		<li style="height:25px; width:94px;">Nom</li>
+		<li style="height:25px; width:92px; border-left:1px solid #96A8B5;">Pr&eacute;nom</li>
+		<li style="height:25px; width:92px; border-left:1px solid #96A8B5;">Identifiant</li>
+		<li style="height:25px; width:80px; border-left:1px solid #96A8B5;">Mot de passe</li>
+		<li style="height:25px; width:80px; border-left:1px solid #96A8B5;">Confirmation</li>
+</ul>
+<div class="bordure_bottom">
+ 	<?php
   	
 	$administrateur = new Administrateur();
 
  	$query = "select * from $administrateur->table";
   	$resul = mysql_query($query, $administrateur->link);
-  	
+  	$i=0;
   	while($row = mysql_fetch_object($resul)){
+			if(!($i%2)) $fond="claire";
+  			else $fond="fonce";
+  			$i++;
+ 	 ?>
+    <form action="gestadm_modifier.php" id="formadmin<?php echo($row->id); ?>" method="post" onsubmit="valid('<?php echo $row->id; ?>');return false;">
+		<ul class="<?php echo $fond; ?>">
+			<li style="width:95px;"><input name="nom" type="text" class="form" value="<?php echo($row->nom); ?>" size="11" /></li>
+			<li style="width:95px;"><input name="prenom" type="text" class="form" value="<?php echo($row->prenom); ?>" size="11" /></li>
+			<li style="width:95px;"><input name="identifiant" type="text" class="form" value="<?php echo($row->identifiant); ?>" size="11" /></li>
+			<li style="width:85px;"><input name="motdepasse1" id="motdepasse1<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
+			<li style="width:80px;"><input name="motdepasse2" id="motdepasse2<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
+			<li style="width:80px;"><a href="#" onclick="document.getElementById('formvariable<?php echo($row->id); ?>').submit();">modifier</a></li>
+			<li style="width:20px;"><a href="#" onclick="supp('<?php echo $row->id; ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
+		</ul>
+ 	<input type="hidden" name="action" value="modifier" />
+   	<input type="hidden" name="id" value="<?php echo($row->id); ?>" />
+   	</form>   
+	 <?php } ?>
+</div>
 
-  	
-  ?>
-     <form action="gestadm_modifier.php" id="formadmin<?php echo($row->id); ?>" method="post" onsubmit="valid('<?php echo $row->id; ?>');return false;">
 
-     <tr>
-       <td height="30" class="cellule_sombre"><input name="identifiant" type="text" class="form" value="<?php echo($row->identifiant); ?>" size="12" /></td>
-   	   <td height="30" class="cellule_sombre"><input name="prenom" type="text" class="form" value="<?php echo($row->prenom); ?>" size="12" /></td>
-   	   <td height="30" class="cellule_sombre"><input name="nom" type="text" class="form" value="<?php echo($row->nom); ?>" size="12" /></td>
-
-       <td class="cellule_sombre"><input name="motdepasse1" id="motdepasse1<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="12" onclick="this.value='';" /></td>
-	   <td class="cellule_sombre"><input name="motdepasse2" id="motdepasse2<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="12" onclick="this.value='';" /></td>
-
-       <td class="cellule_sombre"><a href="#" class="txt_vert_11" onclick="valid('<?php echo $row->id; ?>');">Modifier</a> <a href="#"><img src="gfx/suivant.gif" onclick="valid('<?php echo $row->id; ?>');" width="12" height="9" border="0" /></a></span></span></td>
-       <td align="center" valign="middle" class="cellule_sombre"><a href="#" onclick="supp('<?php echo $row->id; ?>')">Supprimer <img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
-     </tr>
-   
-   <input type="hidden" name="action" value="modifier" />
-   <input type="hidden" name="id" value="<?php echo($row->id); ?>" />
-   </form>   
-	 <?php
-
-	}
- ?>
-	 </table> 
-	</form>  
-	<br />
-	<form action="gestadm_modifier.php" id="formadmin" method="post" onsubmit="valid('<?php echo $row->id; ?>');return false;">
+<form action="gestadm_modifier.php" id="formadmin" method="post" onsubmit="valid('<?php echo $row->id; ?>');return false;">
 	<table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td height="30" width="114" class="cellule_sombre"><input name="identifiant" type="text" class="form"  size="12" /></td>
@@ -143,7 +136,11 @@
      </tr>
    </table>
    <input type="hidden" name="action" value="ajouter" />
-   </form>   
+   </form>     
+</div>
+<!-- fin du bloc de description / colonne de gauche -->
+
+	  
 </div>
 <?php include_once("pied.php");?>
 </div>

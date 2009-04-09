@@ -211,10 +211,10 @@
 	<li class="lignetop" style="width:72px;"><?php echo(round($ca, 2)); ?> &euro;</li>
 	<li class="fonce" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Chiffre d'affaires hors frais de port</li>
 	<li class="fonce" style="width:72px;"><?php echo(round($casf, 2)); ?> &euro;</li>
-	<li class="fonce" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Chiffre d'affaires mensuel moyen</li>
-	<li class="fonce" style="width:72px;"><?php echo(round($casf, 2)); ?> &euro;</li>
-	<li class="lignebottom" style="width:222px; background-color:#9eb0be;">Panier moyen </li>
-	<li class="lignebottom" style="width:72px;"><?php echo $panierMoyen; ?> &euro;</li>
+	<li class="claire" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Chiffre d'affaires mensuel moyen</li>
+	<li class="claire" style="width:72px;"><?php echo(round($casf, 2)); ?> &euro;</li>
+	<li class="lignebottomfonce" style="width:222px; background-color:#9eb0be;">Panier moyen </li>
+	<li class="lignebottomfonce" style="width:72px;"><?php echo $panierMoyen; ?> &euro;</li>
 	</ul>
 	<ul>
 	<li class="entete" >INFOS THELIA</li>
