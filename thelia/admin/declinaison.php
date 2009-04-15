@@ -92,13 +92,7 @@ function edit(){
 		<li style="height:25px; width:119px; border-left:1px solid #96A8B5;"></li>
 		<li style="height:25px; width:655px; border-left:1px solid #96A8B5;">Titre de la d&eacute;clinaison</li>
 		<li style="height:25px; width:39px; border-left:1px solid #96A8B5;"></li>	
-		<li style="height:25px; width:78px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
-			Classement
-			<ul class="Menu">
-				<li><a href="javascript:tri('ASC','','1','classement','')">Tri croissant</a></li>
-				<li><a href="javascript:tri('DESC','','1','classement','')">Tri d&eacute;croissant</a></li>
-			</ul>
-		</li>
+		<li style="height:25px; width:78px; border-left:1px solid #96A8B5;">Classement</li>
 		<li style="height:25px; width:44px; border-left:1px solid #96A8B5;">Suppr.</li>	
 </ul>
 <div class="bordure_bottom" id="resul">

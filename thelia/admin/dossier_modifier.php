@@ -385,7 +385,8 @@
 				
 			?>
 			 <a href="listdos.php?parent=<?php echo($parentdesc->dossier); ?>" class="lien04"><?php echo($parentdesc->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> 
-            <?php if( !$id) { ?>Ajouter<?php } else { ?> Modifier <?php } ?> </p>	                         
+            <?php if( !$id) { ?>Ajouter<?php } else { ?> Modifier <?php } ?> </p>	
+                                     
    <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" id="formulaire" ENCTYPE="multipart/form-data">
 	<input type="hidden" name="action" value="<?php if(!$id) { ?>ajouter<?php } else { ?>modifier<?php } ?>" />
 	<input type="hidden" name="id" value="<?php echo($id); ?>" /> 
@@ -438,7 +439,7 @@
    	</tr>
    	<tr class="fonce">
         <td class="designation">Description<br /><span class="note">(description complète)</span></td>
-        <td><textarea name="description" id="description" cols="40" rows="2" class="form"><?php echo($dossierdesc->description); ?></textarea></td>
+        <td><textarea name="description" id="description" cols="40" rows="2" class="form_long"><?php echo($dossierdesc->description); ?></textarea></td>
    	</tr>
    	<tr class="claire">
         <td class="designation">Postscriptum<br /> <span class="note">(champs d'information complémentaire)</span></td>
@@ -455,7 +456,7 @@
 
 
 
-<!-- Informtion sur le dossier -->
+<!-- Information sur le dossier -->
 <?php if($id != ""){ ?>
 	<ul id="blocs_pliants_prod">
 	<li style="margin:0 0 10px 0">
@@ -480,11 +481,14 @@
 
 <!-- Fin information dossier -->
 
+
+</div><!-- fin du bloc_description -->	
+</form>
+
 <?php
 if($id != ""){
 ?>
-</div><!-- fin du bloc_description -->	
-</form>
+<!-- bloc photos /colonne de droite -->
 <div id="bloc_photos">
 <div class="entete">
 	<div class="titre">GESTION DES PHOTOS</div>
@@ -546,7 +550,7 @@ if($id != ""){
 			</li>
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:65px;">Description</div>
-				<div class="cellule"><textarea name="description_photo" class="form" rows="3" style="width:219px;"><?php echo $imagedesc->description ?></textarea></div>
+				<div class="cellule"><textarea name="description_photo" class="form" rows="3"><?php echo $imagedesc->description ?></textarea></div>
 			</li>
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:30px;">Classement</div>
@@ -588,7 +592,6 @@ if($id != ""){
     		</form>
 		</div>
 	</div>
-</div>
    	   <?php
 			$document = new Document();
 			$documentdesc = new Documentdesc();
@@ -648,9 +651,9 @@ if($id != ""){
 
 </div> <!-- fin bloc transfert des documents -->
 
-</div> <!-- fin bloc-photos colonne de droite -->
+</div> <!-- fin bloc photos colonne de droite -->
 <?php } ?>
-
+</div>
 <?php include_once("pied.php");?>
 </div>
 </div>

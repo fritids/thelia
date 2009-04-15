@@ -193,8 +193,8 @@ if(! $test->nb_dos()){
 		<li style="height:25px; width:78px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
 			Classement
 			<ul class="Menu">
-				<li><a href="javascript:tri('ASC','','1','classement','')">Tri croissant</a></li>
-				<li><a href="javascript:tri('DESC','','1','classement','')">Tri d&eacute;croissant</a></li>
+				<li><a href="javascript:tri('ASC','<?php echo $parent; ?>','dossier','classement','')">Tri croissant</a></li>
+				<li><a href="javascript:tri('DESC','<?php echo $parent; ?>','dossier','classement','')">Tri d&eacute;croissant</a></li>
 			</ul>
 		</li>
 		<li style="height:25px; width:44px; border-left:1px solid #96A8B5;">Suppr.</li>	
@@ -221,8 +221,8 @@ if(! $test->nb_dos()){
 <ul class="<?php echo($fond); ?>">
 	<li style="width:112px;"></li>
 	<li style="width:579px;"><span id="titredos_<?php echo $row->id; ?>" class="texte_edit"><?php echo($dossierdesc->titre); ?></span></li>
-	<li style="width:54px;"><a href="listdos.php?parent=<?php echo($dossierdesc->dossier); ?>" class="txt_vert_11">parcourir</a></li>
-	<li style="width:34px;"><a href="dossier_modifier.php?id=<?php echo($dossierdesc->dossier); ?>" class="txt_vert_11">éditer</a></li>
+	<li style="width:54px;"><a href="listdos.php?parent=<?php echo($dossierdesc->dossier); ?>">parcourir</a></li>
+	<li style="width:34px;"><a href="dossier_modifier.php?id=<?php echo($dossierdesc->dossier); ?>">&eacute;diter</a></li>
 	
 	<li style="width:71px;">
 	 <div class="bloc_classement">  
@@ -268,8 +268,8 @@ if(! $test->aenfant()){
 		<li style="height:25px; width:78px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
 			Classement
 			<ul class="Menu">
-				<li><a href="javascript:tri('ASC','','1','classement','')">Tri croissant</a></li>
-				<li><a href="javascript:tri('DESC','','1','classement','')">Tri d&eacute;croissant</a></li>
+				<li><a href="javascript:tri('ASC','<?php echo $parent; ?>','contenudos','classement','')">Tri croissant</a></li>
+				<li><a href="javascript:tri('DESC','<?php echo $parent; ?>','contenudos','classement','')">Tri d&eacute;croissant</a></li>
 			</ul>
 		</li>
 		<li style="height:25px; width:44px; border-left:1px solid #96A8B5;">Suppr.</li>	

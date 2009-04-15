@@ -393,7 +393,7 @@ $i = 0;
 	<li style="width:64px;"><input id="promo_<?php echo $row->ref; ?>" type="checkbox" name="promo[]" class="sytle_checkbox" onchange="checkvalues('promo','<?php echo $row->ref; ?>')" <?php if($row->promo) { ?> checked="checked" <?php } ?>/></li>
 	<li style="width:64px;"><input type="checkbox" id="nouveaute_<?php echo $row->ref; ?>" name="nouveaute[]" class="sytle_checkbox" onchange="checkvalues('nouveaute','<?php echo $row->ref; ?>')" <?php if($row->nouveaute) { ?> checked="checked" <?php } ?>/></li>
 	<li style="width:53px;"><input type="checkbox" id="ligne_<?php echo $row->ref; ?>" name="ligne[]" class="sytle_checkbox" onchange="checkvalues('ligne','<?php echo $row->ref; ?>')" <?php if($row->ligne) { ?> checked="checked" <?php } ?>/></li>
-	<li style="width:41px;"><a href="produit_modifier.php?ref=<?php echo($produit->ref); ?>&rubrique=<?php echo($produit->rubrique); ?>"  class="txt_vert_11">éditer</a></li>
+	<li style="width:41px;"><a href="produit_modifier.php?ref=<?php echo($produit->ref); ?>&rubrique=<?php echo($produit->rubrique); ?>">éditer</a></li>
 	
 	<li style="width:78px; text-align:center;"> 
 	<div class="bloc_classement">

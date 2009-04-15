@@ -19,7 +19,6 @@
 		case 'supprimer' : accessoire_supprimer(); break;	
 	}
 ?>
-
 <?php
 	function accessoire_produit(){
 		$produit = new Produit();
@@ -42,7 +41,6 @@
 		}
 	}
 ?>
-
 <?php
 	function accessoire_ajouter(){
 		$produit = new Produit();
@@ -63,7 +61,6 @@
 		accessoire_liste();
 	}
 ?>
-
 <?php
 	function accessoire_supprimer(){
 		$accessoire = new Accessoire();
@@ -73,7 +70,6 @@
 		accessoire_liste();
 	}
 ?>
-
 <?php
 		function accessoire_liste(){
 		

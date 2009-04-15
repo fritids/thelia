@@ -19,7 +19,6 @@
 		case 'supprimer' : contenuassoc_supprimer(); break;	
 	}
 ?>
-
 <?php
 	function contenuassoc_contenu(){
 		if($_GET['type'] == 1){
@@ -49,7 +48,6 @@
 		}
 	}
 ?>
-
 <?php
 	function contenuassoc_ajouter(){
 		if($_GET['type'] == 1){
@@ -77,7 +75,6 @@
 		contenuassoc_liste($_GET['type'],$_GET['objet']);
 	}
 ?>
-
 <?php
 	function contenuassoc_supprimer(){
 		$contenuassoc = new Contenuassoc();
@@ -87,7 +84,6 @@
 		contenuassoc_liste($_GET['type'],$_GET['objet']);
 	}
 ?>
-
 <?php
 		function contenuassoc_liste($type,$objet){
 			if($type == 1){

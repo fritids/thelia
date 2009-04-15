@@ -235,45 +235,46 @@ function supprimer(id){
 	<li style="width:142px;"><?php echo($row->ref); ?></li>
 	<li style="width:104px;"><?php echo($jour . "/" . $mois . "/" . $annee . " " . $heure . ":" . $minute . ":" . $seconde); ?></li>
 	<li style="width:200px;"><?php echo($client->entreprise); ?></li>
-	<li style="width:200px;"><a href="client_visualiser.php?ref=<?php echo($client->ref); ?>" class="txt_vert_11"><?php echo($client->prenom . " " . $client->nom); ?></a></li>
+	<li style="width:200px;"><a href="client_visualiser.php?ref=<?php echo($client->ref); ?>"><?php echo($client->prenom . " " . $client->nom); ?></a></li>
 	<li style="width:59px;"><?php echo(round($total, 2)); ?></li>
 	<li style="width:70px;"><?php echo($statutdesc->titre); ?></li>
-	<li style="width:40px;"><a href="commande_details.php?ref=<?php echo($row->ref); ?>" class="txt_vert_11">éditer</a></li>
+	<li style="width:40px;"><a href="commande_details.php?ref=<?php echo($row->ref); ?>">éditer</a></li>
 	<li style="width:35px; text-align:center;"><a href="#" onclick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 </ul>
 </span>
 <?php
 	}
 ?>
-
-   <p align="center" class="geneva11Reg_3B4B5B"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pageprec); ?>&statut=<?php echo $_GET['statut']; ?>" class="txt_vert_11">Page pr&eacute;c&eacute;dente</a> |
+<p id="pages">
+<?php if($page > 1){ ?>
+   <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pageprec); ?>&statut=<?php echo $_GET['statut']; ?>" >Page pr&eacute;c&eacute;dente</a> |
+	<?php } ?>
 	<?php if($totnbpage > $nbpage){?>
-		<?php if($page>1) {?><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=1&statut=<?php echo $_GET['statut']; ?>" class="txt_vert_11">...</a> | <?php } ?>
+		<?php if($page>1) {?><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=1&statut=<?php echo $_GET['statut']; ?>">...</a> | <?php } ?>
 		<?php if($page+$nbpage-1 > $totnbpage){ $max = $totnbpage; $min = $totnbpage-$nbpage;} else{$min = $page-1; $max=$page+$nbpage-1; }?>
      <?php for($i=$min; $i<$max; $i++){ ?>
     	 <?php if($page != $i+1){ ?>
-  	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>&classement=<?php echo($classement); ?>&statut=<?php echo $_GET['statut']; ?>" class="txt_vert_11"><?php echo($i+1); ?></a> |
+  	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>&classement=<?php echo($classement); ?>&statut=<?php echo $_GET['statut']; ?>" ><?php echo($i+1); ?></a> |
     	 <?php } else {?>
-    		 <?php echo($i+1); ?>
-    		 <span class="txt_vert_11">|</span>
+    		 <span class="selected"><?php echo($i+1); ?></span>
+    		 |
    		  <?php } ?>
      <?php } ?>
-		<?php if($page < $totnbpage){?><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo $totnbpage; ?>&statut=<?php echo $_GET['statut']; ?>" class="txt_vert_11">...</a> | <?php } ?>
+		<?php if($page < $totnbpage){?><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo $totnbpage; ?>&statut=<?php echo $_GET['statut']; ?>">...</a> | <?php } ?>
 	<?php } 
 	else{
 		for($i=0; $i<$totnbpage; $i++){ ?>
 	    	 <?php if($page != $i+1){ ?>
-	  	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>&classement=<?php echo($classement); ?><?php echo $lien_voir; ?>" class="txt_vert_11"><?php echo($i+1); ?></a> |
+	  	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>&classement=<?php echo($classement); ?><?php echo $lien_voir; ?>"><?php echo($i+1); ?></a> |
 	    	 <?php } else {?>
-	    		 <?php echo($i+1); ?>
-	    		 <span class="txt_vert_11">|</span>
+	    		 <span class="selected"><?php echo($i+1); ?></span>
+	    		|
 	   		  <?php } ?>
 	     <?php } ?>
 	<?php } ?>
-     
-
-                    
-     <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pagesuiv); ?>&statut=<?php echo $_GET['statut']; ?>" class="txt_vert_11">Page suivante</a></p>
+     <?php if($page < $totnbpage){ ?>
+<a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pagesuiv); ?>&statut=<?php echo $_GET['statut']; ?>">Page suivante</a></p>
+	<?php } ?>
 </div> 
 <?php
 	include_once("pied.php");

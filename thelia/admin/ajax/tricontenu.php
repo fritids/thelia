@@ -41,8 +41,8 @@ if($type == "dossier"){
 	?>
 	<span id="dossier">
 	<ul class="<?php echo($fond); ?>">
-		<li style="width:172px;"></li>
-		<li style="width:519px;"><span id="titredos_<?php echo $row->id; ?>" class="texte_edit"><?php echo($dossierdesc->titre); ?></span></li>
+		<li style="width:112px;"></li>
+		<li style="width:579px;"><span id="titredos_<?php echo $row->id; ?>" class="texte_edit"><?php echo($dossierdesc->titre); ?></span></li>
 		<li style="width:54px;"><a href="listdos.php?parent=<?php echo($dossierdesc->dossier); ?>" class="txt_vert_11">parcourir</a></li>
 		<li style="width:34px;"><a href="dossier_modifier.php?id=<?php echo($dossierdesc->dossier); ?>" class="txt_vert_11">éditer</a></li>
 
@@ -61,13 +61,13 @@ if($type == "dossier"){
 	
 	
 }
-else if($type == "contenu"){
-	
+else if($type == "contenudos"){
+
 		$contenu = new Contenu();
 		$contenudesc = new ContenuDesc();
 		
 		if($alpha == "alpha"){
-			$query = "select * from $contenudesc->table LEFT JOIN $contenu->table ON $contenu->table.id=$contenudesc->table.dossier where dossier=\"$parent\" and lang=\"1\" order by $contenudesc->table.$critere $order";
+			$query = "select * from $contenudesc->table LEFT JOIN $contenu->table ON $contenu->table.id=$contenudesc->table.contenu where dossier=\"$parent\" and lang=\"1\" order by $contenudesc->table.$critere $order";
 		}else{
 			$query = "select * from $contenu->table where dossier=\"$parent\" order by $critere $order";
 		}
@@ -83,8 +83,8 @@ else if($type == "contenu"){
 	?>
 
 	<ul class="<?php echo($fond); ?>">
-		<li style="width:172px;"></li>
-		<li style="width:519px;">
+		<li style="width:112px;"></li>
+		<li style="width:579px;">
 		<span id="titrecont_<?php echo $row->id; ?>" class="texte_edit"><?php echo($contenudesc->titre); ?></span></li>
 		<li style="width:54px;"></li>
 		<li style="width:34px;"><a href="contenu_modifier.php?id=<?php echo($contenudesc->contenu); ?>&dossier=<?php echo $parent; ?>" class="txt_vert_11">éditer</a></li>

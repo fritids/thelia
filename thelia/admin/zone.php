@@ -98,8 +98,8 @@
 
 ?>		
 		<ul class="<?php echo $fond; ?>">
-			<li style="width:448px;"><?php echo $row->nom; ?></li>
-			<li style="width:32px;"><a href="zone.php?action=editer&id=<?php echo $row->id; ?>#zone">&eacute;diter</a></li>
+			<li style="width:440px;"><?php echo $row->nom; ?></li>
+			<li style="width:40px;"><a href="zone.php?action=editer&id=<?php echo $row->id; ?>#zone">&eacute;diter</a></li>
 			<li style="width:32px;"><a href="zone.php?action=supprimer&id=<?php echo $row->id; ?>">supprimer</a></li>
 		</ul>
 <?php
@@ -122,7 +122,7 @@
 ?>
 	<div class="bordure_bottom" id="listepays">
 		<div class="entete_liste_config" style="margin-top:15px;">
-			<div class="titre">MODIFICATION DE LA ZONE</div>
+			<div class="titre">MODIFICATION DE LA ZONE <?php echo strtoupper($zone->nom); ?></div>
 		</div>
 		<ul class="ligne1">
 				<li style="width:250px;">

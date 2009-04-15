@@ -737,15 +737,15 @@
 	            success : function(html){
 	                if(html == "1"){
 						if((ref!="")&&(ref!=null)){
-	                    alert("Référence déjà existante");
-	                    dupliquer();
+	                    	alert("Référence déjà existante");
+	                    	dupliquer();
 						}else{
-	                    alert("Veuillez saisir une référence");
-	                    dupliquer();
+	                    	alert("Veuillez saisir une référence");
+	                    	dupliquer();
 						}
 	                }
 	                else{
-	                location="produit_modifier.php?ref=<?php echo $_GET['ref']; ?>&refn="+ref+"&rubrique=<?php echo $_GET['rubrique']; ?>&action=dupliquer";
+	                	location="produit_modifier.php?ref=<?php echo $_GET['ref']; ?>&refn="+ref+"&rubrique=<?php echo $_GET['rubrique']; ?>&action=dupliquer";
 	                }
 	                }
 	            })
@@ -1285,6 +1285,7 @@
 				<input type="hidden" name="action" value="ajouter_photo" />
 				<input type="hidden" name="ref" value="<?php echo($ref); ?>" /> 
     			<input type="hidden" name="produit" value="<?php echo($produit->id); ?>">
+    			<input type="hidden" name="rubrique" value="<?php echo($produit->rubrique); ?>">
         			<?php for($i=1; $i<6; $i++) { ?>
 	      				<input type="file" size="18" name="photo<?php echo($i); ?>"><br/>
 	  				<?php } ?>
@@ -1366,6 +1367,7 @@
        		<input type="hidden" name="action" value="ajouter_document" />
 	   		<input type="hidden" name="ref" value="<?php echo($ref); ?>" />
       		<input type="hidden" name="produit" value="<?php echo($produit->id); ?>">
+   			<input type="hidden" name="rubrique" value="<?php echo($produit->rubrique); ?>">
       		<input type="file" name="doc" class="form" size="16"><br />
       		<input type="submit" value="Ajouter">
 			</form>

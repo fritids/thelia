@@ -1,4 +1,8 @@
 <?php
+include_once(realpath(dirname(__FILE__)) . "/../../classes/Administrateur.class.php");
+include_once(realpath(dirname(__FILE__)) . "/../../classes/Navigation.class.php");
+session_start();
+if( ! isset($_SESSION["util"]->id) ) {header("Location: ../index.php");exit;}
         include_once("../../classes/Pays.class.php");
         include_once("../../classes/Paysdesc.class.php");
         include_once("../../classes/Zone.class.php");
@@ -76,3 +80,8 @@
 <?php
 	}
 ?>
+		<ul class="ligne1">
+				<li style="width:250px;"><input type="text" class="form_inputtext" id="forfait" onclick="this.value=''" value="<?php echo $zone->unite; ?>" /></li>
+				<li><a href="javascript:forfait($('#forfait').val())">VALIDER</a></li>
+		</ul>
+	</div>

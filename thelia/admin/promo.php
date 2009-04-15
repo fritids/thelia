@@ -175,26 +175,27 @@
 	<li style="width:80px;"><?php if($row-> utilise == 0) { ?> oui <?php } else { ?> non <?php } ?></li>
 	<li style="width:80px;"><?php if($row-> illimite == 1) { ?> unique <?php } else { ?> illimit&eacute; <?php } ?></li>
 	<li style="width:150px;"><?php if($row->datefin != "0000-00-00 00:00:00") echo $jour . "/" . $mois . "/" . $annee; else echo "//"; ?></li>
-	<li style="width:50px;"><a href="promo_modifier.php?id=<?php echo($row->id); ?>" class="txt_vert_11">éditer</a></li>
+	<li style="width:50px;"><a href="promo_modifier.php?id=<?php echo($row->id); ?>">éditer</a></li>
 	<li style="width:40px; text-align:center;"><a href="promo.php?id=<?php echo($row->id); ?>&action=supprimer"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 </ul>
 <?php } ?>  
 
 
   
-   <p align="center" class="geneva11Reg_3B4B5B"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pageprec); ?>" class="txt_vert_11">Page pr&eacute;c&eacute;dente</a> | 
+   <p id="pages"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pageprec); ?>">Page pr&eacute;c&eacute;dente</a> | 
    
      <?php for($i=0; $i<$nbpage; $i++){ ?>
     	 <?php if($page != $i+1){ ?>
-  	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>" class="txt_vert_11"><?php echo($i+1); ?></a> |
+  	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>"><?php echo($i+1); ?></a> |
     	 <?php } else {?>
-    		 <?php echo($i+1); ?>
-    		 <span class="txt_vert_11">|</span>
+    		  <span class="selected"><?php echo($i+1); ?></span>
+    		|
    		  <?php } ?>
      <?php } ?>
      
-   
-    <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pagesuiv); ?>" class="txt_vert_11">Page suivante</a></p>
+    <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pagesuiv); ?>">Page suivante</a>
+    </p>
+    
 </div>
 <?php include_once("pied.php"); ?>
 </div>

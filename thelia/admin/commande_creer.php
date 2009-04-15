@@ -199,7 +199,7 @@ function creercli(){
 				url:"ajoutcli.php",
 				data:'action=ajouter'+args,
 				success:function(html){
-					$('#nclient').replaceWith(html)
+					$('#nclient').html(html)
 				}
 			})
 			tb_remove();
@@ -285,10 +285,10 @@ function valid(){
 		<tr>
 			<td height="30" class="titre_cellule">Client</td>
 	       	<td class="cellule_sombre">
-				<span id="nclient">
+				<div id="nclient">
 	         	<input name="client" id="client" type="text" class="form" size="40" />
 				<input type="hidden" name="id_client" id="id_client" value=""> <a href="#TB_inline?height=400&amp;width=800&amp;inlineId=contenu_cli&amp;modal=true" class="thickbox">Cr&eacute;er un client</a>
-				</span>
+				</div>
 	      	</td>
 		</tr>
 		<tr>
