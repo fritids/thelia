@@ -101,6 +101,35 @@
 		if($rec) {
 			$_SESSION['navig']->client = $client;
 			$_SESSION['navig']->connecte = 1; 
+			
+
+			$pays = new Pays();
+			$pays->charger($_SESSION['navig']->client->pays);
+
+			if($pays->tva != "" && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != ""))){
+
+			
+				for($i=0; $i<$_SESSION['navig']->panier->nbart; $i++){
+					if($_SESSION['navig']->panier->tabarticle[$i]->produit->tva != 0){
+						$prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix;
+						$prix2 = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix2;
+						$tva = $_SESSION['navig']->panier->tabarticle[$i]->produit->tva;
+
+						$prix = $prix - $prix * $tva / 100; 
+						$prix2 = $prix2 - $prix2 * $tva / 100; 
+				
+						$_SESSION['navig']->panier->tabarticle[$i]->produit->prix = $prix;
+						$_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 = $prix2;
+						$_SESSION['navig']->panier->tabarticle[$i]->produit->tva = 0; 
+					}
+		
+				}
+					
+			}
+							
+			
+			
+			
 			modules_fonction("apresconnexion");
 			
 			if($_SESSION['navig']->urlpageret) redirige($_SESSION['navig']->urlpageret);
