@@ -66,6 +66,14 @@
 					}
 					
 				}
+
+				$pays = new Pays();
+				$pays->charger($_SESSION['navig']->client->pays);
+
+				if($pays->tva != "" && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != ""))){									
+					$this->produit->prix = $this->produit->prix - $this->produit->prix * $this->produit->tva / 100; 									
+					$this->produit->prix2 = $this->produit->prix2 - $this->produit->prix2 * $this->produit->tva / 100; 			
+				}
 		}
 
 	}
