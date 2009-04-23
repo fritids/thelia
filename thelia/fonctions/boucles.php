@@ -1516,6 +1516,17 @@
 			$dectexte = "";
 			$decval = "";
 			
+
+			if($_SESSION['navig']->adresse){
+				$adr = new Adresse();
+				$adr->charger($_SESSION['navig']->adresse);
+				$idpays = $adr->pays;
+			} else {
+				$idpays = $_SESSION['navig']->client->pays;
+			}
+
+			$pays = new Pays();
+			$pays->charger($idpays);
 			
 		    for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
 				$tperso = $_SESSION['navig']->panier->tabarticle[$i]->perso[$compt];
@@ -1544,6 +1555,11 @@
 			$totcmdport = number_format($totcmdport, 2); 
 			$port = number_format($port, 2, ".", ""); 
 
+			if($pays->tva != "" && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != ""))){
+				$prix = $prix - $prix * $_SESSION['navig']->panier->tabarticle[$i]->produit->tva / 100; 
+				$total = $total - $total * $_SESSION['navig']->panier->tabarticle[$i]->produit->tva / 100; 
+			}
+			
 			$temp = str_replace("#REF", $_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $texte);
 			$temp = str_replace("#TITRE", $produitdesc->titre, $temp);
 			$temp = str_replace("#QUANTITE", "$quantite", $temp);
