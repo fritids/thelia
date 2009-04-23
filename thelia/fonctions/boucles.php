@@ -1544,10 +1544,6 @@
 				$declinaisondesc->charger($tperso->declinaison, $_SESSION['navig']->lang);
 				
 				$dectexte .= $declinaisondesc->titre . " " . $declidispdesc->titre . " ";
-				
-				
-				
-				
 			}	
 		
 			$prix = number_format($prix, 2, ".", ""); 
