@@ -36,14 +36,27 @@
 		
 		for($i=0; $i<$_SESSION['navig']->panier->nbart; $i++){
 		
-		
+				if($_SESSION['navig']->adresse){
+					$adr = new Adresse();
+					$adr->charger($_SESSION['navig']->adresse);
+					$idpays = $adr->pays;
+				} else {
+					$idpays = $_SESSION['navig']->client->pays;
+				}
+
+				$pays = new Pays();
+				$pays->charger($idpays);
+				
 				if( ! $_SESSION['navig']->panier->tabarticle[$i]->produit->promo)
 				$prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix - ($_SESSION['navig']->panier->tabarticle[$i]->produit->prix * $_SESSION['navig']->client->pourcentage / 100);
 			else $prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 - ($_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 * $_SESSION['navig']->client->pourcentage / 100);
 			
+			if($pays->tva != "" && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != "")))
+				$prix = $prix - $prix * $_SESSION['navig']->panier->tabarticle[$i]->produit->tva / 100; 
+							
 			$prixht = $prix/(1+($_SESSION['navig']->panier->tabarticle[$i]->produit->tva/100)); 
 	           	
-				$quantite = $_SESSION['navig']->panier->tabarticle[$i]->quantite;
+			$quantite = $_SESSION['navig']->panier->tabarticle[$i]->quantite;
 	
 			$total += $prix * $quantite;
 			$totalht += $prixht * $quantite;
