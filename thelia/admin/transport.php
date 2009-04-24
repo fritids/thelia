@@ -53,16 +53,16 @@
 ?>
 
 <div id="contenu_int"> 
-    <p align="left"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="configuration.php" class="lien04"> Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="#" class="lien04">Gestion des transports</a></p>
+    <p><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="configuration.php" class="lien04"> Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="#" class="lien04">Gestion des transports</a></p>
     
-<!-- DŽbut de la colonne de gauche -->  
+<!-- Début de la colonne de gauche -->  
 <div id="bloc_description">
-
+	<div class="bordure_bottom">
 <!-- bloc des listes de transports -->  	
 		<div class="entete_liste_config">
 			<div class="titre">LISTE DES TRANSPORTS</div>
 		</div>
-		
+	
 <?php
 	$module = new Modules();
 	$query = "select * from $module->table where type=\"2\" and actif=\"1\"";
@@ -73,15 +73,15 @@
 	while($row = mysql_fetch_object($resul)){ 
 
 		if($i%2)
-			$fond = "ligne_claire_transport";
+			$fond ="ligne_fonce_BlocDescription";
 		else
-			$fond = "ligne_fonce_transport";
+			$fond ="ligne_claire_BlocDescription";
 		
 
 ?>
 		
 		<ul class="<?php echo $fond; ?>">
-			<li style="width:520px;"><?php echo $row->nom; ?></li>
+			<li style="width:534px;"><?php echo $row->nom; ?></li>
 			<li style="width:32px;"><a href="transport.php?id=<?php echo $row->id; ?>#lzone">&eacute;diter</a></li>
 		</ul>
 
@@ -90,7 +90,7 @@
 		$i++;
 	}
 ?>
-
+</div>
 	<!-- fin du bloc des listes de transports -->	
 	
 <?php
@@ -138,13 +138,13 @@
 				
 				
 				if($i%2)
-					$fond = "ligne_claire_transport";
+					$fond = "ligne_fonce_BlocDescription";
 				else
-					$fond = "ligne_fonce_transport";
+					$fond = "ligne_claire_BlocDescription";
 						
 ?>		
 		<ul class="<?php echo $fond; ?>">
-				<li style="width:492px;"><?php echo $zone->nom; ?></li>
+				<li style="width:505px;"><?php echo $zone->nom; ?></li>
 				<li style="width:32px;"><a href="javascript:supprimer(<?php echo $row->id; ?>)">Supprimer</a></li>
 		</ul>
 <?php
@@ -152,9 +152,7 @@
 			$i++;
 	}
 ?>
-
-	
-	</div>		
+</div>		
 	
 <?php
 	}

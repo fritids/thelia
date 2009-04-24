@@ -804,7 +804,25 @@ if($id != ""){
 ?>
 <!-- bloc de gestion des photos et documents / colonne de droite -->   
 <div id="bloc_photos">
+<!-- Boite à outils -->   
 <div class="entete">
+	<div class="titre">BOITE A OUTILS</div>
+</div>
+<div class="bloc_transfert">
+	<div class="claire">
+		<div class="champs" style="padding-top:10px; width:375px;">
+			<a href="produit_modifier.php?ref=" ><img src="gfx/precedent.png" alt="Rubrique pr&eacute;c&eacute;dente" title="Rubrique pr&eacute;c&eacute;dente" style="padding:0 5px 0 0;margin-top:-5px;height:38px;"/></a>	
+			
+			<!-- pour visualiser la page rubrique correspondante en ligne -->
+			<a title="Voir la rubrique en ligne" href="" target="_blank" ><img src="gfx/site.png" alt="Voir la rubrique en ligne" title="Voir la rubrique en ligne" /></a>
+			<a href="#" onclick="envoyer()"><img src="gfx/valider.png" alt="Enregistrer les modifications" title="Enregistrer les modifications" style="padding:0 5px 0 0;"/></a>
+			<a href="#" onclick=""><img src="gfx/validerfermer.png" alt="Enregistrer les modifications et fermer la fiche" title="Enregistrer les modifications et fermer la fiche" style="padding:0 5px 0 0;"/></a>
+			<a href="produit_modifier.php?ref=" ><img src="gfx/suivant.png" alt="Rubrique suivante" title="Rubrique suivante" style="padding:0 5px 0 0;"/></a>	
+			
+   		</div>
+   	</div>
+</div>
+<div class="entete" style="margin-top:10px;">
 	<div class="titre">GESTION DES PHOTOS</div>
 </div>
 <!-- bloc transfert des images -->
@@ -889,7 +907,7 @@ if($id != ""){
 
 
 <!-- bloc de gestion des documents -->
-<div class="entete">
+<div class="entete" style="margin-top:10px;">
 	<div class="titre">GESTION DES DOCUMENTS</div>
 </div>
 <div class="bloc_transfert">

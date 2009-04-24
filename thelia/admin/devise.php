@@ -75,8 +75,8 @@
   	$resul = mysql_query($query, $devise->link);
   	$i=0;
   	while($row = mysql_fetch_object($resul)){
-  	 	if(!($i%2)) $fond="claire";
-  		else $fond="fonce";
+  	 	if(!($i%2)) $fond="ligne_claire_BlocDescription";
+  		else $fond="ligne_fonce_BlocDescription";
   		$i++;
 ?>
 

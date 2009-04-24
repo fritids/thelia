@@ -67,8 +67,8 @@
 		
 		 $i++;
 		
-		if(!($i%2)) $fond="claire";
-  		else $fond="fonce";
+		if(!($i%2)) $fond="ligne_fonce_BlocDescription";
+  		else $fond="ligne_claire_BlocDescription";
 
 		$messagedesc = new Messagedesc();
 		$messagedesc->charger($row->id);

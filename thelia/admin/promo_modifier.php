@@ -79,74 +79,58 @@
 ?>
 
 <div id="contenu_int">
-<p align="left"><a href="accueil.php" class="lien04">Accueil </a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="paiement.php" class="lien04">Gestion du paiement</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="promo.php" class="lien04">Gestion des codes promos</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04"><?php if($id) { ?>Modifier <?php } else { ?> Ajouter <?php } ?></a>                   
+<p><a href="accueil.php" class="lien04">Accueil </a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="paiement.php" class="lien04">Gestion du paiement</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="promo.php" class="lien04">Gestion des codes promos</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04"><?php if($id) { ?>Modifier <?php } else { ?> Ajouter <?php } ?></a>                   
     </p>
-   
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="100%" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LES CODES PROMOS</td>
-     </tr>
-   </table>
-   
- <form action="promo.php" id="formulaire" method="post">
 
+<!-- DŽbut de la colonne de gauche -->  
+<div id="bloc_description">
+<div class="bordure_bottom">
+<form action="promo.php" id="formulaire" method="post">
+<div class="entete">
+			<div class="titre">MODIFICATION DU CODE PROMOTION</div>
+			<div class="fonction_valider"><a href="#" onclick="document.getElementById('formulaire').submit()">VALIDER LES MODIFICATIONS</a></div>
+</div>
 <input type="hidden" name="action" value="<?php if($id != "") { ?>modifier<?php } else { ?>ajouter<?php } ?>" />
 <input type="hidden" name="id" value="<?php echo($id); ?>" />
-    
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td height="30" class="titre_cellule">CODE</td>
-       <td class="cellule_sombre">
-         <input name="code" type="text" class="form" value="<?php echo($promo->code); ?>" size="30" />
-       </span></td>
-     </tr>
-     <tr>
-       <td height="30" class="titre_cellule">TYPE</td>
-       <td class="cellule_claire">
-         <input name="type" type="radio" class="form" value="1" <?php echo($types); ?> />
+  	<ul class="ligne_claire_BlocDescription" style="background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">
+		<li class="designation" style="width:280px; background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">Code</li>
+		<li><input name="code" type="text" class="form" value="<?php echo($promo->code); ?>" size="40" /></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:280px;">Type</li>
+		<li><input name="type" type="radio" class="form" value="1" <?php echo($types); ?> />
 somme
 <input name="type" type="radio" class="form" value="2" <?php echo($typep); ?> />
-pourcentage
-</td>
-     </tr>
-     <tr>
-       <td height="30" class="titre_cellule">VALEUR </td>
-       <td class="cellule_sombre">
-       <input name="valeur" type="text" class="form" value="<?php echo($promo->valeur); ?>" size="10" />       </td>
-     </tr>
-	     <tr>
-	       <td height="30" class="titre_cellule">MINI </td>
-	       <td class="cellule_sombre">
-	       <input name="mini" type="text" class="form" value="<?php echo($promo->mini); ?>" size="10" />       </td>
-	     </tr>
-     <tr>
-       <td height="30" class="titre_cellule">ACTIF</td>
-       <td class="cellule_claire">
-         Oui <input name="utilise" type="radio" class="form" value="0" <?php echo($utiliseo); ?> /> &nbsp; Non <input name="utilise" type="radio" class="form" value="1" <?php echo($utilisen); ?> />
-       </span></td>
-     </tr>
-     <tr>
-       <td height="30" class="titre_cellule">ILLIMITE</td>
-       <td class="cellule_claire">
-         Oui <input name="illimite" type="radio" class="form" value="1" <?php echo($illimiteo); ?> /> &nbsp; Non <input name="illimite" type="radio" class="form" value="0" <?php echo($illimiten); ?> />
-       </span></td>
-     </tr>
-     <tr>
-       <td height="30" class="titre_cellule">DATE D'EXPIRATION</td>
-       <td class="cellule_sombre">
-       <input name="jour" type="text" class="form" value="<?php echo($jour); ?>" size="2" /> 
+pourcentage</li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:280px;">Montant du code promotion</li>
+		<li><input name="valeur" type="text" class="form" value="<?php echo($promo->valeur); ?>" size="10" /></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:280px;">Montant d'achat minimum</li>
+		<li><input name="mini" type="text" class="form" value="<?php echo($promo->mini); ?>" size="10" /></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:280px;">Code actif</li>
+		<li>Oui <input name="utilise" type="radio" class="form" value="0" <?php echo($utiliseo); ?> /> &nbsp; Non <input name="utilise" type="radio" class="form" value="1" <?php echo($utilisen); ?> /></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:280px;">Utilisation unique ou illimit&eacute;</li>
+		<li>Unique<input name="illimite" type="radio" class="form" value="1" <?php echo($illimiteo); ?> /> &nbsp; Illimit&eacute; <input name="illimite" type="radio" class="form" value="0" <?php echo($illimiten); ?> /></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:280px;">Date d'expiration</li>
+		<li><input name="jour" type="text" class="form" value="<?php echo($jour); ?>" size="2" /> 
        <input name="mois" type="text" class="form" value="<?php echo($mois); ?>" size="2" />
-	   <input name="annee" type="text" class="form" value="<?php echo($annee); ?>" size="4" /></td>
-     </tr>
-   </table>
+	   <input name="annee" type="text" class="form" value="<?php echo($annee); ?>" size="4" /></li>
+	</ul>
 </form>
+</div>   
+
+</div>
+<!-- fin du bloc description -->
    
-   <br />
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" class="txt_vert_11" onclick="document.getElementById('formulaire').submit()">Valider les modifications </a></span> <a href="#" onclick="document.getElementById('formulaire').submit()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
-     </tr>
-   </table>
    </div>
    <?php include_once("pied.php");?>
    </div>

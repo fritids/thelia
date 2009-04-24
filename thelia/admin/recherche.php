@@ -72,23 +72,21 @@ function supprimer_rubrique(id, parent){
 ?>
 
 <div id="contenu_int"> 
-    <p align="left"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">R&eacute;sultats de la recherche </a>              
+    <p><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">R&eacute;sultats de la recherche </a>              
     </p>
-    <table width="100%" border="0" cellpadding="5" cellspacing="0">
-      <tr>
-        <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES RESULTATS </td>
-      </tr>
-    </table>
-    <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="151" height="30" class="titre_cellule">N&deg; CLIENT </td>
-       <td width="151" class="titre_cellule">NOM</td>
-       <td width="130" class="titre_cellule">PRENOM</td>
-       <td width="149" class="titre_cellule">E-MAIL</td>
-       <td width="79" class="titre_cellule">&nbsp;</td>
-      </tr>
 
+<div class="entete_liste_client">
+	<div class="titre">LISTE DES RESULTATS</div>
+</div>
+<ul id="Nav">
+		<li style="width:151px;">N&deg; de client</li>
+		<li style="width:151px; border-left:1px solid #96A8B5;">Nom</li>
+		<li style="width:130px; border-left:1px solid #96A8B5;">Pr&eacute;nom</li>
+		<li style="width:149px; border-left:1px solid #96A8B5;">E-mail</li>	
+		<li style="width:79px; border-left:1px solid #96A8B5;"></li>
+</ul>
     <?php
+    	$i=0;
   	$client = new Client();
  	$search="and nom like '%$motcle%' or prenom like '%$motcle%' or ville like '%$motcle%' or email like '%$motcle%'";
   	
@@ -96,29 +94,38 @@ function supprimer_rubrique(id, parent){
   	$cliresul = mysql_query($query, $client->link);
   	$clilist="";
   	
+  	if(!($i%2)) $fond="ligne_claire_rub";
+  		else $fond="ligne_fonce_rub";
+  		$i++;
+  	
   	while($row = mysql_fetch_object($cliresul)){
   		$clilist .= "'$row->id', ";
   		
-  ?>
-       <tr>
-       <td height="30" class="<?php echo($fond); ?>"><a href="commande.php?client=<?php echo($row->id); ?>" class="txt_vert_11"><?php echo($row->ref); ?></a></td>
-       <td class="<?php echo($fond); ?>"><span class="geneva11bol_3B4B5B"><?php echo($row->nom); ?></span></td>
-       <td class="<?php echo($fond); ?>"><span class="geneva11bol_3B4B5B"><?php echo($row->prenom); ?></span></td>
-       <td class="<?php echo($fond); ?>"><a href="mailto:<?php echo($row->email); ?>" class="txt_vert_11">
-         <?php echo($row->email); ?>
-       </a></td>
-       <td class="<?php echo($fond); ?>"><a href="client_visualiser.php?ref=<?php echo($row->ref); ?>" class="txt_vert_11">Poursuivre</a> <a href="client_visualiser.php?ref=<?php echo($row->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
-      </tr>
-
+  	?>
+  	<ul class="<?php echo($fond); ?>">
+	<li style="width:151px;"><a href="commande.php?client=<?php echo($row->id); ?>"><?php echo($row->ref); ?></a></li>
+	<li style="width:151px;"><?php echo($row->nom); ?></li>
+	<li style="width:130px;"><?php echo($row->prenom); ?></li>
+	<li style="width:79px;"><a href="mailto:<?php echo($row->email); ?>"><?php echo($row->email); ?></a></li>
+	<li style="width:59px;"><a href="client_visualiser.php?ref=<?php echo($row->ref); ?>">Parcourir</a></li>
+	
+	</ul>
  <?php
-
 	}
 	
 	$clilist = substr($clilist, 0, strlen($clilist)-2);
-	
  ?>
-   </table> 
-    <br />
+ <div class="entete_liste_client">
+	<div class="titre">LISTE DES RESULTATS</div>
+</div>
+<ul id="Nav">
+		<li style="width:151px;">N&deg; de commande</li>
+		<li style="width:151px; border-left:1px solid #96A8B5;">Date</li>
+		<li style="width:130px; border-left:1px solid #96A8B5;">Nom</li>
+		<li style="width:149px; border-left:1px solid #96A8B5;">Montant</li>	
+		<li style="width:79px; border-left:1px solid #96A8B5;">Statut</li>
+		<li style="width:79px; border-left:1px solid #96A8B5;">Suppr.</li>
+</ul>
    <table width="100%" border="0" cellpadding="5" cellspacing="0">
      <tr>
        <td width="134" height="30" class="titre_cellule">N&deg; DE COMMANDE</td>

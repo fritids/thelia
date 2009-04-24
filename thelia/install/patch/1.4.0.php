@@ -23,7 +23,7 @@
 	$messagedesc->lang=1;
 	$messagedesc->intitule = 'Création compte client';
 	$messagedesc->titre = 'Création compte client';
-	$messagedesc->description = 'Bonjour,<br /> Vous recevez ce mail pour vous avertir que votre compte vient d''être crée sur __NOM_SITE__.<br /> <br /> Vos identifiants sont les suivants :<br /> <br /> e-mail : __EMAIL__<br /> mot de passe : __MOT_DE_PASSE__<br /> <br /> Vous pouvez modifier ces informations sur le <a href="__URL_SITE__">site</a>';
+	$messagedesc->description = 'Bonjour,<br /> Vous recevez ce mail pour vous avertir que votre compte vient d\'être crée sur __NOM_SITE__.<br /> <br /> Vos identifiants sont les suivants :<br /> <br /> e-mail : __EMAIL__<br /> mot de passe : __MOT_DE_PASSE__<br /> <br /> Vous pouvez modifier ces informations sur le <a href="__URL_SITE__">site</a>';
 	$messagedesc->add();
 	
 	$cnx = new Cnx();

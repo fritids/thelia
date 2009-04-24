@@ -1238,7 +1238,7 @@
 </div>
 <div class="bloc_transfert">
 	<div class="claire">
-		<div class="champs" style="padding-top:10px;width:375px;">
+		<div class="champs" style="padding-top:10px; width:375px;">
 			<?php 
 			$query = "select max(classement) as maxClassement from $produit->table where rubrique='" . $rubrique . "'";
 			$resul = mysql_query($query, $produit->link);
@@ -1273,7 +1273,7 @@
 </div>
 
 
-<div class="entete">
+<div class="entete" style="margin-top:10px;">
 			<div class="titre">GESTION DES PHOTOS</div>
 </div>
 <!-- bloc transfert des images -->
@@ -1461,7 +1461,7 @@ jQuery().ready(function(){
 	jQuery('#blocs_pliants_photo').Accordion({
 		active: 'h3.selected',
 		header: 'h3.head',
-		alwaysOpen: false,
+		alwaysOpen: true,
 		animated: false,
 		showSpeed: 400,
 		hideSpeed: 100

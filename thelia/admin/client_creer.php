@@ -164,90 +164,71 @@
 ?>
 
 <div id="contenu_int"> 
-      <p align="left"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="client.php" class="lien04">Gestion des clients</a>              
+      <p><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="client.php" class="lien04">Gestion des clients</a>              
     </p>
-	<table width="100%" border="0" cellpadding="5" cellspacing="0">
-	 	<tr>
-			<td width="100%" height="30" class="titre_cellule_tres_sombre">CR&Eacute;ATION D'UN CLIENT</td>
-		</tr>
-	</table>
-	<form action="client_creer.php" method="POST" id="formulaire">
-		<input type="hidden" name="action" value="ajouter">
-		
-		<table width="100%" border="0" cellpadding="5" cellspacing="0">
-		     <tr>
-		       <td height="30" class="titre_cellule">SOCI&Eacute;T&Eacute;</td>
-		       <td class="cellule_sombre">
-		         <input name="entreprise" type="text" class="form" size="40" <?php if(isset($entreprise)) echo "value=\"$entreprise\""; ?> />
-		      </td>
-		     </tr>
-		      <tr>
-		       <td height="30" class="titre_cellule">SIRET</td>
-		       <td class="cellule_sombre">
-		         <input name="siret" type="text" class="form" size="40" <?php if(isset($siret)) echo "value=\"$siret\""; ?> />
-		      </td>
-		     </tr>
-		      <tr>
-		       <td height="30" class="titre_cellule">N° INTRACOMMUNAUTAIRE</td>
-		       <td class="cellule_sombre">
-		         <input name="intracom" type="text" class="form" size="40" <?php if(isset($intracom)) echo "value=\"$intracom\""; ?> />
-		      </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">CIVILIT&Eacute; <?php if($erreurraison) echo "obligatoire"; ?></td>
-		       <td class="cellule_claire">
-		         <input name="raison" type="radio" class="form" value="1" <?php if(isset($raison) && $raison == 1) echo "checked"; ?>/>
+
+<!-- Début de la colonne de gauche -->  
+<div id="bloc_description">
+
+<!-- bloc de création client --> 
+<form action="client_creer.php" method="POST" id="formulaire">
+<input type="hidden" name="action" value="ajouter"> 	
+<div class="entete_liste_client">
+			<div class="titre">CR&Eacute;ATION D'UN CLIENT</div>
+			<div class="fonction_valider"><a href="#" onclick="document.getElementById('formulaire').submit()">VALIDER LES MODIFICATIONS</a></div>
+</div>
+<table width="100%" cellpadding="5" cellspacing="0">
+    <tr class="claire">
+        	<th class="designation" width="290">Soci&eacute;t&eacute;</th>
+		    <th><input name="entreprise" type="text" class="form" size="40" <?php if(isset($entreprise)) echo "value=\"$entreprise\""; ?> /></th>
+	</tr>
+	<tr class="fonce">
+			<td class="designation">Siret</td>
+		    <td><input name="siret" type="text" class="form" size="40" <?php if(isset($siret)) echo "value=\"$siret\""; ?> /></td>
+	</tr>
+	<tr class="claire">
+		    <td class="designation">N° Intracommunautaire</td>
+		    <td><input name="intracom" type="text" class="form" size="40" <?php if(isset($intracom)) echo "value=\"$intracom\""; ?> /></td></tr>
+	<tr class="fonce">
+			<td class="designation">Civilit&eacute; <?php if($erreurraison) echo "obligatoire"; ?></td>
+			<td><input name="raison" type="radio" class="form" value="1" <?php if(isset($raison) && $raison == 1) echo "checked"; ?>/>
 		Madame
 		<input name="raison" type="radio" class="form" value="2" <?php if(isset($raison) && $raison == 2) echo "checked"; ?>/>
 		Mademoiselle
 		<input name="raison" type="radio" class="form" value="3" <?php if(isset($raison) && $raison == 3) echo "checked"; ?>/>
 		Monsieur</td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">NOM <?php if($erreurnom) echo "obligatoire";  ?></td>
-		       <td class="cellule_sombre">
-		       <input name="nom" type="text" class="form" size="40" <?php if(isset($nom)) echo "value=\"$nom\""; ?> />       </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">PR&Eacute;NOM <?php if($erreurprenom) echo "obligatoire"; ?></td>
-		       <td class="cellule_claire">
-		         <input name="prenom" type="text" class="form" size="40" <?php if(isset($prenom)) echo "value=\"$prenom\""; ?> />
-		       </td>
-		     </tr>
-		     <tr>
-		       <td width="250" height="30" class="titre_cellule">ADRESSE <?php if($erreuradresse) echo "obligatoire"; ?></td>
-		       <td width="440" class="cellule_sombre">
-		         <input name="adresse1" type="text" class="form" size="40" <?php if(isset($adresse1)) echo "value=\"$adresse1\""; ?>/>
-		      </td>
-		     </tr>
-		     <tr>
-		       <td width="250" height="30" class="titre_cellule">ADRESSE SUITE</td>
-		       <td width="440" class="cellule_sombre">
-		         <input name="adresse2" type="text" class="form" size="40" <?php if(isset($adresse2)) echo "value=\"$adresse2\""; ?>/>
-		      </td>
-		     </tr>
-		     <tr>
-		       <td width="250" height="30" class="titre_cellule">ADRESSE SUITE 2</td>
-		       <td width="440" class="cellule_sombre">
-		         <input name="adresse3" type="text" class="form" size="40" <?php if(isset($adresse3)) echo "value=\"$adresse3\""; ?>/>
-		      </td>
-		     </tr>     
-		     <tr>
-		       <td height="30" class="titre_cellule">CODE POSTAL <?php if($erreurcpostal) echo "obligatoire"; ?></td>
-		       <td class="cellule_claire">
-		         <input name="cpostal" type="text" class="form" size="40" <?php if(isset($cpostal)) echo "value=\"$cpostal\""; ?>/>
-		      </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">VILLE <?php if($erreurville) echo "obligatoire"; ?></td>
-		       <td class="cellule_sombre">
-		         <input name="ville" type="text" class="form" size="40" <?php if(isset($ville)) echo "value=\"$ville\""; ?>/>
-		       </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">PAYS <?php if($erreurpays) echo "obligatoire"; ?></td>
-		       <td class="cellule_claire">
-		    <select name="pays">
+	</tr>
+	<tr class="claire">
+		   	<td class="designation">Nom <?php if($erreurnom) echo "obligatoire";  ?></td>
+		    <td><input name="nom" type="text" class="form" size="40" <?php if(isset($nom)) echo "value=\"$nom\""; ?> /></td>
+	</tr>
+	<tr class="fonce">
+		    <td class="designation">Pr&eacute;nom <?php if($erreurprenom) echo "obligatoire"; ?></td>
+		    <td><input name="prenom" type="text" class="form" size="40" <?php if(isset($prenom)) echo "value=\"$prenom\""; ?> /></td>
+	</tr>
+	<tr class="claire">
+		    <td class="designation">Adresse <?php if($erreuradresse) echo "obligatoire"; ?></td>
+		    <td><input name="adresse1" type="text" class="form" size="40" <?php if(isset($adresse1)) echo "value=\"$adresse1\""; ?>/></td>
+	</tr>
+	<tr class="fonce">
+		    <td class="designation">Adresse suite</td>
+		    <td><input name="adresse2" type="text" class="form" size="40" <?php if(isset($adresse2)) echo "value=\"$adresse2\""; ?>/></td>
+	</tr>
+	<tr class="claire">
+		    <td class="designation">Adresse suite 2</td>
+		    <td><input name="adresse3" type="text" class="form" size="40" <?php if(isset($adresse3)) echo "value=\"$adresse3\""; ?>/></td>
+	</tr>     
+	<tr class="fonce">
+		    <td class="designation">Code postal <?php if($erreurcpostal) echo "obligatoire"; ?></td>
+		    <td><input name="cpostal" type="text" class="form" size="40" <?php if(isset($cpostal)) echo "value=\"$cpostal\""; ?>/></td>
+	</tr>
+	<tr class="claire">	
+			<td class="designation">Ville <?php if($erreurville) echo "obligatoire"; ?></td>
+			<td><input name="ville" type="text" class="form" size="40" <?php if(isset($ville)) echo "value=\"$ville\""; ?>/></td>
+	</tr>
+	<tr class="fonce">
+		    <td class="designation">Pays <?php if($erreurpays) echo "obligatoire"; ?></td>
+		    <td><select name="pays" class="form_client">
 		     <?php
 		      	$pays = new Pays();
 		      	$query ="select * from $pays->table";
@@ -261,55 +242,37 @@
 		      <option value="<?php echo $row->id; ?>" <?php if($paysform == $row->id){ echo "selected"; } ?> ><?php echo($paysdesc->titre); ?></option>
 		      <?php } ?>
 		      </select>
-
-		       </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">T&Eacute;L&Eacute;PHONE FIXE</td>
-		       <td class="cellule_sombre">
-		         <input name="telfixe" type="text" class="form" size="40" <?php if(isset($telfixe)) echo "value=\"$telfixe\""; ?>/>
-		      </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">T&Eacute;L&Eacute;PHONE PORTABLE </td>
-		       <td class="cellule_claire">
-		         <input name="telport" type="text" class="form" size="40" <?php if(isset($telport)) echo "value=\"$telport\""; ?>/>
-		      </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">E-MAIL <?php if($erreurmail) echo "obligatoire"; else if($erreurmailexiste) echo "existe déjà"; ?></td>
-		       <td class="cellule_sombre">
-		         <input name="email1" type="text" class="form" size="40" />
-		      </td>
-		     </tr>
-			<tr>
-		       <td height="30" class="titre_cellule">CONFIRMATION E-MAIL</td>
-		       <td class="cellule_sombre">
-		         <input name="email2" type="text" class="form" size="40" />
-		      </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">Remise </td>
-		       <td class="cellule_claire">
-		         <input name="pourcentage" type="text" class="form" size="40" <?php if(isset($remise)) echo "value=\"$remise\""; ?>/>
-		      </td>
-		     </tr>     
-		     <tr>
-		       <td height="30" class="titre_cellule">Revendeur </td>
-		       <td class="cellule_claire">
-		         <input type="checkbox" name="type" class="form" <?php if(isset($type)) echo "checked"; ?>/> 
-		    </td>
-		     </tr> 
-		   </table>
+			</td>
+	</tr>
+	<tr class="claire">
+		    <td class="designation">T&eacute;l&eacute;phone fixe</td>
+		    <td><input name="telfixe" type="text" class="form" size="40" <?php if(isset($telfixe)) echo "value=\"$telfixe\""; ?>/></td>
+	</tr>
+	<tr class="fonce">
+		    <td class="designation">T&eacute;l&eacute;phone portable</td>
+		    <td><input name="telport" type="text" class="form" size="40" <?php if(isset($telport)) echo "value=\"$telport\""; ?>/></td>
+	</tr>
+	<tr class="claire">
+		    <td class="designation">E-mail <?php if($erreurmail) echo "obligatoire"; else if($erreurmailexiste) echo "existe déjà"; ?></td>
+		    <td><input name="email1" type="text" class="form" size="40" /></td>
+	</tr>
+	<tr class="fonce">
+		    <td class="designation">Confirmation e-mail</td>
+		    <td><input name="email2" type="text" class="form" size="40" /></td>
+	</tr>
+	<tr class="claire">
+		    <td class="designation">Remise </td>
+		    <td><input name="pourcentage" type="text" class="form" size="40" <?php if(isset($remise)) echo "value=\"$remise\""; ?>/></td>
+	</tr>     
+	<tr class="foncebottom">
+		    <td class="designation">Revendeur </td>
+		    <td><input type="checkbox" name="type" class="form" <?php if(isset($type)) echo "checked"; ?>/></td>
+	</tr> 
+</table>
+			
+</div>
+<!-- fin du bloc description -->
 	</form>
-	
-	<br />
-	   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-	     <tr>
-	       <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" class="txt_vert_11" onclick="document.getElementById('formulaire').submit()">Valider les modifications </a></span> <a href="#" onclick="document.getElementById('formulaire').submit()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
-	     </tr>
-	   </table>
-
 </div> 
 <?php include_once("pied.php");?>
 </div>

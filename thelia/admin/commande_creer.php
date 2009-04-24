@@ -266,35 +266,30 @@ function valid(){
 
 	
 <div id="contenu_int">
-	<p align="left"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="commande.php" class="lien04">Gestion des commandes</a>              
+	<p><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="commande.php" class="lien04">Gestion des commandes</a>              
     </p>
-	<table width="100%" border="0" cellpadding="5" cellspacing="0">
-	 	<tr>
-			<td width="100%" height="30" class="titre_cellule_tres_sombre">Cr&eacute;ation d'une commande</td>
-		</tr>
-	</table>
-	<br />
-	<table width="100%" border="0" cellpadding="5" cellspacing="0">
-	 	<tr>
-			<td width="100%" height="30" class="titre_cellule_tres_sombre">Liste de la commande</td>
-		</tr>
-	</table>
-	<form action="commande_creer.php" method="POST" id="formulaire">
+    <!-- Début de la colonne de gauche -->  
+<div id="bloc_description">
+<div class="bordure_bottom">
+<div class="entete_liste_client">
+	<div class="titre">CR&Eacute;ATION D'UNE COMMANDE</div>
+	<div class="fonction_valider"><a href="#" onclick="addcom()">VALIDER LES MODIFICATIONS</a></div>
+</div>
+<form action="commande_creer.php" method="POST" id="formulaire">
 	<input type="hidden" name="action" value="ajouter">
-	<table width="100%" border="0" cellpadding="5" cellspacing="0">
-		<tr>
-			<td height="30" class="titre_cellule">Client</td>
-	       	<td class="cellule_sombre">
-				<div id="nclient">
-	         	<input name="client" id="client" type="text" class="form" size="40" />
+<ul class="ligne_claire_BlocDescription" style="background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">
+		<li class="designation" style="width:280px; background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">Choix du client <span class="note">(commencer &agrave; taper les coordonn&eacute;es du client dans le champs)</span></li>
+		<li><input name="client" id="client" type="text" class="form" size="40" /></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:280px;">Ou cr&eacute;er un client</li>
+		<li><div id="nclient">
 				<input type="hidden" name="id_client" id="id_client" value=""> <a href="#TB_inline?height=400&amp;width=800&amp;inlineId=contenu_cli&amp;modal=true" class="thickbox">Cr&eacute;er un client</a>
-				</div>
-	      	</td>
-		</tr>
-		<tr>
-			<td height="30" class="titre_cellule">Paiement</td>
-			<td class="cellule_claire">
-				<select name="type_paiement">
+				</div></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:280px;">Type de paiement</li>
+		<li><select name="type_paiement" class="form_client">
 					<option value="">Choisir... </option>
 				<?php
 					$modules = new Modules();
@@ -308,13 +303,11 @@ function valid(){
 						<?php
 					}
 				?>
-				</select>
-				</td>
-		</tr>
-		<tr>
-			<td height="30" class="titre_cellule">Livraison</td>
-			<td class="cellule_claire">
-				<select name="type_livraison">
+				</select></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:280px;">Type de transport</li>
+		<li><select name="type_livraison" class="form_client">
 					<option value="">Choisir... </option>
 				<?php
 					$modules = new Modules();
@@ -329,129 +322,106 @@ function valid(){
 					}
 				?>
 				</select>
-				</td>
-			</tr>
-			<tr>
-				<td height="30" class="titre_cellule">Frais de port</td>
-				<td class="cellule_claire"><input type="text" name="fraisport" class="form" size="40"></td>
-			</tr>
-			<tr>
-				<td height="30" class="titre_cellule">Remise</td>
-				<td class="cellule_claire"><input type="text" name="remise" class="form" size="40"></td>
-			</tr>
-		</table>
-		<span id="listecom"> </span>
-		</form>
-		<br />
-		<table width="100%" border="0" cellpadding="5" cellspacing="0">
-		 	<tr>
-				<td width="100%" height="30" class="titre_cellule_tres_sombre">Ajout d'un produit</td>
-			</tr>
-		</table>
-		<form id="prod">
-		<table width="100%" border="0" cellpadding="5" cellspacing="0">
-		<tr>
-			<td height="30" class="titre_cellule">R&eacute;f&eacute;rence produit</td>
-			<td class="cellule_claire"><input type="text" name="ref" id="ref" value="" class="form" size="40" onblur="verifref()"></td>
-		</tr>
-		<tr>
-			<td height="30" class="titre_cellule">Titre</td>
-			<td class="cellule_claire"><input type="text" name="titre" id="titre" value="" class="form" size="40"></td>
-		</tr>
-		<tr>
-			<td height="30" class="titre_cellule">Prix unitaire</td>
-			<td class="cellule_claire"><input type="text" name="prixu" id="prixu" value="" class="form" size="40"></td>
-		</tr>
-		<tr>
-			<td height="30" class="titre_cellule">TVA</td>
-			<td class="cellule_claire"><input type="text" name="tva" id="tva" value="" class="form" size="40"></td>
-		</tr>
-		<tr>
-			<td height="30" class="titre_cellule">quantit&eacute;</td>
-			<td class="cellule_claire"><input type="text" name="qtite" id="qtite" value="" class="form" size="40"></td>
-		</tr>
-		<tr>
-			<td colspan="2"><a href="#" onclick="addcom()">VALIDER LES MODIFICATIONS</a></td>
-		</tr>	
-	</table>
+</li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:280px;">Montant des frais de port</li>
+		<li><input type="text" name="fraisport" class="form" size="40"></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:280px;">Remise</li>
+		<li><input type="text" name="remise" class="form" size="40"></li>
+	</ul>
+
+</form>
+</div>
+<div class="bordure_bottom" style="margin:10px 0 0px 0;">
+<div class="entete_liste_client">
+	<div class="titre">AJOUT DE PRODUITS</div>
+	<div class="fonction_valider"><a href="#" onclick="addcom()">AJOUTER AU PANIER</a></div>
+</div>
+<form id="prod">
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:280px;">R&eacute;f&eacute;rence produit</li>
+		<li><input type="text" name="ref" id="ref" value="" class="form" size="40" onblur="verifref()"></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:280px;">Titre du produit</li>
+		<li><input type="text" name="titre" id="titre" value="" class="form" size="40"></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:280px;">Prix unitaire</li>
+		<li><input type="text" name="prixu" id="prixu" value="" class="form" size="40"></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:280px;">TVA applicable sur ce produit</li>
+		<li><input type="text" name="tva" id="tva" value="" class="form" size="40"></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:280px;">Quantit&eacute;</li>
+		<li><input type="text" name="qtite" id="qtite" value="" class="form" size="40"></li>
+	</ul>
 	</form>
-	
+</div>	
 	
 	<div id="contenu_cli" style="display:none">
-		<table width="100%" border="0" cellpadding="5" cellspacing="0">
-		     <tr>
-		       <td height="30" class="titre_cellule">SOCI&Eacute;T&Eacute;</td>
-		       <td class="cellule_sombre">
-		         <input name="entreprise" id="entreprise" type="text" class="form" size="40" />
-		      </td>
-		     </tr>
-		      <tr>
-		       <td height="30" class="titre_cellule">SIRET</td>
-		       <td class="cellule_sombre">
-		         <input name="siret" id="siret" type="text" class="form" size="40"  />
-		      </td>
-		     </tr>
-		      <tr>
-		       <td height="30" class="titre_cellule">N° INTRACOMMUNAUTAIRE</td>
-		       <td class="cellule_sombre">
-		         <input name="intracom" id="intracom" type="text" class="form" size="40" />
-		      </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">CIVILIT&Eacute; *</td>
-		       <td class="cellule_claire">
-		         <input name="raison" id="raison" type="radio" class="form" value="1" />
+	<div id="bloc_description">
+	<div class="entete_liste_client">
+			<div class="titre">CR&Eacute;ATION D'UN CLIENT</div>
+			<div class="fonction_valider"><a href="#" onclick="creercli()">VALIDER LES MODIFICATIONS</a></div>
+		</div>
+		<table width="100%" cellpadding="5" cellspacing="0">
+    <tr class="claire">
+        	<th class="designation" width="290">Soci&eacute;t&eacute;</th>
+		    <th><input name="entreprise" type="text" class="form" size="40" <?php if(isset($entreprise)) echo "value=\"$entreprise\""; ?> /></th>
+	</tr>
+	<tr class="fonce">
+			<td class="designation">Siret</td>
+		    <td><input name="siret" type="text" class="form" size="40" <?php if(isset($siret)) echo "value=\"$siret\""; ?> /></td>
+	</tr>
+	<tr class="claire">
+		    <td class="designation">N° Intracommunautaire</td>
+		    <td><input name="intracom" type="text" class="form" size="40" <?php if(isset($intracom)) echo "value=\"$intracom\""; ?> /></td></tr>
+	<tr class="fonce">
+			<td class="designation">Civilit&eacute; <?php if($erreurraison) echo "obligatoire"; ?></td>
+			<td><input name="raison" type="radio" class="form" value="1" <?php if(isset($raison) && $raison == 1) echo "checked"; ?>/>
 		Madame
-		<input name="raison" id="raison" type="radio" class="form" value="2" />
+		<input name="raison" type="radio" class="form" value="2" <?php if(isset($raison) && $raison == 2) echo "checked"; ?>/>
 		Mademoiselle
-		<input name="raison" id="raison" type="radio" class="form" value="3" />
+		<input name="raison" type="radio" class="form" value="3" <?php if(isset($raison) && $raison == 3) echo "checked"; ?>/>
 		Monsieur</td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">NOM *</td>
-		       <td class="cellule_sombre">
-		       <input name="nom" id="nom" type="text" class="form" size="40"  />       </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">PR&Eacute;NOM *</td>
-		       <td class="cellule_claire">
-		         <input name="prenom" id="prenom" type="text" class="form" size="40" />
-		       </td>
-		     </tr>
-		     <tr>
-		       <td width="250" height="30" class="titre_cellule">ADRESSE *</td>
-		       <td width="440" class="cellule_sombre">
-		         <input name="adresse1" id="adresse1" type="text" class="form" size="40" />
-		      </td>
-		     </tr>
-		     <tr>
-		       <td width="250" height="30" class="titre_cellule">ADRESSE SUITE</td>
-		       <td width="440" class="cellule_sombre">
-		         <input name="adresse2" id="adresse2" type="text" class="form" size="40" />
-		      </td>
-		     </tr>
-		     <tr>
-		       <td width="250" height="30" class="titre_cellule">ADRESSE SUITE 2</td>
-		       <td width="440" class="cellule_sombre">
-		         <input name="adresse3" id="adresse3" type="text" class="form" size="40" />
-		      </td>
-		     </tr>     
-		     <tr>
-		       <td height="30" class="titre_cellule">CODE POSTAL *</td>
-		       <td class="cellule_claire">
-		         <input name="cpostal" id="cpostal" type="text" class="form" size="40"/>
-		      </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">VILLE *</td>
-		       <td class="cellule_sombre">
-		         <input name="ville" id="ville" type="text" class="form" size="40" />
-		       </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">PAYS *</td>
-		       <td class="cellule_claire">
-		    <select name="pays" id="pays">
+	</tr>
+	<tr class="claire">
+		   	<td class="designation">Nom <?php if($erreurnom) echo "obligatoire";  ?></td>
+		    <td><input name="nom" type="text" class="form" size="40" <?php if(isset($nom)) echo "value=\"$nom\""; ?> /></td>
+	</tr>
+	<tr class="fonce">
+		    <td class="designation">Pr&eacute;nom <?php if($erreurprenom) echo "obligatoire"; ?></td>
+		    <td><input name="prenom" type="text" class="form" size="40" <?php if(isset($prenom)) echo "value=\"$prenom\""; ?> /></td>
+	</tr>
+	<tr class="claire">
+		    <td class="designation">Adresse <?php if($erreuradresse) echo "obligatoire"; ?></td>
+		    <td><input name="adresse1" type="text" class="form" size="40" <?php if(isset($adresse1)) echo "value=\"$adresse1\""; ?>/></td>
+	</tr>
+	<tr class="fonce">
+		    <td class="designation">Adresse suite</td>
+		    <td><input name="adresse2" type="text" class="form" size="40" <?php if(isset($adresse2)) echo "value=\"$adresse2\""; ?>/></td>
+	</tr>
+	<tr class="claire">
+		    <td class="designation">Adresse suite 2</td>
+		    <td><input name="adresse3" type="text" class="form" size="40" <?php if(isset($adresse3)) echo "value=\"$adresse3\""; ?>/></td>
+	</tr>     
+	<tr class="fonce">
+		    <td class="designation">Code postal <?php if($erreurcpostal) echo "obligatoire"; ?></td>
+		    <td><input name="cpostal" type="text" class="form" size="40" <?php if(isset($cpostal)) echo "value=\"$cpostal\""; ?>/></td>
+	</tr>
+	<tr class="claire">	
+			<td class="designation">Ville <?php if($erreurville) echo "obligatoire"; ?></td>
+			<td><input name="ville" type="text" class="form" size="40" <?php if(isset($ville)) echo "value=\"$ville\""; ?>/></td>
+	</tr>
+	<tr class="fonce">
+		    <td class="designation">Pays <?php if($erreurpays) echo "obligatoire"; ?></td>
+		    <td><select name="pays" class="form_client">
 		     <?php
 		      	$pays = new Pays();
 		      	$query ="select * from $pays->table";
@@ -462,51 +432,48 @@ function valid(){
 					$paysdesc->charger($row->id);
 
 		      ?>
-		      <option value="<?php echo $row->id; ?>" <?php if($row->id == 64) echo "selected";  ?> ><?php echo($paysdesc->titre); ?></option>
+		      <option value="<?php echo $row->id; ?>" <?php if($paysform == $row->id){ echo "selected"; } ?> ><?php echo($paysdesc->titre); ?></option>
 		      <?php } ?>
 		      </select>
-
-		       </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">T&Eacute;L&Eacute;PHONE FIXE</td>
-		       <td class="cellule_sombre">
-		         <input name="telfixe" id="telfixe" type="text" class="form" size="40" />
-		      </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">T&Eacute;L&Eacute;PHONE PORTABLE </td>
-		       <td class="cellule_claire">
-		         <input name="telport" id="telport" type="text" class="form" size="40" />
-		      </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">E-MAIL *</td>
-		       <td class="cellule_sombre">
-		         <input name="email1" id="email1" type="text" class="form" size="40" />
-		      </td>
-		     </tr>
-			<tr>
-		       <td height="30" class="titre_cellule">CONFIRMATION E-MAIL *</td>
-		       <td class="cellule_sombre">
-		         <input name="email2" id="email2" type="text" class="form" size="40" />
-		      </td>
-		     </tr>
-		     <tr>
-		       <td height="30" class="titre_cellule">Remise </td>
-		       <td class="cellule_claire">
-		         <input name="pourcentage" id="remise" type="text" class="form" size="40" />
-		      </td>
-		     </tr>     
-		     <tr>
-		       <td height="30" class="titre_cellule">Revendeur </td>
-		       <td class="cellule_claire">
-		         <input type="checkbox" name="type" id="type" class="form" /> 
-		    </td>
-		     </tr>
-		</table>
-		<input type="button" value="annuler" onclick="tb_remove()"> <input type="button" value="valider" onclick="creercli()">
+			</td>
+	</tr>
+	<tr class="claire">
+		    <td class="designation">T&eacute;l&eacute;phone fixe</td>
+		    <td><input name="telfixe" type="text" class="form" size="40" <?php if(isset($telfixe)) echo "value=\"$telfixe\""; ?>/></td>
+	</tr>
+	<tr class="fonce">
+		    <td class="designation">T&eacute;l&eacute;phone portable</td>
+		    <td><input name="telport" type="text" class="form" size="40" <?php if(isset($telport)) echo "value=\"$telport\""; ?>/></td>
+	</tr>
+	<tr class="claire">
+		    <td class="designation">E-mail <?php if($erreurmail) echo "obligatoire"; else if($erreurmailexiste) echo "existe déjà"; ?></td>
+		    <td><input name="email1" type="text" class="form" size="40" /></td>
+	</tr>
+	<tr class="fonce">
+		    <td class="designation">Confirmation e-mail</td>
+		    <td><input name="email2" type="text" class="form" size="40" /></td>
+	</tr>
+	<tr class="claire">
+		    <td class="designation">Remise </td>
+		    <td><input name="pourcentage" type="text" class="form" size="40" <?php if(isset($remise)) echo "value=\"$remise\""; ?>/></td>
+	</tr>     
+	<tr class="foncebottom">
+		    <td class="designation">Revendeur </td>
+		    <td><input type="checkbox" name="type" class="form" <?php if(isset($type)) echo "checked"; ?>/></td>
+	</tr> 
+</table>
+		<input type="button" value="annuler" onclick="tb_remove()">
+	</div>
 	</div>
 </div>
+<!-- fin du bloc description -->
+<!-- bloc colonne de droite -->   
+<div id="bloc_colonne_droite">
+		<div id="listecom"> </div>
+</div>
+</div> 
+<?php include_once("pied.php");?>
 </div>
 </div>
+</body>
+</html>

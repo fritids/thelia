@@ -69,41 +69,36 @@
 ?>
 
 <div id="contenu_int"> 
-<p align="left"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="client.php" class="lien04">Gestion des clients</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Modifier        
-    </p>     
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="100%" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LE CLIENT</td>
-     </tr>
-   </table>
-   
- <form action="client_visualiser.php" id="formulaire" method="post">
+<p><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="client.php" class="lien04">Gestion des clients</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Modifier</a></p>
 
+<!-- Début de la colonne de gauche -->  
+<div id="bloc_description">
+<form action="client_visualiser.php" id="formulaire" method="post">
 <input type="hidden" name="action" value="modifier" />
 <input type="hidden" name="ref" value="<?php echo($ref); ?>" />
-    
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td height="30" class="titre_cellule">SOCI&Eacute;T&Eacute;</td>
-       <td class="cellule_sombre">
-         <input name="entreprise" type="text" class="form" value="<?php echo($client->entreprise); ?>" size="40" />
-      </td>
+<!-- bloc de modification client --> 
+	<div class="entete_liste_client">
+			<div class="titre">INFORMATIONS SUR LE CLIENT</div>
+			<div class="fonction_valider"><a href="#" onclick="document.getElementById('formulaire').submit()">VALIDER LES MODIFICATIONS</a></div>
+			
+</div>
+     
+<table width="100%" cellpadding="5" cellspacing="0">
+    <tr class="claire">
+        	<th class="designation" width="290">Soci&eacute;t&eacute;</td>
+       		<th><input name="entreprise" type="text" class="form" value="<?php echo($client->entreprise); ?>" size="40" /></td>
      </tr>
-      <tr>
-       <td height="30" class="titre_cellule">SIRET</td>
-       <td class="cellule_sombre">
-         <input name="siret" type="text" class="form" value="<?php echo($client->siret); ?>" size="40" />
-      </td>
+      <tr class="fonce">
+       		<td class="designation">Siret</td>
+       		<td><input name="siret" type="text" class="form" value="<?php echo($client->siret); ?>" size="40" /></td>
      </tr>
-      <tr>
-       <td height="30" class="titre_cellule">N° INTRACOMMUNAUTAIRE</td>
-       <td class="cellule_sombre">
-         <input name="intracom" type="text" class="form" value="<?php echo($client->intracom); ?>" size="40" />
-      </td>
+      <tr class="claire">
+       <td class="designation">N° Intracommunautaire</td>
+       <td><input name="intracom" type="text" class="form" value="<?php echo($client->intracom); ?>" size="40" /></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">CIVILIT&Eacute;</td>
-       <td class="cellule_claire">
+     <tr class="fonce">
+       <td class="designation">Civilit&eacute;</td>
+       <td>
          <input name="raison" type="radio" class="form" value="1" <?php echo($raison1); ?>/>
 Madame
 <input name="raison" type="radio" class="form" value="2" <?php echo($raison2); ?> />
@@ -111,51 +106,39 @@ Mademoiselle
 <input name="raison" type="radio" class="form" value="3" <?php echo($raison3); ?> />
 Monsieur</td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">NOM </td>
-       <td class="cellule_sombre">
-       <input name="nom" type="text" class="form" value="<?php echo($client->nom); ?>" size="40" />       </td>
+     <tr class="claire">
+       <td class="designation">Nom</td>
+       <td><input name="nom" type="text" class="form" value="<?php echo($client->nom); ?>" size="40" /></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">PR&Eacute;NOM</td>
+     <tr class="fonce">
+       <td class="designation">Pr&eacute;nom</td>
        <td class="cellule_claire">
-         <input name="prenom" type="text" class="form" value="<?php echo($client->prenom); ?>" size="40" />
-       </td>
+         <input name="prenom" type="text" class="form" value="<?php echo($client->prenom); ?>" size="40" /></td>
      </tr>
-     <tr>
-       <td width="250" height="30" class="titre_cellule">ADRESSE</td>
-       <td width="440" class="cellule_sombre">
-         <input name="adresse1" type="text" class="form" value="<?php echo($client->adresse1); ?>" size="40" />
-      </td>
+     <tr class="claire">
+       <td class="designation">Adresse</td>
+       <td><input name="adresse1" type="text" class="form" value="<?php echo($client->adresse1); ?>" size="40" /></td>
      </tr>
-     <tr>
-       <td width="250" height="30" class="titre_cellule">ADRESSE SUITE</td>
-       <td width="440" class="cellule_sombre">
-         <input name="adresse2" type="text" class="form" value="<?php echo($client->adresse2); ?>" size="40" />
-      </td>
+     <tr class="fonce">
+       <td class="designation">Adresse suite</td>
+       <td><input name="adresse2" type="text" class="form" value="<?php echo($client->adresse2); ?>" size="40" /></td>
      </tr>
-     <tr>
-       <td width="250" height="30" class="titre_cellule">ADRESSE SUITE 2</td>
-       <td width="440" class="cellule_sombre">
-         <input name="adresse3" type="text" class="form" value="<?php echo($client->adresse3); ?>" size="40" />
-      </td>
+     <tr class="claire">
+       <td class="designation">Adresse suite 2</td>
+       <td><input name="adresse3" type="text" class="form" value="<?php echo($client->adresse3); ?>" size="40" /></td>
      </tr>     
-     <tr>
-       <td height="30" class="titre_cellule">CODE POSTAL </td>
-       <td class="cellule_claire">
-         <input name="cpostal" type="text" class="form" value="<?php echo($client->cpostal); ?>" size="40" />
-      </td>
+     <tr class="fonce">
+       <td class="designation">Code postal</td>
+       <td><input name="cpostal" type="text" class="form" value="<?php echo($client->cpostal); ?>" size="40" /></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">VILLE</td>
-       <td class="cellule_sombre">
-         <input name="ville" type="text" class="form" value="<?php echo($client->ville); ?>" size="40" />
-       </td>
+     <tr class="claire">
+       <td class="designation">Ville</td>
+       <td><input name="ville" type="text" class="form" value="<?php echo($client->ville); ?>" size="40" /></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">PAYS</td>
-       <td class="cellule_claire">
-    <select name="pays">
+     <tr class="fonce">
+       <td class="designation">Pays</td>
+       <td>
+    <select name="pays" class="form_client">
      <?php
       	$pays = new Pays();
       	$query ="select * from $pays->table";
@@ -173,48 +156,33 @@ Monsieur</td>
       <?php } ?>
       
       </select>
-
-       </td>
+	</td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">T&Eacute;L&Eacute;PHONE FIXE</td>
-       <td class="cellule_sombre">
-         <input name="telfixe" type="text" class="form" value="<?php echo($client->telfixe); ?>" size="40" />
-      </td>
+     <tr class="claire">
+       <td class="designation">T&eacute;l&eacute;phone fixe</td>
+       <td><input name="telfixe" type="text" class="form" value="<?php echo($client->telfixe); ?>" size="40" /></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">T&Eacute;L&Eacute;PHONE PORTABLE </td>
-       <td class="cellule_claire">
-         <input name="telport" type="text" class="form" value="<?php echo($client->telport); ?>" size="40" />
-      </td>
+     <tr class="fonce">
+       <td class="designation">T&eacute;l&eacute;phone portable </td>
+       <td><input name="telport" type="text" class="form" value="<?php echo($client->telport); ?>" size="40" /></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">E-MAIL</td>
-       <td class="cellule_sombre">
-         <input name="email" type="text" class="form" value="<?php echo($client->email); ?>" size="40" />
-      </td>
+     <tr class="claire">
+       <td class="designation">E-mail</td>
+       <td><input name="email" type="text" class="form" value="<?php echo($client->email); ?>" size="40" /></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">Remise </td>
-       <td class="cellule_claire">
-         <input name="pourcentage" type="text" class="form" value="<?php echo($client->pourcentage); ?>" size="40" />
-      </td>
+     <tr class="fonce">
+       <td class="designation">Remise</td>
+       <td><input name="pourcentage" type="text" class="form" value="<?php echo($client->pourcentage); ?>" size="40" /></td>
      </tr>     
-     <tr>
-       <td height="30" class="titre_cellule">Revendeur </td>
-       <td class="cellule_claire">
-         <input type="checkbox" name="type" <?php if($client->type) { ?> checked="checked" <?php } ?> class="form"/> 
-    </td>
+     <tr class="clairebottom">
+       <td class="designation">Revendeur </td>
+       <td><input type="checkbox" name="type" <?php if($client->type) { ?> checked="checked" <?php } ?> class="form"/></td>
      </tr> 
    </table>
+			
+</div>
+<!-- fin du bloc description -->
 </form>
-   
-   <br />
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="#" class="txt_vert_11" onclick="document.getElementById('formulaire').submit()">Valider les modifications </a></span> <a href="#" onclick="document.getElementById('formulaire').submit()"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
-     </tr>
-   </table>
    </div>
    <?php include_once("pied.php");?>
 </div>

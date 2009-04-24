@@ -213,31 +213,9 @@
 		$idcmd = $commande->add();
 		$commande->charger($idcmd);
 		
-		/* vérification de tva */
 		$pays = new Pays();
 		$pays->charger($adr->pays);
 
-		if($pays->tva != "" && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != ""))){
-
-		
-			for($i=0; $i<$_SESSION['navig']->panier->nbart; $i++){
-				if($_SESSION['navig']->panier->tabarticle[$i]->produit->tva != 0){
-					$prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix;
-					$prix2 = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix2;
-					$tva = $_SESSION['navig']->panier->tabarticle[$i]->produit->tva;
-
-					$prix = $prix - $prix * $tva / 100; 
-					$prix2 = $prix2 - $prix2 * $tva / 100; 
-			
-					$_SESSION['navig']->panier->tabarticle[$i]->produit->prix = $prix;
-					$_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 = $prix2;
-					$_SESSION['navig']->panier->tabarticle[$i]->produit->tva = 0; 
-				}
-	
-			}
-				
-		}		
-		
 		$venteprod = new Venteprod();
 
 		for($i=0; $i<$_SESSION['navig']->panier->nbart; $i++){
@@ -289,16 +267,28 @@
 						
 			$prodtradesc = new Produitdesc();
 			$prodtradesc->charger($_SESSION['navig']->panier->tabarticle[$i]->produit->id, $_SESSION['navig']->lang);
+
+
+			/* Gestion TVA */
+			$prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix;
+			$prix2 = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix2;
+			$tva = $_SESSION['navig']->panier->tabarticle[$i]->produit->tva;
+
+			if($pays->tva != "" && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != ""))){
+				$prix = $prix - $prix * $tva / 100; 
+				$prix2 = $prix2 - $prix2 * $tva / 100;
+				$tva = 0;
+			}
 		
 			$venteprod->quantite =  $_SESSION['navig']->panier->tabarticle[$i]->quantite;
 			if( ! $_SESSION['navig']->panier->tabarticle[$i]->produit->promo)
-				$venteprod->prixu =  $_SESSION['navig']->panier->tabarticle[$i]->produit->prix;	
-			else $venteprod->prixu =  $_SESSION['navig']->panier->tabarticle[$i]->produit->prix2;
+				$venteprod->prixu =  $prix;	
+			else $venteprod->prixu =  $prix2;
 			$venteprod->ref = $_SESSION['navig']->panier->tabarticle[$i]->produit->ref;
 			$venteprod->titre = $prodtradesc->titre . " " . $dectexte;
 			$venteprod->chapo = $prodtradesc->chapo;
 			$venteprod->description = $prodtradesc->description;
-		 	$venteprod->tva =  $_SESSION['navig']->panier->tabarticle[$i]->produit->tva;	
+		 	$venteprod->tva =  $tva;	
 		 	
 			$venteprod->commande = $idcmd;
 		 	$idvprod = $venteprod->add();

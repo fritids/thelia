@@ -475,7 +475,7 @@
 <ul id="blocs_pliants_prod">
 
 	<li style="margin:0 0 10px 0">
-			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">INFORMATIONS SUR LA RUBRIQUE</a></h3>
+			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">INFORMATIONS SUR LE CONTENU</a></h3>
 			<ul>
 				<li class="lignesimple">
 					<div class="cellule_designation" style="width:128px; padding:5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">ID</div>
@@ -589,7 +589,7 @@
 
 
 <!-- bloc de gestion des documents -->
-<div class="entete">
+<div class="entete" style="margin-top:10px;">
 	<div class="titre">GESTION DES DOCUMENTS</div>
 </div>
 <!-- bloc transfert des documents -->
@@ -607,7 +607,7 @@
     		</form>
 		</div>
 	</div>
-</div>
+
    	  <?php
 			$document = new Document();
 			$documentdesc = new Documentdesc();
@@ -668,9 +668,37 @@
 </div> <!-- fin bloc transfert des documents -->
 
 </div> <!-- fin bloc-photos colonne de droite -->
-     <?php } ?>      
+   <?php } ?>      
+</div>  
 <?php include_once("pied.php"); ?>
 </div>
 </div>
+<!-- -->
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+<script type="text/javascript" src="../lib/jquery/accordion.js"></script>
+<script type="text/javascript">
+jQuery().ready(function(){	
+	// applying the settings
+	jQuery('#blocs_pliants_prod').Accordion({
+		active: 'h3.selected',
+		header: 'h3.head',
+		alwaysOpen: false,
+		animated: true,
+		showSpeed: 400,
+		hideSpeed: 400
+	});
+	jQuery('#blocs_pliants_photo').Accordion({
+		active: 'h3.selected',
+		header: 'h3.head',
+		alwaysOpen: false,
+		animated: false,
+		showSpeed: 400,
+		hideSpeed: 100
+	});
+
+
+});	
+</script>
+<!-- -->
 </body>
 </html>

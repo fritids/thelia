@@ -92,15 +92,15 @@
 		
 		while($row = mysql_fetch_object($resul)){
 		if($i%2)
-			$fond = "ligne_claire_transport";
+			$fond = "ligne_fonce_BlocDescription";
 		else
-			$fond = "ligne_fonce_transport";
+			$fond = "ligne_claire_BlocDescription";
 
 ?>		
 		<ul class="<?php echo $fond; ?>">
-			<li style="width:440px;"><?php echo $row->nom; ?></li>
+			<li style="width:460px;"><?php echo $row->nom; ?></li>
 			<li style="width:40px;"><a href="zone.php?action=editer&id=<?php echo $row->id; ?>#zone">&eacute;diter</a></li>
-			<li style="width:32px;"><a href="zone.php?action=supprimer&id=<?php echo $row->id; ?>">supprimer</a></li>
+			<li><a href="zone.php?action=supprimer&id=<?php echo $row->id; ?>">supprimer</a></li>
 		</ul>
 <?php
 		$i++;
@@ -152,9 +152,9 @@
 			$paysdesc = new Paysdesc();
 			$paysdesc->charger($row->id);
 ?>
-		<ul class="ligne_claire_transport">
-				<li style="width:492px;"><?php echo $paysdesc->titre; ?></li>
-				<li style="width:32px;"><a href="javascript:supprimer(<?php echo $row->id; ?>)">Supprimer</a></li>
+		<ul class="ligne_claire_BlocDescription">
+				<li style="width:505px;"><?php echo $paysdesc->titre; ?></li>
+				<li style="width:32px;"><a href="javascript:supprimer(<?php echo $row->id; ?>)">supprimer</a></li>
 		</ul>
 <?php
 	}

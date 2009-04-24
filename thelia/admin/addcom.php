@@ -32,35 +32,33 @@ else{
 	$_SESSION["commande"]->venteprod[$nbart-1]->prixu = $prixu;
 }
 ?>
-<table width="100%" border="0" cellpadding="5" cellspacing="0">
-	<tr>
-		<td class="titre_cellule" height="30" width="200">R&eacute;f&eacute;rence</td>
-		<td class="titre_cellule" height="30" width="200">Titre</td>
-		<td class="titre_cellule" height="30" width="200">Prix Unitaire</td>
-		<td class="titre_cellule" height="30" width="200">Quantit&eacute;</td>
-		<td class="titre_cellule" height="30" width="200">TVA</td>
-	</tr>
+
+<div class="entete_client">
+		<div class="titre">MON PANIER</div>
+		<div class="valider"><a href="#" onclick="valid()">PASSER LA COMMANDE</a></div>
+</div>
+<ul class="Nav_bloc_description">
+		<li style="width:50px;">R&eacute;f.</li>
+		<li style="width:195px; border-left:1px solid #96A8B5;">Titre</li>
+		<li style="width:45px; border-left:1px solid #96A8B5;">PU</li>
+		<li style="width:25px; border-left:1px solid #96A8B5;">Qt&eacute;</li>
+		<li style="border-left:1px solid #96A8B5;">TVA</li>
+</ul>
+
 <?php
 $j=0;
 for($i=0;$i<$_SESSION["commande"]->nbart;$i++){
-	if($i%2 == 0) $fond="claire";
-	else $fond="sombre";
+	if($i%2 == 0) $fond="ligne_claire_BlocDescription";
+	else $fond="ligne_fonce_BlocDescription";
 	$j++;
 	?>
-	<tr>
-		<td class="cellule_<?php echo $fond; ?>" height="30" width="200"><?php echo $_SESSION["commande"]->venteprod[$i]->ref; ?></td>
-		<td class="cellule_<?php echo $fond; ?>" height="30" width="200"><?php echo $_SESSION["commande"]->venteprod[$i]->titre; ?></td>
-		<td class="cellule_<?php echo $fond; ?>" height="30" width="200"><?php echo $_SESSION["commande"]->venteprod[$i]->prixu; ?></td>
-		<td class="cellule_<?php echo $fond; ?>" height="30" width="200"><?php echo $_SESSION["commande"]->venteprod[$i]->quantite; ?></td>
-		<td class="cellule_<?php echo $fond; ?>" height="30" width="200"><?php echo $_SESSION["commande"]->venteprod[$i]->tva; ?></td>
-	</tr>
+	<ul class="ligne_claire_BlocDescription">
+		<li style="width:49px;"><?php echo $_SESSION["commande"]->venteprod[$i]->ref; ?></li>
+		<li style="width:195px;"><?php echo $_SESSION["commande"]->venteprod[$i]->titre; ?></li>
+		<li style="width:45px;"><?php echo $_SESSION["commande"]->venteprod[$i]->prixu; ?></li>
+		<li style="width:25px;"><?php echo $_SESSION["commande"]->venteprod[$i]->quantite; ?></li>
+		<li><?php echo $_SESSION["commande"]->venteprod[$i]->tva; ?></li>
+	</ul>
 	<?php
 }
 ?>
-</table>
-<table width="100%" border="0" cellpadding="5" cellspacing="0">
-	<tr>
-		<td class="titre_cellule" height="30" width="800"> </td>
-		<td class="titre_cellule" height="30"><a href="#" onclick="valid()">PASSER COMMANDE</a></td>
-	</tr>
-</table>

@@ -157,113 +157,104 @@ function supprimer(id){
 ?>
 
 <div id="contenu_int">
-<p align="left"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="client.php" class="lien04">Gestion des clients</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Visualiser</a>        
-    </p>     
+<p><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="client.php" class="lien04">Gestion des clients</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Visualiser</a></p>
+    
+<!-- Début de la colonne de gauche -->  
+<div id="bloc_description">
+  
 <div class="entete_liste_client">
 	<div class="titre">INFORMATIONS SUR LE CLIENT </div>
+	<div class="fonction_valider"><a href="client_modifier.php?ref=<?php echo($client->ref); ?>">MODIFIER LES COORDONN&Eacute;ES DU CLIENT</a></div>
 </div>
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td height="30" class="titre_cellule">SOCI&Eacute;T&Eacute;</td>
-       <td class="cellule_sombre"><?php echo($client->entreprise); ?></td>
+   <table width="100%" cellpadding="5" cellspacing="0">
+    <tr class="claire">
+        	<th class="designation" width="290">Soci&eacute;t&eacute;</td>
+       		<th><?php echo($client->entreprise); ?></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">SIRET</td>
-       <td class="cellule_sombre"><?php echo($client->siret); ?></td>
+     <tr class="fonce">
+       <td class="designation">Siret</td>
+       <td><?php echo($client->siret); ?></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">N° INTRACOMMUNAUTRAIRE</td>
-       <td class="cellule_sombre"><?php echo($client->intracom); ?></td>
+     <tr class="claire">
+       <td class="designation">N° Intracommunautaire</td>
+       <td><?php echo($client->intracom); ?></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">CIVILIT&Eacute;</td>
-       <td class="cellule_claire"><?php echo($civilite); ?></td>
+     <tr class="fonce">
+       <td class="designation">Civilit&eacute;</td>
+       <td><?php echo($civilite); ?></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">NOM </td>
-       <td class="cellule_sombre"><?php echo($client->nom); ?> </td>
+     <tr class="claire">
+       <td class="designation">Nom</td>
+       <td><?php echo($client->nom); ?> </td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">PR&Eacute;NOM</td>
-       <td class="cellule_claire"><?php echo($client->prenom); ?></td>
+     <tr class="fonce">
+       <td class="designation">Pr&eacute;nom</td>
+       <td><?php echo($client->prenom); ?></td>
      </tr>
-     <tr>
-       <td width="250" height="30" class="titre_cellule">ADRESSE</td>
-       <td width="440" class="cellule_sombre"><?php echo($client->adresse1); ?></td>
+     <tr class="claire">
+       <td class="designation">Adresse</td>
+       <td><?php echo($client->adresse1); ?></td>
      </tr>
-     <tr>
-       <td width="250" height="30" class="titre_cellule">ADRESSE SUITE</td>
-       <td width="440" class="cellule_sombre"><?php echo($client->adresse2); ?></td>
+     <tr class="fonce">
+       <td class="designation">Adresse suite</td>
+       <td><?php echo($client->adresse2); ?></td>
      </tr>
-     <tr>
-       <td width="250" height="30" class="titre_cellule">ADRESSE SUITE 2</td>
-       <td width="440" class="cellule_sombre"><?php echo($client->adresse3); ?></td>
+     <tr class="claire">
+       <td class="designation">Adresse suite 2</td>
+       <td><?php echo($client->adresse3); ?></td>
      </tr>     
-     <tr>
-       <td height="30" class="titre_cellule">CODE POSTAL </td>
-       <td class="cellule_claire"><?php echo($client->cpostal); ?></td>
+     <tr class="fonce">
+       <td class="designation">Code postal</td>
+       <td><?php echo($client->cpostal); ?></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">VILLE</td>
-       <td class="cellule_sombre"><?php echo($client->ville); ?></td>
+     <tr class="claire">
+       <td class="designation">Ville</td>
+       <td><?php echo($client->ville); ?></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">PAYS</td>
-       <td class="cellule_claire"><?php echo($paysdesc->titre); ?></td>
+     <tr class="fonce">
+       <td class="designation">Pays</td>
+       <td><?php echo($paysdesc->titre); ?></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">T&Eacute;L&Eacute;PHONE FIXE</td>
-       <td class="cellule_sombre"><?php echo($client->telfixe); ?></td>
+     <tr class="claire">
+       <td class="designation">T&eacute;l&eacute;phone fixe</td>
+       <td><?php echo($client->telfixe); ?></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">T&Eacute;L&Eacute;PHONE PORTABLE </td>
-       <td class="cellule_claire"><?php echo($client->telport); ?></td>
+     <tr class="fonce">
+       <td class="designation">T&eacute;l&eacute;phone portable </td>
+       <td><?php echo($client->telport); ?></td>
      </tr>
-     <tr>
-       <td height="30" class="titre_cellule">E-MAIL</td>
-       <td class="cellule_sombre"><a href="mailto:<?php echo($client->email); ?>" class="txt_vert_11"><?php echo($client->email); ?> </a> </td>
+     <tr class="claire">
+       <td class="designation">E-mail</td>
+       <td><a href="mailto:<?php echo($client->email); ?>" class="txt_vert_11"><?php echo($client->email); ?> </a> </td>
      </tr>
-
-	<?php if(isset($parrain)) { ?>
-     <tr>
-       <td height="30" class="titre_cellule">PARRAIN</td>
-       <td class="cellule_sombre"><a href="client_visualiser.php?ref=<?php echo $parrain->ref ?>" class="txt_vert_11"><?php echo $parrain->prenom . " " . $parrain->nom; ?> </a> </td>
+     <tr class="foncebottom">
+       <td class="designation">Remise </td>
+       <td><?php echo($client->pourcentage); ?> %</td>
+     </tr> 
+     <?php if(isset($parrain)) { ?>
+     <tr class="clairebottom">
+       <td class="designation">Parrain</td>
+       <td><a href="client_visualiser.php?ref=<?php echo $parrain->ref ?>" class="txt_vert_11"><?php echo $parrain->prenom . " " . $parrain->nom; ?> </a> </td>
      </tr>
-	<?php } ?>
-	
-     <tr>
-       <td height="30" class="titre_cellule">Remise </td>
-       <td class="cellule_claire"><?php echo($client->pourcentage); ?> %</td>
-     </tr>     
+	<?php } ?>    
    </table>
-   <br />
+
 <?php
 	admin_inclure("clientvisualiser");		
 ?>
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td height="30" class="cellule_sombre2"><span class="sous_titre_rubrique"><span class="geneva11Reg_3B4B5B"><a href="client_modifier.php?ref=<?php echo($client->ref); ?>" class="txt_vert_11">Modifier les coordonn&eacute;es du client </a></span> <a href="client_modifier.php?ref=<?php echo($client->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></span></td>
-     </tr>
-   </table>
-   <br />
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES COMMANDES DE CE CLIENT / Toutes les sommes sont en &euro; </td>
-     </tr>
-   </table>
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="140" height="30" class="titre_cellule">N&deg; DE COMMANDE </td>
-       <td width="130" class="titre_cellule">DATE &amp; HEURE </td>
-       <td width="130" class="titre_cellule">MONTANT</td>
-       <td width="130" class="titre_cellule">STATUT</td>
-       <td width="110" class="titre_cellule">&nbsp;</td>
-       <td width="10" class="titre_cellule">&nbsp;</td>
-     </tr>
-
-
-
-
+<ul id="blocs_pliants_prod">
+<!-- bloc de gestion des commandes du client -->  
+	<li style="margin:0 0 10px 0">
+		<h3 class="head" style="padding:6px 7px 0 7px; border-top: 3px solid #de2b9b; height: 21px;"><a href="#">LISTE DES COMMANDES DE CE CLIENT</a></h3>
+		<ul>
+			<li class="ligne1">
+				<div class="cellule" style="width:130px;">N&deg; DE COMMANDE </div>
+				<div class="cellule" style="width:130px;">DATE &amp; HEURE </div>
+				<div class="cellule" style="width:120px;">MONTANT EN &euro;</div>
+				<div class="cellule" style="width:90px;">STATUT</div>
+				<div class="cellule" style="width:60px;"></div>
+				<div class="cellule" style="width:20px;"></div>
+			</li>
  <?php
   	$i=0;
 
@@ -299,50 +290,36 @@ function supprimer(id){
   		$minute = substr($row->date, 14, 2);
   		$seconde = substr($row->date, 17, 2);
   		  	
-  		if(!($i%2)) $fond="cellule_sombre";
-  		else $fond="cellule_claire";
+  		if(!($i%2)) $fond="fonce";
+  		else $fond="claire";
 
   		$i++;
   ?>
-
-
-
-
-     <tr>
-       <td height="30" class="<?php echo($fond); ?>"><?php echo($row->ref); ?></td>
-       <td class="<?php echo($fond); ?>"><?php echo($jour . "/" . $mois . "/" . $annee . " " . $heure . ":" . $minute . ":" . $seconde); ?></td>
-       <td class="<?php echo($fond); ?>"><?php echo(round($total, 2)); ?></td>
-       <td class="<?php echo($fond); ?>"><?php echo($statutdesc->titre); ?></td>
-       <td class="<?php echo($fond); ?>"><a href="commande_details.php?ref=<?php echo($row->ref); ?>" class="txt_vert_11">En savoir plus </a> <a href="commande_details.php?ref=<?php echo($row->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
-       <td class="<?php echo($fond); ?>_vide"> <a href="#" onclick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></td>
-     </tr>
+<li class="<?php echo($fond); ?>">
+       <div class="cellule" style="width:130px; padding: 5px 0 0 5px;"><?php echo($row->ref); ?></div>
+       <div class="cellule" style="width:130px; padding: 5px 0 0 5px;"><?php echo($jour . "/" . $mois . "/" . $annee . " " . $heure . ":" . $minute . ":" . $seconde); ?></div>
+       <div class="cellule" style="width:120px; padding: 5px 0 0 5px;"><?php echo(round($total, 2)); ?></div>
+       <div class="cellule" style="width:90px; padding: 5px 0 0 5px;"><?php echo($statutdesc->titre); ?></div>
+       <div class="cellule" style="width:60px; padding: 5px 0 0 5px;"><a href="commande_details.php?ref=<?php echo($row->ref); ?>">&eacute;diter</a></div>
+       <div class="cellule_supp"><a href="#" onclick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
+</li>
 
 
 
 <?php } ?>
+ <h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
+</ul>
+</li>
 
-
-
-
-   </table>
-
-   <br /><br />
-  
- <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES FILLEULS DE CE CLIENT</td>
-     </tr>
-   </table>
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="140" height="30" class="titre_cellule">NOM</td>
-       <td width="130" class="titre_cellule">PRENOM</td>
-       <td width="130" class="titre_cellule">EMAIL</td>
-     </tr>
-
-
-
-
+<!-- bloc de gestion des filleuls du client -->  
+	<li style="margin:0 0 10px 0">
+		<h3 class="head" style="padding:6px 7px 0 7px; border-top: 3px solid #de2b9b; height: 21px;"><a href="#">LISTE DES FILLEULS DE CE CLIENT</a></h3>
+		<ul>
+			<li class="ligne1">
+				<div class="cellule" style="width:150px;">NOM</div>
+				<div class="cellule" style="width:150px;">PRENOM</div>
+				<div class="cellule" style="width:150px;">EMAIL</div>
+			</li>
  <?php
   	
 	$listepar = new Client();
@@ -355,58 +332,49 @@ function supprimer(id){
 	while($row = mysql_fetch_object($resul)){
 		$listepar->charger_id($row->id);
   		
-		if(!($i%2)) $fond="cellule_sombre";
-  		else $fond="cellule_claire";
+		if(!($i%2)) $fond="fonce";
+  		else $fond="claire";
 
   		$i++;
   ?>
 
 
-     <tr>
-       <td class="<?php echo($fond); ?>"><a href="client_visualiser.php?ref=<?php echo $listepar->ref ?>" class="txt_vert_11"><?php echo $listepar->nom; ?></a></td>
-       <td class="<?php echo($fond); ?>"><?php echo $listepar->prenom; ?></td>
-       <td class="<?php echo($fond); ?>"><a href="mailto:<?php echo $listepar->email ?>" class="txt_vert_11"><?php echo $listepar->email; ?></a></td>
+     <li class="<?php echo($fond); ?>">
+       <td class="cellule" style="width:150px;"><a href="client_visualiser.php?ref=<?php echo $listepar->ref ?>"><?php echo $listepar->nom; ?></a></td>
+       <td class="cellule" style="width:150px;"><?php echo $listepar->prenom; ?></td>
+       <td class="cellule" style="width:150px;"><a href="mailto:<?php echo $listepar->email ?>"><?php echo $listepar->email; ?></a></td>
      
-     </tr>
+     </li>
 
 
 <?php } ?>
+ <h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
+</ul>
+</li>
+</div>
+<!-- fin du bloc description -->
 
-
-
-
-   </table>
-
-
-   <!--
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="100%" height="30" class="titre_cellule_tres_sombre">LISTE DES DEVIS DE CE CLIENT / Toutes les sommes sont en &euro; </td>
-     </tr>
-   </table>
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="150" height="30" class="titre_cellule">N&deg; DU DEVIS </td>
-       <td width="125" class="titre_cellule">DATE &amp; HEURE </td>
-       <td width="125" class="titre_cellule">MONTANT</td>
-       <td width="130" class="titre_cellule">STATUT</td>
-       <td width="110" class="titre_cellule">&nbsp;</td>
-       <td width="10" class="titre_cellule">&nbsp;</td>
-     </tr>
-     <tr>
-       <td height="30" class="cellule_sombre"><a href="gestion_des_clients02.htm" class="txt_vert_11">DE60216141409JEA</a></td>
-       <td class="cellule_sombre">16/02/06 14:14:09</td>
-       <td class="cellule_sombre">17.80</td>
-       <td class="cellule_sombre">En attente </td>
-       <td class="cellule_sombre"><a href="gestion_des_commandes02.htm" class="txt_vert_11">En savoir plus </a> <a href="gestion_des_commandes02.htm"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
-       <td align="center" valign="middle" class="cellule_sombre"><a href="#"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></td>
-     </tr>
-      </table>
-      
-      -->
-      
-   </div>
+</div> 
+<?php include_once("pied.php");?>
 </div>
 </div>
+<!-- -->
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+<script type="text/javascript" src="../lib/jquery/accordion.js"></script>
+<script type="text/javascript">
+jQuery().ready(function(){	
+	// applying the settings
+	jQuery('#blocs_pliants_prod').Accordion({
+		active: 'h3.selected',
+		header: 'h3.head',
+		alwaysOpen: false,
+		animated: true,
+		showSpeed: 400,
+		hideSpeed: 400
+	});
+
+});	
+</script>
+<!-- -->
 </body>
 </html>

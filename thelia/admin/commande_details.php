@@ -95,21 +95,20 @@
 ?> 
 
 <div id="contenu_int"> 
-    <p align="left"><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Gestion des commandes</a>              
-    </p>  
-
+    <p><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Gestion des commandes</a></p> 
+  
+<!-- DŽbut de la colonne de gauche -->  
+<div id="bloc_description">
 <div class="entete_liste_client">
 	<div class="titre">INFORMATIONS SUR LA COMMANDE </div>
 </div>
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="370" height="30" class="titre_cellule">D&Eacute;SIGNATION</td>
-       <td width="100" class="titre_cellule">PRIX UNITAIRE</td>
-       <td width="100" class="titre_cellule">QT&Eacute;</td>
-       <td width="100" class="titre_cellule">TOTAL</td>
-     </tr>
-     
-  
+<ul class="Nav_bloc_description">
+		<li style="width:400px;">D&eacute;signation</li>
+		<li style="width:80px; border-left:1px solid #96A8B5;">Prix unitaire</li>
+		<li style="width:30px; border-left:1px solid #96A8B5;">Qt&eacute;</li>
+		<li style="border-left:1px solid #96A8B5;">Total</li>
+</ul>
+
   <?php
   	
 	$venteprod = new Venteprod();
@@ -138,19 +137,17 @@
   	if($rubriquedesc->titre !="") $titrerub = $rubriquedesc->titre;
   	else $titrerub = "//";
 
-  		if(!($i%2)) $fond="cellule_sombre";
-  		else $fond="cellule_claire";
+  		if(!($i%2)) $fond="ligne_fonce_BlocDescription";
+  		else $fond="ligne_claire_BlocDescription";
   		$i++;
   		  	
   ?>     
-     
-     <tr>
-       <td height="30" class="<?php echo($fond); ?>"><?php echo $venteprod->ref . " - " . $titrerub; ?> - <?php echo(str_replace("\n", "<br />", $venteprod->titre)); ?></td>
-       <td class="<?php echo($fond); ?>"><?php echo(round($venteprod->prixu, 2)); ?></td>
-       <td class="<?php echo($fond); ?>"><?php echo($venteprod->quantite); ?></td>
-       <td class="<?php echo($fond); ?>"><?php echo(round($venteprod->quantite*$venteprod->prixu, 2)); ?></td>
-     </tr>
-  
+    <ul class="<?php echo($fond); ?>">
+		<li style="width:392px;"><?php echo $venteprod->ref . " - " . $titrerub; ?> - <?php echo(str_replace("\n", "<br />", $venteprod->titre)); ?></li>
+		<li style="width:73px;"><?php echo(round($venteprod->prixu, 2)); ?></li>
+		<li style="width:23px;"><?php echo($venteprod->quantite); ?></li>
+		<li style="width:20px;"><?php echo(round($venteprod->quantite*$venteprod->prixu, 2)); ?></li> 
+    </ul>  
   
  <?php } ?> 
 
@@ -177,92 +174,184 @@
   		$heureaff =  substr($commande->date, 11); 
  
  ?>
- 
-   
-     <tr>
-       <td height="30" colspan="3" class="titre_cellule">TOTAL</td>
-       <td class="titre_cellule"><?php echo(round($total, 2)); ?></td>
-     </tr>
-   </table>
-   <br />
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="100%" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LA FACTURE</td>
-     </tr>
-   </table>
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="100" height="30" class="titre_cellule">N&deg; DE LA FACT.</td>
-       <td width="120" class="titre_cellule">SOCI&Eacute;T&Eacute;</td>
-       <td width="130" class="titre_cellule">NOM &amp; PR&Eacute;NOM </td>
-       <td width="200" class="titre_cellule">E-MAIL</td>
-       <td width="110" class="titre_cellule">DATE &amp; HEURE </td>
-     </tr>
-     <tr>
-       <td height="30" class="cellule_sombre"><?php echo($commande->facture); ?></td>
-       <td class="cellule_sombre"><?php echo($client->entreprise); ?></td>
-       <td class="cellule_sombre"><a href="client_visualiser.php?ref=<?php echo($client->ref); ?>" class="txt_vert_11"><?php echo($client->prenom); ?> <?php echo($client->nom); ?></a></td>
-       <td class="cellule_sombre"><a href="mailto:<?php echo($client->email); ?>" class="txt_vert_11"><?php echo($client->email); ?></a></td>
-       <td class="cellule_sombre"><?php echo($dateaff . " " . $heureaff); ?></td>
-     </tr>
-   </table>
-   <br />
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="100%" height="30" class="titre_cellule_tres_sombre">INFORMATIONS SUR LE R&Egrave;GLEMENT </td>
-     </tr>
-   </table>
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td height="30" class="titre_cellule">TYPE DE R&Egrave;GLEMENT </td>
-       <td class="cellule_sombre">
+ <ul class="ligne_total_BlocDescription">
+ 	<li style="width:392px;">Total</li>
+ 	<li><?php echo(round($total, 2)); ?></li>
+ </ul>
+<div class="bordure_bottom" style="margin:0 0 10px 0;">
+<div class="entete_liste_client">
+	<div class="titre">INFORMATIONS SUR LA FACTURE</div>
+</div>
+<ul class="Nav_bloc_description">
+		<li style="width:60px;">N&deg; Fact.</li>
+		<li style="width:240px; border-left:1px solid #96A8B5;">Soci&eacute;t&eacute;</li>
+		<li style="width:150px; border-left:1px solid #96A8B5;">Nom &amp; Pr&eacute;nom</li>
+		<li style="border-left:1px solid #96A8B5;">Date et heure</li>
+</ul>
+<ul class="ligne_claire_BlocDescription">
+		<li style="width:59px;"><?php echo($commande->facture); ?></li>
+		<li style="width:240px;"><?php echo($client->entreprise); ?></li>
+		<li style="width:150px;"><a href="client_visualiser.php?ref=<?php echo($client->ref); ?>"><?php echo($client->prenom); ?> <?php echo($client->nom); ?></a></li> 
+		<li><?php echo($dateaff . " " . $heureaff); ?></li> 
+</ul> 
+</div>
+
+<div class="bordure_bottom" style="margin:0 0 10px 0;">
+<div class="entete_liste_client">
+	<div class="titre">INFORMATIONS SUR LE R&Egrave;GLEMENT</div>
+</div>
+	<ul class="ligne_claire_BlocDescription" style="background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">
+		<li class="designation" style="width:290px; background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">Type de r&egrave;glement</li>
+		<li>
 		<?php 
 	            $nom = $modules->nom; 
 	            $nom[0] = strtoupper($nom[0]);                                
 				include_once("../client/plugins/" . $modules->nom . "/$nom.class.php");
 	           	$tmpobj = new $nom();
                 echo $tmpobj->getTitre();                
-	     ?>
+	     ?></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:290px;">R&eacute;f&eacute;rence de la transaction</li>
+		<li><?php echo($commande->transaction); ?></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:290px;">Total de la commande avant remise</li>
+		<li><?php echo(round($total, 2)); ?></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:290px;">Remise</li>
+		<li><?php echo(round($commande->remise, 2)); ?></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:290px;">Total avec remise</li>
+		<li><?php echo(round($totalremise, 2)); ?></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:290px;">Frais de transport</li>
+		<li><?php echo(round($port, 2)); ?></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:290px;">Total</li>
+		<li><?php echo(round($totalremise + $port, 2)); ?></li>
+	</ul>
+</div>
+ 
 
-	  </td>
-     </tr>
-     <tr>
-       <td height="30" class="titre_cellule">R&Eacute;F&Eacute;RENCE DE LA TRANSACTION </td>
-       <td class="cellule_claire"><p><?php echo($commande->transaction); ?></p>
-       </td>
-     </tr>
-     <tr>
-       <td height="30" class="titre_cellule">TOTAL DE LA COMMANDE AVANT REMISE </td>
-       <td class="cellule_sombre"><?php echo(round($total, 2)); ?></td>
-     </tr>
-     <tr>
-       <td height="30" class="titre_cellule">REMISE</td>
-       <td class="cellule_claire"><?php echo(round($commande->remise, 2)); ?></td>
-     </tr>
-     <tr>
-       <td width="250" height="30" class="titre_cellule">TOTAL </td>
-       <td width="440" class="cellule_sombre"><?php echo(round($totalremise, 2)); ?></td>
-     </tr>
-     <tr>
-       <td height="30" class="titre_cellule">FRAIS DE TRANSPORT </td>
-       <td class="cellule_claire"><?php echo(round($port, 2)); ?></td>
-     </tr>
-     <tr>
-       <td height="30" class="titre_cellule">TOTAL</td>
-       <td class="cellule_sombre"><?php echo(round($totalremise + $port, 2)); ?></td>
-     </tr>
-   </table>
-   <br />
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="100%" height="30" class="titre_cellule_tres_sombre">STATUT DU R&Egrave;GLEMENT </td>
-     </tr>
-   </table>
-   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-     <tr>
-       <td height="30" align="left" valign="middle" class="titre_cellule"><form action="<?php echo($_SERVER['PHP_SELF']); ?>" name="formchange" method="post">
+
+<?php
+	$adr = new Venteadr();
+	$adr->charger($commande->adrfact);
+	
+	$nompays = new Paysdesc();
+	$nompays->charger($adr->pays);
+?>
+<div class="bordure_bottom" style="margin:0 0 10px 0;">
+<div class="entete_liste_client">
+	<div class="titre">ADRESSE DE FACTURATION</div>
+</div>
+	<ul class="ligne_claire_BlocDescription" style="background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">
+		<li class="designation" style="width:290px; background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">Pr&eacute;nom</li>
+		<li><?php echo $adr->prenom; ?></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:290px;">Nom</li>
+		<li><?php echo $adr->nom; ?></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:290px;">Adresse</li>
+		<li><?php echo $adr->adresse1;?></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:290px;">Adresse suite</li>
+		<li><?php echo $adr->adresse2; ?></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:290px;">Compl&eacute;ment d'adresse </li>
+		<li><?php echo $adr->adresse3; ?></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:290px;">Code postal</li>
+		<li><?php echo $adr->cpostal; ?></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:290px;">Ville</li>
+		<li><?php echo $adr->ville; ?></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:290px;">Pays</li>
+		<li><?php echo $nompays->titre; ?></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:290px;">T&eacute;l&eacute;phone</li>
+		<li><?php echo $adr->tel; ?></li>
+	</ul>	
+</div>
+
+<?php
+
+	$adr = new Venteadr();
+	$adr->charger($commande->adrlivr);
+
+	$nompays = new Paysdesc();
+	$nompays->charger($adr->pays);
+?>
+<div class="bordure_bottom" style="margin:0 0 10px 0;">
+<div class="entete_liste_client">
+	<div class="titre">ADRESSE DE LIVRAISON</div>
+</div>
+	<ul class="ligne_claire_BlocDescription" style="background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">
+		<li class="designation" style="width:290px; background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">Pr&eacute;nom</li>
+		<li><?php echo $adr->prenom; ?></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:290px;">Nom</li>
+		<li><?php echo $adr->nom; ?></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:290px;">Adresse</li>
+		<li><?php echo $adr->adresse1;?></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:290px;">Adresse suite</li>
+		<li><?php echo $adr->adresse2; ?></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:290px;">Compl&eacute;ment d'adresse </li>
+		<li><?php echo $adr->adresse3; ?></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:290px;">Code postal</li>
+		<li><?php echo $adr->cpostal; ?></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:290px;">Ville</li>
+		<li><?php echo $adr->ville; ?></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:290px;">Pays</li>
+		<li><?php echo $nompays->titre; ?></li>
+	</ul>
+	<ul class="ligne_claire_BlocDescription">
+		<li class="designation" style="width:290px;">T&eacute;l&eacute;phone</li>
+		<li><?php echo $adr->tel; ?></li>
+	</ul>	
+</div>
+
+<?php
+	admin_inclure("commandedetails");		
+?>     
+
+</div>
+<!-- fin du bloc description -->
+<!-- bloc colonne de droite -->   
+<div id="bloc_colonne_droite">
+	<div class="entete_client">
+		<div class="titre">STATUT DU R&Egrave;GLEMENT</div>
+		<div class="statut">
+      		<form action="<?php echo($_SERVER['PHP_SELF']); ?>" name="formchange" method="post">
                   <input type="hidden" name="ref" value="<?php echo($ref); ?>">
-                  <select name="statutch" class="arial11_bold_626262" onChange="formchange.submit()">
+                  <select name="statutch" onChange="formchange.submit()" class="form">
                     <?php
                 	$statut = new Statut();
                 	$query = "select * from $statut->table where id<>5";
@@ -281,140 +370,37 @@
                 	
                 ?>
                   </select>
-                </form></td>
-     </tr>
-   </table>
-
-<br />
-
-<?php
-	$adr = new Venteadr();
-	$adr->charger($commande->adrfact);
-	
-	$nompays = new Paysdesc();
-	$nompays->charger($adr->pays);
-?>
-
-	<table width="100%" border="0" cellpadding="5" cellspacing="0">
-	  <tr>
-	    <td width="100%" height="30" class="titre_cellule_tres_sombre">N&deg; de colis</td>
-	  </tr>
-	</table>
-	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
-	  <tr>
-	    <td height="30" align="left" valign="middle" class="titre_cellule"><form action="<?php echo($_SERVER['PHP_SELF']); ?>" name="formcolis" method="post">
+           </form>
+     	</div>
+	</div>
+	<!-- fin du bloc statuts -->
+	<div class="entete_client" style="margin:10px 0 0 0;">
+		<div class="titre">SUIVI COLIS</div>
+	</div>
+	<ul class="claire">
+		<li class="designation">N&deg; de colis</li>
+		<li><form action="<?php echo($_SERVER['PHP_SELF']); ?>" name="formcolis" method="post">
 	               <input type="hidden" name="ref" value="<?php echo($ref); ?>">
 					<input type="text" name="colis" value="<?php echo $commande->colis ?>" /> <input type="submit" value="Valider" />
 
-	             </form></td>
-	  </tr>
-	</table>
-	
-	<br />
-	
-  <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="100%" height="30" class="titre_cellule_tres_sombre">ADRESSE DE FACTURATION</td>
-     </tr>
-   </table>
-   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-     <tr>
-       <td height="30" align="left" valign="middle" class="cellule_claire" width="300">Pr&eacute;nom</td>
-       <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->prenom; ?></td>
-     </tr>
-     <tr>
-       <td height="30" align="left" valign="middle" class="cellule_sombre" width="300">Nom</td>
-       <td height="30" align="left" valign="middle" class="cellule_sombre"><?php echo $adr->nom; ?></td>
-     </tr>   
-      <tr>
-       <td height="30" align="left" valign="middle" class="cellule_claire" width="300">Adresse</td>
-       <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->adresse1 . " " . $adr->adresse2 . " " . $adr->adresse3; ?></td>
-     </tr>    
-      <tr>
-      <td height="30" align="left" valign="middle" class="cellule_sombre" width="300">Code postal</td>
-       <td height="30" align="left" valign="middle" class="cellule_sombre"><?php echo $adr->cpostal; ?></td>
-     </tr>     
-     <tr>
-       <td height="30" align="left" valign="middle" class="cellule_claire" width="300">Ville</td>
-       <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->ville; ?></td>
-     </tr>
-     <tr>
-        <td height="30" align="left" valign="middle" class="cellule_sombre" width="300">Pays</td>
-        <td height="30" align="left" valign="middle" class="cellule_sombre"><?php echo $nompays->titre; ?></td>
-      </tr>
-      <tr>
-      	<td height="30" align="left" valign="middle" class="cellule_claire" width="300">T&eacute;l&eacute;phone</td>
-        <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->tel; ?></td>
+	             </form>
+	    </li>
+	</ul>
+	<div class="entete_client" style="margin:10px 0 0 0;">
+		<div class="titre">LES DOCUMENTS PDF</div>
+	</div>
+	<ul class="claire">
+		<li class="designation">Facture</li>
+		<li><a href="../client/pdf/facture.php?ref=<?php echo($commande->ref); ?>">Visualiser au format PDF</a></li>
+	</ul>
+	<ul class="fonce">
+		<li class="designation">Bon de livraison</li>
+		<li><a href="livraison.php?ref=<?php echo($commande->ref); ?>">Visualiser au format PDF</a></li>
+	</ul>
+	<!-- fin du bloc pdfs -->
+</div>
+<!-- fin du bloc colonne de droite -->
 
-     </tr>
-
-   </table>
-
-<br />
-
-<?php
-
-	$adr = new Venteadr();
-	$adr->charger($commande->adrlivr);
-
-	$nompays = new Paysdesc();
-	$nompays->charger($adr->pays);
-?>
-
-  <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="100%" height="30" class="titre_cellule_tres_sombre">ADRESSE DE LIVRAISON</td>
-     </tr>
-   </table>
-   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-     <tr>
-       <td height="30" align="left" valign="middle" class="cellule_claire" width="300">Pr&eacute;nom</td>
-       <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->prenom; ?></td>
-     </tr>
-     <tr>
-       <td height="30" align="left" valign="middle" class="cellule_sombre" width="300">Nom</td>
-       <td height="30" align="left" valign="middle" class="cellule_sombre"><?php echo $adr->nom; ?></td>
-     </tr>   
-      <tr>
-       <td height="30" align="left" valign="middle" class="cellule_claire" width="300">Adresse</td>
-       <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->adresse1 . " " . $adr->adresse2 . " " . $adr->adresse3; ?></td>
-     </tr>    
-      <tr>
-      <td height="30" align="left" valign="middle" class="cellule_sombre" width="300">Code postal</td>
-       <td height="30" align="left" valign="middle" class="cellule_sombre"><?php echo $adr->cpostal; ?></td>
-     </tr>     
-     <tr>
-       <td height="30" align="left" valign="middle" class="cellule_claire" width="300">Ville</td>
-       <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->ville; ?></td>
-     </tr>
-     <tr>
-        <td height="30" align="left" valign="middle" class="cellule_sombre" width="300">Pays</td>
-        <td height="30" align="left" valign="middle" class="cellule_sombre"><?php echo $nompays->titre; ?></td>
-      </tr>
-      <tr>
-      	<td height="30" align="left" valign="middle" class="cellule_claire" width="300">T&eacute;l&eacute;phone</td>
-        <td height="30" align="left" valign="middle" class="cellule_claire"><?php echo $adr->tel; ?></td>
-
-     </tr>
-
-   </table>
-
-
-   <br />
-
-<?php
-	admin_inclure("commandedetails");		
-?>     
-
-
-<br />   
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="70" height="30" class="cellule_sombre2"><span class="geneva11Reg_3B4B5B"><a href="commande.php" class="txt_vert_11">Retour </a></span><a href="commande.php"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
-       <td width="220" class="cellule_sombre2"><span class="geneva11Reg_3B4B5B"><a href="../client/pdf/facture.php?ref=<?php echo($commande->ref); ?>" class="txt_vert_11">Visualiser la facture au format PDF </a></span><a href="../client/pdf/facture.php?ref=<?php echo($commande->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
-       <td width="390" class="cellule_sombre2"><span class="geneva11Reg_3B4B5B"><a href="livraison.php?ref=<?php echo($commande->ref); ?>" class="txt_vert_11">Visualiser le bordereau de livraison au format PDF</a> </span><a href="livraison.php?ref=<?php echo($commande->ref); ?>"><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a></td>
-     </tr>
-   </table>
    </div>
    <?php include_once("pied.php");?>
 </div>

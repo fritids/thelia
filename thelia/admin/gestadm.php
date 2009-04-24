@@ -105,8 +105,8 @@
   	$resul = mysql_query($query, $administrateur->link);
   	$i=0;
   	while($row = mysql_fetch_object($resul)){
-			if(!($i%2)) $fond="claire";
-  			else $fond="fonce";
+			if(!($i%2)) $fond="ligne_claire_BlocDescription";
+  			else $fond="ligne_fonce_BlocDescription";
   			$i++;
  	 ?>
     <form action="gestadm_modifier.php" id="formadmin<?php echo($row->id); ?>" method="post" onsubmit="valid('<?php echo $row->id; ?>');return false;">
@@ -141,8 +141,8 @@
 			<li style="height:25px; width:80px; border-left:1px solid #96A8B5;">Confirmation</li>
 			<li style="height:25px; width:85px; border-left:1px solid #96A8B5;">&nbsp;</li>
 		</ul>
-		<ul class="claire">
-			<li style="width:94px;"><input name="nom" type="text" class="form" size="11" /></li>
+		<ul class="ligne_claire_BlocDescription">
+			<li style="width:93px;"><input name="nom" type="text" class="form" size="11" /></li>
 			<li style="width:94px; border-left:1px solid #96A8B5;"><input name="prenom" type="text" class="form" size="11" /></li>
 			<li style="width:95px; border-left:1px solid #96A8B5;"><input name="identifiant" type="text" class="form" size="11" /></li>
 			<li style="width:85px; border-left:1px solid #96A8B5;"><input name="motdepasse1" id="motdepasse1" type="password" class="form" size="6" /></li>

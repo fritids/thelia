@@ -97,8 +97,8 @@
 
   	if($page<$nbpage) $pagesuiv=$page+1;
   	else $pagesuiv=$page;
-  	 
-  	$ordclassement = "order by ref desc";
+  	if(isset($classement) && $classement != "") $ordclassement = "order by ".$classement;
+  	else $ordclassement = "order by ref desc";
 
 ?>
 
@@ -180,20 +180,20 @@
 
 <p id="pages">
 	<?php if($page>1){ ?>
-	<a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pageprec); ?>&statut=<?php echo $_GET['statut']; ?>">Page pr&eacute;c&eacute;dente</a> |
+	<a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pageprec); ?>">Page pr&eacute;c&eacute;dente</a> |
 	<?php } ?>
 	<?php if($totnbpage > $nbpage){?>
-		<?php if($page>1) {?><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=1&statut=<?php echo $_GET['statut']; ?>">...</a> | <?php } ?>
+		<?php if($page>1) {?><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=1">...</a> | <?php } ?>
 		<?php if($page+$nbpage-1 > $totnbpage){ $max = $totnbpage; $min = $totnbpage-$nbpage;} else{$min = $page-1; $max=$page+$nbpage-1; }?>
     <?php for($i=$min; $i<$max; $i++){ ?>
    	 <?php if($page != $i+1){ ?>
- 	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>&classement=<?php echo($classement); ?>&statut=<?php echo $_GET['statut']; ?>"><?php echo($i+1); ?></a> |
+ 	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>&classement=<?php echo($classement); ?>"><?php echo($i+1); ?></a> |
    	 <?php } else {?>
    		  <span class="selected"><?php echo($i+1); ?></span>
    		|
   		  <?php } ?>
     <?php } ?>
-		<?php if($page < $totnbpage){?><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo $totnbpage; ?>&statut=<?php echo $_GET['statut']; ?>">...</a> | <?php } ?>
+		<?php if($page < $totnbpage){?><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo $totnbpage; ?>">...</a> | <?php } ?>
 	<?php } 
 	else{
 		for($i=0; $i<$totnbpage; $i++){ ?>
@@ -208,7 +208,7 @@
     
 
     <?php if($page < $totnbpage){ ?>
-    <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pagesuiv); ?>&statut=<?php echo $_GET['statut']; ?>">Page suivante</a></p>
+    <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($pagesuiv); ?>">Page suivante</a></p>
 	<?php } ?>
 </div> 
 <?php include_once("pied.php");?>

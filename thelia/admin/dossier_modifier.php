@@ -576,7 +576,7 @@ if($id != ""){
 
 
 <!-- bloc de gestion des documents -->
-<div class="entete">
+<div class="entete"  style="margin-top:10px;">
 	<div class="titre">GESTION DES DOCUMENTS</div>
 </div>
 <div class="bloc_transfert">
