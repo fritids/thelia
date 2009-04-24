@@ -1552,8 +1552,8 @@
 			$port = number_format($port, 2, ".", ""); 
 
 			if($pays->tva != "" && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != ""))){
-				$prix = $prix - $prix * $_SESSION['navig']->panier->tabarticle[$i]->produit->tva / 100; 
-				$total = $total - $total * $_SESSION['navig']->panier->tabarticle[$i]->produit->tva / 100; 
+				$prix = $prixht; 
+				$total = $totalht; 
 			}
 			
 			$temp = str_replace("#REF", $_SESSION['navig']->panier->tabarticle[$i]->produit->ref, $texte);

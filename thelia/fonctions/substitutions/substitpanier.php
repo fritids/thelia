@@ -52,7 +52,7 @@
 			else $prix = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 - ($_SESSION['navig']->panier->tabarticle[$i]->produit->prix2 * $_SESSION['navig']->client->pourcentage / 100);
 			
 			if($pays->tva != "" && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != "")))
-				$prix = $prix - $prix * $_SESSION['navig']->panier->tabarticle[$i]->produit->tva / 100; 
+				$prix = $prix/(1+($_SESSION['navig']->panier->tabarticle[$i]->produit->tva/100)); 
 							
 			$prixht = $prix/(1+($_SESSION['navig']->panier->tabarticle[$i]->produit->tva/100)); 
 	           	
