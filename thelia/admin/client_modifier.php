@@ -51,9 +51,6 @@
 	if($client->raison == "1") $raison1 = "checked=\"checked\""; else $raison1="";
 	if($client->raison == "2") $raison2 = "checked=\"checked\""; else $raison2="";
 	if($client->raison == "3") $raison3 = "checked=\"checked\""; else $raison3="";
-	
-	
-
 
 ?>
 </head>

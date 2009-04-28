@@ -117,8 +117,8 @@
 
 	 	modules_fonction("mail", $commande, $modules->nom);
 
-	//	$tmpobj = new $nomclass();
-	//	$tmpobj->paiement($commande);
+		$tmpobj = new $nomclass();
+		$tmpobj->paiement($commande);
 		
 		header("location: commande_details.php?ref=".$commande->ref);
 		

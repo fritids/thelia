@@ -71,7 +71,7 @@
 <?php
 	switch($action){
 		case 'modclassement' : modclassement($ref, $parent, $type); break;
-		case 'modifier' : modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum); break;
+		case 'modifier' : modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum, $urlsuiv); break;
 		case 'ajouter' : ajouter($lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum); break;
 		case 'acdec' : moddecli($produit, $id, 1); break;
 		case 'desdec' : moddecli($produit, $id, 0); break;
@@ -97,7 +97,10 @@
 	}
 
 	function modifierdoc($id, $titre, $chapo, $description,$lang){
-	
+
+		$tmp = new Produit();
+		$tmp->charger($_REQUEST['ref']);
+				
 		$documentdesc = new Documentdesc();
 		$documentdesc->document = $id;
 		$documentdesc->lang = $lang;
@@ -112,7 +115,9 @@
 			$documentdesc->add();
 		else 
 			$documentdesc->maj();
-	
+			
+        header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique);
+
 	}
 
 	function dupliquer($ref,$refn,$rubrique){
@@ -220,6 +225,9 @@
 
 	function supprimer_document($id_document){
 
+				$tmp = new Produit();
+				$tmp->charger($_REQUEST['ref']);
+			
 				$document = new Document();
 				$document->charger($id_document);
 
@@ -228,12 +236,17 @@
 				}
 
 				$document->supprimer();
+  			    
+  			    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique);
 
 		}
 		
 
 	function ajouter_document($produit, $doc, $doc_name){
 
+			$tmp = new Produit();
+			$tmp->charger($_REQUEST['ref']);
+		
 			if($doc != ""){
 
 				$fich = substr($doc_name, 0, strlen($doc_name)-4);
@@ -260,6 +273,8 @@
 				copy("$doc", "../client/document/" . $fich . "_" . $produit . "." . $ext);	
 			}
 
+	 		 header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique);
+
 		}
 
 	function modclassement($ref, $parent, $type){
@@ -274,7 +289,7 @@
 
 		
 	
-	function modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum){
+	function modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum, $urlsuiv){
 
      
 		if(!$lang) $lang=1;
@@ -425,12 +440,20 @@
 	$produit->maj();
 	
 	modules_fonction("modprod", $produit->ref);
-	?>
-		<script type="text/javascript">
-			window.location="<?php echo $_SERVER['PHP_SELF']; ?>?ref=<?php echo $produit->ref; ?>&rubrique=<?php echo  $produit->rubrique?>";
-		</script>
-	
-	<?php
+		if($urlsuiv){
+		?>
+			<script type="text/javascript">
+				window.location="parcourir.php?parent=<?php echo $produit->rubrique; ?>";
+			</script>
+		<?php
+		}
+		else{
+			?>
+			<script type="text/javascript">
+				window.location="<?php echo $_SERVER['PHP_SELF']; ?>?ref=<?php echo $produit->ref; ?>&rubrique=<?php echo  $produit->rubrique?>";
+			</script>
+		<?php
+		}
 	}
 
 	function ajouter($lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum){
@@ -604,7 +627,10 @@
 	}
 	
 	function ajouter_photo($produit,$lang){
-	
+
+		$tmp = new Produit();
+		$tmp->charger($_REQUEST['ref']);
+		
 		if(!isset($nomorig)) $nomorig="";
 		
 		for($i = 1; $i<6; $i++){
@@ -643,11 +669,17 @@
 			copy("$photo", "../client/gfx/photos/produit/" . $fich . "_" . $lastid . "." . $extension);
 		}
 		
-	}	
+	  }	
+	  
+	  header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique);
 		
 	}
 	
 	function modifier_photo($id_photo, $titre_photo, $chapo_photo, $description_photo,$lang){
+	
+		$tmp = new Produit();
+		$tmp->charger($_REQUEST['ref']);
+				
 		$imagedesc = new Imagedesc();
 		$imagedesc->image = $id_photo;
 		$imagedesc->lang = $lang;
@@ -663,10 +695,15 @@
 		else 
 			$imagedesc->maj();
 
+	    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique);
+
 	}
 	
 	function supprimer_photo($id_photo){
-		
+
+			$tmp = new Produit();
+			$tmp->charger($_REQUEST['ref']);
+						
 			$image = new Image();
 			$image->charger($id_photo);
 			$imagedesc = new Imagedesc();
@@ -678,6 +715,9 @@
 			
 			$image->supprimer();
 			$imagedesc->delete();
+			
+ 		    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique);
+
 
 	}
 	
@@ -825,6 +865,7 @@
 	<input type="hidden" name="ref" value="<?php echo($ref); ?>" /> 
  	<input type="hidden" name="lang" value="<?php echo($lang); ?>" /> 
  	<input type="hidden" name="rubrique" value="<?php echo($produit->rubrique); ?>" /> 
+	<input type="hidden" name="urlsuiv" id="url" value="0">
 
 <!-- bloc descriptif du produit -->   	
 		<div class="entete">
@@ -1184,10 +1225,17 @@
 
 
 <!-- bloc d'informations sur le produit --> 
+<div class="patchplugin">
 <?php 
 	admin_inclure("produitmodifier"); 
 ?>
+</div>
+
 	<?php
+	
+		$produit = new Produit();
+		$produit->charger($ref);
+		
 		$jour = substr($produit->datemodif, 8, 2);
 		$mois = substr($produit->datemodif, 5, 2);
 		$annee = substr($produit->datemodif, 0, 4);
@@ -1255,13 +1303,13 @@
 			<?php } ?>
 			<a title="Voir le produit en ligne" href="<?php echo $site->valeur; ?>/produit.php?ref=<?php echo $ref; ?>&id_rubrique=<?php echo $rubrique; ?>" target="_blank" ><img src="gfx/site.png" alt="Voir le produit en ligne" title="Voir le produit en ligne" /></a>
 			<a href="#" onclick="dupliquer();"><img src="gfx/dupliquer.png" alt="Dupliquer la fiche produit" title="Dupliquer la fiche produit" style="padding:0 5px 0 0;"/></a>
-			<a href="#" onclick="envoyer()"><img src="gfx/valider.png" alt="Enregistrer les modifications" title="Enregistrer les modifications" style="padding:0 5px 0 0;"/></a>
-			<a href="#" onclick="envoyer(); document.location ='parcourir.php?parent=<?php echo $rubrique;?>'"><img src="gfx/validerfermer.png" alt="Enregistrer les modifications et fermer la fiche" title="Enregistrer les modifications et fermer la fiche" style="padding:0 5px 0 0;"/></a>
+			<a href="#" onclick="envoyer();"><img src="gfx/valider.png" alt="Enregistrer les modifications" title="Enregistrer les modifications" style="padding:0 5px 0 0;"/></a>
+			<a href="#" onclick="document.getElementById('url').value='1'; envoyer(); "><img src="gfx/validerfermer.png" alt="Enregistrer les modifications et fermer la fiche" title="Enregistrer les modifications et fermer la fiche" style="padding:0 5px 0 0;"/></a>
 			
 			<?php 
 				if($classement!=$classementmax) {
 					$precedent=$classement+1;
-					$query = "select * from $produit->table where rubrique='" . $rubrique . "' and classement='" . $precedent . "' ";
+					$query = "select * from $produit->table where rubrique='" . $produit->rubrique . "' and classement='" . $precedent . "' ";
 					$resul = mysql_query($query, $produit->link);
 					$refprec =  mysql_result($resul, 0,"ref");
 					
@@ -1393,9 +1441,9 @@
 			<input type="hidden" name="lang" value="<?php echo($lang); ?>">
 			   
 			<li class="lignesimple">
-			<div class="cellule_designation" style="height:208px;">&nbsp;</div>
-			<div class="cellule_photos" style="height:200px; overflow:hidden;"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php echo($row->fichier); ?></a></div>
-			<div class="cellule_supp">
+			<div class="cellule_designation" style="height:20px;">Fichier</div>
+			<div class="cellule_document"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php echo($row->fichier); ?></a></div>
+			<div class="cellule_suppdocument">
 			<a href="produit_modifier.php?ref=<?php echo($ref); ?>&rurbrique=<?php echo $rubrique; ?>&id_document=<?php echo($row->id); ?>&action=supprimer_document&lang=<?php echo $lang; ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
 		</li>
 		<li class="lignesimple">
@@ -1466,8 +1514,7 @@ jQuery().ready(function(){
 		showSpeed: 400,
 		hideSpeed: 100
 	});
-
-
+	
 });	
 </script>
 <!-- -->

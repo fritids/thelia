@@ -361,6 +361,11 @@
         <td><textarea name="description" id="description" cols="53" rows="2" class="form"><?php echo($declinaisondesc->description); ?></textarea></td>
    	</tr>
 </table>
+<div class="patchplugin">
+<?php 
+	admin_inclure("declinaisonmodifier"); 
+?>
+</div>
 <?php if($id != ""){ ?>
 <div class="entete_liste_config">
 	<div class="titre">INFORMATIONS SUR LA DECLINAISON</div>

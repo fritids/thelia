@@ -55,10 +55,9 @@
 	
 	switch($action){
 		case 'modclassement' : modclassement($id, $parent, $type); break;
-		case 'modifier' : modifier($id, $parent, $lang, $titre, $chapo, $description, $postscriptum, $lien, $ligne); break;
+		case 'modifier' : modifier($id, $parent, $lang, $titre, $chapo, $description, $postscriptum, $lien, $ligne, $urlsuiv); break;
 		case 'ajouter' : ajouter($parent, $lang, $titre, $chapo, $description, $postscriptum, $lien, $ligne); break;
 		case 'supprimer' : supprimer($id, $parent);
-		case 'supprimg': supprimg($id); break;
 		case "ajouterphoto" : ajouterphoto($id); break;
 		case "modifierphoto" : modifierphoto($id_photo,$titre_photo,$chapo_photo,$description_photo,$lang); break;
 		case "supprimerphoto" : supprimerphoto($id_photo); break;
@@ -75,6 +74,9 @@
 <?php
 
 	function modifierdoc($id, $titre, $chapo, $description,$lang){
+
+		$tmp = new Rubrique();
+		$tmp->charger($_REQUEST['id']);
 	
 		$documentdesc = new Documentdesc();
 		$documentdesc->document = $id;
@@ -90,6 +92,8 @@
 			$documentdesc->add();
 		else 
 			$documentdesc->maj();
+
+	   header("Location: rubrique_modifier.php?id=" . $tmp->id);
 	
 	}
 
@@ -102,6 +106,9 @@
 	}
 
 	function supprimer_document($id){
+
+		    $tmp = new Rubrique();
+		    $tmp->charger($_REQUEST['id']);
 		
 			$document = new Document();
 			$document->charger($id);
@@ -112,10 +119,15 @@
 			
 			$document->supprimer();
 		
+	  	    header("Location: rubrique_modifier.php?id=" . $tmp->id);
 					
 	}
 
 	function ajouterdoc($rubrique, $doc, $doc_name){
+
+		$tmp = new Rubrique();
+		$tmp->charger($_REQUEST['id']);
+
 		if($doc != ""){
 			$fich = substr($doc_name, 0, strlen($doc_name)-4);
 			$ext = substr($doc_name, strlen($doc_name)-3);
@@ -140,6 +152,8 @@
 					
 			copy("$doc", "../client/document/" . $fich . "_" . $rubrique . "." . $ext);	
 		}
+	   
+	     header("Location: rubrique_modifier.php?id=" . $tmp->id);
 
 	}
 
@@ -150,6 +164,9 @@
 	}
 
 	function supprimerphoto($id){
+
+			$tmp = new Rubrique();
+			$tmp->charger($_REQUEST['id']);
 		
 			$image = new Image();
 			$image->charger($id);
@@ -162,11 +179,15 @@
 		
 			$image->supprimer();
 			$imagedesc->delete();
-			
+	
+		    header("Location: rubrique_modifier.php?id=" . $tmp->id);
 	}
 
 
 	function modifierphoto($id, $titre, $chapo, $description,$lang){
+		$tmp = new Rubrique();
+		$tmp->charger($_REQUEST['id']);
+
 		$imagedesc = new Imagedesc();
 		$imagedesc->image = $id;
 		$imagedesc->lang = "1";
@@ -183,11 +204,16 @@
 		else 
 			$imagedesc->maj();
 
+	    header("Location: rubrique_modifier.php?id=" . $tmp->id);
+
 	}
 
 
 	function ajouterphoto($id){
 
+		$tmp = new Rubrique();
+		$tmp->charger($_REQUEST['id']);
+		
 		if(!isset($nomorig)) $nomorig="";
 
 		for($i = 1; $i<6; $i++){
@@ -226,8 +252,10 @@
 			copy("$photo", "../client/gfx/photos/rubrique/" . $fich . "_" . $lastid . "." . $extension);
     		
 		}
-	 }
-
+	   }
+		
+	   header("Location: rubrique_modifier.php?id=" . $tmp->id);
+	   
 	}
 
 
@@ -244,7 +272,7 @@
 
 	}
 	
-	function modifier($id, $parent, $lang, $titre, $chapo, $description, $postscriptum, $lien, $ligne){
+	function modifier($id, $parent, $lang, $titre, $chapo, $description, $postscriptum, $lien, $ligne, $urlsuiv){
 
 		$rubrique = new Rubrique();
 		$rubriquedesc = new Rubriquedesc();
@@ -280,9 +308,9 @@
 		$rubrique->maj();
 		$rubriquedesc->maj();
 		
-	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $rubrique->id);
-
-
+		if($urlsuiv) header("location: parcourir.php?parent=".$rubrique->parent);
+	    else header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $rubrique->id);
+		exit;
 	}
 
 	function ajouter($parent, $lang, $titre, $chapo, $description, $postscriptum, $lien, $ligne){
@@ -351,13 +379,6 @@
 		exit;
 	}
 
-	function supprimg($id){
-		$rubrique = new Rubrique();		
-		$rubrique->charger($id);
-		$rubrique->image=0;
-		if(file_exists("../client/gfx/photos/rubrique/" . $rubrique->id . ".jpg")) unlink("../client/gfx/photos/rubrique/" . $rubrique->id . ".jpg");
-		$rubrique->maj();
-	}	
 ?>
 
 <?php
@@ -412,6 +433,10 @@ include_once('js/declinaison.php');
   	else $pagesuiv=$page;
   	 
   	$ordclassement = "order by nom";
+	 if($id){
+		$site = new Variable();
+		$site->charger("urlsite");
+	}
 
 	
 ?>
@@ -462,7 +487,6 @@ include_once('js/declinaison.php');
 					if($parent) $parentdesc->charger($parent);
 					else $parentdesc->charger($id);
 					$parentnom = $parentdesc->titre;	
-
 			?>
 			 <a href="parcourir.php?parent=<?php echo($parentdesc->rubrique); ?>" class="lien04"> <?php echo($parentdesc->titre); ?></a>                             
             <?php include("tinymce.php"); ?>       
@@ -474,21 +498,13 @@ include_once('js/declinaison.php');
   <input type="hidden" name="action" value="<?php if(!$id) { ?>ajouter<?php } else { ?>modifier<?php } ?>" />
 	<input type="hidden" name="id" value="<?php echo($id); ?>" />
 	<input type="hidden" name="lang" value="<?php echo($lang); ?>" />
+	<input type="hidden" name="urlsuiv" id="url" value="0">
 	
 	
 <div id="bloc_description">
 	<!-- bloc entete de la rubrique -->   	
 		<div class="entete">
 			<div class="titre">DESCRIPTION GÉNÉRALE DE LA RUBRIQUE</div>
-			<?php if($id){
-				$site = new Variable();
-				$site->charger("urlsite");
-			?>
-			<!-- pour visualiser la page rubrique correspondante en ligne -->
-			<div class="voirenligne"><a title="Voir la rubrique en ligne" href="<?php echo $site->valeur; ?>/rubrique.php?id_rubrique=<?php echo $id; ?>" target="_blank" ><img src="gfx/voir-produit-enligne.png" alt="Voir la rubrique en ligne" title="Voir la rubrique en ligne" /></a></div>
-			<?php
-			}
-			?>
 			<div class="fonction_valider"><a href="#" onclick="document.getElementById('formulaire').submit()">VALIDER LES MODIFICATIONS</a></div>
 		</div>
 <!-- bloc descriptif de la rubrique --> 			
@@ -776,6 +792,13 @@ include_once('js/declinaison.php');
 		</ul>		
 		
 	</li>
+	
+<div class="patchplugin">
+<?php 
+	admin_inclure("rubriquemodifier"); 
+?>
+</div>
+	
 <?php if($id != ""){ ?>
 	<li style="margin:0 0 10px 0">
 			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">INFORMATIONS SUR LA RUBRIQUE</a></h3>
@@ -811,13 +834,37 @@ if($id != ""){
 <div class="bloc_transfert">
 	<div class="claire">
 		<div class="champs" style="padding-top:10px; width:375px;">
-			<a href="produit_modifier.php?ref=" ><img src="gfx/precedent.png" alt="Rubrique pr&eacute;c&eacute;dente" title="Rubrique pr&eacute;c&eacute;dente" style="padding:0 5px 0 0;margin-top:-5px;height:38px;"/></a>	
+			<?php
+			$query = "select max(classement) as maxclassement from $rubrique->table where parent=$rubrique->parent";
+			$resul = mysql_query($query);
+			$maxclassement = mysql_result($resul,0,"maxclassement");
+			if($rubrique->classement >1){
+				$prec = $rubrique->classement-1;
+				$queryclassement = "select id from $rubrique->table where parent=$rubrique->parent and classement=$prec";
+				$resulclassement = mysql_query($queryclassement);
+				$idprec = mysql_result($resulclassement,0,"id");
+			?>
+			<a href="rubrique_modifier.php?id=<?php echo $idprec; ?>" ><img src="gfx/precedent.png" alt="Rubrique pr&eacute;c&eacute;dente" title="Rubrique pr&eacute;c&eacute;dente" style="padding:0 5px 0 0;margin-top:-5px;height:38px;"/></a>	
+			<?php
+			}
+			?>
 			
 			<!-- pour visualiser la page rubrique correspondante en ligne -->
-			<a title="Voir la rubrique en ligne" href="" target="_blank" ><img src="gfx/site.png" alt="Voir la rubrique en ligne" title="Voir la rubrique en ligne" /></a>
-			<a href="#" onclick="envoyer()"><img src="gfx/valider.png" alt="Enregistrer les modifications" title="Enregistrer les modifications" style="padding:0 5px 0 0;"/></a>
-			<a href="#" onclick=""><img src="gfx/validerfermer.png" alt="Enregistrer les modifications et fermer la fiche" title="Enregistrer les modifications et fermer la fiche" style="padding:0 5px 0 0;"/></a>
-			<a href="produit_modifier.php?ref=" ><img src="gfx/suivant.png" alt="Rubrique suivante" title="Rubrique suivante" style="padding:0 5px 0 0;"/></a>	
+			<a title="Voir la rubrique en ligne" href="<?php echo $site->valeur; ?>/rubrique.php?id_rubrique=<?php echo $id; ?>" target="_blank" ><img src="gfx/site.png" alt="Voir la rubrique en ligne" title="Voir la rubrique en ligne" /></a>
+			<a href="#" onclick="document.getElementById('formulaire').submit();"><img src="gfx/valider.png" alt="Enregistrer les modifications" title="Enregistrer les modifications" style="padding:0 5px 0 0;"/></a>
+			<a href="#" onclick="document.getElementById('url').value='1'; document.getElementById('formulaire').submit(); "><img src="gfx/validerfermer.png" alt="Enregistrer les modifications et fermer la fiche" title="Enregistrer les modifications et fermer la fiche" style="padding:0 5px 0 0;"/></a>
+			<?php
+			if($rubrique->classement < $maxclassement){
+				$suivant = $rubrique->classement+1;
+				$query = "select id from $rubrique->table where parent=$rubrique->parent and classement=$suivant";
+				$resul = mysql_query($query);
+				$idsuiv = mysql_result($resul,0,"id");
+			
+			?>
+			<a href="rubrique_modifier.php?id=<?php echo $idsuiv; ?>" ><img src="gfx/suivant.png" alt="Rubrique suivante" title="Rubrique suivante" style="padding:0 5px 0 0;"/></a>	
+			<?php
+			}
+			?>
 			
    		</div>
    	</div>

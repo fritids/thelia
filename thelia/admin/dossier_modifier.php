@@ -46,7 +46,7 @@
 
 	switch($action){
 		case 'modclassement' : modclassement($id, $parent, $type); break;
-		case 'modifier' : modifier($id, $lang, $titre, $chapo, $description, $postscriptum, $ligne); break;
+		case 'modifier' : modifier($id, $lang, $titre, $chapo, $description, $postscriptum, $ligne, $urlsuiv); break;
 		case 'ajouter' : ajouter($parent, $lang, $titre, $chapo, $description, $postscriptum, $ligne); break;
 		case 'supprimer' : supprimer($id, $parent);
 		case 'supprimg': supprimg($id);
@@ -75,6 +75,9 @@
 
 
 	function modifierdoc($id, $titre, $chapo, $description,$lang){
+		$tmp = new Dossier();
+		$tmp->charger($_REQUEST['id']);
+	
 		$documentdesc = new Documentdesc();
 		$documentdesc->document = $id;
 		$documentdesc->lang = $lang;
@@ -89,10 +92,14 @@
 			$documentdesc->add();
 		else 
 			$documentdesc->maj();
+
+	    header("Location: dossier_modifier.php?id=" . $tmp->id);
 	
 	}
 
 	function supprimer_document($id){
+			$tmp = new Dossier();
+			$tmp->charger($_REQUEST['id']);
 		
 			$document = new Document();
 			$document->charger($id);
@@ -102,10 +109,14 @@
 			}
 			
 			$document->supprimer();		
-		
+	
+		    header("Location: dossier_modifier.php?id=" . $tmp->id);
 	}
 
 	function ajouterdoc($dosid, $doc, $doc_name){
+
+		$tmp = new Dossier();
+		$tmp->charger($_REQUEST['id']);
 
 		if($doc != ""){
 
@@ -133,6 +144,7 @@
 			copy("$doc", "../client/document/" . $fich . "_" . $dosid . "." . $ext);
 		}
 
+ 	    header("Location: dossier_modifier.php?id=" . $tmp->id);
 
 	}
 	
@@ -144,6 +156,9 @@
 	}
 
 	function supprimerphoto($id){
+
+			$tmp = new Dossier();
+			$tmp->charger($_REQUEST['id']);
 		
 			$image = new Image();
 			$image->charger($id);
@@ -156,10 +171,16 @@
 		
 			$image->supprimer();
 			$imagedesc->delete();
+
+		    header("Location: dossier_modifier.php?id=" . $tmp->id);
 			
 	}
 
 	function modifierphoto($id, $titre, $chapo, $description,$lang){
+		$tmp = new Dossier();
+		$tmp->charger($_REQUEST['id']);
+
+
 		$imagedesc = new Imagedesc();
 		$imagedesc->image = $id;
 		$imagedesc->lang = $lang;
@@ -176,9 +197,14 @@
 		else 
 			$imagedesc->maj();
 
+	    header("Location: dossier_modifier.php?id=" . $tmp->id);
+
 	}
 
 	function ajouterphoto($id){
+
+		$tmp = new Dossier();
+		$tmp->charger($_REQUEST['id']);
 
 		if(!isset($nomorig)) $nomorig="";
 
@@ -218,7 +244,8 @@
 			copy("$photo", "../client/gfx/photos/dossier/" . $fich . "_" . $lastid . "." . $extension);
     		
 		}
-	 }
+	  }
+	    header("Location: dossier_modifier.php?id=" . $tmp->id);
 
 	}
 
@@ -234,7 +261,7 @@
 	    header("Location: listdos.php?parent=$parent");
 	}
 	
-	function modifier($id, $lang, $titre, $chapo, $description, $postscriptum, $ligne){
+	function modifier($id, $lang, $titre, $chapo, $description, $postscriptum, $ligne, $urlsuiv){
 	
 		$dossier = new Dossier();
 		$dossierdesc = new Dossierdesc();
@@ -260,8 +287,12 @@
    											
 		$dossier->maj();
 		$dossierdesc->maj();
-
-	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $dossier->id."&lang=".$lang);
+		if($urlsuiv){
+			header("location: listdos.php?parent=".$dossier->parent);
+		}
+		else{
+	    	header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $dossier->id."&lang=".$lang);
+		}
 		exit;
 
 	}
@@ -350,7 +381,7 @@
 	include_once("entete.php");
 ?>
 <div id="contenu_int">
-  <p align="left"><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="listdos.php" class="lien04">Gestion</a><a href="listdos.php" class="lien04">du contenu </a>              
+  <p><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="listdos.php" class="lien04">Gestion</a><a href="listdos.php" class="lien04">du contenu </a>              
 
     <?php
                     $parentdesc = new Dossierdesc();
@@ -392,6 +423,7 @@
 	<input type="hidden" name="id" value="<?php echo($id); ?>" /> 
  	<input type="hidden" name="lang" value="<?php echo($lang); ?>" /> 
  	<input type="hidden" name="parent" value="<?php echo($parent); ?>" /> 
+	<input type="hidden" name="urlsuiv" id="url" value="0">
 <!-- Bloc description -->
 <div id="bloc_description">
 	<!-- bloc entete de la rubrique -->   	
@@ -490,7 +522,46 @@ if($id != ""){
 ?>
 <!-- bloc photos /colonne de droite -->
 <div id="bloc_photos">
+<!-- Boite à outils -->   
 <div class="entete">
+	<div class="titre">BOITE A OUTILS</div>
+</div>
+<div class="bloc_transfert">
+	<div class="claire">
+		<div class="champs" style="padding-top:10px; width:375px;">
+			<?php
+			$query = "select max(id) as maxcount from $dossier->table where parent=$dossier->parent";
+			$resul = mysql_query($query);
+			$maxclassement = mysql_result($resul,0,"maxcount");
+			if($dossier->classement > 1){
+				$prec = $dossier->classement-1;
+				$query = "select id from $dossier->table where parent=$dossier->parent and classement=$prec";
+				$resul = mysql_query($query);
+				$idprec = mysql_result($resul,0,"id");
+			?>
+			<a href="dossier_modifier.php?id=<?php echo $idprec; ?>"><img src="gfx/precedent.png" alt="Dossier pr&eacute;c&eacute;dent" title="Dossier pr&eacute;c&eacute;dent" style="padding:0 5px 0 0;margin-top:-5px;height:38px;"/></a>
+			<?php
+			}
+			?>	
+			<!-- pour visualiser la page rubrique correspondante en ligne -->
+			<a title="Voir le dossier en ligne" href="<?php echo $site->valeur; ?>/dossier.php?id_dossier=<?php echo $dossier->id; ?>" target="_blank" ><img src="gfx/site.png" alt="Voir le dossier en ligne" title="Voir le dossier en ligne" /></a>
+			<a href="#" onclick="document.getElementById('formulaire').submit();"><img src="gfx/valider.png" alt="Enregistrer les modifications" title="Enregistrer les modifications" style="padding:0 5px 0 0;"/></a>
+			<a href="#" onclick="document.getElementById('url').value='1'; document.getElementById('formulaire').submit(); "><img src="gfx/validerfermer.png" alt="Enregistrer les modifications et fermer la fiche" title="Enregistrer les modifications et fermer la fiche" style="padding:0 5px 0 0;"/></a>
+			<?php
+				if($dossier->classement<$maxclassement){
+					$suivant = $dossier->classement+1;
+					$query = "select id from $dossier->table where parent=$dossier->parent and classement=$suivant";
+					$resul = mysql_query($query);
+					$idsuiv = mysql_result($resul,0,"id");
+			?>
+			<a href="dossier_modifier.php?id=<?php echo $idsuiv; ?>" ><img src="gfx/suivant.png" alt="Dossier suivant" title="Dossier suivant" style="padding:0 5px 0 0;"/></a>	
+			<?php
+			}
+			?>
+		</div>
+   	</div>
+</div>
+<div class="entete" style="margin-top:10px;">
 	<div class="titre">GESTION DES PHOTOS</div>
 </div>
 <!-- bloc transfert des images -->

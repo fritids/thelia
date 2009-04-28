@@ -43,12 +43,13 @@
     include_once("../classes/Zone.class.php");  
     include_once("../classes/Pays.class.php");  
     include_once("../classes/Lang.class.php");  
+	include_once("../classes/Variable.class.php");
 ?>
 <?php
 	
 	switch($action){
 		case 'modclassement' : modclassement($id, $parent, $type); break;
-		case 'modifier' : modifier($id, $lang, $dossier, $ligne, $titre, $chapo, $description, $postscriptum); break;
+		case 'modifier' : modifier($id, $lang, $dossier, $ligne, $titre, $chapo, $description, $postscriptum, $urlsuiv); break;
 		case 'ajouter' : ajouter($lang, $dossier, $ligne, $titre, $chapo, $description, $postscriptum); break;
 		case 'supprimer' : supprimer($id, $parent); break;
 		case 'ajouterphoto' : ajouterphoto($id); break;
@@ -74,6 +75,9 @@
 
 	function supprimerdoc($id){
 		
+			$tmp = new Contenu();
+			$tmp->charger($_REQUEST['id']);
+
 			$document = new Document();
 			$document->charger($id);
 			
@@ -82,9 +86,13 @@
 			}
 			
 			$document->supprimer();
+		    header("Location: contenu_modifier.php?id=" . $tmp->id);
 	}
 
 	function modifierdoc($id, $titre, $chapo, $description,$lang){
+
+		$tmp = new Contenu();
+		$tmp->charger($_REQUEST['id']);
 	
 		$documentdesc = new Documentdesc();
 		$documentdesc->document = $id;
@@ -101,9 +109,14 @@
 		else 
 			$documentdesc->maj();
 
+	    header("Location: contenu_modifier.php?id=" . $tmp->id);
+
 	}
 
 	function ajouterdoc($contenu, $doc, $doc_name){
+
+		$tmp = new Contenu();
+		$tmp->charger($_REQUEST['id']);
 
 		if($doc != ""){
 
@@ -140,6 +153,8 @@
 
 	function supprimerphoto($id){
 		
+			$tmp = new Contenu();
+			$tmp->charger($_REQUEST['id']);
 
 			$image = new Image();
 			$image->charger($id);
@@ -157,6 +172,9 @@
 	}
 
 	function modifierphoto($id, $titre, $chapo, $description,$lang){
+		$tmp = new Contenu();
+		$tmp->charger($_REQUEST['id']);
+
 		$imagedesc = new Imagedesc();
 		$imagedesc->image = $id;
 		$imagedesc->lang = $lang;
@@ -175,6 +193,9 @@
 	}
 
 	function ajouterphoto($id){
+
+		$tmp = new Contenu();
+		$tmp->charger($_REQUEST['id']);
 		
 		if(!isset($nomorig)) $nomorig="";
 	
@@ -224,7 +245,7 @@
 	}
 	
 	
-	function modifier($id, $lang, $dossier, $ligne, $titre, $chapo, $description, $postscriptum){
+	function modifier($id, $lang, $dossier, $ligne, $titre, $chapo, $description, $postscriptum, $urlsuiv){
 
 	 if(!isset($id)) $id="";
 
@@ -256,8 +277,9 @@
 											
 		$contenu->maj();
 		$contenudesc->maj();
-
-	    header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $contenu->id . "&dossier=" . $contenu->dossier ."&lang=".$lang);
+		
+		if($urlsuiv) header("location: listdos.php?parent=".$contenu->dossier);
+	    else header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $contenu->id . "&dossier=" . $contenu->dossier ."&lang=".$lang);
 		exit;
 	}
 
@@ -326,6 +348,9 @@
 	
 	$contenudesc->chapo = ereg_replace("<br/>", "\n", $contenudesc->chapo);
 	$contenudesc->postscriptum = ereg_replace("<br/>", "\n", $contenudesc->postscriptum);
+	
+	$site = new Variable();
+	$site->charger("urlsite");
 
 
 ?>
@@ -403,10 +428,11 @@
 	<input type="hidden" name="id" value="<?php echo($id); ?>" /> 
  	<input type="hidden" name="lang" value="<?php echo($lang); ?>" /> 
  	<input type="hidden" name="dossier" value="<?php echo($dossier); ?>" /> 
+	<input type="hidden" name="urlsuiv" id="url" value="0">
 
 <!-- bloc descriptif du produit -->   	
 		<div class="entete">
-			<div class="titre">DESCRIPTION GÉNÉRALE DU PRODUIT</div>
+			<div class="titre">DESCRIPTION GÉNÉRALE DU CONTENU</div>
 			<?php if($ref){
 				$site = new Variable();
 				$site->charger("urlsite");
@@ -503,7 +529,46 @@
  <?php if($id != ""){ ?>  
 <!-- bloc de gestion des photos et documents / colonne de droite -->   
 <div id="bloc_photos">
+<!-- Boite à outils -->   
 <div class="entete">
+	<div class="titre">BOITE A OUTILS</div>
+</div>
+<div class="bloc_transfert">
+	<div class="claire">
+		<div class="champs" style="padding-top:10px; width:375px;">
+			<?php
+			$query = "select count(id) as maxcount from $contenu->table where dossier=$contenu->dossier";
+			$resul = mysql_query($query);
+			$maxclassement = mysql_result($resul,0,"maxcount");
+			if($contenu->classement>1){
+				$prec = $contenu->classement-1;
+				$query = "select id from $contenu->table where dossier=$contenu->dossier and classement=$prec";
+				$resul = mysql_query($query);
+				$idprec = mysql_result($resul,0,"id");
+			?>
+			<a href="contenu_modifier.php?id=<?php echo $idprec; ?>&dossier=<?php echo $contenu->dossier; ?>"><img src="gfx/precedent.png" alt="Contenu pr&eacute;c&eacute;dent" title="Contenu pr&eacute;c&eacute;dent" style="padding:0 5px 0 0;margin-top:-5px;height:38px;"/></a>
+			<?php
+			}
+			?>	
+			<!-- pour visualiser la page rubrique correspondante en ligne -->
+			<a title="Voir le contenu en ligne" href="<?php echo $site->valeur; ?>/contenu.php?id_contenu=<?php echo $contenu->id; ?>" target="_blank" ><img src="gfx/site.png" alt="Voir le contenu en ligne" title="Voir le contenu en ligne" /></a>
+			<a href="#" onclick="document.getElementById('formulaire').submit();"><img src="gfx/valider.png" alt="Enregistrer les modifications" title="Enregistrer les modifications" style="padding:0 5px 0 0;"/></a>
+			<a href="#" onclick="document.getElementById('url').value='1'; document.getElementById('formulaire').submit();"><img src="gfx/validerfermer.png" alt="Enregistrer les modifications et fermer la fiche" title="Enregistrer les modifications et fermer la fiche" style="padding:0 5px 0 0;"/></a>
+			<?php
+			if($contenu->classement<$maxclassement){
+				$suivant = $contenu->classement+1;
+				$query = "select id from $contenu->table where dossier=$contenu->dossier and classement=$suivant";
+				$resul = mysql_query($query);
+				$idsuiv = mysql_result($resul,0,"id");
+			?>
+			<a href="contenu_modifier.php?id=<?php echo $idsuiv; ?>&dossier=<?php echo $contenu->dossier; ?>" ><img src="gfx/suivant.png" alt="Contenu suivant" title="Contenu suivant" style="padding:0 5px 0 0;"/></a>	
+			<?php
+			}
+			?>
+		</div>
+   	</div>
+</div>
+<div class="entete" style="margin-top:10px;">
 	<div class="titre">GESTION DES PHOTOS</div>
 </div>
 <!-- bloc transfert des images -->
@@ -539,17 +604,17 @@
 				$imagedesc->charger($row->id,$lang);
    ?>
 		<form action="contenu_modifier.php" method="POST">
-		<input type="hidden" name="action" value="modifier" />
+		<input type="hidden" name="action" value="modifierphoto" />
 		<input type="hidden" name="id_photo" value="<?php echo $row->id; ?>" />
 		<input type="hidden" name="id" value="<?php echo $id; ?>" />
 		<input type="hidden" name="lang" value="<?php echo $lang; ?>">
-		<input type="hidden" name="dossier" value="<?php echo $dossier; ?>">
+		<input type="hidden" name="dossier" value="<?php echo $contenu->dossier; ?>">
 
 
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:208px;">&nbsp;</div>
 				<div class="cellule_photos" style="height:200px; overflow:hidden;"><img src="../fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/<?php echo($row->fichier); ?>&width=&height=200&opacite=&nb=" border="0" / ></div>
-				<div class="cellule_supp"><a href="contenu_modifier.php?id_photo=<?php echo($row->id); ?>&id=<?php echo($id); ?>&action=supprimerphoto$lang=<?php echo $lang; ?>&dossier=<?php echo $dossier; ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
+				<div class="cellule_supp"><a href="contenu_modifier.php?id_photo=<?php echo($row->id); ?>&id=<?php echo($id); ?>&action=supprimerphoto&lang=<?php echo $lang; ?>&dossier=<?php echo $dossier; ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
 			</li>
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:30px;">Titre</div>

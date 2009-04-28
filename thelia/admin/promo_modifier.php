@@ -128,6 +128,12 @@ pourcentage</li>
 </form>
 </div>   
 
+<div class="patchplugin">
+<?php 
+	admin_inclure("promomodifier"); 
+?>
+</div>
+
 </div>
 <!-- fin du bloc description -->
    

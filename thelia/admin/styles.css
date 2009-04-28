@@ -10,7 +10,6 @@ body {
 	background-image: url(gfx/fondPage.jpg);
 	background-repeat: repeat-x;
 	color: #1d364e;
-	overflow:scroll;
 }
 
 img {
@@ -77,10 +76,11 @@ a:hover {
 
 #subwrapper {
 	overflow: hidden;
-	position: relative;
+	position: static;
 	padding: 0;
 	width: 1000px;
 }
+
 /* ------Bloc entete des pages---- */
 #entete{
 	float: left;
@@ -89,8 +89,8 @@ a:hover {
 	padding: 0;
 	color: #9b9b9b;
 	font-size:12px;
+	overflow: hidden;
 }
-
 #entete a:link {
 	color: #9b9b9b;
 	text-decoration: underline;
@@ -148,7 +148,7 @@ a:hover {
 
 
 
-/* ---- Menu général---- */
+/* ---- Menu principal horizontal dans entete.php---- */
 #menuGeneral {
     float: left;
 	margin:0px;
@@ -160,39 +160,13 @@ a:hover {
     color: #fff;
     font-weight: bold;
     font-size: 13px;
+    overflow: hidden;
 }
-#footerPage {
-    float: left;
-	margin:0px 0 20px 0;
-	padding:0px;
-	width: 1000px;
-	height: 22px;
-	background-image: url(gfx/footer_page.png);
-    background-repeat: no-repeat;
-    background-position: bottom left;
-}
-#formConnex {
-        float:left;
-        color: #2F3D46;
-        width: 966px;
-        height: 24px;
-        padding: 10px 5px;
-        margin:0;
-        text-align: right;
-}
-
 ul, li {
         margin: 0;
         padding: 0;
         list-style-type: none;
 }
-
-#menu {
-        position: relative;
-        padding: 0;
-        margin: 0;
-}
-
 ul#menu {
 		float: left;
 		margin:0;
@@ -505,7 +479,7 @@ ul#menu7 li .selected {
 		background-repeat: no-repeat;
 		width:90px;
 }
-.bouton_separation {
+ul.separation_menu {
         float:left;
         margin:0;
         padding:0px;
@@ -513,6 +487,7 @@ ul#menu7 li .selected {
         background-repeat: no-repeat;
         width: 2px;
         height: 36px;
+        overflow: hidden;
 }
 #moteur_recherche {
 		float: left;
@@ -646,7 +621,74 @@ a.lien04:hover {
 	font-weight: normal;
 }
 
+/* anciens styles à conserver pour les plugins */
+.titre_cellule {
+	font-size: 11px;
+	color: #3B4B5B;
+	background-color: #9DACB6;
+	padding-left: 5px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #FFFFFF;
+	font-style: italic;
+}
+.cellule_claire {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #3B4B5B;
+	background-color: #D4DADD;
+	padding-left: 5px;
+	border-bottom: 1px dotted #9DACB6;
+	z-index: 1;
+}
+.cellule_sombre {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #3B4B5B;
+	background-color: #EBEDEE;
+	padding-left: 5px;
+	border-bottom: 1px dotted #9DACB6;
+	z-index: 1;
+}
+.cellule_sombre_vide {
+	background-color: #EBEDEE;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #9DACB6;
+}
+.cellule_claire_vide {
+	background-color: #D4DADD;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #9DACB6;
+}
 
+.titre_cellule_tres_sombre {
+	float: left;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	background-color: #868f99;
+	padding:2px 0 0 7px;
+	border-bottom: 1px dotted #9DACB6;
+	border-top: 3px solid #bdf66f;
+	height: 20px;
+	width: 581px;;
+	overflow: hidden;
+}
+/* fin des anciens styles à conserver pour les plugins */
+.entete_general {
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #868f99;
+	padding:8px 0 0 7px;
+	border-bottom: 1px dotted #9DACB6;
+	border-top: 3px solid #faa400;
+	text-align:left;
+	height: 20px;
+}
 
 .entete_liste {
 	font-size: 12px;
@@ -851,6 +893,7 @@ div#resultat {
 	float: left;
 	width: 304px;
 	margin: 0 11px 0 11px;
+	_margin: 0 11px 0 5px;
 	padding: 0;
 }
 #bloc_informations li {
@@ -960,6 +1003,7 @@ div#resultat {
 	background-image: url(gfx/degrade_ligne1.png);
 	background-repeat: repeat-x;
 	font-weight: normal;
+	text-align: left;
 }
 
 #bloc_description table tr .claire {
@@ -981,6 +1025,7 @@ border-bottom: 1px dotted #D4DADD;
 background-color: #9eb0be;
 border-bottom: 1px dotted #D4DADD;
 vertical-align: top;
+text-align: left;
 }
 #bloc_description .note {
 font-size: 10px;
@@ -1308,11 +1353,24 @@ margin: 0px 3px;
 	background-color: #D4DADD;
 	border:1px solid #3b4b5b;
 }
+#blocs_pliants_photo .cellule_document {
+	float: left;
+	padding: 0px 0 0 0px;
+	margin: 5px 0 0 7px;
+	width: 220px;
+	background-color: #D4DADD;
+}
 #blocs_pliants_photo .cellule_supp {
 	float: left;
 	width: 14px;
 	height:108px; 
 	padding:105px 0 0 2px;
+	background-color: #D4DADD;
+}
+#blocs_pliants_photo .cellule_suppdocument {
+	float: left;
+	width: 14px;
+	padding:10px 0 0 2px;
 	background-color: #D4DADD;
 }
 
@@ -1507,6 +1565,26 @@ margin: 0px 3px;
 }
 
 /* pied de page */
+#footerPage {
+    float: left;
+	margin:0px 0 20px 0;
+	padding:0px;
+	width: 1000px;
+	height: 22px;
+	background-image: url(gfx/footer_page.png);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}
+#formConnex {
+        float:left;
+        color: #2F3D46;
+        width: 966px;
+        height: 24px;
+        padding: 10px 5px;
+        margin:0;
+        text-align: right;
+        overflow: hidden;
+}
 
 .footer {
 	float: left;
@@ -1718,4 +1796,9 @@ z-index: 100;
 	float: left;
 	padding: 17px 7px 0 7px;
 	border-left:1px solid #C4CACE;
+}
+
+.patchplugin {
+	width: 589px; 
+	overflow: auto;
 }

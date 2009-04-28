@@ -32,6 +32,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <?php include_once("title.php");?>
+<script src="../lib/jquery/jquery.js" type="text/javascript"></script>
+<script src="../lib/jquery/jeditable.js" type="text/javascript"></script>
+<script src="../lib/jquery/menu.js" type="text/javascript"></script>
 
 <?php
 	include_once("../classes/Client.class.php");
@@ -74,16 +77,15 @@ function supprimer_rubrique(id, parent){
 <div id="contenu_int"> 
     <p><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">R&eacute;sultats de la recherche </a>              
     </p>
-
-<div class="entete_liste_client">
-	<div class="titre">LISTE DES RESULTATS</div>
+<div class="entete_general">
+	<div class="titre">RESULTATS CLIENT</div>
 </div>
 <ul id="Nav">
-		<li style="width:151px;">N&deg; de client</li>
-		<li style="width:151px; border-left:1px solid #96A8B5;">Nom</li>
-		<li style="width:130px; border-left:1px solid #96A8B5;">Pr&eacute;nom</li>
-		<li style="width:149px; border-left:1px solid #96A8B5;">E-mail</li>	
-		<li style="width:79px; border-left:1px solid #96A8B5;"></li>
+		<li style="width:160px;">N&deg; de client</li>
+		<li style="width:200px; border-left:1px solid #96A8B5;">Nom</li>
+		<li style="width:200px; border-left:1px solid #96A8B5;">Pr&eacute;nom</li>
+		<li style="width:305px; border-left:1px solid #96A8B5;">E-mail</li>	
+		<li style="width:50px; border-left:1px solid #96A8B5;">&nbsp;</li>
 </ul>
     <?php
     	$i=0;
@@ -93,51 +95,42 @@ function supprimer_rubrique(id, parent){
  	$query = "select * from $client->table where 1 $search";
   	$cliresul = mysql_query($query, $client->link);
   	$clilist="";
-  	
-  	if(!($i%2)) $fond="ligne_claire_rub";
+   	while($row = mysql_fetch_object($cliresul)){
+  		$clilist .= "'$row->id', ";
+  		
+		if(!($i%2)) $fond="ligne_claire_rub";
   		else $fond="ligne_fonce_rub";
   		$i++;
-  	
-  	while($row = mysql_fetch_object($cliresul)){
-  		$clilist .= "'$row->id', ";
   		
   	?>
   	<ul class="<?php echo($fond); ?>">
-	<li style="width:151px;"><a href="commande.php?client=<?php echo($row->id); ?>"><?php echo($row->ref); ?></a></li>
-	<li style="width:151px;"><?php echo($row->nom); ?></li>
-	<li style="width:130px;"><?php echo($row->prenom); ?></li>
-	<li style="width:79px;"><a href="mailto:<?php echo($row->email); ?>"><?php echo($row->email); ?></a></li>
-	<li style="width:59px;"><a href="client_visualiser.php?ref=<?php echo($row->ref); ?>">Parcourir</a></li>
+	<li style="width:152px;"><a href="commande.php?client=<?php echo($row->id); ?>"><?php echo($row->ref); ?></a></li>
+	<li style="width:193px;"><?php echo($row->nom); ?></li>
+	<li style="width:193px;"><?php echo($row->prenom); ?></li>
+	<li style="width:298px;"><a href="mailto:<?php echo($row->email); ?>"><?php echo($row->email); ?></a></li>
+	<li><a href="client_visualiser.php?ref=<?php echo($row->ref); ?>">&eacute;diter</a></li>
 	
 	</ul>
+
  <?php
 	}
 	
 	$clilist = substr($clilist, 0, strlen($clilist)-2);
  ?>
- <div class="entete_liste_client">
-	<div class="titre">LISTE DES RESULTATS</div>
+
+ 
+ <div class="entete_general" style="margin:10px 0 0 0">
+	<div class="titre">RESULTATS COMMANDE</div>
 </div>
 <ul id="Nav">
-		<li style="width:151px;">N&deg; de commande</li>
-		<li style="width:151px; border-left:1px solid #96A8B5;">Date</li>
-		<li style="width:130px; border-left:1px solid #96A8B5;">Nom</li>
-		<li style="width:149px; border-left:1px solid #96A8B5;">Montant</li>	
-		<li style="width:79px; border-left:1px solid #96A8B5;">Statut</li>
-		<li style="width:79px; border-left:1px solid #96A8B5;">Suppr.</li>
+		<li style="width:160px;">N&deg; de commande</li>
+		<li style="width:200px; border-left:1px solid #96A8B5;">Date</li>
+		<li style="width:200px; border-left:1px solid #96A8B5;">Nom</li>
+		<li style="width:200px; border-left:1px solid #96A8B5;">Montant</li>	
+		<li style="width:100px; border-left:1px solid #96A8B5;">Statut</li>
+		<li style="width:20px; border-left:1px solid #96A8B5;">Suppr.</li>
 </ul>
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="134" height="30" class="titre_cellule">N&deg; DE COMMANDE</td>
-       <td width="134" class="titre_cellule"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($page); ?>&classement=date" class="lien_titre_cellule">DATE</a></td>
-       <td width="116" class="titre_cellule"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($page); ?>&classement=client" class="lien_titre_cellule">NOM</a></td>
-       <td width="116" class="titre_cellule">MONTANT</td>
-       <td width="79" class="titre_cellule"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($page); ?>&classement=statut" class="lien_titre_cellule">STATUT</a></td>
-       <td width="71" class="titre_cellule">SUPPRESSION</td>
-     </tr>
-
-  
-  <?php
+    <?php
   
   	$search="";
   	
@@ -146,7 +139,7 @@ function supprimer_rubrique(id, parent){
   	$commande = new Commande();
   	
   	
-  	
+  	$i=0;
   	$jour = substr($motcle, 0, 2);
   	$mois = substr($motcle, 3,2);
   	$annee = substr($motcle, 6);
@@ -186,36 +179,38 @@ function supprimer_rubrique(id, parent){
   		$minute = substr($row->date, 14, 2);
   		$seconde = substr($row->date, 17, 2);
   		
+  		if(!($i%2)) $fond="ligne_claire_rub";
+  		else $fond="ligne_fonce_rub";
+  		$i++;
+  		
   ?>
-       <tr>
-       <td height="30" class="<?php echo($fond); ?>"><a href="commande_details.php?ref=<?php echo($row->ref); ?>" class="txt_vert_11"><?php echo($row->ref); ?></a></td>
-       <td class="<?php echo($fond); ?>"><span class="geneva11bol_3B4B5B">
-         <?php echo($jour . "/" . $mois . "/" . $annee . " " . $heure . ":" . $minute . ":" . $seconde); ?></span>
-       </td>
-       <td class="<?php echo($fond); ?>"><a href="client_visualiser.php?ref=<?php echo($client->ref); ?>" class="txt_vert_11"><?php echo($client->nom . " " . $client->prenom); ?></a></td>
-       <td class="<?php echo($fond); ?>"><span class="geneva11bol_3B4B5B"><?php echo($total); ?></span></td>
-       <td class="<?php echo($fond); ?>"> <span class="geneva11bol_3B4B5B"><?php echo($statutdesc->titre); ?></span></td>
-       <td class="<?php echo($fond); ?>">
-         <div align="center"><a href="#" onclick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
-       </td>
-      </tr>
+  		<ul class="<?php echo($fond); ?>">
+			<li style="width:152px;"><a href="commande_details.php?ref=<?php echo($row->ref); ?>"><?php echo($row->ref); ?></a></li>
+			<li style="width:193px;"><?php echo($jour . "/" . $mois . "/" . $annee . " " . $heure . ":" . $minute . ":" . $seconde); ?></li>
+			<li style="width:193px;"><a href="client_visualiser.php?ref=<?php echo($client->ref); ?>"><?php echo($client->nom . " " . $client->prenom); ?></a></li>
+			<li style="width:193px;"><?php echo($total); ?></li>
+			<li style="width:93px;"><?php echo($statutdesc->titre); ?></li>
+			<li><a href="#" onclick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
+		</ul>
+
 
  <?php
 
 	}
  ?>
-   </table>
-   <br />
+ <div class="entete_general" style="margin:10px 0 0 0">
+	<div class="titre">RESULTATS PRODUITS</div>
+</div>
+<ul id="Nav">
+		<li style="width:160px;">R&eacute;f&eacute;rence</li>
+		<li style="width:408px; border-left:1px solid #96A8B5;">Titre</li>
+		<li style="width:308px; border-left:1px solid #96A8B5;">Prix</li>	
+		<li style="width:20px; border-left:1px solid #96A8B5;">Suppr.</li>
+</ul>
+
    <table width="100%" border="0" cellpadding="5" cellspacing="0">
-     <tr>
-       <td width="179" height="30" class="titre_cellule">REF </td>
-       <td width="179" class="titre_cellule">TITRE</td>
-       <td width="242" class="titre_cellule">PRIX</td>
-       <td width="70" class="titre_cellule">SUPPRESSION</td>
-     </tr>
-  
   <?php
-  
+  	$i=0;
   	$search="";
 
   	$search .= "and ref like '%$motcle%'";
@@ -273,16 +268,17 @@ function supprimer_rubrique(id, parent){
   	while($row = mysql_fetch_object($resul)){
   	
   		$produitdesc->charger($row->id);
+  	if(!($i%2)) $fond="ligne_claire_rub";
+  		else $fond="ligne_fonce_rub";
+  		$i++;
 
   ?>
-       <tr>
-       <td height="30" class="<?php echo($fond); ?>"><a href="produit_modifier.php?ref=<?php echo($row->ref); ?>&rubrique=<?php echo($row->rubrique); ?>" class="txt_vert_11"><?php echo($row->ref); ?></a></td>
-       <td class="<?php echo($fond); ?>"><span class="geneva11bol_3B4B5B"><?php echo($produitdesc->titre); ?></span></td>
-       <td class="<?php echo($fond); ?>"><span class="geneva11bol_3B4B5B"><?php echo($row->prix); ?></span></td>
-       <td class="<?php echo($fond); ?>">
-         <div align="center"><a href="javascript:supprimer_produit('<?php echo $row->ref ?>','<?php echo($row->rubrique); ?>')" class="txt_vert_11"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
-       </td>
-      </tr>
+  <ul class="<?php echo($fond); ?>">
+	<li style="width:152px;"><a href="produit_modifier.php?ref=<?php echo($row->ref); ?>&rubrique=<?php echo($row->rubrique); ?>"><?php echo($row->ref); ?></a></li>
+	<li style="width:400px;"><?php echo($produitdesc->titre); ?></li>
+	<li style="width:303px;"><?php echo($row->prix); ?></li>
+	<li style="width:20px;"><a href="javascript:supprimer_produit('<?php echo $row->ref ?>','<?php echo($row->rubrique); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
+</ul>
 
  <?php
 	}

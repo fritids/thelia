@@ -312,7 +312,7 @@ function supprimer(id){
 </li>
 
 <!-- bloc de gestion des filleuls du client -->  
-	<li style="margin:0 0 10px 0">
+	<li style="margin:10px 0 10px 0">
 		<h3 class="head" style="padding:6px 7px 0 7px; border-top: 3px solid #de2b9b; height: 21px;"><a href="#">LISTE DES FILLEULS DE CE CLIENT</a></h3>
 		<ul>
 			<li class="ligne1">
