@@ -116,7 +116,7 @@
 			<li style="width:94px; border-left:1px solid #96A8B5;"><input name="identifiant" type="text" class="form" value="<?php echo($row->identifiant); ?>" size="11" /></li>
 			<li style="width:82px; border-left:1px solid #96A8B5;"><input name="motdepasse1" id="motdepasse1<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
 			<li style="width:82px; border-left:1px solid #96A8B5;"><input name="motdepasse2" id="motdepasse2<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
-			<li style="width:75px; border-left:1px solid #96A8B5;"><a href="#" onclick="document.getElementById('formvariable<?php echo($row->id); ?>').submit();">modifier</a></li>
+			<li style="width:75px; border-left:1px solid #96A8B5;"><a href="#" onclick="document.getElementById('formadmin<?php echo($row->id); ?>').submit();">modifier</a></li>
 			<li style="width:13px; border-left:1px solid #96A8B5; text-align:right;"><a href="#" onclick="supp('<?php echo $row->id; ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 		</ul>
  	<input type="hidden" name="action" value="modifier" />

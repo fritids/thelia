@@ -94,7 +94,11 @@
 	//	$totalht = round($total*100/(100+$tva), 2);
 		
         $totcmdportht = $totalht+$port;
-		$tva = $total-$totalht;
+		if($pays->tva != "" && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != "")))
+			$tva = 0;
+		else
+			$tva = $total-$totalht;
+			
 		$totalht = number_format($totalht, 2, ".", "");
 		$total = number_format($total, 2, ".", "");
 		$port = number_format($port, 2, ".", "");
