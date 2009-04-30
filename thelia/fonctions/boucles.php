@@ -420,6 +420,7 @@
 				$temp = str_replace("#DESCRIPTION",  $imagedesc->description, $temp);	
 				$temp = str_replace("#COMPT", "$compt", $temp);
 				$temp = str_replace("#NOMCACHE", "$nomcache", $temp);
+				$temp = str_replace("#CACHE", "$nomcache", $temp);
 				
 			$compt++;
 				
