@@ -1,5 +1,7 @@
+Arnaud Pachot <apachot@openstudio.fr>
 Elodie Montel <montel.elodie@gmail.com>
 Matthieu Mallet <matthieu.mallet@gmail.com>
+Mathieu Rastoix <rastoix.m@hotmail.fr>
 David Aubel Raimbault <David.raimbault@ifrance.com>
 Abdellah TOUIL <abdellah31@yahoo.fr>
 Manuel Raynaud <manu@octolys.fr>
@@ -10,8 +12,8 @@ Mathieu Chabannat <chabannatm@gmail.com>
 Simon Arnal <arnal_simon@hotmail.com>
 Hubert Blein, Pixelsmill <contact@pixelsmill.com>
 Karim Belkacem <karim@ergonomind.com>
-RoD
-JHR 
+Rodolphe - www.tuxy.fr 
+Jean (Henri) Reber <ordinat.eure@free.fr> 
 Jean-Baptiste BILLOT <ottoroots@gmail.com>
 
 Un grand merci aussi à tous les contributeurs de contrib.thelia.fr

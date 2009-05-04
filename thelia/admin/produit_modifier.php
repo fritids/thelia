@@ -745,8 +745,7 @@
 <?php include_once("title.php"); ?>
 
 <script type="text/javascript">
-
-
+<!--
 	function envoyer(){
 		if(document.getElementById('ref_c').value == "") alert("Veuillez entrer une reference");
 		else document.getElementById('formulaire').submit();
@@ -791,6 +790,7 @@
 	            })
 	    }
 	}
+-->
 </script>
 
 <?php include_once("js/accessoire.php"); ?>
@@ -819,7 +819,7 @@
 	include_once("entete.php");
 ?>
 <div id="contenu_int">
-  <p><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /></a><a href="parcourir.php" class="lien04">Gestion du catalogue</a>               
+  <p><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" alt="-" /><a href="parcourir.php" class="lien04">Gestion du catalogue</a>               
    
     <?php
                     $parentdesc = new Rubriquedesc();
@@ -836,11 +836,11 @@
 				if($rubrique){
 			
 			?>	
-					<img src="gfx/suivant.gif" width="12" height="9" border="0" />
+					<img src="gfx/suivant.gif" width="12" height="9" border="0" alt="-" />
 			<?php	
 				}
 				while($tot --){
-			?><a href="parcourir.php?parent=<?php echo($res[$tot+1]->rubrique); ?>" class="lien04"><?php echo($res[$tot+1]->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />                             
+			?><a href="parcourir.php?parent=<?php echo($res[$tot+1]->rubrique); ?>" class="lien04"><?php echo($res[$tot+1]->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" alt="-" />                             
             <?php
             	}
             
@@ -852,7 +852,7 @@
 					$parentnom = $parentdesc->titre;	
 					
 			?>
-			<a href="parcourir.php?parent=<?php echo($parentdesc->rubrique); ?>" class="lien04"><?php echo($parentdesc->titre); ?></a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /> 
+			<a href="parcourir.php?parent=<?php echo($parentdesc->rubrique); ?>" class="lien04"><?php echo($parentdesc->titre); ?></a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" alt="-" /> 
 
 			 <?php if( $ref) { ?>
 			<?php echo($produitdesc->titre); ?> / &nbsp;
@@ -860,12 +860,12 @@
 
 <!-- Début de la colonne de gauche / bloc de la fiche produit -->  
 <div id="bloc_description">
- <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" id="formulaire" ENCTYPE="multipart/form-data">
+ <form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" id="formulaire" enctype="multipart/form-data">
 	<input type="hidden" name="action" value="<?php if(!$ref) { ?>ajouter<?php } else { ?>modifier<?php } ?>" />
 	<input type="hidden" name="ref" value="<?php echo($ref); ?>" /> 
  	<input type="hidden" name="lang" value="<?php echo($lang); ?>" /> 
  	<input type="hidden" name="rubrique" value="<?php echo($produit->rubrique); ?>" /> 
-	<input type="hidden" name="urlsuiv" id="url" value="0">
+	<input type="hidden" name="urlsuiv" id="url" value="0" />
 
 <!-- bloc descriptif du produit -->   	
 		<div class="entete">
@@ -878,7 +878,7 @@
 		<?php
 		if($ref){
 			?>
-			<th style="padding-top:10px;"><?php echo($produit->ref); ?><input type="hidden" id="ref_c" value="<?php echo($produit->ref); ?>"></th>
+			<th style="padding-top:10px;"><?php echo($produit->ref); ?><input type="hidden" id="ref_c" value="<?php echo($produit->ref); ?>" /></th>
 			<?php
 		}
 		else{
@@ -899,7 +899,7 @@
 									$langl->charger($row->id);
 						    ?>
 						  
-						  		 <div class="flag"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?ref=<?php echo($ref); ?>&rubrique=<?php echo($rubrique); ?>&lang=<?php echo($langl->id); ?>"><img src="gfx/lang<?php echo($langl->id); ?>.gif" /></a></div>
+						  		 <div class="flag"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?ref=<?php echo($ref); ?>&amp;rubrique=<?php echo($rubrique); ?>&amp;lang=<?php echo($langl->id); ?>"><img src="gfx/lang<?php echo($langl->id); ?>.gif" alt="-" /></a></div>
 						  		 
 						  <?php } ?>
         
@@ -907,7 +907,7 @@
    	</tr>
    	<tr class="claire">
         <td class="designation">Titre</td>
-        <td><input name="titre" id="titre" type="text" class="form_long" value="<?php echo($produitdesc->titre); ?>"></td>
+        <td><input name="titre" id="titre" type="text" class="form_long" value="<?php echo($produitdesc->titre); ?>" /></td>
    	</tr>
    	<tr class="fonce">
         <td class="designation">Chapo<br /> <span class="note">(courte description d'introduction)</span></td>
@@ -945,19 +945,19 @@
         <th width="133" class="designation">Prix TTC</th>
         <th width="133"><input name="prix" id="prix" type="text" class="form_court" value="<?php echo($produit->prix); ?>" /></th>
         <th class="designation" width="133" >Nouveauté</th>
-        <th width="133"><input name="nouveaute" id="nouveaute" type="checkbox" class="form" <?php if($produit->nouveaute) echo "checked"; ?> /></th>
+        <th width="133"><input name="nouveaute" id="nouveaute" type="checkbox" class="form" <?php if($produit->nouveaute) echo "checked=\"checked\""; ?> /></th>
    	</tr>
    	<tr class="fonce">
         <td class="designation">Prix en promo TTC</td>
         <td><input name="prix2" id="prix2" type="text" class="form_court" value="<?php echo($produit->prix2); ?>" /></td>
         <td class="designation">En promotion</td>
-        <td><input name="promo" id="promo" type="checkbox" class="form" <?php if($produit->promo) echo "checked"; ?> /></td>
+        <td><input name="promo" id="promo" type="checkbox" class="form" <?php if($produit->promo) echo "checked=\"checked\""; ?> /></td>
    	</tr>
    		<tr class="claire">
         <td class="designation">TVA</td>
         <td><input name="tva" id="tva" type="text" class="form_court" value="<?php echo($tva); ?>" /></td>
         <td class="designation">En ligne</td>
-        <td><input name="ligne" id="ligne" type="checkbox" class="form" <?php if($produit->ligne || $produit->ligne == "") echo "checked"; ?> /></td>
+        <td><input name="ligne" id="ligne" type="checkbox" class="form" <?php if($produit->ligne || $produit->ligne == "") echo "checked=\"checked\""; ?> /></td>
    	</tr>
    		<tr class="fonce">
         <td class="designation">Poids</td>
@@ -982,8 +982,9 @@
 <ul id="blocs_pliants_prod">
 <!-- bloc de gestion des caractéristiques ajoutés -->  
 	<li style="margin:0 0 10px 0">
-		<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">CARACTÉRISTIQUES AJOUTÉES</a></h3>
+	<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">CARACTÉRISTIQUES AJOUTÉES</a></h3>
 	<ul>
+	
 	 <?php
    	
    	$rubcaracteristique = new Rubcaracteristique();
@@ -1022,7 +1023,7 @@
      		 	$caracdispdesc->charger_caracdisp($row2->id);
           		$caracval->charger_caracdisp($produit->id, $row2->caracteristique, $caracdispdesc->caracdisp);
 
-     			if( $caracdispdesc->caracdisp == $caracval->caracdisp) $selected="selected"; else $selected="";
+     			if( $caracdispdesc->caracdisp == $caracval->caracdisp) $selected="selected=\"selected\""; else $selected="";
      	?>
           <option value="<?php echo($caracdispdesc->caracdisp); ?>" <?php echo($selected); ?>>
             <?php echo($caracdispdesc->titre); ?>            </option>
@@ -1034,14 +1035,15 @@
 
 			</li>
 	<?php } ?>
-	<h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
+	<li><h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" alt="-" /></a></h3></li>
 	</ul>
+	
 	</li>
 <!-- bloc de gestion des déclinaisons simple -->  
 	<li style="margin:0 0 10px 0">
 		<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">GESTION DES DECLINAISONS</a></h3>
-
 	<ul>
+
      <?php
    	
    	$rubdeclinaison = new Rubdeclinaison();
@@ -1066,9 +1068,11 @@
 				<div class="cellule" style="width:300px;"><?php echo($declinaisondesc->titre); ?></div>
 				<div class="cellule" style="width:80px;">Stock</div>
 				<div class="cellule" style="width:80px;">Surplus</div>
+				
+				<input type="hidden" name="typedeclit<?php echo($row->declinaison); ?>" value="c" />	
 			</li>
     
-        <input type="hidden" name="typedeclit<?php echo($row->declinaison); ?>" value="c" />
+        
           <?php while($row2 = mysql_fetch_object($resul2)){ 
      		 	$declidispdesc->charger_declidisp($row2->id);
      		 	
@@ -1084,35 +1088,40 @@
 				<div class="cellule" style="width:300px; padding: 5px 0 0 5px;"><?php echo($declidispdesc->titre); ?></div>
 				<div class="cellule_prix" style="padding: 5px 0 0 5px;"><input type="text" name="stock<?php echo($row2->id); ?>" value="<?php echo($stock->valeur); ?>" size="4" class="form" /></div>
 				<div class="cellule_prix" style="padding: 5px 0 0 5px;"><input type="text" name="surplus<?php echo($row2->id); ?>" value="<?php echo($stock->surplus); ?>" size="4" class="form" /></div>
-				<div class="cellule_prix"  style="padding: 5px 0 0 5px;"><?php if($res) { ?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&produit=<?php echo($produitdesc->produit); ?>&rubrique=<?php echo($rubrique); ?>&action=acdec&id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">Activer</a> <?php } else {?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&produit=<?php echo($produitdesc->produit); ?>&rubrique=<?php echo($rubrique); ?>&action=desdec&id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">D&eacute;sactiver</a> <?php } ?></div>
+				<div class="cellule_prix"  style="padding: 5px 0 0 5px;"><?php if($res) { ?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&amp;produit=<?php echo($produitdesc->produit); ?>&amp;rubrique=<?php echo($rubrique); ?>&amp;action=acdec&amp;id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">Activer</a> <?php } else {?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&amp;produit=<?php echo($produitdesc->produit); ?>&amp;rubrique=<?php echo($rubrique); ?>&amp;action=desdec&amp;id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">D&eacute;sactiver</a> <?php } ?></div>
 			</li>
 	<?php } ?>
 	<?php } ?> 
-		<h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
+		<li><h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" alt="-" /></a></h3></li>
 		</ul>
+		
 	</li>
 
 <!-- bloc de gestion des accessoires -->  
 
 			<li style="margin:0 0 10px 0">
-			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">
-			GESTION DES ACCESSOIRES</a></h3>
+			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">GESTION DES ACCESSOIRES</a></h3>
 			<ul>
+			
 				<li class="ligne1">
 					<div class="cellule">
-					<select class="form_select" id="accessoire_rubrique" onChange="charger_listacc(this.value);">
+					<select class="form_select" id="accessoire_rubrique" onchange="charger_listacc(this.value);">
 			     	<option value="">&nbsp;</option>
 			     	 <?php 
 	 					echo arbreOption(0, 1, 0); 
 				 	 ?>  
 					</select></div>
+					
 					<div class="cellule">
 					<select class="form_select" id="select_prodacc">
+					<option value="">&nbsp;</option>
 					</select>
 					</div>
+					
 					<div class="cellule"><a href="javascript:accessoire_ajouter(document.getElementById('select_prodacc').value)">AJOUTER</a></div>
 				</li>
-	<div id="accessoire_liste">		
+	<li id="accessoire_liste">
+		<ul>
 		<?php	
                 $accessoire = new Accessoire();
                 $produita = new Produit();
@@ -1142,15 +1151,15 @@
         	 <li class="<?php echo $fond; ?>">
 				<div class="cellule" style="width:260px;"><?php echo $rubadesc->titre; ?></div>
 				<div class="cellule" style="width:260px;"><?php echo $produitdesca->titre; ?></div>
-				<div class="cellule_supp"><a href="javascript:accessoire_supprimer(<?php echo $row->id; ?>)"><img src="gfx/supprimer.gif" /></a></div>
+				<div class="cellule_supp"><a href="javascript:accessoire_supprimer(<?php echo $row->id; ?>)"><img src="gfx/supprimer.gif" alt="-" /></a></div>
 			</li>
 
         <?php
                 }
         ?>
-        			
-	</div>
-		<h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
+        </ul>		
+	</li>
+		<li><h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" alt="-" /></a></h3></li>
 
 		</ul>		
 		
@@ -1163,21 +1172,25 @@
 			<ul>
 				<li class="ligne1">
 					<div class="cellule">
-					<select class="form_select" id="contenuassoc_dossier" onChange="charger_listcont(this.value, 1,'<?php echo $produit->ref; ?>');">
+					<select class="form_select" id="contenuassoc_dossier" onchange="charger_listcont(this.value, 1,'<?php echo $produit->ref; ?>');">
 			     	<option value="">&nbsp;</option>
 			     	 <?php 
 	 					echo arbreOption_dos(0, 1, 0);
 	 				?>
 					</select></div>
+					
 					<div class="cellule">
 					<select class="form_select" id="select_prodcont">
+					<option value="">&nbsp;</option>
 					</select>
 					</div>
+					
 					<div class="cellule"><a href="javascript:contenu_ajouter(document.getElementById('select_prodcont').value, 1,'<?php echo $produit->ref; ?>')">AJOUTER</a></div>
 				</li>
 			
 
-	<div id="contenuassoc_liste">		
+				<li id="contenuassoc_liste">
+					<ul>
 		<?php	
                 $contenuassoc = new Contenuassoc();
                 $contenua = new Contenu();
@@ -1207,29 +1220,30 @@
         	 <li class="<?php echo $fond; ?>">
 				<div class="cellule" style="width:260px;"><?php echo $dossierdesc->titre; ?></div>
 				<div class="cellule" style="width:260px;"><?php echo $contenuadesc->titre; ?></div>
-				<div class="cellule_supp"><a href="javascript:contenuassoc_supprimer(<?php echo $row->id; ?>, 1,'<?php echo $produit->ref; ?>')"><img src="gfx/supprimer.gif" /></a></div>
+				<div class="cellule_supp"><a href="javascript:contenuassoc_supprimer(<?php echo $row->id; ?>, 1,'<?php echo $produit->ref; ?>')"><img src="gfx/supprimer.gif" alt="-" /></a></div>
 			</li>
 
         <?php
                 }
         ?>
-        			
-	</div>
+				</ul>			
+	
+	</li>
 	
 
-			<h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
+	<li><h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" alt="-" /></a></h3></li>
 
 		</ul>		
 		
 	</li>
-
+	
 
 <!-- bloc d'informations sur le produit --> 
-<div class="patchplugin">
+<li class="patchplugin">
 <?php 
 	admin_inclure("produitmodifier"); 
 ?>
-</div>
+</li>
 
 	<?php
 	
@@ -1250,19 +1264,18 @@
 			<ul>
 				<li class="lignesimple">
 					<div class="cellule_designation" style="width:128px; padding:5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">ID</div>
-					<div class="cellule" style="width:450px; padding: 5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;"><?php echo($produit->id); ?></div>
+					<div class="cellule" style="width:450px; padding: 5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;"><?php echo($produit->id); ?></div>	
 				</li>
 			
 			<li class="lignesimple">
 				<div class="cellule_designation" style="width:128px; padding:5px 0 0 5px;">URL réécrite</div>
-				<div class="cellule" style="padding: 5px 0 0 5px;"><?php echo(rewrite_prod("$produit->ref", $lang)); ?></div>
-
+				<div class="cellule" style="width:450px;padding: 5px 0 0 5px;"><?php echo(rewrite_prod("$produit->ref", $lang)); ?></div>	
 			</li>
 			<li class="lignesimple">
 				<div class="cellule_designation" style="width:128px; padding: 5px 0 0 5px;">Dernière modif.</div>
-				<div class="cellule" style="padding: 5px 0 0 5px;"><?php echo "le $jour/$mois/$annee à $heure:$minute:$seconde"; ?></div>
+				<div class="cellule" style="width:450px;padding: 5px 0 0 5px;"><?php echo "le $jour/$mois/$annee à $heure:$minute:$seconde"; ?></div>
 			</li>
-		<h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
+		<li><h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" alt="-" /></a></h3></li>
 
 		</ul>		
 		
@@ -1291,30 +1304,60 @@
 			$query = "select max(classement) as maxClassement from $produit->table where rubrique='" . $rubrique . "'";
 			$resul = mysql_query($query, $produit->link);
 			$classementmax =  mysql_result($resul, 0, "maxClassement");
+			//modif jhr
+			$query = "select min(classement) as minClassement from $produit->table where rubrique='" . $rubrique . "'";
+			$resul = mysql_query($query, $produit->link);
+			$classementmin =  mysql_result($resul, 0, "minClassement");
+			
+			//
+			
+			
 			$classement=$produit->classement;
-				if($classement!=1) {
-					$precedent=$classement-1;
+				if($classement>$classementmin) {
+					// modif jhr
+					$precedent=$classement;
+				
+					do
+					{
+					$precedent--;
 					$query = "select * from $produit->table where rubrique='" . $rubrique . "' and classement='" . $precedent . "' ";
 					$resul = mysql_query($query, $produit->link);
-					$refprec =  mysql_result($resul, 0,"ref");
+					}
+					while(!mysql_num_rows($resul) && $precedent>$classementmin);
+				
+					if(mysql_num_rows($resul) !=0) $refprec =  mysql_result($resul,0,'ref');
+					else $refprec=$ref;
+				//	
 					
 			?>
-			<a href="produit_modifier.php?ref=<?php echo $refprec;?>&rubrique=<?php echo $rubrique;?>" ><img src="gfx/precedent.png" alt="Produit précédent" title="Produit précédent" style="padding:0 5px 0 0;margin-top:-5px;height:38px;"/></a>	
-			<?php } ?>
-			<a title="Voir le produit en ligne" href="<?php echo $site->valeur; ?>/produit.php?ref=<?php echo $ref; ?>&id_rubrique=<?php echo $rubrique; ?>" target="_blank" ><img src="gfx/site.png" alt="Voir le produit en ligne" title="Voir le produit en ligne" /></a>
+			<a href="produit_modifier.php?ref=<?php echo $refprec;?>&amp;rubrique=<?php echo $rubrique;?>" ><img src="gfx/precedent.png" alt="Produit précédent" title="Produit précédent" style="padding:0 5px 0 0;margin-top:-5px;height:38px;"/></a>	
+			<?php }
+				//modif jhr
+			$site=new Variable();
+			$site->charger("urlsite");
+				//
+
+			?>
+			<a title="Voir le produit en ligne" href="<?php echo $site->valeur; ?>/produit.php?ref=<?php echo $ref; ?>&amp;id_rubrique=<?php echo $rubrique; ?>" target="_blank" ><img src="gfx/site.png" alt="Voir le produit en ligne" title="Voir le produit en ligne" /></a>
 			<a href="#" onclick="dupliquer();"><img src="gfx/dupliquer.png" alt="Dupliquer la fiche produit" title="Dupliquer la fiche produit" style="padding:0 5px 0 0;"/></a>
 			<a href="#" onclick="envoyer();"><img src="gfx/valider.png" alt="Enregistrer les modifications" title="Enregistrer les modifications" style="padding:0 5px 0 0;"/></a>
 			<a href="#" onclick="document.getElementById('url').value='1'; envoyer(); "><img src="gfx/validerfermer.png" alt="Enregistrer les modifications et fermer la fiche" title="Enregistrer les modifications et fermer la fiche" style="padding:0 5px 0 0;"/></a>
 			
 			<?php 
 				if($classement!=$classementmax) {
-					$precedent=$classement+1;
-					$query = "select * from $produit->table where rubrique='" . $produit->rubrique . "' and classement='" . $precedent . "' ";
+					// modif jhr
+					$precedent=$classement;
+					do{
+					$precedent++;
+					$query = "select * from $produit->table where rubrique='" . $rubrique . "' and classement='" . $precedent . "' ";
 					$resul = mysql_query($query, $produit->link);
-					$refprec =  mysql_result($resul, 0,"ref");
+					}
+					while(!mysql_num_rows($resul) && $precedent<$classementmax);
+					if(mysql_num_rows($resul) !=0) $refprec =  mysql_result($resul,0,"ref");else $refprec=$ref;
+				//	
 					
 			?>
-			<a href="produit_modifier.php?ref=<?php echo $refprec;?>&rubrique=<?php echo $rubrique;?>" ><img src="gfx/suivant.png" alt="Produit suivant" title="Produit suivant" style="padding:0 5px 0 0;"/></a>	
+			<a href="produit_modifier.php?ref=<?php echo $refprec;?>&amp;rubrique=<?php echo $rubrique;?>" ><img src="gfx/suivant.png" alt="Produit suivant" title="Produit suivant" style="padding:0 5px 0 0;"/></a>	
 			<?php } ?>
    		</div>
    	</div>
@@ -1329,15 +1372,15 @@
 	<div class="claire">
 		<div class="designation" style="height:140px; padding-top:10px;">Transférer des images</div>
 		<div class="champs" style="padding-top:10px;">
-			<form action="produit_modifier.php" method="post" ENCTYPE="multipart/form-data">
+			<form action="produit_modifier.php" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="action" value="ajouter_photo" />
 				<input type="hidden" name="ref" value="<?php echo($ref); ?>" /> 
-    			<input type="hidden" name="produit" value="<?php echo($produit->id); ?>">
-    			<input type="hidden" name="rubrique" value="<?php echo($produit->rubrique); ?>">
+    			<input type="hidden" name="produit" value="<?php echo($produit->id); ?>" />
+    			<input type="hidden" name="rubrique" value="<?php echo($produit->rubrique); ?>" />
         			<?php for($i=1; $i<6; $i++) { ?>
-	      				<input type="file" size="18" name="photo<?php echo($i); ?>"><br/>
+	      				<input type="file" size="18" name="photo<?php echo($i); ?>" /><br/>
 	  				<?php } ?>
-   				<input type="submit" value="Ajouter">
+   				<input type="submit" value="Ajouter" />
    			</form>
    		</div>
    	</div>
@@ -1346,8 +1389,8 @@
 
 <ul id="blocs_pliants_photo">
 <li>
-	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" /></a><h3>
-	<ul>
+	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" alt="-" /></a></h3>
+	
 	<?php 
 			$image = new Image();
 			
@@ -1359,16 +1402,16 @@
 			$imagedesc = new Imagedesc();
 			$imagedesc->charger($row->id,$lang);
 			?>
-		<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+		<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 		<input type="hidden" name="action" value="modifier_photo" />
 		<input type="hidden" name="id_photo" value="<?php echo $row->id; ?>" />
 		<input type="hidden" name="ref" value="<?php echo $ref; ?>" />
-		<input type="hidden" name="lang" value="<?php echo $lang; ?>">
-
+		<input type="hidden" name="lang" value="<?php echo $lang; ?>" />
+		<ul>
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:208px;">&nbsp;</div>
-				<div class="cellule_photos" style="height:200px; overflow:hidden;"><img src="../fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo($row->fichier); ?>&width=208&height=&opacite=" border="0" /></div>
-				<div class="cellule_supp"><a href="produit_modifier.php?id_photo=<?php echo($row->id); ?>&ref=<?php echo($ref); ?>&action=supprimer_photo"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
+				<div class="cellule_photos" style="height:200px; overflow:hidden;"><img src="../fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo($row->fichier); ?>&amp;width=208&amp;height=&amp;opacite=" border="0" alt="-" /></div>
+				<div class="cellule_supp"><a href="produit_modifier.php?id_photo=<?php echo($row->id); ?>&amp;ref=<?php echo($ref); ?>&amp;action=supprimer_photo"><img src="gfx/supprimer.gif" width="9" height="9" border="0" alt="-" /></a></div>
 			</li>
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:30px;">Titre</div>
@@ -1376,19 +1419,19 @@
 			</li>
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:50px;">Chapo</div>
-				<div class="cellule"><textarea name="chapo_photo" rows="2" class="form" style="width:219px;"><?php echo $imagedesc->chapo ?></textarea></div>
+				<div class="cellule"><textarea name="chapo_photo" rows="2" cols="" class="form" style="width:219px;"><?php echo $imagedesc->chapo ?></textarea></div>
 			</li>
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:65px;">Description</div>
-				<div class="cellule"><textarea name="description_photo" class="form" rows="3" style="width:219px;"><?php echo $imagedesc->description ?></textarea></div>
+				<div class="cellule"><textarea name="description_photo" class="form" rows="3" cols="" style="width:219px;"><?php echo $imagedesc->description ?></textarea></div>
 			</li>
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:30px;">Classement</div>
 				<div class="cellule">
 					<div class="classement">
-						<a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&ref=$ref&action=modclassement&type=M&produit=".$produit->id; ?>"><img src="gfx/up.gif" border="0" /></a></div>
+						<a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&amp;ref=$ref&amp;action=modclassement&amp;type=M&amp;produit=".$produit->id; ?>"><img src="gfx/up.gif" border="0" alt="-" /></a></div>
 					<div class="classement">
-						<a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&ref=$ref&action=modclassement&type=D&produit=".$produit->id; ?>"><img src="gfx/dn.gif" border="0" /></a></div>
+						<a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&amp;ref=$ref&amp;action=modclassement&amp;type=D&amp;produit=".$produit->id; ?>"><img src="gfx/dn.gif" border="0" alt="-" /></a></div>
 				</div>
 				
 			</li>
@@ -1396,11 +1439,13 @@
 				<div class="cellule_designation" style="height:30px;">&nbsp;</div>
 				<div class="cellule" style="height:30px; border-bottom: 1px dotted #9DACB6"><input type="submit" value="Enregistrer" /></div>
 			</li>
+			</ul>
 		</form>
    		<?php } ?>
-   		<h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" /></a><h3>
+   	</li>
+	<li><h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
 	</ul>
-</li>
+	
 
 
 <!-- bloc de gestion des documents -->
@@ -1411,13 +1456,13 @@
 	<div class="claire">
 		<div class="designation" style="height:43px; padding-top:10px;">Transférer des documents</div>
 		<div class="champs" style="padding-top:10px;">
-			<form action="produit_modifier.php" method="post" ENCTYPE="multipart/form-data">
+			<form action="produit_modifier.php" method="post" enctype="multipart/form-data">
        		<input type="hidden" name="action" value="ajouter_document" />
 	   		<input type="hidden" name="ref" value="<?php echo($ref); ?>" />
-      		<input type="hidden" name="produit" value="<?php echo($produit->id); ?>">
-   			<input type="hidden" name="rubrique" value="<?php echo($produit->rubrique); ?>">
-      		<input type="file" name="doc" class="form" size="16"><br />
-      		<input type="submit" value="Ajouter">
+      		<input type="hidden" name="produit" value="<?php echo($produit->id); ?>" />
+   			<input type="hidden" name="rubrique" value="<?php echo($produit->rubrique); ?>" />
+      		<input type="file" name="doc" class="form" size="16" /><br />
+      		<input type="submit" value="Ajouter" />
 			</form>
 		</div>
    	</div>
@@ -1436,15 +1481,15 @@
    		<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 			<input type="hidden" name="action" value="modifierdoc" />
 			<input type="hidden" name="ref" value="<?php echo $ref; ?>" />
-			<input type="hidden" name="rubrique" value="<?php echo $rubrique; ?>">
+			<input type="hidden" name="rubrique" value="<?php echo $rubrique; ?>" />
 			<input type="hidden" name="id_document" value="<?php echo $row->id; ?>" />
-			<input type="hidden" name="lang" value="<?php echo($lang); ?>">
+			<input type="hidden" name="lang" value="<?php echo($lang); ?>" />
 			   
 			<li class="lignesimple">
 			<div class="cellule_designation" style="height:20px;">Fichier</div>
 			<div class="cellule_document"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php echo($row->fichier); ?></a></div>
 			<div class="cellule_suppdocument">
-			<a href="produit_modifier.php?ref=<?php echo($ref); ?>&rurbrique=<?php echo $rubrique; ?>&id_document=<?php echo($row->id); ?>&action=supprimer_document&lang=<?php echo $lang; ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
+			<a href="produit_modifier.php?ref=<?php echo($ref); ?>&rurbrique=<?php echo $rubrique; ?>&amp;id_document=<?php echo($row->id); ?>&amp;action=supprimer_document&amp;lang=<?php echo $lang; ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" alt="-" /></a></div>
 		</li>
 		<li class="lignesimple">
 			<div class="cellule_designation" style="height:30px;">Titre</div>
@@ -1465,9 +1510,9 @@
 			<div class="cellule_designation" style="height:30px;">Classement</div>
 			<div class="cellule">
 				<div class="classement">
-					<a href="<?php echo $_SERVER['PHP_SELF'] . "?ref=".$ref."&id_document=".$row->id."&action=modclassementdoc&type=M&lang=".$lang."&rubrique=".$rubrique; ?>"><img src="gfx/up.gif" border="0" /></a></div>
+					<a href="<?php echo $_SERVER['PHP_SELF'] . "?ref=".$ref."&amp;id_document=".$row->id."&amp;action=modclassementdoc&amp;type=M&amp;lang=".$lang."&amp;rubrique=".$rubrique; ?>"><img src="gfx/up.gif" border="0" alt="-" /></a></div>
 				<div class="classement">
-					<a href="<?php echo $_SERVER['PHP_SELF'] . "?ref=".$ref."&id_document=".$row->id."&action=modclassementdoc&type=D&lang=".$lang."&rubrique=".$rubrique; ?>"><img src="gfx/dn.gif" border="0" /></a></div>
+					<a href="<?php echo $_SERVER['PHP_SELF'] . "?ref=".$ref."&amp;id_document=".$row->id."&amp;action=modclassementdoc&amp;type=D&amp;lang=".$lang."&amp;rubrique=".$rubrique; ?>"><img src="gfx/dn.gif" border="0" alt="-" /></a></div>
 			</div>
 			
 		</li>
@@ -1491,7 +1536,7 @@
 	include_once("pied.php");
 ?>
 </div>
-</div>
+<!-- </div> -->
 <!-- -->
 <script type="text/javascript" src="../lib/jquery/jquery.js"></script>
 <script type="text/javascript" src="../lib/jquery/accordion.js"></script>

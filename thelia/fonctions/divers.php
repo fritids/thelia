@@ -331,7 +331,7 @@
 
 		while($row=mysql_fetch_object($resul)){
 			$trubriquedesc->charger($row->id);
-			if($prubrique == $trubriquedesc->rubrique) $selected="selected"; else $selected="";
+			if($prubrique == $trubriquedesc->rubrique) $selected="selected=\"selected\""; else $selected="";
 			
 			$rec .= "<option value=\"$row->id\" $selected>" . $espace . $trubriquedesc->titre . "</option>";
 			
@@ -361,7 +361,7 @@
 			$trubriquedesc->charger($row->id);
 			$courante = new Rubrique();
 			$courante->charger($prubrique);
-			if($courante->parent == $trubriquedesc->rubrique) $selected="selected"; else $selected="";
+			if($courante->parent == $trubriquedesc->rubrique) $selected="selected=\"selected\""; else $selected="";
 			
 			if($courante->id != $row->id)
 				$rec .= "<option value=\"$row->id\" $selected>" . $espace . $trubriquedesc->titre . "</option>";
@@ -408,7 +408,7 @@
 
 		while($row=mysql_fetch_object($resul)){
 			$tdossierdesc->charger($row->id);
-			if($pdossier == $tdossierdesc->dossier) $selected="selected"; else $selected="";
+			if($pdossier == $tdossierdesc->dossier) $selected="selected=\"selected\""; else $selected="";
 			
 			$rec .= "<option value=\"$row->id\" $selected>" . $espace . $tdossierdesc->titre . "</option>";
 			

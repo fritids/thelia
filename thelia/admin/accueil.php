@@ -81,7 +81,7 @@
 <div id="contenu_int">
 
 
-	<img src="graph.php">
+	<img src="graph.php" alt="-" />
 
 
    
@@ -238,7 +238,6 @@
 </div>
 <?php include_once("pied.php");?>
 
-</div>
 </div>
 </body>
 </html>

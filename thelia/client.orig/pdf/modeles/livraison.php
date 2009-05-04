@@ -24,7 +24,7 @@
 /*************************************************************************************/
 ?>
 <?php
-	define('FPDF_FONTPATH', realpath(dirname(__FILE__)) . '/../../../lib/fpdf/font/');
+	define('FPDF_FONTPATH','font/');
 	require('../lib/fpdf/fpdf.php');
 	require('../lib/fpdf/fpdi.php');
 
@@ -41,8 +41,10 @@
 	include_once("../classes/Paysdesc.class.php");
 
 	class Livraison{
-	
+
 		function creer($ref){
+
+			global $pdf, $client, $commande;
 	
 			$commande = new Commande();
 			$commande->charger_ref($ref);
@@ -63,6 +65,9 @@
 			$pdf->addPage();
 			$pdf->useTemplate($tplidx);
 		
+
+			$istva = $this->entete();
+
 			$modules = new Modules();
 			$modules->charger_id($commande->transport);
 	
@@ -104,143 +109,21 @@
 				$pdf->SetXY(192,$hauteursave);		
          	    $pdf->write(5,$venteprod->quantite); 
 	
-			$hauteur=$recy + 5;
+				$hauteur=$recy + 5;
 			
-       			
+
+				if($hauteur > 220){
+					$hauteur = 90;
+					$hauteursave=$hauteur;
+					$pdf->addpage();	
+					$page++;
+					$pdf->useTemplate($tplidx);
+					$this->entete();
+				}
+			       			
    			}
                   	
- 
- 
- 			$venteprod = new Venteprod();
- 
-  	 
-			$dateaff = substr($commande->date, 8, 2) . "/" . substr($commande->date, 5, 2) . "/" . substr($commande->date, 0, 4);
 
-			$adrfact = new Venteadr();
-			$adrfact->charger($commande->adrfact);
-			
-			$hauteur = 53;
-	
-			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(122,$hauteur);	
-  			$pdf->write(10, $adrfact->prenom . " " . $adrfact->nom);
-
-			$hauteur+=3;
-	
-			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(122,$hauteur);	
-  			$pdf->write(10, $adrfact->adresse1);
-	
-			if($adrfact->adresse2) {
-				$hauteur+=3;
-			
-				$pdf->SetFont('Arial','',8);
-				$pdf->SetXY(122,$hauteur);	
- 				$pdf->write(10, $adrfact->adresse2);
-	
-			}
-
-			if($adrfact->adresse3) {
-				$hauteur+=3;
-	
-				$pdf->SetFont('Arial','',8);
-				$pdf->SetXY(122,$hauteur);	
-  				$pdf->write(10, $adrfact->adresse3);
-			}
-	
-			$hauteur+=3;
-	
-			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(122,$hauteur);	
-  			$pdf->write(10, $adrfact->cpostal . " " .  $adrfact->ville);
-
-			$paysdesc = new Paysdesc();
-			$paysdesc->charger($adrfact->pays);
-		
-			$hauteur += 3;
-			$pdf->SetXY(122,$hauteur);	
- 	 		$pdf->write(10, $paysdesc->titre);
- 	 	
- 	        $hauteur+=3;
-
-	        $pdf->SetFont('Arial','',8);
-	        $pdf->SetXY(122,$hauteur);
-	        $pdf->write(10, $adrfact->tel);
-		 	
-			$adressecl = new Venteadr();
-			$adressecl->charger($commande->adrlivr);
-	
-			$hauteur = 19;
-
-
-			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(122,$hauteur);	
-  			$pdf->write(10, $adressecl->prenom . " " . $adressecl->nom);
-	
-			$hauteur+=3;
-	
-			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(122,$hauteur);	
-  			$pdf->write(10, $adressecl->adresse1);
-
-
-			if($adressecl->adresse2) {
-				$hauteur+=3;
-	
-				$pdf->SetFont('Arial','',8);
-				$pdf->SetXY(122,$hauteur);	
- 				$pdf->write(10, $adressecl->adresse2);
-	
-			}
-
-			if($adressecl->adresse3) {
-				$hauteur+=3;
-	
-				$pdf->SetFont('Arial','',8);
-				$pdf->SetXY(122,$hauteur);	
-  				$pdf->write(10, $adressecl->adresse3);
-			}
-
-			$paysdesc = new Paysdesc();
-			$paysdesc->charger($adressecl->pays);
-	
-			$hauteur+=3;
-	
-			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(122,$hauteur);	
- 		 	$pdf->write(10, $adressecl->cpostal . " " .  $adressecl->ville);
-
-			$hauteur+=3;
-	
-			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(122,$hauteur);	
-  			$pdf->write(10, $paysdesc->titre);
- 
-	        $hauteur+=3;
-
-	        $pdf->SetFont('Arial','',8);
-	        $pdf->SetXY(122,$hauteur);
-	        $pdf->write(10, $adressecl->tel);
-	 		
-			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(74,72);	
-  			$pdf->write(10,$commande->livraison);
-  	
-			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(52,72);	
-  			$pdf->write(10,$commande->facture);
-  		
-			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(17,58);	
-  			$pdf->write(10,$dateaff);
-  	
-  			$pdf->SetFont('Arial','',8);
-			$pdf->SetXY(43,58);	
-  			$pdf->write(10,$client->ref);	
-
-  	    	$pdf->SetFont('Arial','',8);
-	    	$pdf->SetXY(11,72);	  			
-   		    $pdf->write(10,$commande->ref);
 
 			$nom = $modules->nom;
 			$nom[0] = strtoupper($nom[0]);
@@ -259,7 +142,146 @@
 		
 		}
 	
+
+	function entete(){
 	
+		global $pdf, $client, $commande;
+		
+		$hauteur = 56;
+	
+		$dateaff = substr($commande->date, 8, 2) . "/" . substr($commande->date, 5, 2) . "/" . substr($commande->date, 0, 4);
+
+		$adrfact = new Venteadr();
+		$adrfact->charger($commande->adrfact);
+		
+		$pdf->SetFont('Arial','',8);
+		$pdf->SetXY(122,$hauteur);	
+  		$pdf->write(10, $adrfact->prenom . " " . $adrfact->nom);
+
+		$hauteur+=3;
+	
+		$pdf->SetFont('Arial','',8);
+		$pdf->SetXY(122,$hauteur);	
+  		$pdf->write(10, $adrfact->adresse1);
+
+		if($adrfact->adresse2) {
+			$hauteur+=3;
+	
+			$pdf->SetFont('Arial','',8);
+			$pdf->SetXY(122,$hauteur);	
+ 			$pdf->write(10, $adrfact->adresse2);
+	
+		}
+
+		if($adrfact->adresse3) {
+			$hauteur+=3;
+	
+			$pdf->SetFont('Arial','',8);
+			$pdf->SetXY(122,$hauteur);	
+  			$pdf->write(10, $adrfact->adresse3);
+		}
+	
+		$hauteur+=3;
+	
+		$paysdesc = new Paysdesc();
+		$paysdesc->charger($adrfact->pays);
+		
+		$pdf->SetFont('Arial','',8);
+		$pdf->SetXY(122,$hauteur);	
+ 	 	$pdf->write(10, $adrfact->cpostal . " " .  $adrfact->ville);
+
+		$hauteur += 3;
+		$pdf->SetXY(122,$hauteur);	
+ 	 	$pdf->write(10, $paysdesc->titre);
+		
+        $hauteur+=3;
+
+        $pdf->SetFont('Arial','',8);
+        $pdf->SetXY(122,$hauteur);
+        $pdf->write(10, $adrfact->tel);
+	
+		$adressecl = new Venteadr();
+		$adressecl->charger($commande->adrlivr);
+		
+		$paysdesc = new Paysdesc();
+		$paysdesc->charger($adressecl->pays);
+	
+		$hauteur = 22;
+
+
+		$pdf->SetFont('Arial','',8);
+		$pdf->SetXY(122,$hauteur);	
+  		$pdf->write(10, $adressecl->prenom . " " . $adressecl->nom);
+
+		$hauteur+=3;
+	
+		$pdf->SetFont('Arial','',8);
+		$pdf->SetXY(122,$hauteur);	
+  		$pdf->write(10, $adressecl->adresse1);
+
+
+		if($adressecl->adresse2) {
+			$hauteur+=3;
+	
+			$pdf->SetFont('Arial','',8);
+			$pdf->SetXY(122,$hauteur);	
+ 			$pdf->write(10, $adressecl->adresse2);
+	
+		}
+
+		if($adressecl->adresse3) {
+			$hauteur+=3;
+	
+			$pdf->SetFont('Arial','',8);
+			$pdf->SetXY(122,$hauteur);	
+  			$pdf->write(10, $adressecl->adresse3);
+		}
+	
+		$hauteur+=3;
+	
+		$pdf->SetFont('Arial','',8);
+		$pdf->SetXY(122,$hauteur);	
+  		$pdf->write(10, $adressecl->cpostal . " " .  $adressecl->ville);
+
+		$hauteur+=3;
+		
+		$pdf->SetFont('Arial','',8);
+		$pdf->SetXY(122,$hauteur);	
+  		$pdf->write(10, $paysdesc->titre);
+
+        $hauteur+=3;
+
+        $pdf->SetFont('Arial','',8);
+        $pdf->SetXY(122,$hauteur);
+        $pdf->write(10, $adressecl->tel);
+
+		$pdf->SetFont('Arial','',8);
+		$pdf->SetXY(52,72);	
+  		$pdf->write(10,$commande->facture);
+ 
+ 		$pdf->SetFont('Arial','',8);
+		$pdf->SetXY(74,72);	
+  		$pdf->write(10,$commande->livraison);
+  			 	
+		$pdf->SetFont('Arial','',8);
+		$pdf->SetXY(18,59);	
+  		$pdf->write(10,$dateaff);
+  	
+  		$pdf->SetFont('Arial','',8);
+		$pdf->SetXY(43,59);	
+  		$pdf->write(10,$client->ref);	
+
+ 	 	$pdf->SetFont('Arial','',8);
+		$pdf->SetXY(12,72);	  			
+    	$pdf->write(10,$commande->ref);
+	
+	$pays  = new Pays();
+	$pays->charger($adressecl->pays);
+	return $pays->tva; 
+
+	}
+	
+		
 	}
 	
 ?>

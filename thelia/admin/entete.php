@@ -31,7 +31,9 @@
 		<a href="accueil.php"><img src="gfx/thelia_logo.jpg" alt="THELIA solution e-commerce" /></a>
 	</div>
 	<div class="Blocmoncompte">
+		<dl>
 		<dt><a href="index.php?action=deconnexion" >D&eacute;connexion</a></dt><dt> | </dt><dt><strong><?php echo($_SESSION["util"]->prenom); ?> <?php echo($_SESSION["util"]->nom); ?></strong> </dt>
+		</dl>
 	</div>
 	<div class="Blocversion">V <?php echo substr($version, 0, 1) . "." . substr($version, 1, 1) . "." . substr($version, 2, 1) ?></div>
 </div>   
@@ -40,37 +42,37 @@
    		<ul id="menu">
 	        <li><a href="accueil.php" <?php if($menu == "accueil") { ?>class="selected"<?php } ?>>Accueil</a></li>
 	    </ul>
-	   <ul class="separation_menu">&nbsp;</ul>
+		<ul class="separation_menu"><li>&nbsp;</li></ul>
 	        	
 	        <ul id="menu1">	
 	        <li><a href="client.php" <?php if($menu == "client") { ?>class="selected"<?php } ?>>Clients</a></li>
 	        </ul>
-	        <ul class="separation_menu">&nbsp;</ul>
+	        <ul class="separation_menu"><li>&nbsp;</li></ul>
 	        <ul id="menu2">
             <li><a href="commande.php" <?php if($menu == "commande") { ?>class="selected"<?php } ?>>Commandes</a></li>
             </ul>
-            <ul class="separation_menu">&nbsp;</ul>
+           <ul class="separation_menu"><li>&nbsp;</li></ul>
              <ul id="menu3">
             <li><a href="parcourir.php" <?php if($menu == "catalogue") { ?>class="selected"<?php } ?>>Catalogue </a></li>
             </ul>
-            <ul class="separation_menu">&nbsp;</ul>
+           <ul class="separation_menu"><li>&nbsp;</li></ul>
              <ul id="menu4">
             <li><a href="listdos.php" <?php if($menu == "contenu") { ?>class="selected"<?php } ?>>Contenu</a></li>
             </ul>
-            <ul class="separation_menu">&nbsp;</ul>
+           <ul class="separation_menu"><li>&nbsp;</li></ul>
              <ul id="menu5">
             <li><a href="promo.php" <?php if($menu == "paiement") { ?>class="selected"<?php } ?>>Codes promos</a></li>
             </ul>
-            <ul class="separation_menu">&nbsp;</ul>
+           <ul class="separation_menu"><li>&nbsp;</li></ul>
              <ul id="menu6">
             <li><a href="configuration.php" <?php if($menu == "configuration") { ?>class="selected"<?php } ?>>Configuration</a></li>
             </ul>
-            <ul class="separation_menu">&nbsp;</ul>
+            <ul class="separation_menu"><li>&nbsp;</li></ul>
             <ul id="menu7">
 			<li><a href="module_liste.php" <?php if($menu == "plugins") { ?>class="selected"<?php } ?>>Modules</a></li>
 			</ul>
-			<ul class="separation_menu">&nbsp;</ul>
-			</ul>
+			<ul class="separation_menu"><li>&nbsp;</li></ul>
+			<!-- </ul> -->
       	</div>
             <div id="moteur_recherche"> 
              <form action="recherche.php" method="post">
@@ -78,7 +80,7 @@
 	         	<input type="image" src="gfx/icone_recherche.jpg" alt="Valider la recherche" />
 	         </div>
              <div class="champs_recherche">
-	         	<input type="text" name="motcle" value="Rechercher ..." class="zonerecherche" onClick="this.value=''" size="14" />
+	         	<input type="text" name="motcle" value="Rechercher ..." class="zonerecherche" onclick="this.value=''" size="14" />
 	         </div>
 	        
              </form>

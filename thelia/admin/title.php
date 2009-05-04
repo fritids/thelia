@@ -25,5 +25,5 @@
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>THELIA / BACK OFFICE</title>
-<LINK REL="SHORTCUT ICON" href="favicon.ico">
+<link rel="SHORTCUT ICON" href="favicon.ico" />
 <link href="styles.css" rel="stylesheet" type="text/css" />

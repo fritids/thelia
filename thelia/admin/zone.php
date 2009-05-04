@@ -132,7 +132,7 @@
 							$paysdesc = new Paysdesc();
 							$paysdesc->charger($row->id);
 					?>
-			     	<option value="<?php echo $paysdesc->id; ?>"><?php echo $paysdesc->titre; ?></option>
+			     	<option value="<?php echo $paysdesc->pays; ?>"><?php echo $paysdesc->titre; ?></option>
 					<?php
 						}
 					?>
