@@ -59,12 +59,13 @@
             }
             
 			
-			if(!$existe || $nouveau == 1) 				
+			if(!$existe || $nouveau == 1){ 				
 				$this->tabarticle[$this->nbart] = new Article($ref, $quantite, $tdeclidisp);
+				$this->nbart++;
+			}
 			else if($existe && $append)
 				$this->tabarticle[$indice]->quantite += $quantite;
-			
-				if(isset($this->tabarticle[$this->nbart]) && isset($this->tabarticle[$this->nbart]->produit) && $this->tabarticle[$this->nbart]->produit->ref) $this->nbart++; 
+
 			
 		}	
 		
@@ -77,9 +78,10 @@
 			for($i=$id+1; $i<$this->nbart+1; $i++)
 				if(isset($this->tabarticle[$i]))
 					$this->tabarticle[$i-1] = $this->tabarticle[$i];
-				
-			$this->tabarticle[$this->nbart]="";
+		
 			$this->nbart--;
+			unset($this->tabarticle[$this->nbart]);
+			
 			
 		}
 		
