@@ -47,8 +47,7 @@
 		var $promo;
 		var $page;
 		var $lang;
-		
-		var $tabDiv;
+		var $devise;
 		
 		function Navigation(){
 			$this->panier = new Panier();
@@ -57,6 +56,8 @@
 			$this->commande = new Commande();
 			$this->promo = new Promo();
 			$this->page = 0;
+			$this->lang = 1;
+			$this->devise = 1;
 		}
 
 

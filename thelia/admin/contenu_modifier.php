@@ -52,13 +52,13 @@
 		case 'modifier' : modifier($id, $lang, $dossier, $ligne, $titre, $chapo, $description, $postscriptum, $urlsuiv); break;
 		case 'ajouter' : ajouter($lang, $dossier, $ligne, $titre, $chapo, $description, $postscriptum); break;
 		case 'supprimer' : supprimer($id, $parent); break;
-		case 'ajouterphoto' : ajouterphoto($id); break;
+		case 'ajouterphoto' : ajouterphoto($id,$lang); break;
 		case 'modifierphoto' : modifierphoto($id_photo,$titre_photo,$chapo_photo,$description_photo,$lang); break;
-		case 'supprimerphoto' : supprimerphoto($id_photo); break;
+		case 'supprimerphoto' : supprimerphoto($id_photo,$lang); break;
 		case 'modclassementphoto' : modclassementphoto($id_photo,$type); break;
-		case 'ajouterdoc' : ajouterdoc($id, $_FILES['doc']['tmp_name'], $_FILES['doc']['name']); break;
-		case 'modifierdoc' : dossierdoc($id_document,$titredoc,$chapodoc,$descriptiondoc,$lang); break;
-		case 'supprierdoc' : supprimerdoc($id_document); break;
+		case 'ajouterdoc' : ajouterdoc($id, $_FILES['doc']['tmp_name'], $_FILES['doc']['name'],$lang); break;
+		case 'modifierdoc' : modifierdoc($id_document,$titredoc,$chapodoc,$descriptiondoc,$lang); break;
+		case 'supprimerdoc' : supprimerdoc($id_document,$lang); break;
 		case 'modclassementdoc' : modclassementdoc($id_document,$type); break;
 
 	}
@@ -73,7 +73,7 @@
         $doc->changer_classement($id, $type);
 	}
 
-	function supprimerdoc($id){
+	function supprimerdoc($id,$lang){
 		
 			$tmp = new Contenu();
 			$tmp->charger($_REQUEST['id']);
@@ -86,7 +86,7 @@
 			}
 			
 			$document->supprimer();
-		    header("Location: contenu_modifier.php?id=" . $tmp->id);
+		    header("Location: contenu_modifier.php?id=" . $tmp->id."&dossier=".$tmp->dossier."&lang=".$lang);
 	}
 
 	function modifierdoc($id, $titre, $chapo, $description,$lang){
@@ -109,11 +109,11 @@
 		else 
 			$documentdesc->maj();
 
-	    header("Location: contenu_modifier.php?id=" . $tmp->id);
+	    header("Location: contenu_modifier.php?id=" . $tmp->id."&dossier=".$tmp->dossier."&lang=".$lang);
 
 	}
 
-	function ajouterdoc($contenu, $doc, $doc_name){
+	function ajouterdoc($contenu, $doc, $doc_name,$lang){
 
 		$tmp = new Contenu();
 		$tmp->charger($_REQUEST['id']);
@@ -141,6 +141,8 @@
 			$document->maj();
 					
 			copy("$doc", "../client/document/" . $fich . "_" . $contenu . "." . $ext);
+			
+			header("location: contenu_modifier.php?id=".$tmp->id."&dossier=".$tmp->dossier."&lang=".$lang);
 		}
 	
 	}
@@ -151,7 +153,7 @@
         $img->changer_classement($id, $type);
 	}
 
-	function supprimerphoto($id){
+	function supprimerphoto($id,$lang){
 		
 			$tmp = new Contenu();
 			$tmp->charger($_REQUEST['id']);
@@ -168,6 +170,8 @@
 			
 			$image->supprimer();
 			$imagedesc->delete();
+			
+			header("location: contenu_modifier.php?id=".$tmp->id."&dossier=".$tmp->dossier."&lang=".$lang);
 			
 	}
 
@@ -189,10 +193,12 @@
 			$imagedesc->add();
 		else 
 			$imagedesc->maj();
+			
+		header("location: contenu_modifier.php?id=".$tmp->id."&dossier=".$tmp->dossier."&lang=".$lang);
 
 	}
 
-	function ajouterphoto($id){
+	function ajouterphoto($id,$lang){
 
 		$tmp = new Contenu();
 		$tmp->charger($_REQUEST['id']);
@@ -231,6 +237,8 @@
 			$image->maj();
 			
 			copy("$photo", "../client/gfx/photos/contenu/" . $fich . "_" . $lastid . "." . $extension);
+			
+			header("location: contenu_modifier.php?id=".$tmp->id."&dossier=".$tmp->dossier."&lang=".$lang);
 		}
 	 }
 	}
@@ -684,7 +692,7 @@
 				$document = new Document();
 				$documentdesc = new Documentdesc();
 				
-				$documentdesc->charger($row->id);
+				$documentdesc->charger($row->id,$lang);
         ?>
              <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 				<input type="hidden" name="action" value="modifierdoc" />

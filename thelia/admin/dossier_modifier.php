@@ -50,12 +50,12 @@
 		case 'ajouter' : ajouter($parent, $lang, $titre, $chapo, $description, $postscriptum, $ligne); break;
 		case 'supprimer' : supprimer($id, $parent);
 		case 'supprimg': supprimg($id);
-		case 'ajouterphoto' : ajouterphoto($id); break;
+		case 'ajouterphoto' : ajouterphoto($id,$lang); break;
 		case 'modifierphoto' : modifierphoto($id_photo, $titre_photo, $chapo_photo, $description_photo,$lang); break;
-		case 'supprimerphoto' : supprimerphoto($id_photo); break;
+		case 'supprimerphoto' : supprimerphoto($id_photo,$lang); break;
 		case 'modclassementphoto' : modclassementphoto($id_photo,$type); break;
-		case 'ajouterdoc' : ajouterdoc($id, $_FILES['doc']['tmp_name'], $_FILES['doc']['name']); break;
-		case 'supprimer_document' : supprimer_document($id_document); break;
+		case 'ajouterdoc' : ajouterdoc($id, $_FILES['doc']['tmp_name'], $_FILES['doc']['name'],$lang); break;
+		case 'supprimer_document' : supprimer_document($id_document,$lang); break;
 		case 'modifierdoc' : modifierdoc($id_document,$titredoc,$chapodoc,$descriptiondoc,$lang); break;
 		case 'modclassementdoc' : modclassementdoc($id_document,$type); break;
 	
@@ -93,11 +93,11 @@
 		else 
 			$documentdesc->maj();
 
-	    header("Location: dossier_modifier.php?id=" . $tmp->id);
+	    header("Location: dossier_modifier.php?id=" . $tmp->id."&lang=".$lang);
 	
 	}
 
-	function supprimer_document($id){
+	function supprimer_document($id,$lang){
 			$tmp = new Dossier();
 			$tmp->charger($_REQUEST['id']);
 		
@@ -110,10 +110,10 @@
 			
 			$document->supprimer();		
 	
-		    header("Location: dossier_modifier.php?id=" . $tmp->id);
+		    header("Location: dossier_modifier.php?id=" . $tmp->id."&lang=".$lang);
 	}
 
-	function ajouterdoc($dosid, $doc, $doc_name){
+	function ajouterdoc($dosid, $doc, $doc_name,$lang){
 
 		$tmp = new Dossier();
 		$tmp->charger($_REQUEST['id']);
@@ -144,7 +144,7 @@
 			copy("$doc", "../client/document/" . $fich . "_" . $dosid . "." . $ext);
 		}
 
- 	    header("Location: dossier_modifier.php?id=" . $tmp->id);
+ 	    header("Location: dossier_modifier.php?id=" . $tmp->id."&lang=".$lang);
 
 	}
 	
@@ -155,7 +155,7 @@
         $img->changer_classement($id, $type);
 	}
 
-	function supprimerphoto($id){
+	function supprimerphoto($id,$lang){
 
 			$tmp = new Dossier();
 			$tmp->charger($_REQUEST['id']);
@@ -172,7 +172,7 @@
 			$image->supprimer();
 			$imagedesc->delete();
 
-		    header("Location: dossier_modifier.php?id=" . $tmp->id);
+		    header("Location: dossier_modifier.php?id=" . $tmp->id."&lang=".$lang);
 			
 	}
 
@@ -197,11 +197,11 @@
 		else 
 			$imagedesc->maj();
 
-	    header("Location: dossier_modifier.php?id=" . $tmp->id);
+	    header("Location: dossier_modifier.php?id=" . $tmp->id."&lang=".$lang);
 
 	}
 
-	function ajouterphoto($id){
+	function ajouterphoto($id,$lang){
 
 		$tmp = new Dossier();
 		$tmp->charger($_REQUEST['id']);
@@ -245,7 +245,7 @@
     		
 		}
 	  }
-	    header("Location: dossier_modifier.php?id=" . $tmp->id);
+	    header("Location: dossier_modifier.php?id=" . $tmp->id."&lang=".$lang);
 
 	}
 

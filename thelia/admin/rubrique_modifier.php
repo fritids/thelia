@@ -24,6 +24,7 @@
 /*************************************************************************************/
 ?>
 <?php
+//	var_dump($_POST); exit;
 	include_once("pre.php");
 	include_once("auth.php");
 	
@@ -58,12 +59,12 @@
 		case 'modifier' : modifier($id, $parent, $lang, $titre, $chapo, $description, $postscriptum, $lien, $ligne, $urlsuiv); break;
 		case 'ajouter' : ajouter($parent, $lang, $titre, $chapo, $description, $postscriptum, $lien, $ligne); break;
 		case 'supprimer' : supprimer($id, $parent);
-		case "ajouterphoto" : ajouterphoto($id); break;
+		case "ajouterphoto" : ajouterphoto($id,$lang); break;
 		case "modifierphoto" : modifierphoto($id_photo,$titre_photo,$chapo_photo,$description_photo,$lang); break;
-		case "supprimerphoto" : supprimerphoto($id_photo); break;
+		case "supprimerphoto" : supprimerphoto($id_photo,$lang); break;
 		case "modclassementphoto" : modclassementphoto($id_photo,$id,$type);
-		case 'ajouterdoc' : ajouterdoc($id, $_FILES['doc']['tmp_name'], $_FILES['doc']['name']); break;
-		case 'supprimer_document' : supprimer_document($id_document); break;
+		case 'ajouterdoc' : ajouterdoc($id, $_FILES['doc']['tmp_name'], $_FILES['doc']['name'],$lang); break;
+		case 'supprimer_document' : supprimer_document($id_document,$lang); break;
 		case 'modclassementdoc' : modclassementdoc($id_document,$type); break;
 		case 'modifierdoc' : modifierdoc($id_document,$titredoc,$chapodoc,$descriptiondoc,$lang); break;
 	}
@@ -93,7 +94,7 @@
 		else 
 			$documentdesc->maj();
 
-	   header("Location: rubrique_modifier.php?id=" . $tmp->id);
+	   header("Location: rubrique_modifier.php?id=" . $tmp->id."&lang=".$lang);
 	
 	}
 
@@ -105,7 +106,7 @@
 
 	}
 
-	function supprimer_document($id){
+	function supprimer_document($id,$lang){
 
 		    $tmp = new Rubrique();
 		    $tmp->charger($_REQUEST['id']);
@@ -119,11 +120,11 @@
 			
 			$document->supprimer();
 		
-	  	    header("Location: rubrique_modifier.php?id=" . $tmp->id);
+	  	    header("Location: rubrique_modifier.php?id=" . $tmp->id."&lang=".$lang);
 					
 	}
 
-	function ajouterdoc($rubrique, $doc, $doc_name){
+	function ajouterdoc($rubrique, $doc, $doc_name,$lang){
 
 		$tmp = new Rubrique();
 		$tmp->charger($_REQUEST['id']);
@@ -153,7 +154,7 @@
 			copy("$doc", "../client/document/" . $fich . "_" . $rubrique . "." . $ext);	
 		}
 	   
-	     header("Location: rubrique_modifier.php?id=" . $tmp->id);
+	     header("Location: rubrique_modifier.php?id=" . $tmp->id."&lang=".$lang);
 
 	}
 
@@ -163,7 +164,7 @@
         $img->changer_classement($id, $type);
 	}
 
-	function supprimerphoto($id){
+	function supprimerphoto($id,$lang){
 
 			$tmp = new Rubrique();
 			$tmp->charger($_REQUEST['id']);
@@ -180,7 +181,7 @@
 			$image->supprimer();
 			$imagedesc->delete();
 	
-		    header("Location: rubrique_modifier.php?id=" . $tmp->id);
+		    header("Location: rubrique_modifier.php?id=" . $tmp->id."&lang=".$lang);
 	}
 
 
@@ -204,12 +205,12 @@
 		else 
 			$imagedesc->maj();
 
-	    header("Location: rubrique_modifier.php?id=" . $tmp->id);
+	    header("Location: rubrique_modifier.php?id=" . $tmp->id."&lang=".$lang);
 
 	}
 
 
-	function ajouterphoto($id){
+	function ajouterphoto($id,$lang){
 
 		$tmp = new Rubrique();
 		$tmp->charger($_REQUEST['id']);
@@ -254,7 +255,7 @@
 		}
 	   }
 		
-	   header("Location: rubrique_modifier.php?id=" . $tmp->id);
+	   header("Location: rubrique_modifier.php?id=" . $tmp->id."&lang=".$lang);
 	   
 	}
 
@@ -309,7 +310,7 @@
 		$rubriquedesc->maj();
 		
 		if($urlsuiv) header("location: parcourir.php?parent=".$rubrique->parent);
-	    else header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $rubrique->id);
+	    else header("Location: " . $_SERVER['PHP_SELF'] . "?id=" . $rubrique->id."&lang=".$lang);
 		exit;
 	}
 

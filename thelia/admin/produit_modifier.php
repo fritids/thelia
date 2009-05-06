@@ -78,9 +78,9 @@
 		case 'supprimer' : supprimer($ref, $parent);
 		case 'ajouter_photo' : ajouter_photo($produit,$lang); break;
 		case 'modifier_photo' : modifier_photo($id_photo, $titre_photo, $chapo_photo, $description_photo,$lang); break;
-		case 'supprimer_photo' : supprimer_photo($id_photo); break;
-		case 'ajouter_document' : ajouter_document($produit, $_FILES['doc']['tmp_name'], $_FILES['doc']['name']); break;
-		case 'supprimer_document' : supprimer_document($id_document); break;
+		case 'supprimer_photo' : supprimer_photo($id_photo,$lang); break;
+		case 'ajouter_document' : ajouter_document($produit, $_FILES['doc']['tmp_name'], $_FILES['doc']['name'],$lang); break;
+		case 'supprimer_document' : supprimer_document($id_document,$lang); break;
 		case 'modifierdoc' : modifierdoc($id_document,$titredoc,$chapodoc,$descriptiondoc,$lang); break;
 		case 'modclassementdoc' : modclassementdoc($id_document,$type); break;
 		case 'dupliquer' : dupliquer($ref,$refn,$rubrique); break;
@@ -116,7 +116,7 @@
 		else 
 			$documentdesc->maj();
 			
-        header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique);
+        header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique."&lang=".$lang);
 
 	}
 
@@ -223,7 +223,7 @@
 		}
 	}
 
-	function supprimer_document($id_document){
+	function supprimer_document($id_document,$lang){
 
 				$tmp = new Produit();
 				$tmp->charger($_REQUEST['ref']);
@@ -237,12 +237,12 @@
 
 				$document->supprimer();
   			    
-  			    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique);
+  			    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique."&lang=".$lang);
 
-		}
+	}
 		
 
-	function ajouter_document($produit, $doc, $doc_name){
+	function ajouter_document($produit, $doc, $doc_name,$lang){
 
 			$tmp = new Produit();
 			$tmp->charger($_REQUEST['ref']);
@@ -273,9 +273,9 @@
 				copy("$doc", "../client/document/" . $fich . "_" . $produit . "." . $ext);	
 			}
 
-	 		 header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique);
+	 		 header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique . "&lang=". $lang);
 
-		}
+	}
 
 	function modclassement($ref, $parent, $type){
         $prod = new Produit();
@@ -440,6 +440,7 @@
 	$produit->maj();
 	
 	modules_fonction("modprod", $produit->ref);
+	
 		if($urlsuiv){
 		?>
 			<script type="text/javascript">
@@ -450,7 +451,7 @@
 		else{
 			?>
 			<script type="text/javascript">
-				window.location="<?php echo $_SERVER['PHP_SELF']; ?>?ref=<?php echo $produit->ref; ?>&rubrique=<?php echo  $produit->rubrique?>";
+				window.location="<?php echo $_SERVER['PHP_SELF']; ?>?ref=<?php echo $produit->ref; ?>&rubrique=<?php echo  $produit->rubrique?>&lang=<?php echo $lang; ?>";
 			</script>
 		<?php
 		}
@@ -589,7 +590,7 @@
 
 	}
 
-  header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique);
+  header("Location: " . $_SERVER['PHP_SELF'] . "?ref=" . $produit->ref . "&rubrique=" . $produit->rubrique."&lang=".$lang);
 
 	}
 
@@ -671,7 +672,7 @@
 		
 	  }	
 	  
-	  header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique);
+	  header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique."&lang=".$lang);
 		
 	}
 	
@@ -695,11 +696,11 @@
 		else 
 			$imagedesc->maj();
 
-	    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique);
+	    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique."&lang=".$lang);
 
 	}
 	
-	function supprimer_photo($id_photo){
+	function supprimer_photo($id_photo,$lang){
 
 			$tmp = new Produit();
 			$tmp->charger($_REQUEST['ref']);
@@ -716,7 +717,7 @@
 			$image->supprimer();
 			$imagedesc->delete();
 			
- 		    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique);
+ 		    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique . "&lang=".$lang);
 
 
 	}

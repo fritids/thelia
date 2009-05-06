@@ -181,10 +181,8 @@ function analyse($res){
 	
 	// création de la session si non existante
 	
-	if(! isset($_SESSION["navig"])){
+	if(! isset($_SESSION["navig"]))
 	 	$_SESSION["navig"] = new Navigation();
-	 	$_SESSION["navig"]->lang="1";	
-	 }	
 	
 	// URL précédente
 	if(isset($_SERVER['HTTP_REFERER'])) $_SESSION["navig"]->urlprec = $_SERVER['HTTP_REFERER']; 
