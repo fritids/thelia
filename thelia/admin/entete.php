@@ -35,8 +35,10 @@
 		<dt><a href="index.php?action=deconnexion" >D&eacute;connexion</a></dt><dt> | </dt><dt><strong><?php echo($_SESSION["util"]->prenom); ?> <?php echo($_SESSION["util"]->nom); ?></strong> </dt>
 		</dl>
 	</div>
-	<div class="Blocversion">V <?php echo substr($version, 0, 1) . "." . substr($version, 1, 1) . "." . substr($version, 2, 1) ?></div>
-</div>   
+	<div class="Blocversion">V <?php echo substr($version, 0, 1) . "." . substr($version, 1, 1) . "." . substr($version, 2, 1) ?>
+	</div>
+</div>
+  
 <div id="menuGeneral">
 	<div>
    		<ul id="menu">
@@ -72,9 +74,9 @@
 			<li><a href="module_liste.php" <?php if($menu == "plugins") { ?>class="selected"<?php } ?>>Modules</a></li>
 			</ul>
 			<ul class="separation_menu"><li>&nbsp;</li></ul>
-			<!-- </ul> -->
-      	</div>
-            <div id="moteur_recherche"> 
+    </div>
+	
+    <div id="moteur_recherche"> 
              <form action="recherche.php" method="post">
               <div class="bouton_recherche">
 	         	<input type="image" src="gfx/icone_recherche.jpg" alt="Valider la recherche" />
@@ -84,11 +86,5 @@
 	         </div>
 	        
              </form>
-            </div>
-           
-        
-</div>
-
-  
-
+    </div>  
 </div>
