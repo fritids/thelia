@@ -76,6 +76,7 @@
 		$courante = lireTag($args, "courante");
 		$pasvide = lireTag($args, "pasvide");
 		$ligne = lireTag($args, "ligne");
+		$lien = lireTag($args, "lien");
 		$classement = lireTag($args, "classement");
 		$aleatoire = lireTag($args, "aleatoire");
 		$exclusion = lireTag($args, "exclusion");
@@ -103,6 +104,7 @@
 		else if($courante == "0") $search .=" and $rubrique->table.id!='$id_rubrique'";
 		if($num!="") $limit .= " limit $deb,$num";
 		if($exclusion!="") $search .= " and $rubrique->table.id not in($exclusion)";
+		if($lien!="")  $search.=" and $rubrique->table.lien in ($lien)";
 		
 		$search .= " and lang=" . $_SESSION['navig']->lang;
 		

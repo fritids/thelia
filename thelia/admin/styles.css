@@ -883,6 +883,44 @@ div#resultat {
 	margin-right: 20px;
 }
 
+/* styles page d'index */
+
+.Bloc_news_index {
+	float: left;
+	width: 978px;
+	margin:20px 0 0 0;
+    padding: 0px 20px;
+}
+
+.Bloc_news_index .picto {
+	float: left;
+	margin:15px 10px 0 0;
+    padding: 0px;
+}
+.Bloc_news_index .texte {
+	float: left;
+	margin:10px 10px;
+    padding: 0px;
+    color: #747474;
+    font-weight: bold;
+}
+.Bloc_news_index .titre {
+	float: left;
+	text-decoration:underline;
+	list-style: disc;
+	padding: 0px 0px; margin:0 0px 10px 20px;
+	width: 800px;
+	color: #747474;
+}
+.Bloc_news_index a:active, .Bloc_news_index a:hover, .Bloc_news_index a:link, .Bloc_news_index a:visited {
+	text-decoration:underline;
+	color: #747474;
+}
+.Bloc_news_index .date {
+	float: left;
+	list-style: none;
+	padding:0; margin:0 0px 10px 0;
+}
 /* styles page d'accueil et page de configuration */
 #bloc_informations {
 	float: left;

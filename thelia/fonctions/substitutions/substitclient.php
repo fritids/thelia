@@ -44,7 +44,7 @@
 
 
 		$paysdesc = new Paysdesc();
-		$paysdesc->charger($_SESSION['navig']->client->pays);
+		$paysdesc->charger($_SESSION['navig']->client->pays, $_SESSION["navig"]->lang);
 		
 		$texte = str_replace("#CLIENT_RAISON1F", $raison1f, $texte);
         $texte = str_replace("#CLIENT_RAISON2F", $raison2f, $texte);
