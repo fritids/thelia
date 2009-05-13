@@ -66,7 +66,7 @@
 <div id="menuGeneral">
 	<div id="formConnex">
        		<form action="accueil.php" method="post" id="formulaire">
-       			Login : 
+       			Nom d'utilisateur : 
              	<input name="identifiant" type="text" class="form" size="19" />
           		Mot de passe :
              	<input name="motdepasse" type="password" class="form" size="19" />

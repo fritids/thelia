@@ -185,6 +185,7 @@
 		$num = lireTag($args, "num");
 		$courant = lireTag($args, "courant");
 		$ligne = lireTag($args, "ligne");
+		$lien = lireTag($args, "lien");
 		$aleatoire = lireTag($args, "aleatoire");
 		$exclusion = lireTag($args, "exclusion");	
 		
@@ -199,6 +200,7 @@
 		// preparation de la requete
 		$search .=" and ligne='$ligne'";
 		if($id!="")  $search.=" and id=\"$id\"";
+		if($lien!="")  $search.=" and $rubrique->table.lien in ($lien)";
 		if($parent!="") $search.=" and parent=\"$parent\"";
 		if($courant == "1") $search .=" and id='$id_dossier'";
 		else if($courant == "0") $search .=" and id!='$id_dossier'";
