@@ -152,6 +152,10 @@
 		$commande->transaction = date("His");
 		$commande->remise = 0;
 
+		$commande->devise = $_SESSION['navig']->devise;
+		$devise = new Devise();
+		$devise->charger($_SESSION['navig']->devise);
+		$commande->taux = $devise->taux;
 
 		$client = New Client();
 		$client->charger_id($_SESSION['navig']->client->id);

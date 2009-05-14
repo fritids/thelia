@@ -89,7 +89,7 @@
 				$rec = $client->charger_mail($client->email);
 
 				$message = new Message();
-				$message->charger("création client");
+				$message->charger("creation_client");
 
 				$messagedesc = new Messagedesc();
 				$messagedesc->charger($message->id);

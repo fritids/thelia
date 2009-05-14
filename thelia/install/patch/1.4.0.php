@@ -30,6 +30,9 @@
 	$query_cnx = "ALTER TABLE `messagedesc` ADD `descriptiontext` TEXT NOT NULL";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 
+	$query_cnx = "ALTER TABLE `commande` ADD `devise` INT NOT NULL AFTER `remise` , ADD `taux` FLOAT NOT NULL AFTER `devise` ;";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+
 	$devise = new Devise();
 	$devise->code = "EUR";
 	$devise->taux = 1;
@@ -45,4 +48,5 @@
 	$devise->code = "GBP";
 	$devise->maj();
 	
+	// changement des messages
 ?>

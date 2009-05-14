@@ -545,7 +545,7 @@
 			$prix = round($prod->prix * $devise->taux, 2);
 			$prix2 = round($prod->prix2 * $devise->taux, 2);
 			$convert = round($somme * $devise->taux, 2);
-			$total = round( $_SESSION['navig']->panier->total() * $devise->taux, 2);
+			$total = round( $_SESSION['navig']->panier->total(1) * $devise->taux, 2);
 		
 			$prix = number_format($prix, 2, ".", ""); 
 			$prix2 = number_format($prix2, 2, ".", ""); 
@@ -2299,6 +2299,8 @@
 			$temp = str_replace("#TOTALCMD", "$total", $temp);
 			$temp = str_replace("#PORT", "$port", $temp);
 			$temp = str_replace("#TOTCMDPORT", "$totcmdport", $temp);
+            $temp = str_replace("#COMDEVISE", "$row->devise", $temp);
+            $temp = str_replace("#TAUX", "$row->taux", $temp);
 			$temp = str_replace("#COLIS", "$row->colis", $temp);
 			$temp = str_replace("#TRANSPORT", "$row->transport", $temp);
 			$temp = str_replace("#FICHIER", "client/pdf/visudoc.php?ref=" . $row->ref, $temp);

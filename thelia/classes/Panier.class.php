@@ -104,15 +104,26 @@
 
 				$tva = $this->tabarticle[$i]->produit->tva;
 
-				$taxe += $prix * $tva/100;	
+                $taxe += $prix - ($prix/(1+$tva/100));           
 				$total += $prix*$quantite;		
 
 			}
 
-			if($remise) 
-				$remise = $remise / $total * 100;
+			$total -= $remise;
 			
-			$total -= $total * $remise / 100;
+			$pays = new Pays();
+
+			if($_SESSION['navig']->adresse != "" && $_SESSION['navig']->adresse != 0){
+				$adr = new Adresse();
+				$adr->charger($_SESSION['navig']->adresse);
+				$pays->charger($adr->pays);
+			}	
+
+			else 
+				$pays->charger($_SESSION['navig']->client->pays);
+				
+			if($tva && $pays->tva != "" && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != "")))
+				$total -= $taxe;
 
 			return round($total, 2);
 		}	

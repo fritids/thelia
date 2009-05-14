@@ -12,7 +12,7 @@
 /*      the Free Software Foundation; either version 2 of the License, or            */
 /*      (at your option) any later version.                                          */
 /*                                                                                   */
-/*      This program is distributed in the hope that it will be useful,              */
+/*      This program is distributed in the hope that it will be useful,             */
 /*      but WITHOUT ANY WARRANTY; without even the implied warranty of               */
 /*      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                */
 /*      GNU General Public License for more details.                                 */
@@ -45,13 +45,13 @@
 	function substitutions($texte){
 		global $fond;
 
-		$texte = str_replace("#FOND",  $fond, $texte);
+		$texte = str_replace("#FOND", $fond, $texte);
 		
-		$texte = str_replace("#URLPREC",  $_SESSION['navig']->urlprec, $texte);
-		$texte = str_replace("#URLPAGERET",  $_SESSION['navig']->urlpageret, $texte);
-		$texte = str_replace("#URLPANIER",  "panier.php", $texte);
-		$texte = str_replace("#URLCOMMANDER",  "commande.php", $texte);
-		$texte = str_replace("#URLNOUVEAU",  "nouveau.php", $texte);
+		$texte = str_replace("#URLPREC", $_SESSION['navig']->urlprec, $texte);
+		$texte = str_replace("#URLPAGERET", $_SESSION['navig']->urlpageret, $texte);
+		$texte = str_replace("#URLPANIER", "panier.php", $texte);
+		$texte = str_replace("#URLCOMMANDER", "commande.php", $texte);
+		$texte = str_replace("#URLNOUVEAU", "nouveau.php", $texte);
 
         if($_SERVER['QUERY_STRING'] != "")
                 $texte = str_replace("#URLDECONNEXION", $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'] . "&amp;action=deconnexion", $texte);
@@ -67,11 +67,12 @@
 		else
 			$texte = str_replace("#URLCOURANTE", $_SERVER['PHP_SELF'], $texte);
 			
-		$texte = str_replace("#URLADRESSE",  "adresse.php", $texte);
-		$texte = str_replace("#URLPAIEMENT",  "commande.php", $texte);
-		$texte = str_replace("#URLSOMMAIRE",  "index.php", $texte);
-		$texte = str_replace("#URLCOMPTE",  "compte.php", $texte);
-		$texte = str_replace("#LANG",  $_SESSION['navig']->lang, $texte);
+		$texte = str_replace("#URLADRESSE", "adresse.php", $texte);
+		$texte = str_replace("#URLPAIEMENT", "commande.php", $texte);
+		$texte = str_replace("#URLSOMMAIRE", "index.php", $texte);
+		$texte = str_replace("#URLCOMPTE", "compte.php", $texte);
+		$texte = str_replace("#LANG", $_SESSION['navig']->lang, $texte);
+        $texte = str_replace("#DEVISE", $_SESSION['navig']->devise, $texte);
 
 		if(strstr($texte, "#VARIABLE")) $texte = substitvariable($texte);				
 		

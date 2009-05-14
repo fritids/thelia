@@ -106,6 +106,7 @@ function analyse($res){
 	// initialisation des variables du couple php/html
 	if(!isset($res)) $res="";
 	if(!isset($lang)) $lang="";
+	if(!isset($devise)) $devise="";
 	if(!isset($parsephp)) $parsephp="";
 	if(!isset($securise)) $securise=0;
 	if(!isset($panier)) $panier=0;
@@ -117,6 +118,8 @@ function analyse($res){
 	if(!isset($pagesess)) $pagesess=0;
 	if(!$lang)
 		if(!isset($_REQUEST['lang'])) $lang=""; else $lang=$_REQUEST['lang'];
+	if(!$devise)
+		if(!isset($_REQUEST['devise'])) $devise=""; else $devise=$_REQUEST['devise'];
 	if(!isset($_REQUEST['action'])) $action=""; else $action=$_REQUEST['action'];
 	if(!isset($_REQUEST['append'])) $append=0; else $append=$_REQUEST['append'];
 	if(!isset($_REQUEST['id'])) $id="";	else $id=$_REQUEST['id'];
@@ -196,6 +199,10 @@ function analyse($res){
 	// Langue
 	if($lang) $_SESSION["navig"]->lang = $lang;
 	else if(!$_SESSION["navig"]->lang) $_SESSION["navig"]->lang=1;
+
+	// Devise
+	if($devise) $_SESSION["navig"]->devise = $devise;
+	else if(!$_SESSION["navig"]->devise) $_SESSION["navig"]->devise=1;
 
 	// fonctions à éxecuter avant le moteur
 	modules_fonction("demarrage");
