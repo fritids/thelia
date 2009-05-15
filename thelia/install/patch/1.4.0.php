@@ -37,15 +37,20 @@
 	$devise->code = "EUR";
 	$devise->taux = 1;
 	$devise->add();
-	
+
+	$query_cnx = "UPDATE devise set symbole=CHAR(128) where id=1;";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+		
 	$devise = new Devise();
 	$devise->charger(1);
 	$devise->code = "USD";
+	$devise->symbole = "$";
 	$devise->maj();
 	
 	$devise = new Devise();
 	$devise->charger(2);
 	$devise->code = "GBP";
+	$devise->symbole = "£";
 	$devise->maj();
 	
 	// changement des messages

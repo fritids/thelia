@@ -40,6 +40,7 @@
 	include_once("../../classes/Zone.class.php");
 	include_once("../../classes/Pays.class.php");
 	include_once("../../classes/Paysdesc.class.php");
+	include_once("../../classes/Devise.class.php");
 	
 	class Facture{
 	
@@ -248,12 +249,15 @@
 		$mht = round($mht, 2);
 
 		$pdf->SetXY(179,270);
-    		$pdf->write(5,round($commande->port, 2));
-                $pdf->SetFont('Arial','',8);
+   		$pdf->write(5,round($commande->port, 2));
+        $pdf->SetFont('Arial','',8);
    
+   		$devise = new Devise();
+   		$devise->charger($commande->devise);
+
   		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(179,272.5);	  			
-    	$pdf->write(10,$total-$commande->remise);
+    	$pdf->write(10,$total-$commande->remise . " " . $devise->symbole);
 
         $nom = $modules->nom;
         $nom[0] = strtoupper($nom[0]);

@@ -33,6 +33,7 @@
 <?php include_once("title.php"); ?>
 <?php
 	include_once("../classes/Commande.class.php");
+	include_once("../classes/Devise.class.php");
 	include_once("../classes/Client.class.php");
 	include_once("../classes/Paysdesc.class.php");
 	include_once("../classes/Venteprod.class.php");
@@ -52,6 +53,9 @@
 	$commande->charger_ref($ref);
 	$modules = new Modules();
 	$modules->charger_id($commande->paiement);
+
+	$devise = new Devise();
+	$devise->charger($commande->devise);
 
 ?>
 
@@ -233,7 +237,7 @@
 	</ul>
 	<ul class="ligne_claire_BlocDescription">
 		<li class="designation" style="width:290px;">Total</li>
-		<li><?php echo(round($totalremise + $port, 2)); ?></li>
+		<li><?php echo(round($totalremise + $port, 2)); ?> <?php echo $devise->symbole; ?></li>
 	</ul>
 </div>
  

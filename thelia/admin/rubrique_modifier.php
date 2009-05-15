@@ -965,13 +965,18 @@ if($id != ""){
 			<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" ENCTYPE="multipart/form-data">
 				<input type="hidden" name="action" value="ajouterdoc" />
  				<input type="hidden" name="id" value="<?php echo($id); ?>" /> 
-    			<input type="hidden" name="lang" value="<?php echo($lang); ?>"
-    			<input type="file" name="doc" class="form"><br/>
-    			<input type="submit" value="Ajouter">
+    			<input type="hidden" name="lang" value="<?php echo($lang); ?>" />
+    			<input type="file" name="doc" class="form" /><br/>
+    			<input type="submit" value="Ajouter" />
     		</form>
 		</div>
 	</div>
-
+	</div>
+   	<!-- fin bloc transfert des documents -->
+   	<ul id="blocs_pliants_fichier">
+	<li>
+	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" alt="-" /></a></h3>
+	
    	   <?php
 			$document = new Document();
 			
@@ -988,20 +993,19 @@ if($id != ""){
 					<input type="hidden" name="action" value="modifierdoc" />
 					<input type="hidden" name="id" value="<?php echo $id; ?>" />
 					<input type="hidden" name="id_document" value="<?php echo $row->id; ?>" />
-					<input type="hidden" name="lang" value="<?php echo($lang); ?>">
-
-		<li class="lignesimple">
-					<div class="cellule_designation" style="height:208px;">&nbsp;</div>
-					<div class="cellule_photos" style="height:200px; overflow:hidden;"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php echo($row->fichier); ?></a></div>
-					<div class="cellule_supp">
-					<a href="rubrique_modifier.php?id=<?php echo($id); ?>&id_document=<?php echo($row->id); ?>&action=supprimer_document&lang=<?php echo $lang; ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
-				</li>
-				<li class="lignesimple">
+					<input type="hidden" name="lang" value="<?php echo($lang); ?>" />
+		<ul>
+			<li class="lignesimple">
+				<div class="cellule_designation">Fichier</div>
+				<div class="cellule_document"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php echo($row->fichier); ?></a></div>
+					<div class="cellule_supp_fichier"><a href="rubrique_modifier.php?id=<?php echo($id); ?>&id_document=<?php echo($row->id); ?>&action=supprimer_document&lang=<?php echo $lang; ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
+			</li>
+			<li class="lignesimple">
 					<div class="cellule_designation" style="height:30px;">Titre</div>
 					<div class="cellule">
 					<input type="text" name="titredoc" style="width:219px;" class="form" value="<?php echo $documentdesc->titre ?>" />
 					</div>
-				</li>
+			</li>
 				<li class="lignesimple">
 					<div class="cellule_designation" style="height:50px;">Chapo</div>
 					<div class="cellule"><textarea name="chapodoc" rows="2" class="form" style="width:219px;"><?php echo $documentdesc->chapo ?></textarea>
@@ -1024,15 +1028,18 @@ if($id != ""){
 				<li class="lignesimple">
 					<div class="cellule_designation" style="height:30px;">&nbsp;</div>
 					<div class="cellule" style="height:30px; border-bottom: 1px dotted #9DACB6"><input type="submit" value="Enregistrer" /></div>
-				</li>   
+				</li>
+				</ul>  
 				</form>
+	
     	 <?php
                 }
         ?>
+</li>
+<li><h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
+</ul>
 
-</div> <!-- fin bloc transfert des documents -->
-
-</div> <!-- fin bloc-photos colonne de droite -->
+</div> <!-- fin bloc colonne de droite -->
 <?php } ?>
 </div> <!-- fin bloc-photos colonne contenu-int -->
 <?php include_once("pied.php");?>
@@ -1056,6 +1063,14 @@ jQuery().ready(function(){
 		active: 'h3.selected',
 		header: 'h3.head',
 		alwaysOpen: false,
+		animated: false,
+		showSpeed: 400,
+		hideSpeed: 100
+	});
+	jQuery('#blocs_pliants_fichier').Accordion({
+		active: 'h3.selected',
+		header: 'h3.head',
+		alwaysOpen: true,
 		animated: false,
 		showSpeed: 400,
 		hideSpeed: 100

@@ -898,9 +898,11 @@
 								$resul = mysql_query($query);
 								while($row = mysql_fetch_object($resul)){
 									$langl->charger($row->id);
+									if($_GET['lang'] == "")
+										$lang = 1;
 						    ?>
 						  
-						  		 <div class="flag"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?ref=<?php echo($ref); ?>&amp;rubrique=<?php echo($rubrique); ?>&amp;lang=<?php echo($langl->id); ?>"><img src="gfx/lang<?php echo($langl->id); ?>.gif" alt="-" /></a></div>
+						  		 <div class="flag<?php if($lang ==  $langl->id) { ?>Selected<?php } ?>"><a href="<?php echo($_SERVER['PHP_SELF']); ?>?ref=<?php echo($ref); ?>&amp;rubrique=<?php echo($rubrique); ?>&amp;lang=<?php echo($langl->id); ?>"><img src="gfx/lang<?php echo($langl->id); ?>.gif" alt="-" /></a></div>
 						  		 
 						  <?php } ?>
         
@@ -1467,6 +1469,12 @@
 			</form>
 		</div>
    	</div>
+   	</div>
+   	<!-- fin bloc transfert des documents -->
+   	<ul id="blocs_pliants_fichier">
+	<li>
+	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" alt="-" /></a></h3>
+	
    	 <?php
                 $document = new Document();
                 $documentdesc = new Documentdesc();
@@ -1485,11 +1493,11 @@
 			<input type="hidden" name="rubrique" value="<?php echo $rubrique; ?>" />
 			<input type="hidden" name="id_document" value="<?php echo $row->id; ?>" />
 			<input type="hidden" name="lang" value="<?php echo($lang); ?>" />
-			   
-			<li class="lignesimple">
+		<ul>	   
+		<li class="lignesimple">
 			<div class="cellule_designation" style="height:20px;">Fichier</div>
 			<div class="cellule_document"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php echo($row->fichier); ?></a></div>
-			<div class="cellule_suppdocument">
+			<div class="cellule_supp_fichier">
 			<a href="produit_modifier.php?ref=<?php echo($ref); ?>&rurbrique=<?php echo $rubrique; ?>&amp;id_document=<?php echo($row->id); ?>&amp;action=supprimer_document&amp;lang=<?php echo $lang; ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" alt="-" /></a></div>
 		</li>
 		<li class="lignesimple">
@@ -1520,13 +1528,16 @@
 		<li class="lignesimple">
 			<div class="cellule_designation" style="height:30px;">&nbsp;</div>
 			<div class="cellule" style="height:30px; border-bottom: 1px dotted #9DACB6"><input type="submit" value="Enregistrer" /></div>
-		</li>   
+		</li>
+		</ul>   
 		</form>
+	
     	<?php
                 }
         ?>
-   	</div>
-   	<!-- fin bloc transfert des documents -->
+ </li>
+	<li><h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
+	</ul>
 </div>
 <?php
 }
@@ -1553,6 +1564,14 @@ jQuery().ready(function(){
 		hideSpeed: 400
 	});
 	jQuery('#blocs_pliants_photo').Accordion({
+		active: 'h3.selected',
+		header: 'h3.head',
+		alwaysOpen: true,
+		animated: false,
+		showSpeed: 400,
+		hideSpeed: 100
+	});
+	jQuery('#blocs_pliants_fichier').Accordion({
 		active: 'h3.selected',
 		header: 'h3.head',
 		alwaysOpen: true,
