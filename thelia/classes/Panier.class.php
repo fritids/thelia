@@ -27,6 +27,7 @@
 
 	include_once(realpath(dirname(__FILE__)) . "/Article.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Pays.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Adresse.class.php");
 
 	// Déninition du panier
 	
@@ -102,9 +103,9 @@
 					$prix = $this->tabarticle[$i]->produit->prix;
 				else $prix = $this->tabarticle[$i]->produit->prix2;
 
-				$tva = $this->tabarticle[$i]->produit->tva;
+				$prodtva = $this->tabarticle[$i]->produit->tva;
 
-                $taxe += $prix - ($prix/(1+$tva/100));           
+                $taxe += ($prix - ($prix/(1+$prodtva/100))) * $quantite;           
 				$total += $prix*$quantite;		
 
 			}
