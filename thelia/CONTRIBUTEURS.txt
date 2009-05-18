@@ -4,9 +4,10 @@ Matthieu Mallet <matthieu.mallet@gmail.com>
 Mathieu Rastoix <rastoix.m@hotmail.fr>
 David Aubel Raimbault <David.raimbault@ifrance.com>
 Abdellah TOUIL <abdellah31@yahoo.fr>
-Manuel Raynaud <manu@octolys.fr>
 Ludovic LENNE
 Spiralliance
+Joel Mossand <joel@scopika.com>
+Frédéric Melon <fred@scopika.com>
 Christophe Martinez <christophe@arteminz.com>
 Mathieu Chabannat <chabannatm@gmail.com>
 Simon Arnal <arnal_simon@hotmail.com>

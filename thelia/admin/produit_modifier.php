@@ -748,9 +748,23 @@
 <script type="text/javascript">
 <!--
 	function envoyer(){
+	        var ref=document.getElementById('ref_c').value;
+	        if( ref == ""){
+	            alert("Veuillez entrer une reference");
+	            } else {
+	            var reg=new RegExp("^[a-zA-Z0-9-_/:,\.]+$", "g");
+	            if (!ref.match(reg)){
+	                alert("Pour la référence, les seuls caractères autorisés sont : les chiffres, les lettres, et -_/:,.");
+	            } else {
+	                document.getElementById('formulaire').submit();
+	            }
+	        }
+	 }
+
+/*	function envoyer(){
 		if(document.getElementById('ref_c').value == "") alert("Veuillez entrer une reference");
 		else document.getElementById('formulaire').submit();
-	}
+	}*/
 	function supprimer(id,ref){
 		window.location="produit_modifier.php?id_photo="+id+"&ref="+ref+"action=supprimer_photo";
 	}
