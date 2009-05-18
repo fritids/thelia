@@ -1074,6 +1074,12 @@ float: left;
 padding: 0;
 margin: 0px 3px;
 }
+#bloc_description table .flagSelected {
+float: left;
+padding: 0;
+margin: 0px 3px;
+border: solid #62BD19 3px;
+}
 #bloc_description .ligne1 {
 	width: 573px;
 	color: #3B4B5B;
@@ -1391,13 +1397,7 @@ margin: 0px 3px;
 	background-color: #D4DADD;
 	border:1px solid #3b4b5b;
 }
-#blocs_pliants_photo .cellule_document {
-	float: left;
-	padding: 0px 0 0 0px;
-	margin: 5px 0 0 7px;
-	width: 220px;
-	background-color: #D4DADD;
-}
+
 #blocs_pliants_photo .cellule_supp {
 	float: left;
 	width: 14px;
@@ -1405,12 +1405,55 @@ margin: 0px 3px;
 	padding:105px 0 0 2px;
 	background-color: #D4DADD;
 }
-#blocs_pliants_photo .cellule_suppdocument {
+
+/* blocs pliants depliants de la partie fichiers produits */
+#blocs_pliants_fichier  {
+	width: 380px;
+	padding: 0 0 10px 0;
+	border-bottom: 1px dotted #9DACB6;
+	font-weight: normal;
+	color: #3B4B5B;
+}
+#blocs_pliants_fichier h3.head { 
+		color: #FFF;
+}
+#blocs_pliants_fichier h3.head a { 
+		color: #FFF;
+		font-weight: normal;
+		font-size:13px;
+}
+#blocs_pliants_fichier .lignesimple {
 	float: left;
-	width: 14px;
+	background-color: #D4DADD;
+	padding:0;	margin: 0;
+}
+#blocs_pliants_fichier .cellule {
+	float: left;
+	padding: 5px 0 0 7px;
+	width: 238px;
+}
+#blocs_pliants_fichier .cellule_designation {
+	float: left;
+	padding: 5px 0 0 5px;
+	background-color: #9eb0be;
+	width: 130px;
+	color: #3B4B5B;
+	font-weight: normal;
+}
+#blocs_pliants_fichier .cellule_document {
+	float: left;
+	padding: 0px 0 0 0px;
+	margin: 5px 0 0 7px;
+	width: 220px;
+	background-color: #D4DADD;
+}
+#blocs_pliants_fichier .cellule_supp_fichier {
+	float: left;
+	width: 16px;
 	padding:10px 0 0 2px;
 	background-color: #D4DADD;
 }
+
 
 /* fin des menus accordéons sur la fiche produit */
 
