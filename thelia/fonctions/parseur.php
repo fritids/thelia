@@ -263,6 +263,7 @@
 			 	 case 'CHEMIN' : $res .= boucleChemin($texte, $args); break;			 	 
 			 	 case 'PAIEMENT' : $res .= bouclePaiement($texte, $args); break;			 	 
 			 	 case 'ADRESSE' : $res .= boucleAdresse($texte, $args); break;			 	 
+			 	 case 'VENTEADR' : $res .= boucleVenteadr($texte, $args); break;			 	 
 			 	 case 'COMMANDE' : $res .= boucleCommande($texte, $args); break;			 	 
 			 	 case 'VENTEPROD' : $res .= boucleVenteprod($texte, $args); break;		
 			 	 case 'IMAGE' : $res .= boucleImage($texte, $args); break;			 	 
