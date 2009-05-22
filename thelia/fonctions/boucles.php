@@ -2273,6 +2273,12 @@
   			$total = round(mysql_result($resul2, 0, "total"), 2);
   			$total = round($total - $row->remise, 2);
 
+		/*	$queryht = "SELECT sum (prixu/(1+(tva/100))*quantite) as totalht FROM $venteprod->table where commande='$row->id'";
+			$resulht = mysql_query($queryht,$venteprod->link);
+			$totalht = round(mysql_result($queryht,0,"totalht"),2);
+			$totalht = round($totalht - $row->remise,2);*/
+			
+
 			$port = $row->port;
 			$totcmdport = $row->port + $total;
 			 	  	

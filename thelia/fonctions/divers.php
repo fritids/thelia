@@ -315,64 +315,81 @@
 	}
 
 	// changement de rubrique
-	function arbreOption($depart, $niveau, $prubrique){
+	   function arbreOption($depart, $niveau, $prubrique, $aenfant = 0){
 
-		$rec="";
-		$espace="";
-		
-		$niveau++;
-		$trubrique = new Rubrique();
-		$trubriquedesc = new Rubriquedesc();
-		
-		$query = "select * from $trubrique->table where parent=\"$depart\"";
-		$resul = mysql_query($query, $trubrique->link);
-		
-		for($i=0; $i<$niveau; $i++) $espace .="&nbsp;&nbsp;&nbsp;";
+	       $rec="";
+	       $espace="";
 
-		while($row=mysql_fetch_object($resul)){
-			$trubriquedesc->charger($row->id);
-			if($prubrique == $trubriquedesc->rubrique) $selected="selected=\"selected\""; else $selected="";
-			
-			$rec .= "<option value=\"$row->id\" $selected>" . $espace . $trubriquedesc->titre . "</option>";
-			
-			$rec .= arbreOption($row->id, $niveau, $prubrique);
-			
-		}
-		
-		
-		return $rec;
-	}
+	       $niveau++;
+	       $trubrique = new Rubrique();
+	       $trubriquedesc = new Rubriquedesc();
 
-	function arbreOptionRub($depart, $niveau, $prubrique){
+	       $query = "select * from $trubrique->table where parent=\"$depart\"";
+	       $resul = mysql_query($query, $trubrique->link);
 
-		$rec="";
-		$espace="";
-		
-		$niveau++;
-		$trubrique = new Rubrique();
-		$trubriquedesc = new Rubriquedesc();
-		
-		$query = "select * from $trubrique->table where parent=\"$depart\"";
-		$resul = mysql_query($query, $trubrique->link);
-		
-		for($i=0; $i<$niveau; $i++) $espace .="&nbsp;&nbsp;&nbsp;";
+	       for($i=0; $i<$niveau; $i++) $espace .="&nbsp;&nbsp;&nbsp;";
 
-		while($row=mysql_fetch_object($resul)){
-			$trubriquedesc->charger($row->id);
-			$courante = new Rubrique();
-			$courante->charger($prubrique);
-			if($courante->parent == $trubriquedesc->rubrique) $selected="selected=\"selected\""; else $selected="";
-			
-			if($courante->id != $row->id)
-				$rec .= "<option value=\"$row->id\" $selected>" . $espace . $trubriquedesc->titre . "</option>";
-			
-			$rec .= arbreOptionRub($row->id, $niveau, $prubrique);
-			
-		}
-		
-		
-		return $rec;
-	}
+	       while($row=mysql_fetch_object($resul)){
+	           $trubriquedesc->charger($row->id);
+	           $trubrique->charger($trubriquedesc->rubrique);
+	           if($prubrique == $trubriquedesc->rubrique) $selected="selected"; else $selected="";
+	           if($aenfant){
+	               if(!$trubrique->aenfant()){
+	                   $rec .= "<option value=\"$row->id\" $selected>" . $espace . $trubriquedesc->titre . "</option>";
+	               }
+	           }
+	           else{
+	               $rec .= "<option value=\"$row->id\" $selected>" . $espace . $trubriquedesc->titre . "</option>";
+	           }
+
+	           $rec .= arbreOption($row->id, $niveau, $prubrique);
+
+	       }
+
+
+	       return $rec;
+	   }
+
+	unction arbreOptionRub($depart, $niveau, $prubrique, $nbprod = 0){
+
+	       $rec="";
+	       $espace="";
+
+	       $niveau++;
+	       $trubrique = new Rubrique();
+	       $trubriquedesc = new Rubriquedesc();
+
+	       $query = "select * from $trubrique->table where parent=\"$depart\"";
+	       $resul = mysql_query($query, $trubrique->link);
+
+	       for($i=0; $i<$niveau; $i++) $espace .="&nbsp;&nbsp;&nbsp;";
+
+	       while($row=mysql_fetch_object($resul)){
+	           $trubriquedesc->charger($row->id);
+	           $trubrique->charger($trubriquedesc->rubrique);
+	           $courante = new Rubrique();
+	           $courante->charger($prubrique);
+	           if($courante->parent == $trubriquedesc->rubrique) $selected="selected"; else $selected="";
+	           if($nbprod){
+	               if(!$trubrique->nbprod()){
+	                   if($courante->id != $row->id ){
+	                       $rec .= "<option value=\"$row->id\" $selected>" . $espace . $trubriquedesc->titre . "</option>";
+	                   }
+	               }
+	           }
+	           else{
+	               if($courante->id != $row->id ){
+	                   $rec .= "<option value=\"$row->id\" $selected>" . $espace . $trubriquedesc->titre . "</option>";
+	               }
+	           }
+
+	           $rec .= arbreOptionRub($row->id, $niveau, $prubrique,$nbprod);
+
+	       }
+
+
+	       return $rec;
+	   }
 
 	// hiérarchie des dossiers
 	function arbreBoucle_dos($depart, $profondeur=0, $i=0){
