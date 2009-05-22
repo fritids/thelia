@@ -3,6 +3,7 @@
 	Nouveau template de base
 	Mise en place des places des mails au format HTML
 	Ajout du multipages sur client/pdf/modeles/livraison.php (mettre à jour si vous ne l'avez pas modifié)
+	Ajout de la boucle VENTEADR
 	
 1.3.9
 	Mise à jour de sécurité

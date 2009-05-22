@@ -2203,6 +2203,65 @@
 	
 	}		
 	
+	function boucleVenteadr($texte, $args){
+
+		$venteadr = new Venteadr();
+
+
+		// récupération des arguments
+
+		$id = lireTag($args, "id");		
+
+		$search ="";
+		$res="";
+
+		$raison[1] = "Mme";
+		$raison[2] = "Mlle";
+		$raison[3] = "M";
+
+		// preparation de la requete
+		if($id!="")  $search.=" and id=\"$id\"";
+
+		$query = "select * from $venteadr->table where 1 $search";
+		$resul = mysql_query($query, $venteadr->link);
+
+		$nbres = mysql_num_rows($resul);
+		if(!$nbres) return "";
+
+
+		while( $row = mysql_fetch_object($resul)){
+
+	        if($row->raison == 1) $raison1f="selected=\"selected\"";
+	        else $raison1f="";
+
+	        if($row->raison == 2) $raison2f="selected=\"selected\"";
+	        else $raison2f="";
+
+	        if($row->raison == 3) $raison3f="selected=\"selected\"";
+	        else $raison3f="";			
+
+
+			$temp = str_replace("#ID", "$row->id", $texte);
+			$temp = str_replace("#PRENOM", "$row->prenom", $temp);
+			$temp = str_replace("#NOM", "$row->nom", $temp);
+	 		$temp = str_replace("#RAISON1F", "$raison1f", $temp);
+	   		$temp = str_replace("#RAISON2F", "$raison2f", $temp);
+	   		$temp = str_replace("#RAISON3F", "$raison3f", $temp);				
+			$temp = str_replace("#RAISON", $raison[$row->raison], $temp);
+			$temp = str_replace("#ADRESSE1", "$row->adresse1", $temp);
+			$temp = str_replace("#ADRESSE2", "$row->adresse2", $temp);
+			$temp = str_replace("#ADRESSE3", "$row->adresse3", $temp);
+			$temp = str_replace("#CPOSTAL", "$row->cpostal", $temp);
+			$temp = str_replace("#PAYS", "$row->pays", $temp);
+			$temp = str_replace("#VILLE", "$row->ville", $temp);
+			$temp = str_replace("#TEL", "$row->tel", $temp);
+			$res .= $temp;
+		}
+
+		return $res;
+
+	}
+
 
 	function boucleCommande($texte, $args){
 	
