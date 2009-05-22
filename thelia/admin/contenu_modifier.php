@@ -407,7 +407,7 @@
 				}
 			
 				while($tot --){
-			?><a href="listdos.php?parent=<?php echo($res[$tot+1]->id); ?>" class="lien04"><?php echo($res[$tot+1]->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />
+			?><a href="listdos.php?parent=<?php echo($res[$tot+1]->dossier); ?>" class="lien04"><?php echo($res[$tot+1]->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />
 			<?php
             	}
             
@@ -455,8 +455,8 @@
 		</div>
 	<table width="100%" cellpadding="5" cellspacing="0">
     <tr class="claire">
-        <td class="designation">Changer la langue</td>
-        <td>
+        <th class="designation">Changer la langue</th>
+        <th>
         <?php
 			$langl = new Lang();
 			$query = "select * from $langl->table";
@@ -464,9 +464,10 @@
 			while($row = mysql_fetch_object($resul)){
 			$langl->charger($row->id);
 		?>
-		<a href="<?php echo($_SERVER['PHP_SELF']); ?>?id=<?php echo($id); ?>&dossier=<?php echo($dossier); ?>&lang=<?php echo($langl->id); ?>"><img src="gfx/lang<?php echo($langl->id); ?>.gif" /></a>
+		<div class="flag<?php if($lang ==  $langl->id) { ?>Selected<?php } ?>">
+		<a href="<?php echo($_SERVER['PHP_SELF']); ?>?id=<?php echo($id); ?>&dossier=<?php echo($dossier); ?>&lang=<?php echo($langl->id); ?>"><img src="gfx/lang<?php echo($langl->id); ?>.gif" /></a></div>
 		<?php } ?>
-</td>
+</th>
    	</tr>
    	<tr class="fonce">
         <td class="designation">Titre</td>

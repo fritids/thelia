@@ -453,7 +453,7 @@
 			while($row = mysql_fetch_object($resul)){
 			$langl->charger($row->id);
 		?> 
-		<div class="flag">
+		<div class="flag<?php if($lang ==  $langl->id) { ?>Selected<?php } ?>">
 			<a href="<?php echo($_SERVER['PHP_SELF']); ?>?id=<?php echo($id); ?>&lang=<?php echo($langl->id); ?>">
 				<img src="gfx/lang<?php echo($langl->id); ?>.gif" />
 			</a>
