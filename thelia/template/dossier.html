@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+
+	<link href="styles.css" rel="stylesheet" type="text/css" />	
+</head>
+<body>
+
+<!-- wrapper & subwrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+	
+	#INCLURE "entete.html"
+	
+	<div id="chemin">Vous &ecirc;tes ici :<a href="index.php">Accueil boutique</a> / #DOSSIER_NOM</div>
+		
+<!-- contenu -->
+	
+		#INCLURE"menu.html"
+    <THELIA_DOSSIER type="DOSSIER"  id="#DOSSIER_ID">
+		<div id="contenu">
+			<h2>#TITRE</h2>
+			<THELIA_CONTENU type="CONTENU"  dossier="#ID">
+			<h3>#TITRE</h3>
+            <THELIA_IMAGE type="IMAGE" num="1" contenu="#ID"  largeur="150" >
+            <img src="#IMAGE" alt="#TITRE" title="#TITRE"/>
+            </THELIA_IMAGE>
+			#DESCRIPTION			
+			</THELIA_CONTENU>
+		</div>
+		</THELIA_DOSSIER>
+		#INCLURE "pied.html"
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>

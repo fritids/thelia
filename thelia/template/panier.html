@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	#INCLURE "meta.html"
+
+	<link href="styles.css" rel="stylesheet" type="text/css" />	
+</head>
+<body>
+
+<!-- wrapper & subwrapper -->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+		#INCLURE "entete.html"
+		<div id="chemin">Vous &ecirc;tes ici :<a href="index.php">Accueil boutique</a> / Contenu de mon panier</div>
+		#INCLURE"menu.html"
+        
+<!-- contenu -->		
+
+		<div id="contenu">
+			<div id="etapesDeCommande">
+				<ul>
+					<li class="selection"><span class="chiffreSelection">1</span>Panier</li>
+					<li><span>2</span>Facturation et livraison</li>
+					<li><span>3</span>Je v&eacute;rifie ma commande</li>
+					<li><span>4</span>Paiement s&eacute;curis&eacute;</li>
+				</ul>
+			</div>				
+			<h2>Contenu de mon panier</h2>
+			<T_CONTENU_PANIER>
+			<table width="100%" border="0" cellpadding="5" cellspacing="0">
+                <tr>
+                    <th colspan="2">Contenu de mon panier</th>
+                    <th>Prix unitaire</th>
+                    <th>Quantit&eacute;</th>
+                    <th>Total TTC</th>
+                    <th align="center">Vider</th>
+                </tr>
+				<THELIA_CONTENU_PANIER type="PANIER">
+				<tr>
+					<td class="ligne">
+                   	  <THELIA_IMAGE type="IMAGE" num="1" produit="#ID" largeur="50">
+						<img src="#IMAGE" alt="#PRODTITRE " title="#PRODTITRE"/>
+						</THELIA_IMAGE>
+					</td>
+                    <td class="ligne">#TITRE </td>
+                    <td class="ligne">#PRIXU &euro;</td>
+					<td class="ligne">
+                      <form action="#URLPANIER" method="post" name="formpanier#ARTICLE" id="formpanier#ARTICLE">
+                      <input type="hidden" name="article" value="#ARTICLE" />
+                      <input type="hidden" name="action" value="modifier" />
+                      <select name="quantite" size="1" onchange="document.formpanier#ARTICLE.submit()">
+                      <THELIA_quantite type="QUANTITE" article="#ARTICLE">
+                      <option value="#NUM" #SELECTED>#NUM</option>
+                      </THELIA_quantite>
+                      </select>
+                      </form>
+					</td>
+					<td class="ligne">#TOTAL &euro;</td>
+					<td td class="ligne" align="center"><a href="#SUPPRURL">Supprimer</a></td>
+				</tr>
+                </THELIA_CONTENU_PANIER>
+                <tr>
+                	<th colspan="4">&nbsp;</th>
+					<th align="right">TOTAL DU PANIER :</th>
+					<th align="center" class="total">#PANIER_TOTAL &euro;</th>
+				</tr>
+			</table>
+            <div class="queFaire">
+				<a class="bouton" href="index.php"><span><span><span>Retour &agrave; la boutique</span></span></span></a>
+				<a class="bouton" href="adresse.php"><span><span><span>Finaliser ma commande</span></span></span></a>
+			</div>
+			</T_CONTENU_PANIER>
+				
+			<h4>::paniervide2::</h4>
+            <div class="queFaire">
+				<a class="bouton" href="index.php"><span><span><span>Retour &agrave; la boutique</span></span></span></a>
+			</div>		
+			<//T_CONTENU_PANIER>
+		</div>
+		#INCLURE "pied.html"
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>

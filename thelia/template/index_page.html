@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+#INCLURE "meta.html"
+<link href="styles.css" rel="stylesheet" type="text/css" />	</style>
+
+</head>
+<body>
+	
+<div id="wrapper">
+	<div id="subwrapper">
+	#INCLURE "entete.html"
+    
+<!-- Chemin -->
+
+		<div id="chemin">Vous &ecirc;tes ici : <a href="index.php">Accueil boutique</a></div>
+        
+<!-- Menu -->
+		
+		#INCLURE"menu.html"
+			
+        <div id="contenu">
+            <div id="intro">
+                <THELIA_DOSSIER type="DOSSIER" id="4">
+                <h2>#TITRE</h2>
+                #DESCRIPTION
+                </THELIA_DOSSIER>  
+			</div>
+            
+<!-- Bloc Nouveauté  -->
+                
+            <div class="blocNouveaute">
+                <THELIA_NOUVEAUTE type="PRODUIT" aleatoire="1" nouveaute="1" num="1">
+                <h3><a href="rubrique.php?nouveaute=1">Nouveaut&eacute;s</a></h3>
+                <div class="contenu">
+                    <a href="#URL" class="image">
+                    <THELIA_IMAGE type="IMAGE" num="1" produit="#ID" largeur="140">
+                    <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td align="center" valign="middle">
+                                <img src="#IMAGE" alt="#PRODTITRE" title="#PRODTITRE"/>
+                            </td>
+                        </tr>
+                    </table>
+                    </THELIA_IMAGE>
+                    </a>                
+                    <div class="description">
+                        <h4><a href="#URL">#TITRE</a></h4>
+                        <span class="chapo">#CHAPO</span>
+                        <span class="prixProduit">#PROMO[#PRIX2 &euro;<br/><span class="chapo">au lieu de #PRIX &euro;</span>][#PRIX &euro;]</span>
+                		<p><a class="acheter" href="#PANIER"><span><span>Ajouter au panier</span></span></a></p>
+                		<p><a class="acheter" href="#URL"><span><span>En savoir +</span></span></a></p>            
+                    </div>
+                </div>
+                <a href="rubrique.php?nouveaute=1" class="toutesLesNouveautes">Voir toutes les nouveaut&eacute;s</a>
+                </THELIA_NOUVEAUTE>
+            </div>
+    
+<!-- Bloc Promotion -->
+
+            <div class="blocPromo">
+                <THELIA_PROMO type="PRODUIT" aleatoire="1" promo="1" num="1">
+                <h3><a href="rubrique.php?promo">Promotions</a></h3>
+                <div class="contenu">
+                    <a href="#URL" class="image">
+                    <THELIA_IMAGE type="IMAGE" num="1" produit="#ID" largeur="140">
+                    <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td align="center" valign="middle">
+                                <img src="#IMAGE" alt="#PRODTITRE" title="#PRODTITRE"/>
+                            </td>
+                        </tr>
+                    </table>
+                    </THELIA_IMAGE>
+                    </a>
+                    <div class="description">
+                        <h4><a href="#URL">#TITRE</a></h4>
+                        <span class="chapo">#CHAPO</span>
+                        <span class="prixProduit">#PROMO[#PRIX2 &euro;<br/><span class="chapo">au lieu de #PRIX &euro;</span>][#PRIX &euro;]</span>
+                		<p><a class="acheter" href="#PANIER"><span><span>Ajouter au panier</span></span></a></p>
+                		<p><a class="acheter" href="#URL"><span><span>En savoir +</span></span></a></p>                          	
+                    </div>
+                </div>
+                <a href="rubrique.php?promo=1" class="toutesLesPromos">Voir toutes les promotions</a>
+              </THELIA_PROMO>
+            </div>
+                
+<!-- Bloc Produits au hasard  -->
+
+            <div class="blocMozaique">
+                <h3>D&eacute;couvrez ...</h3>
+                <div class="contenu">
+					<ul class="image">			
+                        <THELIA_DECOUVREZ type="PRODUIT" aleatoire="1" num="8"> 
+                        <li><a href="#URL" onmouseover="this;return escape('<h5>#TITRE</h5>#PRIX &euro;')">
+                        	<THELIA_IMAGE type="IMAGE" num="1" produit="#ID"  largeur="81">
+                        	<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+                        		<tr>
+                                	<td align="center" valign="middle">
+                                    	<img src="#IMAGE" alt="#PRODTITRE" title="#PRODTITRE"/>
+                                    </td>
+                            	</tr>
+                        	</table>
+                        	</THELIA_IMAGE>
+                        </a></li>
+                        </THELIA_DECOUVREZ>
+                    </ul>
+                </div>
+            </div>
+        </div>
+	#INCLURE "pied.html"
+	#INCLURE "signature.html"
+	</div>
+</div>
+
+<script language="JavaScript" type="text/javascript" src="js/wz_tooltip.js"></script>
+</body>
+</html>

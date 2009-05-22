@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+
+<link href="styles.css" rel="stylesheet" type="text/css" />
+	
+</head>
+<body>
+	
+<div id="wrapper">
+	<div id="subwrapper">
+		#INCLURE "entete.html"
+		<div id="chemin">
+		::navigation:: :<a href="index.php">::accueil::</a> /::reglementvirement::
+		</div>
+		#INCLURE"menu.html"
+		<div id="contenu">
+			<div id="etapesDeCommande">
+				<ul>
+					<li><span>1</span>::panier::</li>
+					<li><span>2</span>::facturationlivraison::</li>
+					<li><span>3</span>::verifcommande::</li>
+					<li class="selection"><span class="chiffreSelection">4</span>::paiementsecurise::</li>
+				</ul>
+			</div>					
+			<h2>::reglementvirement::  </h2>
+			::remerciement::<br />
+			::emailrecapitulatif:: #CLIENT_EMAIL.<br />
+			::validationcommande::<br /><br />
+			::ecrireicinfo::<br /><br />
+			<THELIA_cmd type="COMMANDE" ref="#COMMANDE_REF">	
+			::numcommande2:: : #REF <br />
+			::date:: : #DATE<br />
+			TOTAL : #TOTCMDPORT &euro;<br />	
+			</THELIA_cmd>
+		</div>
+		#INCLURE "pied.html"
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>

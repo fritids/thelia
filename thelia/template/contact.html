@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	#INCLURE "meta.html"
+
+	<link href="styles.css" rel="stylesheet" type="text/css" />
+	
+	<script language="javascript">
+		function valide(){
+			if(document.forms['formcontact'].nom.value && document.forms['formcontact'].email.value && document.forms['formcontact'].service.value && document.forms['formcontact'].categorie.value && document.forms['formcontact'].subject.value && document.forms['formcontact'].message.value)
+			{
+				document.forms['formcontact'].submit();
+			}else{
+			 	alert(unescape("Veillez compl�ter les champs obligatoires"));
+			}	
+		}
+	</script>
+</head>
+<body>
+	
+<div id="wrapper">
+	<div id="subwrapper">
+		#INCLURE "entete.html"
+		<div id="chemin">
+			Vous &ecirc;tes ici :
+			<a href="index.php" class="LIEN_chemin">Accueil boutique</a> / 
+			Contact
+		</div>
+		#INCLURE"menu.html"
+		<div id="contenu">
+			<h2>Contact</h2>
+			<h4>Nos coordonnées</h4>
+			Nom de l'entreprise <br/>
+			Adresse de l'entreprise<br/> 
+			Code postal Ville <br/> 
+			FRANCE<br/><br /> 
+			T&eacute;l&eacute;phone : +33 (0)0 00 00 00 00<br/> 
+			Fax : +33 (0)0 00 00 00 00<br/> 
+			Email : <a href="#">contact@entreprise.fr</a><br/><br/>
+			<h4>Votre message</h4>
+			<p>Vos suggestions et remarques nous intéressent. Contactez-nous en complétant le formulaire ci-dessous :</p>
+			<form action="contact_mail.php" method="post" name="formcontact" id="formcontact">
+			<p>
+				<label>Votre nom*</label>
+				<input name="nom" type="text"/>
+			</p>
+			<p>
+				<label>Votre e-mail*</label>
+				<input name="email" type="text"/>
+			</p>
+			<p>
+				<label>Le sujet de votre message*</label>
+				<input name="subject" type="text">
+			</p>
+			<p>
+				<label>Votre message*</label>
+				<textarea name="message" cols="40" rows="12"></textarea>
+			</p>
+			<p class="derniereLigne"><button type="submit" class="bouton"><span><span><span>Valider</span></span></span></button></p>
+			<span class="obligatoire">*Champs obligatoires</span>
+			</form>
+		</div>
+		#INCLURE "pied.html"
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>

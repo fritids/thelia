@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	#INCLURE "meta.html"
+
+	<link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<!-- wrapper & subwrapper-->
+	
+<div id="wrapper">
+	<div id="subwrapper">
+		#INCLURE "entete.html"
+        <div id="chemin">Vous &ecirc;tes ici :<a href="index.php">Accueil boutique</a> / Identifiez-vous</div>
+		#INCLURE"menu.html"
+        
+<!-- contenu-->
+	
+		<div id="contenu">
+			<h2>d&eacute;j&agrave client ?</h2>
+            
+            <form action="connexion.php" method="post" name="connexion" id="connexion">
+            <input type="hidden" name="action" value="connexion" />
+            <p>
+            	<label for="email">Mon e-mail #ERRCONNEX[<span class="obligatoire">(e-mail ou mot de passe incorrects)</span>]</label>
+            	<input name="email" type="text" />
+            </p>
+            <p>
+            	<label for="motdepasse"> Mon mot de passe </label>
+            	<input name="motdepasse" type="password"/>
+            </p>
+			<p class="derniereLigne"><button type="submit" class="bouton"><span><span><span>Valider</span></span></span></button></p>
+            </form>
+            
+			<h2>Nouveau client</h2>
+            
+            <form action="nouveau.php" method="post" name="nouveau" id="nouveau">
+            <input type="hidden" name="action" value="creercompte" />
+            <p>
+                <label for="civilite">Civilit&eacute;*</label>
+                <select name="raison" size="1">
+                <option value="" selected="selected">Choisissez ...</option>
+                <option value="1" selected="selected">Madame</option>
+                <option value="2">Mademoiselle</option>
+                <option value="3">Monsieur</option>
+                </select>
+            </p>
+            <p>
+                <label for="nom">Nom*</label>
+                <input type="text" name="nom"/>
+            </p>
+            <p>
+            	<label for="prenom">Pr&eacute;nom*</label>
+            	<input type="text" name="prenom"/>
+            </p>
+            <p>
+            	<label for="adresse1">Adresse*</label>
+            	<input type="text" name="adresse1"/>
+            </p>
+            <p>
+            	<label for="adresse2">Compl&eacute;ment d'adresse</label>
+            	<input type="text" name="adresse2"/>
+            </p>
+            <p>
+            	<label for="cpostal">Code postal*</label>
+            	<input type="text" name="cpostal"/>
+            </p>
+            <p>
+            	<label for="ville">Ville*</label>
+            	<input type="text" name="ville"/>
+            </p>
+            <p>
+                <label for="pays">Pays*</label>
+                <select name="pays" size="1">
+                <option value="">Choisissez ...</option>
+                <THELIA_pays type="PAYS" zdefinie="1">           
+                <option value="#ID" #DEFAULT>#TITRE</option>
+                </THELIA_pays>
+                </select>
+            </p>
+            <p>
+                <label for="telfixe">T&eacute;l&eacute;phone * </label>
+                <input type="text" name="telfixe"/>
+            </p>
+            <p>
+            	<label for="email1">Email*</label>
+            	<input type="text" name="email1"/>
+            </p>
+            <p>
+            	<label for="email2">Confirmation de votre e-mail*</label>
+            	<input type="text" name="email2"/>
+            </p>
+            <p>
+            	<label for="motdepasse1">Mot de passe* (6 caract&egrave;res minimum ) </label>
+            	<input name="motdepasse1" type="password"/>
+            </p>
+            <p>
+            	<label for="motdepasse2">Confirmation du mot de passe*</label>
+            	<input name="motdepasse2" type="password"/>
+            </p>
+            <p class="derniereLigne"><button type="submit" class="bouton"><span><span><span>Valider</span></span></span></button></p>
+			<span class="obligatoire">* Champs obligatoires</span>
+            </form>
+		</div>
+		#INCLURE "pied.html"
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>

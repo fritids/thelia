@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	#INCLURE "meta.html"
+
+<link href="styles.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+	
+<div id="wrapper">
+	<div id="subwrapper">
+	#INCLURE "entete.html"
+		<div id="chemin">Vous &ecirc;tes ici :<a href="index.php">Accueil boutique</a> / R&eacute;capitulatif de ma commande</div>
+		#INCLURE"menu.html"
+		 <div id="contenu">
+			<div id="etapesDeCommande">
+				<ul>
+					<li><span>1</span>Panier</li>
+					<li><span>2</span>Facturation et livraison</li>
+					<li class="selection"><span class="chiffreSelection">3</span>Je v&eacute;rifie ma commande</li>
+					<li><span>4</span>Paiement s&eacute;curis&eacute;</li>
+				</ul>
+			</div>		 
+		 
+			<h2>R&eacute;capitulatif de ma commande </h2>
+            
+            <form action="commande.php" id="formulaire">
+            <input type="hidden" name="action" value="codepromo" />
+            <table width="100%" border="0" cellspacing="0" cellpadding="5">
+            	<tr>
+            		<th colspan="2">Nom de l'article</th>
+            		<th>Prix unitaire </th>
+            		<th>Quantit&eacute;</th>
+            		<th>Total</th>
+            	</tr>
+            	<THELIA_panier type="PANIER">
+            	<tr>
+                    <td class="ligne">
+                        <THELIA_IMAGE type="IMAGE" num="1" produit="#ID"  largeur="80">
+                        <img src="#IMAGE" alt="#PRODTITRE" title="#PRODTITRE"/>
+                        </THELIA_IMAGE>
+                    </td>
+                    <td class="ligne">#TITRE - #REF</td>
+                    <td class="ligne">#PRIXU &euro;</td>
+                    <td class="ligne">#QUANTITE</td>
+                    <td class="ligne">#TOTAL &euro;</td>
+            	</tr>
+            </THELIA_panier>
+            <tr>
+            	<th colspan="4">Frais de livraison </th>
+            	<th>#PANIER_PORT &euro;</th>
+            </tr>
+            <tr>
+            	<td colspan="4">Remise </td>
+            	<td>#SUP_REMISE &euro;</td>
+            </tr>
+            <tr>
+				<th colspan="5">
+				<p class="derniereLigne"><label class="codeDeReduction">Saisissez un code de r&eacute;duction</label>
+				<input name="code" type="text" class="codeDeReduction"/>
+				<button type="submit" class="boutonGris"><span><span><span>OK</span></span></span></button>
+				</p>
+				</th>
+            </tr>            
+            <tr>
+            	<th colspan="4">TOTAL</th>
+            	<th class="total">#PANIER_TOTPORT &euro;</th>
+            </tr>
+            </table>
+            </form>
+ 			<div class="adresseDeLivraisonRecap">				
+				<h3>Mon adresse de livraison</h3>
+				<div class="contenu">
+            		<THELIA_adrcours type="ADRESSE" adresse="#ADRESSE_ACTIVE">
+            		#RAISON #PRENOM #NOM	<br />
+            		#ADRESSE1 #ADRESSE2 #ADRESSE3<br />
+            		#CPOSTAL #VILLE<br/>
+            		<THELIA_pays type="PAYS" id="#PAYS">
+            		#TITRE	
+            		</THELIA_pays>
+            		</THELIA_adrcours>
+				</div>
+				<ul><li><a href="#URLPREC">Modifier cette adresse</a></li></ul>
+			</div>
+		</div>		  	
+		<div id="contenu">
+			<h2>Choisissez un mode de paiement : </h2>
+			<div class="choixReglement">
+				<THELIA_PAIEMENT type="PAIEMENT">
+				<h4><a href="#URLPAYER">#TITRE</a></h4>
+				<ul><li><a href="#URLPAYER">Je choisis ce mode de paiement</a></li></ul>
+				</THELIA_PAIEMENT>
+			</div>
+		</div>
+		#INCLURE "pied.html"
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>

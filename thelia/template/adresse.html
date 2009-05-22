@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	#INCLURE "meta.html"
+	
+	<link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	
+<div id="wrapper">
+	<div id="subwrapper">
+		#INCLURE "entete.html"
+		<div id="chemin">Vous &ecirc;tes ici : <a href="index.php">Accueil boutique</a> /	Mes coodonn&eacute;es</div>
+		#INCLURE"menu.html"
+		
+		<div id="contenu">
+			<div id="etapesDeCommande">
+				<ul>
+					<li><span>1</span>Panier</li>
+					<li class="selection"><span class="chiffreSelection">2</span>Facturation et livraison</li>
+					<li><span>3</span>Je v&eacute;rifie ma commande</li>
+					<li><span>4</span>Paiement s&eacute;curis&eacute;</li>
+				</ul>
+			</div>
+			
+			<h2>Mes coodonn&eacute;es </h2>
+			
+			<div class="adresseDeFacturation">				
+				<h3>Mon adresse de facturation</h3>
+				<div class="contenu">
+					#CLIENT_RAISON #CLIENT_PRENOM #CLIENT_NOM<br />
+					#CLIENT_ADRESSE1 #CLIENT_ADRESSE2 #CLIENT_ADRESSE3<br />
+					#CLIENT_CPOSTAL #CLIENT_VILLE<br />
+					#CLIENT_PAYS
+				</div>
+				<ul><li><a href="compte_modifier.php">Modifier cette adresse</a></li></ul>
+			</div>
+				
+				
+			<div class="adresseDeLivraison">				
+				<h3>Mon adresse de livraison </h3>
+				<THELIA_adrcours type="ADRESSE" adresse="#ADRESSE_ACTIVE">
+				<div class="contenu">
+					#RAISON #PRENOM #NOM<br />
+					#ADRESSE1 #ADRESSE2 #ADRESSE3<br />
+					#CPOSTAL #VILLE<br />
+					<THELIA_pays type="PAYS" id="#PAYS">#TITRE</THELIA_pays>
+				</div>
+				<ul>		
+					<THELIA_adrmodcours type="ADRESSE" adresse="#ADRESSE_ACTIVE" defaut="0">
+					<li><a href="livraison_modifier.php?adresse=#ID">Modifier cette adresse</a></li>
+					</THELIA_adrmodcours>
+				</ul>
+				</THELIA_adrcours>	
+				<h4>S&eacute;lectionnez une autre adresse de livraison</h4>
+				<ul>
+					<li><a href="adresse.php?action=modadresse&amp;adresse=0">Mon adresse de facturation par d&eacute;faut</a></li>
+					<li>
+					<THELIA_adr type="ADRESSE" client="#CLIENT_ID">
+					<a href="adresse.php?action=modadresse&amp;adresse=#ID">#LIBELLE</a>
+					</THELIA_adr>
+					</li>
+					<li><a href="livraison_adresse.php">Ajouter une nouvelle adresse de livraison</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="contenu">
+			<h2>Choisissez un mode de livraison : </h2>
+			<div class="modeDeLivraison">
+				<THELIA_transport type="TRANSPORT">
+				<h4><a href="#URLCMD">#TITRE / #PORT &euro;</a></h4>
+				<ul><li><a href="#URLCMD">Je choisis ce mode de livraison</a></li></ul>
+				</THELIA_transport>
+			</div>
+		</div>		  	
+		#INCLURE "pied.html"
+	</div>
+	#INCLURE "signature.html"
+</div>
+</body>
+</html>
