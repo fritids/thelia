@@ -1,0 +1,1847 @@
+/* 
+ * Copyright (c) 2007 Copyright (c) Octolys Development
+ * Ce template a été réalisé par http://www.scopika.com & http://www.fredodo.com
+ * Il est soumis à la licence GPL
+ */
+
+/* Ce fichier définit le style visuel pour les différents éléments des pages.
+ * Dans l'ordre, vous trouverez les règles qui définissent l'apparence pour:
+ * - Eléments HTML en général
+ * - Page
+ * - Entête
+ * - Chemin
+ * - Produit petit & grand
+ * - Pied de page
+ * - Menu général
+ * - Signature
+ * - Nombre de pages
+ * - les styles particuliers pour les pages intérieures
+ */
+
+
+/* Eléments HTML en général
+-------------------------------------------------------- */
+@import url(style_editeur.css);
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: "Trebuchet MS", Verdana, Geneva, Arial, Helvetica, sans-serif;
+	text-align: center;
+	background-color: #f5f5f5;
+	color:#515053;
+	font-size:12px;
+}
+h1, h2, h3, h4 {
+	font-family: "Trebuchet MS", sans-serif;
+	margin: 0;
+	padding: 0;
+	color:#515053;
+}
+
+h1{
+	font-size: 28px;
+}
+
+h2{
+	font-size: 24px;
+	margin:0 0 20px 0;
+}
+
+h3{
+	font-size: 20px;
+}
+
+h4{
+	font-size: 15px;
+	margin:0 0 10px 0;
+}
+
+h5{
+	font-size: 12px;
+	margin:0;
+	clear:both;
+}
+
+a, a:visited {
+	color: #00529a;
+	text-decoration: none;
+}
+ a:hover  {
+	color: #00529a;
+	text-decoration: underline;
+}
+
+img {
+	border: 0
+}
+
+.hide {
+	display:none;
+}
+
+/* Page
+-------------------------------------------------------- */
+
+#wrapper {
+	width: 990px;
+	text-align: left;
+	overflow: visible;
+	position: relative;
+	margin: 0 auto 0 auto;
+	padding: 0;
+}
+#subwrapper {
+	overflow: hidden;
+	position: relative;
+	padding: 0;
+	width: 990px;
+	background-color: #FFFFFF;
+	border-left:solid 1px #a9abad;
+	border-right:solid 1px #a9abad;
+	border-bottom:solid 1px #a9abad;
+}
+
+#contenu {
+	float: right;
+	width:710px;
+	padding: 0 20px;
+	margin: 25px 20px 0 20px;
+}
+ 
+#contenuPageRubrique {
+	float: left;
+	width:730px;
+	padding: 0 0 0 20px;
+	margin: 25px 20px;
+}
+
+/* Entête
+-------------------------------------------------------- */
+
+#top {
+	float: left;
+	width: 990px;
+	background-color:#515053;
+	margin: 0;
+	padding: 0 0 10px 0;
+	color: #FFFFFF;
+	z-index:1000;
+}
+
+#top h1 {
+	float: left;
+	padding:0 0 0 10px;
+	width: 400px;
+	display:block;
+}
+
+#top h3 {
+	color:#FFF;
+	font-size:18px;
+	margin:0 0 5px 0;
+}
+
+#top a, #top a:visited  {
+	color: #c7c9ca;
+	text-decoration: none;
+}
+#top a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+#monCompte {
+	float: right;
+	width: 300px;
+	margin: 0;
+	border-left: 1px dotted #FFFFFF;
+	padding: 0 0 0 10px;
+	height: 72px;
+}
+
+#monCompte form {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+#monCompte form p { 
+    padding:0;
+	margin:0;
+	float:left;
+}
+
+#monCompte form input {
+	margin: 0 5px 0 0;
+	padding:2px;
+	width:90px;
+	border:solid 1px #88888b;
+	font-family: "Trebuchet MS", Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color:#626164;
+	font-size:12px;
+	font-weight:bold;
+	background-color:#fff;
+	float:left;
+}
+
+#monCompte form button.bouton { 
+    display:-moz-inline-box; 
+    display:inline-block; 
+    margin:0; 
+    padding:0; 
+    white-space:nowrap; 
+    text-align:center; 
+    vertical-align:middle; 
+    cursor:pointer; 
+    background:none;
+	font-size:13px;
+	font-weight:bold;
+	border:none;
+}
+
+#monCompte form button.bouton span { 
+    position:relative; 
+    float:left; 
+    padding:0 0 0 8px;        /* Largeur du côté gauche */ 
+	margin:0;
+    vertical-align:middle;
+	background-color:#00529a;
+	border:solid 1px #fff;
+}
+
+#monCompte form button.bouton span span {
+	padding:0 8px 0 0;
+	border:none;
+	color:#FFF;
+	height:18px;
+	line-height:18px; /* Alignement vertical du texte et largeur du côté droit*/
+}
+
+#monCompte .menu {
+	font-size:11px;
+	float: left;
+	width: 290px;
+	color: #c7c9ca;
+	margin: 5px 0 0 0;
+	padding: 0;
+}
+
+#monPanier {
+	float: left;
+	width: 250px;
+	margin: 0;
+	border-left: 1px dotted #FFFFFF;
+	padding: 0 0 0 10px;
+	height: 72px;
+}
+
+#contenuPanier {
+	padding: 0;
+	list-style: none;
+	z-index:1000;
+	position: relative;
+}
+
+ul#contenuPanier , ul#contenuPanier li {
+	margin: 0;
+	padding: 0;
+	list-style:none;
+	background: transparent;
+	width: 250px;
+}
+
+ul#contenuPanier li a, ul#contenuPanier li a:visited {
+	font-size:12px;
+	color: #fff;
+	margin: 0;
+	padding: 4px 3px;
+	width: 242px;
+	display:block;
+	background-color:#0081ca;
+	background-image:url(_gfx/fondContenuPanier.gif);
+	background-repeat:no-repeat;
+	background-position:right center;
+	border:solid 1px #FFFFFF;
+}
+
+ul#contenuPanier li ul {
+	display: none;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul#contenuPanier li ul li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul#contenuPanier li ul li a, ul#contenuPanier li ul li a:visited {
+	display: block;
+	float:left;
+	background-color:#8fbce3;
+	background-image:none;
+	font-size:11px;
+	color: #00529a;
+	text-decoration: none;	
+	margin: 0;
+	padding: 4px 3px;
+	border:solid 1px #FFFFFF;
+	border-top:none;
+}
+
+ ul#contenuPanier li ul li a.totalCommande, ul#contenuPanier li ul lia.totalCommande:visited {
+	font-size:12px;
+	color: #fff;
+	margin: 0;
+	padding: 4px 3px;
+	display:block;
+	background-color:#0081ca;
+	background-image:none;
+}
+
+ul#contenuPanier li a:hover, ul#contenuPanier li ul li a:hover {
+	display: block;
+	background-color: #00529a;
+	color: white;
+	text-decoration: none;	
+}
+
+span.nomArticle, span.titreTotal {
+	width:160px;
+	float:left;
+}
+
+span.quantite {
+	width:30px;
+	float:left;
+}
+
+span.total {
+	float:right;
+	text-align:right;
+	width:50px;
+}
+
+
+/* Langues
+-------------------------------------------------------- */
+
+ul#langues {
+	float: left;
+	width:980px;
+	text-align:right;
+	margin: 0 0 10px 0;
+	padding: 0 10px 0 0;
+	background-color:#3f3f43;
+	border-top: solid 3px #313135;
+	list-style:none;
+}
+
+ul#langues li {
+	float:right;
+	padding:0;
+	margin:0;
+	border:none;
+	list-style:none;
+}
+
+ul#langues li a, ul#langues li a:visited {
+	display:block;
+	width:34px;
+	height:24px;
+	overflow:hidden;
+}
+
+ul#langues li a.fr {
+	background-image:url(_gfx/drapeaux.gif);
+	background-position: 0 -24px;
+}
+
+ul#langues li a.uk {
+	background-image:url(_gfx/drapeaux.gif);
+	background-position: -34px -24px;
+}
+
+ul#langues li a.spa {
+	background-image:url(_gfx/drapeaux.gif);
+	background-position: -68px -24px;
+}
+
+ul#langues li a:hover.fr, ul#langues li a.frSelection {
+	background-image:url(_gfx/drapeaux.gif);
+	background-position: 0 0;
+}
+
+ul#langues li a:hover.uk, ul#langues li a.ukSelection {
+	background-image:url(_gfx/drapeaux.gif);
+	background-position: -34px 0;
+}
+
+ul#langues li a:hover.spa, ul#langues li a.spaSelection {
+	background-image:url(_gfx/drapeaux.gif);
+	background-position: -68px 0;
+}
+
+ 
+/* Chemin
+-------------------------------------------------------- */
+
+#chemin {
+	float: left;
+	width:980px;
+	color: #515053;
+	font-size: 11px;
+	font-weight: bold;
+	margin: 0;
+	padding: 5px 0 8px 10px;
+	background-color:#d8d9da;
+	border-top:solid 3px #a9abad;
+}
+
+#chemin a:link, #chemin a:visited {
+	color: #515053;
+	text-decoration: none;
+}
+
+#chemin a:hover {
+	color: #515053;
+	text-decoration: underline;
+}
+
+/* Etapes de commande
+-------------------------------------------------------- */
+
+#etapesDeCommande {
+	float: left;
+	width:710px;
+	color: #515053;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0 0 20px 0;
+	padding:0;
+	background-color:#fff;
+}
+
+#etapesDeCommande ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+	float:left;
+	width:708px;
+	border-right:solid 1px #d8d9da;
+}
+
+#etapesDeCommande ul li {
+	color:#c7c9ca;
+	width:176px;
+	margin:0;
+	padding:0;
+	list-style:none;
+	display:inline;
+	float:left;
+	border-left:solid 1px #d8d9da;
+	border-bottom:solid 1px #d8d9da;
+	border-top:solid 1px #d8d9da;
+}
+
+#etapesDeCommande ul li.selection {
+	color:#d8d9da;
+	border-left:solid 1px #d8d9da;
+	border-bottom:solid 1px #d8d9da;
+	border-top:solid 1px #d8d9da;
+	background-color:#515053;
+}
+
+#etapesDeCommande ul li span {
+	color:#fff;
+	font-size:18px;
+	margin:0 3px 0 0;
+	padding:0 5px;
+	background-color:#d8d9da;
+}
+
+#etapesDeCommande ul li span.chiffreSelection {
+	color:#d8d9da;
+	background-color:#515053;
+	border-right:solid 1px #d8d9da;
+}
+
+
+/* Bloc "adresse de livraison" & "adresse de facturation" 
+-------------------------------------------------------- */
+
+.adresseDeLivraison {
+	float: right;
+	margin: 0 0 20px 0;
+	width:345px;
+}
+
+.adresseDeLivraisonRecap {
+	float: left;
+	margin: 0 0 20px 0;
+	width:710px;
+}
+
+.adresseDeFacturation {
+	float: left;
+	margin: 0 0 20px 0;
+	width:345px;
+}
+
+.adresseDeLivraison h3, .adresseDeFacturation h3, .adresseDeLivraisonRecap h3 {
+	color:#515053;
+	display:block;
+	padding: 5px 0 7px 10px;
+	height: 20px;
+	background-color: #bbbdbf;
+}
+
+.adresseDeLivraison h4 {
+	color:#515053;
+	width:335px;
+	margin:5px 0 0 0;
+	padding: 5px 0 7px 10px;
+	background-color: #bbbdbf;
+	float:left;
+}
+
+.adresseDeLivraison .contenu, .adresseDeFacturation .contenu {
+	float:left;
+	width: 325px;
+	margin:1px 0 0 0;
+	padding: 10px;
+	background-color: #d8d9da;
+}
+
+.adresseDeLivraisonRecap .contenu {
+	float:left;
+	width: 690px;
+	margin:1px 0 0 0;
+	padding: 10px;
+	background-color: #d8d9da;
+}
+
+.adresseDeLivraison ul, .adresseDeFacturation ul {
+	list-style:none;
+	margin: 0;
+	padding:0;
+	width: 345px;
+	float:left;
+	background:#d8d9da;
+}
+
+.adresseDeLivraisonRecap ul {
+	list-style:none;
+	margin: 0;
+	padding:0;
+	width: 710px;
+	float:left;
+	background:#d8d9da;
+}
+
+.adresseDeLivraison ul li, .adresseDeFacturation ul li, .adresseDeLivraisonRecap ul li {
+	margin: 0;
+	padding:0;
+	border-top:solid 1px #FFF;
+	font-size:12px;
+	font-weight:bold;
+}
+
+.adresseDeLivraison ul li a, .adresseDeFacturation ul li a, .adresseDeLivraisonRecap ul li a,
+.adresseDeLivraison ul li a:visited, .adresseDeFacturation ul li a:visited, .adresseDeLivraisonRecap ul li a:visited {
+	color:#00529a;
+	display:block;
+	background-color:#8fbce3;
+	padding:3px 0 3px 10px;
+}
+
+.adresseDeLivraison ul li a:hover, .adresseDeFacturation ul li a:hover, .adresseDeLivraisonRecap ul li a:hover {
+	text-decoration:none;
+	background-color:#0081ca;
+}
+
+/* Bloc "Mode de livraison" 
+-------------------------------------------------------- */
+
+.modeDeLivraison, .choixReglement {
+	float: left;
+	margin: 0 0 1px 0;
+	background-color: #00529a;
+	width:710px;
+}
+
+.modeDeLivraison h4, .choixReglement h4 {
+	color:#515053;
+	width:335px;
+	margin:0;
+	padding: 10px;
+	background-color: #bbbdbf;
+	float:left;
+}
+
+.modeDeLivraison h4 a, .choixReglement h4 a {
+	color:#515053;
+}
+
+.modeDeLivraison ul, .choixReglement ul {
+	list-style:none;
+	margin: 0;
+	padding:0;
+	width: 355px;
+	float:left;
+}
+
+.modeDeLivraison ul li, .choixReglement ul li {
+	margin: 0;
+	padding:0;
+	font-size:14px;
+	font-weight:bold;
+}
+
+.modeDeLivraison ul li a, .modeDeLivraison ul li a:visited, .choixReglement ul li a, .choixReglement ul li a:visited {
+	color:#fff;
+	display:block;
+	background-color:#00529a;
+	padding:10px;
+}
+
+.modeDeLivraison ul li a:hover, .choixReglement ul li a:hover {
+	text-decoration:underline;
+}
+
+/* Intro de la page d'accueil
+-------------------------------------------------------- */
+
+#contenu #intro {
+	color:#515053;
+	font-weight:bold;
+	font-size:14px;
+	line-height:18px;
+	float: left;
+	padding: 0;
+	margin: 0 0 20px 0;
+	text-align: justify;
+}
+
+/* Bloc Mozaïque (utilisé en page d'accueil et en page produit)
+-------------------------------------------------------- */
+
+.blocMozaique {
+	float: left;
+	margin: 0 0 20px 0;
+	padding:0;
+}
+
+.blocMozaique h3 {
+	width: 700px;
+	font-weight: bold;
+	margin:0;
+	padding: 5px 0 7px 10px;
+	background-color: #bbbdbf;
+	height: 20px;
+}
+
+.blocMozaique .contenu {
+	float:left;
+	width: 690px;
+	margin:1px 0 0 0;
+	padding: 10px;
+	background-color: #d8d9da;
+}
+
+.blocMozaique .contenu ul.image {
+	margin: 0;
+	padding:0;
+	list-style:none;
+	border:none;
+	width: 690px;
+	float:left;
+}
+
+, .blocMozaique .contenu ul.image li {
+	margin:0;
+	padding:0;
+	border:none;
+	float:left;
+}
+
+.blocMozaique .contenu ul.image li a, .blocMozaique .contenu ul.image li a:visited  {
+	border: 1px solid #bbbdbf;
+	margin:0 1px 0 0;
+	padding:1px;
+	height: 81px;
+	width:81px;
+	float:left;
+	display:inline;
+	background-color:#fff;
+	overflow: hidden;
+}
+
+.blocMozaique .contenu ul.image li a:hover {
+	border: 2px solid #88888b;
+	background-color:#8fbce3;
+	padding:0;
+}
+
+/* Bloc nouveauté (utilisé en page index_page.html + rubrique.html)
+-------------------------------------------------------- */
+
+.blocNouveaute {
+	float: left;
+	margin: 0 0 20px 0;
+	width:345px;
+}
+
+.blocNouveaute h3 a, .blocNouveaute h3 a:visited {
+	color:#515053;
+	display:block;
+	padding: 5px 0 7px 10px;
+	height: 20px;
+	background-color: #bbbdbf;
+}
+
+.blocNouveaute h3 a:hover {
+	color:#515053;
+	text-decoration:none;
+	background-color:#a9abad;
+}
+
+.blocNouveaute h4 a, .blocNouveaute h4 a:visited {
+	color:#00529a;
+}
+
+.blocNouveaute h4 a:hover {
+	text-decoration:underline;
+}
+
+.blocNouveaute .contenu {
+	float:left;
+	width: 325px;
+	margin:1px 0 0 0;
+	padding: 10px;
+	background-color: #d8d9da;
+}
+
+.blocNouveaute .contenu a.image, .blocNouveaute .contenu a.image:visited {
+	border: 1px solid #bbbdbf;
+	margin: 0;
+	padding:1px;
+	height: 140px;
+	width:140px;
+	float:left;
+	display:block;
+	background-color:#fff;
+	overflow: hidden;	
+}
+
+.blocNouveaute .contenu a.image:hover {
+	border: 2px solid #88888b;
+	background-color:#8fbce3;
+	padding:0;
+}
+
+.blocNouveaute .contenu .description {
+	float:right;
+	font-size: 12px;
+	padding: 0;
+	width: 173px;
+}
+
+.blocNouveaute .contenu .description .chapo {
+	color:#626164;
+	font-weight:normal;
+	text-align: left;
+	font-size: 12px;
+	padding: 0;
+}
+
+.blocNouveaute .contenu .description .prixProduit {
+	color:#00529a;
+	font-weight:bold;
+	text-align: left;
+	font-size: 18px;
+	margin:5px 0 0 0;
+	padding: 0;
+	display:block;
+}
+
+.blocNouveaute .contenu .description p {
+	margin:0;
+	padding: 0;
+}
+
+.blocNouveaute a.acheter, 
+.blocNouveaute button.acheter { 
+    display:-moz-inline-box; 
+    display:inline-block; 
+    margin:5px 0 0 0; 
+    padding:0;
+	font-size:13px;
+	font-weight:bold;
+	white-space:nowrap; 
+    text-align:center; 
+    vertical-align:middle; 
+    cursor:pointer; 
+    border:0; 
+    background:none; 
+} 
+.blocNouveaute a.acheter span, 
+.blocNouveaute button.acheter span { 
+    position:relative; 
+    float:left; 
+    padding:0 0 0 5px; 
+    vertical-align:middle;
+	background-color:#0081ca;
+	border:solid 1px #FFFFFF;
+} 
+
+.blocNouveaute a.acheter span span, 
+.blocNouveaute button.acheter span span {
+	color:#fff;
+    height:24px; 
+    padding:0 5px 0 0; 
+    line-height:23px; 
+    background-color:#0081ca;
+	border:none;
+} 
+ 
+.blocNouveaute a.acheter:hover span, 
+.blocNouveaute button.acheter:hover span {
+	background-color:#00529a;
+	text-decoration:none;
+}
+
+.blocNouveaute a.toutesLesNouveautes, .blocNouveaute a.toutesLesNouveautes:visited {
+	display:block;
+	float:left;
+	width:100%;
+	margin: 1px 0 0 0;
+	padding:5px 0;
+	color:#515053;
+	font-weight:bold;
+	text-indent:10px;
+	background-color:#bbbdbf;
+}
+
+.blocNouveaute a.toutesLesNouveautes:hover {
+	color:#515053;
+	text-decoration:none;
+	background-color:#a9abad;
+}
+
+/* Bloc promotion (utilisé en page index_page.html + rubrique.html)
+-------------------------------------------------------- */
+
+.blocPromo {
+	float: right;
+	margin: 0 0 20px 0;
+	width:345px;
+}
+
+.blocPromo h3 a, .blocPromo h3 a:visited {
+	color:#515053;
+	display:block;
+	padding: 5px 0 7px 10px;
+	height: 20px;
+	background-color: #bbbdbf;
+}
+
+.blocPromo h3 a:hover {
+	color:#515053;
+	text-decoration:none;
+	background-color:#a9abad;
+}
+
+.blocPromo h4 a, .blocPromo h4 a:visited {
+	color:#00529a;
+}
+
+.blocPromo h4 a:hover {
+	text-decoration:underline;
+}
+
+.blocPromo .contenu {
+	width: 325px;
+	float:left;
+	_float:none;
+	margin:1px 0 0 0;
+	padding: 10px;
+	background-color: #d8d9da;
+}
+
+.blocPromo .contenu a.image, .blocPromo .contenu a.image:visited {
+	border: 1px solid #bbbdbf;
+	margin: 0;
+	padding:1px;
+	height: 140px;
+	width:140px;
+	display:block;
+	float:left;
+	background-color:#fff;
+	overflow: hidden;	
+}
+
+.blocPromo .contenu a.image:hover {
+	border: 2px solid #88888b;
+	background-color:#8fbce3;
+	padding:0;
+}
+
+.blocPromo .contenu .description {
+	float:right;
+	font-size: 12px;
+	padding: 0;
+	width: 173px;
+	_width: 158px;
+}
+
+.blocPromo .contenu .description .chapo {
+	color:#626164;
+	font-weight:normal;
+	text-align: left;
+	font-size: 12px;
+	padding: 0;
+}
+
+.blocPromo .contenu .description .prixProduit {
+	color:#00529a;
+	font-weight:bold;
+	text-align: left;
+	font-size: 18px;
+	margin:5px 0;
+	padding: 0;
+	display:block;
+}
+
+.blocPromo .contenu .description p {
+	margin:0;
+	padding: 0;
+}
+
+.blocPromo a.acheter, 
+.blocPromo button.acheter { 
+    display:-moz-inline-box; 
+    display:inline-block; 
+    margin:5px 0 0 0; 
+    padding:0;
+	font-size:13px;
+	font-weight:bold;
+	white-space:nowrap; 
+    text-align:center; 
+    vertical-align:middle; 
+    cursor:pointer; 
+    border:0; 
+    background:none; 
+} 
+.blocPromo a.acheter span, 
+.blocPromo button.acheter span { 
+    position:relative; 
+    float:left; 
+    padding:0 0 0 5px; 
+    vertical-align:middle;
+	background-color:#0081ca;
+	border:solid 1px #FFFFFF;
+} 
+
+.blocPromo a.acheter span span, 
+.blocPromo button.acheter span span {
+	color:#fff;
+    height:24px; 
+    padding:0 5px 0 0; 
+    line-height:23px; 
+    background-color:#0081ca;
+	border:none;
+} 
+ 
+.blocPromo a.acheter:hover span , 
+.blocPromo button.acheter:hover span {
+	background-color:#00529a;
+	text-decoration:none;
+} 
+
+.blocPromo a.toutesLesPromos, .blocPromo a.toutesLesPromos:visited {
+	display:block;
+	float:left;
+	width:100%;
+	margin: 1px 0 0 0;
+	padding:5px 0;
+	color:#515053;
+	font-weight:bold;
+	text-indent:10px;
+	background-color:#bbbdbf;
+}
+
+.blocPromo a.toutesLesPromos:hover {
+	color:#515053;
+	text-decoration:none;
+	background-color:#a9abad;
+}
+
+/* Petit bloc produit (utilisé en page rubrique.html)
+-------------------------------------------------------- */
+
+.petitBlocProduit {
+	float: left;
+	margin: 0 20px 20px 0;
+	width:345px;
+}
+
+.separation {
+	float: left;
+	margin:0;
+	height:1px;
+	width:710px;
+}
+
+.petitBlocProduit h3 a, .petitBlocProduit h3 a:visited {
+	color:#515053;
+	display:block;
+	padding: 5px 0 7px 10px;
+	height: 20px;
+	background-color: #bbbdbf;
+}
+
+.petitBlocProduit h3 a:hover {
+	text-decoration:none;
+	background-color:#a9abad;
+}
+
+.petitBlocProduit .contenu  {
+	float:left;
+	width: 325px;
+	margin:1px 0 0 0;
+	padding: 10px;
+	background-color: #d8d9da;
+}
+
+.petitBlocProduit .contenu a.image, .petitBlocProduit .contenu a.image:visited  {
+	border: 1px solid #bbbdbf;
+	margin: 0;
+	padding:1px;
+	height: 140px;
+	width:140px;
+	display:block;
+	float:left;
+	background-color:#fff;
+	overflow: hidden;	
+}
+
+.petitBlocProduit .contenu a.image:hover {
+	border: 2px solid #88888b;
+	background-color:#8fbce3;
+	padding:0;
+}
+
+.petitBlocProduit .contenu .description {
+	float:right;
+	font-size: 12px;
+	padding: 0;
+	width: 173px;
+}
+
+.petitBlocProduit .contenu .description .chapo {
+	color:#626164;
+	font-weight:normal;
+	text-align: left;
+	font-size: 12px;
+	padding: 0;
+}
+
+.petitBlocProduit .contenu .description .prixProduit {
+	color:#ff0000;
+	font-weight:bold;
+	text-align: left;
+	font-size: 18px;
+	margin:5px 0;
+	padding: 0;
+	display:block;
+}
+
+.petitBlocProduit .contenu .description p {
+	margin:0;
+	padding: 0;
+}
+
+.petitBlocProduit a.acheter, 
+.petitBlocProduit button.acheter { 
+    display:-moz-inline-box; 
+    display:inline-block; 
+    margin:5px 0 0 0; 
+    padding:0;
+	font-size:13px;
+	font-weight:bold;
+	white-space:nowrap; 
+    text-align:center; 
+    vertical-align:middle; 
+    cursor:pointer; 
+    border:0; 
+    background:none; 
+} 
+.petitBlocProduit a.acheter span, 
+.petitBlocProduit button.acheter span { 
+    position:relative; 
+    float:left; 
+    padding:0 0 0 5px; 
+    vertical-align:middle;
+	background-color:#0081ca;
+	border:solid 1px #FFFFFF;
+} 
+
+.petitBlocProduit a.acheter span span, 
+.petitBlocProduit button.acheter span span {
+	color:#fff;
+    height:24px; 
+    padding:0 5px 0 0; 
+    line-height:23px; 
+    background-color:#0081ca;
+	border:none;
+} 
+ 
+.petitBlocProduit a.acheter:hover span , 
+.petitBlocProduit button.acheter:hover span {
+	background-color:#00529a;
+	text-decoration:none;
+} 
+
+/* Contenu d'une fiche produit (produit.html)
+-------------------------------------------------------- */
+
+.blocProduit {
+	float: left;
+	margin:0 0 20px 0;
+	padding:0;
+	width:710px;
+}
+
+.blocProduit .blocDImages {
+	float: left;
+	margin:0 0 20px 0;
+	padding:0;
+	width:346px;
+}
+
+.blocProduit a.grandeImage, .blocProduit a.grandeImage:visited {
+	border: 1px solid #bbbdbf;
+	margin:0;
+	padding:1px;
+	width:342px;
+	float:left;
+	background-color:#fff;
+}
+
+.blocProduit a.grandeImage:hover {
+	border: 2px solid #88888b;
+	background-color:#8fbce3;
+	padding:0;
+}
+
+.blocProduit ul.vignettes {
+	margin: 10px 0 0 0;
+	padding:0;
+	list-style:none;
+	border:none;
+	width:344px;
+	float: left;
+}
+
+.blocProduit ul.vignettes li {
+	margin:0;
+	padding:0;
+	border:none;
+}
+
+.blocProduit ul.vignettes li a, .blocProduit ul.vignettes li a:visited {
+	border: 1px solid #bbbdbf;
+	margin:0 1px 1px 0;
+	padding:1px;
+	height: 81px;
+	width:81px;
+	float:left;
+	display:inline;
+	background-color:#fff;
+	overflow: hidden;
+}
+
+.blocProduit ul.vignettes li a:hover {
+	border: 2px solid #88888b;
+	background-color:#8fbce3;
+	padding:0;
+}
+
+.blocProduit .introProduit {
+	float: right;
+	margin:0 0 20px 0;
+	padding:0;
+	width:344px;
+}
+
+.blocProduit .introProduit .chapo {
+	font-size: 14px;
+	font-weight:bold;
+	padding: 0;
+	margin:0 0 20px 0;
+}
+
+.blocProduit .introProduit .prixProduit {
+	color:#ff0000;
+	font-weight:bold;
+	text-align: left;
+	font-size: 24px;
+	margin:5px 0 0 0;
+	padding: 0;
+}
+
+.blocProduit a.acheter, 
+.blocProduit button.acheter { 
+    display:-moz-inline-box; 
+    display:inline-block; 
+    margin:10px 0 0 0; 
+    padding:0;
+	font-size:16px;
+	font-weight:bold;
+	white-space:nowrap; 
+    text-align:center; 
+    vertical-align:middle; 
+    cursor:pointer; 
+    border:0; 
+    background:none; 
+} 
+.blocProduit a.acheter span, 
+.blocProduit button.acheter span { 
+    position:relative; 
+    float:left; 
+    padding:0 0 0 10px; 
+    vertical-align:middle;
+    background-color:#0081ca;
+} 
+
+.blocProduit a.acheter span span, 
+.blocProduit button.acheter span span {
+	color:#fff;
+    height:40px; 
+    padding:0 10px 0 0; 
+    line-height:38px; 
+    background-color:#0081ca;
+} 
+ 
+.blocProduit a.acheter:hover span, 
+.blocProduit button.acheter:hover span { 
+    background-color:#00529a;
+	text-decoration:none;
+} 
+
+.blocProduit .description {
+	float:right;
+	font-size: 12px;
+	padding: 0;
+	margin:0 0 20px 0;
+	width: 710px;
+}
+
+.blocProduit .contenusAssocies {
+	float: right;
+	margin: 0 0 20px 0;
+	width:345px;
+}
+
+.blocProduit .telechargements {
+	float: left;
+	margin: 0 0 20px 0;
+	width:345px;
+}
+
+.blocProduit .contenusAssocies h3, .blocProduit .telechargements h3 {
+	color:#515053;
+	display:block;
+	padding: 5px 0 7px 10px;
+	height: 20px;
+	background-color: #bbbdbf;
+}
+
+.blocProduit .contenusAssocies ul, .blocProduit .telechargements ul {
+	list-style:none;
+	margin: 0;
+	padding:0;
+	width: 345px;
+	float:left;
+	background:#d8d9da;
+}
+
+.blocProduit .contenusAssocies ul li, .blocProduit .telechargements ul li {
+	margin: 0;
+	padding:0;
+	border-top:solid 1px #FFF;
+	font-size:12px;
+	font-weight:bold;
+}
+
+.blocProduit .contenusAssocies ul li a, .blocProduit .telechargements ul li a,
+.blocProduit .contenusAssocies ul li a:visited, .blocProduit .telechargements ul li a:visited {
+	color:#00529a;
+	display:block;
+	background-color:#8fbce3;
+	padding:3px 0 3px 10px;
+}
+
+.blocProduit .contenusAssocies ul li a:hover, .blocProduit .telechargements ul li a:hover {
+	color:#fff;
+	text-decoration:none;
+	background-color:#0081ca;
+}
+
+/* Personnalisation du zoom de la fiche produit (produit.html)
+-------------------------------------------------------- */
+
+#superbox-overlay {
+	width: 100%;
+	overflow: visible;
+	position: relative;
+	margin: 0 auto 0 auto;
+	padding: 0;
+	background:#e0e4cc;
+}
+
+#superbox-container .loading {
+	width:32px;
+	height:32px;
+	text-indent:-9999px;
+	background-image:url(_gfx/loader.gif);
+	background-position:center 0;
+	background-repeat:no-repeat;
+	overflow: hidden;
+	position: relative;
+	padding: 0;
+	width: 100%;
+}
+
+#superbox .close a {
+	float:right;
+	padding:0 5px;
+	line-height:20px;
+	color:#fff;
+	background:#00529a;
+	cursor:pointer;
+}
+
+#superbox .nextprev a {
+	float:left;
+	margin-right:5px;
+	padding:0 5px;
+	line-height:20px;
+	background:#00529a;
+	cursor:pointer;
+	color:#fff;
+}
+
+#superbox .nextprev .disabled {
+	background:#ccc;
+	cursor:default;
+}
+
+#superbox .close a:hover {
+	color:#fff;
+	background:#00529a;
+	text-decoration:none;
+}
+
+/* Nombre de pages
+-------------------------------------------------------- */
+
+#pages {
+	float: left;
+	color:#626164;
+	width: 700px;
+	text-align: right;
+	font-size: 11px;
+	padding: 5px 10px 5px 0;
+	margin: 10px 0;
+	background-color:#d8d9da;
+}
+
+#pages a, #pages a:visited {
+	color:#626164;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#pages a:hover {
+	text-decoration: underline;
+}
+
+/* Pied de page
+-------------------------------------------------------- */
+
+#footer {
+	float: left;
+	width: 990px;
+	border-top: 1px solid #d2d3d4;
+	border-bottom: 1px solid #d2d3d4;
+	background-color:#eceded;
+	margin: 20px 0 0 0;
+	padding:0;
+}
+	
+#footer ul {
+	color:#9a9b9d;
+	float: left;
+	width: 310px;
+	padding:10px;
+	margin:0;
+	list-style-position: inside;
+}
+
+#footer ul li {
+	padding:0;
+	margin:0;
+	text-indent:5px;
+	clear:both;
+}
+
+#footer ul li a, #footer ul li a:visited {
+	color:#9a9b9d;
+	display:block;
+	border-bottom:solid 1px #bbbdbf;
+	font-weight:bold;
+	padding:2px 0;
+}
+
+#footer ul li ul {
+	padding:0;
+	margin:0;
+}
+
+#footer ul li ul li {
+	padding:0;
+	margin:0;
+}
+
+#footer ul li ul li a, #footer ul li ul li a:visited {
+	font-size:11px;
+
+}
+
+#footer ul li a:hover {
+	color:#737376;
+	background-color:#d8d9da;
+	text-decoration:none;
+
+}
+	
+
+/* formulaire
+-------------------- */
+
+#contenu form {
+	padding:0;
+	margin:0 0 20px 0;
+}
+
+#contenu form p {
+	margin: 0;
+	padding: 4px 0;
+	/* Empêcher le dépassement des flottants */
+	overflow: hidden;
+	font-size: 12px;
+	border-bottom:1px solid #ccc;
+}
+
+#contenu form p.derniereLigne {
+	border:none;
+}
+
+#contenu form p label {
+	float: left;
+	width: 290px;
+	padding:0 10px 0 0;
+	margin: 0;
+	line-height:24px;
+}
+
+#contenu form p label.codeDeReduction {
+	width: 180px;
+}
+
+#contenu form p label.mailPerdu {
+	width: 80px;
+}
+
+#contenu form p input, #contenu form p select {
+	float:left;
+	margin: 0;
+	width: 190px;
+	padding: 3px;
+	border:solid 1px #a9abad;
+	font-family: "Trebuchet MS", Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#626164;
+	font-weight:bold;
+	background-color:#d8d9da;
+}
+
+#contenu form p input.codeDeReduction {
+	width: 50px;
+	background-color:#fff;
+}
+
+#contenu form p select {
+	width: 198px;
+}
+
+#contenu form p input.radio, #contenu form p input.checkBox {
+	float:left;
+	margin: 5px 0;
+	width: 20px;
+	padding: 0;
+	background-color:transparent;
+	border: none;
+}
+#contenu form p .labelRadio, #contenu form p .labelCheckBox {
+	float:left;
+	margin: 5px 10px 0 0;
+	padding: 0;
+	background-color:transparent;
+	border: none;
+	font-weight:bold;
+}
+	
+#contenu form button.bouton { 
+    display:-moz-inline-box; 
+    display:inline-block; 
+    margin:0 0 0 300px; 
+    padding:0; 
+    white-space:nowrap; 
+    text-align:center; 
+    vertical-align:middle; 
+    cursor:pointer; 
+	border:none;
+    background:none;
+	font-size:13px;
+	font-weight:bold;
+}
+	
+#contenu form button.bouton span { 
+    position:relative; 
+    float:left; 
+    padding:0 0 0 8px;        /* Largeur du côté gauche */ 
+	margin:0;
+    vertical-align:middle;
+	background-color:#00529a;
+	border:solid 1px #a9abad;
+}
+
+#contenu form button.bouton span span { 
+    padding:0 8px 0 0;        /* Largeur du côté droit */ 
+    border:none;
+}
+
+#contenu form button.bouton span span span {
+	padding:0;
+	color:#FFF;
+	height:24px;
+	line-height:24px; /* Alignement vertical du texte */ 
+}
+
+#contenu form button.boutonGris { 
+    display:-moz-inline-box; 
+    display:inline-block; 
+    margin:0 0 0 10px; 
+    padding:0; 
+    white-space:nowrap; 
+    text-align:center; 
+    vertical-align:middle; 
+    cursor:pointer; 
+	border:none;
+    background:none;
+	font-size:12px;
+	font-weight:bold;
+}
+	
+#contenu form button.boutonGris span { 
+    position:relative; 
+    float:left; 
+    padding:0 0 0 5px;        /* Largeur du côté gauche */ 
+	margin:0;
+    vertical-align:middle;
+	background-color:#a9abad;
+	border:solid 1px #a9abad;
+}
+
+#contenu form button.boutonGris span span { 
+    padding:0 5px 0 0;        /* Largeur du côté droit */ 
+    border:none;
+}
+
+#contenu form button.boutonGris span span span {
+	padding:0;
+	color:#FFF;
+	height:20px;
+	line-height:20px; /* Alignement vertical du texte */ 
+}
+
+.obligatoire {
+	font-size: 12px;
+	color: #FF0000;
+	clear:both;
+	margin:10px 0;
+}
+
+/* Tableaux
+-------------------------------------------------------- */
+
+#contenu table, #contenu table tr {
+	padding:0;
+	margin:0;
+}
+
+#contenu table th {
+	font-weight: bold;
+	background-color: #d8d9da;
+	border-bottom:solid 1px #FFFFFF;
+}
+
+#contenu table td {
+	font-weight: bold;
+	background-color: transparent;
+	border:none;
+}
+
+#contenu table td.ligne {
+	font-weight: bold;
+	background-color: transparent;
+	border-bottom:solid 1px #d8d9da;
+}
+
+#contenu table th.total {
+	font-weight: bold;
+	color:#FFF;
+	background-color: #00529a;
+	border-bottom:solid 1px #dedce6;
+}
+
+/* Liens internes au site
+-------------------------------------------------------- */
+
+.queFaire {
+	margin:20px 0 0 0;
+	padding:0;
+	width:100%;
+	float:left;
+	text-align:right;
+}
+
+.queFaire a.bouton, 
+.queFaire button.bouton { 
+    display:-moz-inline-box; 
+    display:inline-block; 
+    margin:10px 0 0 0; 
+    padding:0;
+	font-size:14px;
+	font-weight:bold;
+	white-space:nowrap; 
+    text-align:center; 
+    vertical-align:middle; 
+    cursor:pointer; 
+    border:0; 
+    background:none; 
+} 
+.queFaire a.bouton span, 
+.queFaire button.bouton span { 
+    position:relative; 
+    float:left; 
+    padding:0 0 0 7px; 
+    vertical-align:middle;
+    background-color:#00529a;
+} 
+.queFaire a.bouton span span, 
+.queFaire button.bouton span span { 
+    padding:0 7px 0 0; 
+    background-color:#00529a;
+} 
+.queFaire a.bouton span span span, 
+.queFaire button.bouton span span span {
+	color:#fff;
+    height:24px; 
+    padding:0; 
+    line-height:22px; 
+    background-color:#00529a;
+} 
+ 
+.queFaire a.bouton:hover span span span, 
+.queFaire button.bouton:hover span span span { 
+	text-decoration:underline;
+} 
+ 
+/*  général
+-------------------------------------------------------- */
+
+#moteurEtCatalogue {
+	float: left;
+	width:200px;
+	padding: 0;
+	margin:25px 0 0 0;
+}
+
+#moteurEtCatalogue h3 {
+	display:none;
+}
+
+#accueil, #menuCatalogue, #menuContenu {
+	float: left;
+	padding: 0;
+	margin:0 0 18px 0;
+	width:100%;
+}
+
+#accueil ul, #menuCatalogue ul, #menuContenu ul {
+	padding: 0;
+	margin:0;
+	list-style: none;
+}
+
+#accueil ul li, #menuCatalogue ul li, #menuContenu ul li {
+	font-size:14px;
+	font-weight:bold;
+	padding:0;
+	margin:0 0 1px 0;
+}
+
+#accueil ul li a, #menuCatalogue ul li a, #menuContenu ul li a  {
+	text-decoration:none;
+	color:#fff;
+	border-left:solid 3px #0068b2;
+	display:block;
+	background-color:#0081ca;
+	padding:5px 0 5px 10px;
+}
+
+#accueil ul li a:hover, #menuCatalogue ul li a:hover, #menuContenu ul li a:hover {
+	text-decoration:none;
+	background-color:#00529a;
+	color:#FFF;
+	border-left:solid 3px #02407a;
+}
+
+#menuCatalogue ul li ul, #menuContenu ul li ul {
+}
+
+#menuCatalogue ul li ul li, #menuContenu ul li ul li {
+	font-size:12px;
+	margin:1px 0 0 0;
+}
+
+#menuCatalogue ul li ul li a, #menuContenu ul li ul li a {
+	border-left:solid 3px #7ca3c5;
+	background-color:#8fbce3;
+}
+
+
+#menuCatalogue ul li a.selection, #menuContenu ul li a.selection {
+	color:#fff;
+	background-color:#00529a;
+	border-left:solid 3px #02407a;
+}
+
+/* Recherche
+-------------------------------------------------------- */
+
+#recherche {
+	margin: 0 0 18px 0;
+	padding:10px;
+	width: 177px;
+	display:block;
+	float:left;
+	background-color:#0081ca;
+	border-left:solid 3px #0068b2;
+}
+
+#recherche form {
+	margin: 0;
+	padding:0;
+	border:none;
+}
+
+#recherche form p {
+	margin: 0;
+	padding:0;
+	float:right;
+}
+
+#recherche form input {
+	margin: 0;
+	padding:2px;
+	width:120px;
+	border:solid 1px #00529a;
+	font-family: "Trebuchet MS", Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	background-color:#fff;
+	color:#626164;
+	float:left;
+}
+
+#recherche form button.bouton { 
+    display:-moz-inline-box; 
+    display:inline-block; 
+    margin:0; 
+    padding:0; 
+    white-space:nowrap; 
+    text-align:center; 
+    vertical-align:middle; 
+    cursor:pointer; 
+    border:none; 
+    background:none;
+	font-size:13px;
+	font-weight:bold;
+}
+
+#recherche form button.bouton span { 
+    position:relative; 
+    float:left; 
+    padding:0 0 0 8px;        /* Largeur du côté gauche */ 
+	margin:0;
+    vertical-align:middle;
+	background-color:#00529a;
+	border:solid 1px #fff;
+}
+
+#recherche form button.bouton span span {
+	padding:0 8px 0 0;
+	border:none;
+	color:#FFF;
+	height:18px;
+	line-height:18px; /* Alignement vertical du texte et largeur du côté droit*/
+}
+	
+/* Moyens de paiement
+-------------------------------------------------------- */
+
+.paiement {
+	float:left;
+	margin: 0;
+	padding:0 10px;
+	width:980px;
+}
+
+.paiement h4 {
+	margin:32px 0 0 0;
+	float:left;
+ 
+}
+
+.paiement ul, .paiement ul li {
+	list-style:none;
+	margin: 0;
+	padding:0;
+	border:none;
+}
+
+/* Correction des bug Internet Explorer
+-------------------------------------------------------- */
+
+* html button {width:1%; overflow:visible;} 
+*:first-child+html button {overflow:visible;}
+
+
