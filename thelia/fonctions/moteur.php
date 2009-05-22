@@ -202,7 +202,7 @@ function analyse($res){
 
 	// Devise
 	if($devise) $_SESSION["navig"]->devise = $devise;
-	else if(!$_SESSION["navig"]->devise) $_SESSION["navig"]->devise=1;
+	else if(!$_SESSION["navig"]->devise) $_SESSION["navig"]->devise="euro";
 
 	// fonctions à éxecuter avant le moteur
 	modules_fonction("demarrage");

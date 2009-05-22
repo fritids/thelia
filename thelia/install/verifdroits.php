@@ -13,8 +13,11 @@
 		
 	$tab = explode(";", $sql);
 	
-	for($i=0; $i<count($tab); $i++)
-		mysql_query(ereg_replace("-CODE-", ";',", $tab[$i]));
+	for($i=0; $i<count($tab); $i++){
+		$query = str_replace("-CODE-", ";',", $tab[$i]);
+		$query = str_replace("|", ";", $query);
+		mysql_query($query);
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

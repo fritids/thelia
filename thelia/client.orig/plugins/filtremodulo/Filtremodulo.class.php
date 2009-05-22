@@ -24,44 +24,45 @@
 /*************************************************************************************/
 ?>
 <?php
-
-	include_once(realpath(dirname(__FILE__)) . "/Panier.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/Client.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/Commande.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/Promo.class.php");
+include_once(realpath(dirname(__FILE__)) . "/../../../classes/PluginsClassiques.class.php");
 	
-	// Définition de la navigation
 	
-	class Navigation {
+	class Filtremodulo extends PluginsClassiques{
 
-		var $client;
-		var $formcli;
-		var $panier;
-		var $urlprec;
-		var $urlpageret;
-		var $connecte=0;
-		var $nouveau=0;
-		var $paiement=0;
-		var $adresse=0;
-		var $commande;
-		var $promo;
-		var $page;
-		var $lang;
-		var $devise;
-		
-		function Navigation(){
-			$this->panier = new Panier();
-			$this->client = new Client();
-			$this->formcli = new Client();
-			$this->commande = new Commande();
-			$this->promo = new Promo();
-			$this->page = 0;
-			$this->lang = 1;
-			$this->devise = "euro";
+		function Filtremodulo(){
+	
+			$this->PluginsClassiques();	
+	
 		}
+		
+		function post(){
+			
+            global $res;
+
+	preg_match_all("`\#FILTRE_modulo\(([^\|]*)\|\|([^\)]*)\|\|([^\)]*)\)`", $res, $cut);
+
+	$tab1 = "";
+	$tab2 = "";
+
+	for($i=0; $i<count($cut[2]); $i++){
+		if(trim($cut[1][$i]) % trim($cut[2][$i]) == 0){
+	                $tab1[$i] = "#FILTRE_modulo(" . $cut[1][$i] . "||" . $cut[2][$i] . "||" . $cut[3][$i] . ")";
+	                $tab2[$i] = $cut[3][$i];
+	        }
+	
+			else{
+                $tab1[$i] = "#FILTRE_modulo(" . $cut[1][$i] . "||" . $cut[2][$i] . "||" . $cut[3][$i] . ")";
+                $tab2[$i] = "";
+			}
+
+	}
+
+	$res = str_replace($tab1, $tab2, $res);
 
 
+		}
 		
 	}
+
 
 ?>

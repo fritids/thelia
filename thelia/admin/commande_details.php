@@ -180,7 +180,7 @@
  ?>
  <ul class="ligne_total_BlocDescription">
  	<li style="width:392px;">Total</li>
- 	<li><?php echo(round($total, 2)); ?></li>
+ 	<li><?php echo(round($total, 2)); ?> <?php echo $devise->symbole; ?></li>
  </ul>
 <div class="bordure_bottom" style="margin:0 0 10px 0;">
 <div class="entete_liste_client">
@@ -221,27 +221,25 @@
 	</ul>
 	<ul class="ligne_claire_BlocDescription">
 		<li class="designation" style="width:290px;">Total de la commande avant remise</li>
-		<li><?php echo(round($total, 2)); ?></li>
+		<li><?php echo(round($total, 2)); ?> <?php echo $devise->symbole; ?></li>
 	</ul>
 	<ul class="ligne_fonce_BlocDescription">
 		<li class="designation" style="width:290px;">Remise</li>
-		<li><?php echo(round($commande->remise, 2)); ?></li>
+		<li><?php echo(round($commande->remise, 2)); ?> <?php echo $devise->symbole; ?></li>
 	</ul>
 	<ul class="ligne_claire_BlocDescription">
 		<li class="designation" style="width:290px;">Total avec remise</li>
-		<li><?php echo(round($totalremise, 2)); ?></li>
+		<li><?php echo(round($totalremise, 2)); ?> <?php echo $devise->symbole; ?></li>
 	</ul>
 	<ul class="ligne_fonce_BlocDescription">
 		<li class="designation" style="width:290px;">Frais de transport</li>
-		<li><?php echo(round($port, 2)); ?></li>
+		<li><?php echo(round($port, 2)); ?> <?php echo $devise->symbole; ?></li>
 	</ul>
 	<ul class="ligne_claire_BlocDescription">
 		<li class="designation" style="width:290px;">Total</li>
 		<li><?php echo(round($totalremise + $port, 2)); ?> <?php echo $devise->symbole; ?></li>
 	</ul>
 </div>
- 
-
 
 <?php
 	$adr = new Venteadr();

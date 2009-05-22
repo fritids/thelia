@@ -59,6 +59,7 @@ function tri(order,critere){
 	include_once("../classes/Statut.class.php");
 	include_once("../classes/Statutdesc.class.php");
 	include_once("../fonctions/divers.php");
+	include_once("../classes/Devise.class.php");
 
 	if(!isset($action)) $action="";
 	if(!isset($client)) $client="";
@@ -100,7 +101,6 @@ function tri(order,critere){
 					$stock->valeur = $stock->valeur + $row->quantite;
 					$stock->maj();					
 				}
-				
 				
 			}
 			
@@ -209,7 +209,10 @@ function supprimer(id){
   		
   		$statutdesc = new Statutdesc();
   		$statutdesc->charger($row->statut);
-  		
+	
+		$devise = new Devise();
+		$devise->charger($row->devise);
+
   		$query2 = "SELECT sum(prixu*quantite) as total FROM $venteprod->table where commande='$row->id'"; 
   		$resul2 = mysql_query($query2, $venteprod->link);
   		$total = round(mysql_result($resul2, 0, "total"), 2);
@@ -236,7 +239,7 @@ function supprimer(id){
 	<li style="width:104px;"><?php echo($jour . "/" . $mois . "/" . $annee . " " . $heure . ":" . $minute . ":" . $seconde); ?></li>
 	<li style="width:200px;"><?php echo($client->entreprise); ?></li>
 	<li style="width:200px;"><a href="client_visualiser.php?ref=<?php echo($client->ref); ?>"><?php echo($client->prenom . " " . $client->nom); ?></a></li>
-	<li style="width:59px;"><?php echo(round($total, 2)); ?></li>
+	<li style="width:59px;"><?php echo(round($total, 2)); ?> <?php echo $devise->symbole; ?></li>
 	<li style="width:70px;"><?php echo($statutdesc->titre); ?></li>
 	<li style="width:40px;"><a href="commande_details.php?ref=<?php echo($row->ref); ?>">éditer</a></li>
 	<li style="width:35px; text-align:center;"><a href="#" onclick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>

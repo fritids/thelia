@@ -244,7 +244,7 @@ function tri(order,ref,type,critere,alpha){
 
 <ul class="<?php echo($fond); ?>">
 	<li style="width:112px;"></li>
-	<li style="width:579px;"><span id="titrerub_<?php echo $row->id; ?>" class="texte_edit"><?php echo($rubriquedesc->titre); ?></span></li>
+	<li style="width:579px;"><span id="titrerub_<?php echo $row->id; ?>" class="texte_edit"><?php echo substr($rubriquedesc->titre,0,80); if(strlen($rubriquedesc->titre) > 80) echo " ..."; ?></span></li>
 	<li style="width:54px;"><a href="parcourir.php?parent=<?php echo($rubriquedesc->rubrique); ?>" >parcourir</a></li>
 	<li style="width:34px;"><a href="rubrique_modifier.php?id=<?php echo($rubriquedesc->rubrique); ?>" alt="id : <?php echo $row->id; ?>" title="id : <?php echo $row->id; ?>">éditer</a></li>
 	
@@ -385,8 +385,8 @@ $i = 0;
 
 <ul class="<?php echo($fond); ?>">
 	<li><div class="vignette"><?php if($row_image) { ?><a href="produit_modifier.php?ref=<?php echo($produit->ref); ?>&rubrique=<?php echo($produit->rubrique); ?>"> <img src="../fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo $row_image->fichier;?>&width=51" title="id : <?php echo($produit->id); ?>" alt="id : <?php echo($produit->id); ?>" /></a><?php }  ?></div></li>
-	<li style="width:61px;"><span class="texte_noedit"><?php echo($row->ref); ?></span></li>
-	<li style="width:225px;"><span id="titreprod_<?php echo $row->ref; ?>" class="texte_edit"><?php echo($produitdesc->titre); ?></span></li>
+	<li style="width:61px;"><span class="texte_noedit" title="<?php echo($row->ref); ?>"><?php echo(substr($row->ref,0,9)); if(strlen($row->ref)>9) echo " ..."; ?></span></li>
+	<li style="width:225px;"><span id="titreprod_<?php echo $row->ref; ?>" class="texte_edit"><?php echo substr($produitdesc->titre,0,35); if(strlen($produitdesc->titre) > 35) echo " ..."; ?></span></li>
 	<li style="width:39px;"><span id="stock_<?php echo $row->ref; ?>" class="texte_edit"><?php echo($row->stock); ?></span></li>
 	<li style="width:30px;"><span id="prix_<?php echo $row->ref; ?>" class="texte_edit"><?php echo($row->prix); ?></span></li>
 	<li style="width:68px;"><span id="prix2_<?php echo $row->ref; ?>" class="texte_edit"><?php echo($row->prix2); ?></span></li>

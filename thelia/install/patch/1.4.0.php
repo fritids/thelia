@@ -34,11 +34,12 @@
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 
 	$devise = new Devise();
+	$devise->nom = "euro";
 	$devise->code = "EUR";
 	$devise->taux = 1;
 	$devise->add();
 
-	$query_cnx = "UPDATE devise set symbole=CHAR(128) where id=1;";
+	$query_cnx = "UPDATE devise set symbole=CHAR(128) where code=\"EUR\";";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 		
 	$devise = new Devise();
@@ -54,4 +55,6 @@
 	$devise->maj();
 	
 	// changement des messages
+	$query_cnx = "update messagedesc set descriptiontext=description";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);	
 ?>

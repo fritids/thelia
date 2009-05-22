@@ -45,6 +45,10 @@
 			return $this->getVars("select * from $this->table where id=\"$id\"");
 		}
 
+		function charger_nom($nom){
+			return $this->getVars("select * from $this->table where nom=\"$nom\"");
+		}
+		
 		function charger_symbole($symbole){
 			return $this->getVars("select * from $this->table where symbole=\"$symbole\"");
 		}
