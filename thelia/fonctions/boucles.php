@@ -2760,8 +2760,6 @@
 			$res .= $temp;				
 		}		
 	
-
-
 		return $res;
 			
 	}
