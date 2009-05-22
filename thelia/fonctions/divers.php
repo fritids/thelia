@@ -350,7 +350,7 @@
 	       return $rec;
 	   }
 
-	unction arbreOptionRub($depart, $niveau, $prubrique, $nbprod = 0){
+	function arbreOptionRub($depart, $niveau, $prubrique, $nbprod = 0){
 
 	       $rec="";
 	       $espace="";
