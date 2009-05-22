@@ -2067,7 +2067,7 @@ CREATE TABLE `modules` (
   `actif` smallint(6) NOT NULL,
   `classement` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-)  AUTO_INCREMENT=10 ;
+)  AUTO_INCREMENT=11 ;
 
 INSERT INTO `modules` (`id`, `nom`, `type`, `actif`, `classement`) VALUES 
 (1, 'place', 2, 1, 0),
@@ -2078,7 +2078,7 @@ INSERT INTO `modules` (`id`, `nom`, `type`, `actif`, `classement`) VALUES
 (6, 'cheque', 1, 1, 0),
 (7, 'cic', 1, 0, 0),
 (8, 'atos', 1, 0, 0),
-(9, 'virement', 1, 0, 0);
+(9, 'virement', 1, 0, 0),
 (10, 'filtremodulo', 3, 1, 0);
 
 -- 

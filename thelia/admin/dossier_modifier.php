@@ -688,7 +688,8 @@ if($id != ""){
 			<ul>
 <li class="lignesimple">
 				<div class="cellule_designation">Fichier</div>
-				<div class="cellule_document"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php echo($row->fichier); ?></a></div>
+				<div class="cellule_document"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php if(strlen($row->fichier) > 26) echo(substr($row->fichier,0,26)." ... ".substr($row->fichier,strlen($row->fichier)-3,strlen($row->fichier)));
+				else echo $row->fichier; ?></a></div>
 			<div class="cellule_supp_fichier">
 			<a href="dossier_modifier.php?id=<?php echo($id); ?>&id_document=<?php echo($row->id); ?>&action=supprimer_document&lang=<?php echo $lang; ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
 		</li>

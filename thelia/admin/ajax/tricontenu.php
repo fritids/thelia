@@ -42,7 +42,7 @@ if($type == "dossier"){
 	<span id="dossier">
 	<ul class="<?php echo($fond); ?>">
 		<li style="width:112px;"></li>
-		<li style="width:579px;"><span id="titredos_<?php echo $row->id; ?>" class="texte_edit"><?php echo($dossierdesc->titre); ?></span></li>
+		<li style="width:579px;"><span id="titredos_<?php echo $row->id; ?>" class="texte_edit"><?php echo substr($dossierdesc->titre,0,90); if(strlen($dossierdesc->titre) > 90) echo " ..."; ?></span></li>
 		<li style="width:54px;"><a href="listdos.php?parent=<?php echo($dossierdesc->dossier); ?>" class="txt_vert_11">parcourir</a></li>
 		<li style="width:34px;"><a href="dossier_modifier.php?id=<?php echo($dossierdesc->dossier); ?>" class="txt_vert_11">éditer</a></li>
 
@@ -85,7 +85,7 @@ else if($type == "contenudos"){
 	<ul class="<?php echo($fond); ?>">
 		<li style="width:112px;"></li>
 		<li style="width:579px;">
-		<span id="titrecont_<?php echo $row->id; ?>" class="texte_edit"><?php echo($contenudesc->titre); ?></span></li>
+		<span id="titrecont_<?php echo $row->id; ?>" class="texte_edit"><?php echo substr($contenudesc->titre,0,90); if(strlen($contenudesc->titre) > 90) echo " ..."; ?></span></li>
 		<li style="width:54px;"></li>
 		<li style="width:34px;"><a href="contenu_modifier.php?id=<?php echo($contenudesc->contenu); ?>&dossier=<?php echo $parent; ?>" class="txt_vert_11">éditer</a></li>
 		<li style="width:71px;">

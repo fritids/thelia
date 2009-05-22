@@ -18,7 +18,6 @@ $debut = $_GET["debut"];
   	$client = new Client();
   	
  	$query = "select * from $client->table order by $critere $order limit $debut,20";
-	echo $query;
   	$resul = mysql_query($query, $client->link);
   	
   	while($row = mysql_fetch_object($resul)){
