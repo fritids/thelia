@@ -102,6 +102,7 @@ function tri(order,critere){
 					$stock->maj();					
 				}
 				
+				
 			}
 			
 		}

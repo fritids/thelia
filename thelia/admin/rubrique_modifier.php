@@ -559,8 +559,9 @@ include_once('js/declinaison.php');
       <td style="vertical-align:top;">
         <select name="parent" id="parent" class="form_long">    
     	 <option value="0">-- Racine --</option>
-         <?php 
-          echo arbreOptionRub(0, 1, $id); 
+         <?php
+ 		
+        echo arbreOptionRub(0, 1, $id,1); 
 		 ?>
           </select>
         </span></td>

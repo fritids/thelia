@@ -240,6 +240,8 @@
 		<li><?php echo(round($totalremise + $port, 2)); ?> <?php echo $devise->symbole; ?></li>
 	</ul>
 </div>
+ 
+
 
 <?php
 	$adr = new Venteadr();

@@ -619,12 +619,7 @@
 		$produit = new Produit();		
 		$produit->charger($ref);
 		$produit->supprimer();
-		?>
-		<script type="text/javascript">
-			window.location="parcourir.php?parent=<?php echo $parent; ?>";
-		</script>
-		<?php
-
+		header("location: parcourir.php?parent=".$parent); exit;
 	}
 	
 	function ajouter_photo($produit,$lang){
@@ -760,11 +755,7 @@
 	            }
 	        }
 	 }
-
-/*	function envoyer(){
-		if(document.getElementById('ref_c').value == "") alert("Veuillez entrer une reference");
-		else document.getElementById('formulaire').submit();
-	}*/
+	
 	function supprimer(id,ref){
 		window.location="produit_modifier.php?id_photo="+id+"&ref="+ref+"action=supprimer_photo";
 	}
@@ -942,11 +933,11 @@
    		<tr class="claire">
         <td class="designation">Appartenance<br /> <span class="note">(déplacer dans une autre rubrique)</span></td>
         <td style="vertical-align:top;"><select name="rubrique" id="rubrique" class="form_long">
-          <?php if($ref) echo arbreOption(0, 1, $produit->rubrique); else {  ?>
+          <?php if($ref) echo arbreOption(0, 1, $produit->rubrique,1); else {  ?>
           	<option value="">&nbsp;</option>
           
          <?php 
-          echo arbreOption(0, 1, $rubrique); } ?>
+          echo arbreOption(0, 1, $rubrique,1); } ?>
           </select></td>
    	</tr>
     </table>
@@ -1510,7 +1501,9 @@
 		<ul>	   
 		<li class="lignesimple">
 			<div class="cellule_designation" style="height:20px;">Fichier</div>
-			<div class="cellule_document"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php echo($row->fichier); ?></a></div>
+			<div class="cellule_document"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php
+			if(strlen($row->fichier) > 26) echo(substr($row->fichier,0,26)." ... ".substr($row->fichier,strlen($row->fichier)-3,strlen($row->fichier))); 
+			else echo $row->fichier; ?></a></div>
 			<div class="cellule_supp_fichier">
 			<a href="produit_modifier.php?ref=<?php echo($ref); ?>&rurbrique=<?php echo $rubrique; ?>&amp;id_document=<?php echo($row->id); ?>&amp;action=supprimer_document&amp;lang=<?php echo $lang; ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" alt="-" /></a></div>
 		</li>
