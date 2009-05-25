@@ -546,17 +546,29 @@
 	<div class="claire">
 		<div class="champs" style="padding-top:10px; width:375px;">
 			<?php
-			$query = "select count(id) as maxcount from $contenu->table where dossier=$contenu->dossier";
+			$query = "select max(classement) as maxcount from $contenu->table where dossier=$contenu->dossier";
 			$resul = mysql_query($query);
 			$maxclassement = mysql_result($resul,0,"maxcount");
-			if($contenu->classement>1){
-				$prec = $contenu->classement-1;
-				$query = "select id from $contenu->table where dossier=$contenu->dossier and classement=$prec";
-				$resul = mysql_query($query);
-				$idprec = mysql_result($resul,0,"id");
+			
+			$query = "select min(classement) as mincount from $contenu->table where dossier=$contenu->dossier";
+			$resul = mysql_query($query);
+			$minclassement = mysql_result($resul,0,"mincount");
+			
+			$classement = $contenu->classement;
+			if($classement>$minclassement){
+				$prec = $contenu->classement;
+				do{
+					$prec--;
+					$query = "select id from $contenu->table where dossier=$contenu->dossier and classement=$prec";
+					$resul = mysql_query($query);
+				}while(!mysql_num_rows($resul) && $prec > $minclassement);
+				
+				if(mysql_num_rows($resul) != 0){
+					$idprec = mysql_result($resul,0,"id");
 			?>
 			<a href="contenu_modifier.php?id=<?php echo $idprec; ?>&dossier=<?php echo $contenu->dossier; ?>"><img src="gfx/precedent.png" alt="Contenu pr&eacute;c&eacute;dent" title="Contenu pr&eacute;c&eacute;dent" style="padding:0 5px 0 0;margin-top:-5px;height:38px;"/></a>
 			<?php
+				}
 			}
 			?>	
 			<!-- pour visualiser la page rubrique correspondante en ligne -->
@@ -564,14 +576,20 @@
 			<a href="#" onclick="document.getElementById('formulaire').submit();"><img src="gfx/valider.png" alt="Enregistrer les modifications" title="Enregistrer les modifications" style="padding:0 5px 0 0;"/></a>
 			<a href="#" onclick="document.getElementById('url').value='1'; document.getElementById('formulaire').submit();"><img src="gfx/validerfermer.png" alt="Enregistrer les modifications et fermer la fiche" title="Enregistrer les modifications et fermer la fiche" style="padding:0 5px 0 0;"/></a>
 			<?php
-			if($contenu->classement<$maxclassement){
-				$suivant = $contenu->classement+1;
-				$query = "select id from $contenu->table where dossier=$contenu->dossier and classement=$suivant";
-				$resul = mysql_query($query);
-				$idsuiv = mysql_result($resul,0,"id");
+			if($classement<$maxclassement){
+				$suivant = $contenu->classement;
+				do{
+					$suivant++;
+					$query = "select id from $contenu->table where dossier=$contenu->dossier and classement=$suivant";
+					$resul = mysql_query($query);
+				}while(!mysql_num_rows($resul) && $suivant<$maxclassement);
+				
+				if(mysql_num_rows($resul) != 0){
+					$idsuiv = mysql_result($resul,0,"id");
 			?>
 			<a href="contenu_modifier.php?id=<?php echo $idsuiv; ?>&dossier=<?php echo $contenu->dossier; ?>" ><img src="gfx/suivant.png" alt="Contenu suivant" title="Contenu suivant" style="padding:0 5px 0 0;"/></a>	
 			<?php
+				}
 			}
 			?>
 		</div>

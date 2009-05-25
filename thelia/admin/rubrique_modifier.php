@@ -840,14 +840,27 @@ if($id != ""){
 			$query = "select max(classement) as maxclassement from $rubrique->table where parent=$rubrique->parent";
 			$resul = mysql_query($query);
 			$maxclassement = mysql_result($resul,0,"maxclassement");
-			if($rubrique->classement >1){
-				$prec = $rubrique->classement-1;
-				$queryclassement = "select id from $rubrique->table where parent=$rubrique->parent and classement=$prec";
-				$resulclassement = mysql_query($queryclassement);
-				$idprec = mysql_result($resulclassement,0,"id");
+			
+			$query = "select min(classement) as minclassement from $rubrique->table where parent=$rubrique->parent";
+			$resul = mysql_query($query);
+			$minclassement = mysql_result($resul,0,"minclassement");
+			
+			$classement = $rubrique->classement;
+			if($classement > $minclassement){
+				$prec = $rubrique->classement;
+				
+				do{
+					$prec--;
+					$queryclassement = "select id from $rubrique->table where parent=$rubrique->parent and classement=$prec";
+					$resulclassement = mysql_query($queryclassement);
+				}while(!mysql_num_rows($resul) && $prec > $minclassement);
+				
+				if(mysql_num_rows($resul) != 0){
+					$idprec = mysql_result($resulclassement,0,"id");
 			?>
 			<a href="rubrique_modifier.php?id=<?php echo $idprec; ?>" ><img src="gfx/precedent.png" alt="Rubrique pr&eacute;c&eacute;dente" title="Rubrique pr&eacute;c&eacute;dente" style="padding:0 5px 0 0;margin-top:-5px;height:38px;"/></a>	
 			<?php
+				}
 			}
 			?>
 			
@@ -856,15 +869,22 @@ if($id != ""){
 			<a href="#" onclick="document.getElementById('formulaire').submit();"><img src="gfx/valider.png" alt="Enregistrer les modifications" title="Enregistrer les modifications" style="padding:0 5px 0 0;"/></a>
 			<a href="#" onclick="document.getElementById('url').value='1'; document.getElementById('formulaire').submit(); "><img src="gfx/validerfermer.png" alt="Enregistrer les modifications et fermer la fiche" title="Enregistrer les modifications et fermer la fiche" style="padding:0 5px 0 0;"/></a>
 			<?php
-			if($rubrique->classement < $maxclassement){
-				$suivant = $rubrique->classement+1;
-				$query = "select id from $rubrique->table where parent=$rubrique->parent and classement=$suivant";
-				$resul = mysql_query($query);
-				$idsuiv = mysql_result($resul,0,"id");
+			if($classement < $maxclassement){
+				$suivant = $rubrique->classement;
+				
+				do{
+					$suivant++;
+					$query = "select id from $rubrique->table where parent=$rubrique->parent and classement=$suivant";
+					$resul = mysql_query($query);
+				}while(!mysql_num_rows($resul) && $suivant<$maxclassement);
+				
+				if(mysql_num_rows($resul) != 0){
+					$idsuiv = mysql_result($resul,0,"id");
 			
 			?>
 			<a href="rubrique_modifier.php?id=<?php echo $idsuiv; ?>" ><img src="gfx/suivant.png" alt="Rubrique suivante" title="Rubrique suivante" style="padding:0 5px 0 0;"/></a>	
 			<?php
+				}
 			}
 			?>
 			

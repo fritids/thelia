@@ -1333,13 +1333,16 @@
 					}
 					while(!mysql_num_rows($resul) && $precedent>$classementmin);
 				
-					if(mysql_num_rows($resul) !=0) $refprec =  mysql_result($resul,0,'ref');
-					else $refprec=$ref;
+					if(mysql_num_rows($resul) !=0){
+						 $refprec =  mysql_result($resul,0,'ref');
+				
 				//	
 					
 			?>
 			<a href="produit_modifier.php?ref=<?php echo $refprec;?>&amp;rubrique=<?php echo $rubrique;?>" ><img src="gfx/precedent.png" alt="Produit précédent" title="Produit précédent" style="padding:0 5px 0 0;margin-top:-5px;height:38px;"/></a>	
-			<?php }
+			<?php 
+					}
+				}
 				//modif jhr
 			$site=new Variable();
 			$site->charger("urlsite");
@@ -1361,12 +1364,16 @@
 					$resul = mysql_query($query, $produit->link);
 					}
 					while(!mysql_num_rows($resul) && $precedent<$classementmax);
-					if(mysql_num_rows($resul) !=0) $refprec =  mysql_result($resul,0,"ref");else $refprec=$ref;
+					if(mysql_num_rows($resul) !=0){
+						 $refprec =  mysql_result($resul,0,"ref");
 				//	
 					
 			?>
 			<a href="produit_modifier.php?ref=<?php echo $refprec;?>&amp;rubrique=<?php echo $rubrique;?>" ><img src="gfx/suivant.png" alt="Produit suivant" title="Produit suivant" style="padding:0 5px 0 0;"/></a>	
-			<?php } ?>
+			<?php 
+					}
+				} 
+			?>
    		</div>
    	</div>
 </div>
