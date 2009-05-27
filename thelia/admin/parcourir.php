@@ -194,7 +194,6 @@ function tri(order,ref,type,critere,alpha){
 	$test = new Rubrique();
 	$test->charger($parent);
 	
-	if(! $test->nbprod() || 1){
 ?>
 <div class="entete_liste">
 	<div class="titre">LISTE DES RUBRIQUES</div><div class="fonction_ajout"><a href="rubrique_modifier.php?parent=<?php echo($parent); ?>"><?php if($parent == "") { ?>AJOUTER UNE RUBRIQUE<?php } else {?>AJOUTER UNE SOUS-RUBRIQUE<?php } ?></a></div>
@@ -266,10 +265,6 @@ function tri(order,ref,type,critere,alpha){
 <?php
 		if(!($i%2)) $fond="ligne_claire_rub";
   		else $fond="ligne_fonce_rub";
-  		}
-?>
-
-<?php
 
 	$produit = new Produit();
 	$produitdesc = new Produitdesc();
@@ -289,7 +284,7 @@ $i = 0;
 	$test = new Rubrique();
 	$test->charger($parent);
 	
-	if(! $test->aenfant() && $parent != "" || 1){
+	
 ?> 
 
 
@@ -417,7 +412,6 @@ $i = 0;
 
 ?>  
 </div>
-<?php } ?>
 </div>
 <?php include_once("pied.php");?>
 </div>
