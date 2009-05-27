@@ -266,7 +266,6 @@ function supprimer_dossier(id, parent){
 </ul>  
 <div id="contenudos">
 <?php
-	
 	$contenu = new Contenu();
 	$contenudesc = new ContenuDesc();
 	
