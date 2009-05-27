@@ -39,7 +39,7 @@ if($type == "dossier"){
 	  		$i++;
 
 	?>
-	<span id="dossier">
+	
 	<ul class="<?php echo($fond); ?>">
 		<li style="width:112px;"></li>
 		<li style="width:579px;"><span id="titredos_<?php echo $row->id; ?>" class="texte_edit"><?php echo substr($dossierdesc->titre,0,90); if(strlen($dossierdesc->titre) > 90) echo " ..."; ?></span></li>
@@ -49,17 +49,15 @@ if($type == "dossier"){
 		<li style="width:71px;">
 		 <div class="bloc_classement">  
 		    <div class="classement"><a href="dossier_modifier.php?id=<?php echo($dossierdesc->dossier); ?>&action=modclassement&parent=<?php echo($parent); ?>&type=M"><img src="gfx/up.gif" border="0" /></a></div>
-		    <div class="classement"><span id="classement_<?php echo $row->ref; ?>" class="classement_edit"><?php echo $row->classement; ?></span></div>
+		    <div class="classement"><span id="classementdossier_<?php echo $row->id; ?>" class="classement_edit"><?php echo $row->classement; ?></span></div>
 		    <div class="classement"><a href="dossier_modifier.php?id=<?php echo($dossierdesc->dossier); ?>&action=modclassement&parent=<?php echo($parent); ?>&type=D"><img src="gfx/dn.gif" border="0" /></a></div>
 		 </div>
 		</li>
 		<li style="width:37px; text-align:center;"><a href="javascript:supprimer_dossier('<?php echo($dossierdesc->dossier); ?>', '<?php echo($parent); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 	</ul>
-	 </span>   
+	 
 	<?php
 	}
-	
-	
 }
 else if($type == "contenudos"){
 
