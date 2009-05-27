@@ -116,7 +116,7 @@
 		else 
 			$documentdesc->maj();
 			
-        header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique."&lang=".$lang);
+        header("Location: produit_modifier.php?ref=" . $tmp->ref . "&rubrique=" . $tmp->rubrique."&lang=".$lang);
 
 	}
 
@@ -237,7 +237,7 @@
 
 				$document->supprimer();
   			    
-  			    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique."&lang=".$lang);
+  			    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&rubrique=" . $tmp->rubrique."&lang=".$lang);
 
 	}
 		
@@ -273,7 +273,7 @@
 				copy("$doc", "../client/document/" . $fich . "_" . $produit . "." . $ext);	
 			}
 
-	 		 header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique . "&lang=". $lang);
+	 		 header("Location: produit_modifier.php?ref=" . $tmp->ref . "&rubrique=" . $tmp->rubrique . "&lang=". $lang);
 
 	}
 
@@ -667,7 +667,7 @@
 		
 	  }	
 	  
-	  header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique."&lang=".$lang);
+	  header("Location: produit_modifier.php?ref=" . $tmp->ref . "&rubrique=" . $tmp->rubrique."&lang=".$lang);
 		
 	}
 	
@@ -691,7 +691,7 @@
 		else 
 			$imagedesc->maj();
 
-	    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique."&lang=".$lang);
+	    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&rubrique=" . $tmp->rubrique."&lang=".$lang);
 
 	}
 	
@@ -712,7 +712,7 @@
 			$image->supprimer();
 			$imagedesc->delete();
 			
- 		    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&id_rubrique=" . $tmp->rubrique . "&lang=".$lang);
+ 		    header("Location: produit_modifier.php?ref=" . $tmp->ref . "&rubrique=" . $tmp->rubrique . "&lang=".$lang);
 
 
 	}
