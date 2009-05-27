@@ -170,11 +170,6 @@ function supprimer_dossier(id, parent){
 			<a href="listdos.php?parent=<?php echo($parentdesc->dossier); ?>" class="lien04"><?php echo($parentdesc->titre); ?></a>
            </p>
 <!-- début de la gestion des dossiers de contenu -->    
-<?php
-$test = new Dossier();
-$test->charger($parent,$lang);
-if(! $test->nb_dos()){
-?>       
 <div class="entete_liste">
 	<div class="titre">LISTE DES DOSSIERS DE CONTENU </div><div class="fonction_ajout"><a href="dossier_modifier.php?parent=<?php echo($parent); ?>"><?php if($parent == "") { ?>AJOUTER UN DOSSIER<?php } else {?>AJOUTER UN SOUS-DOSSIER<?php } ?></a></div>
 </div>
@@ -200,7 +195,7 @@ if(! $test->nb_dos()){
 		<li style="height:25px; width:44px; border-left:1px solid #96A8B5;">Suppr.</li>	
 
 </ul>   
-<span id="dossier">
+<div id="dossier">
 <?php
 	
 	$dossier = new Dossier();
@@ -233,27 +228,21 @@ if(! $test->nb_dos()){
 	</li>
 	<li style="width:37px; text-align:center;"><a href="javascript:supprimer_dossier('<?php echo($dossierdesc->dossier); ?>', '<?php echo($parent); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 </ul>
-   
-<?php
-}
-?>  
-</span> 
+ 
+
 <!-- fin de la gestion des dossiers / début de la gestion des contenus -->
 <?php
 }
-$test = new Dossier();
-$test->charger($parent);
-
-if(! $test->aenfant()){
 
   		if(!($i%2)) $fond="ligne_claire_rub";
   		else $fond="ligne_fonce_rub";
 ?>
+</div> 
 <div class="entete_liste">
 	<div class="titre">LISTE DES CONTENUS</div>
 	<div class="fonction_ajout"><a href="contenu_modifier.php?dossier=<?php echo($parent); ?>">AJOUTER UN CONTENU</a></div>
 </div>  
-<ul id="Nav">
+<ul id="Nav2">
 		<li style="height:25px; width:119px; border-left:1px solid #96A8B5;"></li>
 		
 		<li style="height:25px; width:586px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
@@ -275,7 +264,7 @@ if(! $test->aenfant()){
 		<li style="height:25px; width:44px; border-left:1px solid #96A8B5;">Suppr.</li>	
 
 </ul>  
-<span id="contenudos">
+<div id="contenudos">
 <?php
 	
 	$contenu = new Contenu();
@@ -309,17 +298,15 @@ if(! $test->aenfant()){
 </ul>
 
 <?php
-}
-?>  
-</span>
-<?php
 		if(!($i%2)) $fond="ligne_claire_rub";
   		else $fond="ligne_fonce_rub";
 ?>
+
 <!-- fin du bloc de gestion des contenus -->
 <?php
 }
 ?>
+	</div>
 </div>
 <?php include_once("pied.php");?>
 </div>

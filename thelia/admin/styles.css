@@ -1696,7 +1696,25 @@ background-repeat: repeat-x;
 border-right:1px solid #96A8B5;
 z-index: 10px;
 }
+#Nav2 {
+padding: 0;
+height: 30px;
+width: 977px;
+list-style: none;
+background-image: url(gfx/fond_cellule_entete.jpg);
+background-repeat: repeat-x;
+border-right:1px solid #96A8B5;
+z-index: 10px;
+}
 #Nav li {
+width: 103px;
+margin: 0px 0 0 0px;
+height: 23px;
+color: #2F3D46;
+float: left;
+padding: 5px 0 0 7px;
+}
+#Nav2 li {
 width: 103px;
 margin: 0px 0 0 0px;
 height: 23px;
@@ -1730,7 +1748,26 @@ margin: 0px 0 0 0px; padding:7px 0 0 7px;
 border: 1px solid #C4CACE;
 font-weight: normal;
 }
+#Nav2 li a {
+display: block;
+height: 21px;
+background-color: #9eb0be;
+color: #2F3D46;
+text-decoration: none;	
+margin: 0px 0 0 0px; padding:7px 0 0 7px;
+border: 1px solid #C4CACE;
+font-weight: normal;
+}
 #Nav li a:hover,#Nav li a:active {
+display: block;
+height: 21px;
+background-color: #868F99;
+color: white;
+text-decoration: none;	
+margin:0px 0 0 0px; padding:7px 0 0 7px;
+border: 1px solid #C4CACE;
+}
+#Nav2 li a:hover,#Nav2 li a:active {
 display: block;
 height: 21px;
 background-color: #868F99;

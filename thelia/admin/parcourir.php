@@ -105,7 +105,8 @@ function tri(order,ref,type,critere,alpha){
 		url:"ajax/tri.php",
 		data : "ref="+ref+"&order="+order+"&type="+type+'&critere='+critere+"&alpha="+alpha,
 		success : function(html){
-			$("#resul").html(html);
+			if(type == "1") $("#resulrubrique").html(html);
+			else $("#resulproduit").html(html);
 			$(".texte_edit").editable("ajax/produit.php", { 
      		indicator : "<img src='img/load.gif'>",
      		select : true,
@@ -193,7 +194,7 @@ function tri(order,ref,type,critere,alpha){
 	$test = new Rubrique();
 	$test->charger($parent);
 	
-	if(! $test->nbprod()){
+	if(! $test->nbprod() || 1){
 ?>
 <div class="entete_liste">
 	<div class="titre">LISTE DES RUBRIQUES</div><div class="fonction_ajout"><a href="rubrique_modifier.php?parent=<?php echo($parent); ?>"><?php if($parent == "") { ?>AJOUTER UNE RUBRIQUE<?php } else {?>AJOUTER UNE SOUS-RUBRIQUE<?php } ?></a></div>
@@ -222,7 +223,7 @@ function tri(order,ref,type,critere,alpha){
 		</li>
 		<li style="height:25px; width:44px; border-left:1px solid #96A8B5;">Suppr.</li>	
 	</ul>
-<div class="bordure_bottom" id="resul">
+<div id="resulrubrique">
 
 <?php
 	
@@ -268,7 +269,6 @@ function tri(order,ref,type,critere,alpha){
   		}
 ?>
 
-
 <?php
 
 	$produit = new Produit();
@@ -289,16 +289,18 @@ $i = 0;
 	$test = new Rubrique();
 	$test->charger($parent);
 	
-	if(! $test->aenfant() && $parent != ""){
+	if(! $test->aenfant() && $parent != "" || 1){
 ?> 
 
+
 <div class="entete_liste">
-	<div class="titre">LISTE DES PRODUITS</div><div class="fonction_ajout"><a href="produit_modifier.php?rubrique=<?php echo($parent); ?>">AJOUTER UN PRODUIT</a></div>
+	<div class="titre">LISTE DES PRODUITS</div>
+	<div class="fonction_ajout"><a href="produit_modifier.php?rubrique=<?php echo($parent); ?>">AJOUTER UN PRODUIT</a></div>
 </div>
 
  
-<ul id="Nav">
-		<li style="height:25px; width:44px; border-left:1px solid #96A8B5;"></li>
+<ul id="Nav2">
+		<li style="height:25px; width:44px; border-left:1px solid #96A8B5;"> </li>
 		<li style="height:25px; width:68px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">Réf.
 			<ul class="Menu">
 				<li><a href="javascript:tri('ASC','<?php echo $parent; ?>','2','ref','')">Tri croissant</a></li>
@@ -363,8 +365,7 @@ $i = 0;
 		<li style="height:25px; width:44px; border-left:1px solid #96A8B5;">Suppr.</li>
 	</ul>
 
-<div class="bordure_bottom">
-	<span id="resul">
+<div id="resulproduit">
 <?php
 	while($row = mysql_fetch_object($resul)){
 		$produit->charger($row->ref);
@@ -417,7 +418,6 @@ $i = 0;
 ?>  
 </div>
 <?php } ?>
-</span>
 </div>
 <?php include_once("pied.php");?>
 </div>
