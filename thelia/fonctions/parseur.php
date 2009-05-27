@@ -261,6 +261,7 @@
 			 	 case 'PANIER' : $res .= bouclePanier($texte, $args); break;			 	 
 			 	 case 'QUANTITE' : $res .= boucleQuantite($texte, $args); break;
 			 	 case 'CHEMIN' : $res .= boucleChemin($texte, $args); break;			 	 
+			 	 case 'CHEMINDOS' : $res .= boucleChemindos($texte, $args); break;			 	 
 			 	 case 'PAIEMENT' : $res .= bouclePaiement($texte, $args); break;			 	 
 			 	 case 'ADRESSE' : $res .= boucleAdresse($texte, $args); break;			 	 
 			 	 case 'VENTEADR' : $res .= boucleVenteadr($texte, $args); break;			 	 

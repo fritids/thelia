@@ -16,5 +16,6 @@ Karim Belkacem <karim@ergonomind.com>
 Rodolphe - www.tuxy.fr 
 Jean (Henri) Reber <ordinat.eure@free.fr> 
 Jean-Baptiste BILLOT <ottoroots@gmail.com>
+Christophe Draperi <contact@informatiqueprog.net>
 
 Un grand merci aussi à tous les contributeurs de contrib.thelia.fr

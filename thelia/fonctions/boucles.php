@@ -1693,6 +1693,61 @@
 	
 	}	
 
+	function boucleChemindos($texte, $args){
+		global $id_dossier;
+
+		// récupération des arguments
+
+		$dossier = lireTag($args, "dossier");		
+		$profondeur = lireTag($args, "profondeur");		
+		$niveau = lireTag($args, "niveau");		
+
+		if($dossier=="") return "";
+
+		$res="";
+
+		$tdossier = new Dossier();
+		$tdossier->charger($dossier);
+		$tdossierdesc = new Dossierdesc();
+
+		$i =  0;
+
+	    if(! $tdossier->parent)
+	            return "";
+
+	    $dostab = "";
+	    $tmp = new Dossier();
+	    $tmp->charger($tdossier->parent);
+	    $dostab[$i] = new Dossier();
+	    $dostab[$i++] = $tmp;
+
+	    while($tmp->parent != 0) {
+	            $tmp = new Dossier();
+	            $tmp->charger($dostab[$i-1]->parent);
+
+	            $dostab[$i] = new Dossier();
+	            $dostab[$i++] = $tmp;
+	    }
+
+	    $compt = 0;
+
+	    for($i=count($dostab)-1; $i>=0; $i--){
+	                    if($profondeur != "" && $compt==$profondeur) break;
+	                    if($niveau != "" && $niveau != $compt +1 ) { $compt++; continue; }          
+	                    $tdossierdesc->charger($dostab[$i]->id, $_SESSION['navig']->lang);
+	                    $temp = str_replace("#ID", $dostab[$i]->id, $texte);
+	                    $temp = str_replace("#TITRE", "$tdossierdesc->titre", $temp);
+	                    $temp = str_replace("#URL", "dossier.php?id_dossier=" . $dostab[$i]->id, $temp);
+	                    $temp = str_replace("#REWRITEURL", rewrite_dos($dostab[$i]->id), $temp);
+
+	                    $compt++;
+
+	                    $res .= $temp;
+	    }
+
+		return $res;
+
+	}	
 	
 	function bouclePaiement($texte, $args){
 
