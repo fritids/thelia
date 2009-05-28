@@ -228,13 +228,8 @@ function supprimer_dossier(id, parent){
 	</li>
 	<li style="width:37px; text-align:center;"><a href="javascript:supprimer_dossier('<?php echo($dossierdesc->dossier); ?>', '<?php echo($parent); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 </ul>
-<<<<<<< .mine
- 
-</span> 
-=======
  
 
->>>>>>> .r634
 <!-- fin de la gestion des dossiers / début de la gestion des contenus -->
 <?php
 }
@@ -271,6 +266,7 @@ function supprimer_dossier(id, parent){
 </ul>  
 <div id="contenudos">
 <?php
+	
 	$contenu = new Contenu();
 	$contenudesc = new ContenuDesc();
 	
@@ -300,13 +296,8 @@ function supprimer_dossier(id, parent){
 	</li>
 	<li style="width:37px; text-align:center;"><a href="javascript:supprimer_contenu('<?php echo($contenudesc->contenu); ?>', '<?php echo($parent); ?>');"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 </ul>
-<<<<<<< .mine
-</span>
-<?php
-=======
 
 <?php
->>>>>>> .r634
 		if(!($i%2)) $fond="ligne_claire_rub";
   		else $fond="ligne_fonce_rub";
 ?>
