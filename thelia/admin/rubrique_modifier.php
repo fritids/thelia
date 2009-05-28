@@ -913,6 +913,8 @@ if($id != ""){
 
 
 <ul id="blocs_pliants_photo">
+	<li><h3 class="head" style="margin:0 0 0 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
+
 <li>
 	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" /></a><h3>
 	<ul>
@@ -1083,13 +1085,13 @@ jQuery().ready(function(){
 	jQuery('#blocs_pliants_photo').Accordion({
 		active: 'h3.selected',
 		header: 'h3.head',
-		alwaysOpen: false,
+		alwaysOpen: true,
 		animated: false,
 		showSpeed: 400,
 		hideSpeed: 100
 	});
 	jQuery('#blocs_pliants_fichier').Accordion({
-		active: 'h3.selected',
+		active: 'h3.head',
 		header: 'h3.head',
 		alwaysOpen: true,
 		animated: false,

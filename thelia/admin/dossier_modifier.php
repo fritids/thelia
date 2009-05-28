@@ -381,7 +381,7 @@
 	include_once("entete.php");
 ?>
 <div id="contenu_int">
-  <p><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="listdos.php" class="lien04">Gestion</a><a href="listdos.php" class="lien04">du contenu </a>              
+  <p><a href="accueil.php" class="lien04">Accueil </a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="listdos.php" class="lien04">Gestion du contenu </a>              
 
     <?php
                     $parentdesc = new Dossierdesc();
@@ -533,13 +533,12 @@ if($id != ""){
 			$query = "select max(classement) as maxcount from $dossier->table where parent=$dossier->parent";
 			$resul = mysql_query($query);
 			$maxclassement = mysql_result($resul,0,"maxcount");
-				
+			
 			$query = "select min(classement) as mincount from $dossier->table where parent=$dossier->parent";
 			$resul = mysql_query($query);
 			$minclassement = mysql_result($resul,0,"mincount");
-
-			$classement = $dossier->classement;
 			
+			$classement = $dossier->classement;
 			if($classement > $minclassement){
 				$prec = $classement;
 				do{
@@ -571,6 +570,7 @@ if($id != ""){
 					
 					if(mysql_num_rows($resul) != 0){
 						$idsuiv = mysql_result($resul,0,"id");
+					
 			?>
 			<a href="dossier_modifier.php?id=<?php echo $idsuiv; ?>" ><img src="gfx/suivant.png" alt="Dossier suivant" title="Dossier suivant" style="padding:0 5px 0 0;"/></a>	
 			<?php
@@ -602,6 +602,8 @@ if($id != ""){
 
 
 <ul id="blocs_pliants_photo">
+<li><h3 class="head" style="margin:0 0 0px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3>
+	</li>
 <li>
 	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" /></a><h3>
 	<ul>

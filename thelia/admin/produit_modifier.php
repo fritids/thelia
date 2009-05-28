@@ -923,7 +923,7 @@
    	</tr>
    	<tr class="claire">
         <td class="designation">Description<br /> <span class="note">(description complète)</span></td>
-        <td><textarea name="description" id="description" cols="40" rows="2"><?php echo($produitdesc->description); ?></textarea></td>
+        <td><textarea name="description" id="description" rows="5" cols="20" style="width:100%;"><?php echo($produitdesc->description); ?></textarea></td>
    	</tr>
    	<tr class="fonce">
         <td class="designation">Postscriptum<br /> <span class="note">(champs d'information complémentaire)</span></td>
@@ -1335,7 +1335,6 @@
 				
 					if(mysql_num_rows($resul) !=0){
 						 $refprec =  mysql_result($resul,0,'ref');
-				
 				//	
 					
 			?>
@@ -1372,8 +1371,7 @@
 			<a href="produit_modifier.php?ref=<?php echo $refprec;?>&amp;rubrique=<?php echo $rubrique;?>" ><img src="gfx/suivant.png" alt="Produit suivant" title="Produit suivant" style="padding:0 5px 0 0;"/></a>	
 			<?php 
 					}
-				} 
-			?>
+				} ?>
    		</div>
    	</div>
 </div>
@@ -1403,9 +1401,11 @@
 <!-- fin du bloc transfert des images -->
 
 <ul id="blocs_pliants_photo">
+	<li><h3 class="head" style="margin:0 0 0px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
 <li>
 	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" alt="-" /></a></h3>
 	
+	<ul>
 	<?php 
 			$image = new Image();
 			
@@ -1422,7 +1422,7 @@
 		<input type="hidden" name="id_photo" value="<?php echo $row->id; ?>" />
 		<input type="hidden" name="ref" value="<?php echo $ref; ?>" />
 		<input type="hidden" name="lang" value="<?php echo $lang; ?>" />
-		<ul>
+		
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:208px;">&nbsp;</div>
 				<div class="cellule_photos" style="height:200px; overflow:hidden;"><img src="../fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo($row->fichier); ?>&amp;width=208&amp;height=&amp;opacite=" border="0" alt="-" /></div>
@@ -1454,12 +1454,13 @@
 				<div class="cellule_designation" style="height:30px;">&nbsp;</div>
 				<div class="cellule" style="height:30px; border-bottom: 1px dotted #9DACB6"><input type="submit" value="Enregistrer" /></div>
 			</li>
-			</ul>
+			
 		</form>
    		<?php } ?>
-   	</li>
-	<li><h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
-	</ul>
+   		<h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" /></a><h3>
+
+   	</ul>
+	</li>
 	
 
 

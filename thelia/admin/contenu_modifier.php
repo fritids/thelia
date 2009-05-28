@@ -617,6 +617,7 @@
 
 
 <ul id="blocs_pliants_photo">
+<li><h3 class="head" style="margin:0 0 0px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
 <li>
 	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" /></a><h3>
 	<ul>
