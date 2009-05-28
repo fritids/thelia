@@ -616,13 +616,17 @@
             $corps = $msgdesc->description;  
   			$corpstext = $msqdesc->descriptiontext;
 			
+			$corps = str_replace("__MOTDEPASSE__", "$pass", $corps);
+
+			$corpstext = str_replace("__MOTDEPASSE__", "$pass", $corpstext);
+			
 			$mail = new Mail();
 			$mail->IsMail();
 			$mail->From = $emailcontact->valeur;
 			$mail->FromName = $nomsite->valeur;
 			$mail->Subject = $sujet;
-			$mail->MsgHTML($corps." ".$pass);
-			$mail->AltBody = $corpstext." ".$pass;
+			$mail->MsgHTML($corps);
+			$mail->AltBody = $corpstext;
 			$mail->AddAddress($tclient->email,$tclient->nom." ".$tclient->prenom);
 			$mail->send();
  		

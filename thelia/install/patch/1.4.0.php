@@ -30,6 +30,9 @@
 	$query_cnx = "ALTER TABLE `messagedesc` ADD `descriptiontext` TEXT NOT NULL";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 
+	$query_cnx = "update `messagedesc` set description = CONCAT(description,\"__MOTDEPASSE__\") where message in(select id from message where nom=\"changepass\")";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+
 	$query_cnx = "ALTER TABLE `commande` ADD `devise` INT NOT NULL AFTER `remise` , ADD `taux` FLOAT NOT NULL AFTER `devise` ;";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 
