@@ -182,6 +182,9 @@
 			$urlsite = new Variable();
 			$urlsite->charger("urlsite");
 			
+			$nomsite = new Variable();
+			$nomsite->charger("nomsite");
+			
 			$corps = str_replace("__COMMANDE_REF__", $commande->ref, $corps);
 			$corps = str_replace("__COMMANDE_DATE__", $jour . "/" . $mois . "/" . $annee, $corps);
 			$corps = str_replace("__COMMANDE_HEURE__", $heure . ":" . $minute, $corps);
@@ -202,6 +205,7 @@
 			$corps = str_replace("__COMMANDE_LIVRVILLE__", $ville, $corps);
 			$corps = str_replace("__COMMANDE_LIVRPAYS__", $pays->titre, $corps);
 
+			$corps = str_replace("__NOMSITE", $nomsite->valeur, $corps);
 			$corps = str_replace("__URLSITE__", $urlsite->valeur, $corps);
 
 
