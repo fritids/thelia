@@ -117,7 +117,7 @@ pourcentage</li>
 	</ul>
 	<ul class="ligne_fonce_BlocDescription">
 		<li class="designation" style="width:280px;">Utilisation unique ou illimit&eacute;</li>
-		<li>Unique<input name="illimite" type="radio" class="form" value="1" <?php echo($illimiteo); ?> /> &nbsp; Illimit&eacute; <input name="illimite" type="radio" class="form" value="0" <?php echo($illimiten); ?> /></li>
+		<li>Unique<input name="illimite" type="radio" class="form" value="0"  <?php echo($illimiten); ?>/> &nbsp; Illimit&eacute; <input name="illimite" type="radio" class="form" value="1"  <?php echo($illimiteo); ?>/></li>
 	</ul>
 	<ul class="ligne_claire_BlocDescription">
 		<li class="designation" style="width:280px;">Date d'expiration</li>
