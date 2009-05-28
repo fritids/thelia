@@ -60,7 +60,7 @@ if($modif == "classementrub"){
 		$resul = mysql_query($query, $rubrique->link);		
 
 		$i=0;
-
+		echo("rub|");
 		while($row = mysql_fetch_object($resul)){
 			$rubriquedesc->charger($row->id);
 
@@ -127,6 +127,7 @@ else if($modif == "classementprod"){
 
 	$resul = mysql_query($query, $produit->link);
 		$i=0;
+		echo("prod|");
 		while($row = mysql_fetch_object($resul)){
 			$produit->charger($row->ref);
 			$produitdesc->charger($row->id);

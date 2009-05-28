@@ -54,7 +54,9 @@ function edit(){
 	      onblur: "submit",
 	      cssclass : "ajaxedit",
 		  callback : function(value, settings){
-						$("#resul").html(value);
+						var retour = value.split("|");
+						if(retour[0] == "rub") $("#resulrubrique").html(retour[1]);
+						else if(retour[0] == "prod") $("#resulproduit").html(retour[1]);
 						edit();	
 					}
 	  });
