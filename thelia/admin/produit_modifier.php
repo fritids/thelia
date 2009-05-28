@@ -937,7 +937,7 @@
           	<option value="">&nbsp;</option>
           
          <?php 
-          echo arbreOption(0, 1, $rubrique,1); } ?>
+          echo arbreOption(0, 1, $rubrique); } ?>
           </select></td>
    	</tr>
     </table>
