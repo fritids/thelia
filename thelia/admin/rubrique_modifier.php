@@ -561,7 +561,7 @@ include_once('js/declinaison.php');
     	 <option value="0">-- Racine --</option>
          <?php
  		
-        echo arbreOptionRub(0, 1, $id,1); 
+        echo arbreOptionRub(0, 1, $id); 
 		 ?>
           </select>
         </span></td>
