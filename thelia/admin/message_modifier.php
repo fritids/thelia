@@ -113,7 +113,6 @@
 	<div class="fonction_valider"><a href="#" onclick="document.getElementById('formulaire').submit();">VALIDER LES MODIFICATIONS</a></div>
 </div>
  <!-- bloc descriptif de la dŽclinaison --> 
- <?php include("tinymce.php"); ?>
 		
 <table width="100%" cellpadding="5" cellspacing="0">
     <tr class="claire">
