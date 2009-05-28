@@ -172,8 +172,8 @@
 	<li style="width:80px;"><?php if($row->type == 1) { ?> somme <?php } else { ?> pourcentage <?php } ?></li>
 	<li style="width:80px;"><?php echo($row->valeur); ?><?php if($row->type == 1) { ?> &euro; <?php } else { ?> % <?php } ?></li>
 	<li style="width:80px;"><?php echo($row->mini); ?> &euro;</li>
-	<li style="width:80px;"><?php if($row-> utilise == 0) { ?> oui <?php } else { ?> non <?php } ?></li>
-	<li style="width:80px;"><?php if($row-> illimite == 1) { ?> unique <?php } else { ?> illimit&eacute; <?php } ?></li>
+	<li style="width:80px;"><?php if($row->utilise == 0) { ?> oui <?php } else { ?> non <?php } ?></li>
+	<li style="width:80px;"><?php if($row->illimite == 0) { ?> unique <?php } else { ?> illimit&eacute; <?php } ?></li>
 	<li style="width:150px;"><?php if($row->datefin != "0000-00-00 00:00:00") echo $jour . "/" . $mois . "/" . $annee; else echo "//"; ?></li>
 	<li style="width:50px;"><a href="promo_modifier.php?id=<?php echo($row->id); ?>">éditer</a></li>
 	<li style="width:40px; text-align:center;"><a href="promo.php?id=<?php echo($row->id); ?>&action=supprimer"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
