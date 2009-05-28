@@ -477,7 +477,7 @@ include_once('js/declinaison.php');
 				}
 				while($tot --){
 			?>
-			 <a href="parcourir.php?parent=<?php echo($res[$tot+1]->id); ?>" class="lien04"> <?php echo($res[$tot+1]->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />                             
+			 <a href="parcourir.php?parent=<?php echo($res[$tot+1]->rubrique); ?>" class="lien04"> <?php echo($res[$tot+1]->titre); ?></a> <img src="gfx/suivant.gif" width="12" height="9" border="0" />                             
             <?php
             	}
             
