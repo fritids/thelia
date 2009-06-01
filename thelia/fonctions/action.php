@@ -591,49 +591,52 @@
 	}
 
 	// changement du mot de passe
-	function chmdp($email){
-		$msg = new Message();
-		$msgdesc = new Messagedesc();
-		
-		$tclient  = new Client();
-		if( $tclient->charger_mail($email)){
-			$pass = genpass(8);
-			$tclient->motdepasse = $pass;
-			$tclient->crypter();
-			$tclient->maj();
-        
-			$msg->charger("changepass");
-			$msgdesc->charger($msg->id);
+		function chmdp($email){
+			$msg = new Message();
+			$msgdesc = new Messagedesc();
 
-			$sujet = $msgdesc->titre;	
+			$tclient  = new Client();
+			if( $tclient->charger_mail($email)){
+				$pass = genpass(8);
+				$tclient->motdepasse = $pass;
+				$tclient->crypter();
+				$tclient->maj();
 
-			$emailcontact = new Variable();
-            $emailcontact->charger("emailcontact");
+				$msg->charger("changepass");
+				$msgdesc->charger($msg->id);
 
-			$nomsite = new Variable();
-			$nomsite->charger("nomsite");
-                
-            $corps = $msgdesc->description;  
-  			$corpstext = $msqdesc->descriptiontext;
-			
-			$corps = str_replace("__MOTDEPASSE__", "$pass", $corps);
+				$sujet = $msgdesc->titre;	
 
-			$corpstext = str_replace("__MOTDEPASSE__", "$pass", $corpstext);
-			
-			$mail = new Mail();
-			$mail->IsMail();
-			$mail->From = $emailcontact->valeur;
-			$mail->FromName = $nomsite->valeur;
-			$mail->Subject = $sujet;
-			$mail->MsgHTML($corps);
-			$mail->AltBody = $corpstext;
-			$mail->AddAddress($tclient->email,$tclient->nom." ".$tclient->prenom);
-			$mail->send();
- 		
+				$emailcontact = new Variable();
+	            $emailcontact->charger("emailcontact");
+
+				$nomsite = new Variable();
+				$nomsite->charger("nomsite");
+
+				$urlsite = new Variable();
+				$urlsite->charger("urlsite");
+
+	            $corps = $msgdesc->description;  
+	  			$corpstext = $msgdesc->descriptiontext;
+
+				$corps = str_replace("__NOMSITE__",$nomsite->valeur,$corps);
+				$corps = str_replace("__MOTDEPASSE__",$pass,$corps);
+				$corps = str_replace("__URLSITE__",$urlsite->valeur,$corps);
+				
+				$mail = new Mail();
+				$mail->IsMail();
+				$mail->From = $emailcontact->valeur;
+				$mail->FromName = $nomsite->valeur;
+				$mail->Subject = $sujet;
+				$mail->MsgHTML($corps);
+				$mail->AltBody = $corpstext." ".$pass;
+				$mail->AddAddress($tclient->email,$tclient->nom." ".$tclient->prenom);
+				$mail->send();
+
+			}
+			else{
+				redirige("mdperreur.php");
+			}
+
 		}
-		else{
-			redirige("mdperreur.php");
-		}
-
-	}
 ?>
