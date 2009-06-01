@@ -54,9 +54,8 @@ function edit(){
 	      onblur: "submit",
 	      cssclass : "ajaxedit",
 		  callback : function(value, settings){
-						var retour = value.split("|");
-						if(retour[0] == "rub") $("#resulrubrique").html(retour[1]);
-						else if(retour[0] == "prod") $("#resulproduit").html(retour[1]);
+						console.log(settings);
+						$("#resul").html(value);
 						edit();	
 					}
 	  });
@@ -290,7 +289,7 @@ $i = 0;
 ?> 
 
 
-<div class="entete_liste">
+<div class="entete_liste" style="margin-top:20px">
 	<div class="titre">LISTE DES PRODUITS</div>
 	<div class="fonction_ajout"><a href="produit_modifier.php?rubrique=<?php echo($parent); ?>">AJOUTER UN PRODUIT</a></div>
 </div>
@@ -362,7 +361,7 @@ $i = 0;
 		<li style="height:25px; width:44px; border-left:1px solid #96A8B5;">Suppr.</li>
 	</ul>
 
-<div id="resulproduit">
+<div id="resulproduit" class="bordure_bottom">
 <?php
 	while($row = mysql_fetch_object($resul)){
 		$produit->charger($row->ref);
