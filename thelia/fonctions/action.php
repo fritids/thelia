@@ -631,6 +631,9 @@
 			$mail->send();
  		
 		}
+		else{
+			redirige("mdperreur.php");
+		}
 
 	}
 ?>
