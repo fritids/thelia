@@ -587,7 +587,7 @@
 			$adresse->pays = strip_tags($pays);
 			$adresse->maj();
 		}
-		
+		redirige($_SESSION['navig']->urlpageret);
 	}
 
 	// changement du mot de passe

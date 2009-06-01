@@ -238,7 +238,7 @@ function supprimer_dossier(id, parent){
   		else $fond="ligne_fonce_rub";
 ?>
 </div> 
-<div class="entete_liste">
+<div class="entete_liste" style="margin-top:20px">
 	<div class="titre">LISTE DES CONTENUS</div>
 	<div class="fonction_ajout"><a href="contenu_modifier.php?dossier=<?php echo($parent); ?>">AJOUTER UN CONTENU</a></div>
 </div>  
@@ -264,7 +264,7 @@ function supprimer_dossier(id, parent){
 		<li style="height:25px; width:44px; border-left:1px solid #96A8B5;">Suppr.</li>	
 
 </ul>  
-<div id="contenudos">
+<div id="contenudos" class="bordure_bottom">
 <?php
 	
 	$contenu = new Contenu();
