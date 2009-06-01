@@ -142,23 +142,23 @@
 		  		
 		  		$compt = 0;
 		  	
-				while( ! strstr($res[$compt], "<THELIA_") && $compt<count($res)){
+				while( ! strstr($res[$compt], "<THELIA_$nomboucle") && $compt<count($res)){
 					$avant .= $res[$compt++] . "\n";
 					
 				}  		  			
 
-	  			if( strstr($res[$compt],"<THELIA_")) $deb=0;
+	  			if( strstr($res[$compt],"<THELIA_$nomboucle")) $deb=0;
 	  			else { echo "La boucle $nomboucle n'est pas ferm&eacute;e correctement !"; exit; }
 	  								
 					$args = $res[$compt];
 
 										
-				while( ! strstr($res[$compt], "</THELIA_") && $compt<count($res)){
+				while( ! strstr($res[$compt], "</THELIA_$nomboucle") && $compt<count($res)){
 					$boucle .= $res[$compt++] . "\n";
 				
 				}  		
 
-	  			if( strstr($res[$compt],"</THELIA_")) $deb=0;
+	  			if( strstr($res[$compt],"</THELIA_$nomboucle")) $deb=0;
 	  			else { echo "La boucle $nomboucle n'est pas ferm&eacute;e correctement !"; exit; }
 	  			
 					$boucle .= $res[$compt++] . "\n";
