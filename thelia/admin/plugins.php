@@ -156,23 +156,7 @@
 <li class="<?php echo $fond; ?>" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;"><?php echo $titre; ?></li>
 	<li class="<?php echo $fond; ?>" style="width:72px;"><?php 
 		if($row->actif){
-
-			if(file_exists("../client/plugins/" .$row->nom . "/" . $row->nom. "_admin.php")){
-	?>
 	
-	<?php
-			$rac = new Racmodule();
-			if(	! $rac->charger($row->nom)){
-	?>
-				<a href="plugins_modifier.php?nom=<?php echo $row->nom ?>&rac=1" class="txt_vert_11">+</a>
-		
-	<?php
-		} else {
-	?>
-		<a href="plugins_modifier.php?nom=<?php echo $row->nom ?>&rac=0" class="txt_vert_11">-</a>
-	<?php	
-		}	
-			}
 	?>	
 		<a href="plugins_modifier.php?nom=<?php echo $row->nom ?>&actif=0" class="txt_vert_11">D&eacute;sactiver </a>
 
