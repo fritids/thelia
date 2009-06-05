@@ -177,7 +177,7 @@
 			<div class="titre">CR&Eacute;ATION D'UN CLIENT</div>
 			<div class="fonction_valider"><a href="#" onclick="document.getElementById('formulaire').submit()">VALIDER LES MODIFICATIONS</a></div>
 </div>
-<table width="100%" cellpadding="5" cellspacing="0">
+<table width="100%" cellpadding="5" cellspacing="0" style="clear: both;">
     <tr class="claire">
         	<th class="designation" width="290">Soci&eacute;t&eacute;</th>
 		    <th><input name="entreprise" type="text" class="form" size="40" <?php if(isset($entreprise)) echo "value=\"$entreprise\""; ?> /></th>
