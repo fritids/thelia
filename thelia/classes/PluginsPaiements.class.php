@@ -205,7 +205,7 @@
 			$corps = str_replace("__COMMANDE_LIVRVILLE__", $ville, $corps);
 			$corps = str_replace("__COMMANDE_LIVRPAYS__", $pays->titre, $corps);
 
-			$corps = str_replace("__NOMSITE", $nomsite->valeur, $corps);
+			$corps = str_replace("__NOMSITE__", $nomsite->valeur, $corps);
 			$corps = str_replace("__URLSITE__", $urlsite->valeur, $corps);
 
 
