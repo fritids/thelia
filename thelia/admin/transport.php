@@ -76,8 +76,6 @@
 			$fond ="ligne_fonce_BlocDescription";
 		else
 			$fond ="ligne_claire_BlocDescription";
-		
-
 ?>
 		
 		<ul class="<?php echo $fond; ?>">

@@ -61,7 +61,7 @@ function declinaison_liste($id){
 		$resul = mysql_query($query);
 	}
 	?>
-	<select class="form_select" id="prod_caracteristique">
+	<select class="form_select" id="prod_decli">
  	<option value="">&nbsp;</option>
 	<?php
 		while($row = mysql_fetch_object($resul)){

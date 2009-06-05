@@ -117,8 +117,8 @@
 
 	 	modules_fonction("mail", $commande, $modules->nom);
 
-		$tmpobj = new $nomclass();
-		$tmpobj->paiement($commande);
+	//	$tmpobj = new $nomclass();
+	//	$tmpobj->paiement($commande);
 		
 		header("location: commande_details.php?ref=".$commande->ref);
 		
@@ -273,7 +273,7 @@ function valid(){
 <div class="bordure_bottom">
 <div class="entete_liste_client">
 	<div class="titre">CR&Eacute;ATION D'UNE COMMANDE</div>
-	<div class="fonction_valider"><a href="#" onclick="addcom()">VALIDER LES MODIFICATIONS</a></div>
+	<div class="fonction_valider"><a href="#" onclick="valid()">VALIDER LES MODIFICATIONS</a></div>
 </div>
 <form action="commande_creer.php" method="POST" id="formulaire">
 	<input type="hidden" name="action" value="ajouter">
@@ -361,7 +361,7 @@ function valid(){
 		<li class="designation" style="width:280px;">Quantit&eacute;</li>
 		<li><input type="text" name="qtite" id="qtite" value="" class="form" size="40"></li>
 	</ul>
-	</form>
+</form>
 </div>	
 	
 	<div id="contenu_cli" style="display:none">

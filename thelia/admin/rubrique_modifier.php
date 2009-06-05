@@ -585,242 +585,229 @@ include_once('js/declinaison.php');
  <?php
  if($id != ""){
  ?>
-    <!-- bloc des contenus associés à la rubrique -->  
-<ul id="blocs_pliants_prod">
-	<li style="margin:0 0 10px 0">
-			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">GESTION DES CONTENUS ASSOCIÉS</a></h3>
-			<ul>
-				<li class="ligne1">
-					<div class="cellule">
-					<select class="form_select" id="contenuassoc_dossier" onChange="charger_listcont(this.value, 0,'<?php echo $rubrique->id; ?>');">
-			     	<option value="">&nbsp;</option>
-			     	 <?php 
-	 					echo arbreOption_dos(0, 1, 0);
-	 				?>
-					</select></div>
-					<div class="cellule">
-					<select class="form_select" id="select_prodcont">
-					</select>
-					</div>
-					<div class="cellule"><a href="javascript:contenu_ajouter(document.getElementById('select_prodcont').value, 0,'<?php echo $rubrique->id; ?>')">AJOUTER</a></div>
+ <!-- bloc de gestion des contenus associés de la rubrique-->
+		<div class="entete">
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantcontenuasso').show('slow');">GESTION DES CONTENUS ASSOCIÉS</div>
+		</div>
+ 
+		<div class="blocs_pliants_prod" id="pliantcontenuasso">
+			<ul class="ligne1">
+						<li class="cellule">
+						<select class="form_select" id="contenuassoc_dossier" onChange="charger_listcont(this.value, 0,'<?php echo $rubrique->id; ?>');">
+				     	<option value="">&nbsp;</option>
+				     	 <?php 
+		 					echo arbreOption_dos(0, 1, 0);
+		 				?>
+						</select></li>
+						<li class="cellule">
+						<select class="form_select" id="select_prodcont"></select>
+						</li>
+						<li class="cellule"><a href="javascript:contenu_ajouter(document.getElementById('select_prodcont').value, 0,'<?php echo $rubrique->id; ?>')">AJOUTER</a></li>
+			</ul>
+		<ul id="contenuassoc_liste">		
+			<?php	
+			        $contenuassoc = new Contenuassoc();
+			        $contenua = new Contenu();
+			        $contenuadesc = new Contenudesc();
+
+			        $query = "select * from $contenuassoc->table where type='0' and objet='$rubrique->id' order by classement";
+			        $resul = mysql_query($query, $contenuassoc->link);
+
+					$i = 0;
+
+			        while($row = mysql_fetch_object($resul)){
+
+			        		if($i%2)
+			        			$fond = "fonce";
+			        		else
+			        			$fond = "claire";
+
+			        		$i++;
+
+			                $contenua->charger($row->contenu);
+			        		$contenuadesc->charger($contenua->id);
+
+			                $dossierdesc = new Dossierdesc();
+			                $dossierdesc->charger($contenua->dossier);
+			?>
+
+	        	 <li class="<?php echo $fond; ?>">
+					<div class="cellule" style="width:260px;"><?php echo $dossierdesc->titre; ?></div>
+					<div class="cellule" style="width:260px;"><?php echo $contenuadesc->titre; ?></div>
+					<div class="cellule_supp"><a href="javascript:contenuassoc_supprimer(<?php echo $row->id; ?>, 0,'<?php echo $rubrique->id; ?>')"><img src="gfx/supprimer.gif" /></a></div>
 				</li>
-			
+			<?php
+			}
+			?>		
+		</ul>
+		<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantcontenuasso').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>
+</div>
+<!-- fin du bloc de gestion des contenus associés de la rubrique-->
 
-	<div id="contenuassoc_liste">		
-		<?php	
-		        $contenuassoc = new Contenuassoc();
-		        $contenua = new Contenu();
-		        $contenuadesc = new Contenudesc();
-
-		        $query = "select * from $contenuassoc->table where type='0' and objet='$produit->id' order by classement";
-		        $resul = mysql_query($query, $contenuassoc->link);
-
-				$i = 0;
-
-		        while($row = mysql_fetch_object($resul)){
-
-		        		if($i%2)
-		        			$fond = "fonce";
-		        		else
-		        			$fond = "claire";
-
-		        		$i++;
-
-		                $contenua->charger($row->contenu);
-		        		$contenuadesc->charger($contenua->id);
-
-		                $dossierdesc = new Dossierdesc();
-		                $dossierdesc->charger($contenua->dossier);
-		?>
-        
-        	 <li class="<?php echo $fond; ?>">
-				<div class="cellule" style="width:260px;"><?php echo $dossierdesc->titre; ?></div>
-				<div class="cellule" style="width:260px;"><?php echo $contenuadesc->titre; ?></div>
-				<div class="cellule_supp"><a href="javascript:contenuassoc_supprimer(<?php echo $row->id; ?>, 0,'<?php echo $rubrique->id; ?>')"><img src="gfx/supprimer.gif" /></a></div>
-			</li>
 		<?php
+		$rubcaracteristique = new Rubcaracteristique();
+		$query = "select * from $rubcaracteristique->table where rubrique=$rubrique->id";
+		$resul = mysql_query($query);
+		$listeid = "";
+		while($row = mysql_fetch_object($resul)){
+			$listeid .= $row->caracteristique.",";
 		}
-		?>		
-	</div>
-			<h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
+		if(strlen($listeid) > 0){
+			$listeid = substr($listeid,0,strlen($listeid)-1);
 
-		</ul>		
-		
-	</li>
-	<?php
-	$rubcaracteristique = new Rubcaracteristique();
-	$query = "select * from $rubcaracteristique->table where rubrique=$rubrique->id";
-	$resul = mysql_query($query);
-	$listeid = "";
-	while($row = mysql_fetch_object($resul)){
-		$listeid .= $row->caracteristique.",";
-	}
-	if(strlen($listeid) > 0){
-		$listeid = substr($listeid,0,strlen($listeid)-1);
-	
-		$caracteristique = new Caracteristique();
-		$query = "select * from $caracteristique->table where id NOT IN($listeid)";
-		$resul = mysql_query($query);
-	}
-	else{
-		$caracteristique = new Caracteristique();
-		$query = "select * from $caracteristique->table";
-		$resul = mysql_query($query);
-	}
-	
-	
+			$caracteristique = new Caracteristique();
+			$query = "select * from $caracteristique->table where id NOT IN($listeid)";
+			$resul = mysql_query($query);
+		}
+		else{
+			$caracteristique = new Caracteristique();
+			$query = "select * from $caracteristique->table";
+			$resul = mysql_query($query);
+		}
+		?>
+<!-- début du bloc de gestion des caractéristiques de la rubrique-->
+		<div class="entete">
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantcaracteristique').show('slow');">GESTION DES CARACTERISTIQUES ASSOCI&Eacute;ES</div>
+		</div>
+		<div class="blocs_pliants_prod" id="pliantcaracteristique">
+			<ul class="ligne1">
+						<li class="cellule" id="liste_prod_caracteristique">
+						<select class="form_select" id="prod_caracteristique">
+				     	<option value="">&nbsp;</option>
+						<?php
+							while($row = mysql_fetch_object($resul)){
+								$caracteristiquedesc = new Caracteristiquedesc();
+								$caracteristiquedesc->charger($row->id);
+								?>
+								<option value="<?php echo $row->id; ?>"><?php echo $caracteristiquedesc->titre; ?></option>
+							<?php
+							}
+						?>
+						</select>
+						</li>
+						<li class="cellule"><a href="javascript:caracteristique_ajouter(document.getElementById('prod_caracteristique').value)">AJOUTER</a></li>
+			</ul>
 
-	
+
+		<ul id="caracteristique_liste">		
+				<?php
+					$rubcaracteristique = new Rubcaracteristique();
+					$query = "select * from $rubcaracteristique->table where rubrique=$rubrique->id";
+					$resul = mysql_query($query);
+					$i=0;
+					while($row = mysql_fetch_object($resul)){
+						if($i%2 == 0) $fond="claire";
+						else $fond="fonce";
+						$i++;
+						$caracteristiquedesc = new Caracteristiquedesc();
+						$caracteristiquedesc->charger($row->caracteristique);
+				?>
+
+	        	 <li class="<?php echo $fond; ?>">
+					<div class="cellule" style="width:520px;"><?php echo $caracteristiquedesc->titre; ?></div>
+					<div class="cellule_supp"><a href="javascript:caracteristique_supprimer(<?php echo $caracteristiquedesc->caracteristique; ?>)"><img src="gfx/supprimer.gif" /></a></div>
+				</li>
+				<?php
+				}
+				?>		
+		</ul>
+		<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantcaracteristique').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>
+</div>
+<!-- fin du bloc de gestion des caractéristiques de la rubrique-->
+		<?php
+		$rubdeclinaison = new Rubdeclinaison();
+		$query = "select * from $rubdeclinaison->table where rubrique=$rubrique->id";
+		$resul = mysql_query($query);
+		$listeid = "";
+		while($row = mysql_fetch_object($resul)){
+			$listeid .= $row->declinaison.",";
+		}
+		if(strlen($listeid) > 0){
+			$listeid = substr($listeid,0,strlen($listeid)-1);
+
+			$declinaison = new Declinaison();
+			$query = "select * from $declinaison->table where id NOT IN($listeid)";
+			$resul = mysql_query($query);
+		}
+		else{
+			$declinaison = new Declinaison();
+			$query = "select * from $declinaison->table";
+			$resul = mysql_query($query);
+		}
 	?>
 
-	<li style="margin:0 0 10px 0">
-			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">GESTION DES CARACTERISTIQUES ASSOCI&Eacute;ES</a></h3>
-			<ul>
-				<li class="ligne1">
-					<div class="cellule" id="liste_prod_caracteristique">
-					<select class="form_select" id="prod_caracteristique">
-			     	<option value="">&nbsp;</option>
-					<?php
-						while($row = mysql_fetch_object($resul)){
-							$caracteristiquedesc = new Caracteristiquedesc();
-							$caracteristiquedesc->charger($row->id);
-							?>
-							<option value="<?php echo $row->id; ?>"><?php echo $caracteristiquedesc->titre; ?></option>
+<!-- début du bloc de gestion des déclinaisons de la rubrique-->
+		<div class="entete">
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantdeclinaisons').show('slow');">GESTION DES D&Eacute;CLINAISONS ASSOCI&Eacute;ES</div>
+		</div>
+		<div class="blocs_pliants_prod" id="pliantdeclinaisons">
+			<ul class="ligne1">
+						<li class="cellule" id="liste_prod_decli">
+						<select class="form_select" id="prod_decli">
+				     	<option value="">&nbsp;</option>
 						<?php
-						}
-					?>
-					</select>
-					</div>
-					<div class="cellule"><a href="javascript:caracteristique_ajouter(document.getElementById('prod_caracteristique').value)">AJOUTER</a></div>
+							while($row = mysql_fetch_object($resul)){
+								$declinaisondesc = new Declinaisondesc();
+								$declinaisondesc->charger($row->id);
+								?>
+								<option value="<?php echo $row->id; ?>"><?php echo $declinaisondesc->titre; ?></option>
+							<?php
+							}
+						?>
+						</select>
+						</li>
+						<li class="cellule"><a href="javascript:declinaison_ajouter(document.getElementById('prod_decli').value)">AJOUTER</a></li>
+			</ul>
+
+
+		<ul id="declinaison_liste">		
+				<?php
+					$rubdeclinaison = new Rubdeclinaison();
+					$query = "select * from $rubdeclinaison->table where rubrique=$rubrique->id";
+					$resul = mysql_query($query);
+					$i=0;
+					while($row = mysql_fetch_object($resul)){
+						if($i%2 == 0) $fond="claire";
+						else $fond="fonce";
+						$i++;
+						$declinaisondesc = new Declinaisondesc();
+						$declinaisondesc->charger($row->declinaison);
+				?>
+
+	        	 <li class="<?php echo $fond; ?>">
+					<div class="cellule" style="width:520px;"><?php echo $declinaisondesc->titre; ?></div>
+					<div class="cellule_supp"><a href="javascript:declinaison_supprimer(<?php echo $declinaisondesc->declinaison; ?>)"><img src="gfx/supprimer.gif" /></a></div>
 				</li>
-			
-				
-	<div id="caracteristique_liste">		
-			<?php
-				$rubcaracteristique = new Rubcaracteristique();
-				$query = "select * from $rubcaracteristique->table where rubrique=$rubrique->id";
-				$resul = mysql_query($query);
-				$i=0;
-				while($row = mysql_fetch_object($resul)){
-					if($i%2 == 0) $fond="claire";
-					else $fond="fonce";
-					$i++;
-					$caracteristiquedesc = new Caracteristiquedesc();
-					$caracteristiquedesc->charger($row->caracteristique);
-			?>
-        
-        	 <li class="<?php echo $fond; ?>">
-				<div class="cellule" style="width:520px;"><?php echo $caracteristiquedesc->titre; ?></div>
-				<div class="cellule_supp"><a href="javascript:caracteristique_supprimer(<?php echo $caracteristiquedesc->caracteristique; ?>)"><img src="gfx/supprimer.gif" /></a></div>
-			</li>
-			<?php
-			}
-			?>		
-	</div>
-			<h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
-
-		</ul>		
-		
-	</li>
-	<?php
-	$rubdeclinaison = new Rubdeclinaison();
-	$query = "select * from $rubdeclinaison->table where rubrique=$rubrique->id";
-	$resul = mysql_query($query);
-	$listeid = "";
-	while($row = mysql_fetch_object($resul)){
-		$listeid .= $row->declinaison.",";
-	}
-	if(strlen($listeid) > 0){
-		$listeid = substr($listeid,0,strlen($listeid)-1);
-
-		$declinaison = new Declinaison();
-		$query = "select * from $declinaison->table where id NOT IN($listeid)";
-		$resul = mysql_query($query);
-	}
-	else{
-		$declinaison = new Declinaison();
-		$query = "select * from $declinaison->table";
-		$resul = mysql_query($query);
-	}
-?>
-	
-
-	<li style="margin:0 0 10px 0">
-			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">GESTION DES D&Eacute;CLINAISONS ASSOCI&Eacute;ES</a></h3>
-			<ul>
-				<li class="ligne1">
-					<div class="cellule" id="liste_prod_decli">
-					<select class="form_select" id="prod_decli">
-			     	<option value="">&nbsp;</option>
-					<?php
-						while($row = mysql_fetch_object($resul)){
-							$declinaisondesc = new Declinaisondesc();
-							$declinaisondesc->charger($row->id);
-							?>
-							<option value="<?php echo $row->id; ?>"><?php echo $declinaisondesc->titre; ?></option>
-						<?php
-						}
-					?>
-					</select>
-					</div>
-					<div class="cellule"><a href="javascript:declinaison_ajouter(document.getElementById('prod_decli').value)">AJOUTER</a></div>
-				</li>
-			
-
-	<div id="declinaison_liste">		
-			<?php
-				$rubdeclinaison = new Rubdeclinaison();
-				$query = "select * from $rubdeclinaison->table where rubrique=$rubrique->id";
-				$resul = mysql_query($query);
-				$i=0;
-				while($row = mysql_fetch_object($resul)){
-					if($i%2 == 0) $fond="claire";
-					else $fond="fonce";
-					$i++;
-					$declinaisondesc = new Declinaisondesc();
-					$declinaisondesc->charger($row->declinaison);
-			?>
-        
-        	 <li class="<?php echo $fond; ?>">
-				<div class="cellule" style="width:520px;"><?php echo $declinaisondesc->titre; ?></div>
-				<div class="cellule_supp"><a href="javascript:declinaison_supprimer(<?php echo $declinaisondesc->declinaison; ?>)"><img src="gfx/supprimer.gif" /></a></div>
-			</li>
-			<?php
-			}
-			?>		
-	</div>
-			<h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
-
-		</ul>		
-		
-	</li>
-	
-<div class="patchplugin">
-<?php 
-	admin_inclure("rubriquemodifier"); 
-?>
+				<?php
+				}
+				?>		
+		</ul>
+		<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantdeclinaisons').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>
 </div>
-	
-<?php if($id != ""){ ?>
-	<li style="margin:0 0 10px 0">
-			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">INFORMATIONS SUR LA RUBRIQUE</a></h3>
-			<ul>
-				<li class="lignesimple">
-					<div class="cellule_designation" style="width:128px; padding:5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">ID</div>
-					<div class="cellule" style="width:450px; padding: 5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;"><?php echo($rubrique->id); ?></div>
-				</li>
-			
-			<li class="lignesimple">
-				<div class="cellule_designation" style="width:128px; padding:5px 0 0 5px;">URL réécrite</div>
-				<div class="cellule" style="padding: 5px 0 0 5px;"><?php echo(rewrite_rub("$rubrique->id", $lang)); ?></div>
-			</li>
-		<h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
+<!-- fin du bloc de gestion des déclinaisons de la rubrique-->
 
-		</ul>		
-		
-	</li>
- <?php } ?> 
-</ul>
+	<div class="patchplugin">
+	<?php 
+		admin_inclure("rubriquemodifier"); 
+	?>
+	</div>
+<!-- début d'information de la rubrique-->
+		<div class="entete">
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantinfosrub').show('slow');">INFORMATIONS SUR LA RUBRIQUE</div>
+		</div>
+		<div class="blocs_pliants_prod" id="pliantinfosrub">
+			<ul class="lignesimple">
+						<li class="cellule_designation" style="width:128px; padding:5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">ID</li>
+						<li class="cellule" style="width:450px; padding:5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;"><?php echo($rubrique->id); ?></li>
+			</ul>
+
+				<ul class="lignesimple">
+					<li class="cellule_designation" style="width:128px; padding:5px 0 0 5px;">URL réécrite</li>
+					<li class="cellule" style="padding: 5px 0 0 5px;"><?php echo(rewrite_rub("$rubrique->id", $lang)); ?></li>
+				</ul>
+		<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantinfosrub').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>
+</div>
+<!-- fin d'information de la rubrique-->
 <?php } ?>
 </div><!-- fin du bloc_description -->	
 </form>
@@ -829,7 +816,7 @@ if($id != ""){
 ?>
 <!-- bloc de gestion des photos et documents / colonne de droite -->   
 <div id="bloc_photos">
-<!-- Boite à outils -->   
+<!-- début du bloc Boite à outils de la rubrique -->   
 <div class="entete">
 	<div class="titre">BOITE A OUTILS</div>
 </div>
@@ -891,13 +878,16 @@ if($id != ""){
    		</div>
    	</div>
 </div>
+<!-- fin du bloc Boite à outils de la rubrique--> 
+
+<!-- début du bloc de transfert des images de la rubrique-->
 <div class="entete" style="margin-top:10px;">
 	<div class="titre">GESTION DES PHOTOS</div>
 </div>
-<!-- bloc transfert des images -->
+
 <div class="bloc_transfert">
-	<div class="claire">
-		<div class="designation" style="height:140px; padding-top:10px;">Transférer des images</div>
+	<div class="claire" style="height:150px;">
+		<div class="designation" style="height:160px; padding-top:10px;">Transférer des images</div>
 		<div class="champs" style="padding-top:10px;">
 			<form action="rubrique_modifier.php" method="post" ENCTYPE="multipart/form-data">
 				<input type="hidden" name="action" value="ajouterphoto">
@@ -910,18 +900,14 @@ if($id != ""){
    		</div>
    	</div>
 </div>
+<!-- fin du bloc de transfert des images de la rubrique-->
 
-
-<ul id="blocs_pliants_photo">
-	<li><h3 class="head" style="margin:0 0 0 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
-
-<li>
-	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" /></a><h3>
+<!-- début du bloc de gestion des photos de la rubrique -->
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsphotos').show('slow');"><img src="gfx/fleche_accordeon_img_dn.gif" /></div>
+<div class="blocs_pliants_photo" id="pliantsphotos">
 	<ul>
    <?php
 			$image = new Image();
-			
-			
 			$query = "select * from $image->table where rubrique='$id' order by classement";
 			$resul = mysql_query($query, $image->link);
 
@@ -962,8 +948,7 @@ if($id != ""){
 						<a href="<?php echo $_SERVER['PHP_SELF'] . "?id_photo=".$row->id."&action=modclassementphoto&type=M&id=".$id; ?>"><img src="gfx/up.gif" border="0" /></a></div>
 					<div class="classement">
 						<a href="<?php echo $_SERVER['PHP_SELF'] . "?id_photo=".$row->id."&action=modclassementphoto&type=D&id=".$id; ?>"><img src="gfx/dn.gif" border="0" /></a></div>
-				</div>
-				
+				</div>	
 			</li>
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:30px;">&nbsp;</div>
@@ -972,18 +957,19 @@ if($id != ""){
 
 		</form>
    		<?php } ?>
-   		<h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" /></a><h3>
 	</ul>
-</li>
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsphotos').hide();"><img src="gfx/fleche_accordeon_img_up.gif" /></div>
+</div>
+<!-- fin du bloc de gestion des photos de la rubrique -->
 
 
-<!-- bloc de gestion des documents -->
+<!-- début du bloc de gestion des documents de la rubrique -->
 <div class="entete" style="margin-top:10px;">
 	<div class="titre">GESTION DES DOCUMENTS</div>
 </div>
 <div class="bloc_transfert">
 	<div class="claire">
-		<div class="designation" style="height:43px; padding-top:10px;">Transférer des documents</div>
+		<div class="designation" style="height:70px;">Transférer des documents</div>
 		<div class="champs" style="padding-top:10px;">
 			<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" ENCTYPE="multipart/form-data">
 				<input type="hidden" name="action" value="ajouterdoc" />
@@ -994,12 +980,11 @@ if($id != ""){
     		</form>
 		</div>
 	</div>
-	</div>
-   	<!-- fin bloc transfert des documents -->
-   	<ul id="blocs_pliants_fichier">
-	<li>
-	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" alt="-" /></a></h3>
-	
+</div>
+<!-- fin du bloc transfert des documents de la rubrique -->
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsfichier').show('slow');"><img src="gfx/fleche_accordeon_img_dn.gif" /></div>
+<div class="blocs_pliants_fichier" id="pliantsfichier">
+	<ul>
    	   <?php
 			$document = new Document();
 			
@@ -1017,10 +1002,11 @@ if($id != ""){
 					<input type="hidden" name="id" value="<?php echo $id; ?>" />
 					<input type="hidden" name="id_document" value="<?php echo $row->id; ?>" />
 					<input type="hidden" name="lang" value="<?php echo($lang); ?>" />
-		<ul>
+		
 			<li class="lignesimple">
 				<div class="cellule_designation">Fichier</div>
-				<div class="cellule_document"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php echo($row->fichier); ?></a></div>
+				<div class="cellule_document"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php if(strlen($row->fichier) > 24) echo(substr($row->fichier,0,24)." ... ".substr($row->fichier,strlen($row->fichier)-3,strlen($row->fichier))); 
+				else echo $row->fichier; ?></a></div>
 					<div class="cellule_supp_fichier"><a href="rubrique_modifier.php?id=<?php echo($id); ?>&id_document=<?php echo($row->id); ?>&action=supprimer_document&lang=<?php echo $lang; ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
 			</li>
 			<li class="lignesimple">
@@ -1052,55 +1038,24 @@ if($id != ""){
 					<div class="cellule_designation" style="height:30px;">&nbsp;</div>
 					<div class="cellule" style="height:30px; border-bottom: 1px dotted #9DACB6"><input type="submit" value="Enregistrer" /></div>
 				</li>
-				</ul>  
+		
 				</form>
 	
     	 <?php
                 }
         ?>
-</li>
-<li><h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
-</ul>
+	</ul>
+	<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsfichier').hide();"><img src="gfx/fleche_accordeon_img_up.gif" /></div>
+</div>
 
 </div> <!-- fin bloc colonne de droite -->
 <?php } ?>
 </div> <!-- fin bloc-photos colonne contenu-int -->
 <?php include_once("pied.php");?>
 </div>
-</div>
+
 <!-- -->
 <script type="text/javascript" src="../lib/jquery/jquery.js"></script>
-<script type="text/javascript" src="../lib/jquery/accordion.js"></script>
-<script type="text/javascript">
-jQuery().ready(function(){	
-	// applying the settings
-	jQuery('#blocs_pliants_prod').Accordion({
-		active: 'h3.selected',
-		header: 'h3.head',
-		alwaysOpen: false,
-		animated: true,
-		showSpeed: 400,
-		hideSpeed: 400
-	});
-	jQuery('#blocs_pliants_photo').Accordion({
-		active: 'h3.selected',
-		header: 'h3.head',
-		alwaysOpen: true,
-		animated: false,
-		showSpeed: 400,
-		hideSpeed: 100
-	});
-	jQuery('#blocs_pliants_fichier').Accordion({
-		active: 'h3.head',
-		header: 'h3.head',
-		alwaysOpen: true,
-		animated: false,
-		showSpeed: 400,
-		hideSpeed: 100
-	});
-
-});	
-</script>
 <!-- -->
 </body>
 </html>

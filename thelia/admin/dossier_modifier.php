@@ -429,16 +429,6 @@
 	<!-- bloc entete de la rubrique -->   	
 		<div class="entete">
 			<div class="titre">DESCRIPTION GÉNÉRALE DU DOSSIER</div>
-			<?php if($id){
-				$site = new Variable();
-				$site->charger("urlsite");
-			?>
-			<!-- pour visualiser la page dossier correspondante en ligne -->
-			<!--
-			<div class="voirenligne"><a title="Voir le document en ligne" href="<?php echo $site->valeur; ?>/rubrique.php?id_rubrique=<?php echo $id; ?>" target="_blank" ><img src="gfx/voir-produit-enligne.png" alt="Voir la rubrique en ligne" title="Voir la rubrique en ligne" /></a></div> -->
-			<?php
-			}
-			?>
 			<div class="fonction_valider"><a href="#" onclick="document.getElementById('formulaire').submit()">VALIDER LES MODIFICATIONS</a></div>
 		</div>
 <!-- bloc descriptif de la rubrique --> 			
@@ -485,30 +475,27 @@
       </td>
     </tr>  
     </table>
-
-
-
-<!-- Information sur le dossier -->
 <?php if($id != ""){ ?>
-	<ul id="blocs_pliants_prod">
-	<li style="margin:0 0 10px 0">
-			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">INFORMATIONS SUR LE DOSSIER</a></h3>
-			<ul>
-				<li class="lignesimple">
-					<div class="cellule_designation" style="width:128px; padding:5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">ID</div>
-					<div class="cellule" style="width:450px; padding: 5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;"><?php echo($dossier->id); ?></div>
-				</li>
-			
-			<li class="lignesimple">
-				<div class="cellule_designation" style="width:128px; padding:5px 0 0 5px;">URL réécrite</div>
-				<div class="cellule" style="padding: 5px 0 0 5px;"><?php echo(rewrite_dos("$dossier->id", $lang)); ?></div>
-			</li>
-		<h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
+<!-- bloc d'informations sur le dossier-->
+		<div class="entete">
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantsinfos').show('slow');">INFORMATIONS SUR LE CONTENU</div>
+		</div>
 
-		</ul>		
+<div class="blocs_pliants_prod" id="pliantsinfos">
 		
-	</li>
-	</ul>
+				<ul class="lignesimple">
+					<li class="cellule_designation" style="width:140px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">ID</li>
+					<li class="cellule" style="width:438px; padding: 5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;"><?php echo($dossier->id); ?></li>
+				</ul>
+			
+			<ul class="lignesimple">
+				<li class="cellule_designation" style="width:140px;">URL réécrite</li>
+				<li class="cellule"><?php echo(rewrite_cont("$dossier->id", $lang)); ?></li>
+			</ul>
+		
+		<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsinfos').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>
+				
+</div>
  <?php } ?>
 
 <!-- Fin information dossier -->
@@ -520,9 +507,9 @@
 <?php
 if($id != ""){
 ?>
-<!-- bloc photos /colonne de droite -->
+<!-- bloc de gestion des photos et documents / colonne de droite -->   
 <div id="bloc_photos">
-<!-- Boite à outils -->   
+<!-- début du bloc Boite à outils du dossier -->   
 <div class="entete">
 	<div class="titre">BOITE A OUTILS</div>
 </div>
@@ -580,13 +567,16 @@ if($id != ""){
 		</div>
    	</div>
 </div>
+<!-- fin du bloc Boite à outils du dossier--> 
+
+<!-- début du bloc de transfert des images du dossier-->
 <div class="entete" style="margin-top:10px;">
 	<div class="titre">GESTION DES PHOTOS</div>
 </div>
 <!-- bloc transfert des images -->
 <div class="bloc_transfert">
 	<div class="claire">
-		<div class="designation" style="height:140px; padding-top:10px;">Transférer des images</div>
+		<div class="designation" style="height:160px; padding-top:10px;">Transférer des images</div>
 		<div class="champs" style="padding-top:10px;">
 			<form action="dossier_modifier.php" method="post" ENCTYPE="multipart/form-data">
 				<input type="hidden" name="action" value="ajouterphoto">
@@ -599,13 +589,11 @@ if($id != ""){
    		</div>
    	</div>
 </div>
+<!-- fin du bloc de transfert des images du dossier-->
 
-
-<ul id="blocs_pliants_photo">
-<li><h3 class="head" style="margin:0 0 0px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3>
-	</li>
-<li>
-	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" /></a><h3>
+<!-- début du bloc de gestion des photos du dossier -->
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsphotos').show('slow');"><img src="gfx/fleche_accordeon_img_dn.gif" /></div>
+<div class="blocs_pliants_photo" id="pliantsphotos">
 	<ul>
    <?php
 			$image = new Image();
@@ -661,19 +649,19 @@ if($id != ""){
 
 		</form>
    		<?php } ?>
-   		<h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" /></a><h3>
+   		
 	</ul>
-</li>
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsphotos').hide();"><img src="gfx/fleche_accordeon_img_up.gif" /></div>
+</div>
+<!-- fin du bloc de gestion des photos du dossier -->
 
-
-
-<!-- bloc de gestion des documents -->
+<!-- début du bloc de transfert des documents du dossier -->
 <div class="entete"  style="margin-top:10px;">
 	<div class="titre">GESTION DES DOCUMENTS</div>
 </div>
 <div class="bloc_transfert">
 	<div class="claire">
-		<div class="designation" style="height:43px; padding-top:10px;">Transférer des documents</div>
+		<div class="designation" style="height:70px; padding-top:10px;">Transférer des documents</div>
 		<div class="champs" style="padding-top:10px;">
 			<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" ENCTYPE="multipart/form-data">
 				<input type="hidden" name="action" value="ajouterdoc" />
@@ -685,11 +673,11 @@ if($id != ""){
 		</div>
 	</div>
 </div>
-<!-- fin bloc transfert des documents -->
-   	<ul id="blocs_pliants_fichier">
-	<li>
-	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" alt="-" /></a></h3>
-	
+<!-- fin du bloc transfert des documents du dossier -->
+<!-- début du bloc de gestion des documents du dossier -->
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsfichier').show('slow');"><img src="gfx/fleche_accordeon_img_dn.gif" /></div>
+<div class="blocs_pliants_fichier" id="pliantsfichier">
+	<ul>
    	   <?php
 			$document = new Document();
 			$documentdesc = new Documentdesc();
@@ -706,8 +694,8 @@ if($id != ""){
 			<input type="hidden" name="id" value="<?php echo $id; ?>" />
 			<input type="hidden" name="id_document" value="<?php echo $row->id; ?>" />
 			<input type="hidden" name="lang" value="<?php echo($lang); ?>" />
-			<ul>
-<li class="lignesimple">
+			
+			<li class="lignesimple">
 				<div class="cellule_designation">Fichier</div>
 				<div class="cellule_document"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php if(strlen($row->fichier) > 26) echo(substr($row->fichier,0,26)." ... ".substr($row->fichier,strlen($row->fichier)-3,strlen($row->fichier)));
 				else echo $row->fichier; ?></a></div>
@@ -742,54 +730,24 @@ if($id != ""){
 		<li class="lignesimple">
 			<div class="cellule_designation" style="height:30px;">&nbsp;</div>
 			<div class="cellule" style="height:30px; border-bottom: 1px dotted #9DACB6"><input type="submit" value="Enregistrer" /></div>
-		</li>
-		</ul>  
+		</li> 
 		</form> 	
     	 <?php
                 }
         ?>
-</li>
-<li><h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
-</ul>
-</div> <!-- fin bloc photos colonne de droite -->
+		 </ul>
+       <div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsfichier').hide();"><img src="gfx/fleche_accordeon_img_up.gif" /></div>
+</div>
+
+</div> 
+<!-- fin bloc photos colonne de droite -->
 <?php } ?>
 </div>
 <?php include_once("pied.php");?>
 </div>
 </div>
 <!-- -->
-<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
-<script type="text/javascript" src="../lib/jquery/accordion.js"></script>
-<script type="text/javascript">
-jQuery().ready(function(){	
-	// applying the settings
-	jQuery('#blocs_pliants_prod').Accordion({
-		active: 'h3.selected',
-		header: 'h3.head',
-		alwaysOpen: false,
-		animated: true,
-		showSpeed: 400,
-		hideSpeed: 400
-	});
-	jQuery('#blocs_pliants_photo').Accordion({
-		active: 'h3.selected',
-		header: 'h3.head',
-		alwaysOpen: false,
-		animated: false,
-		showSpeed: 400,
-		hideSpeed: 100
-	});
-	jQuery('#blocs_pliants_fichier').Accordion({
-		active: 'h3.selected',
-		header: 'h3.head',
-		alwaysOpen: true,
-		animated: false,
-		showSpeed: 400,
-		hideSpeed: 100
-	});
-
-});	
-</script>
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>	
 <!-- -->
 </body>
 </html>

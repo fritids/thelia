@@ -506,28 +506,27 @@
     </tr>  
     </table>
 <?php if($id != ""){ ?>
-<!-- bloc d'informations sur le contenu-->  
-<ul id="blocs_pliants_prod">
 
-	<li style="margin:0 0 10px 0">
-			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">INFORMATIONS SUR LE CONTENU</a></h3>
-			<ul>
-				<li class="lignesimple">
-					<div class="cellule_designation" style="width:128px; padding:5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">ID</div>
-					<div class="cellule" style="width:450px; padding: 5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;"><?php echo($contenu->id); ?></div>
-				</li>
-			
-			<li class="lignesimple">
-				<div class="cellule_designation" style="width:128px; padding:5px 0 0 5px;">URL réécrite</div>
-				<div class="cellule" style="padding: 5px 0 0 5px;"><?php echo(rewrite_cont("$contenu->id", $lang)); ?></div>
-			</li>
-		<h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
+<!-- bloc d'informations sur le contenu-->
+		<div class="entete">
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantsinfos').show('slow');">INFORMATIONS SUR LE CONTENU</div>
+		</div>
 
-		</ul>		
+<div class="blocs_pliants_prod" id="pliantsinfos">
 		
-	</li>
-
-</ul>
+				<ul class="lignesimple">
+					<li class="cellule_designation" style="width:140px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">ID</li>
+					<li class="cellule" style="width:438px; padding: 5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;"><?php echo($contenu->id); ?></li>
+				</ul>
+			
+			<ul class="lignesimple">
+				<li class="cellule_designation" style="width:140px;">URL réécrite</li>
+				<li class="cellule"><?php echo(rewrite_cont("$contenu->id", $lang)); ?></li>
+			</ul>
+		
+		<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsinfos').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>
+				
+</div>
  <?php } ?> 
 
    </form>
@@ -538,7 +537,7 @@
  <?php if($id != ""){ ?>  
 <!-- bloc de gestion des photos et documents / colonne de droite -->   
 <div id="bloc_photos">
-<!-- Boite à outils -->   
+<!-- début du bloc Boite à outils du contenu -->    
 <div class="entete">
 	<div class="titre">BOITE A OUTILS</div>
 </div>
@@ -571,7 +570,7 @@
 				}
 			}
 			?>	
-			<!-- pour visualiser la page rubrique correspondante en ligne -->
+			<!-- pour visualiser la page contenu correspondante en ligne -->
 			<a title="Voir le contenu en ligne" href="<?php echo $site->valeur; ?>/contenu.php?id_contenu=<?php echo $contenu->id; ?>" target="_blank" ><img src="gfx/site.png" alt="Voir le contenu en ligne" title="Voir le contenu en ligne" /></a>
 			<a href="#" onclick="document.getElementById('formulaire').submit();"><img src="gfx/valider.png" alt="Enregistrer les modifications" title="Enregistrer les modifications" style="padding:0 5px 0 0;"/></a>
 			<a href="#" onclick="document.getElementById('url').value='1'; document.getElementById('formulaire').submit();"><img src="gfx/validerfermer.png" alt="Enregistrer les modifications et fermer la fiche" title="Enregistrer les modifications et fermer la fiche" style="padding:0 5px 0 0;"/></a>
@@ -595,13 +594,16 @@
 		</div>
    	</div>
 </div>
+<!-- fin du bloc Boite à outils du contenu--> 
+
+<!-- début du bloc de transfert des images du contenu-->
 <div class="entete" style="margin-top:10px;">
 	<div class="titre">GESTION DES PHOTOS</div>
 </div>
 <!-- bloc transfert des images -->
 <div class="bloc_transfert">
 	<div class="claire">
-		<div class="designation" style="height:140px; padding-top:10px;">Transférer des images</div>
+		<div class="designation" style="height:160px; padding-top:10px;">Transférer des images</div>
 		<div class="champs" style="padding-top:10px;">
 			<form action="contenu_modifier.php" method="post" ENCTYPE="multipart/form-data">
 				<input type="hidden" name="action" value="ajouterphoto">
@@ -614,12 +616,11 @@
    		</div>
    	</div>
 </div>
+<!-- fin du bloc de transfert des images du contenu-->
 
-
-<ul id="blocs_pliants_photo">
-<li><h3 class="head" style="margin:0 0 0px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
-<li>
-	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" /></a><h3>
+<!-- début du bloc de gestion des photos du contenu -->
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsphotos').show('slow');"><img src="gfx/fleche_accordeon_img_dn.gif" /></div>
+<div class="blocs_pliants_photo" id="pliantsphotos">
 	<ul>
    <?php
 			$image = new Image();
@@ -675,20 +676,19 @@
 
 		</form>
    		<?php } ?>
-   		<h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" /></a><h3>
-	</ul>
-</li>
+   		</ul>
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsphotos').hide();"><img src="gfx/fleche_accordeon_img_up.gif" /></div>
+</div>
+<!-- fin du bloc de gestion des photos du contenu -->
 
-
-
-<!-- bloc de gestion des documents -->
+<!-- début du bloc de transfert des documents du contenu -->
 <div class="entete" style="margin-top:10px;">
 	<div class="titre">GESTION DES DOCUMENTS</div>
 </div>
 <!-- bloc transfert des documents -->
 <div class="bloc_transfert">
 	<div class="claire">
-		<div class="designation" style="height:43px; padding-top:10px;">Transférer des documents</div>
+		<div class="designation" style="height:70px; padding-top:10px;">Transférer des documents</div>
 		<div class="champs" style="padding-top:10px;">
 			<form action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post" ENCTYPE="multipart/form-data">
 				<input type="hidden" name="action" value="ajouterdoc" />
@@ -701,11 +701,11 @@
 		</div>
 	</div>
 </div>
-<!-- fin bloc transfert des documents -->
-   	<ul id="blocs_pliants_fichier">
-	<li>
-	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" alt="-" /></a></h3>
-	
+<!-- fin du bloc transfert des documents du contenu -->
+<!-- début du bloc de gestion des documents du contenu -->
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsfichier').show('slow');"><img src="gfx/fleche_accordeon_img_dn.gif" /></div>
+<div class="blocs_pliants_fichier" id="pliantsfichier">
+	<ul> 
    	  <?php
 			$document = new Document();
 			$documentdesc = new Documentdesc();
@@ -725,14 +725,14 @@
 				<input type="hidden" name="id_document" value="<?php echo $row->id; ?>" />
 				<input type="hidden" name="dossier" value="<?php echo($dossier); ?>" />
 				<input type="hidden" name="lang" value="<?php echo($lang); ?>" />
-				<ul>   
-   <li class="lignesimple">
+			
+   				<li class="lignesimple">
 				<div class="cellule_designation">Fichier</div>
 				<div class="cellule_document"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php if(strlen($row->fichier) > 26) echo(substr($row->fichier,0,26)." ... ".substr($row->fichier,strlen($row->fichier)-3,strlen($row->fichier)));
 				else echo $row->fichier; ?></a></div>
 				<div class="cellule_supp_fichier">
 				<a href="contenu_modifier.php?id=<?php echo($id); ?>&id_document=<?php echo($row->id); ?>&action=supprimerdoc&lang=<?php echo $lang; ?>&dossier=<?php echo $dossier; ?>"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
-			</li>
+				</li>
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:30px;">Titre</div>
 				<div class="cellule">
@@ -762,12 +762,12 @@
 				<div class="cellule_designation" style="height:30px;">&nbsp;</div>
 				<div class="cellule" style="height:30px; border-bottom: 1px dotted #9DACB6"><input type="submit" value="Enregistrer" /></div>
 			</li>
-			</ul>
+			
 			</form>    	 
 			<?php } ?>
-</li>
-<li><h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
-</ul>
+			 </ul>
+       <div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsfichier').hide();"><img src="gfx/fleche_accordeon_img_up.gif" /></div>
+</div>
 </div> <!-- fin bloc-photos colonne de droite -->
    <?php } ?>      
 </div>  
@@ -775,38 +775,7 @@
 </div>
 </div>
 <!-- -->
-<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
-<script type="text/javascript" src="../lib/jquery/accordion.js"></script>
-<script type="text/javascript">
-jQuery().ready(function(){	
-	// applying the settings
-	jQuery('#blocs_pliants_prod').Accordion({
-		active: 'h3.selected',
-		header: 'h3.head',
-		alwaysOpen: false,
-		animated: true,
-		showSpeed: 400,
-		hideSpeed: 400
-	});
-	jQuery('#blocs_pliants_photo').Accordion({
-		active: 'h3.selected',
-		header: 'h3.head',
-		alwaysOpen: false,
-		animated: false,
-		showSpeed: 400,
-		hideSpeed: 100
-	});
-	jQuery('#blocs_pliants_fichier').Accordion({
-		active: 'h3.selected',
-		header: 'h3.head',
-		alwaysOpen: true,
-		animated: false,
-		showSpeed: 400,
-		hideSpeed: 100
-	});
-
-});	
-</script>
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>	
 <!-- -->
 </body>
 </html>

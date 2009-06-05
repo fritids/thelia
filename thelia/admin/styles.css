@@ -775,12 +775,12 @@ a.lien04:hover {
 	color: #FFFFFF;
 	text-decoration: underline;
 }
-.entete_liste entete_liste_client, .titre {
+.entete_liste .entete_liste_client, .titre {
 	float: left;
 	padding:0px;
 	text-align:left;
 }
-.entete_liste entete_liste_client, .fonction_ajout {
+.entete_liste .entete_liste_client, .fonction_ajout {
 	float: right;
 	padding:0;
 	text-align:left;
@@ -1008,6 +1008,20 @@ div#resultat {
 	text-align:left;
 	height: 20px;
 }
+#bloc_description .entete_liste_client {
+	float: left;
+	margin: 0;
+	width: 581px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #868f99;
+	padding:8px 0 0 7px;
+	border-bottom: 1px dotted #9DACB6;
+	border-top: 3px solid #de2b9b;
+	text-align:left;
+	height: 20px;
+}
 #bloc_description .entete .titre, #bloc_description .entete_liste_config .titre,  #bloc_description .entete_liste_client .titre {
 	float: left;
 	padding:0px;
@@ -1024,6 +1038,7 @@ div#resultat {
 	padding: 0 7px 0 0;
 }
 #bloc_description .entete .fonction_valider a, #bloc_description .entete_liste_config .fonction_valider a,  #bloc_description .entete_liste_client .fonction_valider a {
+	float: left;
 	text-decoration: underline;
 	color: #FFF;
 }
@@ -1080,38 +1095,7 @@ padding: 0;
 margin: 0px 3px;
 border: solid #62BD19 3px;
 }
-#bloc_description .ligne1 {
-	width: 573px;
-	color: #3B4B5B;
-	padding:6px 7px 0 7px;
-	margin: 0;
-	text-align:left;
-	height: 25px;
-	background-color: #9eb0be;
-	background-image: url(gfx/degrade_ligne1.png);
-	background-repeat: repeat-x;
-}
-#bloc_description .ligne1 .cellule {
-	float: left;
-}
-#bloc_description .ligne1 .cellule a {
-	font-size: 12px;
-	font-weight: bold;
-	padding:0px 7px 0 12px;
-	color: #3b4b5b;
-	text-decoration: underline;
-}
-#bloc_description .ligne1 li {
-	float: left;
-}
-#bloc_description .ligne1 li a {
-	color: #fff;
-	padding: 0 0 0 12px;
-	background-image: url(gfx/picto_ajouter.gif);
-	background-repeat: no-repeat;
-	background-position: top left;
-	text-decoration: underline;
-}
+
 #bloc_description .pied {
 	color: #3B4B5B;
 	padding:6px 7px 0 7px;
@@ -1209,8 +1193,7 @@ border: solid #62BD19 3px;
 }
 #bloc_photos .bloc_transfert {
 	float: left;
-	margin: 0;
-	padding:0;
+	margin: 0; padding:0;
 	width: 380px;
 	background-color: #EBEDEE;
 	background-image: url(gfx/degrade_ligne1.png);
@@ -1233,13 +1216,13 @@ border: solid #62BD19 3px;
 	background-image: url(gfx/degrade_ligne1.png);
 	background-repeat: repeat-x;
 	vertical-align: top;
-	width: 130px;
+	width: 120px;
 }
 #bloc_photos .bloc_transfert .champs {
 	float: left;
 	margin: 0;
 	padding:5px 0 0 5px;
-	width: 233px;
+	width: 243px;
 	background-color: #EBEDEE;
 	background-image: url(gfx/degrade_ligne1.png);
 	background-repeat: repeat-x;
@@ -1259,180 +1242,199 @@ border: solid #62BD19 3px;
 	width: 223px;
 }
 
-/* blocs pliants depliants de la partie description produits */
-#blocs_pliants_prod  {
+/* blocs pliants depliants de la partie description produit / rubrique / contenu / dossier */
+.blocs_pliants_prod  {
+	float: left;
 	width: 588px;
 	padding: 0 0 10px 0;
 }
-#blocs_pliants_prod h3.head { 
+.blocs_pliants_prod h3{ 
 		color: #FFF;
 		background-color: #868f99;
 		font-weight: bold;
 		font-size: 12px;
-		margin: 0; 
+		margin: 0; padding: 0;
 }
-#blocs_pliants_prod h3.head a { 
+.blocs_pliants_prod h3 a { 
 		color: #FFF;
 		font-weight: bold;
 		font-size:12px;
 }
-#blocs_pliants_prod .ligne1 {
-	width: 100%;
+.blocs_pliants_prod .ligne1 {
+	float: left;
+	width: 588px;
 	color: #3B4B5B;
-	padding:6px 0px 0 0px;
-	margin: 0;
+	padding:6px 0px 0px 0px; margin: 0;
 	text-align:left;
-	height: 25px;
+	height: 35px;
 	background-color: #9eb0be;
 	background-image: url(gfx/degrade_ligne1.png);
 	background-repeat: repeat-x;
 }
-#blocs_pliants_prod .ligne1 .cellule {
+
+.blocs_pliants_prod .ligne1 .cellule {
 	float: left;
 }
-#blocs_pliants_prod .ligne1 .cellule a {
+.blocs_pliants_prod .ligne1 .cellule a {
 	font-size: 12px;
 	font-weight: bold;
 	padding:0px 7px 0 0px;
 	color: #3b4b5b;
 	text-decoration: underline;
 }
-#blocs_pliants_prod .claire {
+.blocs_pliants_prod .claire {
+	float: left;
+	width: 587px;
 	background-color: #EBEDEE;
 	border-bottom: 1px dotted #9DACB6;
 	height: 25px;
-	padding: 5px 0 0 0;
+	padding: 5px 0 0 0; margin: 0;
+	/margin: -5px 0 0 0;
+	overflow: hidden;
 }
-#blocs_pliants_prod .fonce {
+.blocs_pliants_prod .fonce {
+	float: left;
+	width: 587px;
 	background-color: #D4DADD;
 	border-bottom: 1px dotted #9DACB6;
 	height: 25px;
-	padding: 5px 0 0 0;
+	padding: 5px 0 0 0;  margin: 0;
+	/margin: -5px 0 0 0;
+	overflow: hidden;
 }
-#blocs_pliants_prod .cellule {
+.blocs_pliants_prod .cellule {
 	float: left;
 	padding: 5px 0 0 5px;
 }
-#blocs_pliants_prod .lignesimple {
+.blocs_pliants_prod .lignesimple {
+	float: left;
 	background-color: #EBEDEE;
 	border-bottom: 1px dotted #9DACB6;
-	height: 28px;
-	padding:0;	margin: 0;
+	height: 25px;
+	padding: 0px 0 0 0; margin: 0;
+	/margin: -5px 0 0 0;
 	width: 100%;
 	color: #3B4B5B;
 }
-#blocs_pliants_prod .lignemultiple {
+.blocs_pliants_prod .lignemultiple {
 	background-color: #EBEDEE;
 	border-bottom: 1px dotted #9DACB6;
 	height: 95px;
 	padding:0;	margin: 0;
 }
-#blocs_pliants_prod .cellule_designation {
+.blocs_pliants_prod .cellule_designation {
 	float: left;
 	padding: 7px 0 0 5px;
 	background-color: #9eb0be;
 	height: 23px;
 }
-#blocs_pliants_prod .cellule_designation_multiple {
+.blocs_pliants_prod .cellule_designation_multiple {
 	float: left;
-	padding: 5px 0 0 5px;
+	padding: 0px 0 0 5px;
 	background-color: #9eb0be;
 	height: 90px;
 }
-#blocs_pliants_prod .cellule_prix {
+.blocs_pliants_prod .cellule_prix {
 	float: left;
 	width: 80px;
 	padding:0;
 }
-#blocs_pliants_prod .cellule_supp {
+.blocs_pliants_prod .cellule_supp {
 	float: right;
 	width: 20px;
 	padding: 5px 0 0 0;
 }
-#blocs_pliants_prod .classement {
+.blocs_pliants_prod .classement {
 	float: left;
 	width: 27px;
 	padding: 3px 0 0 0px;
 	background-color: #D4DADD;
 }
-/* blocs pliants depliants de la partie photos produits */
-#blocs_pliants_photo  {
+/* blocs pliants depliants de la partie photos produit / rubrique / dossier /contenu */
+.blocs_pliants_photo  {
 	width: 380px;
-	padding: 0 0 10px 0;
+	padding: 0 0 0px 0;
 	border-bottom: 1px dotted #9DACB6;
 	font-weight: normal;
 	color: #3B4B5B;
 }
-#blocs_pliants_photo h3.head { 
+.blocs_pliants_photo ul {
+	padding: 0; margin: 0;
+}
+.blocs_pliants_photo h3.head { 
 		color: #FFF;
 }
-#blocs_pliants_photo h3.head a { 
+.blocs_pliants_photo h3.head a { 
 		color: #FFF;
 		font-weight: normal;
 		font-size:13px;
 }
-#blocs_pliants_photo .lignesimple {
+.blocs_pliants_photo .lignesimple {
 	float: left;
 	background-color: #D4DADD;
 	padding:0;	margin: 0;
 }
-#blocs_pliants_photo .cellule {
+.blocs_pliants_photo .cellule {
 	float: left;
 	padding: 5px 0 0 7px;
-	width: 238px;
+	width: 248px;
 }
-#blocs_pliants_photo .cellule_designation {
+.blocs_pliants_photo .cellule_designation {
 	float: left;
 	padding: 5px 0 0 5px;
 	background-color: #9eb0be;
-	width: 130px;
+	width: 120px;
 	color: #3B4B5B;
 	font-weight: normal;
 }
-#blocs_pliants_photo .cellule_photos {
+.blocs_pliants_photo .cellule_photos {
 	float: left;
 	padding: 0px 0 0 0px;
 	margin: 5px 0 0 7px;
-	width: 220px;
+	width: 230px;
 	background-color: #D4DADD;
 	border:1px solid #3b4b5b;
 }
-
-#blocs_pliants_photo .cellule_supp {
+.blocs_pliants_photo .cellule_supp {
 	float: left;
 	width: 14px;
 	height:108px; 
 	padding:105px 0 0 2px;
 	background-color: #D4DADD;
 }
+.bloc_fleche {
+	 float:left;
+	 height:12px;
+	 overflow:hidden;
+}
 
 /* blocs pliants depliants de la partie fichiers produits */
-#blocs_pliants_fichier  {
+.blocs_pliants_fichier  {
 	width: 380px;
-	padding: 0 0 10px 0;
+	padding: 0 0 0px 0;
 	border-bottom: 1px dotted #9DACB6;
 	font-weight: normal;
 	color: #3B4B5B;
 }
-#blocs_pliants_fichier h3.head { 
+.blocs_pliants_fichier h3.head { 
 		color: #FFF;
 }
-#blocs_pliants_fichier h3.head a { 
+.blocs_pliants_fichier h3.head a { 
 		color: #FFF;
 		font-weight: normal;
 		font-size:13px;
 }
-#blocs_pliants_fichier .lignesimple {
+.blocs_pliants_fichier .lignesimple {
 	float: left;
 	background-color: #D4DADD;
 	padding:0;	margin: 0;
 }
-#blocs_pliants_fichier .cellule {
+.blocs_pliants_fichier .cellule {
 	float: left;
 	padding: 5px 0 0 7px;
 	width: 238px;
 }
-#blocs_pliants_fichier .cellule_designation {
+.blocs_pliants_fichier .cellule_designation {
 	float: left;
 	padding: 5px 0 0 5px;
 	background-color: #9eb0be;
@@ -1440,14 +1442,14 @@ border: solid #62BD19 3px;
 	color: #3B4B5B;
 	font-weight: normal;
 }
-#blocs_pliants_fichier .cellule_document {
+.blocs_pliants_fichier .cellule_document {
 	float: left;
 	padding: 0px 0 0 0px;
 	margin: 5px 0 0 7px;
 	width: 220px;
 	background-color: #D4DADD;
 }
-#blocs_pliants_fichier .cellule_supp_fichier {
+.blocs_pliants_fichier .cellule_supp_fichier {
 	float: left;
 	width: 16px;
 	padding:10px 0 0 2px;
@@ -1465,6 +1467,7 @@ border: solid #62BD19 3px;
 	margin: 0 0 0 10px;
 	color: #3B4B5B;
 }
+
 #bloc_colonne_droite .entete_config {
 	float: left;
 	font-size: 12px;
@@ -1587,7 +1590,6 @@ border: solid #62BD19 3px;
 	color: #3b4b5b;
 	background-color: #FFF;
 	border: 1px solid #3b4b5b;
-	overflow:auto;
 }
 
 .form_long {
@@ -1629,8 +1631,9 @@ border: solid #62BD19 3px;
 	border: 1px solid #3b4b5b;
 }
 .form_select {
-	width: 228px;
+	width: 220px;
 	height: 18px;
+	/height:30px;
 	color: #3b4b5b;
 	background-color: #d4dadd;
 	border: 1px solid #3b4b5b;

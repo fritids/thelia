@@ -70,7 +70,7 @@
 ?>
 <?php
 	switch($action){
-		case 'modclassement' : modclassement($ref, $parent, $type); break;
+		case 'modclassement' : modclassement($id, $parent, $type); break;
 		case 'modifier' : modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum, $urlsuiv); break;
 		case 'ajouter' : ajouter($lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum); break;
 		case 'acdec' : moddecli($produit, $id, 1); break;
@@ -277,13 +277,15 @@
 
 	}
 
-	function modclassement($ref, $parent, $type){
+	function modclassement($id, $parent, $type){
+		$image = new Image();
+		$image->charger($id);
+		$image->changer_classement($id,$type);
+		
         $prod = new Produit();
-        $prod->charger($ref);
-        $prod->changer_classement($ref, $type);
-
-
-	    header("Location: parcourir.php?parent=" . $parent);
+        $prod->charger_id($image->produit);
+		
+	    header("Location: produit_modifier.php?ref=".$prod->ref."&rubrique=".$prod->rubrique);
 	}
 	
 
@@ -933,7 +935,7 @@
    		<tr class="claire">
         <td class="designation">Appartenance<br /> <span class="note">(déplacer dans une autre rubrique)</span></td>
         <td style="vertical-align:top;"><select name="rubrique" id="rubrique" class="form_long">
-          <?php if($ref) echo arbreOption(0, 1, $produit->rubrique,1); else {  ?>
+          <?php if($ref) echo arbreOption(0, 1, $produit->rubrique); else {  ?>
           	<option value="">&nbsp;</option>
           
          <?php 
@@ -979,22 +981,19 @@
         <td class="designation"></td>
         <td></td>
    	</tr>
-
-    </table>
+</table>
 
 	
 <?php
 	if($ref){
 ?>    
-
-<ul id="blocs_pliants_prod">
-<!-- bloc de gestion des caractéristiques ajoutés -->  
-	<li style="margin:0 0 10px 0">
-	<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">CARACTÉRISTIQUES AJOUTÉES</a></h3>
-	<ul>
-	
+ <!-- début du bloc de gestion des caractéristiques ajoutées-->
+		<div class="entete">
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantcaracteristiques').show('slow');">CARACTÉRISTIQUES AJOUTÉES</div>
+		</div>
+ 
+<div class="blocs_pliants_prod" id="pliantcaracteristiques">
 	 <?php
-   	
    	$rubcaracteristique = new Rubcaracteristique();
    	$caracteristiquedesc = new Caracteristiquedesc();
    	$caracdisp = new Caracdisp();
@@ -1014,46 +1013,43 @@
    		$query2 = "select * from $caracdisp->table where caracteristique='$row->caracteristique'";
    		$resul2 = mysql_query($query2);
    		$nbres = mysql_num_rows($resul2);
-   ?>
-				 <?php if(! $nbres) { ?>
-				<li class="lignesimple">
-						<div class="cellule_designation" style="width:290px;"><?php echo($caracteristiquedesc->titre); ?></div>
-						<div class="cellule">
-        <input type="hidden" name="typecaract<?php echo($row->caracteristique); ?>" id="typecaract<?php echo($row->caracteristique); ?>" value="v" />
-        <input type="text" class="form_caracterisques_ajoutees" name="caract<?php echo($row->caracteristique); ?>" id="caract<?php echo($row->caracteristique); ?>" value="<?php echo($caracval->valeur); ?>" />
-        <?php } else {?>
-				<li class="lignemultiple">
-					<div class="cellule_designation_multiple" style="width:290px; padding:5px 0 0 5px;"><?php echo($caracteristiquedesc->titre); ?></div>
-					<div class="cellule"  style="padding:5px 0 0 5px;">
-        <input type="hidden" name="typecaract<?php echo($row->caracteristique); ?>" id="typecaract<?php echo($row->caracteristique); ?>" value="c" />
-        <select name="caract<?php echo($row->caracteristique); ?>[]" id="caract<?php echo($row->caracteristique); ?>" size="5" multiple="multiple"  class="form_caracterisques_ajoutees">
-          <?php while($row2 = mysql_fetch_object($resul2)){ 
-     		 	$caracdispdesc->charger_caracdisp($row2->id);
-          		$caracval->charger_caracdisp($produit->id, $row2->caracteristique, $caracdispdesc->caracdisp);
-
-     			if( $caracdispdesc->caracdisp == $caracval->caracdisp) $selected="selected=\"selected\""; else $selected="";
-     	?>
-          <option value="<?php echo($caracdispdesc->caracdisp); ?>" <?php echo($selected); ?>>
-            <?php echo($caracdispdesc->titre); ?>            </option>
-          <?php } ?>
-        </select>
-        <?php } ?>
+  		if(! $nbres) { ?>
 				
-				</div>
-
-			</li>
-	<?php } ?>
-	<li><h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" alt="-" /></a></h3></li>
-	</ul>
-	
-	</li>
-<!-- bloc de gestion des déclinaisons simple -->  
-	<li style="margin:0 0 10px 0">
-		<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">GESTION DES DECLINAISONS</a></h3>
-	<ul>
-
+				<ul class="ligne1">
+						<li class="cellule_designation" style="width:290px;"><?php echo($caracteristiquedesc->titre); ?></li>
+						<li class="cellule">
+        					<input type="hidden" name="typecaract<?php echo($row->caracteristique); ?>" id="typecaract<?php echo($row->caracteristique); ?>" value="v" />
+        					<input type="text" class="form_caracterisques_ajoutees" name="caract<?php echo($row->caracteristique); ?>" id="caract<?php echo($row->caracteristique); ?>" value="<?php echo($caracval->valeur); ?>" /></li>
+        		</ul>
+        		
+        		<?php } else {?>
+        		
+				<ul class="lignemultiple">
+					<li class="cellule_designation_multiple" style="width:290px; padding:5px 0 0 5px;"><?php echo($caracteristiquedesc->titre); ?></li>
+					<li class="cellule"  style="padding:5px 0 0 5px;">
+        				<input type="hidden" name="typecaract<?php echo($row->caracteristique); ?>" id="typecaract<?php echo($row->caracteristique); ?>" value="c" />
+        				<select name="caract<?php echo($row->caracteristique); ?>[]" id="caract<?php echo($row->caracteristique); ?>" size="5" multiple="multiple"  class="form_caracterisques_ajoutees">
+          					<?php while($row2 = mysql_fetch_object($resul2)){ 
+     		 					$caracdispdesc->charger_caracdisp($row2->id);
+          						$caracval->charger_caracdisp($produit->id, $row2->caracteristique, $caracdispdesc->caracdisp);
+								if( $caracdispdesc->caracdisp == $caracval->caracdisp) $selected="selected=\"selected\""; else $selected="";?>
+          						<option value="<?php echo($caracdispdesc->caracdisp); ?>" <?php echo($selected); ?>>
+            					<?php echo($caracdispdesc->titre); ?></option>
+          						<?php } ?>
+        				</select>
+        			</li>
+        		</ul>
+        		<?php }  } ?>
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantcaracteristiques').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>
+</div>		
+<!-- fin du bloc de gestion des caractéristiques ajoutées -->
+ 
+ <!-- début du bloc de gestion des déclinaisons simple -->
+		<div class="entete">
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantdeclinaisons').show('slow');">GESTION DES DECLINAISONS</div>
+		</div>
+<div class="blocs_pliants_prod" id="pliantdeclinaisons">		
      <?php
-   	
    	$rubdeclinaison = new Rubdeclinaison();
    	$declinaisondesc = new Declinaisondesc();
    	$declidisp = new Declidisp();
@@ -1066,19 +1062,16 @@
    	while($row = mysql_fetch_object($resul)){
 
    		$declinaisondesc->charger($row->declinaison);
-
-   		
    		$query2 = "select * from $declidisp->table where declinaison='$row->declinaison'";
    		$resul2 = mysql_query($query2);
    		$nbres = mysql_num_rows($resul2);
    ?>
-			<li class="ligne1">
-				<div class="cellule" style="width:300px;"><?php echo($declinaisondesc->titre); ?></div>
-				<div class="cellule" style="width:80px;">Stock</div>
-				<div class="cellule" style="width:80px;">Surplus</div>
-				
+			<ul class="ligne1">
+				<li class="cellule" style="width:300px;"><?php echo($declinaisondesc->titre); ?></li>
+				<li class="cellule" style="width:80px;">Stock</li>
+				<li class="cellule" style="width:80px;">Surplus</li>
 				<input type="hidden" name="typedeclit<?php echo($row->declinaison); ?>" value="c" />	
-			</li>
+			</ul>
     
         
           <?php while($row2 = mysql_fetch_object($resul2)){ 
@@ -1092,44 +1085,40 @@
 			$res = $exdecprod->charger($produit->id, $row2->id); 
 		?>  	
 
-			<li class="lignesimple">
-				<div class="cellule" style="width:300px; padding: 5px 0 0 5px;"><?php echo($declidispdesc->titre); ?></div>
-				<div class="cellule_prix" style="padding: 5px 0 0 5px;"><input type="text" name="stock<?php echo($row2->id); ?>" value="<?php echo($stock->valeur); ?>" size="4" class="form" /></div>
-				<div class="cellule_prix" style="padding: 5px 0 0 5px;"><input type="text" name="surplus<?php echo($row2->id); ?>" value="<?php echo($stock->surplus); ?>" size="4" class="form" /></div>
-				<div class="cellule_prix"  style="padding: 5px 0 0 5px;"><?php if($res) { ?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&amp;produit=<?php echo($produitdesc->produit); ?>&amp;rubrique=<?php echo($rubrique); ?>&amp;action=acdec&amp;id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">Activer</a> <?php } else {?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&amp;produit=<?php echo($produitdesc->produit); ?>&amp;rubrique=<?php echo($rubrique); ?>&amp;action=desdec&amp;id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">D&eacute;sactiver</a> <?php } ?></div>
-			</li>
-	<?php } ?>
-	<?php } ?> 
-		<li><h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" alt="-" /></a></h3></li>
-		</ul>
-		
-	</li>
+			<ul class="lignesimple">
+				<li class="cellule" style="width:300px; padding: 5px 0 0 5px;"><?php echo($declidispdesc->titre); ?></li>
+				<li class="cellule_prix" style="padding: 5px 0 0 5px;"><input type="text" name="stock<?php echo($row2->id); ?>" value="<?php echo($stock->valeur); ?>" size="4" class="form" /></li>
+				<li class="cellule_prix" style="padding: 5px 0 0 5px;"><input type="text" name="surplus<?php echo($row2->id); ?>" value="<?php echo($stock->surplus); ?>" size="4" class="form" /></li>
+				<li class="cellule_prix"  style="padding: 5px 0 0 5px;"><?php if($res) { ?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&amp;produit=<?php echo($produitdesc->produit); ?>&amp;rubrique=<?php echo($rubrique); ?>&amp;action=acdec&amp;id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">Activer</a> <?php } else {?> <a href="produit_modifier.php?ref=<?php echo($ref); ?>&amp;produit=<?php echo($produitdesc->produit); ?>&amp;rubrique=<?php echo($rubrique); ?>&amp;action=desdec&amp;id=<?php echo($declidispdesc->declidisp); ?>" class="lien04 ">D&eacute;sactiver</a> <?php } ?></li>
+			</ul>
+	<?php }  } ?> 
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantdeclinaisons').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>
+</div>		
 
-<!-- bloc de gestion des accessoires -->  
+<!-- fin du bloc de gestion des declinaisons -->
 
-			<li style="margin:0 0 10px 0">
-			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">GESTION DES ACCESSOIRES</a></h3>
-			<ul>
-			
-				<li class="ligne1">
-					<div class="cellule">
+<!-- début du bloc de gestion des accessoires -->
+		<div class="entete">
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantaccessoires').show('slow');">GESTION DES ACCESSOIRES</div>
+		</div>
+		<div class="blocs_pliants_prod" id="pliantaccessoires">
+				<ul class="ligne1">
+					<li class="cellule">
 					<select class="form_select" id="accessoire_rubrique" onchange="charger_listacc(this.value);">
 			     	<option value="">&nbsp;</option>
 			     	 <?php 
 	 					echo arbreOption(0, 1, 0); 
 				 	 ?>  
-					</select></div>
+					</select></li>
 					
-					<div class="cellule">
-					<select class="form_select" id="select_prodacc">
-					<option value="">&nbsp;</option>
-					</select>
-					</div>
-					
-					<div class="cellule"><a href="javascript:accessoire_ajouter(document.getElementById('select_prodacc').value)">AJOUTER</a></div>
-				</li>
-	<li id="accessoire_liste">
-		<ul>
+					<li class="cellule">
+						<select class="form_select" id="select_prodacc">
+							<option value="">&nbsp;</option>
+						</select>
+					</li>
+					<li class="cellule"><a href="javascript:accessoire_ajouter(document.getElementById('select_prodacc').value)">AJOUTER</a></li>
+				</ul>
+	<ul id="accessoire_liste">
 		<?php	
                 $accessoire = new Accessoire();
                 $produita = new Produit();
@@ -1161,44 +1150,40 @@
 				<div class="cellule" style="width:260px;"><?php echo $produitdesca->titre; ?></div>
 				<div class="cellule_supp"><a href="javascript:accessoire_supprimer(<?php echo $row->id; ?>)"><img src="gfx/supprimer.gif" alt="-" /></a></div>
 			</li>
-
         <?php
                 }
         ?>
-        </ul>		
-	</li>
-		<li><h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" alt="-" /></a></h3></li>
+ </ul>
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantaccessoires').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>
+</div>
+<!-- fin du bloc de gestion des accessoires -->
 
-		</ul>		
-		
-	</li>
-
-<!-- bloc des contenus associés -->  
-
-	<li style="margin:0 0 10px 0">
-			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">GESTION DES CONTENUS ASSOCIÉS</a></h3>
-			<ul>
-				<li class="ligne1">
-					<div class="cellule">
+<!-- début du bloc de gestion des contenus associés -->
+		<div class="entete">
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantcontenusassocies').show('slow');">GESTION DES CONTENUS ASSOCIÉS</div>
+		</div>
+		<div class="blocs_pliants_prod" id="pliantcontenusassocies">
+				<ul class="ligne1">
+					<li class="cellule">
 					<select class="form_select" id="contenuassoc_dossier" onchange="charger_listcont(this.value, 1,'<?php echo $produit->ref; ?>');">
 			     	<option value="">&nbsp;</option>
 			     	 <?php 
 	 					echo arbreOption_dos(0, 1, 0);
 	 				?>
-					</select></div>
+					</select></li>
 					
-					<div class="cellule">
+					<li class="cellule">
 					<select class="form_select" id="select_prodcont">
 					<option value="">&nbsp;</option>
 					</select>
-					</div>
+					</li>
 					
-					<div class="cellule"><a href="javascript:contenu_ajouter(document.getElementById('select_prodcont').value, 1,'<?php echo $produit->ref; ?>')">AJOUTER</a></div>
-				</li>
+					<li class="cellule"><a href="javascript:contenu_ajouter(document.getElementById('select_prodcont').value, 1,'<?php echo $produit->ref; ?>')">AJOUTER</a></li>
+				</ul>
 			
 
-				<li id="contenuassoc_liste">
-					<ul>
+				<ul id="contenuassoc_liste">
+
 		<?php	
                 $contenuassoc = new Contenuassoc();
                 $contenua = new Contenu();
@@ -1234,25 +1219,20 @@
         <?php
                 }
         ?>
-				</ul>			
-	
-	</li>
-	
+				</ul>
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantcontenusassocies').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>
+</div>
+<!-- fin du bloc de gestion des contenus associés -->
 
-	<li><h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" alt="-" /></a></h3></li>
-
-		</ul>		
-		
-	</li>
-	
-
-<!-- bloc d'informations sur le produit --> 
-<li class="patchplugin">
+<!-- début du bloc point d'entrée --> 
+<div class="patchplugin">
 <?php 
 	admin_inclure("produitmodifier"); 
 ?>
-</li>
+</div>
+<!-- fin du bloc point d'entrée --> 
 
+<!-- début du bloc d'informations sur le produit --> 
 	<?php
 	
 		$produit = new Produit();
@@ -1266,42 +1246,36 @@
 		$seconde = substr($produit->datemodif, 17, 2);  	
 	?>  
 <?php if($ref != ""){ ?>
-
-	<li style="margin:0 0 10px 0">
-			<h3 class="head" style="padding:6px 7px 0 7px; border-top:3px solid #bdf66f; height: 21px;"><a href="#">INFORMATIONS SUR LE PRODUIT</a></h3>
-			<ul>
-				<li class="lignesimple">
-					<div class="cellule_designation" style="width:128px; padding:5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">ID</div>
-					<div class="cellule" style="width:450px; padding: 5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;"><?php echo($produit->id); ?></div>	
-				</li>
+		<div class="entete">
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantinfos').show('slow');">INFORMATIONS SUR LE PRODUIT</div>
+		</div>
+		<div class="blocs_pliants_prod" id="pliantinfos">
+				
+				<ul class="lignesimple">
+					<li class="cellule_designation" style="width:128px; padding:5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">ID</li>
+					<li class="cellule" style="width:450px; padding: 5px 0 0 5px; background-image:url(gfx/degrade_ligne1.png); background-repeat: repeat-x;"><?php echo($produit->id); ?></li>	
+				</ul>
 			
-			<li class="lignesimple">
-				<div class="cellule_designation" style="width:128px; padding:5px 0 0 5px;">URL réécrite</div>
-				<div class="cellule" style="width:450px;padding: 5px 0 0 5px;"><?php echo(rewrite_prod("$produit->ref", $lang)); ?></div>	
-			</li>
-			<li class="lignesimple">
-				<div class="cellule_designation" style="width:128px; padding: 5px 0 0 5px;">Dernière modif.</div>
-				<div class="cellule" style="width:450px;padding: 5px 0 0 5px;"><?php echo "le $jour/$mois/$annee à $heure:$minute:$seconde"; ?></div>
-			</li>
-		<li><h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" alt="-" /></a></h3></li>
-
-		</ul>		
-		
-	</li>
-<?php } ?>
-
-</ul>	
-
-    <?php } ?>
-
+			<ul class="lignesimple">
+				<li class="cellule_designation" style="width:128px; padding:5px 0 0 5px;">URL réécrite</li>
+				<li class="cellule" style="width:450px;padding: 5px 0 0 5px;"><?php echo(rewrite_prod("$produit->ref", $lang)); ?></li>	
+			</ul>
+			<ul class="lignesimple">
+				<li class="cellule_designation" style="width:128px; padding: 5px 0 0 5px;">Dernière modif.</li>
+				<li class="cellule" style="width:450px;padding: 5px 0 0 5px;"><?php echo "le $jour/$mois/$annee à $heure:$minute:$seconde"; ?></li>
+			</ul>
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantinfos').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>
+</div>
+<!-- fin du bloc de gestion des informations du produit -->
+<?php } } ?>
 </form>
 
 </div>
 <?php if($ref != ""){?>
 
-<!-- bloc de gestion des photos / colonne de droite -->   
+<!-- bloc de gestion des photos et documents / colonne de droite -->   
 <div id="bloc_photos">
-<!-- Boite à outils -->   
+<!-- début du bloc Boite à outils du produit -->   
 <div class="entete">
 	<div class="titre">BOITE A OUTILS</div>
 </div>
@@ -1375,15 +1349,15 @@
    		</div>
    	</div>
 </div>
+<!-- fin du bloc Boite à outils du produit--> 
 
-
+<!-- début du bloc de transfert des images du produit-->
 <div class="entete" style="margin-top:10px;">
 			<div class="titre">GESTION DES PHOTOS</div>
 </div>
-<!-- bloc transfert des images -->
 <div class="bloc_transfert">
 	<div class="claire">
-		<div class="designation" style="height:140px; padding-top:10px;">Transférer des images</div>
+		<div class="designation" style="height:160px; padding-top:10px;">Transférer des images</div>
 		<div class="champs" style="padding-top:10px;">
 			<form action="produit_modifier.php" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="action" value="ajouter_photo" />
@@ -1398,13 +1372,11 @@
    		</div>
    	</div>
 </div>
-<!-- fin du bloc transfert des images -->
+<!-- fin du bloc de transfert des images du produit-->
 
-<ul id="blocs_pliants_photo">
-	<li><h3 class="head" style="margin:0 0 0px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
-<li>
-	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" alt="-" /></a></h3>
-	
+<!-- début du bloc de gestion des photos du produit -->
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsphotos').show('slow');"><img src="gfx/fleche_accordeon_img_dn.gif" /></div>
+<div class="blocs_pliants_photo" id="pliantsphotos">
 	<ul>
 	<?php 
 			$image = new Image();
@@ -1457,20 +1429,20 @@
 			
 		</form>
    		<?php } ?>
-   		<h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" /></a><h3>
+   		
+	</ul>
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsphotos').hide();"><img src="gfx/fleche_accordeon_img_up.gif" /></div>
+</div>
+<!-- fin du bloc de gestion des photos du produit -->
 
-   	</ul>
-	</li>
-	
 
-
-<!-- bloc de gestion des documents -->
+<!-- début du bloc de transfert des documents du produit -->
 	<div class="entete" style="margin-top:10px;">
 			<div class="titre">GESTION DES DOCUMENTS</div>
 	</div>
 	<div class="bloc_transfert">
 	<div class="claire">
-		<div class="designation" style="height:43px; padding-top:10px;">Transférer des documents</div>
+		<div class="designation" style="height:70px; padding-top:10px;">Transférer des documents</div>
 		<div class="champs" style="padding-top:10px;">
 			<form action="produit_modifier.php" method="post" enctype="multipart/form-data">
        		<input type="hidden" name="action" value="ajouter_document" />
@@ -1483,11 +1455,11 @@
 		</div>
    	</div>
    	</div>
-   	<!-- fin bloc transfert des documents -->
-   	<ul id="blocs_pliants_fichier">
-	<li>
-	<h3 class="head"><a href="#"><img src="gfx/fleche_accordeon_img_dn.gif" alt="-" /></a></h3>
-	
+<!-- fin du bloc transfert des documents du produit -->
+<!-- début du bloc de gestion des documents du produit -->
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsfichier').show('slow');"><img src="gfx/fleche_accordeon_img_dn.gif" /></div>
+<div class="blocs_pliants_fichier" id="pliantsfichier">
+	<ul>
    	 <?php
                 $document = new Document();
                 $documentdesc = new Documentdesc();
@@ -1506,7 +1478,7 @@
 			<input type="hidden" name="rubrique" value="<?php echo $rubrique; ?>" />
 			<input type="hidden" name="id_document" value="<?php echo $row->id; ?>" />
 			<input type="hidden" name="lang" value="<?php echo($lang); ?>" />
-		<ul>	   
+			   
 		<li class="lignesimple">
 			<div class="cellule_designation" style="height:20px;">Fichier</div>
 			<div class="cellule_document"><a href="../client/document/<?php echo($row->fichier); ?>" target="_blank"><?php
@@ -1544,15 +1516,15 @@
 			<div class="cellule_designation" style="height:30px;">&nbsp;</div>
 			<div class="cellule" style="height:30px; border-bottom: 1px dotted #9DACB6"><input type="submit" value="Enregistrer" /></div>
 		</li>
-		</ul>   
+		  
 		</form>
 	
     	<?php
                 }
         ?>
- </li>
-	<li><h3 class="head" style="margin:0 0 5px 0"><a href="javascript:;"><img src="gfx/fleche_accordeon_img_up.gif" alt="-" /></a></h3></li>
-	</ul>
+       </ul>
+       <div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsfichier').hide();"><img src="gfx/fleche_accordeon_img_up.gif" /></div>
+</div>
 </div>
 <?php
 }
@@ -1577,22 +1549,6 @@ jQuery().ready(function(){
 		animated: true,
 		showSpeed: 400,
 		hideSpeed: 400
-	});
-	jQuery('#blocs_pliants_photo').Accordion({
-		active: 'h3.selected',
-		header: 'h3.head',
-		alwaysOpen: true,
-		animated: false,
-		showSpeed: 400,
-		hideSpeed: 100
-	});
-	jQuery('#blocs_pliants_fichier').Accordion({
-		active: 'h3.selected',
-		header: 'h3.head',
-		alwaysOpen: true,
-		animated: false,
-		showSpeed: 400,
-		hideSpeed: 100
 	});
 	
 });	
