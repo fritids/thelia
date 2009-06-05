@@ -6,10 +6,6 @@ Développement :
 Yoan De Macedo : yoan@octolys.fr
 Manuel Raynaud : manu@octolys.fr
 
-Charte graphique :
-
-Scopika : contact@scopika.com
-
 Tests, ergonomie :
 
 Cédric Sibaud : cedric@octolys.fr
