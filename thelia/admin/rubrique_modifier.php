@@ -454,7 +454,7 @@ include_once('js/declinaison.php');
 ?>
 
 <div id="contenu_int">
-  <p align="left"><a href="index.php"  class="lien04">Accueil</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="catalogue.php" class="lien04">Gestion du catalogue </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="parcourir.php" class="lien04">Par rubrique</a>
+  <p align="left"><a href="index.php"  class="lien04">Accueil</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="parcourir.php" class="lien04">Gestion du catalogue </a>
                           
             <?php
                     $parentdesc = new Rubriquedesc();
