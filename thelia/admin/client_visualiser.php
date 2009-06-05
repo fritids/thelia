@@ -135,8 +135,8 @@
 <title>THELIA / BACK OFFICE</title>
 <link href="styles.css" rel="stylesheet" type="text/css" />
 
-
-<script language="JavaScript" type="text/JavaScript">
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+<script type="text/javascript">
 
 function supprimer(id){
 	if(confirm("Voulez-vous vraiment supprimer cette commande ?")) location="client_visualiser.php?action=supprcmd&id=" + id + "&ref=<?php echo($ref); ?>";
@@ -242,20 +242,24 @@ function supprimer(id){
 <?php
 	admin_inclure("clientvisualiser");		
 ?>
-<ul id="blocs_pliants_prod">
-<!-- bloc de gestion des commandes du client -->  
-	<li style="margin:0 0 10px 0">
-		<h3 class="head" style="padding:6px 7px 0 7px; border-top: 3px solid #de2b9b; height: 21px;"><a href="#">LISTE DES COMMANDES DE CE CLIENT</a></h3>
-		<ul>
-			<li class="ligne1">
-				<div class="cellule" style="width:130px;">N&deg; DE COMMANDE </div>
-				<div class="cellule" style="width:130px;">DATE &amp; HEURE </div>
-				<div class="cellule" style="width:120px;">MONTANT EN &euro;</div>
-				<div class="cellule" style="width:90px;">STATUT</div>
-				<div class="cellule" style="width:60px;"></div>
-				<div class="cellule" style="width:20px;"></div>
-			</li>
- <?php
+
+<!-- -->
+
+		<div class="entete_liste_client">
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantlistecommandes').show('slow');">LISTE DES COMMANDES DE CE CLIENT</div>
+		</div>
+		<div class="blocs_pliants_prod" id="pliantlistecommandes">
+				
+	<ul class="ligne1">
+		<li class="cellule" style="width:130px;">N&deg; DE COMMANDE</li>
+		<li class="cellule" style="width:130px;">DATE &amp; HEURE</li>
+		<li class="cellule" style="width:120px;">MONTANT EN &euro;</li>
+		<li class="cellule" style="width:90px;">STATUT</li>
+		<li class="cellule" style="width:60px;"></li>
+		<li class="cellule" style="width:20px;"></li>
+
+	</ul>
+<?php
   	$i=0;
 
 	$commande = new Commande();
@@ -295,32 +299,41 @@ function supprimer(id){
 
   		$i++;
   ?>
-<li class="<?php echo($fond); ?>">
-       <div class="cellule" style="width:130px; padding: 5px 0 0 5px;"><?php echo($row->ref); ?></div>
-       <div class="cellule" style="width:130px; padding: 5px 0 0 5px;"><?php echo($jour . "/" . $mois . "/" . $annee . " " . $heure . ":" . $minute . ":" . $seconde); ?></div>
-       <div class="cellule" style="width:120px; padding: 5px 0 0 5px;"><?php echo(round($total, 2)); ?></div>
-       <div class="cellule" style="width:90px; padding: 5px 0 0 5px;"><?php echo($statutdesc->titre); ?></div>
-       <div class="cellule" style="width:60px; padding: 5px 0 0 5px;"><a href="commande_details.php?ref=<?php echo($row->ref); ?>">&eacute;diter</a></div>
-       <div class="cellule_supp"><a href="#" onclick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
-</li>
 
+	<ul class="lignesimple">
+		<li class="cellule" style="width:130px;"><?php echo($row->ref); ?></li>
+		<li class="cellule" style="width:130px;"><?php echo($jour . "/" . $mois . "/" . $annee . " " . $heure . ":" . $minute . ":" . $seconde); ?></li>
+		<li class="cellule" style="width:120px;"><?php echo(round($total, 2)); ?></li>
+		<li class="cellule" style="width:90px;"><?php echo($statutdesc->titre); ?></li>
+		<li class="cellule" style="width:60px;"><a href="commande_details.php?ref=<?php echo($row->ref); ?>">&eacute;diter</a></li>
+		<li class="cellule" style="width:20px;"><a href="#" onclick="supprimer('<?php echo($row->id); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 
+	</ul>
 
 <?php } ?>
- <h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
-</ul>
-</li>
 
-<!-- bloc de gestion des filleuls du client -->  
-	<li style="margin:10px 0 10px 0">
-		<h3 class="head" style="padding:6px 7px 0 7px; border-top: 3px solid #de2b9b; height: 21px;"><a href="#">LISTE DES FILLEULS DE CE CLIENT</a></h3>
-		<ul>
-			<li class="ligne1">
-				<div class="cellule" style="width:150px;">NOM</div>
-				<div class="cellule" style="width:150px;">PRENOM</div>
-				<div class="cellule" style="width:150px;">EMAIL</div>
-			</li>
- <?php
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantlistecommandes').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>
+</div>
+
+<!-- -->
+
+<!-- -->
+
+		<div class="entete_liste_client">
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantfilleul').show('slow');">LISTE DES FILLEULS DE CE CLIENT</div>
+		</div>
+		<div class="blocs_pliants_prod" id="pliantfilleul">
+				
+	<ul class="ligne1">
+		<li class="cellule" style="width:160px;">NOM</li>
+		<li class="cellule" style="width:160px;">PRENOM</li>
+		<li class="cellule" style="width:155px;">E-MAIL</li>
+		<li class="cellule" style="width:90px;"></li>
+
+
+	</ul>
+
+<?php
   	
 	$listepar = new Client();
 	
@@ -337,44 +350,28 @@ function supprimer(id){
 
   		$i++;
   ?>
+	<ul class="lignesimple">
+		<li class="cellule" style="width:160px;"><?php echo $listepar->nom; ?></li>
+		<li class="cellule" style="width:160px;"><?php echo $listepar->prenom; ?></li>
+		<li class="cellule" style="width:155px;"><a href="mailto:<?php echo $listepar->email ?>"><?php echo $listepar->email; ?></a></li>
+		<li class="cellule" style="width:90px;"><a href="client_visualiser.php?ref=<?php echo $listepar->ref ?>">&eacute;diter</a></li>
 
-
-     <li class="<?php echo($fond); ?>">
-       <td class="cellule" style="width:150px;"><a href="client_visualiser.php?ref=<?php echo $listepar->ref ?>"><?php echo $listepar->nom; ?></a></td>
-       <td class="cellule" style="width:150px;"><?php echo $listepar->prenom; ?></td>
-       <td class="cellule" style="width:150px;"><a href="mailto:<?php echo $listepar->email ?>"><?php echo $listepar->email; ?></a></td>
-     
-     </li>
-
-
+	</ul>
 <?php } ?>
- <h3 class="head" style="margin:0 0 5px 0"><a href="#"><img src="gfx/fleche_accordeon_up.gif" /></a></h3>
-</ul>
-</li>
+
+
+<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantfilleul').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>
 </div>
-<!-- fin du bloc description -->
+
+<!-- -->
+
+	
+</div>
 
 </div> 
 <?php include_once("pied.php");?>
 </div>
 </div>
-<!-- -->
-<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
-<script type="text/javascript" src="../lib/jquery/accordion.js"></script>
-<script type="text/javascript">
-jQuery().ready(function(){	
-	// applying the settings
-	jQuery('#blocs_pliants_prod').Accordion({
-		active: 'h3.selected',
-		header: 'h3.head',
-		alwaysOpen: false,
-		animated: true,
-		showSpeed: 400,
-		hideSpeed: 400
-	});
 
-});	
-</script>
-<!-- -->
 </body>
 </html>
