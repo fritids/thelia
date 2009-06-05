@@ -1,34 +1,29 @@
 			
-		<div id="moteurEtCatalogue">
+<div id="moteurEtCatalogue">
+    <div id="moteurDeRecherche">
+        <h3>Recherche</h3>
+        <form action="#URLRECHERCHE" method="post" name="recherche" id="recherche">
+            <input name="motcle" type="text" value='Recherche' onclick="this.value='';"  />
+            <p><button type="submit" class="bouton"><span><span>OK</span></span></button></p>
+        </form>
+     </div> 
+    <div id="accueil"><ul><li><a href="index.php">Accueil boutique</a></li></ul></div>
+    <div id="menuCatalogue">	
+        <h3>Catalogue</h3>
+        <ul>
+            <THELIA_MENU_RUBRIQUES type="RUBRIQUE" parent="0" classement="manuel">
+            <li><a href="#URL" #FILTRE_egalite(#RUBRIQUE_ID||#ID||class="selection")>#TITRE</a>
 
-<!-- moteur de recherche -->
-			
-			<div id="recherche">
-            	<h3>Recherche</h3>
-				<form action="#URLRECHERCHE" method="post" name="recherche" id="recherche">
-			    	<input name="motcle" type="text" value='Recherche' onclick="this.value='';"  />
-					<p><button type="submit" class="bouton"><span><span>OK</span></span></button></p>
-				</form>
-			 </div> 
-        
-<!--Retour accueil -->
-
-			<div id="accueil"><ul><li><a href="index.php">Accueil boutique</a></li></ul></div>
-                
-<!--Menu catalogue -->
-
-			<div id="menuCatalogue">	
-            	<h3>Catalogue</h3>
-				<ul>
-					<THELIA_MENU_RUBRIQUES type="RUBRIQUE" parent="0" classement="manuel">
-					<li><a href="#URL" #FILTRE_egalite(#RUBRIQUE_ID||#ID||class="selection")>#TITRE</a>
-						<ul>
-                            <THELIA_BLOC_SOUS_MENU type="RUBRIQUE" parent="#ID">
-                            <li><a href="#URL" #FILTRE_egalite(#RUBRIQUE_ID||#ID||class="selection")>&bull; #TITRE</a></li>
-                            </THELIA_BLOC_SOUS_MENU>
-                        </ul>
-                    </li>
-					</THELIA_MENU_RUBRIQUES>
-            	</ul>
-            </div>
-        </div>
+	    <T_BLOC_SOUS_MENU>
+                <ul>
+                    <THELIA_BLOC_SOUS_MENU type="RUBRIQUE" parent="#ID">
+                    <li><a href="#URL" #FILTRE_egalite(#RUBRIQUE_ID||#ID||class="selection")>#TITRE</a></li>
+                    </THELIA_BLOC_SOUS_MENU>
+                </ul>
+	    </T_BLOC_SOUS_MENU>
+	    <//T_BLOC_SOUS_MENU>	
+            </li>
+            </THELIA_MENU_RUBRIQUES>
+        </ul>
+    </div>
+</div>

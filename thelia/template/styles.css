@@ -26,14 +26,13 @@
 body {
 	padding: 0;
 	margin: 0;
-	font-family: "Trebuchet MS", Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-family:Arial, Helvetica, sans-serif;
 	text-align: center;
 	background-color: #f5f5f5;
 	color:#515053;
 	font-size:12px;
 }
 h1, h2, h3, h4 {
-	font-family: "Trebuchet MS", sans-serif;
 	margin: 0;
 	padding: 0;
 	color:#515053;
@@ -50,6 +49,7 @@ h2{
 
 h3{
 	font-size: 20px;
+	margin:0 0 10px 0;
 }
 
 h4{
@@ -106,7 +106,7 @@ img {
 	float: right;
 	width:710px;
 	padding: 0 20px;
-	margin: 25px 20px 0 20px;
+	margin: 25px 20px;
 }
  
 #contenuPageRubrique {
@@ -177,7 +177,7 @@ img {
 	padding:2px;
 	width:90px;
 	border:solid 1px #88888b;
-	font-family: "Trebuchet MS", Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-family:Arial, Helvetica, sans-serif;
 	color:#626164;
 	font-size:12px;
 	font-weight:bold;
@@ -241,6 +241,7 @@ img {
 	list-style: none;
 	z-index:1000;
 	position: relative;
+	_position:absolute;
 }
 
 ul#contenuPanier , ul#contenuPanier li {
@@ -274,6 +275,7 @@ ul#contenuPanier li ul {
 
 ul#contenuPanier li ul li {
 	list-style: none;
+	float:left;
 	margin: 0;
 	padding: 0;
 }
@@ -298,6 +300,7 @@ ul#contenuPanier li ul li a, ul#contenuPanier li ul li a:visited {
 	margin: 0;
 	padding: 4px 3px;
 	display:block;
+	float:left;
 	background-color:#0081ca;
 	background-image:none;
 }
@@ -310,6 +313,7 @@ ul#contenuPanier li a:hover, ul#contenuPanier li ul li a:hover {
 }
 
 span.nomArticle, span.titreTotal {
+	margin:0;
 	width:160px;
 	float:left;
 }
@@ -325,6 +329,21 @@ span.total {
 	width:50px;
 }
 
+
+/* Dossiers
+-------------------------------------------------------- */
+
+#dossier {
+	margin:0;
+	padding:0;
+}
+
+#dossier .image {
+	margin:10px 10px 10px 0;
+	padding:1px;
+	border:solid 1px #bbbdbf;
+	float:left;
+}
 
 /* Langues
 -------------------------------------------------------- */
@@ -495,6 +514,7 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	color:#515053;
 	display:block;
 	padding: 5px 0 7px 10px;
+	margin:0;
 	height: 20px;
 	background-color: #bbbdbf;
 }
@@ -524,13 +544,12 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	background-color: #d8d9da;
 }
 
-.adresseDeLivraison ul, .adresseDeFacturation ul {
+.adresseDeLivraison ul {
 	list-style:none;
 	margin: 0;
 	padding:0;
 	width: 345px;
 	float:left;
-	background:#d8d9da;
 }
 
 .adresseDeLivraisonRecap ul {
@@ -539,91 +558,95 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	padding:0;
 	width: 710px;
 	float:left;
-	background:#d8d9da;
 }
 
-.adresseDeLivraison ul li, .adresseDeFacturation ul li, .adresseDeLivraisonRecap ul li {
+.adresseDeLivraison ul li, .adresseDeLivraisonRecap ul li {
 	margin: 0;
 	padding:0;
-	border-top:solid 1px #FFF;
 	font-size:12px;
 	font-weight:bold;
 }
 
-.adresseDeLivraison ul li a, .adresseDeFacturation ul li a, .adresseDeLivraisonRecap ul li a,
-.adresseDeLivraison ul li a:visited, .adresseDeFacturation ul li a:visited, .adresseDeLivraisonRecap ul li a:visited {
-	color:#00529a;
+.adresseDeLivraison ul li a, .adresseDeLivraisonRecap ul li a,
+.adresseDeLivraison ul li a:visited, .adresseDeLivraisonRecap ul li a:visited {
+	color:#fff;
 	display:block;
 	background-color:#8fbce3;
+	border-top:solid 1px #FFF;
 	padding:3px 0 3px 10px;
 }
 
-.adresseDeLivraison ul li a:hover, .adresseDeFacturation ul li a:hover, .adresseDeLivraisonRecap ul li a:hover {
-	text-decoration:none;
+a.modifierOuAjouter, a.modifierOuAjouter:visited {
+	font-size:12px;
+	font-weight:bold;
+	border-top:solid 1px #FFF;
+	color:#fff;
+	display:block;
+	clear:both;
 	background-color:#0081ca;
+	padding:3px 0 3px 10px;
 }
+
+.adresseDeLivraison ul li a:hover, .adresseDeLivraisonRecap ul li a:hover, a.modifierOuAjouter:hover {
+	text-decoration:none;
+	background-color:#00529a;
+}
+
+
 
 /* Bloc "Mode de livraison" 
 -------------------------------------------------------- */
 
-.modeDeLivraison, .choixReglement {
+.choixDeLaLivraison, .choixDuReglement {
 	float: left;
-	margin: 0 0 1px 0;
-	background-color: #00529a;
 	width:710px;
-}
-
-.modeDeLivraison h4, .choixReglement h4 {
-	color:#515053;
-	width:335px;
-	margin:0;
-	padding: 10px;
-	background-color: #bbbdbf;
-	float:left;
-}
-
-.modeDeLivraison h4 a, .choixReglement h4 a {
-	color:#515053;
-}
-
-.modeDeLivraison ul, .choixReglement ul {
-	list-style:none;
 	margin: 0;
 	padding:0;
-	width: 355px;
-	float:left;
 }
 
-.modeDeLivraison ul li, .choixReglement ul li {
+.choixDeLaLivraison ul, .choixDuReglement ul {
+	margin: 0;
+	padding:0;
+	list-style:none;
+	width: 710px;
+}
+
+.choixDeLaLivraison ul li, .choixDuReglement ul li {
 	margin: 0;
 	padding:0;
 	font-size:14px;
 	font-weight:bold;
 }
 
-.modeDeLivraison ul li a, .modeDeLivraison ul li a:visited, .choixReglement ul li a, .choixReglement ul li a:visited {
+.choixDeLaLivraison span.modeDeLivraison, .choixDuReglement span.modeDeReglement,
+.choixDeLaLivraison span.choisir, .choixDuReglement span.choisir {
+	color:#515053;
+	line-height:37px;
+	width:355px;
+	margin:0;
+	padding:0;
+	background-color:#bbbdbf;
+	float:left;
+	text-indent:10px;
+	height:40px;
+}
+
+.choixDeLaLivraison span.choisir, .choixDuReglement span.choisir {
+	background-color:transparent;
+	color:#FFFFFF;
+}
+
+.choixDeLaLivraison ul li a, .choixDeLaLivraison ul li a:visited, .choixDuReglement ul li a, .choixDuReglement ul li a:visited {
+	height:40px;
 	color:#fff;
 	display:block;
+	background-color:#0081ca;
+	border-top:solid 1Px #FFFFFF;
+}
+
+.choixDeLaLivraison ul li a:hover, .choixDuReglement ul li a:hover {
+	text-decoration:none;
 	background-color:#00529a;
-	padding:10px;
-}
-
-.modeDeLivraison ul li a:hover, .choixReglement ul li a:hover {
-	text-decoration:underline;
-}
-
-/* Intro de la page d'accueil
--------------------------------------------------------- */
-
-#contenu #intro {
-	color:#515053;
-	font-weight:bold;
-	font-size:14px;
-	line-height:18px;
-	float: left;
-	padding: 0;
-	margin: 0 0 20px 0;
-	text-align: justify;
 }
 
 /* Bloc Mozaïque (utilisé en page d'accueil et en page produit)
@@ -671,14 +694,18 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 .blocMozaique .contenu ul.image li a, .blocMozaique .contenu ul.image li a:visited  {
 	border: 1px solid #bbbdbf;
 	margin:0 1px 0 0;
+	_margin:0;
 	padding:1px;
 	height: 81px;
 	width:81px;
 	float:left;
-	display:inline;
+	display:block;
 	background-color:#fff;
 	overflow: hidden;
+	zoom:0;
+	text-align:center;
 }
+
 
 .blocMozaique .contenu ul.image li a:hover {
 	border: 2px solid #88888b;
@@ -695,10 +722,15 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	width:345px;
 }
 
+.blocNouveaute h3 {
+	margin:0;
+}
+
 .blocNouveaute h3 a, .blocNouveaute h3 a:visited {
 	color:#515053;
 	display:block;
 	padding: 5px 0 7px 10px;
+	margin:0;
 	height: 20px;
 	background-color: #bbbdbf;
 }
@@ -732,6 +764,7 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	height: 140px;
 	width:140px;
 	float:left;
+	text-align:center;
 	display:block;
 	background-color:#fff;
 	overflow: hidden;	
@@ -759,7 +792,7 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 }
 
 .blocNouveaute .contenu .description .prixProduit {
-	color:#00529a;
+	color:#ff0000;
 	font-weight:bold;
 	text-align: left;
 	font-size: 18px;
@@ -841,10 +874,15 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	width:345px;
 }
 
+.blocPromo h3 {
+	margin:0;
+}
+
 .blocPromo h3 a, .blocPromo h3 a:visited {
 	color:#515053;
 	display:block;
 	padding: 5px 0 7px 10px;
+	margin:0;
 	height: 20px;
 	background-color: #bbbdbf;
 }
@@ -881,7 +919,8 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	display:block;
 	float:left;
 	background-color:#fff;
-	overflow: hidden;	
+	overflow: hidden;
+	text-align:center;
 }
 
 .blocPromo .contenu a.image:hover {
@@ -907,7 +946,7 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 }
 
 .blocPromo .contenu .description .prixProduit {
-	color:#00529a;
+	color:#ff0000;
 	font-weight:bold;
 	text-align: left;
 	font-size: 18px;
@@ -996,10 +1035,15 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	width:710px;
 }
 
+.petitBlocProduit h3 {
+	margin:0;
+}
+
 .petitBlocProduit h3 a, .petitBlocProduit h3 a:visited {
 	color:#515053;
 	display:block;
 	padding: 5px 0 7px 10px;
+	margin:0;
 	height: 20px;
 	background-color: #bbbdbf;
 }
@@ -1142,6 +1186,7 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	margin: 10px 0 0 0;
 	padding:0;
 	list-style:none;
+	text-align:center;
 	border:none;
 	width:344px;
 	float: left;
@@ -1257,6 +1302,7 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	color:#515053;
 	display:block;
 	padding: 5px 0 7px 10px;
+	margin:0;
 	height: 20px;
 	background-color: #bbbdbf;
 }
@@ -1273,23 +1319,23 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 .blocProduit .contenusAssocies ul li, .blocProduit .telechargements ul li {
 	margin: 0;
 	padding:0;
-	border-top:solid 1px #FFF;
 	font-size:12px;
 	font-weight:bold;
 }
 
 .blocProduit .contenusAssocies ul li a, .blocProduit .telechargements ul li a,
 .blocProduit .contenusAssocies ul li a:visited, .blocProduit .telechargements ul li a:visited {
-	color:#00529a;
+	border-top:solid 1px #FFF;
+	color:#fff;
 	display:block;
-	background-color:#8fbce3;
+	background-color:#0081ca;
 	padding:3px 0 3px 10px;
 }
 
 .blocProduit .contenusAssocies ul li a:hover, .blocProduit .telechargements ul li a:hover {
 	color:#fff;
 	text-decoration:none;
-	background-color:#0081ca;
+	background-color:#00529a;
 }
 
 /* Personnalisation du zoom de la fiche produit (produit.html)
@@ -1374,62 +1420,69 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 /* Pied de page
 -------------------------------------------------------- */
 
+/* Pied de page
+-------------------------------------------------------- */
+
 #footer {
 	float: left;
 	width: 990px;
-	border-top: 1px solid #d2d3d4;
-	border-bottom: 1px solid #d2d3d4;
-	background-color:#eceded;
-	margin: 20px 0 0 0;
-	padding:0;
-}
+	color: #9a9b9d;
+	font-size: 11px;
+	font-weight:normal;
+	padding:5px 0 20px 0;
+	background-color:#e7e8e9;
+	border-top:solid 1px #d8d9da;
+	border-bottom:solid 1px #d8d9da;
+	}
 	
-#footer ul {
-	color:#9a9b9d;
+#footer .colonne {
 	float: left;
 	width: 310px;
-	padding:10px;
 	margin:0;
-	list-style-position: inside;
-}
-
-#footer ul li {
-	padding:0;
-	margin:0;
-	text-indent:5px;
-	clear:both;
-}
-
-#footer ul li a, #footer ul li a:visited {
-	color:#9a9b9d;
-	display:block;
-	border-bottom:solid 1px #bbbdbf;
-	font-weight:bold;
-	padding:2px 0;
-}
-
-#footer ul li ul {
-	padding:0;
-	margin:0;
-}
-
-#footer ul li ul li {
-	padding:0;
-	margin:0;
-}
-
-#footer ul li ul li a, #footer ul li ul li a:visited {
-	font-size:11px;
-
-}
-
-#footer ul li a:hover {
-	color:#737376;
-	background-color:#d8d9da;
-	text-decoration:none;
-
-}
+	padding:0 10px;
+	}
 	
+#footer .colonne p {
+	font-size:11px;
+	margin:0;
+	padding:0;
+	}
+	
+#footer h4 {
+	font-size:11px;
+	color: #626164;
+	background-image:none;
+	padding:0;
+	margin:3px 0 0 0;
+	}
+			
+#footer a, #footer a:visited  {
+	font-weight:normal;
+	color: #9a9b9d;
+	text-decoration: none;
+	padding:0 5px;
+	border-right:solid 1px #9a9b9d;
+}
+
+#footer h4 a, #footer h4 a:visited {
+	font-weight:bold;
+	border:none;
+	}
+
+#footer a:hover {
+	text-decoration: underline;
+}
+
+#footer .colonne p.validator {
+	float:left;
+	margin:5px 0 0 0;
+	}
+	
+#footer .colonne p.validator a, #footer .colonne p.validator a:visited {
+	border:none;
+	}
+	
+
 
 /* formulaire
 -------------------- */
@@ -1446,6 +1499,9 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	overflow: hidden;
 	font-size: 12px;
 	border-bottom:1px solid #ccc;
+	clear:both;
+	float:left;
+	width:100%;
 }
 
 #contenu form p.derniereLigne {
@@ -1464,17 +1520,17 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	width: 180px;
 }
 
-#contenu form p label.mailPerdu {
+#contenu form p label.petit {
 	width: 80px;
 }
 
-#contenu form p input, #contenu form p select {
+#contenu form p input, #contenu form p select, #contenu form p textarea {
 	float:left;
 	margin: 0;
 	width: 190px;
 	padding: 3px;
 	border:solid 1px #a9abad;
-	font-family: "Trebuchet MS", Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
 	color:#626164;
 	font-weight:bold;
@@ -1484,10 +1540,15 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 #contenu form p input.codeDeReduction {
 	width: 50px;
 	background-color:#fff;
+	padding: 4px;
 }
 
 #contenu form p select {
 	width: 198px;
+}
+
+#contenu form p textarea {
+	width: 300px;
 }
 
 #contenu form p input.radio, #contenu form p input.checkBox {
@@ -1507,7 +1568,8 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	font-weight:bold;
 }
 	
-#contenu form button.bouton { 
+#contenu form button.bouton,
+#contenu form button.boutonMemeLigneQuInput { 
     display:-moz-inline-box; 
     display:inline-block; 
     margin:0 0 0 300px; 
@@ -1521,64 +1583,28 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	font-size:13px;
 	font-weight:bold;
 }
+
+#contenu form button.boutonMemeLigneQuInput { 
+    margin:0 0 0 10px; 
+}
 	
-#contenu form button.bouton span { 
+#contenu form button.bouton span,
+#contenu form button.boutonMemeLigneQuInput span { 
     position:relative; 
     float:left; 
     padding:0 0 0 8px;        /* Largeur du côté gauche */ 
 	margin:0;
     vertical-align:middle;
-	background-color:#00529a;
-	border:solid 1px #a9abad;
+	background-color:#0081ca;
 }
 
-#contenu form button.bouton span span { 
-    padding:0 8px 0 0;        /* Largeur du côté droit */ 
-    border:none;
-}
-
-#contenu form button.bouton span span span {
-	padding:0;
+#contenu form button.bouton span span,
+#contenu form button.boutonMemeLigneQuInput span span {
+    padding:0 8px 0 0;/* Largeur du côté droit */ 
 	color:#FFF;
 	height:24px;
 	line-height:24px; /* Alignement vertical du texte */ 
-}
-
-#contenu form button.boutonGris { 
-    display:-moz-inline-box; 
-    display:inline-block; 
-    margin:0 0 0 10px; 
-    padding:0; 
-    white-space:nowrap; 
-    text-align:center; 
-    vertical-align:middle; 
-    cursor:pointer; 
-	border:none;
-    background:none;
-	font-size:12px;
-	font-weight:bold;
-}
-	
-#contenu form button.boutonGris span { 
-    position:relative; 
-    float:left; 
-    padding:0 0 0 5px;        /* Largeur du côté gauche */ 
-	margin:0;
-    vertical-align:middle;
-	background-color:#a9abad;
-	border:solid 1px #a9abad;
-}
-
-#contenu form button.boutonGris span span { 
-    padding:0 5px 0 0;        /* Largeur du côté droit */ 
-    border:none;
-}
-
-#contenu form button.boutonGris span span span {
-	padding:0;
-	color:#FFF;
-	height:20px;
-	line-height:20px; /* Alignement vertical du texte */ 
+	border: none;
 }
 
 .obligatoire {
@@ -1653,25 +1679,22 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
     float:left; 
     padding:0 0 0 7px; 
     vertical-align:middle;
-    background-color:#00529a;
+    background-color:#0081ca;
 } 
+
 .queFaire a.bouton span span, 
-.queFaire button.bouton span span { 
-    padding:0 7px 0 0; 
-    background-color:#00529a;
-} 
-.queFaire a.bouton span span span, 
-.queFaire button.bouton span span span {
+.queFaire button.bouton span span {
 	color:#fff;
     height:24px; 
     padding:0; 
+    padding:0 7px 0 0; 
     line-height:22px; 
-    background-color:#00529a;
+    background-color:#0081ca;
 } 
  
-.queFaire a.bouton:hover span span span, 
-.queFaire button.bouton:hover span span span { 
-	text-decoration:underline;
+.queFaire a.bouton:hover span, .queFaire a.bouton:hover span span, 
+.queFaire button.bouton:hover span, .queFaire button.bouton:hover span span { 
+    background-color:#00529a;
 } 
  
 /*  général
@@ -1688,27 +1711,28 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	display:none;
 }
 
-#accueil, #menuCatalogue, #menuContenu {
+#accueil, #menuCatalogue {
 	float: left;
 	padding: 0;
 	margin:0 0 18px 0;
 	width:100%;
 }
 
-#accueil ul, #menuCatalogue ul, #menuContenu ul {
+#accueil ul, #menuCatalogue ul {
 	padding: 0;
 	margin:0;
-	list-style: none;
+	list-style:none;
+	color:#FFFFFF;
 }
 
-#accueil ul li, #menuCatalogue ul li, #menuContenu ul li {
+#accueil ul li, #menuCatalogue ul li {
 	font-size:14px;
 	font-weight:bold;
 	padding:0;
 	margin:0 0 1px 0;
 }
 
-#accueil ul li a, #menuCatalogue ul li a, #menuContenu ul li a  {
+#accueil ul li a, #menuCatalogue ul li a  {
 	text-decoration:none;
 	color:#fff;
 	border-left:solid 3px #0068b2;
@@ -1717,28 +1741,29 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	padding:5px 0 5px 10px;
 }
 
-#accueil ul li a:hover, #menuCatalogue ul li a:hover, #menuContenu ul li a:hover {
+#accueil ul li a:hover, #menuCatalogue ul li a:hover {
 	text-decoration:none;
 	background-color:#00529a;
 	color:#FFF;
 	border-left:solid 3px #02407a;
 }
 
-#menuCatalogue ul li ul, #menuContenu ul li ul {
+#menuCatalogue ul li ul {
 }
 
-#menuCatalogue ul li ul li, #menuContenu ul li ul li {
+#menuCatalogue ul li ul li {
 	font-size:12px;
 	margin:1px 0 0 0;
+	text-indent:8px;
 }
 
-#menuCatalogue ul li ul li a, #menuContenu ul li ul li a {
+#menuCatalogue ul li ul li a {
 	border-left:solid 3px #7ca3c5;
 	background-color:#8fbce3;
 }
 
 
-#menuCatalogue ul li a.selection, #menuContenu ul li a.selection {
+#menuCatalogue ul li a.selection {
 	color:#fff;
 	background-color:#00529a;
 	border-left:solid 3px #02407a;
@@ -1747,7 +1772,7 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 /* Recherche
 -------------------------------------------------------- */
 
-#recherche {
+#moteurDeRecherche {
 	margin: 0 0 18px 0;
 	padding:10px;
 	width: 177px;
@@ -1757,24 +1782,24 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	border-left:solid 3px #0068b2;
 }
 
-#recherche form {
+#moteurDeRecherche form {
 	margin: 0;
 	padding:0;
 	border:none;
 }
 
-#recherche form p {
+#moteurDeRecherche form p {
 	margin: 0;
 	padding:0;
 	float:right;
 }
 
-#recherche form input {
+#moteurDeRecherche form input {
 	margin: 0;
 	padding:2px;
 	width:120px;
 	border:solid 1px #00529a;
-	font-family: "Trebuchet MS", Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
 	font-weight:bold;
 	background-color:#fff;
@@ -1782,7 +1807,7 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	float:left;
 }
 
-#recherche form button.bouton { 
+#moteurDeRecherche form button.bouton { 
     display:-moz-inline-box; 
     display:inline-block; 
     margin:0; 
@@ -1797,7 +1822,7 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	font-weight:bold;
 }
 
-#recherche form button.bouton span { 
+#moteurDeRecherche form button.bouton span { 
     position:relative; 
     float:left; 
     padding:0 0 0 8px;        /* Largeur du côté gauche */ 
@@ -1807,7 +1832,7 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 	border:solid 1px #fff;
 }
 
-#recherche form button.bouton span span {
+#moteurDeRecherche form button.bouton span span {
 	padding:0 8px 0 0;
 	border:none;
 	color:#FFF;
@@ -1818,20 +1843,20 @@ ul#langues li a:hover.spa, ul#langues li a.spaSelection {
 /* Moyens de paiement
 -------------------------------------------------------- */
 
-.paiement {
+.moyensDePaiement {
 	float:left;
 	margin: 0;
 	padding:0 10px;
 	width:980px;
 }
 
-.paiement h4 {
+.moyensDePaiement h4 {
 	margin:32px 0 0 0;
 	float:left;
  
 }
 
-.paiement ul, .paiement ul li {
+.moyensDePaiement ul, .moyensDePaiement ul li {
 	list-style:none;
 	margin: 0;
 	padding:0;

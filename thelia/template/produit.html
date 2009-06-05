@@ -1,13 +1,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<link href="styles.css" rel="stylesheet" type="text/css" />
+	#INCLURE "meta.html"
+
 	<link rel="stylesheet" href="js/jquery.superbox.css" type="text/css" media="all" />
 	<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery.superbox-min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$.superbox.settings = {
+				overlayOpacity: .8, 
 				closeTxt: "Fermer",
 				loadTxt: "Chargement...",
 				nextTxt: "Image suivante",
@@ -16,7 +18,9 @@
 			$.superbox();
 		});
 	</script>
-	#INCLURE "meta.html"
+    
+    
+    
 
 </head>
 <body>
@@ -37,7 +41,6 @@
 			</THELIA_rubcour>
 			#PRODUIT_NOM 
 		</div>
-						
 		#INCLURE"menu.html"
 		<div id="contenu">
             <div class="blocProduit">
@@ -53,17 +56,15 @@
                     </THELIA_img>
 					<T_vignette>
                     <ul class="vignettes">
-                    	<THELIA_IMAGES_VIGNETTE type="IMAGE" produit="#ID" debut="2" largeur="81">
+                    	<THELIA_vignette type="IMAGE" produit="#ID" debut="2" hauteur="81">
 						<li>
 							<THELIA_ZOOM_VIGNETTE type="IMAGE"  num="1" id="#ID" largeur="500">
                             <a href="#IMAGE" rel="superbox[gallery][my_gallery]">
 							</THELIA_ZOOM_VIGNETTE>
-                            <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0";>
-                            <tr><td align="center" valign="middle"><img src="#IMAGE" alt="#PRODTITRE" title="#PRODTITRE"/></td></tr>
-                            </table>
+                            <img src="#IMAGE" alt="#PRODTITRE" title="#PRODTITRE"/>
 							</a>
 						</li>
-                    	</THELIA_IMAGES_VIGNETTE>
+                    	</THELIA_vignette>
                     </ul>
 					</T_vignette>
 					<//T_vignette>
@@ -76,75 +77,54 @@
                 	<p><a class="acheter" href="#PANIER"><span><span>Ajouter au panier</span></span></a></p>
                 	</THELIA_stock>
 				</div>
-
-<!-- Description plus compète du produit -->					
-
-                <div class="description">
-                	#DESCRIPTION
-                </div>
-                
-<!-- Boucle conditionnelle si il y a des documents à télécharger (.pdf, .doc, ...) -->
-
+                <div class="description">#DESCRIPTION</div>
 				<T_DOCUMENT>
 				<div class="telechargements">				
 					<h3>T&eacute;l&eacute;chargement(s)</h3>
 					<ul>
-                	<THELIA_DOCUMENT type="DOCUMENT" produit="#PRODUIT_ID">
-                	<li>
-					<a href="#FICHIER">#TITRE</a>
-					</li>
-					</THELIA_DOCUMENT>
+                		<THELIA_DOCUMENT type="DOCUMENT" produit="#PRODUIT_ID">
+                		<li><a href="#FICHIER">#TITRE</a></li>
+						</THELIA_DOCUMENT>
 					</ul>
 				</div>
 				</T_DOCUMENT>
 				<//T_DOCUMENT>
-				
-<!-- Boucle conditionnelle si le produit possède des contenus associés -->
-				
             	<T_CONTENU>
 				<div class="contenusAssocies">				
             		<h3>En savoir +</h3>
             		<ul>
-            		<THELIA_PRODUITSACC type="CONTENUASSOC" objet="#PRODUIT_ID" num="1">
-            		<THELIA_CONTENU type="CONTENU" aleatoire="1" id="#CONTENU">
-            		<li><a href="#URL">#TITRE</a></li>
-            		</THELIA_CONTENU>
-            		</THELIA_PRODUITSACC>
+            			<THELIA_PRODUITSACC type="CONTENUASSOC" objet="#PRODUIT_ID" num="1">
+            			<THELIA_CONTENU type="CONTENU" aleatoire="1" id="#CONTENU">
+            			<li><a href="#URL">#TITRE</a></li>
+            			</THELIA_CONTENU>
+            			</THELIA_PRODUITSACC>
             		</ul>
 				</div>
 				</T_CONTENU>
             	<//T_CONTENU>
 				</THELIA_PROD>
 			</div>
-
-<!-- Boucle conditionnelle si le produit possède des produits associés -->					
-                
 			<T_ACC>
             <div class="blocMozaique">
                 <h3>Nous vous proposons &eacute;galement</h3>
                 <div class="contenu">
 					<ul class="image">			
-                	<THELIA_PRODUITS_ASSOC type="ACCESSOIRE" aleatoire="1" produit="#PRODUIT_ID" num="8">
-                    <li>
-                    	<THELIA_LIEN_PROD type="PRODUIT" id="#ACCESSOIRE">
-                    	<a href="#URL">
-                    	</THELIA_LIEN_PROD>
-                    	<THELIA_IMAGE type="IMAGE" num="1" produit="#ACCESSOIRE" largeur="81">
-                    	<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
-                    	<tr><td align="center" valign="middle"><img src="#IMAGE" alt="#TITRE" title="#TITRE"/></td></tr>
-                    	</table>
-                    	</THELIA_IMAGE>
-                    	</a>
-                    </li>
-              		</THELIA_PRODUITS_ASSOC>
+                		<THELIA_ACC type="ACCESSOIRE" aleatoire="1" produit="#PRODUIT_ID" num="8">
+                    	<li>
+                            <THELIA_LIEN_PROD type="PRODUIT" id="#ACCESSOIRE">
+                            <a href="#URL">
+                            </THELIA_LIEN_PROD>
+                            <THELIA_IMAGE type="IMAGE" num="1" produit="#ACCESSOIRE" hauteur="81">
+							<img src="#IMAGE" alt="#TITRE" title="#TITRE"/>
+                            </THELIA_IMAGE>
+                            </a>
+                    	</li>
+              			</THELIA_ACC>
                     </ul>
                 </div>
             </div>   
 			</T_ACC>
 			<//T_ACC>                         
-
-<!--<a href="rubrique.php?id_rubrique=#RUBRIQUE_ID&page=#PAGE_PREC">Page précédente</a>-->
-
 		</div>
 		#INCLURE "pied.html"
 		#INCLURE "signature.html"

@@ -36,14 +36,14 @@ see http://www.gnu.org/copyleft/lesser.html
 
 ////////////////  GLOBAL TOOPTIP CONFIGURATION  /////////////////////
 var ttAbove       = false;        // tooltip above mousepointer? Alternative: true
-var ttBgColor     = "#fee1cc";
+var ttBgColor     = "#0081ca";
 var ttBgImg       = "";           // path to background image;
-var ttBorderColor = "#fb6700";
+var ttBorderColor = "#ffffff";
 var ttBorderWidth = 1;
 var ttClickClose  = false;
 var ttDelay       = 500;          // time span until tooltip shows up [milliseconds]
-var ttFontColor   = "#515053";
-var ttFontFace    = "Trebuchet MS, Verdana, Geneva, Arial, Helvetica, sans-serif";
+var ttFontColor   = "#ffffff";
+var ttFontFace    = "Arial, Helvetica, sans-serif;";
 var ttFontSize    = "11px";
 var ttFontWeight  = "bold";     // alternative: "bold";
 var ttLeft        = false;        // tooltip on the left of the mouse? Alternative: true

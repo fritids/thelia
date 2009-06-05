@@ -3,7 +3,6 @@
 <head>
 	#INCLURE "meta.html"
 	
-	<link href="styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
@@ -31,11 +30,14 @@
 			Votre commande sera valid&eacute;e par nos services &agrave; r&eacute;ception de votre paiement.<br /><br />
 			Ecrire ici les infos sur le r&eacute;glement par ch&egrave;que ...<br /><br />
 			<THELIA_cmd type="COMMANDE" ref="#COMMANDE_REF">	
-			N&deg; DE COMMANDE : #REF <br />
-			DATE : #DATE<br />
-			TOTAL : #TOTCMDPORT &euro;<br />	
+			<h3>N&deg; DE COMMANDE : #REF</h3>
+			<h4>DATE : #DATE</h4>
+			<h4>TOTAL : #TOTCMDPORT &euro;</h4>
 			</THELIA_cmd>
-			<a href="index.php"><img src="_gfx/precedent.png" /></a>
+            <div class="queFaire">
+				<a class="bouton" href="index.php"><span><span>Accueil boutique</span></span></a>
+			</div>            
+            
 		</div>
 		#INCLURE "pied.html"
 	</div>

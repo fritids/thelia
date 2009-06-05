@@ -3,20 +3,14 @@
 <head>
 	#INCLURE "meta.html"
 
-	<link href="styles.css" rel="stylesheet" type="text/css" />	
 </head>
 <body>
-
-<!-- wrapper & subwrapper -->
 	
 <div id="wrapper">
 	<div id="subwrapper">
 		#INCLURE "entete.html"
 		<div id="chemin">Vous &ecirc;tes ici :<a href="index.php">Accueil boutique</a> / Contenu de mon panier</div>
 		#INCLURE"menu.html"
-        
-<!-- contenu -->		
-
 		<div id="contenu">
 			<div id="etapesDeCommande">
 				<ul>
@@ -31,10 +25,10 @@
 			<table width="100%" border="0" cellpadding="5" cellspacing="0">
                 <tr>
                     <th colspan="2">Contenu de mon panier</th>
-                    <th>Prix unitaire</th>
-                    <th>Quantit&eacute;</th>
-                    <th>Total TTC</th>
-                    <th align="center">Vider</th>
+                    <th align="center">Prix unitaire</th>
+                  <th align="center">Quantit&eacute;</th>
+                  <th align="center">Total TTC</th>
+                  <th align="center">Vider</th>
                 </tr>
 				<THELIA_CONTENU_PANIER type="PANIER">
 				<tr>
@@ -44,9 +38,9 @@
 						</THELIA_IMAGE>
 					</td>
                     <td class="ligne">#TITRE </td>
-                    <td class="ligne">#PRIXU &euro;</td>
-					<td class="ligne">
-                      <form action="#URLPANIER" method="post" name="formpanier#ARTICLE" id="formpanier#ARTICLE">
+                    <td align="center" class="ligne">#PRIXU &euro;</td>
+		    <td align="center" class="ligne">
+            <form action="#URLPANIER" method="post" name="formpanier#ARTICLE" id="formpanier#ARTICLE">
                       <input type="hidden" name="article" value="#ARTICLE" />
                       <input type="hidden" name="action" value="modifier" />
                       <select name="quantite" size="1" onchange="document.formpanier#ARTICLE.submit()">
@@ -54,10 +48,10 @@
                       <option value="#NUM" #SELECTED>#NUM</option>
                       </THELIA_quantite>
                       </select>
-                      </form>
+                </form>
 					</td>
-					<td class="ligne">#TOTAL &euro;</td>
-					<td td class="ligne" align="center"><a href="#SUPPRURL">Supprimer</a></td>
+				  <td align="center" class="ligne">#TOTAL &euro;</td>
+				  <td td class="ligne" align="center"><a href="#SUPPRURL">Supprimer</a></td>
 				</tr>
                 </THELIA_CONTENU_PANIER>
                 <tr>
@@ -67,20 +61,19 @@
 				</tr>
 			</table>
             <div class="queFaire">
-				<a class="bouton" href="index.php"><span><span><span>Retour &agrave; la boutique</span></span></span></a>
-				<a class="bouton" href="adresse.php"><span><span><span>Finaliser ma commande</span></span></span></a>
+				<a class="bouton" href="index.php"><span><span>Retour &agrave; la boutique</span></span></a>
+				<a class="bouton" href="adresse.php"><span><span>Finaliser ma commande</span></span></a>
 			</div>
 			</T_CONTENU_PANIER>
-				
 			<h4>::paniervide2::</h4>
             <div class="queFaire">
-				<a class="bouton" href="index.php"><span><span><span>Retour &agrave; la boutique</span></span></span></a>
+				<a class="bouton" href="index.php"><span><span>Retour &agrave; la boutique</span></span></a>
 			</div>		
 			<//T_CONTENU_PANIER>
 		</div>
 		#INCLURE "pied.html"
+		#INCLURE "signature.html"
 	</div>
-	#INCLURE "signature.html"
 </div>
 </body>
 </html>

@@ -3,8 +3,6 @@
 	<head>
 	#INCLURE "meta.html"
 
-<link href="styles.css" rel="stylesheet" type="text/css" />
-
 </head>
 <body>
 	
@@ -13,27 +11,25 @@
 	#INCLURE "entete.html"
 		<div id="chemin">Vous &ecirc;tes ici :<a href="index.php">Accueil boutique</a> / R&eacute;capitulatif de ma commande</div>
 		#INCLURE"menu.html"
-		 <div id="contenu">
+		<div id="contenu">
 			<div id="etapesDeCommande">
 				<ul>
-					<li><span>1</span>Panier</li>
-					<li><span>2</span>Facturation et livraison</li>
-					<li class="selection"><span class="chiffreSelection">3</span>Je v&eacute;rifie ma commande</li>
-					<li><span>4</span>Paiement s&eacute;curis&eacute;</li>
+                    <li><span>1</span>Panier</li>
+                    <li><span>2</span>Facturation et livraison</li>
+                    <li class="selection"><span class="chiffreSelection">3</span>Je v&eacute;rifie ma commande</li>
+                    <li><span>4</span>Paiement s&eacute;curis&eacute;</li>
 				</ul>
 			</div>		 
-		 
 			<h2>R&eacute;capitulatif de ma commande </h2>
-            
             <form action="commande.php" id="formulaire">
             <input type="hidden" name="action" value="codepromo" />
             <table width="100%" border="0" cellspacing="0" cellpadding="5">
             	<tr>
             		<th colspan="2">Nom de l'article</th>
-            		<th>Prix unitaire </th>
-            		<th>Quantit&eacute;</th>
-            		<th>Total</th>
-            	</tr>
+            		<th align="center">Prix unitaire </th>
+           		  <th align="center">Quantit&eacute;</th>
+           		  <th align="center">Total</th>
+           	  </tr>
             	<THELIA_panier type="PANIER">
             	<tr>
                     <td class="ligne">
@@ -42,30 +38,30 @@
                         </THELIA_IMAGE>
                     </td>
                     <td class="ligne">#TITRE - #REF</td>
-                    <td class="ligne">#PRIXU &euro;</td>
-                    <td class="ligne">#QUANTITE</td>
-                    <td class="ligne">#TOTAL &euro;</td>
+                    <td align="center" class="ligne">#PRIXU &euro;</td>
+                  <td align="center" class="ligne">#QUANTITE</td>
+                  <td align="center" class="ligne">#TOTAL &euro;</td>
             	</tr>
             </THELIA_panier>
             <tr>
             	<th colspan="4">Frais de livraison </th>
-            	<th>#PANIER_PORT &euro;</th>
+            	<th align="center">#PANIER_PORT &euro;</th>
             </tr>
             <tr>
             	<td colspan="4">Remise </td>
-            	<td>#PANIER_REMISE &euro;</td>
+            	<td align="center">#PANIER_REMISE &euro;</td>
             </tr>
             <tr>
 				<th colspan="5">
 				<p class="derniereLigne"><label class="codeDeReduction">Saisissez un code de r&eacute;duction</label>
 				<input name="code" type="text" class="codeDeReduction"/>
-				<button type="submit" class="boutonGris"><span><span><span>OK</span></span></span></button>
+				<button type="submit" class="boutonMemeLigneQuInput"><span><span>OK</span></span></button>
 				</p>
 				</th>
             </tr>            
             <tr>
             	<th colspan="4">TOTAL</th>
-            	<th class="total">#PANIER_TOTPORT &euro;</th>
+            	<th align="center" class="total">#PANIER_TOTPORT &euro;</th>
             </tr>
             </table>
             </form>
@@ -81,21 +77,22 @@
             		</THELIA_pays>
             		</THELIA_adrcours>
 				</div>
-				<ul><li><a href="#URLPREC">Modifier cette adresse</a></li></ul>
+				<a href="#URLPREC" class="modifierOuAjouter">Modifier cette adresse</a>
 			</div>
 		</div>		  	
 		<div id="contenu">
 			<h2>Choisissez un mode de paiement : </h2>
-			<div class="choixReglement">
-				<THELIA_PAIEMENT type="PAIEMENT">
-				<h4><a href="#URLPAYER">#TITRE</a></h4>
-				<ul><li><a href="#URLPAYER">Je choisis ce mode de paiement</a></li></ul>
+			<div class="choixDuReglement">
+            	<ul>
+					<THELIA_PAIEMENT type="PAIEMENT">
+					<li><a href="#URLPAYER"><span class="modeDeReglement">#TITRE</span><span class="choisir">Je choisis ce mode de paiement</span></a></li>
 				</THELIA_PAIEMENT>
+                </ul>
 			</div>
 		</div>
 		#INCLURE "pied.html"
+		#INCLURE "signature.html"
 	</div>
-	#INCLURE "signature.html"
 </div>
 </body>
 </html>

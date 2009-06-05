@@ -3,107 +3,100 @@
 <head>
 	#INCLURE "meta.html"
 
-	<link href="styles.css" rel="stylesheet" type="text/css" />	
 </head>
 <body>
 	
 <div id="wrapper">
 	<div id="subwrapper">
 		#INCLURE "entete.html"
-		<div id="chemin">
-			Vous &ecirc;tes ici : <a href="index.php">Accueil boutique</a> / Mon compte : modifier mes informations
-		</div>
+		<div id="chemin">Vous &ecirc;tes ici : <a href="index.php">Accueil boutique</a> / Mon compte : modifier mes informations</div>
 		#INCLURE"menu.html"
 		<div id="contenu">
 			<h2>Mon compte : modifier mes informations </h2>
-			
 			<h3>Modifier mon mot de passe </h3>
-					
 			<form action="moncompte.php" method="post" name="modifier1" id="modifier1">
 			<input type="hidden" name="action" value="modifiercompte" />
-			<p>
-				<label for="motdepasse1">
-				Mon mot de passe #MOTDEPASSE[<span class="obligatoire">(Vérifiez votre mot de passe. 6 car mini)</span>]
-				</label>
-				<input name="motdepasse1" type="password"/>
-			</p>
-	  		<p>
-	    		<label for="motdepasse2">Confirmation du mot de passe</label>
-	    		<input  name="motdepasse2" type="password"/>
-	  		</p>
-			<p class="derniereLigne"><button type="submit" class="bouton"><span><span><span>Valider</span></span></span></button></p>
-			</form>
-				
+            <p>
+            <label for="motdepasse1">
+            Mon mot de passe #MOTDEPASSE[<span class="obligatoire">(Vérifiez votre mot de passe. 6 car mini)</span>]
+            </label>
+            <input name="motdepasse1" type="password"/>
+            </p>
+            <p>
+            <label for="motdepasse2">Confirmation du mot de passe</label>
+            <input  name="motdepasse2" type="password"/>
+            </p>
+            <p class="derniereLigne"><button type="submit" class="bouton"><span><span>Valider</span></span></button></p>
+            </form>
 			<h3>Mon compte : modifier mes informations</h3>
-				
-			<form action="compte_modifier.php" method="post" name="modifier2" id="modifier2">
-			<input type="hidden" name="action" value="modifiercompte" /> 
-			<p>
-				<label for="civilite">
-				Civilit&eacute; #RAISON[<span class="obligatoire">(obligatoire)</span>]
-				</label>
-				<select name="raison" size="1">
-				<option value="">Choisissez ...</option>
-				<option value="1" #CLIENT_RAISON1F>Madame</option>
-				<option value="2" #CLIENT_RAISON2F>Mademoiselle</option>
-				<option value="3" #CLIENT_RAISON3F>Monsieur</option>
-				</select>				
-			</p>
-			<p>
-				<label for="nom">Nom #NOM[<span class="obligatoire">(obligatoire)</span>]</label>
-				<input  type="text" name="nom"   value="#CLIENT_NOM"/>
-	  		</p>
-	  		<p>
-				<label for="prenom">Pr&eacute;nom#PRENOM[<span class="obligatoire">(obligatoire)</span>]</label>
-				<input  type="text" name="prenom"   value="#CLIENT_PRENOM"/>
-			</p>
-			<p>
-				<label for="adresse1">Adresse #ADRESSE1[<span class="obligatoire">(obligatoire)</span>]</label>
-				<input  type="text" name="adresse1"   value="#CLIENT_ADRESSE1"  />
-			</p>
-	  		<p>
-				<label for="adresse2">Compl&eacute;ment d'adresse </label>
-				<input  type="text" name="adresse2" value="#CLIENT_ADRESSE2" />
-			</p>
-			<p>
-				<label for="cpostal">Code postal #CPOSTAL[<span class="obligatoire">(obligatoire)</span>] </label>
-				<input  type="text" name="cpostal" value="#CLIENT_CPOSTAL" />
-			</p>
-			<p>
-				<label for="ville">Ville #VILLE[<span class="obligatoire">(obligatoire)</span>]</label>
-				<input  type="text" name="ville" value="#CLIENT_VILLE" />
-			</p>
-			<p>
-				<label for="pays">Pays #PAYS[<span class="obligatoire">(obligatoire)</span>]</label>
-				<select name="pays" size="1"  >
-				<option value="" selected="selected">Choisissez ...</option>
-	  			<THELIA_pays type="PAYS" zdefinie="1">           
-	  			<option value="#ID"  #SELECTED>#TITRE</option>
-				</THELIA_pays>
-				</select>
-			</p>
-			<p>
-				<label for="telfixe">T&eacute;l&eacute;phone fixe #TELFIXE[<span class="obligatoire">(obligatoire)</span>] </label>
-				<input  type="text" name="telfixe"   value="#CLIENT_TELFIXE" />
-			</p>
-			<p>
-				<label for="telport">T&eacute;l&eacute;phone portable </label>
-				<input  type="text" name="telport" value="#CLIENT_TELPORT" />
-			</p>
-			<p>
-				<label for="email1">Email#EMAIL[<span class="obligatoire">(V&eacute;rifiez votre E-Mail)</span>]</label>
-				<input  type="text" name="email1" value="#CLIENT_EMAIL" />
-			</p>
-			<p>
-				<label for="email2">Confirmation de votre e-mail </label>
-				<input  type="text" name="email2"    value="#CLIENT_EMAIL" />
-			</p>
-			<p class="derniereLigne"><button type="submit" class="bouton"><span><span><span>Valider</span></span></span></button></p>
-			</form>
+            <form action="compte_modifier.php" method="post" name="modifier2" id="modifier2">
+            <input type="hidden" name="action" value="modifiercompte" /> 
+            <p>
+            <label for="civilite">
+            Civilit&eacute; #RAISON[<span class="obligatoire">(obligatoire)</span>]
+            </label>
+            <select name="raison" size="1">
+            <option value="">Choisissez ...</option>
+            <option value="1" #CLIENT_RAISON1F>Madame</option>
+            <option value="2" #CLIENT_RAISON2F>Mademoiselle</option>
+            <option value="3" #CLIENT_RAISON3F>Monsieur</option>
+            </select>				
+            </p>
+            <p>
+            <label for="nom">Nom #NOM[<span class="obligatoire">(obligatoire)</span>]</label>
+            <input  type="text" name="nom"   value="#CLIENT_NOM"/>
+            </p>
+            <p>
+            <label for="prenom">Pr&eacute;nom#PRENOM[<span class="obligatoire">(obligatoire)</span>]</label>
+            <input  type="text" name="prenom"   value="#CLIENT_PRENOM"/>
+            </p>
+            <p>
+            <label for="adresse1">Adresse #ADRESSE1[<span class="obligatoire">(obligatoire)</span>]</label>
+            <input  type="text" name="adresse1"   value="#CLIENT_ADRESSE1"  />
+            </p>
+            <p>
+            <label for="adresse2">Compl&eacute;ment d'adresse </label>
+            <input  type="text" name="adresse2" value="#CLIENT_ADRESSE2" />
+            </p>
+            <p>
+            <label for="cpostal">Code postal #CPOSTAL[<span class="obligatoire">(obligatoire)</span>] </label>
+            <input  type="text" name="cpostal" value="#CLIENT_CPOSTAL" />
+            </p>
+            <p>
+            <label for="ville">Ville #VILLE[<span class="obligatoire">(obligatoire)</span>]</label>
+            <input  type="text" name="ville" value="#CLIENT_VILLE" />
+            </p>
+            <p>
+            <label for="pays">Pays #PAYS[<span class="obligatoire">(obligatoire)</span>]</label>
+            <select name="pays" size="1"  >
+            <option value="" selected="selected">Choisissez ...</option>
+            <THELIA_pays type="PAYS" zdefinie="1">           
+            <option value="#ID"  #SELECTED>#TITRE</option>
+            </THELIA_pays>
+            </select>
+            </p>
+            <p>
+            <label for="telfixe">T&eacute;l&eacute;phone fixe #TELFIXE[<span class="obligatoire">(obligatoire)</span>] </label>
+            <input  type="text" name="telfixe"   value="#CLIENT_TELFIXE" />
+            </p>
+            <p>
+            <label for="telport">T&eacute;l&eacute;phone portable </label>
+            <input  type="text" name="telport" value="#CLIENT_TELPORT" />
+            </p>
+            <p>
+            <label for="email1">Email#EMAIL[<span class="obligatoire">(V&eacute;rifiez votre E-Mail)</span>]</label>
+            <input  type="text" name="email1" value="#CLIENT_EMAIL" />
+            </p>
+            <p>
+            <label for="email2">Confirmation de votre e-mail </label>
+            <input  type="text" name="email2"    value="#CLIENT_EMAIL" />
+            </p>
+            <p class="derniereLigne"><button type="submit" class="bouton"><span><span>Valider</span></span></button></p>
+            </form>
 		</div>
 		#INCLURE "pied.html"
+		#INCLURE "signature.html"
 	</div>
-	#INCLURE "signature.html"
 </div>
 </body>
 </html>

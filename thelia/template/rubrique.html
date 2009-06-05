@@ -2,43 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 #INCLURE "meta.html"
-<link href="styles.css" rel="stylesheet" type="text/css" />		
+
 </head>
 
 <body>
 
 <div id="wrapper">
 	<div id="subwrapper">
-	
 		#INCLURE "entete.html"
-		
-<!-- chemin-->	
-		
 		<div id="chemin">
-			Vous &ecirc;tes ici :<a href="index.php">Accueil boutique</a> / <THELIA_chemrub type="CHEMIN" rubrique="#RUBRIQUE_ID"><THELIA_rubdetchem type="RUBRIQUE" id="#ID"><a href="#URL">#TITRE</a> /</THELIA_rubdetchem></THELIA_chemrub>#RUBRIQUE_NOM	
-		</div>
-			
-<!-- contenu-->
-
+        	Vous &ecirc;tes ici :<a href="index.php">Accueil boutique</a> / <THELIA_chemrub type="CHEMIN" rubrique="#RUBRIQUE_ID"><THELIA_rubdetchem type="RUBRIQUE" id="#ID"><a href="#URL">#TITRE</a> /</THELIA_rubdetchem></THELIA_chemrub>#RUBRIQUE_NOM
+        </div>
 		#INCLURE"menu.html"
-		
         <div id="contenuPageRubrique">
 			<h2>#RUBRIQUE_NOM #FILTRE_egalite(#PRODUIT_NOUVEAUTE||1||Nouveaut&eacute;s) #FILTRE_egalite(#PRODUIT_PROMO||1||Promotions)</h2>
             <THELIA_PROD type="PRODUIT" rubrique="#RUBRIQUE_ID" nouveaute="#PRODUIT_NOUVEAUTE" promo="#PRODUIT_PROMO" classement="inverse" num="12">
 			<div class="petitBlocProduit">
                 <h3><a href="#URL">#TITRE</a></h3>
                 <div class="contenu">
-                        	<a href="#URL" class="image">
-                    		<THELIA_IMAGE type="IMAGE" num="1" produit="#ID"  largeur="140" >
-                    		<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="center" valign="middle">
-                                        <img src="#IMAGE" alt="#PRODTITRE" title="#PRODTITRE"/>
-                                    </td>
-                                </tr>
-							</table>
-                    		</THELIA_IMAGE>
-                    		</a>
+                    <a href="#URL" class="image">
+                    <THELIA_IMAGE type="IMAGE" num="1" produit="#ID"  largeur="140" >
+                                <img src="#IMAGE" alt="#PRODTITRE" title="#PRODTITRE"/>
+                    </THELIA_IMAGE>
+                    </a>
 					<div class="description">
 						<span class="chapo">#CHAPO</span>
                         <span class="prixProduit">#PROMO[#PRIX2 &euro; <span class="chapo">au lieu de #PRIX &euro;</span>][#PRIX]</span>
@@ -49,9 +35,10 @@
 			</div>
 			#FILTRE_modulo(#COMPT||2||<div class="separation"></div>)
             </THELIA_PROD>
-					
-<!-- Page suivante / Nombre de page / Page précdédente-->
-			
+
+
+	<T_CPAGE>
+
             <div id="pages">
 				<THELIA_PAGEPREC type="PAGE" rubrique="#RUBRIQUE_ID"  nouveaute="#PRODUIT_NOUVEAUTE" promo="#PRODUIT_PROMO" num="12" typeaff="0" avance="precedente">
 				<a href="rubrique.php?id_rubrique=#RUBRIQUE_ID&amp;nouveaute=#PRODUIT_NOUVEAUTE&amp;promo=#PRODUIT_PROMO&amp;page=#PAGE_PREC">Page pr&eacute;c&eacute;dente</a>
@@ -69,10 +56,18 @@
 				| <a href="rubrique.php?id_rubrique=#RUBRIQUE_ID&amp;page=#PAGE_SUIV&amp;nouveaute=#PRODUIT_NOUVEAUTE&amp;promo=#PRODUIT_PROMO">Page suivante</a>
 				</THELIA_PAGE_SUIVANTE>
 			</div>
+		</T_CPAGE>
+
+		<//T_CPAGE>
+
 		</div>
+
+
 		#INCLURE "pied.html"
 		#INCLURE "signature.html"
 	</div>
 </div>
+
+
 </body>
 </html>

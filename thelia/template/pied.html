@@ -1,39 +1,36 @@
-<!-- Pied de page -->
-
-    <div id="footer">
-    	
-        <ul>
-    		<THELIA_DOSSIER type="DOSSIER" classement="manuel" parent="0">
-    		<li><a href="#URL">#TITRE</a>
-    			<ul>
-    				<THELIA_SSDOSSIER type="DOSSIER" classement="manuel" parent="#ID">	
-    				<li><a href="#URL">#TITRE</a></li>
-    				</THELIA_SSDOSSIER>
-    			</ul>
-    		</li>
-    		</THELIA_DOSSIER>	
-    		<li><a href="rss.php?ref=#PRODUIT_REF&id_rubrique=#RUBRIQUE_ID">Fil d'information</a></li>
-    		<li><a href="contact.php">Contact</a></li>
-    	</ul>
-    
-    	<ul>
-    		<THELIA_MENU_RUBRIQUES type="RUBRIQUE" parent="0" classement="manuel">
-    		<li><a href="#URL">#TITRE</a>
-    			<T_BLOC_SOUS_MENU>
-    			<ul>
-    				<THELIA_BLOC_SOUS_MENU type="RUBRIQUE" parent="#ID">
-    				<li><a href="#URL">#TITRE</a></li>
-    				</THELIA_BLOC_SOUS_MENU>
-    			</ul>
-    			</T_BLOC_SOUS_MENU>
-				<//T_BLOC_SOUS_MENU>
-    		</li>
-    		</THELIA_MENU_RUBRIQUES>
-    	</ul>
-        
-    	<ul>
-    		<li><a href="http://www.scopika.com" target="_blank">Charte graphique : Scopika </a></li>
-    		<li><a href="http://www.octolys.fr" target="_blank">Int&eacute;gration technique : Octolys </a></li>
-    		<li><a href="http://www.thelia.fr" target="_blank">Propuls&eacute; par  Thelia </a></li>
-    	</ul>    
-	</div>
+    <!-- Pied de page -->
+        <div id="footer">
+            <div class="colonne">
+                <THELIA_MENU_DOSSIERS type="DOSSIER" classement="manuel" parent="0">
+                <h4><a href="#URL">#TITRE</a></h4>
+                <T_BLOC_SS_MENU_DOSSIERS>
+                <p><THELIA_BLOC_SS_MENU_DOSSIERS type="DOSSIER" classement="manuel" parent="#ID">
+				<a href="#URL">#TITRE</a>
+                </THELIA_BLOC_SS_MENU_DOSSIERS></p>
+                </T_BLOC_SS_MENU_DOSSIERS>
+                <//T_BLOC_SS_MENU_DOSSIERS>
+                </THELIA_MENU_DOSSIERS>	
+                <h4><a href="rss.php?ref=#PRODUIT_REF&amp;id_rubrique=#RUBRIQUE_ID">Fil d'information</a></h4>
+            </div>
+            <div class="colonne">
+                <THELIA_MENU_RUBRIQUES_PIED type="RUBRIQUE" parent="0" classement="manuel">
+                <h4><a href="#URL">#TITRE</a></h4>
+                <T_BLOC_SS_MENU_RUBRIQUES_PIED>
+                <p><THELIA_BLOC_SS_MENU_RUBRIQUES_PIED type="RUBRIQUE" parent="#ID">
+                <a href="#URL">#TITRE</a>
+                </THELIA_BLOC_SS_MENU_RUBRIQUES_PIED></p>
+                </T_BLOC_SS_MENU_RUBRIQUES_PIED>
+                <//T_BLOC_SS_MENU_RUBRIQUES_PIED>
+                </THELIA_MENU_RUBRIQUES_PIED>
+            </div>                        
+        	<div class="colonne">
+                <h4><a href="http://www.scopika.com" target="_blank">Charte graphique : Scopika </a></h4>
+                <h4><a href="http://www.octolys.fr" target="_blank">Int&eacute;gration technique : Octolys </a></h4>
+                <h4><a href="http://www.thelia.fr" target="_blank">Propuls&eacute; par  Thelia </a></h4>
+				<p class="validator">
+    				<a href="http://validator.w3.org/check?uri=referer"><img
+        			src="http://www.w3.org/Icons/valid-xhtml10-blue"
+        			alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
+  				</p>                 
+			</div>   
+		</div>

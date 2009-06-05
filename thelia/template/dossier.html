@@ -3,37 +3,31 @@
 	<head>
 	#INCLURE "meta.html"
 
-	<link href="styles.css" rel="stylesheet" type="text/css" />	
 </head>
 <body>
-
-<!-- wrapper & subwrapper -->
 	
 <div id="wrapper">
 	<div id="subwrapper">
-	
-	#INCLURE "entete.html"
-	
-	<div id="chemin">Vous &ecirc;tes ici :<a href="index.php">Accueil boutique</a> / #DOSSIER_NOM</div>
-		
-<!-- contenu -->
-	
+		#INCLURE "entete.html"
+		<div id="chemin">Vous &ecirc;tes ici :<a href="index.php">Accueil boutique</a> / #DOSSIER_NOM</div>
 		#INCLURE"menu.html"
-    <THELIA_DOSSIER type="DOSSIER"  id="#DOSSIER_ID">
+    	<THELIA_DOSSIER type="DOSSIER"  id="#DOSSIER_ID">
 		<div id="contenu">
-			<h2>#TITRE</h2>
-			<THELIA_CONTENU type="CONTENU"  dossier="#ID">
-			<h3>#TITRE</h3>
-            <THELIA_IMAGE type="IMAGE" num="1" contenu="#ID"  largeur="150" >
-            <img src="#IMAGE" alt="#TITRE" title="#TITRE"/>
-            </THELIA_IMAGE>
-			#DESCRIPTION			
-			</THELIA_CONTENU>
+        	<div id="dossier">
+                <h2>#TITRE</h2>
+                <THELIA_CONTENU type="CONTENU"  dossier="#ID">
+                <h3>#TITRE</h3>
+                <THELIA_IMAGE type="IMAGE" num="1" contenu="#ID"  largeur="150" >
+                <img src="#IMAGE" alt="#TITRE" title="#TITRE" class="image"/>
+                </THELIA_IMAGE>
+                #DESCRIPTION			
+                </THELIA_CONTENU>
+            </div>
 		</div>
 		</THELIA_DOSSIER>
 		#INCLURE "pied.html"
+		#INCLURE "signature.html"
 	</div>
-	#INCLURE "signature.html"
 </div>
 </body>
 </html>

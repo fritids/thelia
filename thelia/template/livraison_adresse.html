@@ -2,8 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 	#INCLURE "meta.html"
-
-<link href="styles.css" rel="stylesheet" type="text/css" />
 	
 </head>
 <body>
@@ -13,67 +11,66 @@
 	#INCLURE "entete.html"		
 		<div id="chemin">Vous &ecirc;tes ici :<a href="index.php">Accueil boutique</a> / Mon compte : Mes adresses de livraison</div>
 		#INCLURE"menu.html"
-		
 		<div id="contenu">
             <h2>Mon compte : Ajouter une adresse de livraison</h2>
-            <form action="livraison_adresse.php" method="post" name="nouveau" id="nouveau">
+            <form action="adresse.php" method="post" name="nouveau" id="nouveau">
             <input type="hidden" name="action" value="creerlivraison" />
             <p>
-				<label for="libelle">Libell&eacute; de l'adresse* </label>
-                <input name="libelle" type="text" />
-			</p>
-            <p>
-                <label for="raison">Civilit&eacute;*</label>
-                <select name="raison" size="1"  >
-                <option value="" selected="selected">Choisissez ...</option>
-                <option value="1">Madame</option>
-                <option value="2">Mademoiselle</option>
-                <option value="3">Monsieur</option>
-                </select>
+            <label for="libelle">Libell&eacute; de l'adresse* </label>
+            <input name="libelle" type="text" />
             </p>
             <p>
-                <label for="nom">Nom*</label>
-                <input type="text" name="nom" />			
+            <label for="raison">Civilit&eacute;*</label>
+            <select name="raison" size="1"  >
+            <option value="" selected="selected">Choisissez ...</option>
+            <option value="1">Madame</option>
+            <option value="2">Mademoiselle</option>
+            <option value="3">Monsieur</option>
+            </select>
             </p>
             <p>
-                <label for="prenom">Pr&eacute;nom*</label>
-                <input type="text" name="prenom" />		
+            <label for="nom">Nom*</label>
+            <input type="text" name="nom" />			
             </p>
             <p>
-                <label for="adresse1">Adresse*</label>
-                <input type="text" name="adresse1" />	
+            <label for="prenom">Pr&eacute;nom*</label>
+            <input type="text" name="prenom" />		
             </p>
             <p>
-                <label for="adresse2">Compl&eacute;ment d'adresse </label>
-                <input type="text" name="adresse2" />		
+            <label for="adresse1">Adresse*</label>
+            <input type="text" name="adresse1" />	
             </p>
             <p>
-                <label for="cpostal">Code postal*</label>
-                <input type="text" name="cpostal" />
+            <label for="adresse2">Compl&eacute;ment d'adresse </label>
+            <input type="text" name="adresse2" />		
             </p>
             <p>
-                <label for="ville">Ville*</label>
-                <input type="text" name="ville" />
+            <label for="cpostal">Code postal*</label>
+            <input type="text" name="cpostal" />
             </p>
             <p>
-                <label for="pays">Pays*</label>
-                <select name="pays" size="1"   >
-                <option value="" selected="selected">Choisissez ...</option>
-                <THELIA_pays type="PAYS" zdefinie="1">           
-                <option value="#ID">#TITRE</option>
-                </THELIA_pays>
-                </select>
+            <label for="ville">Ville*</label>
+            <input type="text" name="ville" />
             </p>
             <p>
-                <label for="tel">T&eacute;l&eacute;phone * </label>
-                <input type="text" name="tel" />
+            <label for="pays">Pays*</label>
+            <select name="pays" size="1"   >
+            <option value="" selected="selected">Choisissez ...</option>
+            <THELIA_pays type="PAYS" zdefinie="1">           
+            <option value="#ID">#TITRE</option>
+            </THELIA_pays>
+            </select>
             </p>
-            <p class="derniereLigne"><button type="submit" class="bouton"><span><span><span>Valider</span></span></span></button></p>
+            <p>
+            <label for="tel">T&eacute;l&eacute;phone * </label>
+            <input type="text" name="tel" />
+            </p>
+            <p class="derniereLigne"><button type="submit" class="bouton"><span><span>Valider</span></span></button></p>
             </form>
 		</div>
 		#INCLURE "pied.html"
+		#INCLURE "signature.html"
 	</div>
-	#INCLURE "signature.html"
 </div>
 </body>
 </html>

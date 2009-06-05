@@ -2,8 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 	#INCLURE "meta.html"
-
-<link href="styles.css" rel="stylesheet" type="text/css" />
 	
 </head>
 <body>
@@ -18,16 +16,20 @@
 			<h4>Inscrivez votre email pour recevoir votre mot de passe</h4>
 			<form action="mdpoublieok.php" method="post" name="formmdp" id="formmdp">
 			<input type="hidden" name="action" value="chmdp" />
-			<p class="derniereLigne">
-				<label class="mailPerdu">Votre e-mail <span class="obligatoire">Mail Inexistant</span></label>
-				<input name="email" type="text"/>
-			<button type="submit" class="boutonGris"><span><span><span>Valider</span></span></span></button></p>
-			</form>
+            <p class="derniereLigne">
+            <label class="petit">Votre e-mail <span class="obligatoire">Mail Inexistant</span></label>
+            <input name="email" type="text"/>
+            <button type="submit" class="boutonMemeLigneQuInput"><span><span>Valider</span></span></button>
+            </p>
+            </form>
 		</div>
 		#INCLURE"pied.html"
+		#INCLURE"signature.html"
 	</div>
-	#INCLURE"signature.html"
 </div>
 </body>
 </html>
+
+
+
 

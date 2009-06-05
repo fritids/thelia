@@ -1,8 +1,111 @@
-.toto{
-	padding-left: 10px;
+
+
+.texte_en_gras {
+	font-weight:bold;
 }
 
-.test {
-	color:#ff0000;
-	padding-left: 0;
+.italic {
+	font-style:italic;
+}
+
+/*////////////////////// TITRES /////////////////////////*/
+
+
+span.intertitre {
+	display:block;
+	font-size:14px;
+	font-weight:bold;
+	color:#515053;
+	padding:0;
+	margin:5px 0;
+}
+
+span.surtitre {
+	display:block;
+	color:#b7b8ba;
+	font-size:10px;
+	font-weight:normal;
+	padding:0;
+	margin:0;
+}
+
+p {
+	font-size:12px;
+	line-height:18px;
+	padding:0;
+	margin:0 0 15px 0;
+	text-align: justify;	
+}
+
+
+/*////////////////////// LISTE A PUCES /////////////////////////*/
+
+ul.listeAPuces {
+	margin: 0;
+	padding: 0;	
+}
+
+ul.listeAPuces li {
+	font-size:12px;
+	background-image:url(_gfx/puceGrise.gif);
+	background-repeat:no-repeat;
+	background-position: left 3px;
+	margin:0;
+	padding:0 0 0 15px;
+	display:block;
+}
+
+ul.listeAPuces li a {
+	color:#e01764;
+	text-decoration:none;
+	display:block;
+}
+
+ul.listeAPuces li a:hover {
+	text-decoration:underline;
+}
+
+/*////////////////////// LISTE NUMEROTEE /////////////////////////*/
+
+ol.listeNum {
+	list-style-type: decimal;
+	list-style-position: inside;
+	padding:0;
+	margin:0;
+}
+
+ol.listeNum li {
+	font-size:12px;
+	margin:0;
+	padding:0;
+}
+
+ol.listeNum li a {
+	color:#e01764;
+	text-decoration:none;
+	display:block;
+}
+
+ol.listeNum li a:hover {
+	text-decoration:underline;
+}
+
+/*////////////////////// GUILLEMETS /////////////////////////*/
+
+q.citation {
+	font-style:italic;
+}
+
+/*////////////////////// IMAGE ET LEGENDE /////////////////////////*/
+
+.image_article {
+	float:left;
+	padding: 0;
+	margin:10px 10px 10px 0;
+}
+
+.image_article img {
+	padding: 0;
+	margin:0;
+	border:solid 1px #88888b;
 }
