@@ -79,7 +79,7 @@
 ?>
 
 <div id="contenu_int"> 
-   <p align="left"><a href="accueil.php" class="lien04">Accueil</a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="configuration.php" class="lien04">Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="variable.php" class="lien04">Gestion des administrateurs</a></p>
+   <p align="left"><a href="accueil.php" class="lien04">Accueil</a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="configuration.php" class="lien04">Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="gestadm.php" class="lien04">Gestion des administrateurs</a></p>
 
 <!-- bloc dŽclinaisons / colonne gauche -->  
 <div id="bloc_description">
