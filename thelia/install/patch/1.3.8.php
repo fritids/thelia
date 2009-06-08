@@ -114,8 +114,9 @@
 	$query_cnx = "update commande set lang='1'";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 		
-	$query_cnx = "update variable set valeur='138' where nom='version'";
-	$resul_cnx = mysql_query($query_cnx, $cnx->link);
-
+	$version = new Variable();
+	$version->charger("version");
+	$version->valeur = "138";
+	$version->maj();
 	
 ?>

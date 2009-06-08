@@ -1,7 +1,11 @@
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Cnx.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../classes/Baseobj.class.php");
+
+	/* ------------------------------------------------------------------ */
 		
-	$query_cnx = "update variable set valeur='141' where nom='version'";
-	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+	$version = new Variable();
+	$version->charger("version");
+	$version->valeur = "140";
+	$version->maj();
 		
 ?>
