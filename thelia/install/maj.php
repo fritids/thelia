@@ -76,7 +76,7 @@
 						$vcur ++;
 						$patch = substr($vcur, 0, 1) . "." . substr($vcur, 1, 1) . "." . substr($vcur, 2, 1);
 						
-						if(file_exists("patch/") . $patch && ! $_SESSION['maj']){
+						if(file_exists("patch/") . $patch){
 							include_once("patch/" . $patch . ".php");
 				?>
 				
@@ -85,9 +85,6 @@
 						}
 						
 					}
-
-
-					$_SESSION['maj']="1";
 
 				?>
 				

@@ -24,11 +24,11 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Requete_1.3.6.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Requete_136.class.php");
 	
 	// Classe Baseobj
 	
-	class Baseobj extends Requete{
+	class Baseobj_136 extends Requete{
 
 		var $bddvars = array();
 

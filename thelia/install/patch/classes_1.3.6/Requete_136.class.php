@@ -31,7 +31,7 @@
 
 	// table --> table à requêter
 
-	class Requete extends Cnx{
+	class Requete_136 extends Cnx{
 
 		var $table = "";
 

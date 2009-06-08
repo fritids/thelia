@@ -24,9 +24,9 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj_1.3.6.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj_136.class.php");
 	
-	class Variable extends Baseobj{
+	class Variable_136 extends Baseobj{
 
 		var $id;
 		var $nom;
