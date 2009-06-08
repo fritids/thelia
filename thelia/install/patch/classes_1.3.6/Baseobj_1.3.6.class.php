@@ -24,35 +24,78 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Requete_1.3.6.class.php");
 	
-	class Variable extends Baseobj{
-
-		var $id;
-		var $nom;
-		var $valeur; 
-	 	var $protege;
-	 	var $cache;
+	// Classe Baseobj
 	
-		var $table="variable";
-		var $bddvars=array("id", "nom", "valeur", "protege", "cache");
-		
-		function Variable(){
-			$this->Baseobj();	
+	class Baseobj extends Requete{
+
+		var $bddvars = array();
+
+		function Baseobj(){
+			$this->Requete();
 		}
 
-
-		function charger($nom){
-			return $this->getVars("select * from $this->table where nom=\"$nom\"");
-
-		}
-
-		function charger_id($id){
-			return $this->getVars("select * from $this->table where id=\"$id\"");
-
+		function getListVarsSql(){
+			$listvars="";
+			
+			for($i=0; $i<count($this->bddvars); $i++){
+				$listvars .= $this->bddvars[$i] . ",";			
+			}
+			
+			return substr($listvars, 0, strlen($listvars)-1);
+			
+		
 		}
 		
 		
+		function getListValsSql(){
+			$listvals="";
+			
+			for($i=0; $i<count($this->bddvars); $i++){
+				$tempvar = $this->bddvars[$i];
+				$tempval = addslashes($this->$tempvar);	
+				if(strstr($tempval, "\\\\\"") || strstr($tempval, "\\\\\'")) $tempval = stripslashes($tempval); 
+				$listvals .= "\"" . $tempval . "\",";			
+			}
+						
+			return substr($listvals, 0, strlen($listvals)-1);
+			
+		
+		}
+		
+		
+		function getVars($query){
+            if(! $resul = mysql_query($query, $this->link))
+                    return 0;
+
+			$row = mysql_fetch_object($resul);
+			if($row){
+				for($i=0; $i<count($this->bddvars); $i++){
+					$tempvar = $this->bddvars[$i];
+					$this->$tempvar =  $row->$tempvar;
+				}
+				
+			return 1;	
+			
+			} 
+			
+			else return 0;
+				
+			return mysql_num_rows($resul);
+		}
+	
+		function serialise_js(){
+			$this->host= "";
+			$this->login_mysql= "";
+       		$this->password_mysql= "";
+			$this->db = "";
+			$this->link="";
+ 			$json = new Services_JSON();
+			return $json->encode($this); 
+		}
+	
 	}
+
 
 ?>

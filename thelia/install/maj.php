@@ -62,21 +62,14 @@
 				
 				<?php
 					include_once("config.php");
-					include_once("../classes/Variable.class.php");
-
-					$var = new Variable();
-					if($var->charger("version"))
-						$vcur = $var->valeur;
-					else
-						$vcur="135";
-						
+					$vcur = $_GET['vcur'];
 					$vnew = $version;
 
 					while($vcur != $vnew){
 						$vcur ++;
 						$patch = substr($vcur, 0, 1) . "." . substr($vcur, 1, 1) . "." . substr($vcur, 2, 1);
 						
-						if(file_exists("patch/") . $patch){
+						if(file_exists("patch/") . $patch && ! $_SESSION['maj']){
 							include_once("patch/" . $patch . ".php");
 				?>
 				
@@ -86,6 +79,8 @@
 						
 					}
 
+
+					$_SESSION['maj']="1";
 
 				?>
 				

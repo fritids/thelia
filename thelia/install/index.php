@@ -4,6 +4,7 @@
 	$_SESSION['utilisateur']="";
 	$_SESSION['motdepasse']="";
 	$_SESSION['choixbase']="";
+	$_SESSION['maj']="0";
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -77,7 +78,7 @@
 				
 				Bienvenue au sein du programme de mise à jour de Thelia.<br /><br />
 			
-				<form action="maj.php" method="post">
+				<form action="verif.php" method="post">
 					<input type="submit" value="Continuer" />
 				</form>
 						
