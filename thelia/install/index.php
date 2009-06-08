@@ -77,7 +77,7 @@
 				
 				Bienvenue au sein du programme de mise à jour de Thelia.<br /><br />
 			
-				<form action="verif.php" method="post">
+				<form action="maj.php" method="post">
 					<input type="submit" value="Continuer" />
 				</form>
 						
