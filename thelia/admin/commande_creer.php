@@ -147,7 +147,7 @@
 <link rel="stylesheet" type="text/css" href="../lib/jquery/thickbox.css" />
 
 <script type="text/javascript">
-$().ready(function(){
+/*$().ready(function(){
 	$('#client').autocomplete("listecli.php",{
 		mustMatch: true,
 		width: 310,
@@ -161,7 +161,36 @@ $().ready(function(){
 		return value.split(".")[1] + " " + value.split(".")[2];
 		}
 	});
-})
+})*/
+
+function lookup(inputString) {
+		if(inputString.length == 0) {
+			// Hide the suggestion box.
+			$('#suggestions').hide();
+		} else {
+			$.get("listecli.php", {queryString: ""+inputString+""}, function(data){
+				if(data.length >0) {
+					$('#suggestions').show();
+					$('#autoSuggestionsList').html(data);
+				}
+			});
+		}
+	} // lookup
+	
+
+	
+	function fill(str) {
+		if (str != "") {
+			var tableau = str.split("|");
+			$('#inputstring').val(tableau[1]);
+			$('#id_client').val(tableau[0]);
+			setTimeout("$('#suggestions').hide();", 200);
+		}
+		else{
+			$('#inputstring').val(str);
+			setTimeout("$('#suggestions').hide();", 200);
+		}
+	}
 
 function creercli(){
 	if(document.getElementById("raison").value != "" &&
@@ -279,8 +308,15 @@ function valid(){
 	<input type="hidden" name="action" value="ajouter">
 <ul class="ligne_claire_BlocDescription" style="background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">
 		<li class="designation" style="width:280px; background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">Choix du client <span class="note">(commencer &agrave; taper les coordonn&eacute;es du client dans le champs)</span></li>
-		<li><input name="client" id="client" type="text" class="form" size="40" /></li>
-	</ul>
+		<li><input name="choixdecli" id="inputstring" onkeyup="lookup(this.value);" type="text" class="form" size="40" /></li>
+		</ul>
+		<div class="suggestionsBox" id="suggestions" style="display: none;">
+			<img src="upArrow.png" style="float:left; margin:-10px 0 0 140px;" alt="upArrow" />
+			<div class="suggestionList" id="autoSuggestionsList">
+				&nbsp;
+			</div>
+		</div>
+	
 	<ul class="ligne_fonce_BlocDescription">
 		<li class="designation" style="width:280px;">Ou cr&eacute;er un client</li>
 		<li><div id="nclient">

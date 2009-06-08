@@ -1923,3 +1923,32 @@ z-index: 100;
 	width: 589px; 
 	overflow: auto;
 }
+/*auto complétion*/
+.suggestionsBox {
+		float: left;
+		margin: -8px 0px 0px 293px;
+		width:280px;
+		background-color: #fff;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		border: 2px solid #000;	
+		color: #000;
+}
+	
+	.suggestionList {
+		float: left;
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	.suggestionList li {
+		float: left;
+		margin: 0px 0px 3px 0px;
+		padding: 3px;
+		cursor: pointer;
+	}
+	
+	.suggestionList li:hover {
+		background-color: #659CD8;
+	}
+

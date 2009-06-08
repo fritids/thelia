@@ -9,8 +9,8 @@ $produit = new Produit();
 if($produit->charger($ref)){
 	$proddesc = new Produitdesc();
 	$proddesc->charger($produit->id);
-	if($produit->promo) $prix = $produit->prix;
-	else $prix = $produit->prix2;
+	$prix = $produit->prix;
+	if($produit->promo) $prix = $produit->prix2;
 	echo $proddesc->titre."|".$prix."|".$produit->tva;
 }
 else{
