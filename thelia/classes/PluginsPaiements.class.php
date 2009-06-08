@@ -42,6 +42,8 @@
 	include_once(realpath(dirname(__FILE__)) . "/Declidisp.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Declidispdesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Mail.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Message.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Messagedesc.class.php");
 	
 	
 	class PluginsPaiements extends PluginsClassiques{

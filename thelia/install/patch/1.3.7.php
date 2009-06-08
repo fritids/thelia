@@ -125,9 +125,7 @@
 		$tmpcmd->maj();	
 	}
 			
-	$version = new Variable();
-	$version->charger("version");
-	$version->valeur = "137";
-	$version->maj();
-	
+	$query_cnx = "update variable set valeur='137' where nom='version'";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+
 ?>
