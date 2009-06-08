@@ -149,6 +149,7 @@
 	
 	$casf = $ca - $port;
 	
+	
 	$query = "SELECT count(*) as nbCommande FROM commande where statut>=2 and statut<>5";
 	$resul = mysql_query($query);
 	
@@ -158,6 +159,37 @@
          $panierMoyen = round(($ca/$nbCommande),2);
     else
          $panierMoyen = 0;
+
+	
+	
+	$query = "select * from commande where datefact like '".date("Y")."-".date("m")."-%%' and statut>=2 and statut<>5";
+	$resul = mysql_query($query);
+	
+	$list = "";
+	while($row = mysql_fetch_object($resul)){
+		$list .= "'" . $row->id . "'" . ",";
+	}
+	
+	$list = substr($list, 0, strlen($list)-1);
+	$list == "";
+	
+	if($list == "") $list="''";
+	$camois = 0;
+	$query = "SELECT sum(venteprod.quantite*venteprod.prixu) as camois FROM venteprod where commande in ($list)";
+	$resul = mysql_query($query);
+	$camois = round(mysql_result($resul, 0, "camois"), 2);
+	
+	$query = "SELECT sum(port)as port FROM commande where id in ($list)";
+	$resul = mysql_query($query);
+	
+	$camois += mysql_result($resul, 0, "port");
+
+	$query = "SELECT sum(remise)as remise FROM commande where id in ($list)";
+	$resul = mysql_query($query);
+	
+	$camois -= mysql_result($resul, 0, "remise");
+	
+	
 	
 	$query = "select count(*) as nbcmdannulee from $commande->table where statut IN (5)";
 	$resul = mysql_query($query);
@@ -211,8 +243,8 @@
 	<li class="lignetop" style="width:72px;"><?php echo(round($ca, 2)); ?> &euro;</li>
 	<li class="fonce" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Chiffre d'affaires hors frais de port</li>
 	<li class="fonce" style="width:72px;"><?php echo(round($casf, 2)); ?> &euro;</li>
-	<li class="claire" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Chiffre d'affaires mensuel moyen</li>
-	<li class="claire" style="width:72px;"><?php echo(round($casf, 2)); ?> &euro;</li>
+	<li class="claire" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Chiffre d'affaires du mois en cours</li>
+	<li class="claire" style="width:72px;"><?php echo(round($camois, 2)); ?> &euro;</li>
 	<li class="lignebottomfonce" style="width:222px; background-color:#9eb0be;">Panier moyen </li>
 	<li class="lignebottomfonce" style="width:72px;"><?php echo $panierMoyen; ?> &euro;</li>
 	</ul>
