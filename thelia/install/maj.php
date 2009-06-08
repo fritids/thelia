@@ -61,8 +61,15 @@
 				Mise à jour en cours ...<br /><br />
 				
 				<?php
-					include_once("config.php");
-					$vcur = $_GET['vcur'];
+					include_once("config.php");				
+					include_once("../classes/Variable.class.php");
+
+					$var = new Variable();
+					if($var->charger("version"))
+							$vcur = $var->valeur;
+					else
+							$vcur="135";
+												
 					$vnew = $version;
 
 					while($vcur != $vnew){
