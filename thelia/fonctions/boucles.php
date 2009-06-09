@@ -1096,7 +1096,7 @@
 			$temp = str_replace("#STRIPTITRE", strip_tags($produitdesc->titre), $temp);	
 			$temp = str_replace("#CHAPO", "$produitdesc->chapo", $temp);	
 			$temp = str_replace("#STRIPCHAPO", strip_tags($produitdesc->chapo), $temp);	
-			$temp = str_replace("#DESCRIPTION", "$produitdesc->description", $temp);
+			$temp = str_replace("#DESCRIPTION", html_entity_decode(str_replace("../","",$produitdesc->description)), $temp);
 			$temp = str_replace("#POSTSCRIPTUM", "$produitdesc->postscriptum", $temp);	
 			$temp = str_replace("#STRIPDESCRIPTION", strip_tags($produitdesc->description), $temp);	
 			$temp = str_replace("#URL", "produit.php?ref=" . "$row->ref" . "&amp;id_rubrique=" . "$row->rubrique", $temp);	
@@ -1274,6 +1274,7 @@
 			$temp = str_replace("#CHAPO", "$contenudesc->chapo", $temp);	
 			$temp = str_replace("#STRIPCHAPO", strip_tags($contenudesc->chapo), $temp);	
 			$temp = str_replace("#DESCRIPTION", "$contenudesc->description", $temp);
+			$temp = str_replace("#DESCRIPTION", html_entity_decode(str_replace("../","",$contenudesc->description)), $temp);
 			$temp = str_replace("#POSTSCRIPTUM", "$contenudesc->postscriptum", $temp);	
 			$temp = str_replace("#STRIPDESCRIPTION", strip_tags($contenudesc->description), $temp);	
 			$temp = str_replace("#URL", "contenu.php?id_contenu=" . "$row->id&amp;id_dossier=" . $row->dossier, $temp);	
