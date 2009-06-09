@@ -160,13 +160,13 @@ function supprimer(id){
 <p><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="client.php" class="lien04">Gestion des clients</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Visualiser</a></p>
     
 <!-- Début de la colonne de gauche -->  
-<div id="bloc_description">
+<div id="bloc_description" >
   
 <div class="entete_liste_client">
 	<div class="titre">INFORMATIONS SUR LE CLIENT </div>
 	<div class="fonction_valider"><a href="client_modifier.php?ref=<?php echo($client->ref); ?>">MODIFIER LES COORDONN&Eacute;ES DU CLIENT</a></div>
 </div>
-   <table width="100%" cellpadding="5" cellspacing="0">
+   <table width="100%" cellpadding="5" cellspacing="0" class="tabclient">
     <tr class="claire">
         	<th class="designation" width="290">Soci&eacute;t&eacute;</td>
        		<th><?php echo($client->entreprise); ?></td>
