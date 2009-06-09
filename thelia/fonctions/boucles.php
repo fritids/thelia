@@ -1273,7 +1273,6 @@
 			$temp = str_replace("#STRIPTITRE", strip_tags($contenudesc->titre), $temp);	
 			$temp = str_replace("#CHAPO", "$contenudesc->chapo", $temp);	
 			$temp = str_replace("#STRIPCHAPO", strip_tags($contenudesc->chapo), $temp);	
-			$temp = str_replace("#DESCRIPTION", "$contenudesc->description", $temp);
 			$temp = str_replace("#DESCRIPTION", html_entity_decode(str_replace("../","",$contenudesc->description)), $temp);
 			$temp = str_replace("#POSTSCRIPTUM", "$contenudesc->postscriptum", $temp);	
 			$temp = str_replace("#STRIPDESCRIPTION", strip_tags($contenudesc->description), $temp);	
