@@ -490,7 +490,7 @@
 			
 			<ul class="lignesimple">
 				<li class="cellule_designation" style="width:140px;">URL réécrite</li>
-				<li class="cellule"><?php echo(rewrite_cont("$dossier->id", $lang)); ?></li>
+				<li class="cellule"><?php echo(rewrite_dos("$dossier->id", $lang)); ?></li>
 			</ul>
 		
 		<div class="bloc_fleche" style="cursor:pointer" onclick="$('#pliantsinfos').hide();"><img src="gfx/fleche_accordeon_up.gif" /></div>

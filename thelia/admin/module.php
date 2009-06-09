@@ -42,8 +42,6 @@
 	include_once("entete.php");
 	include_once("../client/plugins/$nom/$nom" . "_admin.php");
 ?>
-<div id="contenu_int"> 
-</div>
 <?php include_once("pied.php");?>
 </div>
 </div>
