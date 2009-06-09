@@ -5,11 +5,6 @@
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Messagedesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Devise.class.php");
 
-	$version = new Variable();
-	$version->charger("version");
-	$version->valeur = "140";
-	$version->maj();
-	
 	/************ RAJOUTER LE MESSAGE DANS L'INSTALL DE THELIA (thelia.sql) ***************/
 	
 	$message = new Message();
@@ -59,5 +54,10 @@
 	
 	// changement des messages
 	$query_cnx = "update messagedesc set descriptiontext=description";
-	$resul_cnx = mysql_query($query_cnx,$cnx->link);	
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	
+	$query_cnx = "update variable set version='140' where nom='version'";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+		
 ?>

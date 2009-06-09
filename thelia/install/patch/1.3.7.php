@@ -1,10 +1,5 @@
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Cnx.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Variable.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Adresse.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Venteadr.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Commande.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Client.class.php");
 	
 	$cnx = new Cnx();
 	
@@ -63,71 +58,52 @@
 	$query_cnx = "ALTER TABLE `commande` ADD `adrfact` INT NOT NULL AFTER `client` ;";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 		
-	$commande = new Commande();
-	$query_cmd = "select * from $commande->table";
-	$resul_cmd = mysql_query($query_cmd, $commande->link);
+	$query_cmd = "select * from commande";
+	$resul_cmd = mysql_query($query_cmd, $cnx->link);
 	while($row_cmd = mysql_fetch_object($resul_cmd)){
-		$tmpcmd = new Commande();
-		$tmpcmd->charger($row_cmd->id);
-		$client = new Client();
-		$client->charger_id($row_cmd->client);
 		
-		$adr = new Venteadr();
-		$adr->raison = $client->raison;
-		$adr->nom = $client->nom;
-		$adr->prenom = $client->prenom;
-		$adr->adresse1 = $client->adresse1;
-		$adr->adresse2 = $client->adresse2;
-		$adr->adresse3 = $client->adresse3;
-		$adr->cpostal = $client->cpostal;		
-		$adr->ville = $client->ville;		
-		$adr->tel = $client->telfixe . " / " . $client->telport;		
-		$adr->pays = $client->pays;
-		$adrcli = $adr->add();
-		$tmpcmd->adrfact = $adrcli;	
 		
-		$adr = new Venteadr();
+		$query_client = "select * from client where id=\"" . $row_cmd->client. "\"";
+		$resul_client = mysql_query($query_cmd, $cnx->link);
+		$row_client = mysql_fetch_object($resul_client);
 		
-		if($commande->adrlivr){
+		$query_venteadr = "insert into venteadr(raison, nom, prenom, adresse1, adresse2, adresse3, cpostal, ville, tel, pays) values(\"" . $row_client->raison . "\", \"" . $row_client->nom . "\", \"" . $row_client->prenom . "\", \"" . $row_client->adresse1 . "\", \"" . $row_client->adresse2 . "\", \"" . $row_client->adresse3 . "\", \"" . $row_client->cpostal . "\", \"" . $row_client->ville . "\", \"" . $row_client->tel . "/" . $row_client->telport . "\", \"" . $row_client->pays . "\")";
+		$resul_venteadr = mysql_query($query_venteadr, $cnx->link);
+		
+		$adrcli = mysql_insert_id();
+		
+		$query_majcmd = "update commande set adrfact=\"" . $adrcli. "\" where id=\"" . $row_cmd->id . "\"";
+		$resul_majcmd = mysql_query($query_majcmd, $cnx->link);
+		
 			
-			$livraison = new Adresse();
-			$livraison->charger($commande->adrlivr);
+		if($row_cmd->adrlivr){
+
+			$query_livr = "select * from adresse where id=\"" . $row_cmd->adrlivr. "\"";
+			$resul_livr = mysql_query($query_livr, $cnx->link);
+			$row_livr = mysql_fetch_object($resul_livr);
 			
-			$adr->raison = $livraison->raison;
-			$adr->nom = $livraison->nom;
-			$adr->prenom = $livraison->prenom;
-			$adr->adresse1 = $livraison->adresse1;
-			$adr->adresse2 = $livraison->adresse2;
-			$adr->adresse3 = $livraison->adresse3;
-			$adr->cpostal = $livraison->cpostal;		
-			$adr->ville = $livraison->ville;		
-			$adr->tel = $livraison->tel;		
-			$adr->pays = $livraison->pays;		
+			
+			$query_venteadr = "insert into venteadr(raison, nom, prenom, adresse1, adresse2, adresse3, cpostal, ville, tel, pays) values(\"" . $row_livr->raison . "\", \"" . $row_livr->nom . "\", \"" . $row_livr->prenom . "\", \"" . $row_livr->adresse1 . "\", \"" . $row_livr->adresse2 . "\", \"" . $row_livr->adresse3 . "\", \"" . $row_livr->cpostal . "\", \"" . $row_livr->ville . "\", \"" . $row_livr->tel . "\", \"" . $row_livr->pays . "\")";
+			$resul_venteadr = mysql_query($query_venteadr, $cnx->link);
+			$adrlivr = mysql_insert_id();
+	
 			
 		}
 		
 		else{
-			$adr->raison = $client->raison;
-			$adr->nom = $client->nom;
-			$adr->prenom = $client->prenom;
-			$adr->adresse1 = $client->adresse1;
-			$adr->adresse2 = $client->adresse2;
-			$adr->adresse3 = $client->adresse3;
-			$adr->cpostal = $client->cpostal;		
-			$adr->ville = $client->ville;		
-			$adr->tel = $client->telfixe . " / " . $client->telport;		
-			$adr->pays = $client->pays;
+			$query_venteadr = "insert into venteadr(raison, nom, prenom, adresse1, adresse2, adresse3, cpostal, ville, tel, pays) values(\"" . $row_client->raison . "\", \"" . $row_client->nom . "\", \"" . $row_client->prenom . "\", \"" . $row_client->adresse1 . "\", \"" . $row_client->adresse2 . "\", \"" . $row_client->adresse3 . "\", \"" . $row_client->cpostal . "\", \"" . $row_client->ville . "\", \"" . $row_client->telfixe . "/" . $row_client->telport . "\", \"" . $row_client->pays . "\")";
+			$resul_venteadr = mysql_query($query_venteadr, $cnx->link);
+			$adrlivr = mysql_insert_id();
+
 		}
 		
-		$adrlivr = $adr->add();
-		$tmpcmd->adrlivr = $adrlivr;		
+		$query_majcmd = "update commande set adrlivr=\"" . $adrlivr. "\" where id=\"" . $row_cmd->id . "\"";
+		$resul_majcmd = mysql_query($query_majcmd, $cnx->link);
 		
-		$tmpcmd->maj();	
 	}
 			
-	$version = new Variable();
-	$version->charger("version");
-	$version->valeur = "137";
-	$version->maj();
-	
+
+	$query_cnx = "update variable set version='137' where nom='version'";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+
 ?>
