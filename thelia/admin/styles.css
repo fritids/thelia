@@ -995,6 +995,7 @@ div#resultat {
 	text-align:left;
 	height: 21px;
 	overflow: hidden;
+	clear: both;
 }
 #bloc_description .entete_liste_config {
 	width: 581px;
@@ -1838,6 +1839,7 @@ z-index: 100;
 	background-color: #EBEDEE;
 	border-right:1px solid #C4CACE;
 	overflow: hidden;
+	clear: both;
 }
 .ligne_claire_BlocDescription li {
 	margin: 0px 0 0 0px;
@@ -1855,6 +1857,7 @@ z-index: 100;
 	background-color: #D4DADD;
 	border-right:1px solid #C4CACE;
 	overflow: hidden;
+	clear: both;
 }
 .ligne_fonce_BlocDescription li {
 	margin: 0px 0 0 0px;
@@ -1951,3 +1954,4 @@ z-index: 100;
 	.suggestionList li:hover {
 		background-color: #659CD8;
 	}
+
