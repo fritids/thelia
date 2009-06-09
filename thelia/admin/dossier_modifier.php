@@ -499,7 +499,11 @@
  <?php } ?>
 
 <!-- Fin information dossier -->
-
+<div class="patchplugin">
+<?php 
+	admin_inclure("dossiermodifier"); 
+?>
+</div>
 
 </div><!-- fin du bloc_description -->	
 </form>
