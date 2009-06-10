@@ -528,11 +528,11 @@
 				
 </div>
  <?php } ?> 
-
-   </form>
  <?php 
 	admin_inclure("contenumodifier"); 
  ?>
+   </form>
+
 </div>    
  <?php if($id != ""){ ?>  
 <!-- bloc de gestion des photos et documents / colonne de droite -->   
