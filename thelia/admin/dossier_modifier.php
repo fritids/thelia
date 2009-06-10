@@ -434,7 +434,7 @@
 <!-- bloc descriptif de la rubrique --> 			
 <table width="100%" cellpadding="5" cellspacing="0">
     <tr class="claire">
-        <th class="designation">Changer la langue</td>
+        <th class="designation">Changer la langue</th>
         <th>
         <?php
 			$langl = new Lang();
@@ -449,7 +449,7 @@
 			</a>
 		</div> 
 		<?php } ?>
-		</td>
+		</th>
    	</tr>
    	<tr class="fonce">
         <td class="designation">Titre</td>
@@ -461,7 +461,7 @@
    	</tr>
    	<tr class="fonce">
         <td class="designation">Description<br /><span class="note">(description complète)</span></td>
-        <td><textarea name="description" id="description" cols="40" rows="2" class="form_long"><?php echo($dossierdesc->description); ?></textarea></td>
+        <td><textarea name="description" id="description" cols="40" rows="20" class="form_long"><?php echo($dossierdesc->description); ?></textarea></td>
    	</tr>
    	<tr class="claire">
         <td class="designation">Postscriptum<br /> <span class="note">(champs d'information complémentaire)</span></td>

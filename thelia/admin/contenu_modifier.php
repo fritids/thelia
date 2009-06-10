@@ -480,7 +480,7 @@
    	<tr class="fonce">
         <td class="designation">Description<br /> <span class="note">(description complète)</span></td>
         <td>
-        <textarea name="description" id="description" cols="40" rows="2"><?php echo($contenudesc->description); ?></textarea></td>
+        <textarea name="description" id="description" cols="40" rows="20"><?php echo($contenudesc->description); ?></textarea></td>
    	</tr>
    	<tr class="claire">
         <td class="designation">Postscriptum<br /> <span class="note">(champs d'information complémentaire)</span></td>
