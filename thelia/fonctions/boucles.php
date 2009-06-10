@@ -296,7 +296,6 @@
 		if($exclusion!="") $search .= " and id not in($exclusion)";
 		
 		$image = new Image();
-		$imagedesc = new Imagedesc();
 
 		if($debut !="") $debut--;
 		else $debut=0;
@@ -325,7 +324,9 @@
 		$compt=1;
 		
 		while( $row = mysql_fetch_object($resul)){
+			$image = new Image();
 			$image->charger($row->id);
+			$imagedesc = new Imagedesc();
 			$imagedesc->charger($image->id);
 			$temp = $texte;
 			
