@@ -1925,6 +1925,7 @@ z-index: 100;
 .patchplugin {
 	width: 589px; 
 	overflow: auto;
+	clear: both;
 }
 /*auto complétion*/
 .suggestionsBox {
