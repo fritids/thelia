@@ -2129,6 +2129,7 @@
 			
 			$prodtemp->charger_id($produit);
 			$temp = str_replace("#RUBRIQUE", $prodtemp->rubrique, $temp);
+			$temp = str_replace("#REF",$prodtemp->ref, $temp);
 			
 			$caractemp = new Caracteristiquedesc();
 			$caractemp ->charger($row->caracteristique,  $_SESSION['navig']->lang);
