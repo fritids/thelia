@@ -60,7 +60,7 @@ if($modif == "classementrub"){
 		$resul = mysql_query($query, $rubrique->link);		
 
 		$i=0;
-
+		echo "rubrique|";
 		while($row = mysql_fetch_object($resul)){
 			$rubriquedesc->charger($row->id);
 
@@ -127,6 +127,7 @@ else if($modif == "classementprod"){
 
 	$resul = mysql_query($query, $produit->link);
 		$i=0;
+		echo "produit|";
 		while($row = mysql_fetch_object($resul)){
 			$produit->charger($row->ref);
 			$produitdesc->charger($row->id);
@@ -214,9 +215,9 @@ else if($modif == "classementdossier"){
 
 <ul class="<?php echo($fond); ?>">
 	<li style="width:112px;"></li>
-	<li style="width:579px;"><span id="titredos_<?php echo $row->id; ?>" class="texte_edit"><?php echo($dossierdesc->titre); ?></span></li>
-	<li style="width:54px;"><a href="listdos.php?parent=<?php echo($dossierdesc->dossier); ?>" class="txt_vert_11">parcourir</a></li>
-	<li style="width:34px;"><a href="dossier_modifier.php?id=<?php echo($dossierdesc->dossier); ?>" class="txt_vert_11">éditer</a></li>
+	<li style="width:579px;"><span id="titredos_<?php echo $row->id; ?>" class="texte_edit"><?php echo substr($dossierdesc->titre,0,90); if(strlen($dossierdesc->titre) > 90) echo " ..."; ?></span></li>
+	<li style="width:54px;"><a href="listdos.php?parent=<?php echo($dossierdesc->dossier); ?>">parcourir</a></li>
+	<li style="width:34px;"><a href="dossier_modifier.php?id=<?php echo($dossierdesc->dossier); ?>">&eacute;diter</a></li>
 	
 	<li style="width:71px;">
 	 <div class="bloc_classement">  
