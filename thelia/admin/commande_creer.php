@@ -311,7 +311,7 @@ function valid(){
 		<li><input name="choixdecli" id="inputstring" onkeyup="lookup(this.value);" type="text" class="form" size="40" /></li>
 		</ul>
 		<div class="suggestionsBox" id="suggestions" style="display: none;">
-			<img src="upArrow.png" style="float:left; margin:-10px 0 0 140px;" alt="upArrow" />
+			<img src="gfx/upArrow.png" style="float:left; margin:-10px 0 0 140px;" alt="upArrow" />
 			<div class="suggestionList" id="autoSuggestionsList">
 				&nbsp;
 			</div>
