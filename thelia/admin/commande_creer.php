@@ -147,21 +147,6 @@
 <link rel="stylesheet" type="text/css" href="../lib/jquery/thickbox.css" />
 
 <script type="text/javascript">
-/*$().ready(function(){
-	$('#client').autocomplete("listecli.php",{
-		mustMatch: true,
-		width: 310,
-		matchContains: true,
-		autoFill: false,
-		formatItem: function(data, i, n, value) {
-			document.getElementById("id_client").value= value.split(".")[0];
-		return value.split(".")[1] + " " + value.split(".")[2];
-		},
-		formatResult: function(data, value) {
-		return value.split(".")[1] + " " + value.split(".")[2];
-		}
-	});
-})*/
 
 function lookup(inputString) {
 		if(inputString.length == 0) {
