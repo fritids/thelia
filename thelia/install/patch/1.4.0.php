@@ -6,7 +6,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Devise.class.php");
 
 	/************ RAJOUTER LE MESSAGE DANS L'INSTALL DE THELIA (thelia.sql) ***************/
-	
+	$cnx = new Cnx();
 	$message = new Message();
 	$message->nom = 'creaclient';
 	$message->add();
@@ -56,7 +56,7 @@
 	$query_cnx = "update messagedesc set descriptiontext=description";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 	
-	
+
 	$query_cnx = "update variable set version='140' where nom='version'";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 		
