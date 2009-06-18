@@ -225,7 +225,7 @@
 		
 		while( $row = mysql_fetch_object($resul)){
 			$dossierdesc = new Dossierdesc();
-			$dossierdesc->charger($row->id, $_SESSION['navig']->lang);
+			if( ! $dossierdesc->charger($row->id, $_SESSION['navig']->lang)) continue;
 			
 			$query3 = "select * from $dossier->table where 1 and parent=\"$row->id\"";
 			$resul3 = mysql_query($query3, $dossier->link);	
