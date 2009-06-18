@@ -26,61 +26,49 @@
 	}
 
 	$messagedesc = new Messagedesc();
-
 	$message = new Message();
-	$message->charger("mdpmodif");	
-	$message->supprimer();
-	
-	$message = new Message();
-	$message->charger("mdpnonvalide");
-	$message->supprimer();
-	
-	$message = new Message();
-	$message->charger("corpscommande1");
-	$message->nom = "mailconfirmcli";
-	$message->maj();
-	
-	$message = new Message();
-	$message->charger("corpscommande2");
-	$message->nom = "mailconfirmadm";
-	$message->maj();
-		
-	$message = new Message();
-	$message->charger("nouveaumdp2");
-	$message->nom = "changepass";
-	$message->maj();
-		
 	$cnx = new Cnx();
+	
+	$query_cnx = "DELETE from $message->table where nom='mdpmodif'";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+	
+	$query_cnx = "DELETE from $message->table where nom='mdpnonvalide'";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+	
+	$query_cnx = "UPDATE $message->table set nom='mailconfirmadm' where nom='corpscommande2'";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+	
+	$query_cnx = "UPDATE $message->table set nom='changepass' where nom='nouveaumdp2'";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+	
+	$query_cnx = "UPDATE $message->table set nom='mailconfirmcli' where nom='corpscommande1'";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+	
 	$query_cnx = "ALTER TABLE `messagedesc` ADD `intitule` TEXT NOT NULL AFTER `lang` ;";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);	
 
 	$message = new Message();
 	$message->charger("mailconfirmcli");
-	$messagedesc = new Messagedesc();
-	$messagedesc->charger($message->id);
-	$messagedesc->intitule = "Mail de confirmation client";
-	$messagedesc->maj();
+	$query_cnx = "UPDATE $messagedesc->table set intitule='Mail de confirmation client' where id=$message->id";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+	
+	
 
 	$message = new Message();
 	$message->charger("mailconfirmadm");
-	$messagedesc = new Messagedesc();
-	$messagedesc->charger($message->id);
-	$messagedesc->intitule = "Mail de confirmation administrateur";
-	$messagedesc->maj();
+	$query_cnx = "UPDATE $messagedesc->table set intitule='Mail de confirmation administrateur' where id=$message->id";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+	
 
 	$message = new Message();
 	$message->charger("changepass");
-	$messagedesc = new Messagedesc();
-	$messagedesc->charger($message->id);
-	$messagedesc->intitule = "Mail de changement de mot de passe";
-	$messagedesc->maj();
+	$query_cnx = "UPDATE $messagedesc->table set intitule='Mail de changement de mot de passe' where id=$message->id";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 	
 	$message = new Message();
 	$message->charger("colissimo");
-	$messagedesc = new Messagedesc();
-	$messagedesc->charger($message->id);
-	$messagedesc->intitule = "Mail de confirmation d'envoi colissimo";
-	$messagedesc->maj();
+	$query_cnx = "UPDATE $messagedesc->table set intitule=\"Mail de confirmation d'envoi colissimo\" where id=$message->id";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 
 	$message = new Message();
 	$message->charger("nouveaumdp1");
@@ -88,13 +76,13 @@
 	$messagedesc->charger($message->id);
 	$titre = $messagedesc->description;
 	$message->supprimer();
+	
 
 	$message = new Message();
 	$message->charger("changepass");
-	$messagedesc = new Messagedesc();
-	$messagedesc->charger($message->id);
-	$messagedesc->titre = $titre;
-	$messagedesc->maj();	
+	$query_cnx = "UPDATE $messagedesc->table set titre='$titre' where id=$message->id";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+		
 
 	$message = new Message();
 	$message->charger("sujetcommande");
@@ -105,12 +93,10 @@
 
 	$message = new Message();
 	$message->charger("mailconfirmcli");
-	$messagedesc = new Messagedesc();
-	$messagedesc->charger($message->id);
-	$messagedesc->titre = $titre . "__COMMANDE_REF__";
-	$messagedesc->maj();	
+	$query_cnx = "UPDATE $messagedesc->table set titre=CONCAT(titre,\"$titre\") where id=$message->id";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);	
 
-	$cnx = new Cnx();
+
 	$query_cnx = "update commande set lang='1'";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 		
