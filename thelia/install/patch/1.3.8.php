@@ -1,26 +1,19 @@
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Cnx.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Rubrique.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Produit.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Variable.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Message.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Messagedesc.class.php");
 
-	$rub = new Rubrique();
-	$query_cnx = "select * from $rub->table";
-	$resul_cnx = mysql_query($query_cnx, $rub->link);
-
-	$prod = new Produit();
+	$cnx = new Cnx();
+	
+	$query_cnx = "select * from rubrique";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 	
 	while($row_cnx = mysql_fetch_object($resul_cnx)){
-		$query_prod = "select * from $prod->table where rubrique=\"" . $row_cnx->id . "\" order by classement";
-		$resul_prod = mysql_query($query_prod, $prod->link);
+		$query_prod = "select * from produit where rubrique=\"" . $row_cnx->id . "\" order by classement";
+		$resul_prod = mysql_query($query_prod, $cnx->link);
 		$i = 0;
 		while($row_prod = mysql_fetch_object($resul_prod)){
-			$tmpprod = new Produit();
-			$tmpprod->charger($row_prod->ref);
-			$tmpprod->classement = ++$i;
-			$tmpprod->maj();
+			++$i;
+			$query_prod2 = "update produit set classement=$i where ref=\"" . $row_prod->ref. "\"";
+			$resul_prod2 = mysql_query($query_prod2, $cnx->link);
 			
 		}
 	}
@@ -98,7 +91,7 @@
 	$query_cnx = "update commande set lang='1'";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 		
-	$query_cnx = "update variable set version='138' where nom='version'";
+	$query_cnx = "update variable set valeur='138' where nom='version'";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 	
 ?>

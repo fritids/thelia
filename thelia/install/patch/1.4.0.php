@@ -42,7 +42,7 @@
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 	
 
-	$query_cnx = "update variable set version='140' where nom='version'";
+	$query_cnx = "update variable set valeur='140' where nom='version'";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 		
 ?>

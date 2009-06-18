@@ -64,10 +64,10 @@
 		
 		
 		$query_client = "select * from client where id=\"" . $row_cmd->client. "\"";
-		$resul_client = mysql_query($query_cmd, $cnx->link);
+		$resul_client = mysql_query($query_client, $cnx->link);
 		$row_client = mysql_fetch_object($resul_client);
 		
-		$query_venteadr = "insert into venteadr(raison, nom, prenom, adresse1, adresse2, adresse3, cpostal, ville, tel, pays) values(\"" . $row_client->raison . "\", \"" . $row_client->nom . "\", \"" . $row_client->prenom . "\", \"" . $row_client->adresse1 . "\", \"" . $row_client->adresse2 . "\", \"" . $row_client->adresse3 . "\", \"" . $row_client->cpostal . "\", \"" . $row_client->ville . "\", \"" . $row_client->tel . "/" . $row_client->telport . "\", \"" . $row_client->pays . "\")";
+		$query_venteadr = "insert into venteadr(raison, nom, prenom, adresse1, adresse2, adresse3, cpostal, ville, tel, pays) values(\"" . $row_client->raison . "\", \"" . $row_client->nom . "\", \"" . $row_client->prenom . "\", \"" . $row_client->adresse1 . "\", \"" . $row_client->adresse2 . "\", \"" . $row_client->adresse3 . "\", \"" . $row_client->cpostal . "\", \"" . $row_client->ville . "\", \"" . $row_client->telfixe . "/" . $row_client->telport . "\", \"" . $row_client->pays . "\")";
 		$resul_venteadr = mysql_query($query_venteadr, $cnx->link);
 		
 		$adrcli = mysql_insert_id();
@@ -103,7 +103,7 @@
 	}
 			
 
-	$query_cnx = "update variable set version='137' where nom='version'";
-	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+	$query_cnx = "update variable set valeur='137' where nom='version'";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);exit;
 
 ?>

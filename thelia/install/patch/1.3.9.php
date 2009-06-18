@@ -17,7 +17,7 @@
 			
 	file_put_contents("../client/plugins/atos/conf/.htaccess", $var);
 			
-	$query_cnx = "update variable set version='139' where nom='version'";
+	$query_cnx = "update variable set valeur='139' where nom='version'";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 
 	

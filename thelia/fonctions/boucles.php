@@ -139,6 +139,7 @@
 			
 			}
 		
+			$rubriquedesc = new Rubriquedesc();
 			$rubriquedesc->charger($rubrique->id, $_SESSION['navig']->lang);
 			
 			$query3 = "select * from $rubrique->table where 1 and parent=\"$rubrique->id\"";
@@ -223,7 +224,7 @@
 		if(!$nbres) return "";
 		
 		while( $row = mysql_fetch_object($resul)){
-		
+			$dossierdesc = new Dossierdesc();
 			$dossierdesc->charger($row->id, $_SESSION['navig']->lang);
 			
 			$query3 = "select * from $dossier->table where 1 and parent=\"$row->id\"";
@@ -1260,7 +1261,7 @@
 			
 			$dossierdesc = new Dossierdesc();
 			$dossierdesc->charger($row->dossier, $_SESSION['navig']->lang);
-		
+			$contenudesc = new Contenudesc();
 			$contenudesc->charger($row->id, $_SESSION['navig']->lang);
 				
 			$temp = $texte;
