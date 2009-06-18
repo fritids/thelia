@@ -2,12 +2,11 @@
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Cnx.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Variable.class.php");
 
-	$variable = new Variable();
-	$variable->charger("rssadmin");
-	$variable->protege = 1;
-	$variable->cache = 1;
-	$variable->valeur = "http://blog.thelia.fr/rss.php";
-	$variable->maj();
+	$cnx = new Cnx();
+	
+	$query_cnx = "UPDATE variable set protege=1, cache=1,valeur='http://blog.thelia.fr/rss.php' where nom='rssadmin'";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
 	
 	$var = "<Files *>
  			  <limit GET POST>
