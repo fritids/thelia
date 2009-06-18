@@ -42,10 +42,10 @@
 			modules_fonction("confirmation", $commande);
 			$urlsite = new Variable();
 			$urlsite->charger("urlsite");
-
-			header("Location:" . $urlsite->valeur . "/virement.php");              	
-
-			exit;	
+	 	
+			//header("Location: " . $urlsite->valeur . "/virement.php");
+			header("Location: http://" . $_SERVER['HTTP_HOST'] . "/virement.php");
+			exit;
 		}
 	
 	}

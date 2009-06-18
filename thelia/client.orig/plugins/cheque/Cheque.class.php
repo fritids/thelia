@@ -40,14 +40,15 @@
 		}
 	
 		function paiement($commande){
-			modules_fonction("confirmation", $commande);		
-			$urlsite = new Variable();
-			$urlsite->charger("urlsite");
-
-			header("Location: " . $urlsite->valeur . "/cheque.php");
-		
-			exit;	
-		}
+		   43 			modules_fonction("confirmation", $commande);
+		   44 			$urlsite = new Variable();
+		   45 			$urlsite->charger("urlsite");
+		   46 
+		   47 		//	header("Location: http://" . $_SERVER['HTTP_HOST'] . "/cheque.php");
+		   48 			header("Location: " . $urlsite->valeur . "/cheque.php");
+		   49 
+		   50 			exit;
+		   51 		}
 	
 	}
 
