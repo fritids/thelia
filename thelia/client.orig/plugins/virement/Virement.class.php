@@ -43,7 +43,8 @@
 			$urlsite = new Variable();
 			$urlsite->charger("urlsite");
 
-			header("Location: http://" . $_SERVER['HTTP_HOST'] . "/virement.php");              	
+			header("Location:" . $urlsite->valeur . "/virement.php");              	
+
 			exit;	
 		}
 	
