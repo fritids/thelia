@@ -8,10 +8,10 @@
 	/************ RAJOUTER LE MESSAGE DANS L'INSTALL DE THELIA (thelia.sql) ***************/
 	
 	$message = new Message();
-	$message->nom = 'création client';
+	$message->nom = 'creaclient';
 	$message->add();
 	
-	$message->charger('création client');
+	$message->charger('creaclient');
 	
 	$messagedesc = new Messagedesc();
 	$messagedesc->message = $message->id;
