@@ -1950,6 +1950,7 @@ z-index: 100;
 		margin: 0px 0px 3px 0px;
 		padding: 3px;
 		cursor: pointer;
+		width:280px;
 	}
 	
 	.suggestionList li:hover {
