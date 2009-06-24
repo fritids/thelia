@@ -581,6 +581,8 @@
 		$dossier = lireTag($args, "dossier");
 		$contenu = lireTag($args, "contenu");
 		$exclusion = lireTag($args, "exclusion");	
+		$aleatoire = lireTag($args, "aleatoire");	
+		$classement = lireTag($args, "classement");	
 		
 		$search="";
 		$order="";
@@ -588,7 +590,10 @@
 		$res="";
 
 		if($deb != "") $debut = $deb;
-			
+
+		if($aleatoire) $order = "order by "  . " RAND()";
+		else $order=" order by classement";
+					
 		if($produit) $search .= " and produit=\"$produit\"";
 		if($rubrique != "") $search .= " and rubrique=\"$rubrique\"";
 		if($dossier != "") $search .= " and dossier=\"$dossier\"";

@@ -58,8 +58,8 @@
 	           	
 			$quantite = $_SESSION['navig']->panier->tabarticle[$i]->quantite;
 	
-			$total += $prix * $quantite;
-			$totalht += $prixht * $quantite;
+			$total += round($prix, 2) * $quantite;
+			$totalht += round($prixht, 2) * $quantite;
 			
 			$nb_article += $_SESSION['navig']->panier->tabarticle[$i]->quantite;
 		}
