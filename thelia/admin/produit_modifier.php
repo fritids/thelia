@@ -70,7 +70,8 @@
 ?>
 <?php
 	switch($action){
-		case 'modclassement' : modclassement($id, $parent, $type); break;
+		case 'modclassement' : modclassement($ref, $parent, $type); break;
+		case 'modclassementphoto' : modclassementphoto($id, $parent, $type); break;
 		case 'modifier' : modifier($id, $lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum, $urlsuiv); break;
 		case 'ajouter' : ajouter($lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum); break;
 		case 'acdec' : moddecli($produit, $id, 1); break;
@@ -276,8 +277,17 @@
 	 		 header("Location: produit_modifier.php?ref=" . $tmp->ref . "&rubrique=" . $tmp->rubrique . "&lang=". $lang);
 
 	}
+	
+	function modclassement($ref, $parent, $type){
+        $prod = new Produit();
+        $prod->charger($ref);
+        $prod->changer_classement($ref, $type);
 
-	function modclassement($id, $parent, $type){
+
+	    header("Location: parcourir.php?parent=" . $parent);
+	}
+
+	function modclassementphoto($id, $parent, $type){
 		$image = new Image();
 		$image->charger($id);
 		$image->changer_classement($id,$type);
@@ -1416,9 +1426,9 @@
 				<div class="cellule_designation" style="height:30px;">Classement</div>
 				<div class="cellule">
 					<div class="classement">
-						<a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&amp;ref=$ref&amp;action=modclassement&amp;type=M&amp;produit=".$produit->id; ?>"><img src="gfx/up.gif" border="0" alt="-" /></a></div>
+						<a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&amp;ref=$ref&amp;action=modclassementphoto&amp;type=M&amp;produit=".$produit->id; ?>"><img src="gfx/up.gif" border="0" alt="-" /></a></div>
 					<div class="classement">
-						<a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&amp;ref=$ref&amp;action=modclassement&amp;type=D&amp;produit=".$produit->id; ?>"><img src="gfx/dn.gif" border="0" alt="-" /></a></div>
+						<a href="<?php echo $_SERVER['PHP_SELF'] . "?id=".$row->id."&amp;ref=$ref&amp;action=modclassementphoto&amp;type=D&amp;produit=".$produit->id; ?>"><img src="gfx/dn.gif" border="0" alt="-" /></a></div>
 				</div>
 				
 			</li>
