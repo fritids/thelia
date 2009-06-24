@@ -1236,6 +1236,7 @@
 
 <!-- début du bloc point d'entrée --> 
 <div class="patchplugin">
+	
 <?php 
 	admin_inclure("produitmodifier"); 
 ?>
