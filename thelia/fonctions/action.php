@@ -480,12 +480,15 @@
 		
 		if($obligetelfixe && $client->telfixe=="") $obligeok=0;
 		if($obligetelport && $client->telport=="") $obligeok=0;
+
+			modules_fonction("avantmodifcompte");
 					
 			if($client->raison!="" && $client->prenom!="" && $client->nom!="" && $client->email!="" 
 			&& $client->email && $client->adresse1 !="" && $client->cpostal!="" && $client->ville !="" && $client->pays !="" && $obligeok){
 				$client->maj();
 		 		$_SESSION['navig']->client = $client;	
-						
+				modules_fonction("apresmodifcompte", $client);
+					
 		 	redirige($_SESSION['navig']->urlpageret);	
 
 			}
@@ -501,7 +504,10 @@
 				$client->motdepasse = strip_tags($motdepasse1);
 				$client->crypter();
 		    	$client->maj();
-				$_SESSION['navig']->client = $client;	
+		
+				$_SESSION['navig']->client = $client;
+				modules_fonction("apresmodifcompte", $client);
+					
 				redirige($_SESSION['navig']->urlpageret);	
 			}
 			else  {
