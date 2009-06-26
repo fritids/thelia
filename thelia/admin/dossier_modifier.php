@@ -478,7 +478,7 @@
 <?php if($id != ""){ ?>
 <!-- bloc d'informations sur le dossier-->
 		<div class="entete">
-			<div class="titre" style="cursor:pointer" onclick="$('#pliantsinfos').show('slow');">INFORMATIONS SUR LE CONTENU</div>
+			<div class="titre" style="cursor:pointer" onclick="$('#pliantsinfos').show('slow');">INFORMATIONS SUR LE DOSSIER</div>
 		</div>
 
 <div class="blocs_pliants_prod" id="pliantsinfos">
