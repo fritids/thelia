@@ -3,9 +3,6 @@
 	
 	$cnx = new Cnx();
 	
-	$query_cnx = "ALTER TABLE `message` ADD `cache` SMALLINT NOT NULL ;";
-	$resul_cnx = mysql_query($query_cnx, $cnx->link);
-			
 	$query_cnx = "update variable set protege='0'";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 

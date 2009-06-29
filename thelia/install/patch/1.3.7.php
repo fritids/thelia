@@ -104,6 +104,6 @@
 			
 
 	$query_cnx = "update variable set valeur='137' where nom='version'";
-	$resul_cnx = mysql_query($query_cnx, $cnx->link);exit;
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 
 ?>
