@@ -51,6 +51,9 @@
 		$administrateur->prenom = $prenom;
 		$administrateur->niveau = "1";
 		$administrateur->maj();
+		if($administrateur->id == $_SESSION["util"]->id){
+			$_SESSION["util"] = $administrateur;
+		}
 		
 		if(trim($motdepasse1) != "" && $motdepasse1 == $motdepasse2){
 ?>
