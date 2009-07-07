@@ -28,7 +28,7 @@
 	// ajout panier
 	function ajouter($ref, $quantite=1, $append=0, $nouveau=0){
 
-		if($quantite =="" || $quantite == 0)
+		if($quantite =="" || $quantite <= 0)
 			$quantite = 1;
 					
 		$perso = array();
@@ -87,7 +87,7 @@
 	
 	// modification de la quantité d'un article
 	function modifier($article, $quantite){
-		if($quantite != "")
+		if($quantite != "" && $quantite>=0)
 			$_SESSION['navig']->panier->modifier($article, $quantite);
 		
 	}
