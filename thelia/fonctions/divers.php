@@ -270,8 +270,8 @@
 	// remplacement des caractères spéciaux + accents
 	function ereg_caracspec($chaine){
 		
-		$avant = "àáâãäåòóôõöøèéêëçìíîïùúûüÿñÁÂÀÅÃÄÇÉÊÈËÓÔÒØÕÖÚÛÙÜ:;,";  
-  		$apres = "aaaaaaooooooeeeeciiiiuuuuynaaaaaaceeeeoooooouuuu---"; 
+		$avant = "àáâãäåòóôõöøèéêëçìíîïùúûüÿñÁÂÀÅÃÄÇÉÊÈËÓÔÒØÕÖÚÛÙÜ:;,°";  
+  		$apres = "aaaaaaooooooeeeeciiiiuuuuynaaaaaaceeeeoooooouuuu----"; 
 
 		$chaine = strtolower($chaine);
  		$chaine = strtr($chaine, $avant, $apres);
