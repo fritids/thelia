@@ -4,7 +4,7 @@ include_once(realpath(dirname(__FILE__)) . "/../lib/phpMailer/class.phpmailer.ph
  
 class Mail extends PHPMailer{
  
-   function __constrcut(){
+   function __construct(){
 		$this->LE = "\n";
    }
          
