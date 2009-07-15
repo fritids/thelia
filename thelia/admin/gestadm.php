@@ -41,7 +41,6 @@
 
 <script type="text/javascript">
 	function valid(admin){
-
 		if(document.getElementById('motdepasse1' + admin ).value == document.getElementById('motdepasse2' + admin ).value)
 			document.getElementById('formadmin' + admin).submit();
 		else{
@@ -81,7 +80,7 @@
 <div id="contenu_int"> 
    <p align="left"><a href="accueil.php" class="lien04">Accueil</a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="configuration.php" class="lien04">Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="gestadm.php" class="lien04">Gestion des administrateurs</a></p>
 
-<!-- bloc dŽclinaisons / colonne gauche -->  
+<!-- bloc dÅ½clinaisons / colonne gauche -->  
 <div id="bloc_description">
 <div class="entete_liste_config">
 	<div class="titre">LISTE DES ADMINISTRATEURS</div>
@@ -116,7 +115,7 @@
 			<li style="width:94px; border-left:1px solid #96A8B5;"><input name="identifiant" type="text" class="form" value="<?php echo($row->identifiant); ?>" size="11" /></li>
 			<li style="width:82px; border-left:1px solid #96A8B5;"><input name="motdepasse1" id="motdepasse1<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
 			<li style="width:82px; border-left:1px solid #96A8B5;"><input name="motdepasse2" id="motdepasse2<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
-			<li style="width:75px; border-left:1px solid #96A8B5;"><a href="#" onclick="document.getElementById('formadmin<?php echo($row->id); ?>').submit();">modifier</a></li>
+			<li style="width:75px; border-left:1px solid #96A8B5;"><a href="#" onclick="valid('<?php echo $row->id; ?>');return false;">modifier</a></li>
 			<li style="width:13px; border-left:1px solid #96A8B5; text-align:right;"><a href="#" onclick="supp('<?php echo $row->id; ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 		</ul>
  	<input type="hidden" name="action" value="modifier" />
@@ -127,7 +126,7 @@
 
 
 <div class="bordure_bottom" id="ajout_admin" style="display: none;">
-<form action="gestadm_modifier.php" id="formadmin" method="post" onsubmit="valid('<?php echo $row->id; ?>');return false;">
+<form action="gestadm_modifier.php" id="formadmin" method="post" onsubmit="ajout();return false;">
    <input type="hidden" name="action" value="ajouter" />
 
 		<div class="entete_liste_config" style="margin-top:10px;">
@@ -147,7 +146,7 @@
 			<li style="width:95px; border-left:1px solid #96A8B5;"><input name="identifiant" type="text" class="form" size="11" /></li>
 			<li style="width:85px; border-left:1px solid #96A8B5;"><input name="motdepasse1" id="motdepasse1" type="password" class="form" size="6" /></li>
 			<li style="width:80px; border-left:1px solid #96A8B5;"><input name="motdepasse2" id="motdepasse2" type="password" class="form" size="6" onclick="this.value='';" /></li>
-			<li style="width:80px; border-left:1px solid #96A8B5;"><a href="#" onclick="valid('<?php echo $row->id; ?>');">ajouter</a></li>
+			<li style="width:80px; border-left:1px solid #96A8B5;"><a href="#" onclick="ajout();return false;">ajouter</a></li>
 		</ul>
 </form>       
 </div>

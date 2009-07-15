@@ -43,7 +43,7 @@
 		$motdepasse1 = trim($motdepasse1);
 		$motdepasse2 = trim($motdepasse2);
 		
-		if($motdepasse1 != "" && $motdepasse1==$motdepasse2){
+		if(trim($motdepasse1) != "" && trim($motdepasse1)==trim($motdepasse2)){
 			$administrateur->motdepasse = $motdepasse1;
 			$administrateur->crypter();
 		}	
@@ -51,24 +51,21 @@
 		$administrateur->prenom = $prenom;
 		$administrateur->niveau = "1";
 		$administrateur->maj();
-		if($administrateur->id == $_SESSION["util"]->id){
+		
+		if($_SESSION["util"]->id == $administrateur->id){
 			$_SESSION["util"] = $administrateur;
 		}
 		
-		if(trim($motdepasse1) != "" && $motdepasse1 == $motdepasse2){
+		if(trim($motdepasse1) != "" && trim($motdepasse1)==trim($motdepasse2)){
 ?>
 <script type="text/javascript">
-	alert("Changement effectué");
+	alert("Mot de passe change avec succes");
 	location = "gestadm.php";
 </script>
 <?php
 	} else {
-		?>
-		<script type="text/javascript">
-			alert("Il y a des erreurs dans le formulaire");
-			location = "gestadm.php";
-		</script>
-		<?php
+		header("Location: gestadm.php");
+		
 	}
 ?>
 <?php
@@ -81,23 +78,13 @@
 		$admin->valeur = $valeur;
 		$admin->nom = $nom;
 		$admin->prenom = $prenom;
-		$admin->identifiant = trim($identifiant);
+		$admin->identifiant = $identifiant;
 		$admin->niveau = "1";
 		$motdepasse1 = trim($motdepasse1);
 		$admin->motdepasse = $motdepasse1;
-		if($motdepasse1 == $motdepasse2 && $admin->identifiant != ""){
-			$admin->crypter();
-			$admin->add();
-			header("location: gestadm.php");
-		}
-		else{
-			?>
-			<script type="text/javascript">
-				alert("Il y a des erreurs dans le formulaire");
-				location = "gestadm.php";
-			</script>
-			<?php	
-		}
+		$admin->crypter();
+		$admin->add();
+		header("location: gestadm.php");
 	}
 	
 	if($action == "supprimer"){
