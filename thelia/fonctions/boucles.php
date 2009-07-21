@@ -734,6 +734,9 @@
 			$forcepage = lireTag($args, "forcepage");
 						
 			if($bloc) $totbloc=$bloc;
+			if($deb) $debsave = $deb;
+			else $debsave = 0;
+			
 			if(!$deb) $deb=0;
 			
 			if($page) $_SESSION['navig']->page = $page;

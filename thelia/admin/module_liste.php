@@ -56,7 +56,7 @@
 
 	include_once("../classes/Modules.class.php");
 	$modules = new Modules();	
-	$query = "select * from $modules->table where actif='1'";
+	$query = "select * from $modules->table where actif='1' order by classement";
 	$resul = mysql_query($query, $modules->link);
 	
 	$i=0;
