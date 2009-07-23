@@ -629,13 +629,15 @@
 				$corps = str_replace("__MOTDEPASSE__",$pass,$corps);
 				$corps = str_replace("__URLSITE__",$urlsite->valeur,$corps);
 				
+				$corpstext = str_replace("__MOTDEPASSE__",$pass,$corpstext);
+				
 				$mail = new Mail();
 				$mail->IsMail();
 				$mail->From = $emailcontact->valeur;
 				$mail->FromName = $nomsite->valeur;
 				$mail->Subject = $sujet;
 				$mail->MsgHTML($corps);
-				$mail->AltBody = $corpstext." ".$pass;
+				$mail->AltBody = $corpstext;
 				$mail->AddAddress($tclient->email,$tclient->nom." ".$tclient->prenom);
 				$mail->send();
 
