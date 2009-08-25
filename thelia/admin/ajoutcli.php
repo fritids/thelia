@@ -49,7 +49,7 @@ if($action == "ajouter"){
 			$rec = $client->charger_mail($client->email);
 
 			$message = new Message();
-			$message->charger("création client");
+			$message->charger("creation_client");
 
 			$messagedesc = new Messagedesc();
 			$messagedesc->charger($message->id);
@@ -63,15 +63,35 @@ if($action == "ajouter"){
 			$emailcontact = new Variable();
 			$emailcontact->charger("emailcontact");
 			
-			$messagedesc->description = str_replace("__NOM_SITE__",$nomsite->valeur,$messagedesc->description);
+			$messagedesc->description = str_replace("__NOMSITE__",$nomsite->valeur,$messagedesc->description);
 			$messagedesc->description = str_replace("__EMAIL__",$client->email,$messagedesc->description);
-			$messagedesc->description = str_replace("__MOT_DE_PASSE__",$pass,$messagedesc->description);
-			$messagedesc->description = str_replace("__URL_SITE__",$urlsite->valeur,$messagedesc->description);
-			
-			$messagedesc->descriptiontext = str_replace("__NOM_SITE__",$nomsite->valeur,$messagedesc->descriptiontext);
+			$messagedesc->description = str_replace("__MOTDEPASSE__",$pass,$messagedesc->description);
+			$messagedesc->description = str_replace("__URLSITE__",$urlsite->valeur,$messagedesc->description);
+			$messagedesc->description = str_replace("__NOM__",$client->nom,$messagedesc->description);
+			$messagedesc->description = str_replace("__PRENOM__",$client->prenom,$messagedesc->description);
+			$messagedesc->description = str_replace("__ADRESSE1__",$client->adresse1,$messagedesc->description);
+			$messagedesc->description = str_replace("__ADRESSE2__",$client->adresse2,$messagedesc->description);
+			$messagedesc->description = str_replace("__ADRESSE3__",$client->adresse3,$messagedesc->description);
+			$messagedesc->description = str_replace("__VILLE__",$client->ville,$messagedesc->description);
+			$messagedesc->description = str_replace("__CPOSTAL__",$client->cpostal,$messagedesc->description);
+			$messagedesc->description = str_replace("__TELEPHONE__",$client->telfixe,$messagedesc->description);
+			$messagedesc->description = str_replace("__CIVILITE__",$raison[$client->raison],$messagedesc->description);
+			$messagedesc->description = str_replace("__PAYS__",$paysdesc->titre,$messagedesc->description);
+
+			$messagedesc->descriptiontext = str_replace("__NOMSITE__",$nomsite->valeur,$messagedesc->descriptiontext);
 			$messagedesc->descriptiontext = str_replace("__EMAIL__",$client->email,$messagedesc->descriptiontext);
-			$messagedesc->descriptiontext = str_replace("__MOT_DE_PASSE__",$pass,$messagedesc->descriptiontext);
-			$messagedesc->descriptiontext = str_replace("__URL_SITE__",$urlsite->valeur,$messagedesc->descriptiontext);
+			$messagedesc->descriptiontext = str_replace("__MOTDEPASSE__",$pass,$messagedesc->descriptiontext);
+			$messagedesc->descriptiontext = str_replace("__URLSITE__",$urlsite->valeur,$messagedesc->descriptiontext);
+			$messagedesc->descriptiontext = str_replace("__NOM__",$client->nom,$messagedesc->descriptiontext);
+			$messagedesc->descriptiontext = str_replace("__PRENOM__",$client->prenom,$messagedesc->descriptiontext);
+			$messagedesc->descriptiontext = str_replace("__ADRESSE1__",$client->adresse1,$messagedesc->descriptiontext);
+			$messagedesc->descriptiontext = str_replace("__ADRESSE2__",$client->adresse2,$messagedesc->descriptiontext);
+			$messagedesc->descriptiontext = str_replace("__ADRESSE3__",$client->adresse3,$messagedesc->descriptiontext);
+			$messagedesc->descriptiontext = str_replace("__VILLE__",$client->ville,$messagedesc->descriptiontext);
+			$messagedesc->descriptiontext = str_replace("__CPOSTAL__",$client->cpostal,$messagedesc->descriptiontext);
+			$messagedesc->descriptiontext = str_replace("__TELEPHONE__",$client->telfixe,$messagedesc->descriptiontext);
+			$messagedesc->descriptiontext = str_replace("__CIVILITE__",$raison[$client->raison],$messagedesc->descriptiontext);
+			$messagedesc->descriptiontext = str_replace("__PAYS__",$paysdesc->titre,$messagedesc->descriptiontext);
 			
 
 			$mail = new PHPMailer();

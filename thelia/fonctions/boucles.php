@@ -1565,6 +1565,8 @@
 			$total = number_format($total, 2, ".", ""); 
 			$totcmdport = number_format($totcmdport, 2); 
 			$port = number_format($port, 2, ".", ""); 
+			$prixht = number_format($prixht, 2, ".", "");
+			$totalht = number_format($totalht, 2, ".", "");
 
 			if($pays->tva != "" && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != ""))){
 				$prix = $prixht; 
