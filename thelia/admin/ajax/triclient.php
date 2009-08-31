@@ -18,6 +18,7 @@ $debut = $_GET["debut"];
   	$client = new Client();
   	
  	$query = "select * from $client->table order by $critere $order limit $debut,20";
+ 	echo $query;
   	$resul = mysql_query($query, $client->link);
   	
   	while($row = mysql_fetch_object($resul)){
@@ -49,10 +50,10 @@ $debut = $_GET["debut"];
 	<li style="width:122px;"><?php echo($row->ref); ?></li>
 	<li style="width:150px;"><?php echo($row->entreprise); ?></li>
 	<li style="width:250px;"><?php echo($row->prenom); ?> <?php echo($row->nom); ?></li>
-	<li style="width:133px;"><?php if($existe) echo $jour."/".$mois."/".$annee; ?></li>
-	<li style="width:163px;"><?php if($existe) echo $commande->total(); ?></li>
-	<li style="width:40px;"><a href="client_visualiser.php?ref=<?php echo($row->ref); ?>" class="txt_vert_11">Détails</a></li>
-	<li style="width:10px;"><a href="#" onclick="confirmSupp('<?php echo($row->ref); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
+	<li style="width:123px;"><?php if($existe) echo $jour."/".$mois."/".$annee; ?></li>
+	<li style="width:148px;"><?php if($existe) echo $commande->total(); ?></li>
+	<li style="width:40px;"><a href="client_visualiser.php?ref=<?php echo($row->ref); ?>" class="txt_vert_11">&eacute;diter</a></li>
+	<li style="width:35px; text-align:center;"><a href="#" onclick="confirmSupp('<?php echo($row->ref); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 </ul>
 <?php }
 ?>

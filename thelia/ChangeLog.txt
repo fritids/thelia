@@ -1,3 +1,8 @@
+1.4.1
+	Optimisation de l'admin
+	ajout du point d'entrée "title" dans l'admin (possibilité de rajouter du code dans le <head> </head> de la page)
+
+
 1.4.0
 	Refonte de l'interface d'administration
 	Nouveau template de base

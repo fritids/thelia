@@ -27,3 +27,5 @@
 <title>THELIA / BACK OFFICE</title>
 <link rel="SHORTCUT ICON" href="favicon.ico" />
 <link href="styles.css" rel="stylesheet" type="text/css" />
+
+<?php admin_inclure("title"); ?>
