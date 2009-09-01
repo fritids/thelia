@@ -1915,7 +1915,7 @@
 		}
 
 		if($rubrique!="")  $search.=" and rubrique=\"$rubrique\"";
-		if($id!="")  $search.=" and id=\"$id\"";
+		if($id!="")  $search.=" and caracteristique=\"$id\"";
 		
 		
 		$rubcaracteristique = new Rubcaracteristique();
@@ -1926,7 +1926,7 @@
         $order = "order by $tmpcaracteristique->table.classement";
 
         $query = "select DISTINCT(caracteristique) from $rubcaracteristique->table,$tmpcaracteristique->table  where 1 $search and $rubcaracteristique->table.caracteristique=$tmpcaracteristique->table.id $order";
-		if($id != "") $query = "select * from $tmpcaracteristique->table where 1 $search";
+		//if($id != "") $query = "select * from $tmpcaracteristique->table where 1 $search";
 		$resul = mysql_query($query, $rubcaracteristique->link);
 	
 		$nbres = mysql_num_rows($resul);
@@ -1940,10 +1940,8 @@
 			else if($courante == "0" && ($id  == $caracteristique || strstr($caracteristique, $id . "-")))
 				 continue;
 							
-			if($id != "") $tmpcaracteristiquedesc->charger($row->id, $_SESSION['navig']->lang);
-			else $tmpcaracteristiquedesc->charger($row->caracteristique, $_SESSION['navig']->lang);
-			if($id != "") $temp = str_replace("#ID", "$row->id", $texte);
-			else $temp = str_replace("#ID", "$row->caracteristique", $texte);
+			 $tmpcaracteristiquedesc->charger($row->caracteristique, $_SESSION['navig']->lang);
+			 $temp = str_replace("#ID", "$row->caracteristique", $texte);
 
 			$tmpcaracteristique->charger($tmpcaracteristiquedesc->caracteristique);
 			
@@ -1960,6 +1958,7 @@
 		return $res;
 	
 	}	
+
 
 	function boucleCaracdisp($texte, $args){
 
