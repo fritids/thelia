@@ -1,7 +1,7 @@
 1.4.1
 	Optimisation de l'admin
 	ajout du point d'entrée "title" dans l'admin (possibilité de rajouter du code dans le <head> </head> de la page)
-	Suppression de tinymce et passage en plugin
+	Suppression de tinymce et passage en plugin (pour les mises à jour veuillez penser à copier client/plugins/tinymce dans votre répertoire client/plugins)
 
 1.4.0
 	Refonte de l'interface d'administration
