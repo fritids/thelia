@@ -201,6 +201,7 @@ CREATE TABLE `client` (
   `parrain` int(11) NOT NULL default '0',
   `type` smallint(6) NOT NULL default '0',
   `pourcentage` int(11) NOT NULL default '0',
+  `lang` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
 )  AUTO_INCREMENT=1 ;
 

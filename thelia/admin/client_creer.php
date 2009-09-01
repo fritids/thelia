@@ -71,6 +71,7 @@
 		if($revendeur == "on") $client->revendeur = 1;
 		else $client->revendeur = 0;
 		$client->type = "0";
+		$client->lang = 1;
 
 		$testcli = new Client();
 		if($parrain != "") 

@@ -389,6 +389,7 @@
 		$client->intracom = strip_tags($intracom);
 		$client->pays = strip_tags($pays);
 		$client->type = "0";
+		$client->lang = $_SESSION['navig']->lang;
 		
 		$testcli = new Client();
 		if($parrain != "") 
