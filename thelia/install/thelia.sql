@@ -2080,7 +2080,7 @@ INSERT INTO `modules` (`id`, `nom`, `type`, `actif`, `classement`) VALUES
 (7, 'cic', 1, 0, 0),
 (8, 'atos', 1, 0, 0),
 (9, 'virement', 1, 0, 0),
-(10, 'filtremodulo', 3, 1, 0);
+(10, 'filtremodulo', 3, 1, 0),
 (11, 'tinymce', 3, 1, 0);
 
 -- 
