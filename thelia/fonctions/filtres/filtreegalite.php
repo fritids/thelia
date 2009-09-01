@@ -52,7 +52,7 @@ function filtreegalite($texte){
 
 function filtredifferent($texte){
 
-	preg_match_all("`\#FILTRE_different\((.*)\|\|([^\|]*)\|\|([^\)]*)\)`", $texte, $cut);
+	preg_match_all("`\#FILTRE_different\(([^\|]*)\|\|([^\|]*)\|\|([^\)]*)\)`", $texte, $cut);
 
 	$tab1 = "";
 	$tab2 = "";

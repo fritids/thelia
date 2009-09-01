@@ -328,7 +328,7 @@
 			$image = new Image();
 			$image->charger($row->id);
 			$imagedesc = new Imagedesc();
-			$imagedesc->charger($image->id);
+			$imagedesc->charger($image->id, $_SESSION['navig']->lang);
 			$temp = $texte;
 			
 			$temp = str_replace("#FGRANDE", "#FICHIER", $temp);
@@ -338,7 +338,7 @@
 						
 			if($image->produit != 0){
 					$pr->charger_id($image->produit);
-					$prdesc->charger($image->produit);
+					$prdesc->charger($image->produit, $_SESSION['navig']->lang);
 					$temp = str_replace("#PRODTITRE", $prdesc->titre, $temp);
 					$temp = str_replace("#PRODUIT", $image->produit, $temp);
 					$temp = str_replace("#PRODREF", $pr->ref, $temp);
@@ -363,7 +363,7 @@
 
 		  		$nomcache = "client/cache/" . "rubrique" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
 				
-				$rudesc->charger($image->rubrique);
+				$rudesc->charger($image->rubrique, $_SESSION['navig']->lang);
 				$temp = str_replace("#RUBRIQUE", $image->rubrique, $temp);
 				$temp = str_replace("#RUBTITRE", $rudesc->titre, $temp);
 			
@@ -384,7 +384,7 @@
 
 		  		$nomcache = "client/cache/" . "dossier" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
 				$dosdesc = new Dossierdesc();
-				$dosdesc->charger($image->dossier);
+				$dosdesc->charger($image->dossier, $_SESSION['navig']->lang);
 				$temp = str_replace("#DOSSIER", $image->dossier, $temp);
 				$temp = str_replace("#DOSTITRE", $dosdesc->titre, $temp);
 			
@@ -405,7 +405,7 @@
 		  			$nomcache = "client/cache/" . "contenu" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
 				
 					$ctdesc = new Contenudesc();
-					$ctdesc->charger($image->contenu);
+					$ctdesc->charger($image->contenu, $_SESSION['navig']->lang);
 					$temp = str_replace("#CONTTITRE", $ctdesc->titre, $temp);
 					$temp = str_replace("#CONTENU", $image->contenu, $temp);					
 					if(!$largeur && !$hauteur) 
@@ -792,7 +792,7 @@
 			if($ligne == "") $ligne="1";
 
 			$search .= " and ligne=\"$ligne\"";
-			if($id!="") $search .= " and id=\"$id\"";				 
+			if($id!="") $search .= " and id in ($id)";	 
 			if($nouveaute!="") $search .= " and nouveaute=\"$nouveaute\"";
 			if($promo!="") $search .= " and promo=\"$promo\"";
 			if($reappro!="") $search .= " and reappro=\"$reappro\"";
@@ -1352,7 +1352,7 @@
 	}
 	
 	function bouclePage($texte, $args){
-			global $page, $id_rubrique;
+			global $page, $id_rubrique, $id_dossier;
 			
 			// récupération des arguments
 			
@@ -1417,6 +1417,7 @@
 						$temp = str_replace("#PAGE_SUIV", "$pagesuiv", $temp);
 						$temp = str_replace("#PAGE_PREC", "$pageprec", $temp);
 						$temp = str_replace("#RUBRIQUE", "$id_rubrique", $temp);
+						$temp = str_replace("#DOSSIER", "$id_dossier", $temp);
 				
 						if($pagecourante && $pagecourante == $i){		
 
@@ -1435,6 +1436,7 @@
                         $temp = str_replace("#PAGE_NUM", "$page", $texte);
                         $temp = str_replace("#PAGE_PREC", "$pageprec", $temp);
                         $temp = str_replace("#RUBRIQUE", "$id_rubrique", $temp);
+						$temp = str_replace("#DOSSIER", "$id_dossier", $temp);
                         $res .= $temp;
                 }
 
@@ -1443,6 +1445,7 @@
                         $temp = str_replace("#PAGE_NUM", "$page", $texte);
                         $temp = str_replace("#PAGE_SUIV", "$pagesuiv", $temp);
                         $temp = str_replace("#RUBRIQUE", "$id_rubrique", $temp);
+						$temp = str_replace("#DOSSIER", "$id_dossier", $temp);
                         $res .= $temp;
                 }
 
@@ -1452,6 +1455,7 @@
                         $temp = str_replace("#PAGE_SUIV", "$pagesuiv", $temp);
                         $temp = str_replace("#PAGE_PREC", "$pageprec", $temp);
                         $temp = str_replace("#RUBRIQUE", "$id_rubrique", $temp);
+						$temp = str_replace("#DOSSIER", "$id_dossier", $temp);
                         $res .= $temp;
                 }					
 			
@@ -2043,6 +2047,8 @@
 
 		if(! count($tabliste))
 			return "";
+				
+		$compt = 1;
 					
 		for($i=0; $i<count($tabliste); $i++){
 			
@@ -2075,8 +2081,11 @@
 			$temp = str_replace("#CARACTERISTIQUEC", $caracteristique . $etcaracteristique, $temp);
 			$temp = str_replace("#TITRE", "$tcaracdispdesc->titre", $temp);
 			$temp = str_replace("#SELECTED", "$selected", $temp);
-			
+			$temp = str_replace("#COMPT", $compt, $temp);
+			$temp = str_replace("#NBRES", count($tabliste), $temp);
 			$res .= $temp;
+			
+			$compt ++;
 		}
 	
 		
