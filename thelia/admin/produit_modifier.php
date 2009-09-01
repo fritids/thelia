@@ -814,8 +814,6 @@
 <?php include_once("js/accessoire.php"); ?>
 <?php include_once("js/contenu_associe.php"); ?>
 
-<?php include_once("tinymce.php"); ?>
-
 <?php
 	if(isset($existe) && $existe == "1"){
 ?>

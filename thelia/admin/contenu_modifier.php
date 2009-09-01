@@ -366,7 +366,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <?php include_once("title.php"); ?>
-<?php include_once("tinymce.php"); ?>
+
 </head>
 
 <body>

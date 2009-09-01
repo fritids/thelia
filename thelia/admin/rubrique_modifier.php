@@ -490,7 +490,7 @@ include_once('js/declinaison.php');
 					$parentnom = $parentdesc->titre;	
 			?>
 			 <a href="parcourir.php?parent=<?php echo($parentdesc->rubrique); ?>" class="lien04"> <?php echo($parentdesc->titre); ?></a>                             
-            <?php include("tinymce.php"); ?>       
+
                    <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <?php if( !$id) { ?>Ajouter<?php } else { ?> Modifier <?php } ?>
  </p>
 	
