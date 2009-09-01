@@ -1,6 +1,5 @@
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/Prodprixmult.class.php");
-	include_once("tinymce.php");
 ?>
 <?php
 	if($_REQUEST['action'] == "ajoutmult"){
