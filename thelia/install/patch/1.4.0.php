@@ -1,9 +1,5 @@
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Cnx.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Variable.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Message.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Messagedesc.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Devise.class.php");
 
 	/************ RAJOUTER LE MESSAGE DANS L'INSTALL DE THELIA (thelia.sql) ***************/
 	$cnx = new Cnx();

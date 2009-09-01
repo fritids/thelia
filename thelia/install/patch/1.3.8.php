@@ -1,6 +1,5 @@
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Cnx.class.php");
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Message.class.php");
 
 	$cnx = new Cnx();
 	
@@ -37,57 +36,51 @@
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 	
 	$query_cnx = "ALTER TABLE `messagedesc` ADD `intitule` TEXT NOT NULL AFTER `lang` ;";
-	$resul_cnx = mysql_query($query_cnx, $cnx->link);	
-
-	$message = new Message();
-	$message->charger("mailconfirmcli");
-	$query_cnx = "UPDATE messagedesc set intitule='Mail de confirmation client' where id=$message->id";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 	
-	
-
-	$message = new Message();
-	$message->charger("mailconfirmadm");
-	$query_cnx = "UPDATE messagedesc set intitule='Mail de confirmation administrateur' where id=$message->id";
+	$query_cnx = "UPDATE messagedesc set intitule='Mail de confirmation client' where id IN (select id from message where nom='mailconfirmcli')";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 	
-
-	$message = new Message();
-	$message->charger("changepass");
-	$query_cnx = "UPDATE messagedesc set intitule='Mail de changement de mot de passe' where id=$message->id";
+	$query_cnx = "UPDATE messagedesc set intitule='Mail de confirmation administrateur' where id IN(select id from message where nom='mailconfirmadm')";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 	
-	$message = new Message();
-	$message->charger("colissimo");
-	$query_cnx = "UPDATE messagedesc set intitule=\"Mail de confirmation d'envoi colissimo\" where id=$message->id";
+	$query_cnx = "UPDATE messagedesc set intitule='Mail de changement de mot de passe' where id IN(select id from message where nom='changepass')";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+	
+	$query_cnx = "UPDATE messagedesc set intitule=\"Mail de confirmation d'envoi colissimo\" where id IN(select id from message where nom='colissimo')";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 
-	$message = new Message();
-	$message->charger("nouveaumdp1");
-	$messagedesc = new Messagedesc();
-	$messagedesc->charger($message->id);
-	$titre = $messagedesc->description;
-	$message->supprimer();
+	
+	$query_cnx = "select * from messagedesc where message IN(select id from message where nom='nouveaumdp1')";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$row = mysql_fetch_object($resul_cnx);
+	
+	$titre = $row->description;
+	
+	$query_cnx = "delete from message where nom='nouveaumdp1'";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);	
+
+	
+	$query_cnx = "UPDATE messagedesc set titre='$titre' where id= IN (select id from message where nom='changepass')";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 	
 
-	$message = new Message();
-	$message->charger("changepass");
-	$query_cnx = "UPDATE messagedesc set titre='$titre' where id=$message->id";
-	$resul_cnx = mysql_query($query_cnx, $cnx->link);
-		
+	
+	$query_cnx = "select * from messagedesc where message IN(select id from message where nom='sujetcommande')";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$row = mysql_fetch_object($resul_cnx);
+	
+	$titre = $row->description;
+	
+	$query_cnx = "delete from message where nom='sujetcommande'";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);	
 
-	$message = new Message();
-	$message->charger("sujetcommande");
-	$messagedesc = new Messagedesc();
-	$messagedesc->charger($message->id);
-	$titre = $messagedesc->description;
-	$message->supprimer();
-
-	$message = new Message();
-	$message->charger("mailconfirmcli");
-	$query_cnx = "UPDATE messagedesc set titre=CONCAT(titre,\"$titre\") where id=$message->id";
-	$resul_cnx = mysql_query($query_cnx, $cnx->link);	
-
+	
+	
+	$query_cnx = "UPDATE messagedesc set titre=CONCAT(titre,\"$titre\") where id= IN (select id from message where nom='mailconfirmcli')";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 
 	$query_cnx = "update commande set lang='1'";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);

@@ -1,5 +1,4 @@
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Baseobj.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Cnx.class.php");
 
 	/* ------------------------------------------------------------------ */
