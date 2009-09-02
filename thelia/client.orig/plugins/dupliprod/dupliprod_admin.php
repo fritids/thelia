@@ -1,4 +1,8 @@
 <?php
+	include_once(realpath(dirname(__FILE__)) . "/../../../fonctions/authplugins.php");
+
+	autorisation("dupliprod");
+
 	include_once(realpath(dirname(__FILE__)) . "/Dupliprod.class.php");
 	
 	if($_REQUEST['action'] == "dupliquer"){

@@ -1,4 +1,8 @@
 <?php
+	include_once(realpath(dirname(__FILE__)) . "/../../../fonctions/authplugins.php");
+
+	autorisation("prodprixmult");
+
 	include_once(realpath(dirname(__FILE__)) . "/Prodprixmult.class.php");
 ?>
 <?php

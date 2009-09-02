@@ -1,5 +1,8 @@
 <?php
+	include_once(realpath(dirname(__FILE__)) . "/../../../fonctions/authplugins.php");
 
+	autorisation("validcli");
+	
 	include_once(realpath(dirname(__FILE__)) . "/Validcli.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/config.php");
 	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Message.class.php");

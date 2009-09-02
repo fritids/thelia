@@ -1,4 +1,9 @@
 <?php
+
+	include_once(realpath(dirname(__FILE__)) . "/../../../fonctions/authplugins.php");
+
+	autorisation("expeditor");
+
 	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Commande.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Client.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../../../classes/Venteadr.class.php");

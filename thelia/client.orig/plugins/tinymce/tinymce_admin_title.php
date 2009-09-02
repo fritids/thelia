@@ -25,8 +25,11 @@
 ?>
 
 <?php 
+	include_once(realpath(dirname(__FILE__)) . "/../../../fonctions/authplugins.php");
 
-        preg_match("`([^\/]*).php`", $_SERVER['PHP_SELF'], $page);
+	autorisation("tinymce");
+
+    preg_match("`([^\/]*).php`", $_SERVER['PHP_SELF'], $page);
 
 	if($page[1] == "produit_modifier" || $page[1] == "rubrique_modifier" || $page[1] == "contenu_modifier"){
 
