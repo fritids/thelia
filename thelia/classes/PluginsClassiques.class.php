@@ -35,7 +35,7 @@
 		
 		function PluginsClassiques($nom=""){
 			$this->Baseobj();	
-			$this->nom_plugin = $nom;			
+			$this->nom_plugin = $nom;	
 		}
 
 		function init(){

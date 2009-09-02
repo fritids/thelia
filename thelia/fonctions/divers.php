@@ -668,7 +668,6 @@ $reply\nFrom:$from\n".$mail_mime);
 	}
  
 	function modules_fonction($fonc, $args = "", $nom = ""){
-		
 		$search = "";
 		
 		if($nom != "")
