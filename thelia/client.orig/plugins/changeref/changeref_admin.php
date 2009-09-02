@@ -1,6 +1,8 @@
 <?php
-	if(!isset($_SESSION["util"]->id)) exit;
+	include_once(realpath(dirname(__FILE__)) . "/../../../fonctions/authplugins.php");
 
+	autorisation("changeref");
+	
 	include_once(realpath(dirname(__FILE__)) . "/Changeref.class.php");
 	
 	if($_REQUEST['action'] == "modifier"){
