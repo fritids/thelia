@@ -20,9 +20,9 @@ if($_GET["type"] == 1){
 	
 	
 	if($alpha == "alpha"){
-		$query = "select * from $rubriquedesc->table LEFT JOIN $rubrique->table ON $rubrique->table.id=$rubriquedesc->table.rubrique where  lang=\"1\" order by $rubriquedesc->table.$critere $order";
+		$query = "select * from $rubriquedesc->table LEFT JOIN $rubrique->table ON $rubrique->table.id=$rubriquedesc->table.rubrique  where  lang=\"1\" and $rubrique->table.parent=\"$ref\" order by $rubriquedesc->table.$critere $order";
 	}else{
-		$query = "select * from $rubrique->table order by $critere $order";
+		$query = "select * from $rubrique->table where parent=\"$ref\" order by $critere $order";
 	}
 	
 	
