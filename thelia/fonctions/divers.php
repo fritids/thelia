@@ -681,9 +681,11 @@ $reply\nFrom:$from\n".$mail_mime);
 			$nomclass = $row->nom;
 			$nomclass[0] = strtoupper($nomclass[0]);
 			
-			if(! file_exists(realpath(dirname(__FILE__)) . "/../client/plugins/" . $row->nom . "/" . $nomclass . ".class.php"))
-				return;
-				
+			if(! file_exists(realpath(dirname(__FILE__)) . "/../client/plugins/" . $row->nom . "/" . $nomclass . ".class.php")){
+				echo "Erreur dans le chargement du module " . $row->nom;
+				exit;
+			}
+			
 			include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $row->nom . "/" . $nomclass . ".class.php");
 			$tmpobj = new $nomclass();
 			if(strtolower(get_parent_class($tmpobj)) != "pluginsclassiques" && strtolower(get_parent_class($tmpobj)) != "pluginspaiements" && strtolower(get_parent_class($tmpobj)) != "pluginstransports") return "";
