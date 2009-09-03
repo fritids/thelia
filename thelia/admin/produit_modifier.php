@@ -752,6 +752,8 @@
 <head>
 <?php include_once("title.php"); ?>
 
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+
 <script type="text/javascript">
 <!--
 	function envoyer(){
@@ -1546,7 +1548,6 @@
 </div>
 <!-- </div> -->
 <!-- -->
-<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
 <script type="text/javascript" src="../lib/jquery/accordion.js"></script>
 <script type="text/javascript">
 jQuery().ready(function(){	

@@ -367,6 +367,8 @@
 <head>
 <?php include_once("title.php"); ?>
 
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>	
+
 </head>
 
 <body>
@@ -774,8 +776,6 @@
 <?php include_once("pied.php"); ?>
 </div>
 </div>
-<!-- -->
-<script type="text/javascript" src="../lib/jquery/jquery.js"></script>	
-<!-- -->
+
 </body>
 </html>

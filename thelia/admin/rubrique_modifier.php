@@ -407,6 +407,9 @@ include_once('js/contenu_associe.php');
 include_once('js/caracteristique.php');
 include_once('js/declinaison.php');
 ?>
+
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+
 </head>
 
 <?php
@@ -1054,8 +1057,5 @@ if($id != ""){
 <?php include_once("pied.php");?>
 </div>
 
-<!-- -->
-<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
-<!-- -->
 </body>
 </html>
