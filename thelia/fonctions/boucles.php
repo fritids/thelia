@@ -1258,7 +1258,10 @@
 		$saveRes = mysql_query($saveReq);
 		$countRes = mysql_result($saveRes, 0, "totcount") . " ";
 		
+		$compt=0;
+		
 		while( $row = mysql_fetch_object($resul) ){
+			$compt++;
 	
 			if($num>0) 
 				if($comptbloc>=ceil($countRes/$num) && $bloc!="") continue;
@@ -1290,7 +1293,8 @@
 			$temp = str_replace("#REWRITEURL", rewrite_cont("$row->id"), $temp);			
 			$temp = str_replace("#DOSTITRE", "$dossierdesc->titre", $temp);
 			$temp = str_replace("#PRODUIT", "$produit", $temp);
-			$temp = str_replace("#RUBRIQUE", "$rubrique", $temp);			
+			$temp = str_replace("#RUBRIQUE", "$rubrique", $temp);
+			$temp = str_replace("#COMPT",$compt,$temp);			
 			
 			$res .= $temp;
 			
