@@ -1,25 +1,3 @@
-<?php
-
-	session_start();
-	
-	if($_POST['choixbase']) $_SESSION['choixbase'] = $_POST['choixbase'];
-	
-	mysql_connect($_SESSION['serveur'], $_SESSION['utilisateur'], $_SESSION['motdepasse']);
-	if( ! mysql_select_db($_SESSION['choixbase']))
-		{ header("Location: choixbase.php?err=1"); exit; }
-	
-	$sql = file_get_contents("thelia.sql");
-	$sql = str_replace(";',", "-CODE-", $sql);
-		
-	$tab = explode(";", $sql);
-	
-	for($i=0; $i<count($tab); $i++){
-		$query = str_replace("-CODE-", ";',", $tab[$i]);
-		$query = str_replace("|", ";", $query);
-		mysql_query($query);
-	}
-?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -40,7 +18,7 @@
 
 <div id="wrapper"style="overflow:hidden;zoom: 1">
 		
-		<!-- Entête -->
+		<!-- EntÃªte -->
 		
 	<div id="entete"style="overflow:hidden;zoom: 1">
 		<h1><span>Thelia</span></h1>
@@ -92,7 +70,7 @@
 						if( ! is_writable($liste[$i])) {
 				
 				?>
-						<span class="erreur">Le répertoire <?php echo $liste[$i] ?> n'est pas accessible en écriture</span><br />
+						<span class="erreur">Le rÃ©pertoire <?php echo $liste[$i] ?> n'est pas accessible en Ã©criture</span><br />
 				<?php	
 							$err=1;	
 						}
@@ -113,7 +91,7 @@
 						if( ! is_writable($liste[$i])) {
 
 					?>
-						<span class="erreur">Le fichier <?php echo $liste[$i] ?> n'est pas accessible en écriture</span><br />
+						<span class="erreur">Le fichier <?php echo $liste[$i] ?> n'est pas accessible en Ã©criture</span><br />
 					<?php	
 						$err=1;	
 						}

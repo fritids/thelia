@@ -1,5 +1,6 @@
 1.4.2
-
+	Mise à jour de sécurité
+	
 1.4.1
 	Optimisation de l'admin
 	ajout du point d'entrée "title" dans l'admin (possibilité de rajouter du code dans le <head> </head> de la page)

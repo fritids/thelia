@@ -697,6 +697,9 @@ $reply\nFrom:$from\n".$mail_mime);
 	}
 	
 	function admin_inclure($type){
+		
+		if(! $_SESSION['util']->id) return 0;
+        
 		$modules = new Modules();	
 		$query = "select * from $modules->table where actif='1' order by classement";
 		$resul = mysql_query($query, $modules->link);
