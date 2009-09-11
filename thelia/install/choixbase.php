@@ -1,15 +1,29 @@
 <?php
 	session_start();
-	
-	
-	if( ! $_SESSION['serveur'] || isset($_POST['serveur'])) $_SESSION['serveur'] = $_POST['serveur'];
-	if( ! $_SESSION['utilisateur'] || isset($_POST['utilisateur'])) $_SESSION['utilisateur'] = $_POST['utilisateur'];
-	if( ! $_SESSION['motdepasse'] || isset($_POST['motdepasse'])) $_SESSION['motdepasse'] = $_POST['motdepasse'];	
 				
-	if($_SESSION['serveur'] && $_SESSION['utilisateur']){
-		if(! $cnx = @mysql_connect($_SESSION['serveur'], $_SESSION['utilisateur'], $_SESSION['motdepasse'])){
+	if(isset($_POST['serveur']) && isset($_POST['utilisateur'])  && isset($_POST['motdepasse'])){
+		if(! $cnx = @mysql_connect($_POST['serveur'], $_POST['utilisateur'], $_POST['motdepasse'])){
 			header("Location: bdd.php?err=1");	
 			exit;
+		} else {
+
+			if(file_exists("../classes/Cnx.class.php.orig")) 
+				$fic = file_get_contents("../classes/Cnx.class.php.orig");
+			
+			if(! file_exists("../classes/Cnx.class.php")){
+
+				$fic = str_replace("votre_serveur", $_POST['serveur'], $fic);
+				$fic = str_replace("votre_login_mysql", $_POST['utilisateur'], $fic);
+				$fic = str_replace("votre_motdepasse_mysql",  $_POST['motdepasse'], $fic);
+
+				$fp = fopen("../classes/Cnx.class.php.orig", "w");
+				fputs($fp, $fic);
+				fclose($fp);
+
+				rename("../classes/Cnx.class.php.orig", "../classes/Cnx.class.php");
+
+			}
+			
 		}
 
 	}		
@@ -70,10 +84,7 @@
 		
 				<br />
 				
-				<form action="verifdroits.php" method="post">
-				<input type="hidden" name="serveur" value="<?php echo $_SESSION['serveur']; ?>" />
-				<input type="hidden" name="utilisateur" value="<?php echo $_SESSION['utilisateur']; ?>" />
-				<input type="hidden" name="motdepasse" value="<?php echo $_SESSION['motdepasse']; ?>" />
+				<form action="configuration.php" method="post">
 								
 				Veuillez choisir votre base de données. <br /><br />
 				

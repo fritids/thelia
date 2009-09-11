@@ -1,13 +1,4 @@
-<?php
-	session_start();
-	$_SESSION['serveur']="";
-	$_SESSION['utilisateur']="";
-	$_SESSION['motdepasse']="";
-	$_SESSION['choixbase']="";
-?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -64,7 +55,7 @@
 				Bienvenue au sein du programme d'installation de Thelia.<br />
 				Nous allons vous guider tout au long de ce processus afin d'installer l'application sur votre système.<br /><br />
 				
-				<form action="bdd.php" method="post">
+				<form action="verifications.php" method="post">
 					<input type="submit" value="Continuer" />
 				</form>
 		<?php

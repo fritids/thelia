@@ -44,22 +44,55 @@
 		<div id="colonneDeGauche"style="overflow:hidden;zoom: 1">
 		
 			<div id="chapeau"style="overflow:hidden;zoom: 1">
-			<h2>V&eacute;rification des droits</h2>
-		
-				<form action="configuration.php" method="post">
-				<input type="hidden" name="serveur" value="<?php echo $_SESSION['serveur']; ?>" />
-				<input type="hidden" name="utilisateur" value="<?php echo $_SESSION['utilisateur']; ?>" />
-				<input type="hidden" name="motdepasse" value="<?php echo $_SESSION['motdepasse']; ?>" />
-				<input type="hidden" name="choixbase" value="<?php echo $_SESSION['choixbase']; ?>" />				
-				<br />
-								
-				Nous allons v&eacute;rifier certains droits sur les fichiers et les r&eacute;pertoires <br /><br />
 				
+			<?php $verification = 1; ?>
+				
+			<h2>V&eacute;rification de la configuration syst&egrave;me</h2>
+		
+				<form action="bdd.php" method="post">
 			
+				<br />
+
+				Nous allons v&eacute;rifier votre version de PHP <br /><br />
+
+			    <?php
+					if ( version_compare(PHP_VERSION, '5.0.0', '<')) {
+						$verification = 0;
+				?>
+					<span class="erreur">Votre serveur n'est pas compatible avec PHP5</span>
+					<br /><hr /><br />
+				<?php
+				    } else {
+				?>
+				<span class="valide">Votre version de PHP est correct.</span>
+				<br /><hr /><br />				
+				<?php
+					}
+				?>
+
+				Nous allons v&eacute;rifier la pr&eacute;sence des librairies n&eacute;cessaires <br /><br />
+
+			    <?php
+					if ( ! function_exists ("imagefilledarc")) {
+						$verification = 0;
+				?>
+				<span class="erreur">Veuillez installer/activer la librairie GD</span>
+				<br /><hr /><br />
+				<?php
+				    } else {
+				?>
+					<span class="valide">Les librairies n&eacute;cessaires sont pr&eacute;sente.</span>
+					<br /><hr /><br />
+							
+				<?php
+					}
+				?>	
+				Nous allons v&eacute;rifier certains droits sur les fichiers et les r&eacute;pertoires <br />
+				
 			
 				<?php 
 					$err=0;
-					$liste = array("../", "../classes", "../client.orig", "../client.orig/cache", "../client.orig/commande", "../client.orig/document",  "../client.orig/plugins", "../client.orig/gfx", "../client.orig/gfx/photos", "../client.orig/gfx/photos/produit", "../client.orig/gfx/photos/rubrique", "../client.orig/gfx/photos/contenu", "../client.orig/gfx/photos/dossier", "../client.orig/gfx/utilisateur", "../client.orig/gfx/utilisateur/Image", "../client.orig/gfx/utilisateur/Flash");
+					$liste = array("../", "../admin", "../lib", "../fonctions", "../classes", "../client.orig", "../client.orig/cache", "../client.orig/commande", "../client.orig/document",  "../client.orig/plugins", "../client.orig/gfx", "../client.orig/gfx/photos", "../client.orig/gfx/photos/produit", "../client.orig/gfx/photos/rubrique", "../client.orig/gfx/photos/contenu", "../client.orig/gfx/photos/dossier", "../client.orig/gfx/utilisateur", "../client.orig/gfx/utilisateur/Image", "../client.orig/gfx/utilisateur/Flash");
 				?>
 				
 				<?php 
@@ -67,10 +100,10 @@
 				for($i=0; $i<count($liste); $i++)
 			
 					
-						if( ! is_writable($liste[$i])) {
+						if(! is_writable($liste[$i])) {
 				
 				?>
-						<span class="erreur">Le répertoire <?php echo $liste[$i] ?> n'est pas accessible en écriture</span><br />
+						<span class="erreur">Le r&eacute;pertoire <?php echo $liste[$i] ?> n'est pas accessible en &eacute;criture</span><br />
 				<?php	
 							$err=1;	
 						}
@@ -78,7 +111,6 @@
 					
 				?>
 				
-				<br />
 				
 					<?php 
 						$liste = array("../classes/Cnx.class.php.orig");
@@ -88,19 +120,19 @@
 
 					for($i=0; $i<count($liste); $i++)
 
-						if( ! is_writable($liste[$i])) {
+						if(! is_writable($liste[$i])) {
 
 					?>
-						<span class="erreur">Le fichier <?php echo $liste[$i] ?> n'est pas accessible en écriture</span><br />
+						<span class="erreur">Le fichier <?php echo $liste[$i] ?> n'est pas accessible en &eacute;criture</span><br />
 					<?php	
-						$err=1;	
+						$verification = 0;
 						}
 					?>
 					
 					<br />
 									
 				<?php
-					if(!$err){
+					if($verification){
 				?>
 				
 					<span class="valide">Les droits sont corrects</span>
@@ -112,7 +144,7 @@
 					} else {
 				?>
 					
-					<input type="button" value="Rafraichir" onclick="location='verifdroits.php'" />
+					<input type="button" value="Recharger" onclick="location='verifications.php'" />
 				
 				<?php
 					}

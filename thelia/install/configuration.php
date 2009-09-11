@@ -1,23 +1,31 @@
 <?php
 	
-	session_start();
+	include_once("../classes/Cnx.class.php");
+	$cnx = new Cnx();
 	
-	if(file_exists("../classes/Cnx.class.php.orig")) 
-		$fic = file_get_contents("../classes/Cnx.class.php.orig");
+	mysql_connect($cnx->host, $cnx->login_mysql, $cnx->password_mysql);
 
-	if(! file_exists("../classes/Cnx.class.php")){
+	if( ! isset($_POST['choixbase']) || ! mysql_select_db($_POST['choixbase']))
+		{ header("Location: choixbase.php?err=1"); exit; }
+
+	$sql = file_get_contents("thelia.sql");
+	$sql = str_replace(";',", "-CODE-", $sql);
 	
-		$fic = str_replace("votre_serveur", $_SESSION['serveur'], $fic);
-		$fic = str_replace("votre_login_mysql", $_SESSION['utilisateur'], $fic);
-		$fic = str_replace("votre_motdepasse_mysql",  $_SESSION['motdepasse'], $fic);
-		$fic = str_replace("bdd_sql", $_SESSION['choixbase'], $fic);	
-		
-		$fp = fopen("../classes/Cnx.class.php.orig", "w");
+	$tab = explode(";", $sql);
+
+	for($i=0; $i<count($tab); $i++){
+		$query = str_replace("-CODE-", ";',", $tab[$i]);
+		$query = str_replace("|", ";", $query);
+		mysql_query($query);
+	}	
+
+	if( file_exists("../classes/Cnx.class.php")){
+	
+		$fic = file_get_contents("../classes/Cnx.class.php");
+		$fic = str_replace("bdd_sql", $_POST['choixbase'], $fic);	
+		$fp = fopen("../classes/Cnx.class.php", "w");
 		fputs($fp, $fic);
-		fclose($fp);
-		
-		rename("../classes/Cnx.class.php.orig", "../classes/Cnx.class.php");
-				
+		fclose($fp);		
 	}
 
 	if( file_exists("../client.orig"))

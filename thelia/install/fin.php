@@ -32,17 +32,6 @@
     $var->charger("rsspass");
     $var->valeur=genpass(40);
     $var->maj();
-
-	$_SESSION['serveur']="";
-	$_SESSION['utilisateur']="";
-	$_SESSION['motdepasse']="";
-	$_SESSION['choixbase']="";
-
-	unset($_SESSION['serveur']);
-	unset($_SESSION['utilisateur']);
-	unset($_SESSION['motdepasse']);
-	unset($_SESSION['choixbase']);
-	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
