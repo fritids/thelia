@@ -41,7 +41,6 @@ CREATE TABLE `administrateur` (
   `motdepasse` text NOT NULL,
   `prenom` text NOT NULL,
   `nom` text NOT NULL,
-  `niveau` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 )  AUTO_INCREMENT=2 ;
 
@@ -2109,21 +2108,6 @@ INSERT INTO `modulesdesc` (`id`, `plugin`, `lang`, `titre`, `chapo`, `descriptio
 (8, 'atos', 1, 'CB', 'CB', '', 0),
 (9, 'virement', 1, 'virement', 'virement', '', 0);
 
--- 
--- Structure de la table `cache`
--- 
-
-CREATE TABLE `cache` (
-  `id` int(11) NOT NULL auto_increment,
-  `session` text NOT NULL,
-  `texte` text NOT NULL,
-  `args` text NOT NULL,
-  `variables` text NOT NULL,
-  `type_boucle` text NOT NULL,
-  `res` text NOT NULL,
-  `date` datetime NOT NULL,
-  PRIMARY KEY  (`id`)
-)  AUTO_INCREMENT=1 ;
 
 CREATE TABLE `ventedeclidisp` (
 `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
@@ -2131,7 +2115,116 @@ CREATE TABLE `ventedeclidisp` (
 `declidisp` INT NOT NULL
 ) ;
 
-CREATE TABLE `racmodule` (
-`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-`module` TEXT NOT NULL
-) ;
+
+--
+-- Structure de la table `autorisation`
+--
+
+CREATE TABLE `autorisation` (
+  `id` int(11) NOT NULL auto_increment,
+  `nom` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `autorisation`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `autorisationdesc`
+--
+
+CREATE TABLE `autorisationdesc` (
+  `id` int(11) NOT NULL auto_increment,
+  `autorisation` int(11) NOT NULL,
+  `titre` text NOT NULL,
+  `chapo` text NOT NULL,
+  `description` text NOT NULL,
+  `postscriptum` text NOT NULL,
+  `lang` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `autorisationdesc`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `autorisation_admin`
+--
+
+CREATE TABLE `autorisation_admin` (
+  `id` int(11) NOT NULL auto_increment,
+  `admininistrateur` int(11) NOT NULL,
+  `autorisation` int(11) NOT NULL,
+  `lecture` smallint(6) NOT NULL,
+  `ecriture` smallint(6) NOT NULL,
+  PRIMARY KEY  (`id`)
+) AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `autorisation_admin`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `autorisation_profil`
+--
+
+CREATE TABLE `autorisation_profil` (
+  `id` int(11) NOT NULL auto_increment,
+  `profil` int(11) NOT NULL,
+  `autorisation` int(11) NOT NULL,
+  `lecture` int(11) NOT NULL,
+  `ecriture` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `autorisation_profil`
+--
+
+--
+-- Structure de la table `profil`
+--
+
+CREATE TABLE `profil` (
+  `id` int(11) NOT NULL auto_increment,
+  `nom` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `profil`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `profildesc`
+--
+
+CREATE TABLE `profildesc` (
+  `id` int(11) NOT NULL auto_increment,
+  `profil` int(11) NOT NULL,
+  `titre` text NOT NULL,
+  `chapo` text NOT NULL,
+  `description` text NOT NULL,
+  `postscriptum` text NOT NULL,
+  `lang` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `profildesc`
+--
+

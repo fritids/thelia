@@ -34,11 +34,9 @@
 		var $motdepasse;
 		var $prenom;
 		var $nom;
-		var $niveau;
-
 				
 		var $table="administrateur";
-		var $bddvars = array("id", "identifiant", "motdepasse", "prenom", "nom", "niveau");
+		var $bddvars = array("id", "identifiant", "motdepasse", "prenom", "nom");
 
 		function Administrateur(){
 			$this->Baseobj();

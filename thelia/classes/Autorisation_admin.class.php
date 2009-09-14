@@ -24,73 +24,27 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once("pre.php");
-	include_once("auth.php");
-	
-	if(!isset($action)) $action="";
-	
-?>
-<?php
-	include_once("../classes/Administrateur.class.php");
 
-	if($action == "modifier"){
+	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 
-		$administrateur = new Administrateur();
+	class Autorisation_admin extends Baseobj{
 
- 		$administrateur->charger_id($id);
- 		$administrateur->valeur = $valeur;	
-		$administrateur->identifiant = $identifiant;
-		$motdepasse1 = trim($motdepasse1);
-		$motdepasse2 = trim($motdepasse2);
+		var $id;
+		var $administrateur;
+		var $autorisation;
+		var $lecture;
+		var $ecriture;
+
+				
+		var $table="autorisation_admin";
 		
-		if(trim($motdepasse1) != "" && trim($motdepasse1)==trim($motdepasse2)){
-			$administrateur->motdepasse = $motdepasse1;
-			$administrateur->crypter();
-		}	
-		$administrateur->nom = $nom;
-		$administrateur->prenom = $prenom;
-		$administrateur->maj();
-		
-		if($_SESSION["util"]->id == $administrateur->id){
-			$_SESSION["util"] = $administrateur;
+		var $bddvars = array("id", "administrateur", "autorisation" ,"lecture", "ecriture");
+
+		function Autorisation_admin(){
+			$this->Baseobj();
 		}
-		
-		if(trim($motdepasse1) != "" && trim($motdepasse1)==trim($motdepasse2)){
-?>
-<script type="text/javascript">
-	alert("Mot de passe change avec succes");
-	location = "gestadm.php";
-</script>
-<?php
-	} else {
-		header("Location: gestadm.php");
-		
+
 	}
-?>
-<?php
-	
-	}
-	
-	if($action == "ajouter"){
-		$admin = new Administrateur();
-		
-		$admin->valeur = $valeur;
-		$admin->nom = $nom;
-		$admin->prenom = $prenom;
-		$admin->identifiant = $identifiant;
-		$motdepasse1 = trim($motdepasse1);
-		$admin->motdepasse = $motdepasse1;
-		$admin->crypter();
-		$admin->add();
-		header("location: gestadm.php");
-	}
-	
-	if($action == "supprimer"){
-		
-		$admin = new Administrateur();
-		$admin->charger_id($id);
-		$admin->delete();
-		header("Location: gestadm.php");
-	}		
+
 
 ?>

@@ -24,25 +24,29 @@
 /*************************************************************************************/
 ?>
 <?php
+
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 
-	class Racmodule extends Baseobj{
+	class Autorisationdesc extends Baseobj{
 
 		var $id;
-		var $module;
-				
-		var $table="racmodule";
-		var $bddvars = array("id", "module");
+		var $autorisation;
+		var $titre;
+		var $chapo;
+		var $description;
+		var $postscriptum;
+		var $lang;
 
-		function Racmodule(){
+				
+		var $table="autorisationdesc";
+		
+		var $bddvars = array("id", "autorisation", "titre", "chapo", "description", "postscriptum", "lang");
+
+		function Autorisationdesc(){
 			$this->Baseobj();
 		}
 
-		function charger($module){
-			return $this->getVars("select * from $this->table where module=\"$module\"");
-		}
-
-
 	}
+
 
 ?>
