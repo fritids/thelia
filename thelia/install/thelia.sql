@@ -2260,5 +2260,5 @@ CREATE TABLE `profildesc` (
 -- Contenu de la table `profildesc`
 --
 
-INSERT INTO `profildesc` VALUES(1, 1, 'Super administrateur', '', '', '', 0);
-INSERT INTO `profildesc` VALUES(2, 2, 'Gestionnaire des commandes', '', '', '', 0);
+INSERT INTO `profildesc` VALUES(1, 1, 'Super administrateur', '', '', '', 1);
+INSERT INTO `profildesc` VALUES(2, 2, 'Gestionnaire des commandes', '', '', '', 1);

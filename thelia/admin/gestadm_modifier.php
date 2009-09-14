@@ -33,6 +33,8 @@
 <?php if(! est_autorise("acces_configuration")) exit; ?>
 <?php
 	include_once("../classes/Administrateur.class.php");
+	include_once("../classes/Autorisation_profil.class.php");
+	include_once("../classes/Autorisation_administrateur.class.php");
 
 	if($action == "modifier"){
 
@@ -73,6 +75,7 @@
 	}
 	
 	if($action == "ajouter"){
+
 		$admin = new Administrateur();
 		
 		$admin->valeur = $valeur;
@@ -82,15 +85,33 @@
 		$motdepasse1 = trim($motdepasse1);
 		$admin->motdepasse = $motdepasse1;
 		$admin->crypter();
-		$admin->add();
+		$lastid = $admin->add();
+		
+		$autorisation_profil = new Autorisation_profil();
+		$query = "select * from $autorisation_profil->table where profil=\"" . $_POST['profil'] . "\"";
+		$resul = mysql_query($query, $autorisation_profil->link);
+		while($row = mysql_fetch_object($resul)){
+			$autorisation_administrateur = new Autorisation_administrateur();
+			$autorisation_administrateur->administrateur = $lastid;
+			$autorisation_administrateur->autorisation = $row->autorisation;
+			$autorisation_administrateur->lecture = $row->lecture;
+			$autorisation_administrateur->ecriture = $row->ecriture;
+			$autorisation_administrateur->add();
+		}
+		
 		header("location: gestadm.php");
 	}
 	
 	if($action == "supprimer"){
-		
+
+		$autorisation_administrateur = new Autorisation_administrateur();
+		$query = "delete from $autorisation_administrateur->table where administrateur=\"$id\"";
+		$resul = mysql_query($query, $autorisation_administrateur->link);
+				
 		$admin = new Administrateur();
 		$admin->charger_id($id);
 		$admin->delete();
+		
 		header("Location: gestadm.php");
 	}		
 

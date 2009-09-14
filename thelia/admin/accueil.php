@@ -218,8 +218,11 @@
 <div id="bloc_informations">
 	<ul>
 	<li class="entete">INFORMATIONS SITE</li>
+	 <?php if(est_autorise("acces_clients")){ ?>
 	<li class="lignetop" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Clients</li>
 	<li class="lignetop" style="width:72px;"><?php echo($nbclient); ?></li>
+	<?php } ?>	
+	<?php if(est_autorise("acces_catalogue")){ ?>
 	<li class="fonce" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Rubriques</li>
 	<li class="fonce" style="width:72px;"><?php echo($nbrubrique); ?></li>
 	<li class="claire" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Produits</li>
@@ -228,7 +231,8 @@
 	<li class="fonce" style="width:72px;"><?php echo($nbproduitenligne); ?></li>
 	<li class="claire" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Produits hors ligne</li>
 	<li class="claire" style="width:72px;"><?php echo($nbproduithorsligne); ?></li>
-	 <?php if(est_autorise("acces_commandes")){ ?>
+	<?php } ?>	
+	<?php if(est_autorise("acces_commandes")){ ?>
 	<li class="fonce" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Commandes</li>
 	<li class="fonce" style="width:72px;"><?php echo($nbCommande); ?></li>
 	<li class="claire" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Commandes en instance </li>

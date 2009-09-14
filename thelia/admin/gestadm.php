@@ -30,6 +30,7 @@
 <?php if(! est_autorise("acces_configuration")) exit; ?>
 <?php
 	include_once("../classes/Administrateur.class.php");
+	include_once("../classes/Profildesc.class.php");
 ?>
 
 
@@ -117,7 +118,7 @@
 			<li style="width:82px; border-left:1px solid #96A8B5;"><input name="motdepasse1" id="motdepasse1<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
 			<li style="width:82px; border-left:1px solid #96A8B5;"><input name="motdepasse2" id="motdepasse2<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
 			<li style="width:75px; border-left:1px solid #96A8B5;"><a href="#" onclick="valid('<?php echo $row->id; ?>');return false;">modifier</a></li>
-			<li style="width:13px; border-left:1px solid #96A8B5; text-align:right;"><a href="#" onclick="supp('<?php echo $row->id; ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
+			<li style="width:13px; border-left:1px solid #96A8B5; text-align:right;"><?php if($_SESSION['util']->id != $row->id) { ?><a href="#" onclick="supp('<?php echo $row->id; ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a><?php } ?></li>
 		</ul>
  	<input type="hidden" name="action" value="modifier" />
    	<input type="hidden" name="id" value="<?php echo($row->id); ?>" />
@@ -147,6 +148,20 @@
 			<li style="width:95px; border-left:1px solid #96A8B5;"><input name="identifiant" type="text" class="form" size="11" /></li>
 			<li style="width:85px; border-left:1px solid #96A8B5;"><input name="motdepasse1" id="motdepasse1" type="password" class="form" size="6" /></li>
 			<li style="width:80px; border-left:1px solid #96A8B5;"><input name="motdepasse2" id="motdepasse2" type="password" class="form" size="6" onclick="this.value='';" /></li>
+			<li style="width:80px; border-left:1px solid #96A8B5;">
+			<select name="profil">
+			<?php
+				$profildesc = new Profildesc();
+				$query = "select * from $profildesc->table where lang=\"1\"";
+				$resul = mysql_query($query, $profildesc->link);
+				while($row = mysql_fetch_object($resul)){
+			?>	
+				<option value="<?php echo $row->profil; ?>"><?php echo $row->titre; ?></option>
+			<?php
+				}
+			?>
+			</select>
+			</li>
 			<li style="width:80px; border-left:1px solid #96A8B5;"><a href="#" onclick="ajout();return false;">ajouter</a></li>
 		</ul>
 </form>       
