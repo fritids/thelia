@@ -238,7 +238,7 @@
 			$corps = str_replace("__CLIENT_TELFIXE__", $client->telfixe, $corps);
 			$corps = str_replace("__CLIENT_TELPORT__", $client->telport, $corps);
 			
-			ereg("<VENTEPROD>(.*)</VENTEPROD>", $corps, $cut);
+	        preg_match("/<VENTEPROD>(.*)<\/VENTEPROD>/", $corps, $cut);
 			$corps = str_replace("<VENTEPROD>", "", $corps);
 			$corps = str_replace("</VENTEPROD>", "", $corps);
 			

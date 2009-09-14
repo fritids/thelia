@@ -117,7 +117,7 @@
 	
 			$rec = $lect[$i];
 
-			if(ereg("<T_([^>]*)", "$rec", $cut)) {
+			if(preg_match("/<T_([^>]*)/", "$rec", $cut)) {
 				$res="";
 				$avant="";
 				$apres="";
@@ -391,7 +391,7 @@
 				
    			    if(strstr($rec, "#INCLURE")){
 					
-					ereg("\"([^\"]*)\"", "$rec", $cut);
+					preg_match("/\"([^\"]*)\"/", "$rec", $cut);
 					$fichier = $cut[1];
 			
 					if(!file_exists($fichier)) { echo "Impossible d'ouvrir $fichier"; exit; }

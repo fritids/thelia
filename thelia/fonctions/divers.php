@@ -35,7 +35,7 @@
 	function lireTag($ligne, $tag){
 	
 		if( ! strstr($ligne, $tag)) return "";
-		ereg("$tag=\"([^\"]*)\"", "$ligne", $res);
+        preg_match("/$tag=\"([^\"]*)\"/", "$ligne", $res);
 		return $res[1];
 	
 	}
