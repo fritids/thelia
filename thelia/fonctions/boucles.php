@@ -1336,7 +1336,7 @@
 			$order = "order by classement";
 		
 		$contenuassoc = new Contenuassoc();
-		$query = "select * from $contenuassoc->table where 1 $search $limit";
+		$query = "select * from $contenuassoc->table where 1 $search $order $limit";
 		$resul = mysql_query($query, $contenuassoc->link);
 		
 		if(! mysql_num_rows($resul))

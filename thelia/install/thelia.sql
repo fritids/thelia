@@ -48,7 +48,7 @@ CREATE TABLE `administrateur` (
 -- Contenu de la table `administrateur`
 -- 
 
-INSERT INTO `administrateur` VALUES (1, 'admin', PASSWORD('admin'), 'Admin', 'Admin', 1);
+INSERT INTO `administrateur` VALUES (1, 'admin', PASSWORD('admin'), 'Admin', 'Admin');
 
 -- --------------------------------------------------------
 

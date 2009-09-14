@@ -23,9 +23,6 @@
 /*                                                                                   */
 /*************************************************************************************/
 ?>
-<?php
-	include_once("../classes/Racmodule.class.php");
-?>
 <div id="entete">
 	<div class="logo">
 		<a href="accueil.php"><img src="gfx/thelia_logo.jpg" alt="THELIA solution e-commerce" /></a>
