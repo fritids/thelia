@@ -31,7 +31,7 @@
 	if(! isset($lang)) $lang="1";
 
 ?>
-
+<?php if(! est_autorise("acces_configuration")) exit; ?>
 <?php
 	include_once("../classes/Lang.class.php");
 	include_once("../classes/Message.class.php");

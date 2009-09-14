@@ -30,6 +30,7 @@
 	if(!isset($action)) $action="";
 	
 ?>
+<?php if(! est_autorise("acces_configuration")) exit; ?>
 <?php
 	include_once("../classes/Variable.class.php");
 

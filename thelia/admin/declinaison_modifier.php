@@ -32,6 +32,7 @@
 	if(!isset($lang)) $lang=1;
 	if(!isset($tabdisp)) $tabdisp="";
 ?>
+<?php if(! est_autorise("acces_configuration")) exit; ?>
 <?php
 	include_once("../classes/Declinaison.class.php");
 	include_once("../fonctions/divers.php");

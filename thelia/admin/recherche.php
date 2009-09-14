@@ -77,6 +77,9 @@ function supprimer_rubrique(id, parent){
 <div id="contenu_int"> 
     <p><a href="accueil.php" class="lien04">Accueil </a><img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">R&eacute;sultats de la recherche </a>              
     </p>
+
+<?php if(est_autorise("acces_clients")){ ?>
+
 <div class="entete_general">
 	<div class="titre">RESULTATS CLIENT</div>
 </div>
@@ -118,7 +121,8 @@ function supprimer_rubrique(id, parent){
 	$clilist = substr($clilist, 0, strlen($clilist)-2);
  ?>
 
- 
+<?php } ?>
+<?php if(est_autorise("acces_commandes")){ ?>
  <div class="entete_general" style="margin:10px 0 0 0">
 	<div class="titre">RESULTATS COMMANDE</div>
 </div>
@@ -198,6 +202,8 @@ function supprimer_rubrique(id, parent){
 
 	}
  ?>
+<?php } ?>
+<?php if(est_autorise("acces_catalogue")){ ?>
  <div class="entete_general" style="margin:10px 0 0 0">
 	<div class="titre">RESULTATS PRODUITS</div>
 </div>
@@ -279,6 +285,7 @@ function supprimer_rubrique(id, parent){
 	<li style="width:303px;"><?php echo($row->prix); ?></li>
 	<li style="width:20px;"><a href="javascript:supprimer_produit('<?php echo $row->ref ?>','<?php echo($row->rubrique); ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></li>
 </ul>
+<?php } ?>
 
  <?php
 	}

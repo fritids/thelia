@@ -31,6 +31,7 @@
 	if(!isset($page)) $page=0;
 	
 ?>
+<?php if(! est_autorise("acces_codespromos")) exit; ?>
 <?php
 	include_once("../classes/Promo.class.php");
 	

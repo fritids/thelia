@@ -27,6 +27,7 @@
 	include_once("pre.php");
 	include_once("auth.php");
 ?>
+<?php if(! est_autorise("acces_contenu")) exit; ?>
 <?php
 		if(!isset($parent)) $parent=0;
 		if(!isset($lang)) $lang=0;

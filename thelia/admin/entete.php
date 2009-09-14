@@ -39,36 +39,51 @@
 	    </ul>
 	   <ul class="separation_menu">&nbsp;</ul>
 	        	
+	  <?php	if(est_autorise("acces_clients")){ ?>
 	        <ul id="menu1">	
 	        <li><a href="client.php" <?php if($menu == "client") { ?>class="selected"<?php } ?>>Clients</a></li>
 	        </ul>
 	        <ul class="separation_menu">&nbsp;</ul>
+	  <?php } ?>
+	  <?php	if(est_autorise("acces_commandes")){ ?>
 	        <ul id="menu2">
             <li><a href="commande.php" <?php if($menu == "commande") { ?>class="selected"<?php } ?>>Commandes</a></li>
             </ul>
             <ul class="separation_menu">&nbsp;</ul>
+		  <?php } ?>
+		  <?php	if(est_autorise("acces_catalogue")){ ?>
              <ul id="menu3">
             <li><a href="parcourir.php" <?php if($menu == "catalogue") { ?>class="selected"<?php } ?>>Catalogue </a></li>
             </ul>
             <ul class="separation_menu">&nbsp;</ul>
+		  <?php } ?>
+		  <?php	if(est_autorise("acces_contenu")){ ?>
              <ul id="menu4">
             <li><a href="listdos.php" <?php if($menu == "contenu") { ?>class="selected"<?php } ?>>Contenu</a></li>
             </ul>
             <ul class="separation_menu">&nbsp;</ul>
+		  <?php } ?>
+		  <?php	if(est_autorise("acces_codespromos")){ ?>
              <ul id="menu5">
             <li><a href="promo.php" <?php if($menu == "paiement") { ?>class="selected"<?php } ?>>Codes promos</a></li>
             </ul>
             <ul class="separation_menu">&nbsp;</ul>
+		  <?php } ?>
+		  <?php	if(est_autorise("acces_configuration")){ ?>
              <ul id="menu6">
             <li><a href="configuration.php" <?php if($menu == "configuration") { ?>class="selected"<?php } ?>>Configuration</a></li>
             </ul>
+		  <?php } ?>
+		  <?php	if(est_autorise("acces_modules")){ ?>
             <ul class="separation_menu">&nbsp;</ul>
             <ul id="menu7">
 			<li><a href="module_liste.php" <?php if($menu == "plugins") { ?>class="selected"<?php } ?>>Modules</a></li>
 			</ul>
 			<ul class="separation_menu">&nbsp;</ul>
 			</ul>
+		  <?php } ?>
       	</div>
+		  <?php	if(est_autorise("acces_rechercher")){ ?>
             <div id="moteur_recherche"> 
              <form action="recherche.php" method="post">
               <div class="bouton_recherche">
@@ -80,7 +95,7 @@
 	        
              </form>
             </div>
-           
+           <?php } ?>
         
 </div>
 

@@ -34,7 +34,9 @@
 	include_once("../classes/Messagedesc.class.php");
 	include_once("../classes/Variable.class.php");
 	include_once("../lib/phpMailer/class.phpmailer.php");
-
+?>
+<?php if(! est_autorise("acces_clients")) exit; ?>
+<?php
 	$erreurnom = 0;
 	$erreurprenom = 0;
 	$erreuradresse = 0;

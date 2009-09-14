@@ -35,6 +35,9 @@
 	include_once("../classes/Modules.class.php");
 	include_once("../classes/Modulesdesc.class.php");
 	include_once("../fonctions/divers.php");
+?>
+<?php if(! est_autorise("acces_commandes")) exit; ?>
+<?php
 	if(isset($_POST["action"]) && $_POST["action"] == "ajouter"){
 		$total = 0;
 		$poids = 0;

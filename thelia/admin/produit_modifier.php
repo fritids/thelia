@@ -41,6 +41,7 @@
 	if(!isset($ligne)) $ligne="";
 	
 ?>
+<?php if(! est_autorise("acces_catalogue")) exit; ?>
 <?php
 	 include_once("../classes/Variable.class.php");  
 ?>

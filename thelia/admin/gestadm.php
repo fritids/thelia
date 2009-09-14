@@ -27,6 +27,7 @@
 	include_once("pre.php");
 	include_once("auth.php");
 ?>
+<?php if(! est_autorise("acces_configuration")) exit; ?>
 <?php
 	include_once("../classes/Administrateur.class.php");
 ?>
@@ -138,7 +139,7 @@
 			<li style="height:25px; width:95px; border-left:1px solid #96A8B5;">Identifiant</li>
 			<li style="height:25px; width:85px; border-left:1px solid #96A8B5;">Mot de passe</li>
 			<li style="height:25px; width:80px; border-left:1px solid #96A8B5;">Confirmation</li>
-			<li style="height:25px; width:85px; border-left:1px solid #96A8B5;">&nbsp;</li>
+			<li style="height:25px; width:85px; border-left:1px solid #96A8B5;">Profil</li>
 		</ul>
 		<ul class="ligne_claire_BlocDescription">
 			<li style="width:93px;"><input name="nom" type="text" class="form" size="11" /></li>

@@ -80,9 +80,9 @@
 ?>
 <div id="contenu_int">
 
-
+ <?php if(est_autorise("acces_commandes")){ ?>
 	<img src="graph.php" alt="-" />
-
+<?php } ?>
 
    
  <?php 
@@ -228,6 +228,7 @@
 	<li class="fonce" style="width:72px;"><?php echo($nbproduitenligne); ?></li>
 	<li class="claire" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Produits hors ligne</li>
 	<li class="claire" style="width:72px;"><?php echo($nbproduithorsligne); ?></li>
+	 <?php if(est_autorise("acces_commandes")){ ?>
 	<li class="fonce" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Commandes</li>
 	<li class="fonce" style="width:72px;"><?php echo($nbCommande); ?></li>
 	<li class="claire" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Commandes en instance </li>
@@ -236,8 +237,10 @@
 	<li class="fonce" style="width:72px;"><?php echo($nbcmdtraitement); ?></li>
 	<li class="lignebottom" style="width:222px; background-color:#9eb0be;">Commandes annulées </li>
 	<li class="lignebottom" style="width:72px;"><?php echo($nbcmdannulee); ?></li>
+	<?php } ?>	
 	</ul>
 	<ul>
+	 <?php if(est_autorise("acces_commandes")){ ?>
 	<li class="entete">STATISTIQUES DE VENTE</li>
 	<li class="lignetop" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Chiffre d'affaires TTC </li>
 	<li class="lignetop" style="width:72px;"><?php echo(round($ca, 2)); ?> &euro;</li>
@@ -248,6 +251,7 @@
 	<li class="lignebottomfonce" style="width:222px; background-color:#9eb0be;">Panier moyen </li>
 	<li class="lignebottomfonce" style="width:72px;"><?php echo $panierMoyen; ?> &euro;</li>
 	</ul>
+	<?php } ?>
 	<ul>
 	<li class="entete" >INFOS THELIA</li>
 	<li class="lignetop" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;">Version en cours</li>

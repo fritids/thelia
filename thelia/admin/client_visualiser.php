@@ -27,6 +27,7 @@
 	include_once("pre.php");
 	include_once("auth.php");
 ?>
+<?php if(! est_autorise("acces_clients")) exit; ?>
 <?php
 	include_once("../classes/Rubrique.class.php");
 	include_once("../fonctions/divers.php");

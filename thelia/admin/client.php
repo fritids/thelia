@@ -27,6 +27,7 @@
 	include_once("pre.php");
 	include_once("auth.php");
 ?>
+<?php if(! est_autorise("acces_clients")) exit; ?>
 <?php
 	if(!isset($action)) $action="";
 	if(!isset($page)) $page=0;

@@ -2170,12 +2170,12 @@ INSERT INTO `autorisationdesc` VALUES(8, 8, 'Accès aux recherches', '', '', '', 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `autorisation_admininistrateur`
+-- Structure de la table `autorisation_administrateur`
 --
 
-CREATE TABLE `autorisation_admininistrateur` (
+CREATE TABLE `autorisation_administrateur` (
   `id` int(11) NOT NULL auto_increment,
-  `admininistrateur` int(11) NOT NULL,
+  `administrateur` int(11) NOT NULL,
   `autorisation` int(11) NOT NULL,
   `lecture` smallint(6) NOT NULL,
   `ecriture` smallint(6) NOT NULL,

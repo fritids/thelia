@@ -713,12 +713,16 @@ $reply\nFrom:$from\n".$mail_mime);
 	
 	}
 	
-	function est_autorise($action, $type){
+	function est_autorise($action, $type="lecture"){
 		$autorisation = new Autorisation();
-		if(! $autorisation->charger($action) || ! $autorisation->lecture)
+		if(! $autorisation->charger($action))
 			return 0;
 		
-		if($type == "ecriture" && ! $autorisation->ecriture)
+		$autorisation_administrateur = new Autorisation_administrateur();
+		if(! $autorisation_administrateur->charger($autorisation->id, $_SESSION['util']->id) || ! $autorisation_administrateur->lecture)
+			return 0;
+		
+		if($type == "ecriture" && ! $autorisation_administrateur->ecriture)
 			return 0;
 			
 		return 1;

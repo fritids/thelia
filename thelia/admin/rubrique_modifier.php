@@ -36,6 +36,7 @@
 	if(!isset($ligne)) $ligne="";
 	
 ?>
+<?php if(! est_autorise("acces_catalogue")) exit; ?>
 <?php
 	include_once("../classes/Rubrique.class.php");
 	include_once("../classes/Rubriquedesc.class.php");

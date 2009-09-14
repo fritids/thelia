@@ -31,6 +31,7 @@
 	if(!isset($lang)) $lang="1";
 	if(!isset($ligne)) $ligne="";
 ?>
+<?php if(! est_autorise("acces_contenu")) exit; ?>
 <?php
 	 include_once("../classes/Variable.class.php");  
 ?>
