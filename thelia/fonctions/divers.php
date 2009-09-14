@@ -30,6 +30,8 @@
 	include_once(realpath(dirname(__FILE__)) . "/../classes/Dossier.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../classes/Contenu.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../classes/Produit.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../classes/Autorisation.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../classes/Autorisation_administrateur.class.php");
 
 	// lecture des arguments
 	function lireTag($ligne, $tag){
@@ -711,4 +713,15 @@ $reply\nFrom:$from\n".$mail_mime);
 	
 	}
 	
+	function est_autorise($action, $type){
+		$autorisation = new Autorisation();
+		if(! $autorisation->charger($action) || ! $autorisation->lecture)
+			return 0;
+		
+		if($type == "ecriture" && ! $autorisation->ecriture)
+			return 0;
+			
+		return 1;
+		
+	}
 ?>

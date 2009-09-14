@@ -40,6 +40,9 @@
 			$this->Baseobj();
 		}
 
+		function charger($nom){
+			return $this->getVars("select * from $this->table where nom=\"$nom\"");
+		}
 	}
 
 

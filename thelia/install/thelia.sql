@@ -2130,7 +2130,14 @@ CREATE TABLE `autorisation` (
 -- Contenu de la table `autorisation`
 --
 
-
+INSERT INTO `autorisation` VALUES(1, 'acces_clients');
+INSERT INTO `autorisation` VALUES(2, 'acces_commandes');
+INSERT INTO `autorisation` VALUES(3, 'acces_catalogue');
+INSERT INTO `autorisation` VALUES(4, 'acces_contenu');
+INSERT INTO `autorisation` VALUES(5, 'acces_codespromos');
+INSERT INTO `autorisation` VALUES(6, 'acces_configuration');
+INSERT INTO `autorisation` VALUES(7, 'acces_modules');
+INSERT INTO `autorisation` VALUES(8, 'acces_rechercher');
 -- --------------------------------------------------------
 
 --
@@ -2151,7 +2158,14 @@ CREATE TABLE `autorisationdesc` (
 --
 -- Contenu de la table `autorisationdesc`
 --
-
+INSERT INTO `autorisationdesc` VALUES(1, 1, 'Accès aux clients', '', '', '', 1);
+INSERT INTO `autorisationdesc` VALUES(2, 2, 'Accès aux commandes', '', '', '', 1);
+INSERT INTO `autorisationdesc` VALUES(3, 3, 'Accès au catalogue', '', '', '', 1);
+INSERT INTO `autorisationdesc` VALUES(4, 4, 'Accès aux contenus', '', '', '', 1);
+INSERT INTO `autorisationdesc` VALUES(5, 5, 'Accès aux codes promos', '', '', '', 1);
+INSERT INTO `autorisationdesc` VALUES(6, 6, 'Accès à la configuration', '', '', '', 1);
+INSERT INTO `autorisationdesc` VALUES(7, 7, 'Accès aux modules', '', '', '', 1);
+INSERT INTO `autorisationdesc` VALUES(8, 8, 'Accès aux recherches', '', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -2172,6 +2186,14 @@ CREATE TABLE `autorisation_admininistrateur` (
 -- Contenu de la table `autorisation_admininistrateur`
 --
 
+INSERT INTO `autorisation_administrateur` VALUES(1, 1, 1, 1, 1);
+INSERT INTO `autorisation_administrateur` VALUES(2, 1, 2, 1, 1);
+INSERT INTO `autorisation_administrateur` VALUES(3, 1, 3, 1, 1);
+INSERT INTO `autorisation_administrateur` VALUES(4, 1, 4, 1, 1);
+INSERT INTO `autorisation_administrateur` VALUES(5, 1, 5, 1, 1);
+INSERT INTO `autorisation_administrateur` VALUES(6, 1, 6, 1, 1);
+INSERT INTO `autorisation_administrateur` VALUES(7, 1, 7, 1, 1);
+INSERT INTO `autorisation_administrateur` VALUES(8, 1, 8, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2191,7 +2213,16 @@ CREATE TABLE `autorisation_profil` (
 --
 -- Contenu de la table `autorisation_profil`
 --
-
+INSERT INTO `autorisation_profil` VALUES(1, 1, 1, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(2, 1, 2, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(3, 1, 3, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(4, 1, 4, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(5, 1, 5, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(6, 1, 6, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(7, 1, 7, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(8, 1, 8, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(9, 2, 1, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(10, 2, 2, 1, 1);
 --
 -- Structure de la table `profil`
 --
@@ -2205,7 +2236,8 @@ CREATE TABLE `profil` (
 --
 -- Contenu de la table `profil`
 --
-
+INSERT INTO `profil` VALUES(1, 'superadministrateur');
+INSERT INTO `profil` VALUES(2, 'gestionnairecommande');
 
 -- --------------------------------------------------------
 
@@ -2228,3 +2260,5 @@ CREATE TABLE `profildesc` (
 -- Contenu de la table `profildesc`
 --
 
+INSERT INTO `profildesc` VALUES(1, 1, 'Super administrateur', '', '', '', 0);
+INSERT INTO `profildesc` VALUES(2, 2, 'Gestionnaire des commandes', '', '', '', 0);
