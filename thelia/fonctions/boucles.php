@@ -1991,7 +1991,7 @@
 		
 		$caracteristiquesave = $caracteristique;
 		
-		if( (ereg( "^$caracteristique-", $etcaracteristique)) ||(ereg( "-$caracteristique-", $etcaracteristique)) ) $deja="1";
+		if( preg_match( "/^$caracteristique-/", $etcaracteristique) || strstr($etcaracteristique, "-$caracteristique-") ) $deja="1";
 		else $deja="0";
 		
 		
