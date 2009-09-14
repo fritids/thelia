@@ -26,7 +26,7 @@
 	) AUTO_INCREMENT=1 ;";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 
-	$query_cnx = "CREATE TABLE `autorisation_admin` (
+	$query_cnx = "CREATE TABLE `autorisation_admininistrateur` (
 	  `id` int(11) NOT NULL auto_increment,
 	  `admininistrateur` int(11) NOT NULL,
 	  `autorisation` int(11) NOT NULL,

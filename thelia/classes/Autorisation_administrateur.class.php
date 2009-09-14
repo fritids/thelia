@@ -27,7 +27,7 @@
 
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 
-	class Autorisation_admin extends Baseobj{
+	class Autorisation_administrateur extends Baseobj{
 
 		var $id;
 		var $administrateur;
@@ -36,11 +36,11 @@
 		var $ecriture;
 
 				
-		var $table="autorisation_admin";
+		var $table="autorisation_administrateur";
 		
 		var $bddvars = array("id", "administrateur", "autorisation" ,"lecture", "ecriture");
 
-		function Autorisation_admin(){
+		function Autorisation_administrateur(){
 			$this->Baseobj();
 		}
 

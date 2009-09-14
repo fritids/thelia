@@ -2156,10 +2156,10 @@ CREATE TABLE `autorisationdesc` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `autorisation_admin`
+-- Structure de la table `autorisation_admininistrateur`
 --
 
-CREATE TABLE `autorisation_admin` (
+CREATE TABLE `autorisation_admininistrateur` (
   `id` int(11) NOT NULL auto_increment,
   `admininistrateur` int(11) NOT NULL,
   `autorisation` int(11) NOT NULL,
@@ -2169,7 +2169,7 @@ CREATE TABLE `autorisation_admin` (
 ) AUTO_INCREMENT=1 ;
 
 --
--- Contenu de la table `autorisation_admin`
+-- Contenu de la table `autorisation_admininistrateur`
 --
 
 
