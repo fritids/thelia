@@ -44,12 +44,12 @@
 			
 			$cnx = new Cnx();
 			$sql = file_get_contents(realpath(dirname(__FILE__)) . "/bluepaid.sql");
-			$sql = ereg_replace(";',", "-CODE-", $sql);
+			$sql = str_replace(";',", "-CODE-", $sql);
 
 			$tab = explode(";", $sql);
 
 			for($i=0; $i<count($tab); $i++)
-				mysql_query(ereg_replace("-CODE-", ";',", $tab[$i]), $cnx->link);	
+				mysql_query(str_replace("-CODE-", ";',", $tab[$i]), $cnx->link);	
 		}
 
 		function Bluepaid(){

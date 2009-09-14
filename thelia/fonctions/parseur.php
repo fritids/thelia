@@ -296,48 +296,48 @@
 
         if($_SESSION['navig']->formcli->email !=""){
                  $client = new Client();
-                 if( $client->existe($_SESSION['navig']->formcli->email)) $res = ereg_replace("#EXISTE\[([^]]*)\]", "\\1", $res);
-                 else $res = ereg_replace("#EXISTE\[[^]]*\]", "", $res);
+                 if( $client->existe($_SESSION['navig']->formcli->email)) $res = preg_replace("/\#EXISTE\[([^]]*)\]/", "\\1", $res);
+                 else $res = preg_replace("/\#EXISTE\[[^]]*\]/", "", $res);
    		}
 	
-	 	if( $_SESSION['navig']->formcli->raison == "" ) $res = ereg_replace("#RAISON\[([^]]*)\]", "\\1", $res);
-	 	else $res = ereg_replace("#RAISON\[[^]]*\]", "", $res);
+	 	if( $_SESSION['navig']->formcli->raison == "" ) $res = preg_replace("/\#RAISON\[([^]]*)\]/", "\\1", $res);
+	 	else $res = preg_replace("/\#RAISON\[[^]]*\]/", "", $res);
 	 	
-	 	if( $_SESSION['navig']->formcli->prenom == "" ) $res = ereg_replace("#PRENOM\[([^]]*)\]", "\\1", $res);
-	 	else $res = ereg_replace("#PRENOM\[[^]]*\]", "", $res);
+	 	if( $_SESSION['navig']->formcli->prenom == "" ) $res = preg_replace("/\#PRENOM\[([^]]*)\]/", "\\1", $res);
+	 	else $res = preg_replace("/\#PRENOM\[[^]]*\]/", "", $res);
 	 	
-	 	if( $_SESSION['navig']->formcli->nom == "" ) $res = ereg_replace("#NOM\[([^]]*)\]", "\\1", $res);
-	 	else $res = ereg_replace("#NOM\[[^]]*\]", "", $res);
+	 	if( $_SESSION['navig']->formcli->nom == "" ) $res = preg_replace("/\#NOM\[([^]]*)\]/", "\\1", $res);
+	 	else $res = preg_replace("/\#NOM\[[^]]*\]/", "", $res);
 	 	
-	 	if( $_SESSION['navig']->formcli->adresse1 == "" ) $res = ereg_replace("#ADRESSE1\[([^]]*)\]", "\\1", $res);
-	 	else $res = ereg_replace("#ADRESSE1\[[^]]*\]", "", $res);
+	 	if( $_SESSION['navig']->formcli->adresse1 == "" ) $res = preg_replace("/\#ADRESSE1\[([^]]*)\]/", "\\1", $res);
+	 	else $res = preg_replace("/\#ADRESSE1\[[^]]*\]/", "", $res);
 
-	 	if( $_SESSION['navig']->formcli->adresse2 == "" ) $res = ereg_replace("#ADRESSE2\[([^]]*)\]", "\\1", $res);
-	 	else $res = ereg_replace("#ADRESSE2\[[^]]*\]", "", $res);
+	 	if( $_SESSION['navig']->formcli->adresse2 == "" ) $res = preg_replace("/\#ADRESSE2\[([^]]*)\]/", "\\1", $res);
+	 	else $res = preg_replace("/\#ADRESSE2\[[^]]*\]/", "", $res);
 	 	
-	 	if( $_SESSION['navig']->formcli->adresse3 == "" ) $res = ereg_replace("#ADRESSE3\[([^]]*)\]", "\\1", $res);
-	 	else $res = ereg_replace("#ADRESSE3\[[^]]*\]", "", $res);
+	 	if( $_SESSION['navig']->formcli->adresse3 == "" ) $res = preg_replace("/\#ADRESSE3\[([^]]*)\]/", "\\1", $res);
+	 	else $res = preg_replace("/\#ADRESSE3\[[^]]*\]/", "", $res);
 	 		 		 	
-	 	if( $_SESSION['navig']->formcli->cpostal == "" ) $res = ereg_replace("#CPOSTAL\[([^]]*)\]", "\\1", $res);
-	 	else $res = ereg_replace("#CPOSTAL\[[^]]*\]", "", $res);
+	 	if( $_SESSION['navig']->formcli->cpostal == "" ) $res = preg_replace("/\#CPOSTAL\[([^]]*)\]/", "\\1", $res);
+	 	else $res = preg_replace("/\#CPOSTAL\[[^]]*\]/", "", $res);
 	 	
-	 	if( $_SESSION['navig']->formcli->ville == "" ) $res = ereg_replace("#VILLE\[([^]]*)\]", "\\1", $res);
-	 	else $res = ereg_replace("#VILLE\[[^]]*\]", "", $res);
+	 	if( $_SESSION['navig']->formcli->ville == "" ) $res = preg_replace("/\#VILLE\[([^]]*)\]/", "\\1", $res);
+	 	else $res = preg_replace("/\#VILLE\[[^]]*\]/", "", $res);
 
-	 	if( $_SESSION['navig']->formcli->pays == "" ) $res = ereg_replace("#PAYS\[([^]]*)\]", "\\1", $res);
-	 	else $res = ereg_replace("#PAYS\[[^]]*\]", "", $res);
+	 	if( $_SESSION['navig']->formcli->pays == "" ) $res = preg_replace("/\#PAYS\[([^]]*)\]/", "\\1", $res);
+	 	else $res = preg_replace("/\#PAYS\[[^]]*\]/", "", $res);
 	 		 	
-	 	if( $_SESSION['navig']->formcli->email == "") $res = ereg_replace("#EMAIL\[([^]]*)\]", "\\1", $res);
-	 	else $res = ereg_replace("#EMAIL\[[^]]*\]", "", $res);
+	 	if( $_SESSION['navig']->formcli->email == "") $res = preg_replace("/\#EMAIL\[([^]]*)\]/", "\\1", $res);
+	 	else $res = preg_replace("/\#EMAIL\[[^]]*\]/", "", $res);
 	 	
-	 	if( $_SESSION['navig']->formcli->motdepasse == "") $res = ereg_replace("#MOTDEPASSE\[([^]]*)\]", "\\1", $res);
-	 	else $res = ereg_replace("#MOTDEPASSE\[[^]]*\]", "", $res);
+	 	if( $_SESSION['navig']->formcli->motdepasse == "") $res = preg_replace("/\#MOTDEPASSE\[([^]]*)\]/", "\\1", $res);
+	 	else $res = preg_replace("/\#MOTDEPASSE\[[^]]*\]/", "", $res);
 	 	
-	 	if( $_SESSION['navig']->formcli->telfixe == "") $res = ereg_replace("#TELFIXE\[([^]]*)\]", "\\1", $res);
-	 	else $res = ereg_replace("#TELFIXE\[[^]]*\]", "", $res);	 
+	 	if( $_SESSION['navig']->formcli->telfixe == "") $res = preg_replace("/\#TELFIXE\[([^]]*)\]/", "\\1", $res);
+	 	else $res = preg_replace("/\#TELFIXE\[[^]]*\]/", "", $res);	 
 
-	 	if( $_SESSION['navig']->formcli->telport == "") $res = ereg_replace("#TELPORT\[([^]]*)\]", "\\1", $res);
-	 	else $res = ereg_replace("#TELPORT\[[^]]*\]", "", $res);	
+	 	if( $_SESSION['navig']->formcli->telport == "") $res = preg_replace("/\#TELPORT\[([^]]*)\]/", "\\1", $res);
+	 	else $res = preg_replace("/\#TELPORT\[[^]]*\]/", "", $res);	
 
 		$tmpparrain = new Client();
 		$tmpparrain->charger_id($_SESSION['navig']->formcli->parrain);
@@ -373,7 +373,7 @@
 			 $res = str_replace(array("#CHECK1","#CHECK2","#CHECK3"),array("","","checked"), $res);
 		}
 	
-		$res = ereg_replace("#EXISTE\[[^]]*\]", "", $res);
+		$res = preg_replace("/\#EXISTE\[[^]]*\]/", "", $res);
 				
 		return $res;
 	}

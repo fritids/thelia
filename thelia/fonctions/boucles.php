@@ -1031,8 +1031,8 @@
 				
 			$temp = $texte;
 			
-			if( $row->promo == "1" ) $temp = ereg_replace("#PROMO\[([^]]*)\]\[([^]]*)\]", "\\1", $temp);
-	 		else $temp = ereg_replace("#PROMO\[([^]]*)\]\[([^]]*)\]", "\\2", $temp);
+			if( $row->promo == "1" ) $temp = preg_replace("/\#PROMO\[([^]]*)\]\[([^]]*)\]/", "\\1", $temp);
+	 		else $temp = preg_replace("/\#PROMO\[([^]]*)\]\[([^]]*)\]/", "\\2", $temp);
 	 		
 			if( $row->promo == "1" && $row->prix) $pourcentage =  ceil((100 * ($row->prix - $row->prix2)/$row->prix));
 

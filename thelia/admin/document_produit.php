@@ -129,8 +129,8 @@
 	$produit->charger($ref);
 	$produitdesc->charger($produit->id);
 	
-	$produitdesc->chapo = ereg_replace("<br/>", "\n", $produitdesc->chapo);
-	$produitdesc->description = ereg_replace("<br/>", "\n", $produitdesc->description);
+	$produitdesc->chapo = str_replace("<br/>", "\n", $produitdesc->chapo);
+	$produitdesc->description = str_replace("<br/>", "\n", $produitdesc->description);
 
 
 ?>

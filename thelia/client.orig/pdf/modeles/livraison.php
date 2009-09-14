@@ -98,7 +98,7 @@
 
         	    $chapo = $venteprod->titre;
 		
-				$chapo = ereg_replace("<br />", "\n", $chapo);
+				$chapo = str_replace("<br />", "\n", $chapo);
 	     
 	     	    $pdf->SetXY(42,$hauteursave);
 				$pdf->MultiCell(60, 5, $chapo, 0, "L");

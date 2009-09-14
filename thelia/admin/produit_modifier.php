@@ -340,13 +340,13 @@
 		 $produit->perso = $perso;  
 		 $produit->poids = $poids;
 		 $produit->stock = $stock;
-		 $produit->tva = ereg_replace(",", ".", $tva);
+		 $produit->tva = str_replace(",", ".", $tva);
 		 $produitdesc->chapo = $chapo;
 		 $produitdesc->description = $description;
 		 $produitdesc->postscriptum = $postscriptum;
 		 $produitdesc->titre = $titre;
 	 	 
-	 	 $produitdesc->chapo = ereg_replace("\n", "<br />", $produitdesc->chapo);
+	 	 $produitdesc->chapo = str_replace("\n", "<br />", $produitdesc->chapo);
 			
 	
 		$rubcaracteristique = new Rubcaracteristique();
@@ -472,15 +472,15 @@
 	function ajouter($lang, $ref, $prix, $ecotaxe, $promo, $prix2, $rubrique, $nouveaute, $perso, $poids, $stock, $tva, $ligne, $titre, $chapo, $description, $postscriptum){
   
 
-	 $ref = ereg_replace(" ", "", $ref);
-	 $ref = ereg_replace("/", "", $ref);
-	 $ref = ereg_replace("\+", "", $ref);
-	 $ref = ereg_replace("\.", "-", $ref);
-	 $ref = ereg_replace(",", "-", $ref);
-	 $ref = ereg_replace(";", "-", $ref); 
-	 $ref = ereg_replace("'", "", $ref); 
-	 $ref = ereg_replace("\n", "", $ref); 
-	 $ref = ereg_replace("\"", "", $ref); 	 	 
+	 $ref = str_replace(" ", "", $ref);
+	 $ref = str_replace("/", "", $ref);
+	 $ref = str_replace("+", "", $ref);
+	 $ref = str_replace(".", "-", $ref);
+	 $ref = str_replace(",", "-", $ref);
+	 $ref = str_replace(";", "-", $ref); 
+	 $ref = str_replace("'", "", $ref); 
+	 $ref = str_replace("\n", "", $ref); 
+	 $ref = str_replace("\"", "", $ref); 	 	 
 	 
 	 $produit = new Produit();
 	 $produit->charger($ref);
@@ -510,7 +510,7 @@
 	 $produit->perso = $perso;  
 	 $produit->poids = $poids;
 	 $produit->stock = $stock;
-	 $produit->tva = ereg_replace(",", ".", $tva);
+	 $produit->tva = str_replace(",", ".", $tva);
 	 $produit->classement = $maxClassement + 1;
 	 
 	 $lastid = $produit->add();
@@ -524,7 +524,7 @@
 	 $produitdesc->lang = 1;
 	 $produitdesc->titre = $titre;
 
-	 $produitdesc->chapo = ereg_replace("\n", "<br />", $produitdesc->chapo);
+	 $produitdesc->chapo = str_replace("\n", "<br />", $produitdesc->chapo);
 	 
 	 $produitdesc->add();
 	
@@ -736,7 +736,7 @@
 	$produit->charger($ref);
 	$produitdesc->charger($produit->id, $lang);
 
-	$produitdesc->chapo = ereg_replace("<br />", "\n", $produitdesc->chapo);
+	$produitdesc->chapo = str_replace("<br />", "\n", $produitdesc->chapo);
 	
 	if($produit->tva == ""){
 		$tvar = new Variable();

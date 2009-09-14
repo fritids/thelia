@@ -93,8 +93,8 @@
 		 $caracteristiquedesc->description = $description;
 		 $caracteristiquedesc->titre = $titre;
 	 	 
-	 	 $caracteristiquedesc->chapo = ereg_replace("\n", "<br/>", $caracteristiquedesc->chapo);
-		 $caracteristiquedesc->description = ereg_replace("\n", "<br/>", $caracteristiquedesc->description);
+	 	 $caracteristiquedesc->chapo = str_replace("\n", "<br/>", $caracteristiquedesc->chapo);
+		 $caracteristiquedesc->description = str_replace("\n", "<br/>", $caracteristiquedesc->description);
 	
 		 $caracteristique->maj();
 		 $caracteristiquedesc->maj();
@@ -133,8 +133,8 @@
 	 $caracteristiquedesc->lang = 1;
 	 $caracteristiquedesc->titre = $titre;
 
-	 $caracteristiquedesc->chapo = ereg_replace("\n", "<br/>", $caracteristiquedesc->chapo);
-     $caracteristiquedesc->description = ereg_replace("\n", "<br/>", $caracteristiquedesc->description);		
+	 $caracteristiquedesc->chapo = str_replace("\n", "<br/>", $caracteristiquedesc->chapo);
+     $caracteristiquedesc->description = str_replace("\n", "<br/>", $caracteristiquedesc->description);		
 	 
 	 $caracteristiquedesc->add();
 
@@ -242,8 +242,8 @@
 	$caracteristiquedesc->charger($caracteristique->id, $lang);
 
 	
-	$caracteristiquedesc->chapo = ereg_replace("<br/>", "\n", $caracteristiquedesc->chapo);
-	$caracteristiquedesc->description = ereg_replace("<br/>", "\n", $caracteristiquedesc->description);
+	$caracteristiquedesc->chapo = str_replace("<br/>", "\n", $caracteristiquedesc->chapo);
+	$caracteristiquedesc->description = str_replace("<br/>", "\n", $caracteristiquedesc->description);
 	
 	$caracdisp = new Caracdisp();
 	$caracdispdesc = new Caracdispdesc();

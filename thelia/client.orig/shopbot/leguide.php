@@ -66,8 +66,8 @@
 		$row2 = mysql_fetch_object($resul2);
 		$i++;
 
-		$description = ereg_replace("&nbsp;", "", strip_tags($produitdesc->description));
-		$description = ereg_replace("\r\n", " ", $description);
+		$description = str_replace("&nbsp;", "", strip_tags($produitdesc->description));
+		$description = str_replace("\r\n", " ", $description);
 		$description = trim($description);
 
 		$rubriquedesc->charger($row->rubrique);		

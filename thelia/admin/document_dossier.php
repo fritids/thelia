@@ -130,8 +130,8 @@
 	$dossier->charger($dosid);
 	$dossierdesc->charger($dossier->id);
 	
-	$dossierdesc->chapo = ereg_replace("<br/>", "\n", $dossierdesc->chapo);
-	$dossierdesc->description = ereg_replace("<br/>", "\n", $dossierdesc->description);
+	$dossierdesc->chapo = str_replace("<br/>", "\n", $dossierdesc->chapo);
+	$dossierdesc->description = str_replace("<br/>", "\n", $dossierdesc->description);
 
 
 ?>

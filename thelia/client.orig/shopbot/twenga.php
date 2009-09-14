@@ -41,8 +41,8 @@
 		$row2 = mysql_fetch_object($resul2);
 		$i++;
 
-		$chapo = ereg_replace("&nbsp;", "", strip_tags($produitdesc->chapo));
-		$chapo = ereg_replace("\r", " - ", $chapo);	
+		$chapo = str_replace("&nbsp;", "", strip_tags($produitdesc->chapo));
+		$chapo = str_replace("\r", " - ", $chapo);	
 		
 		
 ?>

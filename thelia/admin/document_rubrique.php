@@ -131,8 +131,8 @@
 	$rubriquedesc->charger($rubrique->id);
 
 	
-	$rubriquedesc->chapo = ereg_replace("<br/>", "\n", $rubriquedesc->chapo);
-	$rubriquedesc->description = ereg_replace("<br/>", "\n", $rubriquedesc->description);
+	$rubriquedesc->chapo = str_replace("<br/>", "\n", $rubriquedesc->chapo);
+	$rubriquedesc->description = str_replace("<br/>", "\n", $rubriquedesc->description);
 
 
 ?>

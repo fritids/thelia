@@ -96,8 +96,8 @@
 	    $declinaisondesc->description = $description;
 	    $declinaisondesc->titre = $titre;
 	 	 
-        $declinaisondesc->chapo = ereg_replace("\n", "<br/>", $declinaisondesc->chapo);
-   	    $declinaisondesc->description = ereg_replace("\n", "<br/>", $declinaisondesc->description);
+        $declinaisondesc->chapo = str_replace("\n", "<br/>", $declinaisondesc->chapo);
+   	    $declinaisondesc->description = str_replace("\n", "<br/>", $declinaisondesc->description);
 										
 		$declinaison->maj();
 		$declinaisondesc->maj();
@@ -139,8 +139,8 @@
 	 $declinaisondesc->lang = 1;
 	 $declinaisondesc->titre = $titre;
 
-	 $declinaisondesc->chapo = ereg_replace("\n", "<br/>", $declinaisondesc->chapo);
-     $declinaisondesc->description = ereg_replace("\n", "<br/>", $declinaisondesc->description);		
+	 $declinaisondesc->chapo = str_replace("\n", "<br/>", $declinaisondesc->chapo);
+     $declinaisondesc->description = str_replace("\n", "<br/>", $declinaisondesc->description);		
 	 
 	 $declinaisondesc->add();
 	
@@ -259,8 +259,8 @@
 	$declinaison->charger($id);
 	$declinaisondesc->charger($declinaison->id, $lang);
 	
-	$declinaisondesc->chapo = ereg_replace("<br/>", "\n", $declinaisondesc->chapo);
-	$declinaisondesc->description = ereg_replace("<br/>", "\n", $declinaisondesc->description);
+	$declinaisondesc->chapo = str_replace("<br/>", "\n", $declinaisondesc->chapo);
+	$declinaisondesc->description = str_replace("<br/>", "\n", $declinaisondesc->description);
 	
 	$declidisp = new Declidisp();
 	$declidispdesc = new Declidispdesc();

@@ -281,7 +281,7 @@
 		 $contenudesc->postscriptum = $postscriptum;
 		 $contenudesc->titre = $titre;
 	 	 
-	 	 $contenudesc->chapo = ereg_replace("\n", "<br/>", $contenudesc->chapo);
+	 	 $contenudesc->chapo = str_replace("\n", "<br/>", $contenudesc->chapo);
 											
 		$contenu->maj();
 		$contenudesc->maj();
@@ -323,8 +323,8 @@
 	 $contenudesc->lang = 1;
 	 $contenudesc->titre = $titre;
 
-	 $contenudesc->chapo = ereg_replace("\n", "<br/>", $contenudesc->chapo);
-     $contenudesc->postscriptum = ereg_replace("\n", "<br/>", $contenudesc->postscriptum);		
+	 $contenudesc->chapo = str_replace("\n", "<br/>", $contenudesc->chapo);
+     $contenudesc->postscriptum = str_replace("\n", "<br/>", $contenudesc->postscriptum);		
 	 
 	 $contenudesc->add();
 
@@ -354,8 +354,8 @@
 	$contenu->charger($id);
 	$contenudesc->charger($contenu->id, $lang);
 	
-	$contenudesc->chapo = ereg_replace("<br/>", "\n", $contenudesc->chapo);
-	$contenudesc->postscriptum = ereg_replace("<br/>", "\n", $contenudesc->postscriptum);
+	$contenudesc->chapo = str_replace("<br/>", "\n", $contenudesc->chapo);
+	$contenudesc->postscriptum = str_replace("<br/>", "\n", $contenudesc->postscriptum);
 	
 	$site = new Variable();
 	$site->charger("urlsite");

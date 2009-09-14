@@ -129,8 +129,8 @@
 	$contenudesc->charger($contenu->id);
 	
 	
-	$contenudesc->chapo = ereg_replace("<br/>", "\n", $contenudesc->chapo);
-	$contenudesc->description = ereg_replace("<br/>", "\n", $contenudesc->description);
+	$contenudesc->chapo = str_replace("<br/>", "\n", $contenudesc->chapo);
+	$contenudesc->description = str_replace("<br/>", "\n", $contenudesc->description);
 
 
 ?>

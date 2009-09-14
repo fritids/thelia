@@ -145,7 +145,7 @@ function supprimer_rubrique(id, parent){
   	$annee = substr($motcle, 6);
 
 	$ladate = "$annee-$mois-$jour";
-	$ladate = ereg_replace("\?\?", "%", $ladate);
+	$ladate = str_replace("??", "%", $ladate);
 	
   	$search .= " ref like '%$motcle%' or date like '$ladate'";
   		
@@ -262,7 +262,7 @@ function supprimer_rubrique(id, parent){
 	else $search = " where id in ($prodlist)";
 	
    	$query = "select * from $produit->table $search";
-  	$query = ereg_replace("'')", "')", $query);
+  	$query = str_replace("'')", "')", $query);
 	$resul = mysql_query($query, $produitdesc->link);	
 
   	while($row = mysql_fetch_object($resul)){
