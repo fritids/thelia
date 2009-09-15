@@ -98,6 +98,7 @@ foreach($listefichiersplugins as $fichier){
 	$query_cnx = "CREATE TABLE `autorisation` ( 
 	  `id` int(11) NOT NULL auto_increment,
 	  `nom` text NOT NULL,
+  	  `type` int(11) NOT NULL,
 	  PRIMARY KEY  (`id`)
 	) AUTO_INCREMENT=1 ;";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
@@ -178,14 +179,14 @@ foreach($listefichiersplugins as $fichier){
 	"INSERT INTO `autorisationdesc` VALUES(6, 6, 'Acc&egrave;s à la configuration', '', '', '', 1);",
 	"INSERT INTO `autorisationdesc` VALUES(7, 7, 'Acc&egrave;s aux modules', '', '', '', 1);",
 	"INSERT INTO `autorisationdesc` VALUES(8, 8, 'Acc&egrave;s aux recherches', '', '', '', 1);",
-	"INSERT INTO `autorisation` VALUES(1, 'acces_clients');",
-	"INSERT INTO `autorisation` VALUES(2, 'acces_commandes');",
-	"INSERT INTO `autorisation` VALUES(3, 'acces_catalogue');",
-	"INSERT INTO `autorisation` VALUES(4, 'acces_contenu');",
-	"INSERT INTO `autorisation` VALUES(5, 'acces_codespromos');",
-	"INSERT INTO `autorisation` VALUES(6, 'acces_configuration');",
-	"INSERT INTO `autorisation` VALUES(7, 'acces_modules');",
-	"INSERT INTO `autorisation` VALUES(8, 'acces_rechercher');");
+	"INSERT INTO `autorisation` VALUES(1, 'acces_clients', 1);",
+	"INSERT INTO `autorisation` VALUES(2, 'acces_commandes', 1);",
+	"INSERT INTO `autorisation` VALUES(3, 'acces_catalogue', 1);",
+	"INSERT INTO `autorisation` VALUES(4, 'acces_contenu', 1);",
+	"INSERT INTO `autorisation` VALUES(5, 'acces_codespromos', 1);",
+	"INSERT INTO `autorisation` VALUES(6, 'acces_configuration', 1);",
+	"INSERT INTO `autorisation` VALUES(7, 'acces_modules', 1);",
+	"INSERT INTO `autorisation` VALUES(8, 'acces_rechercher', 1);");
 
 	foreach($listeinsert as $insert)
 		$resul_cnx = mysql_query($insert,$cnx->link);

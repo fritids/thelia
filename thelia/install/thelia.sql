@@ -2124,6 +2124,7 @@ CREATE TABLE `ventedeclidisp` (
 CREATE TABLE `autorisation` (
   `id` int(11) NOT NULL auto_increment,
   `nom` text NOT NULL,
+  `type` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
 ) AUTO_INCREMENT=9 ;
 
@@ -2131,14 +2132,14 @@ CREATE TABLE `autorisation` (
 -- Contenu de la table `autorisation`
 --
 
-INSERT INTO `autorisation` VALUES(1, 'acces_clients');
-INSERT INTO `autorisation` VALUES(2, 'acces_commandes');
-INSERT INTO `autorisation` VALUES(3, 'acces_catalogue');
-INSERT INTO `autorisation` VALUES(4, 'acces_contenu');
-INSERT INTO `autorisation` VALUES(5, 'acces_codespromos');
-INSERT INTO `autorisation` VALUES(6, 'acces_configuration');
-INSERT INTO `autorisation` VALUES(7, 'acces_modules');
-INSERT INTO `autorisation` VALUES(8, 'acces_rechercher');
+INSERT INTO `autorisation` VALUES(1, 'acces_clients', 1);
+INSERT INTO `autorisation` VALUES(2, 'acces_commandes', 1);
+INSERT INTO `autorisation` VALUES(3, 'acces_catalogue', 1);
+INSERT INTO `autorisation` VALUES(4, 'acces_contenu', 1);
+INSERT INTO `autorisation` VALUES(5, 'acces_codespromos', 1);
+INSERT INTO `autorisation` VALUES(6, 'acces_configuration', 1);
+INSERT INTO `autorisation` VALUES(7, 'acces_modules', 1);
+INSERT INTO `autorisation` VALUES(8, 'acces_rechercher', 1);
 -- --------------------------------------------------------
 
 --

@@ -46,6 +46,11 @@
 			$this->Baseobj();
 		}
 
+
+		function charger($autorisation, $lang=1){
+			if($lang==0 || $lang=="") $lang=1;
+			return $this->getVars("select * from $this->table where autorisation=\"$autorisation\" and lang=\"$lang\"");
+		}
 	}
 
 

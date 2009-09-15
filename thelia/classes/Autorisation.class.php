@@ -31,10 +31,11 @@
 
 		var $id;
 		var $nom;
+		var $type;
 
 		var $table="autorisation";
 		
-		var $bddvars = array("id", "nom");
+		var $bddvars = array("id", "nom", "type");
 
 		function Autorisation(){
 			$this->Baseobj();
