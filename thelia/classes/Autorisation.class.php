@@ -43,6 +43,11 @@
 		function charger($nom){
 			return $this->getVars("select * from $this->table where nom=\"$nom\"");
 		}
+
+		function charger_id($id){
+			return $this->getVars("select * from $this->table where id=\"$id\"");
+		}
+				
 	}
 
 

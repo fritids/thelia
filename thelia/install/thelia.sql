@@ -41,6 +41,7 @@ CREATE TABLE `administrateur` (
   `motdepasse` text NOT NULL,
   `prenom` text NOT NULL,
   `nom` text NOT NULL,
+  `profil` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
 )  AUTO_INCREMENT=2 ;
 
@@ -48,7 +49,7 @@ CREATE TABLE `administrateur` (
 -- Contenu de la table `administrateur`
 -- 
 
-INSERT INTO `administrateur` VALUES (1, 'admin', PASSWORD('admin'), 'Admin', 'Admin');
+INSERT INTO `administrateur` VALUES (1, 'admin', PASSWORD('admin'), 'Admin', 'Admin', '1');
 
 -- --------------------------------------------------------
 
@@ -2124,7 +2125,7 @@ CREATE TABLE `autorisation` (
   `id` int(11) NOT NULL auto_increment,
   `nom` text NOT NULL,
   PRIMARY KEY  (`id`)
-) AUTO_INCREMENT=1 ;
+) AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `autorisation`
@@ -2153,7 +2154,7 @@ CREATE TABLE `autorisationdesc` (
   `postscriptum` text NOT NULL,
   `lang` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) AUTO_INCREMENT=1 ;
+) AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `autorisationdesc`
@@ -2180,20 +2181,11 @@ CREATE TABLE `autorisation_administrateur` (
   `lecture` smallint(6) NOT NULL,
   `ecriture` smallint(6) NOT NULL,
   PRIMARY KEY  (`id`)
-) AUTO_INCREMENT=1 ;
+) AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `autorisation_admininistrateur`
 --
-
-INSERT INTO `autorisation_administrateur` VALUES(1, 1, 1, 1, 1);
-INSERT INTO `autorisation_administrateur` VALUES(2, 1, 2, 1, 1);
-INSERT INTO `autorisation_administrateur` VALUES(3, 1, 3, 1, 1);
-INSERT INTO `autorisation_administrateur` VALUES(4, 1, 4, 1, 1);
-INSERT INTO `autorisation_administrateur` VALUES(5, 1, 5, 1, 1);
-INSERT INTO `autorisation_administrateur` VALUES(6, 1, 6, 1, 1);
-INSERT INTO `autorisation_administrateur` VALUES(7, 1, 7, 1, 1);
-INSERT INTO `autorisation_administrateur` VALUES(8, 1, 8, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2208,21 +2200,20 @@ CREATE TABLE `autorisation_profil` (
   `lecture` int(11) NOT NULL,
   `ecriture` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) AUTO_INCREMENT=1 ;
+) AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `autorisation_profil`
 --
-INSERT INTO `autorisation_profil` VALUES(1, 1, 1, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(2, 1, 2, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(3, 1, 3, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(4, 1, 4, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(5, 1, 5, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(6, 1, 6, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(7, 1, 7, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(8, 1, 8, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(9, 2, 1, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(10, 2, 2, 1, 1);
+
+INSERT INTO `autorisation_profil` VALUES(1, 2, 1, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(2, 2, 2, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(3, 2, 8, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(4, 3, 3, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(5, 3, 4, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(6, 3, 5, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(7, 3, 8, 1, 1);
+
 --
 -- Structure de la table `profil`
 --
@@ -2231,13 +2222,14 @@ CREATE TABLE `profil` (
   `id` int(11) NOT NULL auto_increment,
   `nom` text NOT NULL,
   PRIMARY KEY  (`id`)
-) AUTO_INCREMENT=1 ;
+) AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `profil`
 --
 INSERT INTO `profil` VALUES(1, 'superadministrateur');
 INSERT INTO `profil` VALUES(2, 'gestionnairecommande');
+INSERT INTO `profil` VALUES(3, 'gestionnairecatalogue');
 
 -- --------------------------------------------------------
 
@@ -2254,7 +2246,7 @@ CREATE TABLE `profildesc` (
   `postscriptum` text NOT NULL,
   `lang` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) AUTO_INCREMENT=1 ;
+) AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `profildesc`
@@ -2262,3 +2254,4 @@ CREATE TABLE `profildesc` (
 
 INSERT INTO `profildesc` VALUES(1, 1, 'Super administrateur', '', '', '', 1);
 INSERT INTO `profildesc` VALUES(2, 2, 'Gestionnaire des commandes', '', '', '', 1);
+INSERT INTO `profildesc` VALUES(3, 3, 'Gestionnaire du catalogue', '', '', '', 1);

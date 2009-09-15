@@ -84,6 +84,7 @@
 		$admin->identifiant = $identifiant;
 		$motdepasse1 = trim($motdepasse1);
 		$admin->motdepasse = $motdepasse1;
+		$admin->profil = $_POST['profil'];
 		$admin->crypter();
 		$lastid = $admin->add();
 		

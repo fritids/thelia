@@ -713,19 +713,16 @@ $reply\nFrom:$from\n".$mail_mime);
 	
 	}
 	
-	function est_autorise($action, $type="lecture"){
-		$autorisation = new Autorisation();
-		if(! $autorisation->charger($action))
-			return 0;
-		
-		$autorisation_administrateur = new Autorisation_administrateur();
-		if(! $autorisation_administrateur->charger($autorisation->id, $_SESSION['util']->id) || ! $autorisation_administrateur->lecture)
-			return 0;
-		
-		if($type == "ecriture" && ! $autorisation_administrateur->ecriture)
-			return 0;
-			
-		return 1;
-		
-	}
+    function est_autorise($action, $type="lecture"){
+
+            if($_SESSION['util']->profil == "1")
+                    return 1;
+
+            if(! isset($_SESSION['util']->autorisation[$action]) || ! $_SESSION['util']->autorisation[$action]->lecture)
+                    return 0;
+
+            return 1;
+
+    }
+
 ?>

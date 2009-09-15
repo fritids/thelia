@@ -11,6 +11,8 @@
 	
 	$admin->identifiant=$_POST['utilisateur'];
 	$admin->motdepasse=$_POST['motdepasse1'];
+	$admin->profil = 1;
+	
 	$admin->crypter();
 	$admin->maj();
 	

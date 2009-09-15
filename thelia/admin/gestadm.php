@@ -83,19 +83,19 @@
    <p align="left"><a href="accueil.php" class="lien04">Accueil</a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /> <a href="configuration.php" class="lien04">Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="gestadm.php" class="lien04">Gestion des administrateurs</a></p>
 
 <!-- bloc dŽclinaisons / colonne gauche -->  
-<div id="bloc_description">
+
 <div class="entete_liste_config">
 	<div class="titre">LISTE DES ADMINISTRATEURS</div>
-	<div class="fonction_valider"><a href="#" onclick="$('#ajout_admin').show()">AJOUTER UN ADMINISTRATEUR</a></div>
+	<div class="fonction_ajout"><a href="#" onclick="$('#ajout_admin').show()">AJOUTER UN ADMINISTRATEUR</a></div>
 </div>
 <ul class="Nav_bloc_description">
-		<li style="height:25px; width:94px;">Nom</li>
-		<li style="height:25px; width:92px; border-left:1px solid #96A8B5;">Pr&eacute;nom</li>
-		<li style="height:25px; width:92px; border-left:1px solid #96A8B5;">Identifiant</li>
-		<li style="height:25px; width:80px; border-left:1px solid #96A8B5;">Mot de passe</li>
-		<li style="height:25px; width:80px; border-left:1px solid #96A8B5;">Confirmation</li>
-		<li style="height:25px; width:73px; border-left:1px solid #96A8B5;">&nbsp;</li>
-		<li style="height:25px; width:13px; border-left:1px solid #96A8B5;">&nbsp;</li>
+		<li style="height:25px; width:158px;">Nom</li>
+		<li style="height:25px; width:157px; border-left:1px solid #96A8B5;">Pr&eacute;nom</li>
+		<li style="height:25px; width:157px; border-left:1px solid #96A8B5;">Identifiant</li>
+		<li style="height:25px; width:157px; border-left:1px solid #96A8B5;">Mot de passe</li>
+		<li style="height:25px; width:157px; border-left:1px solid #96A8B5;">Confirmation</li>
+		<li style="height:25px; width:77px; border-left:1px solid #96A8B5;">&nbsp;</li>
+		<li style="height:25px; width:30px; border-left:1px solid #96A8B5;">&nbsp;</li>
 </ul>
 <div class="bordure_bottom">
  	<?php
@@ -106,19 +106,19 @@
   	$resul = mysql_query($query, $administrateur->link);
   	$i=0;
   	while($row = mysql_fetch_object($resul)){
-			if(!($i%2)) $fond="ligne_claire_BlocDescription";
-  			else $fond="ligne_fonce_BlocDescription";
+			if(!($i%2)) $fond="ligne_claire_rub";
+  			else $fond="ligne_fonce_rub";
   			$i++;
  	 ?>
     <form action="gestadm_modifier.php" id="formadmin<?php echo($row->id); ?>" method="post" onsubmit="valid('<?php echo $row->id; ?>');return false;">
 		<ul class="<?php echo $fond; ?>">
-			<li style="width:95px;"><input name="nom" type="text" class="form" value="<?php echo($row->nom); ?>" size="11" /></li>
-			<li style="width:94px; border-left:1px solid #96A8B5;"><input name="prenom" type="text" class="form" value="<?php echo($row->prenom); ?>" size="11" /></li>
-			<li style="width:94px; border-left:1px solid #96A8B5;"><input name="identifiant" type="text" class="form" value="<?php echo($row->identifiant); ?>" size="11" /></li>
-			<li style="width:82px; border-left:1px solid #96A8B5;"><input name="motdepasse1" id="motdepasse1<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
-			<li style="width:82px; border-left:1px solid #96A8B5;"><input name="motdepasse2" id="motdepasse2<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="6" onclick="this.value='';" /></li>
-			<li style="width:75px; border-left:1px solid #96A8B5;"><a href="#" onclick="valid('<?php echo $row->id; ?>');return false;">modifier</a></li>
-			<li style="width:13px; border-left:1px solid #96A8B5; text-align:right;"><?php if($_SESSION['util']->id != $row->id) { ?><a href="#" onclick="supp('<?php echo $row->id; ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a><?php } ?></li>
+			<li style="width:150px;"><input name="nom" type="text" class="form" value="<?php echo($row->nom); ?>" size="20" /></li>
+			<li style="width:150px; border-left:1px solid #96A8B5;"><input name="prenom" type="text" class="form" value="<?php echo($row->prenom); ?>" size="20" /></li>
+			<li style="width:150px; border-left:1px solid #96A8B5;"><input name="identifiant" type="text" class="form" value="<?php echo($row->identifiant); ?>" size="20" /></li>
+			<li style="width:150px; border-left:1px solid #96A8B5;"><input name="motdepasse1" id="motdepasse1<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="20" onclick="this.value='';" /></li>
+			<li style="width:150px; border-left:1px solid #96A8B5;"><input name="motdepasse2" id="motdepasse2<?php echo($row->id); ?>" type="password" value="<?php echo $pass; ?>" class="form" size="20" onclick="this.value='';" /></li>
+			<li style="width:70px; border-left:1px solid #96A8B5;"><a href="#" onclick="valid('<?php echo $row->id; ?>');return false;">modifier</a></li>
+			<li style="width:30px; border-left:1px solid #96A8B5; text-align:right;"><?php if($_SESSION['util']->id != $row->id) { ?><a href="#" onclick="supp('<?php echo $row->id; ?>')"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a><?php } ?></li>
 		</ul>
  	<input type="hidden" name="action" value="modifier" />
    	<input type="hidden" name="id" value="<?php echo($row->id); ?>" />
@@ -135,20 +135,21 @@
 			<div class="titre">AJOUT D'UN ADMINISTRATEUR</div>
 		</div>
 		<ul class="Nav_bloc_description">
-			<li style="height:25px; width:94px;">Nom</li>
-			<li style="height:25px; width:94px; border-left:1px solid #96A8B5;">Pr&eacute;nom</li>
-			<li style="height:25px; width:95px; border-left:1px solid #96A8B5;">Identifiant</li>
-			<li style="height:25px; width:85px; border-left:1px solid #96A8B5;">Mot de passe</li>
-			<li style="height:25px; width:80px; border-left:1px solid #96A8B5;">Confirmation</li>
-			<li style="height:25px; width:85px; border-left:1px solid #96A8B5;">Profil</li>
+			<li style="height:25px; width:128px;">Nom</li>
+			<li style="height:25px; width:127px; border-left:1px solid #96A8B5;">Pr&eacute;nom</li>
+			<li style="height:25px; width:127px; border-left:1px solid #96A8B5;">Identifiant</li>
+			<li style="height:25px; width:127px; border-left:1px solid #96A8B5;">Mot de passe</li>
+			<li style="height:25px; width:127px; border-left:1px solid #96A8B5;">Confirmation</li>
+			<li style="height:25px; width:217px; border-left:1px solid #96A8B5;">Profil</li>
+			<li style="height:25px; width:30px; border-left:1px solid #96A8B5;">&nbsp;</li>
 		</ul>
-		<ul class="ligne_claire_BlocDescription">
-			<li style="width:93px;"><input name="nom" type="text" class="form" size="11" /></li>
-			<li style="width:94px; border-left:1px solid #96A8B5;"><input name="prenom" type="text" class="form" size="11" /></li>
-			<li style="width:95px; border-left:1px solid #96A8B5;"><input name="identifiant" type="text" class="form" size="11" /></li>
-			<li style="width:85px; border-left:1px solid #96A8B5;"><input name="motdepasse1" id="motdepasse1" type="password" class="form" size="6" /></li>
-			<li style="width:80px; border-left:1px solid #96A8B5;"><input name="motdepasse2" id="motdepasse2" type="password" class="form" size="6" onclick="this.value='';" /></li>
-			<li style="width:80px; border-left:1px solid #96A8B5;">
+		<ul class="ligne_claire_rub">
+			<li style="width:120px;"><input name="nom" type="text" class="form" size="15" /></li>
+			<li style="width:120px; border-left:1px solid #96A8B5;"><input name="prenom" type="text" class="form" size="15" /></li>
+			<li style="width:120px; border-left:1px solid #96A8B5;"><input name="identifiant" type="text" class="form" size="15" /></li>
+			<li style="width:120px; border-left:1px solid #96A8B5;"><input name="motdepasse1" id="motdepasse1" type="password" class="form" size="15" /></li>
+			<li style="width:120px; border-left:1px solid #96A8B5;"><input name="motdepasse2" id="motdepasse2" type="password" class="form" size="15" onclick="this.value='';" /></li>
+			<li style="width:210px; border-left:1px solid #96A8B5;">
 			<select name="profil">
 			<?php
 				$profildesc = new Profildesc();
@@ -162,7 +163,7 @@
 			?>
 			</select>
 			</li>
-			<li style="width:80px; border-left:1px solid #96A8B5;"><a href="#" onclick="ajout();return false;">ajouter</a></li>
+			<li style="width:30px; border-left:1px solid #96A8B5;"><a href="#" onclick="ajout();return false;">ajouter</a></li>
 		</ul>
 </form>       
 </div>
@@ -172,7 +173,6 @@
 <!-- fin du bloc de description / colonne de gauche -->
 
 	  
-</div>
 <?php include_once("pied.php");?>
 </div>
 </div>
