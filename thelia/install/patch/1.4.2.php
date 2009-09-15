@@ -63,46 +63,6 @@
 	);
 
 
-	if(! file_exists("../client")){
-		echo "Le fichier patchplugins.php doit se situer dans votre r&eacute;pertoire d'administration";
-		exit;
-	}
-
-	if(! is_writable("../fonctions")){
-		echo "Impossible d'&eacute;crire dans le r&eacute;pertoire fonctions. Merci de donner les droits d'&eacute;criture &agrave; Apache et de relancez ce script";
-		exit;
-	} else {
-
-		if(! file_exists("../fonctions/authplugins.php")){
-			$authplugins = "<?php\n\n\tinclude_once(realpath(dirname(__FILE__)) . \"/../classes/Administrateur.class.php\");\n\tinclude_once(realpath(dirname(__FILE__)) . \"/../classes/Navigation.class.php\");\n\n\tif(! session_id())\n\t\tsession_start();\n\n\tif( ! isset(\$_SESSION[\"util\"]->id) ) exit;\n\n\tfunction autorisation(\$nomplugin){\t\n\t\t// A venir\n\t}\n\n?>";
-			$fp = fopen("../fonctions/authplugins.php", "w");
-			fputs($fp, $authplugins);
-			fclose($fp);
-
-			echo "Le fichier fonctions/authplugins.php a &eacute;t&eacute; cr&eacute;e<br />";
-		}
-	}
-
-
-
-	if(! is_writable("index.php")){
-		echo "Impossible d'&eacute;crire dans le r&eacute;pertoire admin. Merci de donner les droits d'&eacute;criture &agrave; Apache et de relancez ce script";
-		exit;
-	} else {
-		$rec = file_get_contents("index.php");
-		if(strstr($rec, "<?php include_once(\"title.php\");?>")){
-			$rec = str_replace("<?php include_once(\"title.php\");?>", "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />\n<title>THELIA / BACK OFFICE</title>\n<link rel=\"SHORTCUT ICON\" href=\"favicon.ico\" />\n<link href=\"styles.css\" rel=\"stylesheet\" type=\"text/css\" />", $rec);
-
-			$rec = str_replace("<?php include_once(\"pied.php\");?>", "<div id=\"footerPage\">&nbsp;</div> <p class=\"footer\"><a href=\"http://www.octolys.fr\" class=\"lien\">D&eacute;velopp&eacute; par Octolys</a> - T&eacute;l: +33 (0)4 73 74 31 19 - <a href=\"http://forum.thelia.fr\" class=\"lien\">Forum Thelia</a> - <a href=\"http://contrib.thelia.fr\" class=\"lien\">Contributions Thelia</a></p>", $rec);		
-
-			$fp = fopen("index.php", "w");
-			fputs($fp, $rec);
-			fclose($fp);
-			echo "Le fichier admin/index.php a &eacute;t&eacute; patch&eacute; avec succes<br />";
-		}
-	}
-
-
 		foreach($listefichiersplugins as $fichier){
 
 			if(file_exists("../client/plugins/" . $fichier)){
@@ -110,6 +70,7 @@
 				if(! strstr($rec, "authplugins.php")){
 					if(! is_writable("../client/plugins/$fichier"))
 						echo "Impossible de modifier $fichier. Merci de donner les droits d'&eacute;criture &agrave; Apache et de relancez ce script.<br />";
+						exit;
 
 					else {
 						echo "Patch $fichier <br />";
@@ -124,6 +85,8 @@
 
 		}
 
+	echo "<br />";
+	
 	$cnx = new Cnx();
 	
 	$query_cnx = "ALTER TABLE  `administrateur` CHANGE  `niveau`  `profil` INT( 11 ) NOT NULL";
@@ -220,9 +183,7 @@
 	"INSERT INTO `autorisation` VALUES(5, 'acces_codespromos');",
 	"INSERT INTO `autorisation` VALUES(6, 'acces_configuration');",
 	"INSERT INTO `autorisation` VALUES(7, 'acces_modules');",
-	"INSERT INTO `autorisation` VALUES(8, 'acces_rechercher');",
-	");";
-
+	"INSERT INTO `autorisation` VALUES(8, 'acces_rechercher');");
 
 	foreach($listeinsert as $insert)
 		$resul_cnx = mysql_query($insert,$cnx->link);
