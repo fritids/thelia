@@ -189,7 +189,14 @@ foreach($listefichiersplugins as $fichier){
 
 	foreach($listeinsert as $insert)
 		$resul_cnx = mysql_query($insert,$cnx->link);
-	
+
+	$query_cnx = "CREATE TABLE  `autorisation_modules` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+	`administrateur` INT NOT NULL ,
+	`module` INT NOT NULL ,
+	`autorise` INT NOT NULL
+	)";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);	
 
 	$query_cnx = "update variable set valeur='142' where nom='version'";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);

@@ -2257,3 +2257,10 @@ CREATE TABLE `profildesc` (
 INSERT INTO `profildesc` VALUES(1, 1, 'Super administrateur', '', '', '', 1);
 INSERT INTO `profildesc` VALUES(2, 2, 'Gestionnaire des commandes', '', '', '', 1);
 INSERT INTO `profildesc` VALUES(3, 3, 'Gestionnaire du catalogue', '', '', '', 1);
+
+CREATE TABLE `autorisation_modules` (
+`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`administrateur` INT NOT NULL ,
+`module` INT NOT NULL ,
+`autorise` INT NOT NULL
+)

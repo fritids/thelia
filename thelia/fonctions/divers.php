@@ -723,10 +723,10 @@ $reply\nFrom:$from\n".$mail_mime);
             if($_SESSION['util']->profil == "1")
                     return 1;
 
-            if(! isset($_SESSION['util']->autorisation[$action]) || ! $_SESSION['util']->autorisation[$action]->lecture)
-                    return 0;
+            if(isset($_SESSION['util']->autorisation[$action]) && $_SESSION['util']->autorisation[$action]->lecture)
+                    return 1;
 
-            return 1;
+            return 0;
 
     }
 

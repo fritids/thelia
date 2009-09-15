@@ -42,6 +42,9 @@
 			$this->Baseobj();
 		}
 
+		function charger($module, $administrateur){
+			return $this->getVars("select * from $this->table where module=\"$module\" and administrateur=\"$administrateur\"");
+		}
 	}
 
 

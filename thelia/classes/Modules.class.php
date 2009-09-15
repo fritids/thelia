@@ -25,6 +25,7 @@
 ?>
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Autorisation_modules.class.php");
 
 	class Modules extends Baseobj{
 
@@ -50,8 +51,14 @@
 		}	
 
 		function est_autorise(){
+			if($_SESSION['util']->profil == "1")
+				return 1;
+				
+			$verif = new Autorisation_modules();
+			if($autorise->charger($this->id) && $verif->autorise)
+				return 1;
 			
-			return 1;
+			return 0;
 			
 		}
 	}

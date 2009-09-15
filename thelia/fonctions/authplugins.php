@@ -11,9 +11,10 @@
 	
 	function autorisation($nomplugin){	
 		$module = new Modules();
-		$module->charger($nomplugin);
-		if(! $module->actif || ! $module->est_autorise())
-			return 0;
+		if($module->charger($nomplugin) && $module->actif && $module->est_autorise())
+			return 1;
+			
+		return 0;
 			
 	}
 
