@@ -240,7 +240,7 @@ function supprimer(id){
 	<li style="width:142px;"><?php echo($row->ref); ?></li>
 	<li style="width:104px;"><?php echo($jour . "/" . $mois . "/" . $annee . " " . $heure . ":" . $minute . ":" . $seconde); ?></li>
 	<li style="width:200px;"><?php echo($client->entreprise); ?></li>
-	<li style="width:200px;"><a href="client_visualiser.php?ref=<?php echo($client->ref); ?>"><?php echo($client->prenom . " " . $client->nom); ?></a></li>
+	<li style="width:200px;"><a href="client_visualiser.php?ref=<?php echo($client->ref); ?>"><?php echo($client->nom . " " . $client->prenom); ?></a></li>
 	<li style="width:59px;"><?php echo(round($total, 2)); ?> <?php echo $devise->symbole; ?></li>
 	<li style="width:70px;"><?php echo($statutdesc->titre); ?></li>
 	<li style="width:40px;"><a href="commande_details.php?ref=<?php echo($row->ref); ?>">éditer</a></li>

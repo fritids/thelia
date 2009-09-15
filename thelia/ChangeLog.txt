@@ -2,6 +2,7 @@
 	Mise à jour de sécurité
 	Modification des étapes d'installation
 	Suppression des appels ereg dans le code de THELIA (dépréciées)
+	Mise en place de la gestion des droits dans l'interface d'administration (1er niveau)
 	
 1.4.1
 	Optimisation de l'admin

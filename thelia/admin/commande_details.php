@@ -196,7 +196,7 @@
 <ul class="ligne_claire_BlocDescription">
 		<li style="width:59px;"><?php echo($commande->facture); ?></li>
 		<li style="width:240px;"><?php echo($client->entreprise); ?></li>
-		<li style="width:150px;"><a href="client_visualiser.php?ref=<?php echo($client->ref); ?>"><?php echo($client->prenom); ?> <?php echo($client->nom); ?></a></li> 
+		<li style="width:150px;"><a href="client_visualiser.php?ref=<?php echo($client->ref); ?>"><?php echo($client->nom); ?> <?php echo($client->prenom); ?></a></li> 
 		<li><?php echo($dateaff . " " . $heureaff); ?></li> 
 </ul> 
 </div>

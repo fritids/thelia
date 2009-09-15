@@ -99,7 +99,7 @@
   	if($page<$nbpage) $pagesuiv=$page+1;
   	else $pagesuiv=$page;
   	if(isset($classement) && $classement != "") $ordclassement = "order by ".$classement;
-  	else $ordclassement = "order by ref desc";
+  	else $ordclassement = "order by nom asc";
 
 ?>
 
@@ -121,11 +121,11 @@
 <ul id="Nav">
 		<li style="height:25px; width:129px; border-left:1px solid #96A8B5;">N&deg; du client</li>
 		<li style="height:25px; width:157px; border-left:1px solid #96A8B5;">Soci&eacute;t&eacute;</li>
-		<li style="height:25px; width:257px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">Pr&eacute;nom &amp; Nom
+		<li style="height:25px; width:257px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">Nom &amp; Pr&eacute;nom 
 			<ul class="Menu">
-				<li style="width:267px;"><a href="javascript:tri('ASC','nom,prenom','<?php echo $debut; ?>')">Tri alphabétique</a></li>
-				<li style="width:267px;"><a href="javascript:tri('DESC','nom,prenom','<?php echo $debut; ?>')">Tri alphabétique inverse</a></li>
-				<li style="width:267px;"><a href="javascript:tri('DESC','nom,prenom','<?php echo $debut; ?>')">Tri par d&eacute;faut</a></li>
+				<li style="width:267px;"><a href="javascript:tri('ASC','nom','<?php echo $debut; ?>')">Tri alphabétique</a></li>
+				<li style="width:267px;"><a href="javascript:tri('DESC','nom','<?php echo $debut; ?>')">Tri alphabétique inverse</a></li>
+				<li style="width:267px;"><a href="javascript:tri('ASC','nom','<?php echo $debut; ?>')">Tri par d&eacute;faut</a></li>
 			</ul>
 		</li>
 		<li style="height:25px; width:130px; border-left:1px solid #96A8B5;">Derni&egrave;re commande</li>
@@ -170,7 +170,7 @@
 <ul class="<?php echo($fond); ?>">
 	<li style="width:122px;"><?php echo($row->ref); ?></li>
 	<li style="width:150px;"><?php echo($row->entreprise); ?></li>
-	<li style="width:250px;"><?php echo($row->prenom); ?> <?php echo($row->nom); ?></li>
+	<li style="width:250px;"><?php echo($row->nom); ?> <?php echo($row->prenom); ?></li>
 	<li style="width:123px;"><?php if($existe) echo $jour."/".$mois."/".$annee; ?></li>
 	<li style="width:148px;"><?php if($existe) echo $commande->total(); ?></li>
 	<li style="width:40px;"><a href="client_visualiser.php?ref=<?php echo($row->ref); ?>">éditer</a></li>

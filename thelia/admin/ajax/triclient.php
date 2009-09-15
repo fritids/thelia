@@ -22,7 +22,6 @@ $debut = $_GET["debut"];
   	$client = new Client();
   	
  	$query = "select * from $client->table order by $critere $order limit $debut,20";
- 	echo $query;
   	$resul = mysql_query($query, $client->link);
   	
   	while($row = mysql_fetch_object($resul)){
@@ -53,7 +52,7 @@ $debut = $_GET["debut"];
 <ul class="<?php echo($fond); ?>">
 	<li style="width:122px;"><?php echo($row->ref); ?></li>
 	<li style="width:150px;"><?php echo($row->entreprise); ?></li>
-	<li style="width:250px;"><?php echo($row->prenom); ?> <?php echo($row->nom); ?></li>
+	<li style="width:250px;"><?php echo($row->nom); ?> <?php echo($row->prenom); ?></li>
 	<li style="width:123px;"><?php if($existe) echo $jour."/".$mois."/".$annee; ?></li>
 	<li style="width:148px;"><?php if($existe) echo $commande->total(); ?></li>
 	<li style="width:40px;"><a href="client_visualiser.php?ref=<?php echo($row->ref); ?>" class="txt_vert_11">&eacute;diter</a></li>

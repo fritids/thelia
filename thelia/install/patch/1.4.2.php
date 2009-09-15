@@ -176,7 +176,7 @@ foreach($listefichiersplugins as $fichier){
 	"INSERT INTO `autorisationdesc` VALUES(3, 3, 'Acc&egrave;s au catalogue', '', '', '', 1);",
 	"INSERT INTO `autorisationdesc` VALUES(4, 4, 'Acc&egrave;s aux contenus', '', '', '', 1);",
 	"INSERT INTO `autorisationdesc` VALUES(5, 5, 'Acc&egrave;s aux codes promos', '', '', '', 1);",
-	"INSERT INTO `autorisationdesc` VALUES(6, 6, 'Acc&egrave;s à la configuration', '', '', '', 1);",
+	"INSERT INTO `autorisationdesc` VALUES(6, 6, 'Acc&egrave;s &agrave; la configuration', '', '', '', 1);",
 	"INSERT INTO `autorisationdesc` VALUES(7, 7, 'Acc&egrave;s aux modules', '', '', '', 1);",
 	"INSERT INTO `autorisationdesc` VALUES(8, 8, 'Acc&egrave;s aux recherches', '', '', '', 1);",
 	"INSERT INTO `autorisation` VALUES(1, 'acces_clients', 1);",

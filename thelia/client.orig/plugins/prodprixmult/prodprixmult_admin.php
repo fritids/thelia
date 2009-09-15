@@ -115,7 +115,7 @@
 			
 			$query_caract =  "select * from $caracteristique->table where id not in(" . $principal->valeur . "," . $refsimple->valeur . ")";
 			$resul_caract = mysql_query($query_caract, $caracteristique->link);
-			echo $query_caract . "toto";
+
 			while($row = mysql_fetch_object($resul_caract)){
 				$caracteristiquedesc = new Caracteristiquedesc();
 				$caracteristiquedesc->charger($row->id);
