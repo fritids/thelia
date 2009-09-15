@@ -34,6 +34,7 @@
 	if(!isset($ligne)) $ligne="";
 	
 ?>
+<?php if(! est_autorise("acces_contenu")) exit; ?>
 <?php
 
 	include_once("../classes/Dossier.class.php");

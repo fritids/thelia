@@ -1,6 +1,9 @@
 <?php
 include_once("pre.php");
 include_once("auth.php");
+?>
+<?php if(! est_autorise("acces_clients")) exit; ?>
+<?php
 include_once("../classes/Client.class.php");
 
 $client = new Client();

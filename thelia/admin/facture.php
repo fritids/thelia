@@ -26,6 +26,7 @@
 <?php
 	if((($_SESSION['navig']->client->id != $commande->client) || ($commande->statut<2)) && !$_SESSION["util"]->id)  exit;
 ?>
+<?php if(! est_autorise("acces_commandes") && $_SESSION["util"]->id != "") exit; ?>
 <?php
 
 

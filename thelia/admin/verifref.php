@@ -1,7 +1,9 @@
 <?php
 include_once("pre.php");
 include_once("auth.php");
-
+?>
+<?php if(! est_autorise("acces_catalogue")) exit; ?>
+<?php
 include_once("../classes/Produit.class.php");
 include_once("../classes/Produitdesc.class.php");
 
