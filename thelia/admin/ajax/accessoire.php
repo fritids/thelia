@@ -3,6 +3,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Navigation.class.php");
 	session_start();
 	if( ! isset($_SESSION["util"]->id) ) {header("Location: ../index.php");exit;}
+	include_once(realpath(dirname(__FILE__)) . "/../../fonctions/divers.php");
 
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Produit.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Produitdesc.class.php");
@@ -11,6 +12,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/../../classes/Rubriquedesc.class.php");
 
 ?>
+<?php if(! est_autorise("acces_catalogue")) exit; ?>
 <?php
 
 	switch($_GET['action']){

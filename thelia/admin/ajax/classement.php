@@ -3,6 +3,10 @@ include_once(realpath(dirname(__FILE__)) . "/../../classes/Administrateur.class.
 include_once(realpath(dirname(__FILE__)) . "/../../classes/Navigation.class.php");
 session_start();
 if( ! isset($_SESSION["util"]->id) ) {header("Location: ../index.php");exit;}
+include_once(realpath(dirname(__FILE__)) . "/../../fonctions/divers.php");
+?>
+<?php if(! est_autorise("acces_configuration")) exit; ?>
+<?php
 include_once("../../classes/Produit.class.php");
 include_once("../../classes/Produitdesc.class.php");
 include_once("../../classes/Rubrique.class.php");
@@ -22,7 +26,7 @@ $pos = strpos($_POST['id'], "_");
 
 $modif = substr($_POST['id'], 0, $pos);
 $classement = $_POST["value"];
-if($modif == "classementrub"){
+if($modif == "classementrub" && est_autorise("acces_catalogue")){
 	
 	$rubrique = new Rubrique();
 	$rubrique->charger(substr($_POST['id'], $pos+1));
@@ -88,7 +92,7 @@ if($modif == "classementrub"){
 	<?php
 	}	
 }
-else if($modif == "classementprod"){
+else if($modif == "classementprod" && est_autorise("acces_catalogue")){
 	$produit = new Produit();
 	$produit->charger_id(substr($_POST['id'], $pos+1));
 	if($classement>$produit->classement){
@@ -169,7 +173,7 @@ else if($modif == "classementprod"){
 	<?php
 	}
 }
-else if($modif == "classementdossier"){
+else if($modif == "classementdossier" && est_autorise("acces_catalogue")){
 	$dossier = new Dossier();
 	$dossier->charger(substr($_POST['id'], $pos+1));
 	if($classement>$dossier->classement){
@@ -232,7 +236,7 @@ else if($modif == "classementdossier"){
 <?php
 }	
 }
-else if($modif == "classementcontenu"){
+else if($modif == "classementcontenu" && est_autorise("acces_catalogue")){
 	$contenu = new Contenu();
 	$contenu->charger(substr($_POST['id'], $pos+1));
 	if($classement>$contenu->classement){
@@ -294,7 +298,7 @@ else if($modif == "classementcontenu"){
 	<?php
 	}
 }
-if($modif == "classementcarac"){
+if($modif == "classementcarac" && est_autorise("acces_configuration")){
 	$caracteristique = new Caracteristique();
 	$caracteristique->charger(substr($_POST['id'], $pos+1));
 	if($classement>$caracteristique->classement){
@@ -374,7 +378,7 @@ if($modif == "classementcarac"){
 		}	
 	}
 	
-if($modif == "classementdecli"){
+if($modif == "classementdecli" && est_autorise("acces_configuration")){
 	
 	$declinaison = new Declinaison();
 	$declinaison->charger(substr($_POST['id'], $pos+1));

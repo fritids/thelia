@@ -3,6 +3,10 @@ include_once(realpath(dirname(__FILE__)) . "/../../classes/Administrateur.class.
 include_once(realpath(dirname(__FILE__)) . "/../../classes/Navigation.class.php");
 session_start();
 if( ! isset($_SESSION["util"]->id) ) {header("Location: ../index.php");exit;}
+include_once(realpath(dirname(__FILE__)) . "/../../fonctions/divers.php");
+?>
+<?php if(! est_autorise("acces_commandes")) exit; ?>
+<?php
 include_once(realpath(dirname(__FILE__)) . "/../../classes/Commande.class.php");
 include_once(realpath(dirname(__FILE__)) . "/../../classes/Client.class.php");
 include_once(realpath(dirname(__FILE__)) . "/../../classes/Venteprod.class.php");
