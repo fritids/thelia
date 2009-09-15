@@ -53,7 +53,7 @@
 ?>
 
 <div id="contenu_int"> 
-   <p align="left"><a href="accueil.php" class="lien04">Accueil</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="paiement.php" class="lien04">Gestion du paiement</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="devise.php" class="lien04">Gestion des devises</a></p>
+   <p align="left"><a href="accueil.php" class="lien04">Accueil</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="configuration.php" class="lien04">Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" / <a href="devise.php" class="lien04">Gestion des devises</a></p>
    
 <!-- Début de la colonne de gauche -->  
 <div id="bloc_description">

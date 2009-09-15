@@ -133,7 +133,7 @@
 
 <div id="contenu_int">
 
-<p align="left"><a href="accueil.php" class="lien04">Accueil</a>&nbsp;<img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="paiement.php" class="lien04">Gestion du paiement</a>&nbsp;<img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Gestion des codes promotions</a></p>
+<p align="left"><a href="accueil.php" class="lien04">Accueil</a>&nbsp;<img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="configuration.php" class="lien04">Configuration</a>&nbsp;<img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04">Gestion des codes promotions</a></p>
 
 
   <div class="entete_liste">

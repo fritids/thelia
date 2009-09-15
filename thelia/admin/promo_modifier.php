@@ -80,7 +80,7 @@
 ?>
 
 <div id="contenu_int">
-<p><a href="accueil.php" class="lien04">Accueil </a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="paiement.php" class="lien04">Gestion du paiement</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="promo.php" class="lien04">Gestion des codes promos</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04"><?php if($id) { ?>Modifier <?php } else { ?> Ajouter <?php } ?></a>                   
+<p><a href="accueil.php" class="lien04">Accueil </a>  <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="configuration.php" class="lien04">Configuration</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="promo.php" class="lien04">Gestion des codes promos</a> <img src="gfx/suivant.gif" width="12" height="9" border="0" /><a href="#" class="lien04"><?php if($id) { ?>Modifier <?php } else { ?> Ajouter <?php } ?></a>                   
     </p>
 
 <!-- DŽbut de la colonne de gauche -->  
