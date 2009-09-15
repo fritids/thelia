@@ -42,6 +42,7 @@ CREATE TABLE `administrateur` (
   `prenom` text NOT NULL,
   `nom` text NOT NULL,
   `profil` int(11) NOT NULL,
+  `lang` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
 )  AUTO_INCREMENT=2 ;
 
@@ -49,7 +50,7 @@ CREATE TABLE `administrateur` (
 -- Contenu de la table `administrateur`
 -- 
 
-INSERT INTO `administrateur` VALUES (1, 'admin', PASSWORD('admin'), 'Admin', 'Admin', '1');
+INSERT INTO `administrateur` VALUES (1, 'admin', PASSWORD('admin'), 'Admin', 'Admin', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -1987,7 +1988,7 @@ INSERT INTO `variable` VALUES (3, 'urlsite', 'http://www.monsite.com', '0', '0')
 INSERT INTO `variable` VALUES (4, 'tva', '19.6', '0', '0');
 INSERT INTO `variable` VALUES (5, 'style_chem', '/style_editeur.css', '0', '0');
 INSERT INTO `variable` VALUES (6, 'rsspass', '', '0', '0');
-INSERT INTO `variable` VALUES (7, 'version', '142', '1', '1');
+INSERT INTO `variable` VALUES (7, 'version', '143', '1', '1');
 
 -- --------------------------------------------------------
 

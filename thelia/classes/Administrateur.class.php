@@ -37,10 +37,11 @@
 		var $prenom;
 		var $nom;
 		var $profil;
+		var $lang;
 		var $autorisation;
 				
 		var $table="administrateur";
-		var $bddvars = array("id", "identifiant", "motdepasse", "prenom", "nom", "profil");
+		var $bddvars = array("id", "identifiant", "motdepasse", "prenom", "nom", "profil", "lang");
 
 		function Administrateur(){
 			$this->Baseobj();
