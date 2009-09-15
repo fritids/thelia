@@ -14,7 +14,7 @@
 		if($module->charger($nomplugin) && $module->actif && $module->est_autorise())
 			return 1;
 			
-		return 0;
+		exit;
 			
 	}
 

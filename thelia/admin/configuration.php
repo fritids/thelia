@@ -74,6 +74,8 @@
 	<li class="fonce" style="width:72px;"><a href="variable.php">&eacute;diter </a></li>
 	<li class="lignebottom" style="width:222px; background-color:#9eb0be;">Gestion des administrateurs</li>
 	<li class="lignebottom" style="width:72px;"><a href="gestadm.php">&eacute;diter</a></li>
+	<li class="lignebottom" style="width:222px; background-color:#9eb0be;">Gestion des droits</li>
+	<li class="lignebottom" style="width:72px;"><a href="droits.php">&eacute;diter</a></li>
 	</ul>
 </div>
 </div>

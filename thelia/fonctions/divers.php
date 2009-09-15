@@ -706,7 +706,7 @@ $reply\nFrom:$from\n".$mail_mime);
 		$query = "select * from $modules->table where actif='1' order by classement";
 		$resul = mysql_query($query, $modules->link);
 
-		while($row = mysql_fetch_object($resul))
+		while($row = mysql_fetch_object($resul)){
 
 			$verif = new Modules();
 			$verif->charger_id($row->id);
@@ -715,7 +715,7 @@ $reply\nFrom:$from\n".$mail_mime);
 				
 			if(file_exists("../client/plugins/" .$row->nom . "/" . $row->nom. "_admin_$type.php"))
 				include_once("../client/plugins/" .$row->nom . "/" . $row->nom. "_admin_$type.php");		
-	
+		}
 	}
 	
     function est_autorise($action, $type="lecture"){

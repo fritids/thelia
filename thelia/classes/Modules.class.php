@@ -55,7 +55,7 @@
 				return 1;
 				
 			$verif = new Autorisation_modules();
-			if($autorise->charger($this->id) && $verif->autorise)
+			if($verif->charger($this->id, $_SESSION['util']->id) && $verif->autorise)
 				return 1;
 			
 			return 0;
