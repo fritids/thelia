@@ -708,6 +708,11 @@ $reply\nFrom:$from\n".$mail_mime);
 
 		while($row = mysql_fetch_object($resul))
 
+			$verif = new Modules();
+			$verif->charger_id($row->id);
+			if(! $verif->est_autorise())
+				continue;
+				
 			if(file_exists("../client/plugins/" .$row->nom . "/" . $row->nom. "_admin_$type.php"))
 				include_once("../client/plugins/" .$row->nom . "/" . $row->nom. "_admin_$type.php");		
 	

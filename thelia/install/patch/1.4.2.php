@@ -63,27 +63,27 @@
 	);
 
 
-		foreach($listefichiersplugins as $fichier){
-
-			if(file_exists("../client/plugins/" . $fichier)){
-				$rec = file_get_contents("../client/plugins/" . $fichier);
-				if(! strstr($rec, "authplugins.php")){
-					if(! is_writable("../client/plugins/$fichier"))
-						echo "Impossible de modifier $fichier. Merci de donner les droits d'&eacute;criture &agrave; Apache et de relancez ce script.<br />";
-						exit;
-
-					else {
-						echo "Patch $fichier <br />";
-						preg_match("/([^\/]*)\//", $fichier, $nomplugin);
-						$rec =  preg_replace("/<\?php/", "<?php\ninclude_once(realpath(dirname(__FILE__)) . \"/../../../fonctions/authplugins.php\");\n\nautorisation(\"" . $nomplugin[1] . "\");\n\n", $rec, 1);
-						$fp = fopen("../client/plugins/" . $fichier, "w");
-						fputs($fp, $rec);
-						fclose($fp);
-					}
-				}
+foreach($listefichiersplugins as $fichier){
+	
+	if(file_exists("../client/plugins/" . $fichier)){
+		$rec = file_get_contents("../client/plugins/" . $fichier);
+		if(! strstr($rec, "authplugins.php")){
+			if(! is_writable("../client/plugins/$fichier")){
+				echo "Impossible de modifier $fichier. Merci de donner les droits d'&eacute;criture &agrave; Apache et de relancez ce script.<br />";
+			exit;
 			}
-
+			else {
+				echo "Patch $fichier <br />";
+				preg_match("/([^\/]*)\//", $fichier, $nomplugin);
+				$rec =  preg_replace("/<\?php/", "<?php\ninclude_once(realpath(dirname(__FILE__)) . \"/../../../fonctions/authplugins.php\");\n\nautorisation(\"" . $nomplugin[1] . "\");\n\n", $rec, 1);
+				$fp = fopen("../client/plugins/" . $fichier, "w");
+				fputs($fp, $rec);
+				fclose($fp);
+			}
 		}
+	}
+
+}
 
 	echo "<br />";
 	
@@ -163,19 +163,21 @@
 	"INSERT INTO `profil` VALUES(3, 'gestionnairecatalogue');",
 	"INSERT INTO `autorisation_profil` VALUES(1, 2, 1, 1, 1);",
 	"INSERT INTO `autorisation_profil` VALUES(2, 2, 2, 1, 1);",
-	"INSERT INTO `autorisation_profil` VALUES(3, 2, 8, 1, 1);",
-	"INSERT INTO `autorisation_profil` VALUES(4, 3, 3, 1, 1);",
-	"INSERT INTO `autorisation_profil` VALUES(5, 3, 4, 1, 1);",
-	"INSERT INTO `autorisation_profil` VALUES(6, 3, 5, 1, 1);",
-	"INSERT INTO `autorisation_profil` VALUES(7, 3, 8, 1, 1);",
-	"INSERT INTO `autorisationdesc` VALUES(1, 1, 'Accès aux clients', '', '', '', 1);",
-	"INSERT INTO `autorisationdesc` VALUES(2, 2, 'Accès aux commandes', '', '', '', 1);",
-	"INSERT INTO `autorisationdesc` VALUES(3, 3, 'Accès au catalogue', '', '', '', 1);",
-	"INSERT INTO `autorisationdesc` VALUES(4, 4, 'Accès aux contenus', '', '', '', 1);",
-	"INSERT INTO `autorisationdesc` VALUES(5, 5, 'Accès aux codes promos', '', '', '', 1);",
-	"INSERT INTO `autorisationdesc` VALUES(6, 6, 'Accès à la configuration', '', '', '', 1);",
-	"INSERT INTO `autorisationdesc` VALUES(7, 7, 'Accès aux modules', '', '', '', 1);",
-	"INSERT INTO `autorisationdesc` VALUES(8, 8, 'Accès aux recherches', '', '', '', 1);",
+	"INSERT INTO `autorisation_profil` VALUES(3, 2, 7, 1, 1);",
+	"INSERT INTO `autorisation_profil` VALUES(4, 2, 8, 1, 1);",
+	"INSERT INTO `autorisation_profil` VALUES(5, 3, 3, 1, 1);",
+	"INSERT INTO `autorisation_profil` VALUES(6, 3, 4, 1, 1);",
+	"INSERT INTO `autorisation_profil` VALUES(7, 3, 5, 1, 1);",
+	"INSERT INTO `autorisation_profil` VALUES(8, 3, 7, 1, 1);",
+	"INSERT INTO `autorisation_profil` VALUES(9, 3, 8, 1, 1);",
+	"INSERT INTO `autorisationdesc` VALUES(1, 1, 'Acc&egrave;s aux clients', '', '', '', 1);",
+	"INSERT INTO `autorisationdesc` VALUES(2, 2, 'Acc&egrave;s aux commandes', '', '', '', 1);",
+	"INSERT INTO `autorisationdesc` VALUES(3, 3, 'Acc&egrave;s au catalogue', '', '', '', 1);",
+	"INSERT INTO `autorisationdesc` VALUES(4, 4, 'Acc&egrave;s aux contenus', '', '', '', 1);",
+	"INSERT INTO `autorisationdesc` VALUES(5, 5, 'Acc&egrave;s aux codes promos', '', '', '', 1);",
+	"INSERT INTO `autorisationdesc` VALUES(6, 6, 'Acc&egrave;s à la configuration', '', '', '', 1);",
+	"INSERT INTO `autorisationdesc` VALUES(7, 7, 'Acc&egrave;s aux modules', '', '', '', 1);",
+	"INSERT INTO `autorisationdesc` VALUES(8, 8, 'Acc&egrave;s aux recherches', '', '', '', 1);",
 	"INSERT INTO `autorisation` VALUES(1, 'acces_clients');",
 	"INSERT INTO `autorisation` VALUES(2, 'acces_commandes');",
 	"INSERT INTO `autorisation` VALUES(3, 'acces_catalogue');",

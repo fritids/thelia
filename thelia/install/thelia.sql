@@ -2200,7 +2200,7 @@ CREATE TABLE `autorisation_profil` (
   `lecture` int(11) NOT NULL,
   `ecriture` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) AUTO_INCREMENT=8 ;
+) AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `autorisation_profil`
@@ -2208,11 +2208,13 @@ CREATE TABLE `autorisation_profil` (
 
 INSERT INTO `autorisation_profil` VALUES(1, 2, 1, 1, 1);
 INSERT INTO `autorisation_profil` VALUES(2, 2, 2, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(3, 2, 8, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(4, 3, 3, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(5, 3, 4, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(6, 3, 5, 1, 1);
-INSERT INTO `autorisation_profil` VALUES(7, 3, 8, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(3, 2, 7, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(4, 2, 8, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(5, 3, 3, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(6, 3, 4, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(7, 3, 5, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(8, 3, 7, 1, 1);
+INSERT INTO `autorisation_profil` VALUES(9, 3, 8, 1, 1);
 
 --
 -- Structure de la table `profil`

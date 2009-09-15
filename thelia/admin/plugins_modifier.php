@@ -30,26 +30,8 @@
 <?php if(! est_autorise("acces_configuration")) exit; ?>
 <?php
 	include_once("../classes/Modules.class.php");
-	include_once("../classes/Racmodule.class.php");	
 ?>
 <?php
-
-	if(isset($_GET['rac'])){
-
-		$racmodule = new Racmodule();
-		
-		if($_GET['rac'] == "1"){
-			$racmodule->module = $_GET['nom'];
-			$racmodule->add();
-		}
-		
-		else{
-			$racmodule->charger($_GET['nom']);
-			$racmodule->delete();
-			
-		}
-
-	}
 	
 	if($actif != ""){
 
