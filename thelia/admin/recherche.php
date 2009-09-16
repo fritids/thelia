@@ -214,7 +214,6 @@ function supprimer_rubrique(id, parent){
 		<li style="width:20px; border-left:1px solid #96A8B5;">Suppr.</li>
 </ul>
 
-   <table width="100%" border="0" cellpadding="5" cellspacing="0">
   <?php
   	$i=0;
   	$search="";
@@ -290,7 +289,7 @@ function supprimer_rubrique(id, parent){
  <?php
 	}
  ?>
-   </table>
+
 
 </div> 
 <?php include_once("pied.php");?>
