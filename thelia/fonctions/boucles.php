@@ -2524,7 +2524,15 @@
 		
 		if($id != "") $search .= "and id in ($id)";
 		if($nom != "") $search .= "and nom=\"$nom\"";
-		if($exclusion != "") $search .= "and nom not in ($exclusion)";
+		if($exclusion!=""){
+			$liste="";
+			$tabexcl = explode(",", $exclusion);
+			for($i=0;$i<count($tabexcl);$i++)
+				$liste .= "'" . $tabexcl[$i] . "'" . ",";
+			if(substr($liste, strlen($liste)-1) == ",")
+				$liste = substr($liste, 0, strlen($liste)-1);
+			$search.=" and nom not in ($liste)";
+		}
 					
 		$modules = new Modules();
 	
