@@ -649,9 +649,10 @@
 
 		if($photo != ""){
 			
+	        preg_match("/([^\/]*).((jpg|gif|png|jpeg))/i", $photo_name, $decoupe);
 			
-       	    $extension = substr($photo_name, strlen($nomorig)-3);
-			$fich = substr($photo_name, 0, strlen($photo_name)-4);
+			$fich = $decoupe[1];
+       	    $extension = $decoupe[2];
 
 			$photoprodw = new Variable();
 			$photoprodw->charger("photoprodw");

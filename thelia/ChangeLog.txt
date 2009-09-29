@@ -1,3 +1,8 @@
+1.4.2.1
+	Correction des substitutions lors de l'envoi du mail de confirmation (suite au passage en preg)
+	Correction d'un soucis dans la gestion des droits admin (dans l'interface d'administrateur)
+	Correction d'un problème lors de la suppression d'une rubrique (suppression d'images)
+
 1.4.2
 	Mise à jour de sécurité
 	Modification des étapes d'installation

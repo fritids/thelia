@@ -225,8 +225,10 @@
 
 		if($photo != ""){
 
-       	    $extension = substr($photo_name, strlen($nomorig)-3);
-			$fich = substr($photo_name, 0, strlen($photo_name)-4);
+ 	        preg_match("/([^\/]*).((jpg|gif|png|jpeg))/i", $photo_name, $decoupe);
+			
+			$fich = $decoupe[1];
+		    $extension = $decoupe[2];
 			
 			$photoprodw = new Variable();
 			$photoprodw->charger("photorubw");

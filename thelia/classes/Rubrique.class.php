@@ -100,7 +100,7 @@
 				
 				$image = new Image();
 
-				$query = "select * from $image->table where produit=\"" . $this->id . "\"";
+				$query = "select * from $image->table where rubrique=\"" . $this->id . "\"";
 				$resul = mysql_query($query, $image->link);
 				while($row = mysql_fetch_object($resul)){
 					$tmp = new Image();
@@ -111,7 +111,7 @@
 
 				$document = new Document();
 
-				$query = "select * from $document->table where produit=\"" . $this->id . "\"";
+				$query = "select * from $document->table where rubrique=\"" . $this->id . "\"";
 				$resul = mysql_query($query, $document->link);
 				while($row = mysql_fetch_object($resul)){
 					$tmp = new Document();

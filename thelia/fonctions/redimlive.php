@@ -61,16 +61,17 @@ function imageflip(&$dest, &$src) {
 
  if (file_exists($nomorig) || url_exists($nomorig))
  {
- 		$extension = substr($nomorig, strlen($nomorig)-3);
  
  		if(strstr($nomorig, "client/gfx/photos/rubrique")) $type = "rubrique";
  		else if(strstr($nomorig, "client/gfx/photos/produit")) $type = "produit";
  		else if(strstr($nomorig, "client/gfx/photos/dossier")) $type = "dossier";
  		else if(strstr($nomorig, "client/gfx/photos/contenu")) $type = "contenu";
   		
-        preg_match("/([^\/]*.(jpg|gif|png))/", $nomorig, $nsimple);
+        preg_match("/([^\/]*).((jpg|gif|png|jpeg))/i", $nomorig, $nsimple);
  		
-  		$nomcache = "client/cache/" . $type . "/" . $width . "_" . $height . "_" . $opacite . "_" . $nb . "_" . $miroir . "_" . $nsimple[1];
+ 		$extension = $nsimple[2];
+
+  		$nomcache = "client/cache/" . $type . "/" . $width . "_" . $height . "_" . $opacite . "_" . $nb . "_" . $miroir . "_" . $nsimple[1] . "." . $nsimple[2];
  		
  		if(file_exists("../$nomcache")) { header("Location: ../$nomcache"); exit; }
  		
@@ -125,9 +126,9 @@ function imageflip(&$dest, &$src) {
    if(strtolower($extension) == "gif"){
         $image_orig = imagecreatefromgif($nomorig);
    }
-   else if(strtolower($extension) == "jpg" || strtolower($extension) == "png"){
+   else if(strtolower($extension) == "jpg" || strtolower($extension) == "jpeg" || strtolower($extension) == "png"){
        
-        if(strtolower($extension) == "jpg") 
+        if(strtolower($extension) == "jpg" || strtolower($extension) == "jpeg") 
 			$image_orig = imagecreatefromjpeg($nomorig);
 		else if(strtolower($extension) == "png") {
 			$image_orig = imagecreatefrompng($nomorig);
@@ -229,7 +230,7 @@ function imageflip(&$dest, &$src) {
                  imagegif($image_new, null, 100);
      }            
      
-     else if(strtolower($extension) == "jpg"){
+     else if(strtolower($extension) == "jpg" || strtolower($extension) == "jpeg"){
            		 imagejpeg($image_new, "../$nomcache", 100);
                  imagejpeg($image_new, null, 100);
      }            
