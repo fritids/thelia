@@ -44,7 +44,7 @@
 		$query = "select * from $tcontenu->table where id='$id_contenu'";
 		$resul = mysql_query($query, $tcontenu->link);
 		$row = mysql_fetch_object($resul);
-		$tcontenudesc->charger($row->id);
+		$tcontenudesc->charger($row->id,$_SESSION['navig']->lang);
 		    
 		$texte = str_replace("#CONTENU_ID", "$id_contenu", $texte);
 		$texte = str_replace("#CONTENU_MOTCLE", "$motcle", $texte);
