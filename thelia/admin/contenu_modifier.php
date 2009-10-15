@@ -241,6 +241,8 @@
 			
 			copy("$photo", "../client/gfx/photos/contenu/" . $fich . "_" . $lastid . "." . $extension);
 			
+			modules_fonction("uploadimage", $lastid);
+			
 			header("location: contenu_modifier.php?id=".$tmp->id."&dossier=".$tmp->dossier."&lang=".$lang);
 		}
 	 }

@@ -245,7 +245,9 @@
 			$image->maj();
 			
 			copy("$photo", "../client/gfx/photos/dossier/" . $fich . "_" . $lastid . "." . $extension);
-    		
+			
+    		modules_fonction("uploadimage", $lastid);
+			
 		}
 	  }
 	    header("Location: dossier_modifier.php?id=" . $tmp->id."&lang=".$lang);

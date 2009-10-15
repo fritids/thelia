@@ -677,6 +677,9 @@
 			$image->maj();
 			
 			copy("$photo", "../client/gfx/photos/produit/" . $fich . "_" . $lastid . "." . $extension);
+			
+			modules_fonction("uploadimage", $lastid);
+			
 		}
 		
 	  }	

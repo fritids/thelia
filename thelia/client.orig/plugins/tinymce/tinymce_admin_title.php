@@ -55,7 +55,7 @@
                     file_browser_callback : "fileBrowserCallBack",
 					content_css : "<?php echo $style_chem->valeur ?>",
                     theme_advanced_resizing : true,
-
+					entity_encoding : "raw",
 
 					template_external_list_url : "js/template_list.js",
 					external_link_list_url : "js/link_list.js",

@@ -24,7 +24,6 @@
 /*************************************************************************************/
 ?>
 <?php
-//	var_dump($_POST); exit;
 	include_once("pre.php");
 	include_once("auth.php");
 	
@@ -254,7 +253,9 @@
 			$image->maj();
 			
 			copy("$photo", "../client/gfx/photos/rubrique/" . $fich . "_" . $lastid . "." . $extension);
-    		
+			
+    		modules_fonction("uploadimage", $lastid);
+			
 		}
 	   }
 		
