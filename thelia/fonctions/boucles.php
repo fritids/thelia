@@ -1022,7 +1022,7 @@
 			if($classement == "produit")
 				$prodid = $row->id;
 			else 
-				$prodid = $row->produit.id;
+				$prodid = $row->produit;
 				
 			$rubriquedesc = new Rubriquedesc();
 			$rubriquedesc->charger($row->rubrique, $_SESSION['navig']->lang);

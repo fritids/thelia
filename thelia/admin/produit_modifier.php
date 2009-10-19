@@ -322,6 +322,8 @@
 		
 		}
 
+	 	 $prix = str_replace(",", ".", $prix);
+
 		 $produit->datemodif = date("Y-m-d H:i:s");		
 		 $produit->prix = $prix; 
 		 $produit->prix2 = $prix2;
@@ -498,6 +500,8 @@
 	 $resul = mysql_query($query, $produit->link);
      $maxClassement = mysql_result($resul, 0, "maxClassement");
 
+	 $prix = str_replace(",", ".", $prix);
+	
 	 $produit->ref = $ref;
 	 $produit->datemodif = date("Y-m-d H:i:s"); 
 	 $produit->prix = $prix; 
