@@ -49,7 +49,7 @@
 			else if(strstr($tab[$i], "</T_"))	$bsinon=0;
 			else if(strstr($tab[$i], "<//T_"))	$bsinon=0;
 			
-			if( ($profondeur == 2 && ! strstr($tab[$i], "<THELIA")) || $profondeur>2 ) 
+			if( ($profondeur == 2 && ! strstr($tab[$i], "<THELIA") && !$bsinon) || $profondeur>2 ) 
 				$tab[$i] = str_replace("#", "#THNO", $tab[$i]);	
 			else if(strstr($tab[$i], "<THELIA") && $profondeur < 2){
 				preg_match("/<THELIA_([^ ]*) /", $tab[$i], $liste);
