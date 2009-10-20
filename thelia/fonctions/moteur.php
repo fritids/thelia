@@ -85,18 +85,21 @@ function analyse($res){
 		$res = post($res);
 	}
 
-	// boucles avec sinon
-	$res = str_replace("BTHELIA", "THELIA", $res);
-	$res = boucle_sinon(explode("\n", $res));
+	while(strstr($res, "<BTHELIA")){
+	
+		// boucles avec sinon
+		$res = str_replace("BTHELIA", "THELIA", $res);
+		$res = boucle_sinon(explode("\n", $res));
 
-	// boucles
+		// boucles
 	
-	while(strstr($res, "<THELIA")) {
-		$boucles = pre($res);
-		$res = boucle_simple($res, $boucles);
-		$res = post($res);
+		while(strstr($res, "<THELIA")) {
+			$boucles = pre($res);
+			$res = boucle_simple($res, $boucles);
+			$res = post($res);
+		}
+	
 	}
-	
 	// on envoie le résultat
 	
 	return $res;
