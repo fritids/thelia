@@ -351,6 +351,13 @@
 		
 		$commande->maj();		
 
+	    $total = $_SESSION['navig']->panier->total(1,$_SESSION['navig']->commande->remise) + $_SESSION['navig']->commande->port;
+
+		if($total<$_SESSION['navig']->commande->port)
+			$total = $_SESSION['navig']->commande->port;
+
+		$_SESSION['navig']->commande->total = $total;
+
 		modules_fonction("aprescommande", $commande);
 				
 		$nomclass=$modules->nom;

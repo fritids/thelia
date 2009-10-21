@@ -1,3 +1,6 @@
+1.4.3
+	Internalisation du calcul du montant à payer dans le moteur de THELIA au lieu de placer ce calcul dans les plugins de type paiement. (permettant de jouer sur le montant dans aprescommande)
+	
 1.4.2.1
 	Correction des substitutions lors de l'envoi du mail de confirmation (suite au passage en preg)
 	Correction d'un soucis dans la gestion des droits admin (dans l'interface d'administrateur)

@@ -29,9 +29,7 @@
 		
 	session_start();
 
-	$total = 0;
-
-    $total = $_SESSION['navig']->commande->total();
+	$total = $_SESSION['navig']->commande->total;
 
 
 ?>

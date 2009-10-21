@@ -8,9 +8,7 @@ include_once(realpath(dirname(__FILE__)) . "/lib/lib_debug.php");
 
 session_start();
 
-$total = 0;
-
-$total = $_SESSION['navig']->panier->total(1,$_SESSION['navig']->commande->remise) + $_SESSION['navig']->commande->port;
+$total = $_SESSION['navig']->commande->total;
 $total *= 100; 
 
 $array = array();

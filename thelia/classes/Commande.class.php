@@ -49,6 +49,9 @@
 		var $paiement;
 		var $statut;
 		var $lang;
+		
+		var $total;
+		
 		var $table="commande";
 		var $bddvars = array("id", "client", "adrfact", "adrlivr", "date", "datefact", "ref", "transaction", "livraison", "facture", "transport", "port", "datelivraison", "remise", "devise", "taux", "colis", "paiement", "statut", "lang");
 

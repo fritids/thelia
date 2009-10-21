@@ -27,13 +27,8 @@ include_once(realpath(dirname(__FILE__)) . "/config.php");
 	include_once("../../../classes/Navigation.class.php");	
 	session_start();
 	
-	$total = 0;
+	$total = $_SESSION['navig']->commande->total;
 
-    $total = $_SESSION['navig']->panier->total(1,$_SESSION['navig']->commande->remise) + $_SESSION['navig']->commande->port;
-
-
-	if($total<$_SESSION['navig']->commande->port)
-		$total = $_SESSION['navig']->commande->port;
 		
 // INFORMATIONS A MODIFIER POUR CHAQUE COMMERCANT FOURNIES PAR LE SERVICE INTEGRATION SPPLUS
 // cle marchand du commercant au format NT

@@ -38,12 +38,7 @@
 ?>
 
 <?php
-	$total = 0;
-
-    $total = $_SESSION['navig']->panier->total(1,$_SESSION['navig']->commande->remise) + $_SESSION['navig']->commande->port;
-
-	if($total<$_SESSION['navig']->commande->port)
-		$total = $_SESSION['navig']->commande->port;
+	$total = $_SESSION['navig']->commande->total;
 ?>
 
 <HTML>
