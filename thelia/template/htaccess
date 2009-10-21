@@ -3,7 +3,11 @@ RewriteEngine on
 
 #CONTENU
 #############
-RewriteRule   ^([a-z0-9-]*)__([0-9]*)_([a-z0-9-]*)_([0-9]*)\.html  contenu.php?id_contenu=$4  [NC,QSA,L]
+RewriteRule   ^([a-z0-9-]*)__([0-9]*)_([a-z0-9-]*)_([0-9]*)\.html  contenu.php?id_contenu=$4&id_dossier=$2  [NC,QSA,L]
+
+#DOSSIER
+############
+RewriteRule   ^([a-z0-9-]*)__([0-9]*)_\.html    dossier.php?id_dossier=$2       [NC,QSA,L]
 
 #RUBRIQUE
 ##############
