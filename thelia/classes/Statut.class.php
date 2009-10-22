@@ -30,18 +30,21 @@
 	class Statut extends Baseobj{
 
 		var $id;
+		var $nom;
 
 		var $table="statut";
-		var $bddvars = array("id");
+		var $bddvars = array("id", "nom");
 
 		function Statut(){
 			$this->Baseobj();	
 		}
 		
 		function charger($id){
-		
 			return $this->getVars("select * from $this->table where id=\"$id\"");
+		}
 
+		function charger_nom($nom){
+			return $this->getVars("select * from $this->table where nom=\"$nom\"");
 		}
 
 	

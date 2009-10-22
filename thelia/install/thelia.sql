@@ -1880,6 +1880,7 @@ CREATE TABLE `rubriquedesc` (
 
 CREATE TABLE `statut` (
   `id` int(11) NOT NULL auto_increment,
+  `nom` text NOT NULL,
   PRIMARY KEY  (`id`)
 )  AUTO_INCREMENT=6 ;
 
@@ -1887,11 +1888,11 @@ CREATE TABLE `statut` (
 -- Contenu de la table `statut`
 -- 
 
-INSERT INTO `statut` VALUES (1);
-INSERT INTO `statut` VALUES (2);
-INSERT INTO `statut` VALUES (3);
-INSERT INTO `statut` VALUES (4);
-INSERT INTO `statut` VALUES (5);
+INSERT INTO `statut` VALUES (1, 'nonpaye');
+INSERT INTO `statut` VALUES (2, 'paye');
+INSERT INTO `statut` VALUES (3, 'traitement');
+INSERT INTO `statut` VALUES (4, 'envoye');
+INSERT INTO `statut` VALUES (5, 'annule');
 
 -- --------------------------------------------------------
 

@@ -8,7 +8,7 @@ include_once("../classes/Client.class.php");
 
 $client = new Client();
 $querystring = $_GET['queryString'];
-$query = "select * from $client->table where nom like '$querystring%' or prenom like '$querystring%'";
+$query = "select * from $client->table where nom like '$querystring%' or prenom like '$querystring%' or entreprise like '$querystring%'";
 $resul = mysql_query($query,$client->link);
 
 while($row = mysql_fetch_object($resul)){
