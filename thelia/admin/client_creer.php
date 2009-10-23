@@ -147,7 +147,7 @@
 				$mail = new PHPMailer();
 				$mail->IsMail();
 				$mail->FromName = $nomsite->valeur;
-				$mail->From = $emailcontact->site;
+				$mail->From = $emailcontact->valeur;
 				$mail->Subject = $messagedesc->titre;
 				$mail->MsgHTML($messagedesc->description);
 				$mail->AltBody = $messagedesc->descriptiontext;
