@@ -290,6 +290,9 @@ function supprimer_rubrique(id, parent){
 	}
  ?>
 
+<?php 
+	admin_inclure("recherche"); 
+?>
 
 </div> 
 <?php include_once("pied.php");?>
