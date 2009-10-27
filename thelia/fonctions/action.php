@@ -162,6 +162,7 @@
 		
 		$adr = new Venteadr();
 		$adr->raison = $client->raison;
+		$adr->entreprise = $client->entreprise;
 		$adr->nom = $client->nom;
 		$adr->prenom = $client->prenom;
 		$adr->adresse1 = $client->adresse1;
@@ -180,6 +181,7 @@
 		if($livraison->charger($_SESSION['navig']->adresse)){
 			
 			$adr->raison = $livraison->raison;
+			$adr->entreprise = $livraison->entreprise;	
 			$adr->nom = $livraison->nom;
 			$adr->prenom = $livraison->prenom;
 			$adr->adresse1 = $livraison->adresse1;
@@ -193,6 +195,7 @@
 		}
 		else {
 			$adr->raison = $client->raison;
+			$adr->entreprise = $livraison->entreprise;			
 			$adr->nom = $client->nom;
 			$adr->prenom = $client->prenom;
 			$adr->adresse1 = $client->adresse1;
@@ -533,7 +536,7 @@
 	}
 		
 	// création d'une adresse de livraison	
-	function creerlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $tel, $pays){
+	function creerlivraison($id, $libelle, $raison, $entreprise, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $tel, $pays){
 
 		if($libelle != "" && $raison != "" && $prenom != "" && $nom != "" && $adresse1 != ""
 			 && $cpostal != "" && $ville != "" && $pays != ""){
@@ -541,6 +544,7 @@
 			$adresse = new Adresse();
 			$adresse->libelle = strip_tags($libelle);
 			$adresse->raison = strip_tags($raison);
+			$adresse->entreprise = strip_tags($entreprise);
 			$adresse->prenom = strip_tags($prenom);
 			$adresse->nom = strip_tags($nom);
 			$adresse->adresse1 = strip_tags($adresse1);
@@ -576,7 +580,7 @@
     }
 
 	// modification d'une adresse de livraison
-	function modifierlivraison($id, $libelle, $raison, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $tel, $pays){
+	function modifierlivraison($id, $libelle, $raison, $entreprise, $prenom, $nom, $adresse1, $adresse2, $adresse3, $cpostal, $ville, $tel, $pays){
 
 		
 		$adresse = new Adresse();
@@ -590,6 +594,7 @@
 			$adresse->id = $id;
 			$adresse->libelle = strip_tags($libelle);
 			$adresse->raison = strip_tags($raison);
+			$adresse->entreprise = strip_tags($entreprise);
 			$adresse->prenom = strip_tags($prenom);
 			$adresse->nom = strip_tags($nom);
 			$adresse->adresse1 = strip_tags($adresse1);

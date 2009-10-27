@@ -1,5 +1,6 @@
 1.4.3
 	Internalisation du calcul du montant à payer dans le moteur de THELIA au lieu de placer ce calcul dans les plugins de type paiement. (permettant de jouer sur le montant dans aprescommande) --> pensez à mettre à jour vos modules de paiement pour profiter de cette nouveauté
+	Ajout de l'entreprise dans les adresses de livraison
 	
 1.4.2.1
 	Correction des substitutions lors de l'envoi du mail de confirmation (suite au passage en preg)

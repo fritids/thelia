@@ -1618,43 +1618,51 @@
 	function boucleQuantite($texte, $args){
 		// récupération des arguments
 
-		$res="";
-	
-		$article = lireTag($args, "article");
-		$ref = lireTag($args, "ref");		
-		$max = lireTag($args, "max");
-		$min = lireTag($args, "min");
-		
-		$prodtemp = new Produit();
-		if($article != "")
-			$prodtemp->charger($_SESSION['navig']->panier->tabarticle[$article]->produit->ref);
-		else if($ref != "")
-			$prodtemp->charger($ref);
-		if($min == "") $min=1;
-			
-		if($max == "") 
-			$max = $prodtemp->stock;
-	
-		if($max == "")
-			return;
-			
-		if($min > $prodtemp->stock) return;
-			
-		$j = 0;
-		
-		for($i=$min; $i<=$max; $i++){
-			if($i==$_SESSION['navig']->panier->tabarticle[$article]->quantite) $selected="selected=\"selected\"";
-			else $selected="";
-		
-			$temp = str_replace("#NUM", "$i", $texte);
-			$temp = str_replace("#SELECTED", $selected, $temp);
+          $res="";
 
-			$res.="$temp"; 
-		}
-		
-	
-		return $res;
-	
+          $article = lireTag($args, "article");
+          $ref = lireTag($args, "ref");
+          $max = lireTag($args, "max");
+          $min = lireTag($args, "min");
+          $force = lireTag($args, "force");
+          $valeur = lireTag($args, "valeur");
+
+
+          $prodtemp = new Produit();
+          if($article != "")
+                  $prodtemp->charger($_SESSION['navig']->panier->tabarticle[$article]->produit->ref);
+          else if($ref != "")
+                  $prodtemp->charger($ref);
+          if($min == "") $min=1;
+
+          if($max == "")
+                  $max = $prodtemp->stock;
+
+          if($max == "" && $force == "")
+                  return;
+
+          if($min > $prodtemp->stock && $force == "") return;
+
+          $j = 0;
+
+          if($force != ""){
+                  $min = 1;
+                  $max = $valeur;
+          }
+
+          for($i=$min; $i<=$max; $i++){
+                  if($i==$_SESSION['navig']->panier->tabarticle[$article]->quantite) $selected="selected=\"selected\"";
+                  else $selected="";
+
+                  $temp = str_replace("#NUM", "$i", $texte);
+                  $temp = str_replace("#SELECTED", $selected, $temp);
+
+                  $res.="$temp";
+          }
+
+
+          return $res;
+
 	}
 		
 	function boucleChemin($texte, $args){
@@ -2223,6 +2231,7 @@
      		    $temp = str_replace("#RAISON1F", "$raison1f", $temp);
        		    $temp = str_replace("#RAISON2F", "$raison2f", $temp);
        		    $temp = str_replace("#RAISON3F", "$raison3f", $temp);				
+				$temp = str_replace("#ENTREPRISE", "$row->entreprise", $temp);
 				$temp = str_replace("#RAISON", $raison[$row->raison], $temp);
 				$temp = str_replace("#LIBELLE", "$row->libelle", $temp);
 				$temp = str_replace("#ADRESSE1", "$row->adresse1", $temp);

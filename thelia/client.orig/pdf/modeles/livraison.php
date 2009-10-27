@@ -153,6 +153,13 @@
 
 		$adrfact = new Venteadr();
 		$adrfact->charger($commande->adrfact);
+
+        if($adrfact->entreprise){
+              $pdf->SetFont('Arial','',8);
+              $pdf->SetXY(122,$hauteur);
+              $pdf->write(10, $adrfact->entreprise);
+              $hauteur+=3;
+        }
 		
 		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(122,$hauteur);	
@@ -208,6 +215,12 @@
 	
 		$hauteur = 22;
 
+        if($adressecl->entreprise){
+              $pdf->SetFont('Arial','',8);
+              $pdf->SetXY(122,$hauteur);
+              $pdf->write(10, $adressecl->entreprise);
+              $hauteur+=3;
+        }
 
 		$pdf->SetFont('Arial','',8);
 		$pdf->SetXY(122,$hauteur);	

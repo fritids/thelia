@@ -255,10 +255,14 @@
 <div class="entete_liste_client">
 	<div class="titre">ADRESSE DE FACTURATION</div>
 </div>
-	<ul class="ligne_claire_BlocDescription" style="background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">
-		<li class="designation" style="width:290px; background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">Pr&eacute;nom</li>
-		<li><?php echo $adr->prenom; ?></li>
-	</ul>
+<ul class="ligne_claire_BlocDescription" style="background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">
+	<li class="designation" style="width:290px; background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">Soci&eacute;t&eacute;</li>
+	<li><?php echo $adr->entreprise; ?></li>
+</ul>
+<ul class="ligne_fonce_BlocDescription">
+	<li class="designation" style="width:290px;">Pr&eacute;nom</li>
+	<li><?php echo $adr->prenom; ?></li>
+</ul>
 	<ul class="ligne_fonce_BlocDescription">
 		<li class="designation" style="width:290px;">Nom</li>
 		<li><?php echo $adr->nom; ?></li>
@@ -306,7 +310,11 @@
 	<div class="titre">ADRESSE DE LIVRAISON</div>
 </div>
 	<ul class="ligne_claire_BlocDescription" style="background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">
-		<li class="designation" style="width:290px; background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">Pr&eacute;nom</li>
+		<li class="designation" style="width:290px; background-image: url(gfx/degrade_ligne1.png); background-repeat: repeat-x;">Soci&eacute;t&eacute;</li>
+		<li><?php echo $adr->entreprise; ?></li>
+	</ul>
+	<ul class="ligne_fonce_BlocDescription">
+		<li class="designation" style="width:290px;">Pr&eacute;nom</li>
 		<li><?php echo $adr->prenom; ?></li>
 	</ul>
 	<ul class="ligne_fonce_BlocDescription">

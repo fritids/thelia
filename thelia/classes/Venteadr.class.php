@@ -31,6 +31,7 @@
 
 		var $id;
 		var $raison;
+		var $entreprise;
 		var $nom;
 		var $prenom;
 		var $adresse1;
@@ -42,7 +43,7 @@
 		var $pays;	
 	
 		var $table="venteadr";
-		var $bddvars = array("id", "raison", "nom", "prenom", "adresse1", "adresse2", "adresse3", "cpostal", "ville", "tel", "pays");
+		var $bddvars = array("id", "raison", "entreprise", "nom", "prenom", "adresse1", "adresse2", "adresse3", "cpostal", "ville", "tel", "pays");
 
 		function Venteadr(){
 			$this->Baseobj();

@@ -63,6 +63,7 @@ CREATE TABLE `adresse` (
   `libelle` varchar(120) NOT NULL default '',
   `client` int(11) NOT NULL default '0',
   `raison` smallint(6) NOT NULL default '0',
+  `entreprise` text NOT NULL,
   `nom` text NOT NULL,
   `prenom` text NOT NULL,
   `adresse1` varchar(40) NOT NULL default '',
@@ -2017,6 +2018,7 @@ CREATE TABLE `venteprod` (
 CREATE TABLE `venteadr` (
   `id` int(11) NOT NULL auto_increment,
   `raison` smallint(6) NOT NULL default '0',
+  `entreprise` text NOT NULL,
   `nom` text NOT NULL,
   `prenom` text NOT NULL,
   `adresse1` varchar(40) NOT NULL default '',
