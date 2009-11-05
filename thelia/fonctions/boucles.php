@@ -2025,6 +2025,9 @@
 		$query = "select * from $tcaracdisp->table where 1 $search $limit";
 		$resul = mysql_query($query, $tcaracdisp->link);
 
+        if(! mysql_num_rows($resul))
+                return "";
+
 		$i=0;
 				
 		while($row = mysql_fetch_object($resul)){
