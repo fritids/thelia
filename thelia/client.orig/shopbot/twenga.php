@@ -15,6 +15,7 @@
 
 	include_once("../../classes/Produit.class.php");
 	include_once("../../classes/Image.class.php");
+	include_once("../../classes/Variable.class.php");
 
 	$i=0;
 
