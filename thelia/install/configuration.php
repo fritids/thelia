@@ -4,10 +4,20 @@
 	$cnx = new Cnx();
 	
 	mysql_connect($cnx->host, $cnx->login_mysql, $cnx->password_mysql);
-
-	if( ! isset($_POST['choixbase']) || ! mysql_select_db($_POST['choixbase']))
+	$base=$_POST['choixbase'];
+	
+	// est ce que l'utilisateur a demande a creer une nouvelle base ?
+	if(isset($_POST['creerbase']))
+	{
+		$base=$_POST['creerbase'];
+		mysql_query("CREATE DATABASE ".$base); // mysql_create_db est deprecated
+		mysql_select_db($base);
+		
+	}	
+	else if( ! isset($_POST['choixbase']) || ! mysql_select_db($_POST['choixbase']))
 		{ header("Location: choixbase.php?err=1"); exit; }
 
+		
 	$sql = file_get_contents("thelia.sql");
 	$sql = str_replace(";',", "-CODE-", $sql);
 	
@@ -19,10 +29,11 @@
 		mysql_query($query);
 	}	
 
+	// le fichier de config est renseigne avec le nom de la base creee/selectionnee
 	if( file_exists("../classes/Cnx.class.php")){
 	
 		$fic = file_get_contents("../classes/Cnx.class.php");
-		$fic = str_replace("bdd_sql", $_POST['choixbase'], $fic);	
+		$fic = str_replace("bdd_sql", $base, $fic);	
 		$fp = fopen("../classes/Cnx.class.php", "w");
 		fputs($fp, $fic);
 		fclose($fp);		
@@ -85,7 +96,7 @@
 			
 				<br />
 								
-				Passons à la configuration de Thelia <br /><br />
+				Passons &agrave; la configuration de Thelia <br /><br />
 				
 				<?php
 					include("../classes/Variable.class.php");
@@ -99,7 +110,7 @@
 
 				<?php if(isset($_GET['err']) && $_GET['err']) { ?>
 				
-					<span class="erreur">Veuillez vérifier votre nom d'utilisateur/mot de passe</span>
+					<span class="erreur">Veuillez v&eacute;rifier votre nom d'utilisateur/mot de passe</span>
 					
 				<?php } ?>				
 				
@@ -109,7 +120,7 @@
 				<div class="col">Mot de passe :</div>
 				<div class="col"><input type="password" name="motdepasse1" size="30" /></div> 
 				
-				<div class="col">Re-saisis du mot de passe :</div>
+				<div class="col">Re-saisie du mot de passe :</div>
 				<div class="col"><input type="password" name="motdepasse2" size="30" /></div> 
 				
 												

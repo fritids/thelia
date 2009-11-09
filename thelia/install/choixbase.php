@@ -22,6 +22,8 @@
 
 				rename("../classes/Cnx.class.php.orig", "../classes/Cnx.class.php");
 
+				$droitscreation=false;
+				
 			}
 			
 		}
@@ -121,10 +123,27 @@
 				
 				<?php 
 						}
+										try{
+				$connexion = mysql_connect($_POST['serveur'], $_POST['utilisateur'],$_POST['motdepasse']);
+				$db = mysql_select_db("information_schema");
+				$req = mysql_query("SELECT COUNT( * ) FROM  `USER_PRIVILEGES` 
+					WHERE PRIVILEGE_TYPE =  'CREATE'
+					AND GRANTEE LIKE  '%".$_POST['utilisateur']."%'
+					AND IS_GRANTABLE =  'YES';");
+				$data = mysql_fetch_array($req);  
+				mysql_free_result($req); 
+				mysql_close($connexion);
+				if($data[0]>0)
+					$droitscreation=true;
+				}catch(Exception $e) {}
+						
 				?>
 				 
 				<br />
-				
+				<?php if($droitscreation==true) {?>
+				Vous pouvez aussi choisir de cr&eacute;er une base : <input type="text" name="creerbase" />
+				<br />
+				<?php }?>
 				<input type="submit" value="Continuer" />
 				
 				</form>
