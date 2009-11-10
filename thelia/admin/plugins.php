@@ -67,9 +67,6 @@
 	<ul>
 	<?php
 
-	$contrib = new Contrib();
-	$tab = $contrib->charger_tous();
-
 	if(isset($_FILES['plugin'])){
 		$plugin = $_FILES['plugin']['tmp_name']; 
 		$plugin_name = $_FILES['plugin']['name'];
@@ -143,13 +140,13 @@
 		if(!($i%2)) $fond="claire";
   		else $fond="fonce";
 
-		$res = $contrib->chercher($row->nom, $tab);
+		$tmpmod = new Modules();
+		$tmpmod->charger($row->nom);
 
-		if($res)
-			$titre = $res->titre;
-		
+		if($tmpmod->xml->nom != "")
+			$titre = $tmpmod->xml->nom;
 		else
-			$titre = $row->nom;
+			$titre = $tmpmod->nom;
 		
 	
 ?>
@@ -190,14 +187,13 @@
 		if(!($i%2)) $fond="fonce";
   		else $fond="claire";
 
-		$res = $contrib->chercher($row->nom, $tab);
+		$tmpmod = new Modules();
+		$tmpmod->charger($row->nom);
 
-		if($res)
-			$titre = $res->titre;
-		
+		if($tmpmod->xml->nom != "")
+			$titre = $tmpmod->xml->nom;
 		else
-			$titre = $row->nom;
-	
+			$titre = $tmpmod->nom;	
 ?>
 <li class="<?php echo $fond; ?>" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;"><?php echo $titre; ?></li>
 	<li class="<?php echo $fond; ?>" style="width:72px;">
@@ -233,14 +229,13 @@
 		if(!($i%2)) $fond="claire";
   		else $fond="fonce";
 	
-		$res = $contrib->chercher($row->nom, $tab);
+		$tmpmod = new Modules();
+		$tmpmod->charger($row->nom);
 
-		if($res)
-			$titre = $res->titre;
-		
+		if($tmpmod->xml->nom != "")
+			$titre = $tmpmod->xml->nom;
 		else
-			$titre = $row->nom;
-	
+			$titre = $tmpmod->nom;	
 ?>
 <li class="<?php echo $fond; ?>" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;"><?php echo $titre; ?></li>
 	<li class="<?php echo $fond; ?>" style="width:72px;">

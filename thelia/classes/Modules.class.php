@@ -34,7 +34,8 @@
 		var $type;
 		var $actif;
 		var $classement;
-
+		var $xml;
+		
 		var $table="modules";
 		var $bddvars = array("id", "nom", "type", "actif", "classement");
 
@@ -43,13 +44,30 @@
 		}
 		
 		function charger($nom){
-			return $this->getVars("select * from $this->table where nom=\"$nom\"");
+			if($this->getVars("select * from $this->table where nom=\"$nom\"")){
+				$this->chargement_xml();	
+				return 1;
+			}
+			
+			return 0;			
 		}
 
 		function charger_id($id){
-			return $this->getVars("select * from $this->table where id=\"$id\"");
+			if($this->getVars("select * from $this->table where id=\"$id\"")){
+				$this->chargement_xml();	
+				return 1;
+			}
+			
+			return 0;
 		}	
 
+		function chargement_xml(){
+			if(file_exists(realpath(dirname(__FILE__)) . "/../client/plugins/" . $this->nom . "/plugin.xml"))
+		 		$this->xml = @simplexml_load_file(realpath(dirname(__FILE__)) . "/../client/plugins/" . $this->nom . "/plugin.xml");
+		}
+		
+		
+		
 		function est_autorise(){
 			if($_SESSION['util']->profil == "1")
 				return 1;
