@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<plugin>
+	<nom>Produit à prix multiples</nom>
+ 	<version>1.0</version>
+ 	<prefix>prodprixmult</prefix>
+	<type>classique</type>
+ 	<auteur>Yoan De Macedo - yoan@octolys.fr</auteur>
+ 	<thelia>1.4.0</thelia>
+ 	<description>Ce plugin vous permettra de décliner facilement une liste de produit suivant une caractéristique. Il est utile dans le cas où vous vendez un produit déclinable avec des tarifs différents.</description>
+	<lien>http://contrib.thelia.fr/spip.php?article58</lien>
+	<documentation>Readme.txt</documentation>
+ 	<etat>production</etat>
+	<install>http://contrib.thelia.fr/IMG/zip/prodprixmult.zip</install>
+</plugin>

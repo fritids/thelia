@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<plugin>
+	<nom>Génération de factures multiples</nom>
+ 	<version>1.0</version>
+ 	<prefix>multifact</prefix>
+	<type>classique</type>
+ 	<auteur>Yoan De Macedo - yoan@octolys.fr</auteur>
+ 	<thelia>1.4.0</thelia>
+ 	<description>Ce plugin vous permet de générer toutes les factures avec l'état "payé" en seule étape. Il est utile si vous préparez toutes vos commandes en fin de journée par exemple.</description>
+	<lien>http://contrib.thelia.fr/spip.php?article72</lien>
+	<documentation>Readme.txt</documentation>
+ 	<etat>production</etat>
+	<install>http://contrib.thelia.fr/IMG/zip/multifact.zip</install>
+</plugin>
