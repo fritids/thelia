@@ -7,7 +7,9 @@ RewriteRule   ^([a-z0-9-]*)__([0-9]*)_([a-z0-9-]*)_([0-9]*)\.html  contenu.php?i
 
 #DOSSIER
 ############
-RewriteRule   ^([a-z0-9-]*)__([0-9]*)_\.html    dossier.php?id_dossier=$2       [NC,QSA,L]
+RewriteRule   ^([a-z0-9-]*)__([0-9]*)_([a-z0-9-]*)_([a-z0-9-]*)_\.html  dossier.php?id_dossier=$2  [NC,QSA,L]
+RewriteRule   ^([a-z0-9-]*)__([0-9]*)_([a-z0-9-]*)_\.html  dossier.php?id_dossier=$2  [NC,QSA,L]
+RewriteRule   ^([a-z0-9-]*)__([0-9]*)_\.html  dossier.php?id_dossier=$2  [NC,QSA,L]
 
 #RUBRIQUE
 ##############

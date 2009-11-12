@@ -791,7 +791,7 @@
 			
 			if($ligne == "") $ligne="1";
 
-			$search .= " and ligne=\"$ligne\"";
+			if($ligne != "-1") $search .= " and ligne=\"$ligne\"";
 			if($id!="") $search .= " and id in ($id)";	 
 			if($nouveaute!="") $search .= " and nouveaute=\"$nouveaute\"";
 			if($promo!="") $search .= " and promo=\"$promo\"";
