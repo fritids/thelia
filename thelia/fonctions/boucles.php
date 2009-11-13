@@ -2567,10 +2567,14 @@
 
 		$transzone = new Transzone();
 		
-		   while( $row = mysql_fetch_object($resul)){
+		   $compt = 0;
 		
+		   while( $row = mysql_fetch_object($resul)){
+			
 		  	 if( ! $transzone->charger($row->id, $pays->zone)) continue;
-	
+		
+			$compt ++;
+		
 			$modules = new Modules();
 			$modules->charger_id($row->id);
 			
@@ -2593,6 +2597,8 @@
 			$temp = str_replace("#URLCMD", "commande.php?action=transport&amp;id=" . $row->id, $temp);
 			$temp = str_replace("#ID", "$row->id", $temp);	
 			$temp = str_replace("#PORT", "$port", $temp);
+			$temp = str_replace("#COMPT", "$compt", $temp);
+
 			$res .= $temp;
 			
 		}
