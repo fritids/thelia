@@ -1100,7 +1100,6 @@
 			$temp = str_replace("#POURCENTAGE", "$pourcentage", $temp);	
 			$temp = str_replace("#RUBRIQUE", "$row->rubrique", $temp);			
 			$temp = str_replace("#PERSO", "$row->perso", $temp);			
-			$temp = str_replace("#APPRO", "$row->appro", $temp);			
 			$temp = str_replace("#POIDS", "$row->poids", $temp);			
 			$temp = str_replace("#TITRE", "$produitdesc->titre", $temp);
 			$temp = str_replace("#STRIPTITRE", strip_tags($produitdesc->titre), $temp);	
