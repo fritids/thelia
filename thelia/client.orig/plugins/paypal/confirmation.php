@@ -38,11 +38,10 @@ if(!$fp) {
 }
 
 if(strstr($reponse, "VERIFIED")){
-
-	$reference = $_POST['item_name'];
+	$reference = $_POST['invoice'];
 
 	$commande = new Commande();
-	$commande->charger_trans($reference);
+	$commande->charger_trans("$reference");
     $commande->statut = 2;
     $commande->genfact();
 	$commande->maj();
@@ -50,5 +49,4 @@ if(strstr($reponse, "VERIFIED")){
 	modules_fonction("confirmation", $commande);
 
 }
-
 ?>

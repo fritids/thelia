@@ -29,7 +29,9 @@
 		
 	session_start();
 
-	$total = $_SESSION['navig']->commande->total();
+	$total = 0;
+
+    $total = $_SESSION['navig']->commande->total();
 
 
 ?>
@@ -39,7 +41,7 @@
 </head>
 <body onload="document.getElementById('formpaypal').submit()">
 <?php
-
+//"
 // Référence
 $Reference_Cde = urlencode($_SESSION['navig']->commande->transaction);
 
@@ -93,7 +95,9 @@ $Montant          = $total;
 		<input type="hidden" name="payer_id" value="<?php echo $_SESSION["navig"]->client->id; ?>" />
 		<input type="hidden" name="payer_email" value="<?php echo $_SESSION["navig"]->client->email; ?>" />
 		<input type="hidden" name="return" value="<?php echo $retourok; ?>" />
-		<input type="hidden" name="return_url" value="<?php echo $confirm; ?>" />
+		<input type="hidden" name="notify_url" value="<?php echo $confirm; ?>" />
+		<input type="hidden" name="cancel_return" value="<?php echo $retournok; ?>" />
+		<input type="hidden" name="invoice" value="<?php echo $Reference_Cde; ?>" />
 		
 	</form>
 	
