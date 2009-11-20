@@ -1655,6 +1655,7 @@
 
                   $temp = str_replace("#NUM", "$i", $texte);
                   $temp = str_replace("#SELECTED", $selected, $temp);
+                  $temp = str_replace("#REF", $ref, $temp);
 
                   $res.="$temp";
           }
