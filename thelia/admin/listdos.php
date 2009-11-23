@@ -177,7 +177,7 @@ function supprimer_dossier(id, parent){
  <ul id="Nav">
 		<li style="height:25px; width:119px; border-left:1px solid #96A8B5;"></li>
 		
-		<li style="height:25px; width:586px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
+		<li style="height:25px; width:586px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer; ">
 			Titre du dossier
 			<ul class="Menu">
 				<li style="width:591px;"><a href="javascript:tri('ASC','<?php echo($parent); ?>','dossier','titre','alpha')">Ordre alphabétique croissant</a></li>
@@ -186,7 +186,7 @@ function supprimer_dossier(id, parent){
 		</li>
 		<li style="height:25px; width:61px; border-left:1px solid #96A8B5;"></li>
 		<li style="height:25px; width:41px; border-left:1px solid #96A8B5;"></li>
-		<li style="height:25px; width:78px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
+		<li style="height:25px; width:78px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer; ">
 			Classement
 			<ul class="Menu">
 				<li><a href="javascript:tri('ASC','<?php echo $parent; ?>','dossier','classement','')">Tri croissant</a></li>
@@ -246,7 +246,7 @@ function supprimer_dossier(id, parent){
 <ul id="Nav2">
 		<li style="height:25px; width:119px; border-left:1px solid #96A8B5;"></li>
 		
-		<li style="height:25px; width:586px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
+		<li style="height:25px; width:586px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer; ">
 			Titre du contenu
 			<ul class="Menu">
 				<li style="width:591px;"><a href="javascript:tri('ASC','<?php echo($parent); ?>','contenudos','titre','alpha')">Ordre alphabétique croissant</a></li>
@@ -255,7 +255,7 @@ function supprimer_dossier(id, parent){
 		</li>
 		<li style="height:25px; width:61px; border-left:1px solid #96A8B5;"></li>
 		<li style="height:25px; width:41px; border-left:1px solid #96A8B5;"></li>
-		<li style="height:25px; width:78px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
+		<li style="height:25px; width:78px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer; ">
 			Classement
 			<ul class="Menu">
 				<li><a href="javascript:tri('ASC','<?php echo $parent; ?>','contenudos','classement','')">Tri croissant</a></li>

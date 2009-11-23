@@ -7,31 +7,33 @@ function checkHover() {
 } //checkHover
 
 $(document).ready(function() {
-	$('#Nav > li').hover(function() {
+	$('#Nav > li').click(function() {
 		if (obj) {
 			obj.find('ul').fadeOut('fast');
 			obj = null;
 		} //if
 		
 		$(this).find('ul').fadeIn('fast');
-	}, function() {
+		$(this).hover(function(){},function() {
 		obj = $(this);
 		setTimeout(
 			"checkHover()",
 			0); // si vous souhaitez retarder la disparition, c'est ici
+		})
 	});
 	
-	$('#Nav2 > li').hover(function() {
+	$('#Nav2 > li').click(function() {
 		if (obj) {
 			obj.find('ul').fadeOut('fast');
 			obj = null;
 		} //if
 		
 		$(this).find('ul').fadeIn('fast');
-	}, function() {
+	$(this).hover(function(){},function() {
 		obj = $(this);
 		setTimeout(
 			"checkHover()",
 			0); // si vous souhaitez retarder la disparition, c'est ici
+		})
 	});
 });

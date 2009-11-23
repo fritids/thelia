@@ -204,7 +204,7 @@ function tri(order,ref,type,critere,alpha){
 		
 		</li>
 		
-		<li style="height:25px; width:586px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
+		<li style="height:25px; width:586px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;  cursor: pointer;">
 			Titre de la rubrique
 			<ul class="Menu">
 				<li style="width:591px;"><a href="javascript:tri('ASC','<?php echo $parent; ?>','1','titre','alpha')">Tri croissant</a></li>
@@ -214,7 +214,7 @@ function tri(order,ref,type,critere,alpha){
 
 		<li style="height:25px; width:61px; border-left:1px solid #96A8B5;"></li>
 		<li style="height:25px; width:41px; border-left:1px solid #96A8B5;"></li>	
-		<li style="height:25px; width:78px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
+		<li style="height:25px; width:78px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer;">
 			Classement
 			<ul class="Menu">
 				<li><a href="javascript:tri('ASC','<?php echo $parent; ?>','1','classement','')">Tri croissant</a></li>
@@ -297,13 +297,13 @@ $i = 0;
  
 <ul id="Nav2">
 		<li style="height:25px; width:44px; border-left:1px solid #96A8B5;"> </li>
-		<li style="height:25px; width:68px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">Réf.
+		<li style="height:25px; width:68px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer; ">Réf.
 			<ul class="Menu">
 				<li><a href="javascript:tri('ASC','<?php echo $parent; ?>','2','ref','')">Tri croissant</a></li>
 				<li><a href="javascript:tri('DESC','<?php echo $parent; ?>','2','ref','')">Tri d&eacute;croissant</a></li>
 			</ul>
 		</li>
-		<li style="height:25px; width:232px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
+		<li style="height:25px; width:232px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer; ">
 			Titre du produit
 			<ul class="Menu">
 				<li style="width:232px;"><a href="javascript:tri('ASC','<?php echo $parent; ?>','2','titre','alpha')">Tri croissant</a></li>
@@ -311,39 +311,39 @@ $i = 0;
 			</ul>
 		</li>
 
-		<li style="height:25px; width:46px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">Stock
+		<li style="height:25px; width:46px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer; ">Stock
 			<ul class="Menu">
 				<li><a href="javascript:tri('ASC','<?php echo $parent; ?>','2','stock','')">Tri croissant</a></li>
 				<li><a href="javascript:tri('DESC','<?php echo $parent; ?>','2','stock','')">Tri d&eacute;croissant</a></li>
 			</ul>
 		</li>
-		<li style="height:25px; width:37px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">Prix
+		<li style="height:25px; width:37px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer; ">Prix
 			<ul class="Menu">
 				<li><a href="javascript:tri('ASC','<?php echo $parent; ?>','2','prix','')">Tri croissant</a></li>
 				<li><a href="javascript:tri('DESC','<?php echo $parent; ?>','2','prix','')">Tri d&eacute;croissant</a></li>
 			</ul>
 		</li>	
-		<li style="height:25px; width:75px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">Prix promo
+		<li style="height:25px; width:75px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer; ">Prix promo
 			<ul class="Menu">
 				<li><a href="javascript:tri('ASC','<?php echo $parent; ?>','2','prix2','')">Tri croissant</a></li>
 				<li><a href="javascript:tri('DESC','<?php echo $parent; ?>','2','prix2','')">Tri d&eacute;croissant</a></li>
 			</ul>
 		</li>	
-		<li style="height:25px; width:71px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
+		<li style="height:25px; width:71px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer; ">
 			Promotion
 			<ul class="Menu">
 				<li><a href="javascript:check('promo[]','promo',<?php echo $parent; ?>,1)">Tout cocher</a></li>
 				<li><a href="javascript:check('promo[]','promo',<?php echo $parent; ?>,0)">Tout décocher</a></li>
 			</ul>
 		</li>
-		<li style="height:25px; width:71px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
+		<li style="height:25px; width:71px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer; ">
 			Nouveauté
 			<ul class="Menu">
 				<li><a href="javascript:check('nouveaute[]','nouveaute',<?php echo $parent; ?>,1)">Tout cocher</a></li>
 				<li><a href="javascript:check('nouveaute[]','nouveaute',<?php echo $parent; ?>,0)">Tout décocher</a></li>
 			</ul>
 		</li>
-		<li style="height:25px; width:60px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
+		<li style="height:25px; width:60px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer; ">
 			En ligne
 			<ul class="Menu">
 				<li><a href="javascript:check('ligne[]','ligne',<?php echo $parent; ?>,1)">Tout cocher</a></li>
@@ -351,7 +351,7 @@ $i = 0;
 			</ul>
 		</li>
 		<li style="height:25px; width:48px; border-left:1px solid #96A8B5;"></li>
-		<li style="height:25px; width:85px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;">
+		<li style="height:25px; width:85px; border-left:1px solid #96A8B5; background-image: url(gfx/picto_menu_deroulant.gif); background-position:right bottom; background-repeat: no-repeat;cursor: pointer; ">
 			Classement
 			<ul class="Menu">
 				<li><a href="javascript:tri('ASC','<?php echo $parent; ?>','2','classement','')">Tri croissant</a></li>
