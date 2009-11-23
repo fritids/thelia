@@ -32,6 +32,7 @@
 	$total = 0;
 
     $total = $_SESSION['navig']->commande->total();
+    
 
 
 ?>
@@ -47,6 +48,8 @@ $Reference_Cde = urlencode($_SESSION['navig']->commande->transaction);
 
 // Montant
 $Montant          = $total;
+$Montant		  -= $_SESSION["navig"]->commande->remise;
+//echo $Montant; exit;
 
 ?>
 
@@ -73,19 +76,28 @@ $Montant          = $total;
 		<input type="hidden" name="email" value="<?php echo $_SESSION["navig"]->client->email; ?>">
 		<input type="hidden" name="shipping_1" value="<?php echo $_SESSION["navig"]->commande->port; ?>" />
 		<?php
-		$venteprod = new Venteprod();
-		$query = "select * from $venteprod->table where commande=".$_SESSION["navig"]->commande->id;
-		$resul = mysql_query($query);
-		$i=0;
-		while($row = mysql_fetch_object($resul)){ 
-			$i++;
-			?>
-			<input type="hidden" name="item_name_<?php echo($i); ?>" value="<?php echo trim($row->titre); ?>" />
-			<input type="hidden" name="amount_<?php echo($i); ?>" value="<?php echo $row->prixu; ?>" />
-			<input type="hidden" name="quantity_<?php echo($i); ?>" value="<?php echo $row->quantite; ?>" />
+		if($_SESSION["navig"]->commande->remise == 0){
+			$venteprod = new Venteprod();
+			$query = "select * from $venteprod->table where commande=".$_SESSION["navig"]->commande->id;
+			$resul = mysql_query($query);
+			$i=0;
+			while($row = mysql_fetch_object($resul)){ 
+				$i++;
+				?>
+				<input type="hidden" name="item_name_<?php echo($i); ?>" value="<?php echo trim($row->titre); ?>" />
+				<input type="hidden" name="amount_<?php echo($i); ?>" value="<?php echo $row->prixu; ?>" />
+				<input type="hidden" name="quantity_<?php echo($i); ?>" value="<?php echo $row->quantite; ?>" />
 		
-		<?php
+			<?php
 			}
+		}
+		else{
+		?>
+			<input type="hidden" name="item_name_1" value="Mon panier" />
+			<input type="hidden" name="amount_1" value="<?php echo $Montant; ?>" />
+			<input type="hidden" name="quantity_1" value="1" />
+		<?php
+		}
 		?>
 		
 		<input type="hidden" name="business" value="<?php echo $compte_paypal; ?>" />
