@@ -120,9 +120,9 @@ function analyse($res){
 	if(!isset($obligetelport)) $obligetelport=0;
 	if(!isset($pagesess)) $pagesess=0;
 	if(!$lang)
-		if(!isset($_REQUEST['lang'])) $lang=""; else $lang=$_REQUEST['lang'];
+        if(!isset($_REQUEST['lang'])) $lang=""; else if(preg_match("/^\d*$/", $_REQUEST['lang'])) $lang=$_REQUEST['lang'];
 	if(!$devise)
-		if(!isset($_REQUEST['devise'])) $devise=""; else $devise=$_REQUEST['devise'];
+        if(!isset($_REQUEST['devise'])) $devise=""; else if(preg_match("/^\d*$/", $_REQUEST['devise'])) $devise=$_REQUEST['devise'];
 	if(!isset($_REQUEST['action'])) $action=""; else $action=$_REQUEST['action'];
 	if(!isset($_REQUEST['append'])) $append=0; else $append=$_REQUEST['append'];
 	if(!isset($_REQUEST['id'])) $id="";	else $id=$_REQUEST['id'];
@@ -162,6 +162,7 @@ function analyse($res){
 	if(!isset($_REQUEST['id_dossier'])) $id_dossier=""; else $id_dossier=$_REQUEST['id_dossier'];	
 	if(!isset($_REQUEST['nouveaute'])) $nouveaute=""; else $nouveaute=$_REQUEST['nouveaute'];	
 	if(!isset($_REQUEST['promo'])) $promo=""; else $promo=$_REQUEST['promo'];	
+	if(!isset($_REQUEST['stockmini'])) $stockmini=""; else $stockmini=$_REQUEST['stockmini'];	
 	if(!isset($_REQUEST['page'])) $page=""; else $page=$_REQUEST['page'];	
 	if(!isset($_REQUEST['totbloc'])) $totbloc=""; else $totbloc=$_REQUEST['totbloc'];	
 	if(!isset($_REQUEST['id_contenu'])) $id_contenu=""; else $id_contenu=$_REQUEST['id_contenu'];	

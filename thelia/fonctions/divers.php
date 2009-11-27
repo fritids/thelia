@@ -34,7 +34,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/../classes/Autorisation_administrateur.class.php");
 
 	// lecture des arguments
-	function lireTag($ligne, $tag){
+	function lireTag($ligne, $tag, $filtre = ""){
 	
 		if( ! strstr($ligne, $tag)) return "";
         preg_match("/$tag=\"([^\"]*)\"/", "$ligne", $res);
