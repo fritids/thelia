@@ -20,5 +20,6 @@ Christophe Draperi <contact@informatiqueprog.net>
 Anthony çoubourou <chanthony@live.fr>
 Fabien Monsérat  <f.monserat@debussac.net>
 Franck Allimant <thelia@allimant.org>
+Claude Nougier <leon.rauguidec@laposte.net>
 
 Un grand merci aussi à tous les contributeurs de contrib.thelia.fr

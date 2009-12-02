@@ -38,8 +38,44 @@
 	
 		if( ! strstr($ligne, $tag)) return "";
         preg_match("/$tag=\"([^\"]*)\"/", "$ligne", $res);
-		return $res[1];
+
+        if(preg_match("/^([^\+]*)\+(.*)$/", $filtre, $res)){
+			$filtre = $res[1];
+			$complement = $res[2];
+		}
+			else $complement = "";
 	
+		return filtrevar($res[1], $filtre);
+	
+	}
+	
+	function lireParam($param, $filtre="", $methode=""){
+		
+		if($methode == "post")
+			$param = $_POST[$param];
+		else 
+			if($methode == "get")
+				$param = $_GET[$param];
+		else
+			$param = $_REQUEST[$param];
+		
+		return filtrevar($param, $filtre);			
+			
+	}
+	
+	function filtrevar($var, $filtre){
+		
+		switch($filtre){
+			case "int" : if(! preg_match("/^[0-9$complement]*$/", $var)) return ""; break;
+			case "string": if(! preg_match("/^[0-9a-Z$complement]*$/", $var)) return ""; break;
+			case "float" : if(! preg_match("/^[0-9\.$complement]*$/", $var)) return ""; break;
+			case "int_list": if(! preg_match("/^[0-9\,$complement]*$/", $var)) return ""; break;
+			case "string_list": if(! preg_match("/^[0-9a-Z\,$complement]*$/", $var)) return ""; break;
+			default: break;
+		}		
+		
+		return $var;
+		
 	}
 	
 	// redirection d'url'

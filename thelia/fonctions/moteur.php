@@ -123,16 +123,16 @@ function analyse($res){
         if(!isset($_REQUEST['lang'])) $lang=""; else if(preg_match("/^\d*$/", $_REQUEST['lang'])) $lang=$_REQUEST['lang'];
 	if(!$devise)
         if(!isset($_REQUEST['devise'])) $devise=""; else if(preg_match("/^\d*$/", $_REQUEST['devise'])) $devise=$_REQUEST['devise'];
-	if(!isset($_REQUEST['action'])) $action=""; else $action=$_REQUEST['action'];
-	if(!isset($_REQUEST['append'])) $append=0; else $append=$_REQUEST['append'];
-	if(!isset($_REQUEST['id'])) $id="";	else $id=$_REQUEST['id'];
-	if(!isset($_REQUEST['id_parrain'])) $id_parrain=""; else $id_parrain=$_REQUEST['id_parrain'];	
-	if(!isset($_REQUEST['nouveau'])) $nouveau=""; else $nouveau=$_REQUEST['nouveau'];	
-	if(!isset($_REQUEST['ref'])) $ref=""; else $ref=$_REQUEST['ref'];	
-	if(!isset($_REQUEST['quantite'])) $quantite=""; else $quantite=$_REQUEST['quantite'];	
-	if(!isset($_REQUEST['article'])) $article=""; else $article=$_REQUEST['article'];	
-	if(!isset($_REQUEST['type_paiement'])) $type_paiement=""; else $type_paiement=$_REQUEST['type_paiement'];	
-	if(!isset($_REQUEST['code'])) $code=""; else $code=$_REQUEST['code'];	
+	if(!isset($_REQUEST['action'])) $action=""; else $action=lireParam("action", "string");
+	if(!isset($_REQUEST['append'])) $append=0; else $append=lireParam($_REQUEST['append'], "int");
+	if(!isset($_REQUEST['id'])) $id="";	else $id=lireParam("id", "int");
+	if(!isset($_REQUEST['id_parrain'])) $id_parrain=""; else $id_parrain=lireParam("id_parrain", "int");	
+	if(!isset($_REQUEST['nouveau'])) $nouveau=""; else $nouveau=lireParam("nouveau", "int");	
+	if(!isset($_REQUEST['ref'])) $ref=""; else $ref=lireParam("ref", "string");	
+	if(!isset($_REQUEST['quantite'])) $quantite=""; else $quantite=lireParam("quantite", "int");	
+	if(!isset($_REQUEST['article'])) $article=""; else $article=lireParam("article", "int");	
+	if(!isset($_REQUEST['type_paiement'])) $type_paiement=""; else $type_paiement=lireParam("type_paiement", "int");	
+	if(!isset($_REQUEST['code'])) $code=""; else $code=lireParam("code", "string");	
 
 	if(!isset($_REQUEST['entreprise'])) $entreprise=""; else $entreprise=$_REQUEST['entreprise'];	
 	if(!isset($_REQUEST['siret'])) $siret=""; else $siret=$_REQUEST['siret'];
