@@ -263,22 +263,22 @@
 	function boucleImage($texte, $args){
 
 		// récupération des arguments
-		$produit = lireTag($args, "produit", "int");
-		$id = lireTag($args, "id", "int");
-		$num = lireTag($args, "num", "int");
-		$nb = lireTag($args, "nb", "int");
-		$debut = lireTag($args, "debut", "int");
-		$deb = lireTag($args, "deb", "int");
-		$rubrique = lireTag($args, "rubrique", "int");
-		$largeur = lireTag($args, "largeur", "int");
-		$hauteur = lireTag($args, "hauteur", "int");
-		$dossier = lireTag($args, "dossier", "int");
-		$contenu = lireTag($args, "contenu", "int");
-		$opacite = lireTag($args, "opacite", "int");
-		$noiretblanc = lireTag($args, "noiretblanc", "int");
-		$miroir = lireTag($args, "miroir", "int");
-		$aleatoire = lireTag($args, "aleatoire", "int");
-		$exclusion = lireTag($args, "exclusion", "int_list");	
+		$produit = lireTag($args, "produit");
+		$id = lireTag($args, "id");
+		$num = lireTag($args, "num");
+		$nb = lireTag($args, "nb");
+		$debut = lireTag($args, "debut");
+		$deb = lireTag($args, "deb");
+		$rubrique = lireTag($args, "rubrique");
+		$largeur = lireTag($args, "largeur");
+		$hauteur = lireTag($args, "hauteur");
+		$dossier = lireTag($args, "dossier");
+		$contenu = lireTag($args, "contenu");
+		$opacite = lireTag($args, "opacite");
+		$noiretblanc = lireTag($args, "noiretblanc");
+		$miroir = lireTag($args, "miroir");
+		$aleatoire = lireTag($args, "aleatoire");
+		$exclusion = lireTag($args, "exclusion");	
 		
 		$search="";
 		$res="";
@@ -344,78 +344,64 @@
 					$temp = str_replace("#PRODREF", $pr->ref, $temp);
 					$temp = str_replace("#RUBRIQUE", $pr->rubrique, $temp);
 					
-			  		$nomcache = "client/cache/" . "produit" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
+			  		$nomcache = redim("produit", $image->fichier, $largeur, $hauteur, $opacite, $noiretblanc, $miroir);
+					 
 					
 					if(!$largeur && !$hauteur) 
-							$temp = str_replace("#IMAGE", "client/gfx/photos/produit/" . $image->fichier, $temp);
-						else 
-							if(file_exists($nomcache))
-								$temp = str_replace("#IMAGE", $nomcache, $temp);
+						$temp = str_replace("#IMAGE", "client/gfx/photos/produit/" . $image->fichier, $temp);
+					else 
+						$temp = str_replace("#IMAGE", $nomcache, $temp);
 
-						else 
-							$temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
-					
+						
 					$temp = str_replace("#FICHIER",  "client/gfx/photos/produit/" . $image->fichier, $temp);
 
 			}
 			
 			else if($image->rubrique != 0){
 
-		  		$nomcache = "client/cache/" . "rubrique" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
+		  		$nomcache = redim("rubrique", $image->fichier, $largeur, $hauteur, $opacite, $noiretblanc, $miroir);
 				
 				$rudesc->charger($image->rubrique, $_SESSION['navig']->lang);
 				$temp = str_replace("#RUBRIQUE", $image->rubrique, $temp);
 				$temp = str_replace("#RUBTITRE", $rudesc->titre, $temp);
 			
 				if(!$largeur && !$hauteur) 
-						$temp = str_replace("#IMAGE", "client/gfx/photos/rubrique/" . $image->fichier, $temp);
-					else 
-						if(file_exists($nomcache))
-							$temp = str_replace("#IMAGE", $nomcache, $temp);
+					$temp = str_replace("#IMAGE", "client/gfx/photos/rubrique/" . $image->fichier, $temp);
+				else 
+					$temp = str_replace("#IMAGE", $nomcache, $temp);
 
-					else 
-						$temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
-				
 				$temp = str_replace("#FICHIER",  "client/gfx/photos/rubrique/" . $image->fichier, $temp);
 
 			}
 	
 			else if($image->dossier != 0){
 
-		  		$nomcache = "client/cache/" . "dossier" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
+		  		$nomcache = redim("dossier", $image->fichier, $largeur, $hauteur, $opacite, $noiretblanc, $miroir);
 				$dosdesc = new Dossierdesc();
 				$dosdesc->charger($image->dossier, $_SESSION['navig']->lang);
 				$temp = str_replace("#DOSSIER", $image->dossier, $temp);
 				$temp = str_replace("#DOSTITRE", $dosdesc->titre, $temp);
 			
 				if(!$largeur && !$hauteur) 
-						$temp = str_replace("#IMAGE", "client/gfx/photos/dossier/" . $image->fichier, $temp);
-					else 
-						if(file_exists($nomcache))
-							$temp = str_replace("#IMAGE", $nomcache, $temp);
+					$temp = str_replace("#IMAGE", "client/gfx/photos/dossier/" . $image->fichier, $temp);
+				else 
+					$temp = str_replace("#IMAGE", $nomcache, $temp);
 
-					else 
-						$temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/dossier/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
-				
 				$temp = str_replace("#FICHIER",  "client/gfx/photos/dossier/" . $image->fichier, $temp);
 			}	
 	
 			else if($image->contenu != 0){
 			
-		  			$nomcache = "client/cache/" . "contenu" . "/" . $largeur . "_" . $hauteur . "_" . $opacite . "_" . $noiretblanc . "_" . $miroir . "_" . $image->fichier;
+		  		$nomcache = redim("contenu", $image->fichier, $largeur, $hauteur, $opacite, $noiretblanc, $miroir);
 				
 					$ctdesc = new Contenudesc();
 					$ctdesc->charger($image->contenu, $_SESSION['navig']->lang);
 					$temp = str_replace("#CONTTITRE", $ctdesc->titre, $temp);
 					$temp = str_replace("#CONTENU", $image->contenu, $temp);					
 					if(!$largeur && !$hauteur) 
-							$temp = str_replace("#IMAGE", "client/gfx/photos/contenu/" . $image->fichier, $temp);
-						else 
-							if(file_exists($nomcache))
-								$temp = str_replace("#IMAGE", $nomcache, $temp);
-
-						else 
-							$temp = str_replace("#IMAGE",  "fonctions/redimlive.php?nomorig=../client/gfx/photos/contenu/" . $image->fichier . "&amp;width=$largeur&amp;height=$hauteur" . "&amp;opacite=" . $opacite . "&amp;nb=" . "$noiretblanc" . "&amp;miroir=" . "$miroir", $temp);
+						$temp = str_replace("#IMAGE", "client/gfx/photos/contenu/" . $image->fichier, $temp);
+					else 
+						$temp = str_replace("#IMAGE", $nomcache, $temp);
 					
 					$temp = str_replace("#FICHIER",  "client/gfx/photos/contenu/" . $image->fichier, $temp);
 			}	
@@ -439,6 +425,82 @@
 		return $res;
 	
 	}
+
+	/* Gestion des boucles de type Client*/
+	function boucleClient($texte, $args){
+		// récupération des arguments
+		$id = lireTag($args, "id");
+		$ref = lireTag($args, "ref");
+		$raison = lireTag($args, "raison");
+		$nom = lireTag($args, "nom");
+		$prenom = lireTag($args, "prenom");
+		$cpostal = lireTag($args, "cpostal");
+		$ville = lireTag($args, "ville");
+		$email = lireTag($args, "email");
+		$pays = lireTag($args, "pays");
+		$parrain = lireTag($args, "parrain");
+		$revendeur = lireTag($args, "revendeur");
+
+		
+		$search="";
+		$res="";
+		
+		// preparation de la requete
+		if($id!="")  $search.=" and id=\"$id\"";
+		if($ref!="")  $search.=" and ref=\"$ref\"";
+		if($raison!="")  $search.=" and raison=\"$raison\"";
+		if($prenom!="")  $search.=" and prenom=\"$prenom\"";
+		if($nom!="")  $search.=" and nom=\"$nom\"";
+		if($cpostal!="")  $search.=" and cpostal=\"$cpostal\"";
+		if($ville!="")  $search.=" and ville=\"$ville\"";
+		if($email!="")  $search.=" and email=\"$email\"";
+		if($pays!="")  $search.=" and pays=\"$pays\"";
+		if($parrain!="")  $search.=" and parrain=\"$parrain\"";
+		if($revendeur!="")  $search.=" and type=\"$revendeur\"";
+		
+		$client = new Client();
+		$order = "order by nom";
+		
+		$query = "select * from $client->table where 1 $search $order";
+		$resul = mysql_query($query, $client->link);
+		$nbres = mysql_num_rows($resul);
+		if(!$nbres) return "";
+		
+		while( $row = mysql_fetch_object($resul)){
+	
+				$temp = str_replace("#ID", "$row->id", $texte);		
+				$temp = str_replace("#REF", "$row->ref", $temp);		
+				$temp = str_replace("#RAISON", "$row->raison", $temp);		
+				$temp = str_replace("#ENTREPRISE", "$row->entreprise", $temp);
+				$temp = str_replace("#SIRET", "$row->siret", $temp);					
+				$temp = str_replace("#INTRACOM", "$row->intracom", $temp);					
+				$temp = str_replace("#NOM", "$row->nom", $temp);					
+				$temp = str_replace("#PRENOM", "$row->prenom", $temp);					
+				$temp = str_replace("#TELFIXE", "$row->telfixe", $temp);	
+				$temp = str_replace("#TELPORT", "$row->telport", $temp);					
+				$temp = str_replace("#EMAIL", "$row->email", $temp);					
+				$temp = str_replace("#ADRESSE1", "$row->adresse1", $temp);					
+				$temp = str_replace("#ADRESSE2", "$row->adresse2", $temp);					
+				$temp = str_replace("#ADRESSE3", "$row->adresse3", $temp);					
+				$temp = str_replace("#CPOSTAL", "$row->cpostal", $temp);					
+				$temp = str_replace("#VILLE", "$row->ville", $temp);					
+				$temp = str_replace("#PAYS", "$row->pays", $temp);					
+				$temp = str_replace("#PARRAIN", "$row->parrain", $temp);					
+				$temp = str_replace("#TYPE", "$row->type", $temp);					
+				$temp = str_replace("#POURCENTAGE", "$row->pourcentage", $temp);					
+
+			
+			$res .= $temp;
+			
+		}
+	
+
+	
+		return $res;
+		
+	
+	}
+
 
 	/* Gestion des boucles de type Client*/
 	function boucleClient($texte, $args){
