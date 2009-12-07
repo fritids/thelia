@@ -1417,7 +1417,7 @@
 		
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:208px;">&nbsp;</div>
-				<div class="cellule_photos" style="height:200px; overflow:hidden;"><img src="../fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo($row->fichier); ?>&amp;width=208&amp;height=&amp;opacite=" border="0" alt="-" /></div>
+				<div class="cellule_photos" style="height:200px; overflow:hidden;"><img src="../fonctions/redimlive.php?type=produit&nomorig=<?php echo($row->fichier); ?>&amp;width=208&amp;height=&amp;opacite=" border="0" alt="-" /></div>
 				<div class="cellule_supp"><a href="produit_modifier.php?id_photo=<?php echo($row->id); ?>&amp;ref=<?php echo($ref); ?>&amp;action=supprimer_photo"><img src="gfx/supprimer.gif" width="9" height="9" border="0" alt="-" /></a></div>
 			</li>
 			<li class="lignesimple">

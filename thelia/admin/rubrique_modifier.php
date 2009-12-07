@@ -931,7 +931,7 @@ if($id != ""){
 
 			<li class="lignesimple">
 				<div class="cellule_designation" style="height:208px;">&nbsp;</div>
-				<div class="cellule_photos" style="height:200px; overflow:hidden;"><img src="../fonctions/redimlive.php?nomorig=../client/gfx/photos/rubrique/<?php echo($row->fichier); ?>&width=&height=200&opacite=&nb=" border="0" / ></div>
+				<div class="cellule_photos" style="height:200px; overflow:hidden;"><img src="../fonctions/redimlive.php?type=rubrique&nomorig=<?php echo($row->fichier); ?>&width=&height=200&opacite=&nb=" border="0" / ></div>
 				<div class="cellule_supp"><a href="rubrique_modifier.php?id_photo=<?php echo($row->id); ?>&id=<?php echo($id); ?>&action=supprimerphoto"><img src="gfx/supprimer.gif" width="9" height="9" border="0" /></a></div>
 			</li>
 			<li class="lignesimple">

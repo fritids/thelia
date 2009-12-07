@@ -197,6 +197,7 @@
 			$corps = str_replace("__COMMANDE_PORT__", $commande->port, $corps);
 			$corps = str_replace("__COMMANDE_REMISE__", $commande->remise, $corps);
 			$corps = str_replace("__COMMANDE_TRANSPORT__", $transportdesc->titre, $corps);
+			$corps = str_replace("__COMMANDE_TRANSPORTCHAPO__", $transportdesc->chapo, $corps);
 			$corps = str_replace("__COMMANDE_LIVRRAISON__", $raison, $corps);
 			$corps = str_replace("__COMMANDE_LIVRNOM__",$nom, $corps);
 			$corps = str_replace("__COMMANDE_LIVRPRENOM__", $prenom, $corps);
@@ -257,6 +258,7 @@
 				
 				$temp = str_replace("__VENTEPROD_TITRE__", $row->titre, $cut[1]);
                 $temp =  str_replace("__VENTEPROD_REF__", $row->ref, $temp);
+                $temp =  str_replace("__VENTEPROD_CHAPO__", $row->chapo, $temp);
 				$temp =  str_replace("__VENTEPROD_QUANTITE__", $row->quantite, $temp);
 				$temp =  str_replace("__VENTEPROD_PRIXU__", $row->prixu, $temp);
 				$res .= $temp;

@@ -381,7 +381,7 @@ $i = 0;
 ?>
 
 <ul class="<?php echo($fond); ?>">
-	<li><div class="vignette"><?php if($row_image) { ?><a href="produit_modifier.php?ref=<?php echo($produit->ref); ?>&rubrique=<?php echo($produit->rubrique); ?>"> <img src="../fonctions/redimlive.php?nomorig=../client/gfx/photos/produit/<?php echo $row_image->fichier;?>&width=51" title="id : <?php echo($produit->id); ?>" alt="id : <?php echo($produit->id); ?>" /></a><?php }  ?></div></li>
+	<li><div class="vignette"><?php if($row_image) { ?><a href="produit_modifier.php?ref=<?php echo($produit->ref); ?>&rubrique=<?php echo($produit->rubrique); ?>"> <img src="../fonctions/redimlive.php?type=produit&nomorig=<?php echo $row_image->fichier;?>&width=51" title="id : <?php echo($produit->id); ?>" alt="id : <?php echo($produit->id); ?>" /></a><?php }  ?></div></li>
 	<li style="width:61px;"><span class="texte_noedit" title="<?php echo($row->ref); ?>"><?php echo(substr($row->ref,0,9)); if(strlen($row->ref)>9) echo " ..."; ?></span></li>
 	<li style="width:225px;"><span id="titreprod_<?php echo $row->ref; ?>" class="texte_edit"><?php echo substr($produitdesc->titre,0,35); if(strlen($produitdesc->titre) > 35) echo " ..."; ?></span></li>
 	<li style="width:39px;"><span id="stock_<?php echo $row->ref; ?>" class="texte_edit"><?php echo($row->stock); ?></span></li>
