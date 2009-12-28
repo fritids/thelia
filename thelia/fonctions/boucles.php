@@ -425,83 +425,8 @@
 		return $res;
 	
 	}
-
-	/* Gestion des boucles de type Client*/
-	function boucleClient($texte, $args){
-		// récupération des arguments
-		$id = lireTag($args, "id");
-		$ref = lireTag($args, "ref");
-		$raison = lireTag($args, "raison");
-		$nom = lireTag($args, "nom");
-		$prenom = lireTag($args, "prenom");
-		$cpostal = lireTag($args, "cpostal");
-		$ville = lireTag($args, "ville");
-		$email = lireTag($args, "email");
-		$pays = lireTag($args, "pays");
-		$parrain = lireTag($args, "parrain");
-		$revendeur = lireTag($args, "revendeur");
-
-		
-		$search="";
-		$res="";
-		
-		// preparation de la requete
-		if($id!="")  $search.=" and id=\"$id\"";
-		if($ref!="")  $search.=" and ref=\"$ref\"";
-		if($raison!="")  $search.=" and raison=\"$raison\"";
-		if($prenom!="")  $search.=" and prenom=\"$prenom\"";
-		if($nom!="")  $search.=" and nom=\"$nom\"";
-		if($cpostal!="")  $search.=" and cpostal=\"$cpostal\"";
-		if($ville!="")  $search.=" and ville=\"$ville\"";
-		if($email!="")  $search.=" and email=\"$email\"";
-		if($pays!="")  $search.=" and pays=\"$pays\"";
-		if($parrain!="")  $search.=" and parrain=\"$parrain\"";
-		if($revendeur!="")  $search.=" and type=\"$revendeur\"";
-		
-		$client = new Client();
-		$order = "order by nom";
-		
-		$query = "select * from $client->table where 1 $search $order";
-		$resul = mysql_query($query, $client->link);
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
-		
-		while( $row = mysql_fetch_object($resul)){
 	
-				$temp = str_replace("#ID", "$row->id", $texte);		
-				$temp = str_replace("#REF", "$row->ref", $temp);		
-				$temp = str_replace("#RAISON", "$row->raison", $temp);		
-				$temp = str_replace("#ENTREPRISE", "$row->entreprise", $temp);
-				$temp = str_replace("#SIRET", "$row->siret", $temp);					
-				$temp = str_replace("#INTRACOM", "$row->intracom", $temp);					
-				$temp = str_replace("#NOM", "$row->nom", $temp);					
-				$temp = str_replace("#PRENOM", "$row->prenom", $temp);					
-				$temp = str_replace("#TELFIXE", "$row->telfixe", $temp);	
-				$temp = str_replace("#TELPORT", "$row->telport", $temp);					
-				$temp = str_replace("#EMAIL", "$row->email", $temp);					
-				$temp = str_replace("#ADRESSE1", "$row->adresse1", $temp);					
-				$temp = str_replace("#ADRESSE2", "$row->adresse2", $temp);					
-				$temp = str_replace("#ADRESSE3", "$row->adresse3", $temp);					
-				$temp = str_replace("#CPOSTAL", "$row->cpostal", $temp);					
-				$temp = str_replace("#VILLE", "$row->ville", $temp);					
-				$temp = str_replace("#PAYS", "$row->pays", $temp);					
-				$temp = str_replace("#PARRAIN", "$row->parrain", $temp);					
-				$temp = str_replace("#TYPE", "$row->type", $temp);					
-				$temp = str_replace("#POURCENTAGE", "$row->pourcentage", $temp);					
-
-			
-			$res .= $temp;
-			
-		}
 	
-
-	
-		return $res;
-		
-	
-	}
-
-
 	/* Gestion des boucles de type Client*/
 	function boucleClient($texte, $args){
 		// récupération des arguments
