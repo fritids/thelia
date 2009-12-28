@@ -27,7 +27,6 @@
 	include_once("pre.php");
 	include_once("auth.php");
 	
-	include("../classes/Contrib.class.php");
 ?>
 <?php if(! est_autorise("acces_modules")) exit; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -62,10 +61,6 @@
 	
 	$i=0;
 	
-	$contrib = new Contrib();
-	$tab = $contrib->charger_tous();
-	
-	
 	while($row = mysql_fetch_object($resul)){
 
 		$verif = new Modules();
@@ -82,13 +77,13 @@
 				$nom_module = $row->nom;
 				$nom_module[0] = strtoupper($nom_module[0]);
 				
-				$res = $contrib->chercher($row->nom, $tab);
+				$tmpmod = new Modules();
+				$tmpmod->charger($row->nom);
 
-				if($res)
-					$titre = $res->titre;
-				
+				if($tmpmod->xml->nom != "")
+					$titre = utf8_decode($tmpmod->xml->nom);
 				else
-					$titre = $row->nom;
+					$titre = $tmpmod->nom;
 					
 ?>     
    	<li class="<?php echo($fond); ?>" style="width:222px; background-color:#9eb0be;border-bottom: 1px dotted #FFF;"><?php echo $titre; ?></li>

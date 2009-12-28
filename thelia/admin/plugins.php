@@ -28,7 +28,6 @@
 	include_once("auth.php");
 	include_once("../lib/pclzip.lib.php");
 	
-	include_once("../classes/Contrib.class.php");
 		
 ?>
 <?php if(! est_autorise("acces_configuration")) exit; ?>
@@ -144,7 +143,7 @@
 		$tmpmod->charger($row->nom);
 
 		if($tmpmod->xml->nom != "")
-			$titre = $tmpmod->xml->nom;
+			$titre = utf8_decode($tmpmod->xml->nom);
 		else
 			$titre = $tmpmod->nom;
 		
@@ -191,7 +190,7 @@
 		$tmpmod->charger($row->nom);
 
 		if($tmpmod->xml->nom != "")
-			$titre = $tmpmod->xml->nom;
+			$titre = utf8_decode($tmpmod->xml->nom);
 		else
 			$titre = $tmpmod->nom;	
 ?>
@@ -233,7 +232,7 @@
 		$tmpmod->charger($row->nom);
 
 		if($tmpmod->xml->nom != "")
-			$titre = $tmpmod->xml->nom;
+			$titre = utf8_decode($tmpmod->xml->nom);
 		else
 			$titre = $tmpmod->nom;	
 ?>
