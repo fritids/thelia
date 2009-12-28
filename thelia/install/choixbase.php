@@ -68,7 +68,7 @@
 		
 		<div id="menuHorizontal">
 		<dl>
-			<dt><a href="#">ETAPE 3</a></dt>
+			<dt><a href="#">ETAPE 4</a></dt>
 		</dl>
 		
 		</div>

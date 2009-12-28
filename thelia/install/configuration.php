@@ -7,7 +7,7 @@
 	$base=$_POST['choixbase'];
 	
 	// est ce que l'utilisateur a demande a creer une nouvelle base ?
-	if(isset($_POST['creerbase']))
+	if(isset($_POST['creerbase']) && $_POST['creerbase'] != "")
 	{
 		$base=$_POST['creerbase'];
 		mysql_query("CREATE DATABASE ".$base); // mysql_create_db est deprecated
