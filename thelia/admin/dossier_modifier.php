@@ -47,7 +47,7 @@
 
 	switch($action){
 		case 'modclassement' : modclassement($id, $parent, $type); break;
-		case 'modifier' : modifier($id, $lang, $titre, $chapo, $description, $postscriptum, $ligne, $urlsuiv); break;
+		case 'modifier' : modifier($id, $lang, $titre, $chapo, $description, $postscriptum, $ligne, $parent, $urlsuiv); break;
 		case 'ajouter' : ajouter($parent, $lang, $titre, $chapo, $description, $postscriptum, $ligne); break;
 		case 'supprimer' : supprimer($id, $parent);
 		case 'supprimg': supprimg($id);
@@ -266,7 +266,7 @@
 	    header("Location: listdos.php?parent=$parent");
 	}
 	
-	function modifier($id, $lang, $titre, $chapo, $description, $postscriptum, $ligne, $urlsuiv){
+	function modifier($id, $lang, $titre, $chapo, $description, $postscriptum, $ligne, $parent, $urlsuiv){
 	
 		$dossier = new Dossier();
 		$dossierdesc = new Dossierdesc();
@@ -289,7 +289,9 @@
 
 		if($ligne!="") $dossier->ligne = 1;
 		else $dossier->ligne = 0;
-   											
+   	
+   		$dossier->parent = $parent;									
+										
 		$dossier->maj();
 		$dossierdesc->maj();
 		if($urlsuiv){
@@ -429,7 +431,6 @@
 	<input type="hidden" name="action" value="<?php if(!$id) { ?>ajouter<?php } else { ?>modifier<?php } ?>" />
 	<input type="hidden" name="id" value="<?php echo($id); ?>" /> 
  	<input type="hidden" name="lang" value="<?php echo($lang); ?>" /> 
- 	<input type="hidden" name="parent" value="<?php echo($parent); ?>" /> 
 	<input type="hidden" name="urlsuiv" id="url" value="0">
 <!-- Bloc description -->
 <div id="bloc_description">
@@ -475,6 +476,30 @@
         <td>
         <textarea name="postscriptum" id="postscriptum" cols="40" rows="2" class="form_long"><?php echo($dossierdesc->postscriptum); ?></textarea></td>
    	</tr>
+   <?php
+	if($id != ""){
+   ?>
+   <tr class="claire">
+      <td class="designation">Appartenance<br /> <span class="note">(déplacer dans un autre dossier)</span></td>
+      <td style="vertical-align:top;">
+        <select name="parent" id="parent" class="form_long">    
+    	 <option value="0">-- Racine --</option>
+         <?php
+
+        echo arbreOption_dos(0, 1, $dossier->parent); 
+		 ?>
+          </select>
+        </span></td>
+    </tr>
+  <?php
+	} else {
+
+   ?>
+	<input type="hidden" name="parent" id="parent" value="<?php echo($parent); ?>" />
+
+  <?php
+	}
+  ?>
   	 <tr class="fonce">
       <td class="designation">En ligne :</td>
       <td>

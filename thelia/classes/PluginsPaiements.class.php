@@ -117,7 +117,7 @@
 			$mailclient->Subject = $sujet;
 			$mailclient->MsgHTML($corps);
 			$mailclient->AltBody = $corpstext;
-			$mailclient->AddAddress($client->email,$client->nom." ".$client->prenom);
+			$mailclient->AddAddress($client->email, $client->prenom . " " . $client->nom);
 
 			$mailclient->send();
 			

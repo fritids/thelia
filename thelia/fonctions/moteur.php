@@ -120,7 +120,9 @@ function analyse($res){
 	if(!isset($obligetelport)) $obligetelport=0;
 	if(!isset($pagesess)) $pagesess=0;
 	if(!$lang)
-        if(!isset($_REQUEST['lang'])) $lang=""; else if(preg_match("/^\d*$/", $_REQUEST['lang'])) $lang=$_REQUEST['lang'];
+        if(!isset($_REQUEST['lang'])) $lang=""; 
+			else if(preg_match("/^\d*$/", $_REQUEST['lang'])) $lang=$_REQUEST['lang'];
+				else $lang="";
 	if(!$devise)
         if(!isset($_REQUEST['devise'])) $devise=""; else if(preg_match("/^\d*$/", $_REQUEST['devise'])) $devise=$_REQUEST['devise'];
 	if(!isset($_REQUEST['action'])) $action=""; else $action=lireParam("action", "string");

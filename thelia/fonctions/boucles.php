@@ -666,6 +666,8 @@
 		$nbres = mysql_num_rows($resul);
 		if(!$nbres) return "";
 
+		$compt = 1;
+
 		while( $row = mysql_fetch_object($resul)){
 
 			$prod = new Produit();
@@ -674,7 +676,10 @@
 			$temp = str_replace("#ACCESSOIRE", "$row->accessoire", $texte);
 			$temp = str_replace("#PRODID", "$row->produit", $temp);
 			$temp = str_replace("#PRODREF", $prod->ref, $temp);
+            $temp = str_replace("#COMPT", "$compt", $temp);
 
+			$compt ++;
+			
 			$res .= $temp;
 		}
 
@@ -1837,6 +1842,7 @@
 		$zdefinie = lireTag($args, "zdefinie", "int");
         $select = lireTag($args, "select", "int");
         $default = lireTag($args, "default", "int");
+        $exclusion = lireTag($args, "exclusion", "int");
 
 
 		$search ="";
@@ -1847,6 +1853,7 @@
 		if($zone!="")  $search.=" and zone=\"$zone\"";
 		if($zdefinie!="") $search.=" and zone<>\"-1\"";
 		if($default!="") $search.=" and `default`=\"1\"";
+		if($exclusion!="") $search.=" and id not in($exclusion)";
 	
 		if($_SESSION['navig']->lang == "") $lang=1; else $lang=$_SESSION['navig']->lang ;
 		
@@ -1913,7 +1920,7 @@
 		}
 
 		if($rubrique!="")  $search.=" and rubrique=\"$rubrique\"";
-		if($id!="")  $search.=" and caracteristique=\"$id\"";
+		if($id!="")  $search.=" and caracteristique in($id)";
 		
 		
 		$rubcaracteristique = new Rubcaracteristique();

@@ -96,7 +96,7 @@
 		
 		function acommande(){
 			$commande = new Commande();
-			$query = "select * from $commande->table where statut>1 and client=\"" . $this->id . "\"";
+			$query = "select * from $commande->table where statut>1 and statut<>5 and client=\"" . $this->id . "\"";
 			$resul = mysql_query($query, $commande->link);
 			if(mysql_num_rows($resul)) 
 				return 1;
@@ -107,7 +107,7 @@
 
 		function nbcommandes(){
 			$commande = new Commande();
-            $query = "select * from $commande->table where statut>1 and client=\"" . $this->id . "\" and statut<>5";
+            $query = "select * from $commande->table where statut>1 and statut<>5 and client=\"" . $this->id . "\" and statut<>5";
 			$resul = mysql_query($query, $commande->link);
 			return mysql_num_rows($resul);
 		}		

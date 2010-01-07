@@ -103,7 +103,7 @@ if($action == "ajouter"){
 			$mail->Subject = $messagedesc->titre;
 			$mail->MsgHTML($messagedesc->description);
 			$mail->AltBody = $messagedesc->descriptiontext;
-			$mail->AddAddress($client->email,$client->nom." ".$client->prenom);
+			$mail->AddAddress($client->email, $client->prenom . " " . $client->nom);
 
 			$mail->send();
 			?>

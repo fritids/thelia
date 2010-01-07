@@ -76,7 +76,8 @@
 	function codepromo($code){
 		$promo = new Promo();
 		$promo->charger($code);
-		$_SESSION['navig']->promo = $promo;	
+        if($promo->mini <= $_SESSION['navig']->panier->total()) 
+     	   	$_SESSION['navig']->promo = $promo;	
 	}
 		
 	// suppression d'un article du panier	
@@ -651,7 +652,7 @@
 				$mail->Subject = $sujet;
 				$mail->MsgHTML($corps);
 				$mail->AltBody = $corpstext;
-				$mail->AddAddress($tclient->email,$tclient->nom." ".$tclient->prenom);
+				$mail->AddAddress($tclient->email,$tclient->prenom . " " . $tclient->nom);
 				$mail->send();
 
 			}
