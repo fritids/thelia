@@ -508,6 +508,7 @@
 		$produit = lireTag($args, "produit", "int");
 		$id = lireTag($args, "id", "int");
 		$somme = lireTag($args, "somme", "float");
+		$exclusion = lireTag($args, "exclusion", "int_list");
 	
 		$search="";
 		$limit="";
@@ -518,7 +519,8 @@
 		$prod = new Produit();
 		$prod->charger_id($produit);
 
-		if($id != "") $search .= " and id=\"$id\"";
+		if($id != "") $search .= " and id in($id)";
+		if($exclusion != "") $search .= " and id not in($exclusion)";
 		
 		$devise = new Devise();
 
@@ -541,7 +543,8 @@
 			$total = number_format($total, 2, ".", ""); 
 			$convert = number_format($convert, 2, ".", ""); 
 		
-			$temp = str_replace("#PRIX2",  "$prix2", $texte);	
+			$temp = str_replace("#ID",  "$devise->id", $texte);	
+			$temp = str_replace("#PRIX2",  "$prix2", $temp);	
 			$temp = str_replace("#PRIX", "$prix", $temp);
 			$temp = str_replace("#TOTAL", "$total", $temp);
 			$temp = str_replace("#CONVERT", "$convert", $temp);

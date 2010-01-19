@@ -86,7 +86,7 @@
 		
 			<br />
 								
-				Thelia est installé avec Succès <br />
+				Thelia est installé avec succès <br />
 				Vous pouvez maintenant vous connecter sur l'interface d'administration
 				
 				<br /><br />

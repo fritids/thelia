@@ -64,7 +64,7 @@
 				<?php
 				    } else {
 				?>
-				<span class="valide">Votre version de PHP est correct.</span>
+				<span class="valide">Votre version de PHP est correcte.</span>
 				<br /><hr /><br />				
 				<?php
 					}
@@ -81,7 +81,7 @@
 				<?php
 				    } else {
 				?>
-					<span class="valide">Les librairies n&eacute;cessaires sont pr&eacute;sente.</span>
+					<span class="valide">Les librairies n&eacute;cessaires sont pr&eacute;sentes.</span>
 					<br /><hr /><br />
 							
 				<?php

@@ -342,13 +342,13 @@
 			if(! $temppromo->illimite)
 				$temppromo->utilise="1";
 			$temppromo->maj();
-
 			
-			$_SESSION['navig']->promo = new Promo();
 		} 
 
 		$commande->port = port();	
 		if($commande->port == "" || $commande->port<0) $commande->port = 0; 	
+
+		$_SESSION['navig']->promo = new Promo();
 		
  		
 		$_SESSION['navig']->commande = $commande;

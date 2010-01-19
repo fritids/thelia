@@ -261,6 +261,7 @@
                 $temp =  str_replace("__VENTEPROD_CHAPO__", $row->chapo, $temp);
 				$temp =  str_replace("__VENTEPROD_QUANTITE__", $row->quantite, $temp);
 				$temp =  str_replace("__VENTEPROD_PRIXU__", $row->prixu, $temp);
+				$temp =  str_replace("__VENTEPROD_TOTAL__", $row->prixu * $row->quantite, $temp);
 				$res .= $temp;
 			
 			}
