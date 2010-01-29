@@ -78,6 +78,10 @@
 		}
 		
 		function supprimer(){
+
+            if($this->id == "")
+                    return 0;
+			
 			$venteprod = new Venteprod();
 			$query = "delete from $venteprod->table where commande='" . $this->id . "'";
 			$resul = mysql_query($query, $this->link);

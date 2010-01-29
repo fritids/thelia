@@ -82,6 +82,9 @@
 		
 		function supprimer(){
 
+            if($this->id == "")
+                    return 0;
+
 			$imagedesc =  new Imagedesc();
 			
 			

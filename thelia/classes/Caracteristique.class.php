@@ -78,6 +78,9 @@
 		
 		function supprimer(){
 
+            if($this->id == "")
+                    return 0;
+
 			$caracteristiquedesc =  new Caracteristiquedesc();
 			
 			

@@ -49,6 +49,9 @@
 		}
 		
 		function supprimer(){
+            if($this->id == "")
+                    return 0;
+
 			$messagedesc =  new Messagedesc();
 			
 			$this->delete("delete from $this->table where id=\"$this->id\"");	

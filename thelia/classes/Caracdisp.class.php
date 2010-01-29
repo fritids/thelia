@@ -58,6 +58,10 @@
 			
 			
 		function supprimer(){
+
+            if($this->id == "")
+                    return 0;
+			
 			$caracdispdesc =  new Caracdispdesc();
 			$caracdisp =  new Caracdisp();
 			$caracval = new Caracval();

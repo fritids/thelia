@@ -62,7 +62,8 @@
 		function delete(){
 			$varid = $this->bddvars[0];
 			$query = "delete from $this->table where $varid=\"" . $this->$varid . "\"";
-			$resul = mysql_query($query, $this->link);
+			if($this->$varid != "")
+				$resul = mysql_query($query, $this->link);
 		}
 		
 		function maj(){
@@ -82,7 +83,8 @@
 			}
 			
 			$query = "update $this->table set " . substr($listv, 0, strlen($listv)-2) . " where $varid=\"" . $this->$varid . "\"";
-			$resul = mysql_query($query, $this->link);
+			if($this->$varid != "")
+				$resul = mysql_query($query, $this->link);
 			return $query;
 		}
 				

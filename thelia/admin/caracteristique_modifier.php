@@ -354,6 +354,9 @@
         <input name="affiche" type="checkbox" class="form" <?php if($caracteristique->affiche || $id == "" ) { ?> checked="cheked" <?php } ?>/><span class="note">(permet de rendre visible ou non cette caractéristique à l'affichage dans une boucle)</span></td>
     </tr>
 </table>
+<?php 
+	admin_inclure("caracteristiquemodifier"); 
+?>
 	<?php if($id != ""){ ?>
 <div class="entete_liste_config">
 	<div class="titre">INFORMATIONS SUR LA CARACTERISTIQUE</div>
@@ -433,10 +436,6 @@
               }
              }
              ?>
-
- <?php 
-	admin_inclure("caracteristiquemodifier"); 
- ?>
 </div>
 <!-- fin du bloc colonne de droite -->
 <?php } ?>
