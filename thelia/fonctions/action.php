@@ -282,7 +282,7 @@
 			$prix2 = $_SESSION['navig']->panier->tabarticle[$i]->produit->prix2;
 			$tva = $_SESSION['navig']->panier->tabarticle[$i]->produit->tva;
 
-			if($pays->tva != "" && (! $pays->tva || ($pays->tva && $_SESSION['navig']->client->intracom != ""))){
+			if($pays->tva != "" && ! $pays->tva){
 				$prix = $prix/(1+($tva/100)); 
 				$prix2 = $prix2/(1+($tva/100)); 
 				$tva = 0;
