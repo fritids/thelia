@@ -31,6 +31,8 @@
 
 		$total = 0;
         $totalht = 0;
+        $totaleco = 0;
+        $totaltaxe = 0;
 
 		$nb_article = 0;
 		
@@ -57,9 +59,10 @@
 			$prixht = $prix/(1+($_SESSION['navig']->panier->tabarticle[$i]->produit->tva/100)); 
 	           	
 			$quantite = $_SESSION['navig']->panier->tabarticle[$i]->quantite;
-	
 			$total += round($prix, 2) * $quantite;
 			$totalht += round($prixht, 2) * $quantite;
+			$totaleco += $_SESSION['navig']->panier->tabarticle[$i]->produit->ecotaxe * $quantite;
+			$totaltaxe += round(($prix - $prixht),2) * $quantite;
 			
 			$nb_article += $_SESSION['navig']->panier->tabarticle[$i]->quantite;
 		}
@@ -101,6 +104,8 @@
 			
 		$totalht = number_format($totalht, 2, ".", "");
 		$total = number_format($total, 2, ".", "");
+		$totaleco = number_format($totaleco, 2, ".", "");
+		$totaltaxe = number_format($totaltaxe, 2, ".", "");
 		$port = number_format($port, 2, ".", "");
 		$totcmdport = number_format($totcmdport, 2, ".", "");
 		$remise = number_format($remise, 2, ".", "");
@@ -110,7 +115,9 @@
 		
 		$totpoids = $_SESSION['navig']->panier->poids();
 		
-		$texte = str_replace("#PANIER_TOTALHT", "$totalht", $texte);	 
+		$texte = str_replace("#PANIER_TOTALHT", "$totalht", $texte);
+		$texte = str_replace("#PANIER_TOTALECO","$totaleco",$texte);
+		$texte = str_replace("#PANIER_TOTALTVA","$totaltaxe",$texte);	 
 		$texte = str_replace("#PANIER_TOTAL", "$total", $texte);
 		$texte = str_replace("#PANIER_PORT", "$port", $texte);
         $texte = str_replace("#PANIER_TOTPORTHT", "$totcmdportht", $texte);
@@ -120,6 +127,7 @@
 		$texte = str_replace("#PANIER_NBART", "" . $nb_article . "", $texte);
 		$texte = str_replace("#PANIER_POIDS", "$totpoids", $texte);
 		$texte = str_replace("#PANIER_TVA","$tva",$texte);
+		
 		
 		
 		return $texte;
