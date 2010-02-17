@@ -1336,11 +1336,14 @@
 		if(! mysql_num_rows($resul))
 			return "";
 			
+		$compt = 1;
 		while($row = mysql_fetch_object($resul)){
               $temp = str_replace("#OBJET", $row->objet, $texte);
               $temp = str_replace("#TYPE", $row->type, $temp);
               $temp = str_replace("#CONTENU", $row->contenu, $temp);
+			  $temp = str_replace("#COMPTE",$compt,$temp);
 
+			  $compt++;
               $res .= $temp;
 
         }
