@@ -53,6 +53,26 @@
 				Mise à jour en cours ...<br /><br />
 				
 				<?php
+					if (file_exists("../classes/Cnx.class.php")) {
+						if (! mkdir("../config")) {
+							?>
+							<div>
+								Attention il n'a pas été possible de déplacer le fichier <tt>classes/Cnx.class.php</tt> vers <tt>config/Cnx.class.php</tt>.<br/>
+								Après la mise à jour vous devrez faire le déplacement manuellement
+							</div>
+							<?php
+						} else {
+							rename("../classes/Cnx.class.php","../config/Cnx.class.php");
+							?>
+							<div>
+								Attention votre fichier de connexion à la base de données est maintenant dans <tt>config/Cnx.class.php</tt>.
+							</div>
+							<?php					
+						}
+					}
+				?>
+				
+				<?php
 					include_once("config.php");				
 					include_once("../classes/Variable.class.php");
 

@@ -1,5 +1,5 @@
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/../../classes/Cnx.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../../config/Cnx.class.php");
 
 	$cnx = new Cnx();
 

@@ -25,7 +25,7 @@
 ?>
 <?php
 
-	include_once(realpath(dirname(__FILE__)) . "/Cnx.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/../config/Cnx.class.php");
 	
 	// Classe Request
 

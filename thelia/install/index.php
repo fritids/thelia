@@ -46,7 +46,7 @@
 		
 		<?php
 		
-			if(! file_exists("../classes/Cnx.class.php")) {
+			if(! file_exists("../classes/Cnx.class.php") && (! file_exists("../config/Cnx.class.php"))) {
 		?>
 			<h2>installation de Thelia</h2>
 		
