@@ -7,20 +7,20 @@
 			exit;
 		} else {
 
-			if(file_exists("../classes/Cnx.class.php.orig")) 
-				$fic = file_get_contents("../classes/Cnx.class.php.orig");
+			if(file_exists("../config/Cnx.class.php.orig")) 
+				$fic = file_get_contents("../config/Cnx.class.php.orig");
 			
-			if(! file_exists("../classes/Cnx.class.php")){
+			if(! file_exists("../config/Cnx.class.php")){
 
 				$fic = str_replace("votre_serveur", $_POST['serveur'], $fic);
 				$fic = str_replace("votre_login_mysql", $_POST['utilisateur'], $fic);
 				$fic = str_replace("votre_motdepasse_mysql",  $_POST['motdepasse'], $fic);
 
-				$fp = fopen("../classes/Cnx.class.php.orig", "w");
+				$fp = fopen("../config/Cnx.class.php.orig", "w");
 				fputs($fp, $fic);
 				fclose($fp);
 
-				rename("../classes/Cnx.class.php.orig", "../classes/Cnx.class.php");
+				rename("../config/Cnx.class.php.orig", "../config/Cnx.class.php");
 
 				$droitscreation=false;
 				

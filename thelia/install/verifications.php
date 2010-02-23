@@ -92,7 +92,7 @@
 			
 				<?php 
 					$err=0;
-					$liste = array("../", "../admin", "../lib", "../fonctions", "../classes", "../client.orig", "../client.orig/cache", "../client.orig/commande", "../client.orig/document",  "../client.orig/plugins", "../client.orig/gfx", "../client.orig/gfx/photos", "../client.orig/gfx/photos/produit", "../client.orig/gfx/photos/rubrique", "../client.orig/gfx/photos/contenu", "../client.orig/gfx/photos/dossier", "../client.orig/gfx/utilisateur", "../client.orig/gfx/utilisateur/Image", "../client.orig/gfx/utilisateur/Flash");
+					$liste = array("../", "../admin", "../lib", "../fonctions", "../config", "../classes", "../client.orig", "../client.orig/cache", "../client.orig/commande", "../client.orig/document",  "../client.orig/plugins", "../client.orig/gfx", "../client.orig/gfx/photos", "../client.orig/gfx/photos/produit", "../client.orig/gfx/photos/rubrique", "../client.orig/gfx/photos/contenu", "../client.orig/gfx/photos/dossier", "../client.orig/gfx/utilisateur", "../client.orig/gfx/utilisateur/Image", "../client.orig/gfx/utilisateur/Flash");
 				?>
 				
 				<?php 
@@ -113,7 +113,7 @@
 				
 				
 					<?php 
-						$liste = array("../classes/Cnx.class.php.orig");
+						$liste = array("../config/Cnx.class.php.orig");
 					?>
 
 					<?php 

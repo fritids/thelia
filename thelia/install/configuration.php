@@ -1,6 +1,6 @@
 <?php
 	
-	include_once("../classes/Cnx.class.php");
+	include_once("../config/Cnx.class.php");
 	$cnx = new Cnx();
 	
 	mysql_connect($cnx->host, $cnx->login_mysql, $cnx->password_mysql);
@@ -30,11 +30,11 @@
 	}	
 
 	// le fichier de config est renseigne avec le nom de la base creee/selectionnee
-	if( file_exists("../classes/Cnx.class.php")){
+	if( file_exists("../config/Cnx.class.php")){
 	
-		$fic = file_get_contents("../classes/Cnx.class.php");
+		$fic = file_get_contents("../config/Cnx.class.php");
 		$fic = str_replace("bdd_sql", $base, $fic);	
-		$fp = fopen("../classes/Cnx.class.php", "w");
+		$fp = fopen("../config/Cnx.class.php", "w");
 		fputs($fp, $fic);
 		fclose($fp);		
 	}
