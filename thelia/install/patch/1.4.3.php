@@ -41,8 +41,12 @@
 	        $query3_cnx = "update venteadr set entreprise=\""  . $row2_cnx->entreprise ."\" where id=" . $row_cnx->adrfact;
 	        $resul3_cnx = mysql_query($query3_cnx, $cnx->link);
 	}
-
+	
+	//Définir le fichier de configuration par défaut
+	if (! file_exists("../config/Config.class.php")) {
+			rename("../config/Config.class.orig", "../config/Config.class.php");
+	}
+	
 	$query_cnx = "update variable set valeur='143' where nom='version'";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
-		
 ?>
