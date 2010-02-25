@@ -24,16 +24,43 @@
 /*************************************************************************************/
 ?>
 <?php
-error_reporting(E_ALL ^ E_NOTICE);
+	error_reporting(E_ALL ^ E_NOTICE);
 
-include_once("../../classes/Navigation.class.php");
-include("../../classes/Administrateur.class.php");
+	include_once("../../classes/Navigation.class.php");
+	include("../../classes/Administrateur.class.php");
+	include_once("../../classes/Commande.class.php");
+	include_once("../../classes/Client.class.php");
+	include_once("../../classes/Venteprod.class.php");
+	include_once("../../classes/Produit.class.php");
+	include_once("../../classes/Adresse.class.php");
+	include_once("../../classes/Zone.class.php");
+	include_once("../../classes/Pays.class.php");
+	include_once("../../fonctions/divers.php");
 
-session_start();
+	session_start();
 
-$commande = new Commande();
-$commande->charger_ref($_GET['ref']);
+	$commande = new Commande();
+	$commande->charger_ref($_GET['ref']);
 
-include("../../admin/facture.php");
+	if((($_SESSION['navig']->client->id != $commande->client) || ($commande->statut<2)) && !$_SESSION["util"]->id)  exit;
+	
+	if(! est_autorise("acces_commandes") && $_SESSION["util"]->id != "") exit;
 
+	$commande = new Commande();
+	$commande->charger_ref($_GET['ref']);
+
+    $client = new Client();
+  	$client->charger_id($commande->client);
+  	
+  	$pays = new Pays();
+  	$pays->charger($client->pays);	
+
+  	$zone = new Zone();
+  	$zone->charger($pays->zone);
+
+	include_once("../pdf/modeles/facture.php");
+	
+	$facture = new Facture();
+	$facture->creer($_GET['ref']);
+	
 ?>
