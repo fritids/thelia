@@ -42,7 +42,8 @@ $(document).ready(function() {
 });
 
 function edit(){
-	$(".texte_edit").editable("ajax/produit.php", { 
+	$(".texte_edit").editable("ajax/produit.php", {
+	  loadurl : "ajax/load.php", 
       select : true,
       onblur: "submit",
       cssclass : "ajaxedit"
