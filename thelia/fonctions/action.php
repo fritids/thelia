@@ -123,7 +123,11 @@
 
 	// modification de l'adresse en cours	
 	function modadresse($adresse){
-		$_SESSION['navig']->adresse=$adresse;
+
+		$verif = new Adresse();
+		$verif->charger($adresse);
+		if($verif->client == $_SESSION['navig']->client->id)
+			$_SESSION['navig']->adresse=$adresse;
 	}
 	
 	// procédure de paiement
