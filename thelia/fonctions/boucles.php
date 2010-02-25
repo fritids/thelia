@@ -214,23 +214,24 @@
 		else $order = "order by classement";
 		
 		$query = "select * from $dossier->table where 1 $search $order $limit";
-		$resul = mysql_query($query, $dossier->link);
-	
-		$dossierdesc = new Dossierdesc();
 		
-		$compt = 1;
-
-		$nbres = mysql_num_rows($resul);
+		$nbres = CacheBase::getCache()->mysql_query_count($query, $dossier->link);
 		if(!$nbres) return "";
 		
-		while( $row = mysql_fetch_object($resul)){
+		$resul = CacheBase::getCache()->mysql_query($query, $dossier->link);
+
+		$dossierdesc = new Dossierdesc();
+		$compt = 1;
+
+		
+		foreach($resul as $row) {
 			$dossierdesc = new Dossierdesc();
 			if( ! $dossierdesc->charger($row->id, $_SESSION['navig']->lang)) continue;
 			
 			$query3 = "select * from $dossier->table where 1 and parent=\"$row->id\"";
-			$resul3 = mysql_query($query3, $dossier->link);	
-			if($resul3) $nbenfant = mysql_num_rows($resul3);
-
+			$nbenfant = CacheBase::getCache()->mysql_query_count($query3, $dossier->link);
+			
+			
 			$temp = str_replace("#TITRE", "$dossierdesc->titre", $texte);
 			$temp = str_replace("#STRIPTITRE", strip_tags($dossierdesc->titre), $temp);	
 			$temp = str_replace("#CHAPO", "$dossierdesc->chapo", $temp);
@@ -302,8 +303,8 @@
 		else $debut=0;
 
         $query = "select * from $image->table where 1 $search";
-        $resul = mysql_query($query, $image->link);
-        $nbres = mysql_num_rows($resul);
+
+        $nbres = CacheBase::getCache()->mysql_query_count($query, $image->link);
         if($debut!="" && $num=="") $num=$nbres;
                 		
 		if($debut!="" || $num!="") $limit .= " limit $debut,$num";
@@ -311,10 +312,7 @@
 		if($nb!="") { $nb--; $limit .= " limit $nb,1"; }
 
 		$query = "select * from $image->table where 1 $search $order $limit";
-		$resul = mysql_query($query, $image->link);
 	
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
 
 		$pr = new Produit();
 		$prdesc = new Produitdesc();
@@ -323,8 +321,10 @@
 		$dossierdesc = new Dossierdesc();
 		
 		$compt=1;
-		
-		while( $row = mysql_fetch_object($resul)){
+		$result = CacheBase::getCache()->mysql_query($query, $image->link);
+		if(sizeof($result)==0) return "";
+
+		foreach($result as $row) {
 			$image = new Image();
 			$image->charger($row->id);
 			$imagedesc = new Imagedesc();
@@ -463,11 +463,11 @@
 		$order = "order by nom";
 		
 		$query = "select * from $client->table where 1 $search $order";
-		$resul = mysql_query($query, $client->link);
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
-		
-		while( $row = mysql_fetch_object($resul)){
+
+		$resul = CacheBase::getCache()->mysql_query($query, $client->link);
+		if($resul=="" || sizeof($resul)==0) return "";
+
+		foreach($resul as $row) {
 	
 				$temp = str_replace("#ID", "$row->id", $texte);		
 				$temp = str_replace("#REF", "$row->ref", $temp);		
@@ -526,12 +526,10 @@
 
 		$query = "select * from $devise->table where 1 $search $limit";
  		
-		$resul = mysql_query($query, $devise->link);
-	
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
-			
-		while( $row = mysql_fetch_object($resul)){
+		$resul = CacheBase::getCache()->mysql_query($query, $devise->link);
+		if($resul=="" || sizeof($resul)==0) return "";
+
+		foreach($resul as $row) {
 			$devise->charger($row->id);
 			$prix = round($prod->prix * $devise->taux, 2);
 			$prix2 = round($prod->prix2 * $devise->taux, 2);
@@ -606,12 +604,10 @@
 
 		$query = "select * from $document->table where 1 $search $order $limit";
  		
-		$resul = mysql_query($query, $document->link);
-	
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
-		
-		while( $row = mysql_fetch_object($resul)){
+		$resul = CacheBase::getCache()->mysql_query($query, $document->link);
+		if($resul=="" || sizeof($resul)==0) return "";
+
+		foreach($resul as $row) {
 			$document->charger($row->id);
 			$documentdesc->charger($document->id);
 
@@ -664,14 +660,11 @@
 		else
 			$query = "select DISTINCT(id) from $accessoire->table where 1 $search $order $limit";
 			
-		$resul = mysql_query($query, $accessoire->link);
-	
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
-
 		$compt = 1;
+		$resul = CacheBase::getCache()->mysql_query($query, $accessoire->link);
+		if($resul=="" || sizeof($resul)==0) return "";
 
-		while( $row = mysql_fetch_object($resul)){
+		foreach($resul as $row) {
 
 			$prod = new Produit();
 			$prod->charger_id($row->produit);
@@ -844,12 +837,11 @@
 				else if($caracdisp == "-")	$query = "select * from $tcaracval->table where caracteristique='$caracteristique' and caracdisp=''";
 				else $query = "select * from $tcaracval->table where caracteristique='$caracteristique' and caracdisp='$caracdisp'";
 
-				$resul = mysql_query($query);
-				if(!mysql_num_rows($resul)) return;
-				
 				$liste="";
-				
-				while($row = mysql_fetch_object($resul))
+				$resul = CacheBase::getCache()->mysql_query($query, $caracteristique->link);
+				if($resul=="" || sizeof($resul)==0) return;
+
+				foreach($resul as $row)
 					$liste .= "'$row->produit', ";
 			
 				$liste = substr($liste, 0, strlen($liste) - 2);
@@ -876,11 +868,10 @@
 				else if($typech == "like") $query = "select * from $tcaracval->table where caracteristique='$caracteristique' and valeur like '$caracval'";
 				else $query = "select * from $tcaracval->table where caracteristique='$caracteristique' and valeur ='$caracval'";
 
-				$resul = mysql_query($query);
-				
 				$liste="";
-				
-				while($row = mysql_fetch_object($resul))
+				$resul = CacheBase::getCache()->mysql_query($query, $caracval->link);
+
+				foreach($resul as $row) 
 					$liste .= "'$row->produit', ";
 				$liste = substr($liste, 0, strlen($liste) - 2);
 				
@@ -915,11 +906,9 @@
 				$declistockmini = $ldeclistockmini[$i];
 				
 		 		$query = "select * from $exdecprod->table where declidisp='$declidisp'";
-				$resul = mysql_query($query);
-		
-				if(mysql_num_rows($resul)) 
-						while($row = mysql_fetch_object($resul))
-							$liste .= "'$row->produit', ";
+				$resul = CacheBase::getCache()->mysql_query($query,null);
+				foreach($resul as $row) 
+									$liste .= "'$row->produit', ";
 	
 				if($liste!="") {
 						$liste = substr($liste, 0, strlen($liste) - 2);
@@ -959,14 +948,10 @@
 				
   				$query = "select * from $produitdesc->table  LEFT JOIN $produit->table ON $produit->table.id=$produitdesc->table.produit WHERE $produit->table.ref='$motcle' or titre like '% $motcle%' or titre like '%$motcle %' OR titre='$motcle' OR chapo like '% $motcle%' OR chapo like '%$motcle %' OR description like '% $motcle%' OR description like '%$motcle %' OR postscriptum like '% $motcle%' OR postscriptum like '%$motcle %'";
 			
-			    $resul = mysql_query($query, $produitdesc->link);
-				$nbres = mysql_num_rows($resul);
+				$resul = CacheBase::getCache()->mysql_query($query, $produitdesc->link);
+				if($resul=="" || sizeof($resul)==0) return "";
 
-			
-				if(!$nbres) return "";
-				
-			
-				while( $row = mysql_fetch_object($resul) ){
+				foreach($resul as $row) {
 					$liste .= "'$row->produit', ";
 				}
 			
@@ -985,11 +970,11 @@
 			$classement = "produitdesc";
 		}
             
-		$resul = mysql_query($query, $produit->link);
-		$nbres = mysql_num_rows($resul);
+		$resul = CacheBase::getCache()->mysql_query($query, $produit->link);
+		if($resul=="" || sizeof($resul)==0) return "";
+		print_r($resul);
 		$saveReq = "select * from $produit->table where 1 $search";
 
-		if(!$nbres) return "";
 		// substitutions
 		if($type) return $query;
 		
@@ -999,8 +984,8 @@
 	
 		$compt = 0;
 		
-		while( $row = mysql_fetch_object($resul) ){
-			
+		foreach($resul as $row) {
+					
 			$compt++;
 			
 			if($passage != "" && $comptbloc>$passage-1)
@@ -1222,14 +1207,10 @@
 				
 				$query = "select * from $contenudesc->table  LEFT JOIN $contenu->table ON $contenu->table.id=$contenudesc->table.id WHERE titre like '% $motcle%' or titre like '%$motcle %' OR titre='$motcle' OR chapo like '% $motcle%' OR chapo like '%$motcle %' OR description like '% $motcle%' OR description like '%$motcle %' OR postscriptum like '% $motcle%' OR postscriptum like '%$motcle %'";
 			
-			    $resul = mysql_query($query, $contenudesc->link);
-				$nbres = mysql_num_rows($resul);
-
-			
-				if(!$nbres) return "";
-				
-			
-				while( $row = mysql_fetch_object($resul) ){
+				$resul = CacheBase::getCache()->mysql_query($query, $contenudesc->link);
+				if($resul=="" || sizeof($resul)==0) return "";
+		
+				foreach($resul as $row) {
 					$liste .= "'$row->contenu', ";
 				}
 			
@@ -1241,9 +1222,9 @@
 		else $query = "select * from $contenu->table where 1 $search $order $limit";
 		$saveReq = "select * from $contenu->table where 1 $search";
 		
-		$resul = mysql_query($query, $contenu->link);
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
+		$resul = CacheBase::getCache()->mysql_query($query, $contenu->link);
+		if($resul=="" || sizeof($resul)==0) return "";
+
 		// substitutions
 		if($type) return $query;
 
@@ -1253,8 +1234,8 @@
 		
 		$compt = 1;
 		
-		while( $row = mysql_fetch_object($resul) ){
-	
+		foreach($resul as $row) {
+			
 			if($num>0) 
 				if($comptbloc>=ceil($countRes/$num) && $bloc!="") continue;
 				
@@ -1330,13 +1311,12 @@
 		
 		$contenuassoc = new Contenuassoc();
 		$query = "select * from $contenuassoc->table where 1 $search $order $limit";
-		$resul = mysql_query($query, $contenuassoc->link);
+
+		$resul = CacheBase::getCache()->mysql_query($query, $contenuassoc->link);
+		if($resul=="" || sizeof($resul)==0) return "";
 		
-		if(! mysql_num_rows($resul))
-			return "";
-			
 		$compt = 1;
-		while($row = mysql_fetch_object($resul)){
+		foreach($resul as $row) {
               $temp = str_replace("#OBJET", $row->objet, $texte);
               $temp = str_replace("#TYPE", $row->type, $temp);
               $temp = str_replace("#CONTENU", $row->contenu, $temp);
@@ -1803,15 +1783,9 @@
  		$modules = new Modules();
 		
 		$query = "select * from $modules->table where type='1' and actif='1' $search order by classement";
-	//	$resul = mysql_query($query, $modules->link);
-		$nbres = CacheBase::getCache()->mysql_query_count($query, $modules->link);
-	
-		if(!$nbres) return "";
 		
-		//$resul = mysql_query($query, $modules->link);
-			$resul = CacheBase::getCache()->mysql_query($query, $modules->link);
-		
-//		while($row = mysql_fetch_object($resul)){
+		$resul = CacheBase::getCache()->mysql_query($query, $modules->link);
+		if($resul=="" || sizeof($resul)==0) return "";
 		foreach($resul as $row) {
 		
 			$modules = new Modules();
@@ -1881,11 +1855,10 @@
 		
         $query = "select * from $paysdesc->table where pays in ($liste) and lang='$lang' order by titre";
 
-		$resul = mysql_query($query, $paysdesc->link);
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
+		$resul = CacheBase::getCache()->mysql_query($query, $paysdesc->link);
+		if($resul=="" || sizeof($resul)==0) return "";
 
-		while( $row = mysql_fetch_object($resul)){
+		foreach($resul as $row) {
 			$paysdesc->charger_id($row->id);
 			$pays->charger($paysdesc->pays);
 			$temp = str_replace("#ID", "$row->pays", $texte);
@@ -1940,12 +1913,11 @@
 
         $query = "select DISTINCT(caracteristique) from $rubcaracteristique->table,$tmpcaracteristique->table  where 1 $search and $rubcaracteristique->table.caracteristique=$tmpcaracteristique->table.id $order";
 		//if($id != "") $query = "select * from $tmpcaracteristique->table where 1 $search";
-		$resul = mysql_query($query, $rubcaracteristique->link);
-	
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
 
-		while( $row = mysql_fetch_object($resul)){
+        $resul = CacheBase::getCache()->mysql_query($query, $rubcaracteristique->link);
+		if($resul=="" || sizeof($resul)==0) return "";
+
+		foreach($resul as $row) {
 
 			if($courante == "1" && ($id  != $caracteristique && ! strstr($caracteristique, $id . "-")))
 			   continue;
@@ -2024,14 +1996,11 @@
 		
 		
 		$query = "select * from $tcaracdisp->table where 1 $search $limit";
-		$resul = mysql_query($query, $tcaracdisp->link);
-
-        if(! mysql_num_rows($resul))
-                return "";
-
 		$i=0;
-				
-		while($row = mysql_fetch_object($resul)){
+		$resul = CacheBase::getCache()->mysql_query($query, $tcaracdisp->link);
+		if($resul=="" || sizeof($resul)==0) return "";
+
+		foreach($resul as $row) {
 				$liste .= "'" . $row->id . "',";
 				$tabliste[$i++] = $row->id;
 		}
@@ -2043,13 +2012,10 @@
 		if($classement != ""){
 			$liste2="";
 			$query = "select * from $tcaracdispdesc->table where caracdisp in ($liste) and lang='" . $_SESSION['navig']->lang . "' $order";
-			$resul = mysql_query($query, $tcaracdispdesc->link);
-					
-		
-		
 			$i=0;
-			
-			while($row = mysql_fetch_object($resul)){
+			$resul = CacheBase::getCache()->mysql_query($query, $tcaracdispdesc->link);
+
+			foreach($resul as $row) {
 				$liste2 .= "'" . $row->caracdisp . "',";
 				$tabliste2[$i++] = $row->caracdisp;
 			}
@@ -2139,13 +2105,10 @@
 		$prodtemp = new Produit();
 		
 		$query = "select * from $caracval->table where 1 $search $order";
-		$resul = mysql_query($query, $caracval->link);
+		$resul = CacheBase::getCache()->mysql_query($query, $caracval->link);
+		if($resul=="" || sizeof($resul)==0) return "";
 
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
-
-	
-		while( $row = mysql_fetch_object($resul)){
+		foreach($resul as $row) {
 
 			$temp = str_replace("#ID", $row->id, $texte);
 				$temp = str_replace("#CARACDISP", $row->caracdisp, $temp);
@@ -2213,13 +2176,10 @@
 			
 		if($adresse_id != "0" ) {
 			$query = "select * from $adresse->table where 1 $search";
-			$resul = mysql_query($query, $adresse->link);
-	
-			$nbres = mysql_num_rows($resul);
-			if(!$nbres) return "";
-			
+			$resul = CacheBase::getCache()->mysql_query($query, $adresse->link);
+			if($resul=="" || sizeof($resul)==0) return "";
 
-			while( $row = mysql_fetch_object($resul)){
+			foreach($resul as $row) {
 			
                 if($row->raison == 1) $raison1f="selected=\"selected\"";
                 else $raison1f="";
@@ -2318,13 +2278,10 @@
 		if($id!="")  $search.=" and id=\"$id\"";
 
 		$query = "select * from $venteadr->table where 1 $search";
-		$resul = mysql_query($query, $venteadr->link);
+		$resul = CacheBase::getCache()->mysql_query($query, $venteadr->link);
+		if($resul=="" || sizeof($resul)==0) return "";
 
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
-
-
-		while( $row = mysql_fetch_object($resul)){
+		foreach($resul as $row) {
 
 	        if($row->raison == 1) $raison1f="selected=\"selected\"";
 	        else $raison1f="";
@@ -2397,15 +2354,12 @@
 		else $order = "order by date desc";
 	
 		$query = "select * from $commande->table where 1 $search $order $limit";
-		$resul = mysql_query($query, $commande->link);
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
-		
-		
 		$statutdesc = new Statutdesc();
 		$venteprod = new Venteprod();
-		
-		while( $row = mysql_fetch_object($resul)){
+		$resul = CacheBase::getCache()->mysql_query($query, $commande->link);
+		if($resul=="" || sizeof($resul)==0) return "";
+
+		foreach($resul as $row) {
 		  	
 		  	$jour = substr($row->date, 8, 2);
   			$mois = substr($row->date, 5, 2);
@@ -2463,7 +2417,6 @@
             $temp = str_replace("#TAUX", "$row->taux", $temp);
 			$temp = str_replace("#COLIS", "$row->colis", $temp);
 			$temp = str_replace("#TRANSPORT", "$row->transport", $temp);
-			$temp = str_replace("#FICHIER", "client/pdf/visudoc.php?ref=" . $row->ref, $temp);
 
 			$res .= $temp;
 		}
@@ -2490,13 +2443,10 @@
 		$venteprod = new Venteprod();
 
 		$query = "select * from $venteprod->table where 1 $search";
-		$resul = mysql_query($query, $venteprod->link);
+		$resul = CacheBase::getCache()->mysql_query($query, $venteprod->link);
+		if($resul=="" || sizeof($resul)==0) return "";
 
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
-		
-		
-		while( $row = mysql_fetch_object($resul)){
+		foreach($resul as $row) {
 			
 			$prixu = number_format($row->prixu, 2, ".", "");
 			$totalprod = $row->prixu * $row->quantite;
@@ -2553,10 +2503,8 @@
 	
 		$query = "select * from $modules->table where type='2' and actif='1' $search order by classement";
 
-		//$resul = mysql_query($query, $modules->link);
-		$nbres = CacheBase::getCache()->mysql_query_count($query, $modules->link);
-		
-		if(!$nbres) return "";
+		$resul = CacheBase::getCache()->mysql_query($query, $modules->link);
+		if($resul=="" || sizeof($resul)==0) return "";
 
 		$pays = new Pays();
 		
@@ -2573,8 +2521,8 @@
 		
 		   $compt = 0;
 		
-		   while( $row = mysql_fetch_object($resul)){
-			
+		foreach($resul as $row) {
+		   			
 		  	 if( ! $transzone->charger($row->id, $pays->zone)) continue;
 		
 			$compt ++;
@@ -2696,12 +2644,11 @@
 		
 		$query = "select DISTINCT(declinaison) from $rubdeclinaison->table where 1 $search";
 		if($id != "") $query = "select * from $tmpdeclinaison->table where 1 $search";
-		$resul = mysql_query($query, $rubdeclinaison->link);
 
-		$nbres = mysql_num_rows($resul);
-		if(!$nbres) return "";
+		$resul = CacheBase::getCache()->mysql_query($query, $rubdeclinaison->link);
+		if($resul=="" || sizeof($resul)==0) return "";
 
-		while( $row = mysql_fetch_object($resul)){
+		foreach($resul as $row) {
 			
 			if($courante == "1" && ($row->id  != $declinaison))
 			   continue;
@@ -2754,13 +2701,13 @@
 		else if($classement == "alphainv") $order="order by titre desc";
 
 		$query = "select * from $tdeclidisp->table where 1 $search";
-		$resul = mysql_query($query, $tdeclidisp->link);
 		
 		$i=0;
 
 		$stockok = 0;
-						
-		while($row = mysql_fetch_object($resul)){
+		$resul = CacheBase::getCache()->mysql_query($query, $tdeclidisp->link);
+
+		foreach($resul as $row) {
 			
 				if($stockmini && $produit){
 					$stock = new Stock();
@@ -2783,16 +2730,17 @@
 			$liste2="";
 			if($liste != ""){
 				$query = "select * from $tdeclidispdesc->table where declidisp in ($liste) and lang='" . $_SESSION['navig']->lang . "' $order";
-				$resul = mysql_query($query, $tdeclidispdesc->link);
+				$resul = CacheBase::getCache()->mysql_query($query, $tdeclidispdesc->link);
+		
+				foreach($resul as $row) {
+						$liste2 .= "'" . $row->declidisp . "',";
+						$tabliste2[$i++] = $row->declidisp;
+				}
 			}		
 		
 		
 			$i=0;
 			
-			while($row = mysql_fetch_object($resul)){
-				$liste2 .= "'" . $row->declidisp . "',";
-				$tabliste2[$i++] = $row->declidisp;
-			}
 			$liste2 = substr($liste2, 0, strlen($liste2) - 1);
 
 		}
