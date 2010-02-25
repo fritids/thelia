@@ -270,7 +270,7 @@ function supprimer(id){
 	else{
 		for($i=0; $i<$totnbpage; $i++){ ?>
 	    	 <?php if($page != $i+1){ ?>
-	  	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>&classement=<?php echo($classement); ?><?php echo $lien_voir; ?>"><?php echo($i+1); ?></a> |
+	  	  		 <a href="<?php echo($_SERVER['PHP_SELF']); ?>?page=<?php echo($i+1); ?>&statut=<?php echo $_GET['statut']; ?><?php echo $lien_voir; ?>"><?php echo($i+1); ?></a> |
 	    	 <?php } else {?>
 	    		 <span class="selected"><?php echo($i+1); ?></span>
 	    		|
