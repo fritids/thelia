@@ -108,7 +108,7 @@ if($action == "ajouter"){
 			$mail->send();
 			?>
 				<input type="text"name="client" size="40" class="form" value="<?php echo $client->nom." ".$client->prenom; ?>">
-				<input type="hidden" name="id_client" value="<?php echo $client->ref; ?>">
+				<input type="hidden" name="id_client" id="id_client" value="<?php echo $client->ref; ?>">
 			<?php
 	}
 }
