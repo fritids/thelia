@@ -28,16 +28,19 @@
 	/* Moteur */
 	
 	error_reporting(E_ALL ^ E_NOTICE);
-	
+
+	include_once("classes/CacheBase.class.php");
 	include_once("classes/Navigation.class.php");
 	include_once("classes/Modules.class.php");
 
 	/* Inclusions nécessaires avant ouverture de la session */
 	$modules = new Modules();	
 	$query = "select * from $modules->table where actif='1'";
-	$resul = mysql_query($query, $modules->link);
 
-	while($row = mysql_fetch_object($resul))
+	
+	$resul = CacheBase::getCache()->mysql_query($query, $modules->link);
+
+	foreach($resul as $row)
 		if(file_exists("client/plugins/" . $row->nom . "/inclure_session.php"))
 			include_once("client/plugins/" . $row->nom . "/inclure_session.php");
 				

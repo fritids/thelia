@@ -230,8 +230,7 @@
 
 		$modules = new Modules();	
 		$query = "select * from $modules->table where nom='$type_fonction' and actif='1'";
-		$resul = mysql_query($query, $modules->link);
-		if(! mysql_num_rows($resul))
+		if(!CacheBase::getCache()->mysql_query_count($query, $modules->link))
 	   		return "";
 
 		$type_fonction[0] = strtoupper($type_fonction[0]);

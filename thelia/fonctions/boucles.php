@@ -1803,14 +1803,17 @@
  		$modules = new Modules();
 		
 		$query = "select * from $modules->table where type='1' and actif='1' $search order by classement";
-		$resul = mysql_query($query, $modules->link);
-		$nbres = mysql_num_rows($resul);
+	//	$resul = mysql_query($query, $modules->link);
+		$nbres = CacheBase::getCache()->mysql_query_count($query, $modules->link);
 	
 		if(!$nbres) return "";
 		
-
-		while( $row = mysql_fetch_object($resul)){
-
+		//$resul = mysql_query($query, $modules->link);
+			$resul = CacheBase::getCache()->mysql_query($query, $modules->link);
+		
+//		while($row = mysql_fetch_object($resul)){
+		foreach($resul as $row) {
+		
 			$modules = new Modules();
 			$modules->charger_id($row->id);
 			
@@ -2550,8 +2553,9 @@
 	
 		$query = "select * from $modules->table where type='2' and actif='1' $search order by classement";
 
-		$resul = mysql_query($query, $modules->link);
-		$nbres = mysql_num_rows($resul);
+		//$resul = mysql_query($query, $modules->link);
+		$nbres = CacheBase::getCache()->mysql_query_count($query, $modules->link);
+		
 		if(!$nbres) return "";
 
 		$pays = new Pays();

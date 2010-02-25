@@ -726,9 +726,12 @@ $reply\nFrom:$from\n".$mail_mime);
 			
 		$modules = new Modules();	
 		$query = "select * from $modules->table where actif='1' $search order by classement";
-		$resul = mysql_query($query, $modules->link);
+		//$resul = mysql_query($query, $modules->link);
+			$resul = CacheBase::getCache()->mysql_query($query, $modules->link);
 		
-		while($row = mysql_fetch_object($resul)){
+//		while($row = mysql_fetch_object($resul)){
+		foreach($resul as $row) {
+			
 			$nomclass = $row->nom;
 			$nomclass[0] = strtoupper($nomclass[0]);
 			
@@ -753,10 +756,10 @@ $reply\nFrom:$from\n".$mail_mime);
         
 		$modules = new Modules();	
 		$query = "select * from $modules->table where actif='1' order by classement";
-		$resul = mysql_query($query, $modules->link);
-
-		while($row = mysql_fetch_object($resul)){
-
+			$resul = CacheBase::getCache()->mysql_query($query, $modules->link);
+		
+		foreach($resul as $row) {
+		
 			$verif = new Modules();
 			$verif->charger_id($row->id);
 			if(! $verif->est_autorise())
