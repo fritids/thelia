@@ -40,9 +40,8 @@
 	        $resul3_cnx = mysql_query($query3_cnx, $cnx->link);
 	}
 
-	$query_cnx = "update variable set valeur='143' where nom='version'";
-	$resul_cnx = mysql_query($query_cnx, $cnx->link);
-	
+
+	@unlink(realpath(dirname(__FILE__)) . "/../../client/pdf/visudoc.php");
 	
 	//création des index
 	$query_cnx = "create index thelia_accessoires_produit_idx using btree on accessoire (produit)";
@@ -107,5 +106,8 @@
 	
 	$query_cnx = "create index thelia_statutdesc_statut_idx using btree on statutdesc (statut)";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+
 		
+	$query_cnx = "update variable set valeur='143' where nom='version'";
+	$resul_cnx = mysql_query($query_cnx, $cnx->link);
 ?>

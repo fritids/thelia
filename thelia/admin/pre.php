@@ -24,6 +24,11 @@
 /*************************************************************************************/
 ?>
 <?php
+
+	//if(strstr( $_SERVER['PHP_SELF'], "/admin/")){
+    //    echo "Erreur ... vous devez renommer le repertoire admin";exit;
+	//}
+
 	foreach ($_POST as $key => $value) $$key = $value;
 	foreach ($_GET as $key => $value) $$key = $value;
 

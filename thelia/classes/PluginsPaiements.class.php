@@ -47,7 +47,8 @@
 	
 	
 	class PluginsPaiements extends PluginsClassiques{
-
+		
+		var $defalqcmd = 1;
 		
 		function PluginsPaiements($nom=""){
 			$this->PluginsClassiques($nom);			
