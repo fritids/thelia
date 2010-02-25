@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=ISO-8859-1');
 include_once(realpath(dirname(__FILE__)) . "/../../classes/Administrateur.class.php");
 include_once(realpath(dirname(__FILE__)) . "/../../classes/Navigation.class.php");
 session_start();
