@@ -24,11 +24,6 @@
 /*************************************************************************************/
 ?>
 <?php
-	//Modif par Roadster31 - singleton de connexion à la BDD
-	// host --> votre serveur mysql
-    // login_mysql --> login de connexion
-    // password_mysql --> mot de passe de connexion
-    // db --> nom de la base de donnée
 
     class StaticConnection
     {
@@ -38,10 +33,10 @@
         {
             if (self::$db_handle == -1)
             {
-                $host= "votre_serveur";
-                $login_mysql= "votre_login_mysql";
-                $password_mysql= "votre_motdepasse_mysql";
-                $db = "bdd_sql";
+		           $host= "localhost";
+				 $login_mysql= "root";
+		         $password_mysql= "";
+				 $db = "theliaoptim";
                 
                 self::$db_handle = mysql_connect($host, $login_mysql, $password_mysql);
                 
@@ -51,6 +46,7 @@
                 } 
 
                 mysql_select_db($db, self::$db_handle);
+        
             }
             
             return self::$db_handle;
@@ -58,10 +54,16 @@
     }
 
     // Classe Cnx
+
+    // host --> votre serveur mysql
+    // login_mysql --> login de connexion
+    // password_mysql --> mot de passe de connexion
+    // db --> nom de la base de donnée
+    
     class Cnx{
 
-        var $table = "";
-        var $link="";
+		var $table = "";
+		var $link="";
         
         function Cnx() {        
             
