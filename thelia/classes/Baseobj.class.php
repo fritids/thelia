@@ -30,6 +30,27 @@
 	
 	class Baseobj extends Requete{
 
+        
+		function getVars($query){
+            if(! $resul = mysql_query($query, $this->link))
+                    return 0;
+
+			$row = mysql_fetch_object($resul);
+			if($row){
+				for($i=0; $i<count($this->bddvars); $i++){
+					$tempvar = $this->bddvars[$i];
+					$this->$tempvar =  $row->$tempvar;
+				}
+				
+			return 1;	
+			
+			} 
+			
+			else return 0;
+				
+			return mysql_num_rows($resul);
+		}
+		
 		var $bddvars = array();
 
 		function Baseobj(){
@@ -69,7 +90,7 @@
 		}
 		
 		
-		function getVars($query){
+		/*function getVars($query){
             if(! $resul = mysql_query($query, $this->link))
                     return 0;
 
@@ -87,7 +108,7 @@
 			else return 0;
 				
 			return mysql_num_rows($resul);
-		}
+		}*/
 	
 		function serialise_js(){
 			$this->host= "";
