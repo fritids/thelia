@@ -47,25 +47,43 @@
 	 * 
 	 * Pour mettre en cache le rŽsultat d'un COUNT SQL :
 	 * $cache->mysql_query_count("requete",$link)
+	 * 
+	 * Pour changer temporairement le LEVEL
+	 * $cache->switchLevel(x)  -> la prochaine opŽration (mysql_query...) se fera avec ce level temporaire
+	 * 
 	 */
 	class CacheBase
 	{
-		private $result_cache = array();
-		public static $AGE=30;
+		public static $AGE=30; // 
 		public static $LEVEL=1;
+		
+		
+		
+		private $levelhistory;		
+		private $result_cache = array();
 		// singleton
 		private static $cache=null;
 		private function CacheBase()
 		{
-			
+			$this->levelhistory=CacheBase::$LEVEL;
 		}
-		public function getCache()
+
+		public static function getCache()
 		{
 			if(!CacheBase::$cache)
 				CacheBase::$cache=new CacheBase();
 			return CacheBase::$cache;
 		}
 
+		public function switchLevel($level)
+		{
+			$this->levelhistory=CacheBase::$LEVEL;
+			CacheBase::$LEVEL=$level;
+		}
+		private function switchBackLevel()
+		{
+			CacheBase::$LEVEL=$this->levelhistory;
+		}
 		
 		private function getMemcache()
 		{
@@ -97,12 +115,8 @@
 			$retour=$this->result_cache[$hash];
 		    if (!$retour) // ce n'est pas dans le niveau 1
             {
-				try{
- 		           	$retour=$this->getCache2($key);
-				}
-				catch (Exception $e)
-				{ return FALSE; }
-            	if($retour==FALSE) // ce n'est pas dans le niveau 2
+ 	           	$retour=$this->getCache2($key);
+	           	if($retour==FALSE) // ce n'est pas dans le niveau 2
             		return FALSE;
             }
             return $retour;
@@ -132,7 +146,8 @@
 				}		
 				$this->set($query,$data);
             }
-                return $data;
+            $this->switchBackLevel();
+            return $data;
 		}
 
 		public function mysql_query_count($query,$link)
@@ -145,7 +160,8 @@
 				
 				$this->set($query,$num);
             }
-                return $num;
+            $this->switchBackLevel();
+            return $num;
 		}
 	}
 ?>
