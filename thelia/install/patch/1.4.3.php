@@ -60,7 +60,7 @@
 	$query_cnx = "create index thelia_commande_client_idx using btree on commande (client)";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 	
-	$query_cnx = "create index thelia_commande_ref_idx using btree on accessoire (ref(30))";
+	$query_cnx = "create index thelia_commande_ref_idx using btree on commande (ref(30))";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 	
 	$query_cnx = "create index thelia_contenudesc_contenu_idx using btree on contenudesc (contenu)";
