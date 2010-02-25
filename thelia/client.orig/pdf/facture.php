@@ -25,7 +25,7 @@
 ?>
 <?php
 	error_reporting(E_ALL ^ E_NOTICE);
-
+	
 	include_once("../../classes/Navigation.class.php");
 	include("../../classes/Administrateur.class.php");
 	include_once("../../classes/Commande.class.php");
@@ -62,5 +62,4 @@
 	
 	$facture = new Facture();
 	$facture->creer($_GET['ref']);
-	
 ?>

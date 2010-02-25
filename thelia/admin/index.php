@@ -71,6 +71,7 @@
           		Mot de passe :
              	<input name="motdepasse" type="password" class="form" size="19" />
              	<input name="action" type="hidden" value="identifier" />
+             	<input name="url" type="hidden" value="<?php if(isset($_GET['url'])) echo $_GET['url']; ?>" />
          		<input type="submit" value="valider"/>
          	</form>   
      </div>

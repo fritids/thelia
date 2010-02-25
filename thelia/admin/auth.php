@@ -28,9 +28,13 @@
 	include_once(realpath(dirname(__FILE__)) . "/../classes/Administrateur.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../classes/Navigation.class.php");
 	
-	
+	if(isset($_GET['url']))
+		$url = "?url=" . $_GET['url'];
+	else
+		$url = "";
+		
 	session_start();
-	if( ! isset($_SESSION["util"]->id) ) {header("Location: index.php");exit;}
+	if( ! isset($_SESSION["util"]->id) ) {header("Location: index.php$url");exit;}
 	
 	admin_inclure("pre");		
 	

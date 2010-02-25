@@ -23,19 +23,38 @@
 /*                                                                                   */
 /*************************************************************************************/
 ?>
-<?php
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>THELIA / BACK OFFICE</title>
+	<link rel="SHORTCUT ICON" href="favicon.ico" />
+	<link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
 
-	if(strstr( $_SERVER['PHP_SELF'], "/admin/")){
-        	header("Location: changerep.php"); exit;
-	}
+<body>
+<div id="wrapper">
+<div id="subwrapper">
+<div id="entete">
+	<div class="logo">
+		<a href="accueil.php"><img src="gfx/thelia_logo.jpg" alt="THELIA solution e-commerce" /></a>
+	</div>
+<div id="menuGeneral">
+	&nbsp;     
+</div>
 
-	foreach ($_POST as $key => $value) $$key = $value;
-	foreach ($_GET as $key => $value) $$key = $value;
+<div id="contenu_int">
 
-	error_reporting(E_ALL ^ E_NOTICE);
+	<div class="Bloc_news_index">
+		<div class="texte">Veuillez renommer votre r&eacute;pertoire admin avant de vous connecter ...</li></div>
+	</div>
 
-	include_once(realpath(dirname(__FILE__)) . "/config.php");
-	include_once(realpath(dirname(__FILE__)) . "/../fonctions/divers.php");
-	
 
-?>
+
+</div> 
+
+    <?php include_once("pied.php");?>
+</div>
+</div>
+</body>
+</html>
