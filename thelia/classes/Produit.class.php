@@ -24,13 +24,13 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/BaseobjCacheable.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Produitdesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Stock.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Image.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Document.class.php");
 		
-	class Produit extends Baseobj{
+	class Produit extends BaseobjCacheable{
 
 		var $id;
 		var $ref;

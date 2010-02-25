@@ -30,6 +30,11 @@
 	 * - utilisant les ŽlŽments static de PHP, permettant de s'assurer qu'une requete n'est pas exŽcutŽe 2 fois sur une meme page
 	 * - utilisant MEMCACHED
 	 * 
+	 * Configuration du niveau : attribut LEVEL
+	 * - LEVEL=0 : pas de cache
+	 * - LEVEL=1 : cache uniquement en memoire
+	 * - LEVEL=2 : cache en memoire et via memcached
+	 * 
 	 * fonctionne comme un Singleton :
 	 * $cache=CacheBase::getCache();
 	 * 
@@ -86,7 +91,9 @@
 		
 		public function get($key)
 		{
-		    $hash = hash('md5',$key);
+			if(CacheBase::$LEVEL==0) return FALSE;
+			
+			$hash = hash('md5',$key);
 			$retour=$this->result_cache[$hash];
 		    if (!$retour) // ce n'est pas dans le niveau 1
             {
@@ -102,6 +109,8 @@
 		}
 		public function set($key,$value)
 		{
+			if(CacheBase::$LEVEL==0) return;
+			
 		    $hash = hash('md5', $key);
 			$this->result_cache[$hash]=$value;
 			$this->setCache2($key,$value);			
@@ -112,8 +121,11 @@
          	$data=$this->get($query);
             if (!$data)
             {
-				$resul=mysql_query($query,$link);
-		
+            	if($link==null)
+					$resul=mysql_query($query);
+				else
+					$resul=mysql_query($query,$link);
+				
 				while($row = mysql_fetch_object($resul))
 				{
 					$data[]=$row;
