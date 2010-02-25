@@ -42,5 +42,70 @@
 
 	$query_cnx = "update variable set valeur='143' where nom='version'";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);
+	
+	
+	//création des index
+	$query_cnx = "create index thelia_accessoires_produit_idx using btree on accessoire (produit)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_caracdispdesc_caracdisp_idx using btree on caracdispdesc (caracdisp)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_caracteristiquedesc_caracteristique_idx using btree on caracteristiquedesc (caracteristique)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_client_ref_idx using btree on client (ref(30))";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_commande_client_idx using btree on commande (client)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_commande_ref_idx using btree on accessoire (ref(30))";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_contenudesc_contenu_idx using btree on contenudesc (contenu)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_declidispdesc_declidisp_idx using btree on declidispdesc (declidisp)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_declinaisondesc_declinaison_idx using btree on declinaisondesc (declinaison)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_rubriquedesc_rubrique_idx using btree on rubriquedesc (rubrique)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_venteprod_commande_idx using btree on venteprod (commande)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_ventedeclidisp_venteprod_idx using btree on ventedeclidisp (venteprod)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_documentdesc_document_idx using btree on documentdesc (document)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_dossierdesc_dossier_idx using btree on dossierdesc (dossier)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_imagesdesc_image_idx using btree on imagesdesc (image)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_messagedesc_message_idx using btree on messagedesc (message)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_modulesdesc_plugin_idx using btree on modulesdesc (plugin)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_paysdesc_pays_idx using btree on paysdesc (pays)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_produit_ref_idx using btree on produit (ref(30))";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_produitdesc_produit_idx using btree on produitdesc (produit)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	
+	$query_cnx = "create index thelia_statutdesc_statut_idx using btree on statutdesc (statut)";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 		
 ?>

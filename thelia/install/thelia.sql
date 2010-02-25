@@ -21,7 +21,8 @@ CREATE TABLE `accessoire` (
   `produit` int(11) NOT NULL default '0',
   `accessoire` int(11) NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_accessoire_produit_idx USING BTREE (produit)
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -108,7 +109,8 @@ CREATE TABLE `caracdispdesc` (
   `caracdisp` int(11) NOT NULL default '0',
   `lang` int(11) NOT NULL default '0',
   `titre` text NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_caracdispdesc_caracdisp_idx USING BTREE (caracdisp)
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -147,7 +149,8 @@ CREATE TABLE `caracteristiquedesc` (
   `titre` text NOT NULL,
   `chapo` text NOT NULL,
   `description` text NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_caracteristiquedesc_caracteristique_idx USING BTREE (caracteristique)
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -204,7 +207,8 @@ CREATE TABLE `client` (
   `type` smallint(6) NOT NULL default '0',
   `pourcentage` int(11) NOT NULL default '0',
   `lang` int(11) NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_client_ref_idx USING BTREE (ref(30))
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -238,7 +242,9 @@ CREATE TABLE `commande` (
   `paiement` int(11) NOT NULL default '0',
   `statut` smallint(6) NOT NULL default '0',
   `lang` int(11) NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_commande_client_idx USING BTREE (client),
+  INDEX thelia_commande_ref_idx USING BTREE (ref(30))
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -300,7 +306,8 @@ CREATE TABLE `contenudesc` (
   `description` text NOT NULL,
   `postscriptum` text NOT NULL,
   `lang` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_contenudesc_contenu_idx USING BTREE (contenu)
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -336,7 +343,8 @@ CREATE TABLE `declidispdesc` (
   `declidisp` int(11) NOT NULL default '0',
   `lang` int(11) NOT NULL default '0',
   `titre` text NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_declidispdesc_declidisp_idx USING BTREE (declidisp)
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -374,7 +382,8 @@ CREATE TABLE `declinaisondesc` (
   `titre` text NOT NULL,
   `chapo` text NOT NULL,
   `description` text NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_declinaisondesc_declinaison_idx USING BTREE (declinaison)
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -440,7 +449,8 @@ CREATE TABLE `documentdesc` (
   `titre` text NOT NULL,
   `chapo` text NOT NULL,
   `description` text NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_documentdesc_document_idx USING BTREE (document)
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -482,7 +492,8 @@ CREATE TABLE `dossierdesc` (
   `chapo` text NOT NULL,
   `description` text NOT NULL,
   `postscriptum` text NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_dossierdesc_dossier_idx USING BTREE (dossier)
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -543,7 +554,8 @@ CREATE TABLE `imagedesc` (
   `titre` text NOT NULL,
   `chapo` text NOT NULL,
   `description` text NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_imagedesc_image_idx USING BTREE (image)
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -609,7 +621,8 @@ CREATE TABLE `messagedesc` (
   `chapo` text NOT NULL,
   `description` text NOT NULL,
   `descriptiontext` text NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_messagedesc_message_idx USING BTREE (message)
 )  AUTO_INCREMENT=6 ;
 
 -- 
@@ -918,7 +931,8 @@ CREATE TABLE `paysdesc` (
   `titre` text NOT NULL,
   `chapo` text NOT NULL,
   `description` text NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_paysdesc_pays_idx USING BTREE (pays)
 )  AUTO_INCREMENT=835 ;
 
 -- 
@@ -1742,7 +1756,8 @@ CREATE TABLE `produit` (
   `poids` float NOT NULL default '0',
   `tva` float NOT NULL default '0',
   `classement` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_produit_ref_idx USING BTREE (ref(30))
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -1764,7 +1779,8 @@ CREATE TABLE `produitdesc` (
   `description` text NOT NULL,
   `postscriptum` text NOT NULL,
   `lang` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_produitdesc_produit_idx USING BTREE (produit)
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -1865,7 +1881,8 @@ CREATE TABLE `rubriquedesc` (
   `chapo` text NOT NULL,
   `description` text NOT NULL,
   `postscriptum` text NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_rubriquedesc_rubrique_idx USING BTREE (rubrique)
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -1908,7 +1925,8 @@ CREATE TABLE `statutdesc` (
   `titre` text NOT NULL,
   `chapo` text NOT NULL,
   `description` text NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_statutdesc_statut_idx USING BTREE (statut)
 )  AUTO_INCREMENT=33 ;
 
 -- 
@@ -2008,7 +2026,8 @@ CREATE TABLE `venteprod` (
   `prixu` float NOT NULL default '0',
   `tva` float NOT NULL default '0',
   `commande` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_venteprod_commande_idx USING BTREE (commande)
 )  AUTO_INCREMENT=1 ;
 
 -- 
@@ -2099,7 +2118,8 @@ CREATE TABLE `modulesdesc` (
   `chapo` text NOT NULL,
   `description` text NOT NULL,
   `devise` int(11) NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  INDEX thelia_moduledesc_plugin_idx USING BTREE (plugin(30))
 ) AUTO_INCREMENT=10;
 
 INSERT INTO `modulesdesc` (`id`, `plugin`, `lang`, `titre`, `chapo`, `description`, `devise`) VALUES 
@@ -2117,7 +2137,8 @@ INSERT INTO `modulesdesc` (`id`, `plugin`, `lang`, `titre`, `chapo`, `descriptio
 CREATE TABLE `ventedeclidisp` (
 `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 `venteprod` INT NOT NULL ,
-`declidisp` INT NOT NULL
+`declidisp` INT NOT NULL ,
+INDEX thelia_ventedeclidisp_venteprod_idx USING BTREE (venteprod)
 ) ;
 
 
