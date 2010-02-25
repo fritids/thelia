@@ -37,16 +37,15 @@
 	function lireTag($ligne, $tag, $filtre = ""){
 	
 		if( ! strstr($ligne, $tag)) return "";
-        preg_match("/$tag=\"([^\"]*)\"/", "$ligne", $res);
+        preg_match("/$tag=\"([^\"]*)\"/", "$ligne", $restag);
 
-        if(preg_match("/^([^\+]*)\+(.*)$/", $filtre, $res)){
-			$filtre = $res[1];
-			$complement = $res[2];
+        if(preg_match("/^([^\+]*)\+(.*)$/", $filtre, $resfiltre)){
+			$filtre = $resfiltre[1];
+			$complement = $resfiltre[2];
 		}
 			else $complement = "";
 	
-		return filtrevar($res[1], $filtre);
-	
+		return filtrevar($restag[1], $filtre, $complement);
 	}
 	
 	function lireParam($param, $filtre="", $methode=""){
@@ -58,22 +57,34 @@
 				$param = $_GET[$param];
 		else
 			$param = $_REQUEST[$param];
-		
-		return filtrevar($param, $filtre);			
+
+        if(preg_match("/^([^\+]*)\+(.*)$/", $filtre, $resfiltre)){
+			$filtre = $resfiltre[1];
+			$complement = $resfiltre[2];
+		}
+			else $complement = "";
+					
+		return filtrevar($param, $filtre, $complement);			
 			
 	}
 	
-	function filtrevar($var, $filtre){
+	function filtrevar($var, $filtre, $complement=""){
 		
+		if($filtre == "" || $var == "")
+			return $var;
+
 		switch($filtre){
-			case "int" : if(! preg_match("/^[0-9$complement]*$/", $var)) return ""; break;
-			case "string": if(! preg_match("/^[0-9a-Z$complement]*$/", $var)) return ""; break;
-			case "float" : if(! preg_match("/^[0-9\.$complement]*$/", $var)) return ""; break;
-			case "int_list": if(! preg_match("/^[0-9\,$complement]*$/", $var)) return ""; break;
-			case "string_list": if(! preg_match("/^[0-9a-Z\,$complement]*$/", $var)) return ""; break;
+			case "int" : if(! preg_match("/^[0-9$complement]*$/", $var)) $erreur = 1; break;
+			case "string": if(! preg_match("/^[0-9a-zA-Z\._ÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜİàáâãäåçèéêëìíîïğòóôõöùúûüıÿñ$complement]*$/", $var)) $erreur = 1; break;
+			case "float" : if(! preg_match("/^[0-9\.$complement]*$/", $var)) $erreur = 1; break;
+			case "int_list": if(! preg_match("/^[0-9\,$complement]*$/", $var)) $erreur = 1; break;
+			case "string_list": if(! preg_match("/^[0-9a-zA-Z\,\._ÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜİàáâãäåçèéêëìíîïğòóôõöùúûüıÿñ$complement]*$/", $var)) $erreur = 1; break;
 			default: break;
 		}		
 		
+		if($erreur == 1)
+			return "";
+			
 		return $var;
 		
 	}

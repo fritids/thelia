@@ -76,7 +76,7 @@
 		$courante = lireTag($args, "courante", "int");
 		$pasvide = lireTag($args, "pasvide", "int");
 		$ligne = lireTag($args, "ligne", "int");
-		$lien = lireTag($args, "lien", "string");
+		$lien = lireTag($args, "lien", "string+\/-\s\.\,;");
 		$classement = lireTag($args, "classement", "int");
 		$aleatoire = lireTag($args, "aleatoire", "int");
 		$exclusion = lireTag($args, "exclusion", "int_liste");
@@ -186,7 +186,7 @@
 		$num = lireTag($args, "num", "int");
 		$courant = lireTag($args, "courant", "int");
 		$ligne = lireTag($args, "ligne", "int");
-		$lien = lireTag($args, "lien", "string");
+		$lien = lireTag($args, "lien", "string+\/-\s\.\,;");
 		$aleatoire = lireTag($args, "aleatoire", "int");
 		$exclusion = lireTag($args, "exclusion", "int_liste");	
 		
@@ -263,22 +263,22 @@
 	function boucleImage($texte, $args){
 
 		// récupération des arguments
-		$produit = lireTag($args, "produit");
-		$id = lireTag($args, "id");
-		$num = lireTag($args, "num");
-		$nb = lireTag($args, "nb");
-		$debut = lireTag($args, "debut");
-		$deb = lireTag($args, "deb");
-		$rubrique = lireTag($args, "rubrique");
-		$largeur = lireTag($args, "largeur");
-		$hauteur = lireTag($args, "hauteur");
-		$dossier = lireTag($args, "dossier");
-		$contenu = lireTag($args, "contenu");
-		$opacite = lireTag($args, "opacite");
-		$noiretblanc = lireTag($args, "noiretblanc");
-		$miroir = lireTag($args, "miroir");
-		$aleatoire = lireTag($args, "aleatoire");
-		$exclusion = lireTag($args, "exclusion");	
+		$produit = lireTag($args, "produit", "int");
+		$id = lireTag($args, "id", "int");
+		$num = lireTag($args, "num", "int");
+		$nb = lireTag($args, "nb", "int");
+		$debut = lireTag($args, "debut", "int");
+		$deb = lireTag($args, "deb", "int");
+		$rubrique = lireTag($args, "rubrique", "int");
+		$largeur = lireTag($args, "largeur", "int");
+		$hauteur = lireTag($args, "hauteur", "int");
+		$dossier = lireTag($args, "dossier", "int");
+		$contenu = lireTag($args, "contenu", "int");
+		$opacite = lireTag($args, "opacite", "int");
+		$noiretblanc = lireTag($args, "noiretblanc", "int");
+		$miroir = lireTag($args, "miroir", "int");
+		$aleatoire = lireTag($args, "aleatoire", "int");
+		$exclusion = lireTag($args, "exclusion", "int_liste");	
 		
 		$search="";
 		$res="";
@@ -433,11 +433,11 @@
 		$id = lireTag($args, "id", "int");
 		$ref = lireTag($args, "ref", "string");
 		$raison = lireTag($args, "raison", "int");
-		$nom = lireTag($args, "nom", "string");
-		$prenom = lireTag($args, "prenom", "string");
+		$nom = lireTag($args, "nom", "string+\-\'\,\s\/\(\)\&");
+		$prenom = lireTag($args, "prenom", "string+\-\'\,\s\/\(\)\&");
 		$cpostal = lireTag($args, "cpostal", "int");
-		$ville = lireTag($args, "ville", "string");
-		$email = lireTag($args, "email", "string+@");
+		$ville = lireTag($args, "ville", "string+\s\'\/\&");
+		$email = lireTag($args, "email", "string+\@\.");
 		$pays = lireTag($args, "pays", "int");
 		$parrain = lireTag($args, "parrain", "int");
 		$revendeur = lireTag($args, "revendeur", "int");
@@ -706,23 +706,22 @@
 			$refp = lireTag($args, "ref", "string");
 			$id = lireTag($args, "id", "int");
 			$garantie = lireTag($args, "garantie", "int");
-			$motcle = lireTag($args, "motcle", "string");
+			$motcle = lireTag($args, "motcle", "string+\s\'");
 			$classement = lireTag($args, "classement", "string");
 			$aleatoire = lireTag($args, "aleatoire", "int");
 			$prixmin = lireTag($args, "prixmin", "float");
 			$prixmax = lireTag($args, "prixmax", "float");
-			$caracteristique = lireTag($args, "caracteristique", "string");
-			$caracdisp = lireTag($args, "caracdisp", "string");
-			$caracval = lireTag($args, "caracval", "string");
+			$caracteristique = lireTag($args, "caracteristique", "int+-");
+			$caracdisp = lireTag($args, "caracdisp", "int+-");
+			$caracval = lireTag($args, "caracval", "string+\s\'\/");
 			$typech = lireTag($args, "typech", "string");
-			$declinaison = lireTag($args, "declinaison", "string");			
-			$declidisp = lireTag($args, "declidisp", "string");
-			$declival = lireTag($args, "declival", "string");
+			$declinaison = lireTag($args, "declinaison", "int+-");			
+			$declidisp = lireTag($args, "declidisp", "int+-");
 			$declistockmini = lireTag($args, "declistockmini", "int");
 			$stockmini = lireTag($args, "stockmini", "int");
 			$courant = lireTag($args, "courant", "int");
 			$profondeur = lireTag($args, "profondeur", "int");		
-			$exclusion = lireTag($args, "exclusion", "string");
+			$exclusion = lireTag($args, "exclusion", "int");
 			$exclurub = lireTag($args, "exclurub", "int_list");			
 			$poids = lireTag($args, "poids", "float");
 			$stockvide = lireTag($args, "stockvide", "int");
@@ -1304,7 +1303,7 @@
         $objet = lireTag($args, "objet", "int");
         $typeobj = lireTag($args, "typeobj", "int");
         $contenu = lireTag($args, "contenu", "int");
-        $classement = lireTag($args, "classement", "classement");
+        $classement = lireTag($args, "classement", "string");
         $num = lireTag($args, "num", "int");
       	$deb = lireTag($args, "deb", "int");
 		
@@ -1363,7 +1362,7 @@
 			$typeaff = lireTag($args, "typeaff", "int");
 			$max = lireTag($args, "max", "int");
 			$affmin = lireTag($args, "affmin", "int");
-            $avance = lireTag($args, "avance", "string");
+            $avance = lireTag($args, "avance", "int");
 			$type_page = lireTag($args, "type_page", "int");
 			
 			$i="";
@@ -1976,8 +1975,8 @@
 		global $caracdisp;
 		
 		$caracteristique = lireTag($args, "caracteristique", "int");		
-		$etcaracteristique = lireTag($args, "etcaracteristique", "string");		
-		$etcaracdisp = lireTag($args, "etcaracdisp", "string");	
+		$etcaracteristique = lireTag($args, "etcaracteristique", "int+-");		
+		$etcaracdisp = lireTag($args, "etcaracdisp", "int+-");	
 		$stockmini = lireTag($args, "stockmini", "int");
 		$courante = lireTag($args, "courante", "int");
 		$rubrique = lireTag($args, "rubrique", "int");
@@ -2110,7 +2109,7 @@
 	function boucleCaracval($texte, $args){
 		$produit = lireTag($args, "produit", "int");
 		$caracteristique = lireTag($args, "caracteristique", "int");		
-		$valeur = lireTag($args, "valeur", "string");		
+		$valeur = lireTag($args, "valeur", "string+\s\'");		
 		$classement = lireTag($args, "classement", "string");
 		$article = lireTag($args, "article", "int");
 
@@ -2615,7 +2614,7 @@
 		@ini_set('default_socket_timeout', 5);
                 
 		// récupération des arguments
-                $url = lireTag($args, "url", "string");
+                $url = lireTag($args, "url", "string+\/:.");
                 $nb = lireTag($args, "nb", "int");
 				$deb = lireTag($args, "deb", "int");
 				
