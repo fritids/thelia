@@ -44,7 +44,9 @@
 			$this->Baseobj();
 		}
 
-		function charger($dossier, $lang=1){
+		function charger(){
+			$dossier = func_get_arg(0);
+            $lang = !is_null(@func_get_arg(1)) ? @func_get_arg(1) : 1;
 		
 			if($lang==0 || $lang=="") $lang=1;
 			

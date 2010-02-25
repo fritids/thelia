@@ -44,7 +44,9 @@
 			$this->Baseobj();
 		}
 
-		function charger($autorisation, $administrateur){
+		function charger(){
+			$autorisation = func_get_arg(0);
+			$administrateur = func_get_arg(1);
 			return $this->getVars("select * from $this->table where autorisation=\"$autorisation\" and administrateur=\"$administrateur\"");
 		}
 

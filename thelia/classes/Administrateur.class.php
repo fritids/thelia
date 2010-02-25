@@ -47,8 +47,9 @@
 			$this->Baseobj();
 		}
 
-		function charger($identifiant, $motdepasse){
-		
+		function charger(){
+			$identifiant = func_get_arg(0);
+			$motdepasse = func_get_arg(1);
 			$query = sprintf("select * from $this->table where identifiant='%s' and motdepasse=PASSWORD('%s')",
 			mysql_real_escape_string($identifiant),
 			mysql_real_escape_string($motdepasse));

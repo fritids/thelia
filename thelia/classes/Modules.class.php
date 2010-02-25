@@ -43,7 +43,8 @@
 			$this->Baseobj();	
 		}
 		
-		function charger($nom){
+		function charger(){
+			$nom = func_get_arg(0);
 			if($this->getVars("select * from $this->table where nom=\"$nom\"")){
 				$this->chargement_xml();	
 				return 1;

@@ -41,7 +41,8 @@
 		}
 
 
-		function charger($id){
+		function charger(){
+			$id = func_get_arg(0);
 			return $this->getVars("select * from $this->table where id=\"$id\"");
 
 		}

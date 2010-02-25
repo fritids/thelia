@@ -43,9 +43,10 @@
 			$this->Baseobj();
 		}
 
-		function charger($contenu, $lang=1){
-			if($lang==0 || $lang=="") $lang=1;
-			return $this->getVars("select * from $this->table where contenu=\"$contenu\" and lang=\"$lang\"");
+		function charger(){
+			$contenu = func_get_arg(0);
+            $lang = !is_null(@func_get_arg(1)) ? @func_get_arg(1) : 1;
+   			return $this->getVars("select * from $this->table where contenu=\"$contenu\" and lang=\"$lang\"");
 
 		
 		}

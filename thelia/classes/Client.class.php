@@ -59,8 +59,10 @@
 			$this->Baseobj();
 		}
 
-		function charger($email, $motdepasse){
-		
+		function charger(){
+			$email = func_get_arg(0);
+			$motdepasse = func_get_arg(1);
+					
 			$query = sprintf("select * from $this->table where email='%s' and motdepasse=PASSWORD('%s')",
 			mysql_real_escape_string($email),
 			mysql_real_escape_string($motdepasse));

@@ -41,7 +41,9 @@
 			$this->Baseobj();	
 		}
 
-		function charger($declidisp, $produit){
+		function charger(){
+			$declidisp = func_get_arg(0);
+			$produit = func_get_arg(0);
 			return $this->getVars("select * from $this->table where declidisp=\"$declidisp\" and produit=\"$produit\"");
 
 		}

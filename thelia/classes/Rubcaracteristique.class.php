@@ -39,8 +39,9 @@
 			$this->Baseobj();	
 		}
 		
-		function charger($rubrique, $caracteristique){
-		
+		function charger(){
+			$rubrique = func_get_arg(0);
+			$caracteristique = func_get_arg(0);
 			return $this->getVars("select * from $this->table where rubrique=\"$rubrique\" and caracteristique=\"$caracteristique\"");
 
 

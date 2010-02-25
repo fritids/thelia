@@ -42,7 +42,9 @@
 			$this->Baseobj();	
 		}
 		
-		function charger($produit, $caracteristique){
+		function charger(){
+			$produit = func_get_arg(0);
+			$caracteristique = func_get_arg(1);
 			return $this->getVars("select * from $this->table where produit=\"$produit\" and caracteristique=\"$caracteristique\"");
 
 

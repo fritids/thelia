@@ -47,9 +47,9 @@
 			$this->Baseobj();
 		}
 
-		function charger($document, $lang=1){
-			if($lang==0 || $lang=="") $lang=1;
-		
+		function charger(){
+			$document = func_get_arg(0);
+            $lang = !is_null(@func_get_arg(1)) ? @func_get_arg(1) : 1;		
 			return $this->getVars("select * from $this->table where document=\"$document\" and lang=\"$lang\"");
 
 		}

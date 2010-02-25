@@ -44,7 +44,8 @@
 			$this->Baseobj();	
 		}
 		
-		function charger($code){
+		function charger(){
+			$code = func_get_arg(0);
 			$datedj = date("Y-m-d H:i:s");
 		 	return $this->getVars("select * from $this->table where code=\"$code\" and (datefin>'$datedj' or datefin='0000-00-00') and utilise='0'");
 

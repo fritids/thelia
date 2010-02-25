@@ -42,7 +42,8 @@
 		}
 
 
-		function charger($nom){
+		function charger(){
+			$nom = func_get_arg(0);
 			return $this->getVars("select * from $this->table where nom=\"$nom\"");
 
 		}

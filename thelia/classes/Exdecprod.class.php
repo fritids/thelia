@@ -47,7 +47,9 @@
 		}
 
 		function charger($produit, $declidisp){
-		
+			$produit = func_get_arg(0);
+			$declidisp = func_get_arg(1);
+					
 			return $this->getVars("select * from $this->table where produit=\"$produit\" and declidisp=\"$declidisp\"");
 
 		}
