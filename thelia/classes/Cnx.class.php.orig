@@ -24,32 +24,51 @@
 /*************************************************************************************/
 ?>
 <?php
-	// Classe Cnx
-
+	//Modif par Roadster31 - singleton de connexion à la BDD
 	// host --> votre serveur mysql
-	// login_mysql --> login de connexion
-	// password_mysql --> mot de passe de connexion
-	// db --> nom de la base de donnée
-	
-	class Cnx{
+    // login_mysql --> login de connexion
+    // password_mysql --> mot de passe de connexion
+    // db --> nom de la base de donnée
 
-		var $host= "votre_serveur";
-		var $login_mysql= "votre_login_mysql";
-        var $password_mysql= "votre_motdepasse_mysql";
-		var $db = "bdd_sql";
-		var $table = "";
-		var $link="";
+    class StaticConnection
+    {
+        public static $db_handle = -1;
+        
+        public static function getHandle() 
+        {
+            if (self::$db_handle == -1)
+            {
+                $host= "votre_serveur";
+                $login_mysql= "votre_login_mysql";
+                $password_mysql= "votre_motdepasse_mysql";
+                $db = "bdd_sql";
+                
+                self::$db_handle = mysql_connect($host, $login_mysql, $password_mysql);
+                
+                if(! self::$db_handle && $_REQUEST['erreur'] != 1)
+                {
+                    header("Location: maintenance.php?erreur=1");
+                } 
 
-		function Cnx(){
-			$this->link = @mysql_connect($this->host, $this->login_mysql, $this->password_mysql);
-			if(! $this->link && $_REQUEST['erreur'] != 1)
-				header("Location: maintenance.php?erreur=1"); 
-				
-			mysql_select_db($this->db, $this->link);
+                mysql_select_db($db, self::$db_handle);
+            }
+            
+            return self::$db_handle;
+        }
+    }
 
-		}
+    // Classe Cnx
 
+  
+    
+    class Cnx{
 
-	}
-
+        var $table = "";
+        var $link="";
+        
+        function Cnx() {        
+            
+            $this->link = StaticConnection::getHandle();
+        }
+    }
 ?>
