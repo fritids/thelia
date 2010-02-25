@@ -93,7 +93,7 @@
 	$query_cnx = "create index thelia_messagedesc_message_idx using btree on messagedesc (message)";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 	
-	$query_cnx = "create index thelia_modulesdesc_plugin_idx using btree on modulesdesc (plugin)";
+	$query_cnx = "create index thelia_modulesdesc_plugin_idx using btree on modulesdesc (plugin(30))";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 	
 	$query_cnx = "create index thelia_paysdesc_pays_idx using btree on paysdesc (pays)";
