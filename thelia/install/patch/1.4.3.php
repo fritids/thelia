@@ -87,7 +87,7 @@
 	$query_cnx = "create index thelia_dossierdesc_dossier_idx using btree on dossierdesc (dossier)";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 	
-	$query_cnx = "create index thelia_imagesdesc_image_idx using btree on imagesdesc (image)";
+	$query_cnx = "create index thelia_imagedesc_image_idx using btree on imagedesc (image)";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 	
 	$query_cnx = "create index thelia_messagedesc_message_idx using btree on messagedesc (message)";
