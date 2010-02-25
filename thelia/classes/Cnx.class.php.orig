@@ -58,9 +58,6 @@
     }
 
     // Classe Cnx
-
-  
-    
     class Cnx{
 
         var $table = "";
