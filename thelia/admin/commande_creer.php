@@ -339,9 +339,10 @@ function valid(){
 				<?php
 					$modules = new Modules();
 					$query = "select * from $modules->table where type=2 and actif=1";
-					$resul = mysql_query($query,$modules->link);
-					while($row = mysql_fetch_object($resul)){
-						$modulesdesc = new Modulesdesc();
+			$resul = CacheBase::getCache()->mysql_query($query, $modules->link);
+		
+		foreach($resul as $row) {
+											$modulesdesc = new Modulesdesc();
 						$modulesdesc->charger($row->nom);
 						?>
 						<option value="<?php echo $row->id; ?>"><?php echo $modulesdesc->titre; ?></option>

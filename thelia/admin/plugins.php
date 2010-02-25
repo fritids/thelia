@@ -130,10 +130,12 @@
 
 <?php	
 	$query = "select * from $modules->table where type='3'";
-	$resul = mysql_query($query, $modules->link);
-	
-	while($row = mysql_fetch_object($resul)){
-			
+		//$resul = mysql_query($query, $modules->link);
+			$resul = CacheBase::getCache()->mysql_query($query, $modules->link);
+		
+//		while($row = mysql_fetch_object($resul)){
+		foreach($resul as $row) {
+				
 		 $i++;
 	
 		if(!($i%2)) $fond="claire";
@@ -177,10 +179,12 @@
 	
 <?php	
 	$query = "select * from $modules->table where type='1'";
-	$resul = mysql_query($query, $modules->link);
-	
-	while($row = mysql_fetch_object($resul)){
-			
+		//$resul = mysql_query($query, $modules->link);
+			$resul = CacheBase::getCache()->mysql_query($query, $modules->link);
+		
+//		while($row = mysql_fetch_object($resul)){
+		foreach($resul as $row) {
+				
 		 $i++;
 	
 		if(!($i%2)) $fond="fonce";
@@ -219,10 +223,12 @@
 	<li class="entete_configuration">LISTE DES PLUGINS TRANSPORTS</li>
 <?php	
 	$query = "select * from $modules->table where type='2'";
-	$resul = mysql_query($query, $modules->link);
-	
-	while($row = mysql_fetch_object($resul)){
-			
+		//$resul = mysql_query($query, $modules->link);
+			$resul = CacheBase::getCache()->mysql_query($query, $modules->link);
+		
+//		while($row = mysql_fetch_object($resul)){
+		foreach($resul as $row) {
+				
 		 $i++;
 	
 		if(!($i%2)) $fond="claire";
