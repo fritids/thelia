@@ -74,11 +74,13 @@
 			return $var;
 
 		switch($filtre){
+			// .*[^0-9A-Za-zÀ-ÿ].*
+			
 			case "int" : if(! preg_match("/^[0-9$complement]*$/", $var)) $erreur = 1; break;
-			case "string": if(! preg_match("/^[0-9a-zA-Z\._ÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜİàáâãäåçèéêëìíîïğòóôõöùúûüıÿñ$complement]*$/", $var)) $erreur = 1; break;
-			case "float" : if(! preg_match("/^[0-9\.$complement]*$/", $var)) $erreur = 1; break;
+			case "string": if(! preg_match("/^[0-9a-zA-Z\._\-ÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜİàáâãäåçèéêëìíîïğòóôõöùúûüıÿñ$complement]*$/", $var)) $erreur = 1; break;
+			case "float" : if(! preg_match("/^[0-9\.\,$complement]*$/", $var)) $erreur = 1; break;
 			case "int_list": if(! preg_match("/^[0-9\,$complement]*$/", $var)) $erreur = 1; break;
-			case "string_list": if(! preg_match("/^[0-9a-zA-Z\,\._ÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜİàáâãäåçèéêëìíîïğòóôõöùúûüıÿñ$complement]*$/", $var)) $erreur = 1; break;
+			case "string_list": if(! preg_match("/^[0-9a-zA-Z\,\._\-ÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜİàáâãäåçèéêëìíîïğòóôõöùúûüıÿñ$complement]*$/", $var)) $erreur = 1; break;
 			default: break;
 		}		
 		

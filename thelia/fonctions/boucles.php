@@ -433,10 +433,10 @@
 		$id = lireTag($args, "id", "int");
 		$ref = lireTag($args, "ref", "string");
 		$raison = lireTag($args, "raison", "int");
-		$nom = lireTag($args, "nom", "string+\-\'\,\s\/\(\)\&");
-		$prenom = lireTag($args, "prenom", "string+\-\'\,\s\/\(\)\&");
+		$nom = lireTag($args, "nom", "string+\-\'\,\s\/\(\)\&\"");
+		$prenom = lireTag($args, "prenom", "string+\-\'\,\s\/\(\)\&\"");
 		$cpostal = lireTag($args, "cpostal", "int");
-		$ville = lireTag($args, "ville", "string+\s\'\/\&");
+		$ville = lireTag($args, "ville", "string+\s\'\/\&\"");
 		$email = lireTag($args, "email", "string+\@\.");
 		$pays = lireTag($args, "pays", "int");
 		$parrain = lireTag($args, "parrain", "int");
