@@ -200,7 +200,7 @@
 		
 		// preparation de la requete
 		$search .=" and ligne='$ligne'";
-		if($id!="")  $search.=" and id=\"$id\"";
+		if($id!="") $search.=" and id in($id)";
 		if($lien!="")  $search.=" and $rubrique->table.lien in ($lien)";
 		if($parent!="") $search.=" and parent=\"$parent\"";
 		if($courant == "1") $search .=" and id='$id_dossier'";
@@ -1173,7 +1173,7 @@
 			
 			$search .= " and ligne=\"$ligne\"";
 
-			if($id!="") $search .= " and id=\"$id\"";				 
+			if($id!="") $search.=" and id in($id)";
 			if($courant == "1") $search .=" and id='$id_contenu'";
 			else if($courant == "0") $search .=" and id!='$id_contenu'";
 			if($exclusion!="") $search .= " and id not in($exclusion)";
