@@ -24,14 +24,14 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/BaseobjCacheable.class.php");
 
 	// Classe Activite
 
 	// id --> identifiant activite
 	// desc --> nom de l'activité
 	
-	class Declinaisondesc extends Baseobj{
+	class Declinaisondesc extends BaseobjCacheable{
 
 		var $id;
 		var $declinaison;

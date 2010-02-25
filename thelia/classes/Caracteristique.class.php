@@ -24,10 +24,10 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/BaseobjCacheable.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Caracteristiquedesc.class.php");
 		
-	class Caracteristique extends Baseobj{
+	class Caracteristique extends BaseobjCacheable{
 
 		var $id;
 		var $affiche;

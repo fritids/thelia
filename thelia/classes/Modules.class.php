@@ -24,10 +24,10 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/BaseobjCacheable.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Autorisation_modules.class.php");
 
-	class Modules extends Baseobj{
+	class Modules extends BaseobjCacheable{
 
 		var $id;
 		var $nom;

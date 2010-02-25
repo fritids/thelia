@@ -24,9 +24,9 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/BaseobjCacheable.class.php");
 		
-	class Devise extends Baseobj{
+	class Devise extends BaseobjCacheable{
 
 		var $id;
 		var $nom;

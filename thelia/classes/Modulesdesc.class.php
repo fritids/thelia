@@ -24,9 +24,9 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/BaseobjCacheable.class.php");
 
-	class Modulesdesc extends Baseobj{
+	class Modulesdesc extends BaseobjCacheable{
 
 		var $id;
 		var $plugin;

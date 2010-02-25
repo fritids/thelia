@@ -24,11 +24,11 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/BaseobjCacheable.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Declinaisondesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Declidisp.class.php");
 		
-	class Declinaison extends Baseobj{
+	class Declinaison extends BaseobjCacheable{
 
 		var $id;
 		var $classement;

@@ -24,7 +24,7 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/BaseobjCacheable.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Caracdispdesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Caracval.class.php");
 
@@ -33,7 +33,7 @@
 	// id --> identifiant activite
 	// desc --> nom de l'activité
 	
-	class Caracdisp extends Baseobj{
+	class Caracdisp extends BaseobjCacheable{
 
 		var $id;
 		var $caracteristique;

@@ -24,13 +24,13 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/BaseobjCacheable.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Dossierdesc.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Contenu.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Image.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Document.class.php");
 	
-	class Dossier extends Baseobj{
+	class Dossier extends BaseobjCacheable{
 
 		var $id;
 		var $parent;

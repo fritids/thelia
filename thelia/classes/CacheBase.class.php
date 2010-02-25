@@ -28,7 +28,7 @@
 	/*
 	 * Outil de cache à deux niveaux :
 	 * - utilisant les éléments static de PHP, permettant de s'assurer qu'une requete n'est pas exécutée 2 fois sur une meme page
-	 * - utilisant MEMCACHED
+	 * - utilisant MEMCACHE
 	 * 
 	 * Configuration du niveau : attribut LEVEL
 	 * - LEVEL=0 : pas de cache

@@ -24,9 +24,9 @@
 /*************************************************************************************/
 ?>
 <?php
-	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/BaseobjCacheable.class.php");
 
-	class Dossierdesc extends Baseobj{
+	class Dossierdesc extends BaseobjCacheable{
 
 		var $id;
 		var $dossier;
