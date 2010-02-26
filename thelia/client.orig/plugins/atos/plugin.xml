@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding='UTF-8'?>
 <plugin>
-	<nom>Alerte stock</nom>
+	<nom>Atos</nom>
  	<version>1.0</version>
- 	<prefix>alertstock</prefix>
+ 	<prefix>atos</prefix>
 	<type>classique</type>
  	<auteur>Yoan De Macedo - yoan@octolys.fr</auteur>
  	<thelia>1.4.0</thelia>
- 	<description>Ce plugin vous avertira par mail lorsque le stock d'un produit sera inférieur à une quantité paramétrée.</description>
-	<lien>http://contrib.thelia.fr/spip.php?article53</lien>
+ 	<description>Module de paiement Atos.</description>
+	<lien></lien>
 	<documentation>Readme.txt</documentation>
  	<etat>production</etat>
-	<install>http://contrib.thelia.fr/IMG/zip/alertstock.zip</install>
+	<install></install>
 </plugin>

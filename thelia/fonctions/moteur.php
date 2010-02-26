@@ -113,7 +113,6 @@ function analyse($res){
 	if(!isset($res)) $res="";
 	if(!isset($lang)) $lang="";
 	if(!isset($devise)) $devise="";
-	if(!isset($parsephp)) $parsephp="";
 	if(!isset($securise)) $securise=0;
 	if(!isset($panier)) $panier=0;
 	if(!isset($pageret)) $pageret=0;	
@@ -273,12 +272,6 @@ function analyse($res){
 
 	// inclusions des plugins filtres
 	modules_fonction("post");
-
-	if($parsephp == 1){
-    	$res=str_replace('<'.'?php','<'.'?',$res);
-    	$res='?'.'>'.trim($res).'<'.'?';
-    	$res = eval($res);
-	}
 		
 	echo $res;
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<plugin>
+	<nom>ParsePHP</nom>
+ 	<version>1.0</version>
+ 	<prefix>parsephp</prefix>
+	<type>classique</type>
+ 	<auteur>Yoan De Macedo - yoan@octolys.fr</auteur>
+ 	<thelia>1.4.0</thelia>
+ 	<description>Ce plugin permet d'ajouter du PHP dans les squelettes.</description>
+	<lien>http://contrib.thelia.fr/spip.php?article</lien>
+	<documentation>Readme.txt</documentation>
+ 	<etat>production</etat>
+	<install>http://contrib.thelia.fr/IMG/zip/parsephp.zip</install>
+</plugin>
