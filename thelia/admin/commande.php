@@ -76,9 +76,6 @@ function tri(order,critere){
 		$tempcmd = new Commande();
 		$tempcmd->charger($id);
 		
-		$tempcmd->statut = "5";
-		$tempcmd->maj();
-
 		$modules = new Modules();
 		$modules->charger_id($tempcmd->paiement);
 
@@ -90,7 +87,7 @@ function tri(order,critere){
 
 		// On remet le stock si il a été défalqué
 
-		if($modpaiement->defalqcmd){
+        if($modpaiement->defalqcmd || (! $modpaiement->defalqcmd && $tempcmd->statut != "1")){
    			$venteprod = new Venteprod();
    			$query = "select * from $venteprod->table where commande='" . $id . "'";
    			$resul = mysql_query($query, $venteprod->link);
@@ -120,6 +117,9 @@ function tri(order,critere){
 			}
 		}
 
+		$tempcmd->statut = "5";
+		$tempcmd->maj();
+		
 		modules_fonction("statut", $tempcmd);
 		
 	}

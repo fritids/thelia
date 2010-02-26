@@ -26,6 +26,7 @@
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Venteprod.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Ventedeclidisp.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Modules.class.php");
 
 	class Commande extends Baseobj{
@@ -117,14 +118,14 @@
 
 			if(! $modpaiement->defalqcmd){
 	   			$venteprod = new Venteprod();
-	   			$query = "select * from $venteprod->table where commande='" . $id . "'";
+	   			$query = "select * from $venteprod->table where commande='" . $this->id . "'";
 	   			$resul = mysql_query($query, $venteprod->link);
 
 				while($row = mysql_fetch_object($resul)){
 					// incrémentation du stock général
 	    			$produit = new Produit();   
 					$produit->charger($row->ref);
-					$produit->stock = $produit->stock + $row->quantite;
+					$produit->stock = $produit->stock - $row->quantite;
 	    			$produit->maj();
 
 					$vdec = new Ventedeclidisp();
@@ -136,7 +137,7 @@
 					while($row2 = mysql_fetch_object($resul2)){
 						$stock = new Stock();
 						if($stock->charger($row2->declidisp, $produit->id)){
-							$stock->valeur = $stock->valeur + $row->quantite;
+							$stock->valeur = $stock->valeur - $row->quantite;
 							$stock->maj();					
 						}
 
