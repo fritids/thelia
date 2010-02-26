@@ -57,7 +57,7 @@
 		$texte = str_replace("#PRODUIT_PRIXMAX", "$prixmax", $texte);
 		$texte = str_replace("#PRODUIT_NOUVEAUTE", "$nouveaute", $texte);
 		$texte = str_replace("#PRODUIT_PROMO", "$promo", $texte);
-		$texte = str_replace("#PRODUIT_MOTCLE", "$motcle", $texte);
+		$texte = str_replace("#PRODUIT_MOTCLE", str_replace("'","&#x27;",$motcle), $texte);
    	 	$texte = str_replace("#PRODUIT_REFORIG", "$reforig", $texte);
 		$texte = str_replace("#PRODUIT_REF", "$ref", $texte);
 						
