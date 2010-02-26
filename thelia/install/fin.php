@@ -35,7 +35,7 @@
     $var->valeur=genpass(40);
     $var->maj();
 
-	rename("../admin/","../".$_POST["nomadmin"].);
+	rename("../admin/","../".$_POST["nomadmin"]."/");
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -97,7 +97,7 @@
 				
 				<br /><br />
 				
-				<form action="../admin/index.php" method="post">				
+				<form action="../<?php echo $_POST["nomadmin"] ?>/index.php" method="post">				
 					<input type="submit" value="Continuer" />
 				</form>
 				
