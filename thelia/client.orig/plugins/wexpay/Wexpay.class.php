@@ -29,6 +29,8 @@
 	
 	class Wexpay extends PluginsPaiements{
 
+		var $defalqcmd = 0;
+
 		function init(){
 			$this->ajout_desc("weXpay", "weXpay", "", 1);
 	

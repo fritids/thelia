@@ -29,6 +29,8 @@
 	
 	class Ogone extends PluginsPaiements{
 
+		var $defalqcmd = 0;
+
 		function init(){
 			$this->ajout_desc("CB", "CB", "", 1);
 	

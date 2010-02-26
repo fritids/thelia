@@ -29,6 +29,7 @@
 	
 	class Spplus extends PluginsPaiements{
 
+		var $defalqcmd = 0;
 
 		function Spplus(){
 			$this->PluginsPaiements("spplus");

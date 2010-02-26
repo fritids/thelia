@@ -148,6 +148,12 @@
 		$modules = new Modules();
 		$modules->charger_id($type_paiement);
 
+		$nomclass=$modules->nom;
+		$nomclass[0] = strtoupper($nomclass[0]);
+
+		include_once("client/plugins/" . $modules->nom . "/" . $nomclass . ".class.php");
+		$tmpobj = new $nomclass();
+
 		$commande = new Commande();
 		$commande->transport = $_SESSION['navig']->commande->transport;
 		$commande->client = $_SESSION['navig']->client->id;
@@ -367,15 +373,9 @@
 		$_SESSION['navig']->commande->total = $total;
 
 		modules_fonction("aprescommande", $commande);
-				
-		$nomclass=$modules->nom;
-		$nomclass[0] = strtoupper($nomclass[0]);
-
-		include_once("client/plugins/" . $modules->nom . "/" . $nomclass . ".class.php");
-		
+						
  		modules_fonction("mail", $commande, $modules->nom);
 				
-		$tmpobj = new $nomclass();
 		$tmpobj->paiement($commande);
 
 	}

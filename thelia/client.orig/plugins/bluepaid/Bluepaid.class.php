@@ -34,6 +34,8 @@
 		var $alpha3;
 		var $alpha2;
 		var $code;
+
+		var $defalqcmd = 0;
 		
 		var $table = "bluepaid_pays";
 		

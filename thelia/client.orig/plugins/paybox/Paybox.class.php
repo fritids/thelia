@@ -29,6 +29,7 @@
 	
 	class Paybox extends PluginsPaiements{
 
+		var $defalqcmd = 0;
 
 		function Paybox(){
 			$this->PluginsPaiements("paybox");

@@ -30,6 +30,7 @@
 	
 	class Cic extends PluginsPaiements{
 
+		var $defalqcmd = 0;
 
 		function Cic(){
 			$this->PluginsPaiements("cic");
