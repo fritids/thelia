@@ -27,6 +27,7 @@
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Cache.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Modulesdesc.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/CacheBase.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/../fonctions/divers.php");
 
 	
