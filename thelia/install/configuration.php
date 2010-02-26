@@ -2,9 +2,8 @@
 	
 	include_once("../classes/Cnx.class.php");
 	include_once("../fonctions/divers.php");
-	$cnx = new Cnx();
 	
-	mysql_connect($cnx->host, $cnx->login_mysql, $cnx->password_mysql);
+	mysql_connect(Cnx::$host, Cnx::$login_mysql, Cnx::$password_mysql);
 	$base=$_POST['choixbase'];
 	
 	// est ce que l'utilisateur a demande a creer une nouvelle base ?

@@ -25,10 +25,7 @@
 ?>
 <?php
 	//Modif par Roadster31 - singleton de connexion à la BDD
-	// host --> votre serveur mysql
-    // login_mysql --> login de connexion
-    // password_mysql --> mot de passe de connexion
-    // db --> nom de la base de donnée
+	
 
     class StaticConnection
     {
@@ -43,14 +40,14 @@
                 $password_mysql= "votre_motdepasse_mysql";
                 $db = "bdd_sql";
                 
-                self::$db_handle = mysql_connect($host, $login_mysql, $password_mysql);
+                self::$db_handle = mysql_connect(Cnx::$host, Cnx::$login_mysql, Cnx::$password_mysql);
                 
                 if(! self::$db_handle && $_REQUEST['erreur'] != 1)
                 {
                     header("Location: maintenance.php?erreur=1");
                 } 
 
-                mysql_select_db($db, self::$db_handle);
+                mysql_select_db(Cnx::$db, self::$db_handle);
             }
             
             return self::$db_handle;
@@ -58,7 +55,16 @@
     }
 
     // Classe Cnx
+	// host --> votre serveur mysql
+    // login_mysql --> login de connexion
+    // password_mysql --> mot de passe de connexion
+    // db --> nom de la base de donnée
     class Cnx{
+
+		public static $host= "votre_serveur";
+        public static $login_mysql= "votre_login_mysql";
+        public static $password_mysql= "votre_motdepasse_mysql";
+        public static $db = "bdd_sql";
 
         var $table = "";
         var $link="";
