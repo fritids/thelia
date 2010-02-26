@@ -112,7 +112,7 @@
 			if(CacheBase::$LEVEL==0) return FALSE;
 			
 			$hash = hash('md5',$key);
-			$retour=$this->result_cache[$hash];
+			$retour = !isset($this->result_cache[$hash]) ? FALSE : $this->result_cache[$hash];
 		    if (!$retour) // ce n'est pas dans le niveau 1
             {
  	           	$retour=$this->getCache2($key);
