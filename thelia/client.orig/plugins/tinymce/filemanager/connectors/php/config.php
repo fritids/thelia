@@ -15,7 +15,6 @@
  * File Authors:
  * 		Grant French (grant@mcpuk.net)
  */
-session_start();
 
 include_once( realpath(dirname(__FILE__)) . "/../../../../../../classes/Variable.class.php");
 

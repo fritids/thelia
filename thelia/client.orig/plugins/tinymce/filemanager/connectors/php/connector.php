@@ -1,4 +1,10 @@
-<?php /*
+<?php
+        include_once(realpath(dirname(__FILE__)) . "/../../../../../../fonctions/authplugins.php");
+
+        autorisation("tinymce");
+?>
+<?php 
+/*
  * FCKeditor - The text editor for internet
  * Copyright (C) 2003-2005 Frederico Caldeira Knabben
  * 
