@@ -322,7 +322,7 @@
 		
 		$compt=1;
 		$result = CacheBase::getCache()->mysql_query($query, $image->link);
-		if(sizeof($result)==0) return "";
+		if($result=="" || sizeof($result)==0) return "";
 
 		foreach($result as $row) {
 			$image = new Image();
