@@ -45,7 +45,7 @@
 
 		function charger(){
 			$contenu = func_get_arg(0);
-            $lang = !is_null(@func_get_arg(1)) ? @func_get_arg(1) : 1;
+            $lang = (func_num_args() > 2) ? func_get_arg(1) : 1;
    			return $this->getVars("select * from $this->table where contenu=\"$contenu\" and lang=\"$lang\"");
 
 		
