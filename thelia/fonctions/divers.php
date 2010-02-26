@@ -632,20 +632,7 @@
   return mail($to, $sujet, $texte.$attachement, "Reply-to:
 $reply\nFrom:$from\n".$mail_mime); 
 }
-	
-	// sérialisation de tableau
-   function tabSerialise($tab){
- 	  	$res = "[";
-   	
-  	 	for($i=0; $i<count($tab); $i++)
-   			$res .= $tab[$i]->serialise_js() . ",";
-   
-   	 $res = substr($res, 0, strlen($res)-1);
-  	 $res .= "]";
-   
-   	return $res;
-  } 
-  
+
   // suppression d'accent
   function supprAccent($texte) {
   

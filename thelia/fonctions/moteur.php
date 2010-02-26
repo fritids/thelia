@@ -123,10 +123,10 @@ function analyse($res){
 	if(!isset($pagesess)) $pagesess=0;
 	if(!$lang)
         if(!isset($_REQUEST['lang'])) $lang=""; 
-			else $lang = lireParam($_REQUEST['lang'], "int");
-			
+			else $lang = lireParam($_REQUEST['lang'], "int");			
 	if(!$devise)
-        if(!isset($_REQUEST['devise'])) $devise=""; else lireParam("devise", "int");
+        if(!isset($_REQUEST['devise'])) $devise=""; 
+			else lireParam("devise", "int");
 	if(!isset($_REQUEST['action'])) $action=""; else $action=lireParam("action", "string");
 	if(!isset($_REQUEST['append'])) $append=0; else $append=lireParam("append", "int");
 	if(!isset($_REQUEST['id'])) $id="";	else $id=lireParam("id", "int");
