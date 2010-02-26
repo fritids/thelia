@@ -972,7 +972,7 @@
             
 		$resul = CacheBase::getCache()->mysql_query($query, $produit->link);
 		if($resul=="" || sizeof($resul)==0) return "";
-		print_r($resul);
+
 		$saveReq = "select * from $produit->table where 1 $search";
 
 		// substitutions
