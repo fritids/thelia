@@ -97,7 +97,11 @@
 			$corps2 = $msgdesc->description;
 		
 			$emailcontact = new Variable();
-			$emailcontact->charger("emailcontact");	
+			$emailcontact->charger("emailcontact");
+			
+			$emailfrom = new Variable();
+			$emailfrom->charger("emailfrom");
+						
 			$sujet2 = $this->substitmail($msgdesc->titre, $commande);
 			$corps2 = $this->substitmail($corps2, $commande);
 			$corpstext2 = $msgdesc->descriptiontext;
@@ -114,7 +118,7 @@
 			$mailclient = new Mail();
 			$mailclient->IsMail();
 			$mailclient->FromName = $nomsite->valeur;
-			$mailclient->From = $emailcontact->valeur;
+			$mailclient->From = $emailfrom->valeur;
 			$mailclient->Subject = $sujet;
 			$mailclient->MsgHTML($corps);
 			$mailclient->AltBody = $corpstext;
@@ -126,7 +130,7 @@
 			$mail = new Mail();
 			$mail->IsMail();
 			$mail->FromName = $nomsite->valeur;
-			$mail->From = $emailcontact->valeur;
+			$mail->From = $emailfrom->valeur;
 			$mail->Subject = $sujet2;
 			$mail->MsgHTML($corps2);
 			$mail->AltBody = $corpstext2;
