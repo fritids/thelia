@@ -25,6 +25,7 @@
 ?>
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/Requete.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/CacheBase.class.php");
 	
 	// Classe Baseobj
 	
