@@ -256,7 +256,7 @@
 		
 				if(is_numeric($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur) && $modpaiement->defalqcmd){
                 
-					// diminution des stocks de déclinaison
+					// diminution des stocks de déclinaison si on est sur un module de paiement qui défalque de suite
 					$stock->charger($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur, $_SESSION['navig']->panier->tabarticle[$i]->produit->id);
                 	$stock->valeur-=$_SESSION['navig']->panier->tabarticle[$i]->quantite;
                 	$stock->maj();
@@ -277,7 +277,8 @@
 			}			
 
 			
-			// diminution des stocks classiques
+			// diminution des stocks classiques si on est sur un module de paiement qui défalque de suite
+			
 			$produit = new Produit();
 			$produit->charger($_SESSION['navig']->panier->tabarticle[$i]->produit->ref);
 		

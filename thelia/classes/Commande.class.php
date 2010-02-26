@@ -103,6 +103,8 @@
 			if(mysql_result($resul, 0, "mfact")>0) $this->facture = mysql_result($resul, 0, "mfact") + 1;
 			else $this->facture = 1000;			
 
+
+			// On defalque le stock si ça n'a pas été fait
 			$modules = new Modules();
 			$modules->charger_id($this->paiement);
 

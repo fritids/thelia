@@ -88,6 +88,8 @@ function tri(order,critere){
 		include_once("../client/plugins/" . $modules->nom . "/" . $nomclass . ".class.php");
 		$modpaiement = new $nomclass();
 
+		// On remet le stock si il a été défalqué
+
 		if($modpaiement->defalqcmd){
    			$venteprod = new Venteprod();
    			$query = "select * from $venteprod->table where commande='" . $id . "'";
