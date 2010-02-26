@@ -8,6 +8,7 @@
 	Possibilité de défalquer le stock à la commande ou au passage en statut payé. (ajout d'un attribut à la classe PluginsPaiements $defalqcmd, prenant pour valeur 0 ou 1).
 	Inclusion récursive (possibilité de mettre des #INCLURE dans des fichiers déjà inclus).
 	Rajout dans l'archive de Thelia du moyen de paiement CMCIC (http://contrib.thelia.fr/spip.php?article143)
+	Mise à jour de sécurité du plugin TinyMCE (pensez à remplacer client/plugins/tinymce)
 	
 1.4.2.1
 	Correction des substitutions lors de l'envoi du mail de confirmation (suite au passage en preg)
