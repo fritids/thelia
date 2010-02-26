@@ -9,7 +9,6 @@ include_once("../../classes/Produit.class.php");
 include_once("../../classes/Produitdesc.class.php");
 include_once("../../classes/Rubrique.class.php");
 include_once("../../classes/Rubriquedesc.class.php");
-
 	
 	$sep = explode( "_", $_GET['id']);
 
@@ -22,13 +21,30 @@ include_once("../../classes/Rubriquedesc.class.php");
 		$obj->charger(substr($_GET['id'], $pos+1));	
 		$objdesc = new Rubriquedesc();
 		$objdesc->charger($obj->id);
-	} else {	
+		echo $objdesc->titre;
+	} else if($modif == "titreprod") {	
 		$obj = new Produit();
 		$obj->charger(substr($_GET['id'], $pos+1));
 		$objdesc = new Produitdesc();
-		$objdesc->charger($obj->id);		
+		$objdesc->charger($obj->id);
+		echo $objdesc->titre;		
+	}
+	else if($modif == "stock"){
+		$obj = new Produit();
+		$obj->charger(substr($_GET['id'], $pos+1));
+		echo $obj->stock;
+	}
+	else if($modif == "prix"){
+		$obj = new Produit();
+		$obj->charger(substr($_GET['id'], $pos+1));
+		echo $obj->prix;
+	}
+	else if($modif == "prix2"){
+		$obj = new Produit();
+		$obj->charger(substr($_GET['id'], $pos+1));
+		echo $obj->prix2;
 	}
 	
-	echo $objdesc->titre;
+	
 
 ?>
