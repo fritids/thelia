@@ -153,7 +153,7 @@
 		public function mysql_query_count($query,$link)
 		{
 			$num=$this->get($query);
-            if ($num<0)
+            if ($num<0 || $num=="")
             {
 				$resul=mysql_query($query,$link);
 				$num=mysql_num_rows($resul);		
