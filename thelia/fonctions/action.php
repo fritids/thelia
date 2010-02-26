@@ -152,7 +152,7 @@
 		$nomclass[0] = strtoupper($nomclass[0]);
 
 		include_once("client/plugins/" . $modules->nom . "/" . $nomclass . ".class.php");
-		$tmpobj = new $nomclass();
+		$modpaiement = new $nomclass();
 
 		$commande = new Commande();
 		$commande->transport = $_SESSION['navig']->commande->transport;
@@ -253,7 +253,8 @@
 			
 												
 			for($compt = 0; $compt<count($_SESSION['navig']->panier->tabarticle[$i]->perso); $compt++){
-				if(is_numeric($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur)){
+		
+				if(is_numeric($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur) && $modpaiement->defalqcmd){
                 
 					// diminution des stocks de déclinaison
 					$stock->charger($_SESSION['navig']->panier->tabarticle[$i]->perso[$compt]->valeur, $_SESSION['navig']->panier->tabarticle[$i]->produit->id);
@@ -279,9 +280,11 @@
 			// diminution des stocks classiques
 			$produit = new Produit();
 			$produit->charger($_SESSION['navig']->panier->tabarticle[$i]->produit->ref);
-			$produit->stock-=$_SESSION['navig']->panier->tabarticle[$i]->quantite;
-			$produit->maj();
-			
+		
+			if($modpaiement->defalqcmd){
+				$produit->stock-=$_SESSION['navig']->panier->tabarticle[$i]->quantite;
+				$produit->maj();
+			}
 						
 			$prodtradesc = new Produitdesc();
 			$prodtradesc->charger($_SESSION['navig']->panier->tabarticle[$i]->produit->id, $_SESSION['navig']->lang);
@@ -376,7 +379,7 @@
 						
  		modules_fonction("mail", $commande, $modules->nom);
 				
-		$tmpobj->paiement($commande);
+		$modpaiement->paiement($commande);
 
 	}
 	

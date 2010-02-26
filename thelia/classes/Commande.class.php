@@ -26,6 +26,7 @@
 <?php
 	include_once(realpath(dirname(__FILE__)) . "/Baseobj.class.php");
 	include_once(realpath(dirname(__FILE__)) . "/Venteprod.class.php");
+	include_once(realpath(dirname(__FILE__)) . "/Modules.class.php");
 
 	class Commande extends Baseobj{
 
@@ -101,6 +102,50 @@
 			
 			if(mysql_result($resul, 0, "mfact")>0) $this->facture = mysql_result($resul, 0, "mfact") + 1;
 			else $this->facture = 1000;			
+
+			$modules = new Modules();
+			$modules->charger_id($this->paiement);
+
+			$nomclass=$modules->nom;
+			$nomclass[0] = strtoupper($nomclass[0]);
+
+			include_once(realpath(dirname(__FILE__)) . "/../client/plugins/" . $modules->nom . "/" . $nomclass . ".class.php");
+
+			$modpaiement = new $nomclass();
+
+			if(! $modpaiement->defalqcmd){
+	   			$venteprod = new Venteprod();
+	   			$query = "select * from $venteprod->table where commande='" . $id . "'";
+	   			$resul = mysql_query($query, $venteprod->link);
+
+				while($row = mysql_fetch_object($resul)){
+					// incrémentation du stock général
+	    			$produit = new Produit();   
+					$produit->charger($row->ref);
+					$produit->stock = $produit->stock + $row->quantite;
+	    			$produit->maj();
+
+					$vdec = new Ventedeclidisp();
+
+					$query2 = "select * from $vdec->table where venteprod='" . $row->id . "'";
+					$resul2 = mysql_query($query2, $vdec->link);
+
+
+					while($row2 = mysql_fetch_object($resul2)){
+						$stock = new Stock();
+						if($stock->charger($row2->declidisp, $produit->id)){
+							$stock->valeur = $stock->valeur + $row->quantite;
+							$stock->maj();					
+						}
+
+
+					}
+				}
+			}
+
+
+
+
 		
 		}
 		
