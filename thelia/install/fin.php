@@ -34,6 +34,8 @@
     $var->charger("rsspass");
     $var->valeur=genpass(40);
     $var->maj();
+
+	rename("../admin/","../".$_POST["nomadmin"].);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

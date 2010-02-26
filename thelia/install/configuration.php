@@ -1,6 +1,7 @@
 <?php
 	
 	include_once("../classes/Cnx.class.php");
+	include_once("../fonctions/divers.php");
 	$cnx = new Cnx();
 	
 	mysql_connect($cnx->host, $cnx->login_mysql, $cnx->password_mysql);
@@ -122,6 +123,9 @@
 				
 				<div class="col">Re-saisie du mot de passe :</div>
 				<div class="col"><input type="password" name="motdepasse2" size="30" /></div> 
+				
+				<div class="col">Nom du répertoire d'admin :</div>
+				<div class="col"><input type="text" name="nomadmin" size="30"  value="admin_<?php echo genpass(10); ?>"/></div>
 				
 												
 				<div class="col">E-Mail de contact :</div>
