@@ -7,8 +7,8 @@
  	<auteur>Yoan De Macedo - yoan@octolys.fr</auteur>
  	<thelia>1.4.0</thelia>
  	<description>Module de paiement Atos.</description>
-	<lien></lien>
+	<lien>http://contrib.thelia.fr/spip.php?article30</lien>
 	<documentation>Readme.txt</documentation>
  	<etat>production</etat>
-	<install></install>
+	<install>http://contrib.thelia.fr/IMG/zip/bluepaid.zip</install>
 </plugin>
