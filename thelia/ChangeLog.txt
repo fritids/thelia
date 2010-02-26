@@ -5,6 +5,7 @@
 	Jquery 1.4.2
 	Optimisation de la connexion à la base de données.
 	Modification de la gestion des factures (pensez à mettre à jour client/pdf/facture.php)
+	Possibilité de défalquer le stock à la commande ou au passage en statut payé. (ajout d'un attribut à la classe PluginsPaiements $defalqcmd, prenant pour valeur 0 ou 1)
 	
 1.4.2.1
 	Correction des substitutions lors de l'envoi du mail de confirmation (suite au passage en preg)
