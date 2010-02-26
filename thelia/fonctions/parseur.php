@@ -394,7 +394,7 @@
 					$fichier = $cut[1];
 			
 					if(!file_exists($fichier)) { echo "Impossible d'ouvrir $fichier"; exit; }
-					$res .= file_get_contents($fichier);
+					$res .= inclusion(explode("\n",file_get_contents($fichier)));
 								
 					$res .= "\n";
 				}
@@ -405,5 +405,4 @@
 		
 		return $res;
 	}	
-	
 ?>

@@ -1,11 +1,13 @@
 1.4.3
-	Mise à jour de sécurité
-	Internalisation du calcul du montant à payer dans le moteur de THELIA au lieu de placer ce calcul dans les plugins de type paiement. (permettant de jouer sur le montant dans aprescommande) --> pensez à mettre à jour vos modules de paiement pour profiter de cette nouveauté
-	Ajout de l'entreprise dans les adresses de livraison
-	Jquery 1.4.2
+	Mise à jour de sécurité.
+	Internalisation du calcul du montant à payer dans le moteur de THELIA au lieu de placer ce calcul dans les plugins de type paiement. (permettant de jouer sur le montant dans aprescommande) --> pensez à mettre à jour vos modules de paiement pour profiter de cette nouveauté.
+	Ajout de l'entreprise dans les adresses de livraison.
+	Jquery 1.4.2.
 	Optimisation de la connexion à la base de données.
-	Modification de la gestion des factures (pensez à mettre à jour client/pdf/facture.php)
-	Possibilité de défalquer le stock à la commande ou au passage en statut payé. (ajout d'un attribut à la classe PluginsPaiements $defalqcmd, prenant pour valeur 0 ou 1)
+	Modification de la gestion des factures (pensez à mettre à jour client/pdf/facture.php).
+	Possibilité de défalquer le stock à la commande ou au passage en statut payé. (ajout d'un attribut à la classe PluginsPaiements $defalqcmd, prenant pour valeur 0 ou 1).
+	Inclusion récursive (possibilité de mettre des #INCLURE dans des fichiers déjà inclus).
+	Rajout dans l'archive de Thelia du moyen de paiement CMCIC (http://contrib.thelia.fr/spip.php?article143)
 	
 1.4.2.1
 	Correction des substitutions lors de l'envoi du mail de confirmation (suite au passage en preg)
