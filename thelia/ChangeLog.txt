@@ -11,6 +11,7 @@
 	Mise à jour de sécurité du plugin TinyMCE (pensez à remplacer client/plugins/tinymce)
 	Ajout d'une variable emailfrom paramétrable permettant de choisir l'adresse source lors de l'envoi des mails de confirmation.
 	Ajout d'une variable memcache permettant d'activer ou de désactiver l'utilisation de memcache
+	Compatibilité avec PHP 5.3
 	Divers corrections de bugs.
 	
 1.4.2.1

@@ -2167,6 +2167,7 @@ INSERT INTO `autorisation` VALUES(5, 'acces_codespromos', 1);
 INSERT INTO `autorisation` VALUES(6, 'acces_configuration', 1);
 INSERT INTO `autorisation` VALUES(7, 'acces_modules', 1);
 INSERT INTO `autorisation` VALUES(8, 'acces_rechercher', 1);
+INSERT INTO `autorisation` VALUES(9, 'acces_stats', 1);
 -- --------------------------------------------------------
 
 --
@@ -2195,6 +2196,7 @@ INSERT INTO `autorisationdesc` VALUES(5, 5, 'Accès aux codes promos', '', '', ''
 INSERT INTO `autorisationdesc` VALUES(6, 6, 'Accès à la configuration', '', '', '', 1);
 INSERT INTO `autorisationdesc` VALUES(7, 7, 'Accès aux modules', '', '', '', 1);
 INSERT INTO `autorisationdesc` VALUES(8, 8, 'Accès aux recherches', '', '', '', 1);
+INSERT INTO `autorisationdesc` VALUES(9, 9, 'Accès aux statistiques de ventes', '', '', '', 1);
 
 -- --------------------------------------------------------
 
