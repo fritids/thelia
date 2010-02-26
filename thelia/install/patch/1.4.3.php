@@ -107,6 +107,15 @@
 	$query_cnx = "create index thelia_statutdesc_statut_idx using btree on statutdesc (statut)";
 	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 
+	$query_cnx = "select valeur from variable where nom=\"emailcontact\"";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+	$emailcontact = mysql_result($resul_cnx, 0, "valeur");
+		
+	$query_cnx = "insert into  variable (nom, valeur, protege, cache) VALUES (\"emailfrom\",  \"$emailcontact\", 0, 0);";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
+		
+	$query_cnx = "insert into  variable (nom, valeur, protege, cache) VALUES (\"memcache\",  \"0\", 0, 0);";
+	$resul_cnx = mysql_query($query_cnx,$cnx->link);
 		
 	$query_cnx = "update variable set valeur='143' where nom='version'";
 	$resul_cnx = mysql_query($query_cnx, $cnx->link);

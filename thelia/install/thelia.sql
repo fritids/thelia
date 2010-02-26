@@ -1996,19 +1996,21 @@ CREATE TABLE `variable` (
   `protege` smallint(6) NOT NULL,
   `cache` smallint(6) NOT NULL,
   PRIMARY KEY  (`id`)
-)  AUTO_INCREMENT=8 ;
+)  AUTO_INCREMENT=10 ;
 
 -- 
 -- Contenu de la table `variable`
 -- 
 
 INSERT INTO `variable` VALUES (1, 'emailcontact', 'commande@monsite.com', '0', '0');
-INSERT INTO `variable` VALUES (2, 'nomsite', 'Mon Site', '0', '0');
-INSERT INTO `variable` VALUES (3, 'urlsite', 'http://www.monsite.com', '0', '0');
-INSERT INTO `variable` VALUES (4, 'tva', '19.6', '0', '0');
-INSERT INTO `variable` VALUES (5, 'style_chem', '/style_editeur.css', '0', '0');
-INSERT INTO `variable` VALUES (6, 'rsspass', '', '0', '0');
-INSERT INTO `variable` VALUES (7, 'version', '143', '1', '1');
+INSERT INTO `variable` VALUES (2, 'emailfrom', 'commande@monsite.com', '0', '0');
+INSERT INTO `variable` VALUES (3, 'nomsite', 'Mon Site', '0', '0');
+INSERT INTO `variable` VALUES (4, 'urlsite', 'http://www.monsite.com', '0', '0');
+INSERT INTO `variable` VALUES (5, 'tva', '19.6', '0', '0');
+INSERT INTO `variable` VALUES (6, 'style_chem', '/style_editeur.css', '0', '0');
+INSERT INTO `variable` VALUES (7, 'rsspass', '', '0', '0');
+INSERT INTO `variable` VALUES (8, 'memcache', '0', '0', '0');
+INSERT INTO `variable` VALUES (9, 'version', '143', '1', '1');
 
 -- --------------------------------------------------------
 

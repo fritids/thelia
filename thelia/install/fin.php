@@ -23,6 +23,10 @@
 	$var->valeur=$_POST['emailcontact'];
 	$var->maj();
 	
+	$var->charger("emailfrom");
+	$var->valeur=$_POST['emailcontact'];
+	$var->maj();
+	
 	$var->charger("nomsite");
 	$var->valeur=$_POST['nomsite'];
 	$var->maj();
