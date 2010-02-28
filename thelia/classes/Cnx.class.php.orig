@@ -35,11 +35,6 @@
         {
             if (self::$db_handle == -1)
             {
-                $host= "votre_serveur";
-                $login_mysql= "votre_login_mysql";
-                $password_mysql= "votre_motdepasse_mysql";
-                $db = "bdd_sql";
-                
                 self::$db_handle = mysql_connect(Cnx::$host, Cnx::$login_mysql, Cnx::$password_mysql);
                 
                 if(! self::$db_handle && $_REQUEST['erreur'] != 1)
