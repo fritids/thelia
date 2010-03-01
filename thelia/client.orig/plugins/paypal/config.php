@@ -15,7 +15,7 @@
 	$description3="";
 
 	// Modifier la valeur ci-dessous avec l'e-mail de vote compte PayPal
-	$compte_paypal = 'mail@domaine.com';
+	$compte_paypal = 'VOTRE E-MAIL PAYPAL';
 
 	$Devise        = "EUR";
 	$Code_Langue   = "FR";
