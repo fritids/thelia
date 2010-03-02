@@ -819,8 +819,8 @@
 			/* Demande de caracteristiques */
 			if($caracdisp != ""){
 			
-			if(! strstr($caracteristique, "-")) $caracteristique .= "-";
-			if(! strstr($caracdisp, "-")) $caracdisp .= "-";
+				if(substr($caracteristique,strlen($caracteristique)-1,strlen($caracteristique)) != "-") $caracteristique .= "-";
+				if(substr($caracdisp,strlen($caracdisp)-1,strlen($caracdisp)) != "-") $caracdisp .= "-";
 			
 			$lcaracteristique = explode("-", $caracteristique);
 			$lcaracdisp = explode("-", $caracdisp);
@@ -1012,6 +1012,9 @@
 			
 			if( $row->promo == "1" ) $temp = preg_replace("/\#PROMO\[([^]]*)\]\[([^]]*)\]/", "\\1", $temp);
 	 		else $temp = preg_replace("/\#PROMO\[([^]]*)\]\[([^]]*)\]/", "\\2", $temp);
+	
+			if( $row->nouveaute == "1" ) $temp = preg_replace("/\#NOUVEAU\[([^]]*)\]\[([^]]*)\]/", "\\1", $temp);
+			else $temp = preg_replace("/\#NOUVEAU\[([^]]*)\]\[([^]]*)\]/", "\\2", $temp);
 	 		
 			if( $row->promo == "1" && $row->prix) $pourcentage =  ceil((100 * ($row->prix - $row->prix2)/$row->prix));
 

@@ -35,7 +35,7 @@
 		if(!isset($_SESSION["util"])) $_SESSION["util"]=new Administrateur();
 		
 		if(isset($_POST['identifiant']) && isset($_POST['motdepasse'])){
-			$utilisateur = str_replace(" ", "", $_POST['identifiant']);
+			$identifiant = str_replace(" ", "", $_POST['identifiant']);
 			$motdepasse = str_replace(" ", "", $_POST['motdepasse']);
 		}
 		
