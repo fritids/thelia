@@ -1437,6 +1437,34 @@
                         $temp = str_replace("#RUBRIQUE", "$id_rubrique", $temp);
 						$temp = str_replace("#DOSSIER", "$id_dossier", $temp);
                         $res .= $temp;
+                }
+				else if($typeaff == "2"){
+				     if($deb) $debsave = $deb;
+					 else $debsave = 0;
+
+					if(!$deb) $deb=0;
+
+					if($page) $_SESSION['navig']->page = $page;
+					if($pagesess == 1) $page =  $_SESSION['navig']->page;
+
+					if(!$page ||  $page==1 ) $page=0; 
+
+					if(!$totbloc) $totbloc=1;
+					if($page) $deb = ($page-1)*$totbloc*$num+$deb;
+
+					$fin = $deb + $num; 
+					$query = str_replace("*","count(*) as max",$query);
+					$resul = mysql_query($query,$cnx->link);
+
+					$max = mysql_result($resul,0,"max");
+
+					if($fin > $max) $fin=$max;					
+					$temp = str_replace("#DEBUT",$deb,$texte);
+					$temp = str_replace("#FIN",$fin,$temp);
+					$temp = str_replace("#MAX",$max,$temp);
+
+					$res .= $temp;
+
                 }					
 			
 		
