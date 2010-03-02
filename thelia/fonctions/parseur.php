@@ -25,6 +25,7 @@
 ?>
 <?php
 
+	include_once("config/Config.class.php");
 
 	// remplace les tags qui ne doivent pas être touchés lors de la passe courante	
 	function pre(&$res){
@@ -381,6 +382,9 @@
 	
 	function inclusion($lect){
 
+		/* Charger les configurations utilisateurs */
+		$config = new Config();
+
 		$res = "";
 		$i =0;
 	
@@ -391,7 +395,7 @@
    			    if(strstr($rec, "#INCLURE")){
 					
 					preg_match("/\"([^\"]*)\"/", "$rec", $cut);
-					$fichier = $cut[1];
+					$fichier = $config->get('squelettes').$cut[1];
 			
 					if(!file_exists($fichier)) { echo "Impossible d'ouvrir $fichier"; exit; }
 					$res .= inclusion(explode("\n",file_get_contents($fichier)));
