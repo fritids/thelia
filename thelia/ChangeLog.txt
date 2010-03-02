@@ -1,5 +1,6 @@
 1.4.3
 	Mise à jour de sécurité.
+	Divers corrections de bugs.
 	Internalisation du calcul du montant à payer dans le moteur de THELIA au lieu de placer ce calcul dans les plugins de type paiement. (permettant de jouer sur le montant dans aprescommande) --> pensez à mettre à jour vos modules de paiement pour profiter de cette nouveauté.
 	Ajout de l'entreprise dans les adresses de livraison.
 	Jquery 1.4.2.
@@ -11,8 +12,9 @@
 	Mise à jour de sécurité du plugin TinyMCE (pensez à remplacer client/plugins/tinymce)
 	Ajout d'une variable emailfrom paramétrable permettant de choisir l'adresse source lors de l'envoi des mails de confirmation.
 	Ajout d'une variable memcache permettant d'activer ou de désactiver l'utilisation de memcache
-	Compatibilité avec PHP 5.3
-	Divers corrections de bugs.
+	Compatibilité avec PHP 5.3.
+	Ajout de #NOUVEAU[si oui...][si non...] comme pour #PROMO[si oui...][si non...]
+	
 	
 1.4.2.1
 	Correction des substitutions lors de l'envoi du mail de confirmation (suite au passage en preg)
