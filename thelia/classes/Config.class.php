@@ -30,7 +30,8 @@
         private $host;
         private $login_mysql;
         private $password_mysql;
-        private $db;    
+        private $db;   
+        private $squelettes; 
 
     
         public function Config() {
@@ -39,6 +40,7 @@
                 $this->login_mysql = $login_mysql;
                 $this->password_mysql = $password_mysql;
                 $this->db = $db;
+                $this->squelettes = $squelettes;
         }  
     
         public function get($config) {
@@ -55,6 +57,9 @@
                 case 'db' :
                     return $this->db;
                     break;
+                case 'squelettes' :
+                	return $this->squelettes ? this->squelettes : "./" ;
+                	break
             }
         }
     }

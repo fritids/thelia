@@ -9,4 +9,7 @@
     $login_mysql= "votre_login_mysql";
     $password_mysql= "votre_motdepasse_mysql";
     $db = "bdd_sql";
+    
+    // repertoire contenant les squelettes *.html
+    $squelettes = "";
 ?>
