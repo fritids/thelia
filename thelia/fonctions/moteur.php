@@ -32,6 +32,10 @@
 	include_once("classes/CacheBase.class.php");
 	include_once("classes/Navigation.class.php");
 	include_once("classes/Modules.class.php");
+	include_once("config/Config.class.php");
+
+	/* Charger les configurations utilisateurs */
+	$config = new Config()
 
 	/* Inclusions nécessaires avant ouverture de la session */
 	$modules = new Modules();	
@@ -247,6 +251,9 @@ function analyse($res){
 	
 	// fonctions à éxecuter avant ouverture du template
 	modules_fonction("pre");
+	
+	//un repertoire pour les squelettes
+	$fond = $config->get('squelettes').$fond;
 	
 	// chargement du squelette	
 	if($res == ""){
