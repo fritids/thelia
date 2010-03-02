@@ -1,0 +1,12 @@
+<?php
+
+	// host --> votre serveur mysql
+    // login_mysql --> login de connexion
+    // password_mysql --> mot de passe de connexion
+    // db --> nom de la base de donnée
+
+	$host= "votre_serveur";
+    $login_mysql= "votre_login_mysql";
+    $password_mysql= "votre_motdepasse_mysql";
+    $db = "bdd_sql";
+?>
