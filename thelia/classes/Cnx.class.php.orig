@@ -26,23 +26,24 @@
 <?php
 	//Modif par Roadster31 - singleton de connexion à la BDD
 	
-
+	include_once(realpath(dirname(__FILE__)) . "/Config.class.php");
+	
     class StaticConnection
     {
         public static $db_handle = -1;
         
-        public static function getHandle() 
+        public static function getHandle($host,$login_mysql,$password_mysql,$db) 
         {
             if (self::$db_handle == -1)
             {
-                self::$db_handle = mysql_connect(Cnx::$host, Cnx::$login_mysql, Cnx::$password_mysql);
+                self::$db_handle = mysql_connect($host, $login_mysql,$password_mysql);
                 
                 if(! self::$db_handle && $_REQUEST['erreur'] != 1)
                 {
                     header("Location: maintenance.php?erreur=1");
                 } 
 
-                mysql_select_db(Cnx::$db, self::$db_handle);
+                mysql_select_db($db, self::$db_handle);
             }
             
             return self::$db_handle;
@@ -50,23 +51,27 @@
     }
 
     // Classe Cnx
-	// host --> votre serveur mysql
-    // login_mysql --> login de connexion
-    // password_mysql --> mot de passe de connexion
-    // db --> nom de la base de donnée
-    class Cnx{
-
-		public static $host= "votre_serveur";
-        public static $login_mysql= "votre_login_mysql";
-        public static $password_mysql= "votre_motdepasse_mysql";
-        public static $db = "bdd_sql";
+    // Veuillez definir vos parametres de base de données dans config/config.var.php
+    class Cnx{      
+            
+		private $host= "";
+        private $login_mysql= "";
+        private $password_mysql= "";
+        private $db = "";
 
         var $table = "";
         var $link="";
         
         function Cnx() {        
             
-            $this->link = StaticConnection::getHandle();
+            $config = new Config();
+            
+            $this->host = $config->get('host');
+            $this->login_mysql = $config->get('login_mysql');
+            $this->password_mysql = $config->get('password_mysql');
+            $this->db = $config->get('db');
+
+            $this->link = StaticConnection::getHandle($this->host,$this->login_mysql,$this->password_mysql,$this->db);
         }
     }
 ?>
