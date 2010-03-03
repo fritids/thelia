@@ -32,10 +32,10 @@
 	include_once("classes/CacheBase.class.php");
 	include_once("classes/Navigation.class.php");
 	include_once("classes/Modules.class.php");
-	include_once("config/Config.class.php");
+	include_once("config/config.var.php");
 
 	/* Charger les configurations utilisateurs */
-	$config = new Config()
+	$config = new Config();
 
 	/* Inclusions nécessaires avant ouverture de la session */
 	$modules = new Modules();	

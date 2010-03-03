@@ -25,7 +25,7 @@
 ?>
 <?php
 
-	include_once("config/Config.class.php");
+	include_once("config/config.var.php");
 
 	// remplace les tags qui ne doivent pas être touchés lors de la passe courante	
 	function pre(&$res){
