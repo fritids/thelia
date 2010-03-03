@@ -14,7 +14,7 @@
 	Ajout d'une variable memcache permettant d'activer ou de désactiver l'utilisation de memcache
 	Compatibilité avec PHP 5.3.
 	Ajout de #NOUVEAU[si oui...][si non...] comme pour #PROMO[si oui...][si non...]
-	
+	Suppression de ParsePHP dans le moteur de THELIA. Un plugin permettra un fonctionnement similaire au besoin (mais toujours déconseillé)
 	
 1.4.2.1
 	Correction des substitutions lors de l'envoi du mail de confirmation (suite au passage en preg)
