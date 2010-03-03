@@ -1948,6 +1948,8 @@
         $resul = CacheBase::getCache()->mysql_query($query, $rubcaracteristique->link);
 		if($resul=="" || sizeof($resul)==0) return "";
 
+		$compt = 0;
+		
 		foreach($resul as $row) {
 
 			if($courante == "1" && ($id  != $caracteristique && ! strstr($caracteristique, $id . "-")))
@@ -1967,6 +1969,9 @@
 			$temp = str_replace("#CHAPO", "$tmpcaracteristiquedesc->chapo", $temp);
 			$temp = str_replace("#DESCRIPTION", "$tmpcaracteristiquedesc->description", $temp);		
 			$temp = str_replace("#PRODUIT", "$produit", $temp);	
+			$temp = str_replace("#COMPT", "$compt", $temp);	
+			
+			$compt ++;
 			
 			$res .= $temp;
 		}

@@ -147,7 +147,9 @@
 		
 		$modules = new Modules();
 		$modules->charger_id($type_paiement);
-
+		if(! $modules->actif)
+			return 0;
+			
 		$nomclass=$modules->nom;
 		$nomclass[0] = strtoupper($nomclass[0]);
 
